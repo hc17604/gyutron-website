@@ -26,6 +26,7 @@
         }
 
         :root {
+            --brand-purple: #4b2e83;
             --purple-950: #12051f;
             --purple-900: #1f0b35;
             --purple-800: #33135a;
@@ -158,31 +159,36 @@
 
         .site-header .container {
             align-items: center;
-            display: flex;
-            justify-content: space-between;
+            column-gap: 26px;
+            display: grid;
+            grid-template-columns: 300px minmax(0, 1fr) max-content;
             min-height: 82px;
+            width: min(1360px, calc(100% - 32px));
         }
 
         .brand {
             align-items: center;
             display: inline-flex;
             gap: 12px;
-            min-width: 320px;
+            justify-self: start;
+            min-width: 0;
         }
 
         .brand-logo {
             display: block;
-            height: 54px;
+            height: 50px;
             object-fit: contain;
             object-position: left center;
-            width: 320px;
+            width: 300px;
         }
 
         .nav {
             align-items: center;
             display: flex;
-            gap: 2px;
+            gap: 8px;
+            justify-content: center;
             list-style: none;
+            min-width: 0;
         }
 
         .nav-item {
@@ -197,14 +203,15 @@
             color: var(--text);
             cursor: pointer;
             display: inline-flex;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 850;
             gap: 7px;
             min-height: 44px;
-            padding: 0 10px;
+            padding: 0 12px;
             text-transform: uppercase;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.08em;
             transition: background 160ms ease, color 160ms ease;
+            white-space: nowrap;
         }
 
         .nav-trigger:hover,
@@ -440,6 +447,7 @@
             align-items: center;
             display: flex;
             gap: 12px;
+            justify-self: end;
         }
 
         .header-quick {
@@ -451,6 +459,23 @@
 
         .header-quick:hover {
             color: var(--purple-600);
+        }
+
+        .site-header .button-primary {
+            background: var(--brand-purple);
+            border-radius: 2px;
+            box-shadow: none;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            min-height: 42px;
+            padding: 0 18px;
+            text-transform: uppercase;
+        }
+
+        .site-header .button-primary:hover {
+            background: #3f256f;
+            box-shadow: 0 10px 22px rgba(75, 46, 131, 0.22);
         }
 
         .hero {
@@ -1153,6 +1178,8 @@
             }
 
             .site-header .container {
+                display: flex;
+                justify-content: space-between;
                 min-height: 66px;
             }
 
@@ -1161,8 +1188,8 @@
             }
 
             .brand-logo {
-                height: 40px;
-                width: 220px;
+                height: 34px;
+                width: 200px;
             }
 
             .hero {
@@ -1181,13 +1208,18 @@
                 font-size: 16px;
             }
 
-            .hero-actions,
-            .header-actions {
+            .hero-actions {
                 width: 100%;
             }
 
             .header-actions {
                 justify-content: flex-end;
+            }
+
+            .site-header .button-primary {
+                font-size: 11px;
+                min-height: 38px;
+                padding: 0 12px;
             }
 
             .button {
@@ -1431,8 +1463,6 @@
                 </li>
             </ul>
             <div class="header-actions">
-                <a class="header-quick" href="#contact">Partners</a>
-                <a class="header-quick" href="#contact">Support</a>
                 <a class="button button-primary" href="#contact">Contact Sales <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
