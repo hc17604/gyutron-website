@@ -118,47 +118,17 @@
             color: var(--white);
         }
 
-        .top-strip {
-            background: var(--purple-950);
-            color: rgba(255, 255, 255, 0.74);
-            font-size: 12px;
-        }
+        /* Top strip */
+        .top-strip { background: var(--purple-950); color: rgba(255,255,255,0.74); font-size: 12px; }
+        .top-strip .container { align-items: center; display: flex; justify-content: space-between; min-height: 34px; }
+        .top-strip-links { display: flex; gap: 20px; }
 
-        .top-strip .container {
-            align-items: center;
-            display: flex;
-            justify-content: space-between;
-            min-height: 34px;
-        }
+        /* Dark header */
+        .site-header { background: rgba(18,5,31,0.97); border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(18px); position: sticky; top: 0; z-index: 100; }
+        .site-header .container { align-items: center; display: flex; justify-content: space-between; min-height: 68px; }
 
-        .top-strip-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .site-header {
-            background: rgba(251, 250, 252, 0.92);
-            border-bottom: 1px solid rgba(230, 224, 238, 0.9);
-            backdrop-filter: blur(18px);
-            position: sticky;
-            top: 0;
-            z-index: 20;
-        }
-
-        .site-header .container {
-            align-items: center;
-            display: flex;
-            justify-content: space-between;
-            min-height: 76px;
-        }
-
-        .brand {
-            align-items: center;
-            display: inline-flex;
-            gap: 12px;
-            min-width: 196px;
-        }
-
+        /* Brand */
+        .brand { align-items: center; display: inline-flex; gap: 12px; min-width: 196px; }
         .brand-emblem {
             background:
                 radial-gradient(circle at 50% 50%, var(--signal) 0 4px, transparent 5px),
@@ -191,288 +161,81 @@
             top: 11px;
             width: 5px;
         }
+        .brand-copy { display: grid; gap: 1px; }
+        .brand-name { color: var(--white); font-size: 24px; font-weight: 900; letter-spacing: 0.01em; line-height: 1; }
+        .brand-name span { color: var(--signal); }
+        .brand-line { color: rgba(255,255,255,0.5); font-size: 9px; font-weight: 850; letter-spacing: 0.16em; line-height: 1; text-transform: uppercase; }
 
-        .brand-copy {
-            display: grid;
-            gap: 1px;
-        }
+        /* Nav */
+        .nav { align-items: center; display: flex; gap: 0; list-style: none; height: 68px; }
+        .nav-item { position: relative; height: 100%; display: flex; align-items: center; }
+        .nav-trigger { align-items: center; background: transparent; border: 0; color: rgba(255,255,255,0.82); cursor: pointer; display: inline-flex; font-size: 14px; font-weight: 600; gap: 6px; height: 100%; letter-spacing: 0.02em; padding: 0 18px; transition: color 200ms ease, background 200ms ease; white-space: nowrap; }
+        .nav-trigger:hover, .nav-item:focus-within .nav-trigger, .nav-item:hover .nav-trigger { color: var(--white); background: rgba(255,255,255,0.06); }
+        .nav-trigger i.fa-chevron-down { font-size: 10px; transition: transform 200ms ease; }
+        .nav-item:hover .nav-trigger i.fa-chevron-down, .nav-item:focus-within .nav-trigger i.fa-chevron-down { transform: rotate(180deg); }
 
-        .brand-name {
-            color: var(--ink);
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 0.01em;
-            line-height: 1;
-        }
+        /* Full-width mega panel */
+        .mega-panel { position: fixed; left: 0; right: 0; top: 102px; background: var(--white); box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 1px 0 rgba(0,0,0,0.06); opacity: 0; pointer-events: none; transform: translateY(-8px); transition: opacity 220ms ease, transform 220ms ease; z-index: 90; overflow: hidden; }
+        .nav-item:hover .mega-panel, .nav-item:focus-within .mega-panel { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        .mega-panel::before { content: ""; height: 16px; left: 0; position: absolute; right: 0; top: -16px; }
+        .mega-inner { max-width: 1200px; margin: 0 auto; padding: 36px 20px 40px; }
+        .mega-section-label { color: var(--purple-600); font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
 
-        .brand-name span {
-            color: var(--purple-600);
-        }
+        /* Product grid - 4 columns */
+        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .product-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: box-shadow 200ms ease, border-color 200ms ease; }
+        .product-card:hover { box-shadow: var(--shadow-sm); border-color: rgba(111,45,189,0.25); }
+        .product-card-image { aspect-ratio: 16/10; background: var(--purple-900); position: relative; overflow: hidden; }
+        .product-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms ease; }
+        .product-card:hover .product-card-image img { transform: scale(1.05); }
+        .product-card-icon { position: absolute; bottom: 12px; left: 12px; width: 40px; height: 40px; background: rgba(18,5,31,0.7); backdrop-filter: blur(8px); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--signal); font-size: 16px; }
+        .product-card-body { padding: 18px 18px 20px; }
+        .product-card-body h3 { color: var(--ink); font-size: 16px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+        .product-card-body > p { color: var(--muted); font-size: 13px; line-height: 1.4; margin-bottom: 14px; }
+        .product-card-links { list-style: none; border-top: 1px solid var(--line); padding-top: 12px; margin-top: 2px; }
+        .product-card-links li { margin-bottom: 0; }
+        .product-card-links a { color: var(--text); display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 600; padding: 6px 0; transition: color 150ms ease, padding-left 150ms ease; }
+        .product-card-links a::after { content: "\f054"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 9px; color: var(--purple-500); opacity: 0; transition: opacity 150ms ease, transform 150ms ease; transform: translateX(-4px); }
+        .product-card-links a:hover { color: var(--purple-700); padding-left: 4px; }
+        .product-card-links a:hover::after { opacity: 1; transform: translateX(0); }
 
-        .brand-line {
-            color: var(--muted);
-            font-size: 9px;
-            font-weight: 850;
-            letter-spacing: 0.16em;
-            line-height: 1;
-            text-transform: uppercase;
-        }
+        /* Solution grid - 5 columns */
+        .solution-grid-nav { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+        .solution-card-nav { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 18px; transition: box-shadow 200ms ease, border-color 200ms ease; }
+        .solution-card-nav:hover { box-shadow: var(--shadow-sm); border-color: rgba(111,45,189,0.25); }
+        .solution-card-nav-icon { width: 42px; height: 42px; background: var(--violet-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--purple-700); font-size: 17px; margin-bottom: 14px; }
+        .solution-card-nav h3 { color: var(--ink); font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+        .solution-card-nav > p { color: var(--muted); font-size: 12px; line-height: 1.4; margin-bottom: 12px; }
+        .solution-card-nav-links { list-style: none; border-top: 1px solid var(--line); padding-top: 10px; }
+        .solution-card-nav-links a { color: var(--text); display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 600; padding: 5px 0; transition: color 150ms ease, padding-left 150ms ease; }
+        .solution-card-nav-links a::after { content: "\f054"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 8px; color: var(--purple-500); opacity: 0; transition: opacity 150ms ease; }
+        .solution-card-nav-links a:hover { color: var(--purple-700); padding-left: 3px; }
+        .solution-card-nav-links a:hover::after { opacity: 1; }
 
-        .nav {
-            align-items: center;
-            display: flex;
-            gap: 6px;
-            list-style: none;
-        }
+        /* List layout (Platform / Resources / Company) */
+        .mega-list-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .mega-list-group { padding-right: 24px; }
+        .mega-list-group:not(:last-child) { border-right: 1px solid var(--line); }
+        .mega-list-group-title { display: flex; align-items: center; gap: 10px; color: var(--ink); font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+        .mega-list-group-title i { color: var(--purple-600); font-size: 16px; width: 36px; height: 36px; background: var(--violet-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .mega-list-group-desc { color: var(--muted); font-size: 12px; line-height: 1.4; margin-bottom: 12px; padding-left: 46px; }
+        .mega-list-items { list-style: none; padding-left: 46px; }
+        .mega-list-items li { margin-bottom: 0; }
+        .mega-list-items a { color: var(--text); display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 600; padding: 7px 0; transition: color 150ms ease, padding-left 150ms ease; }
+        .mega-list-items a::after { content: "\f054"; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 9px; color: var(--purple-500); opacity: 0; transition: opacity 150ms ease; }
+        .mega-list-items a:hover { color: var(--purple-700); padding-left: 4px; }
+        .mega-list-items a:hover::after { opacity: 1; }
 
-        .nav-item {
-            position: relative;
-        }
+        /* Footer bar in dropdown */
+        .mega-footer-bar { border-top: 1px solid var(--line); margin-top: 28px; padding-top: 18px; display: flex; align-items: center; justify-content: space-between; }
+        .mega-footer-bar p { color: var(--muted); font-size: 13px; }
+        .mega-footer-bar a { color: var(--purple-700); font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; transition: gap 150ms ease; }
+        .mega-footer-bar a:hover { gap: 10px; }
 
-        .nav-trigger {
-            align-items: center;
-            background: transparent;
-            border: 0;
-            border-radius: 6px;
-            color: var(--text);
-            cursor: pointer;
-            display: inline-flex;
-            font-size: 14px;
-            font-weight: 750;
-            gap: 7px;
-            min-height: 44px;
-            padding: 0 13px;
-            transition: background 160ms ease, color 160ms ease;
-        }
-
-        .nav-trigger:hover,
-        .nav-item:focus-within .nav-trigger,
-        .nav-item:hover .nav-trigger {
-            background: var(--violet-soft);
-            color: var(--purple-600);
-        }
-
-        .nav-trigger i {
-            font-size: 11px;
-            transition: transform 180ms ease;
-        }
-
-        .nav-item:hover .nav-trigger i,
-        .nav-item:focus-within .nav-trigger i {
-            transform: rotate(180deg);
-        }
-
-        .mega-menu {
-            background: rgba(255, 255, 255, 0.98);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            display: grid;
-            gap: 26px;
-            grid-template-columns: 1.05fr 1fr;
-            left: 50%;
-            min-width: 520px;
-            opacity: 0;
-            padding: 22px;
-            pointer-events: none;
-            position: absolute;
-            top: calc(100% + 12px);
-            transform: translateX(-50%) translateY(8px);
-            transition: opacity 160ms ease, transform 160ms ease;
-            z-index: 40;
-        }
-
-        .nav-item:hover .mega-menu,
-        .nav-item:focus-within .mega-menu {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .nav-item:nth-last-child(-n+2) .mega-menu {
-            left: auto;
-            right: 0;
-            transform: translateY(8px);
-        }
-
-        .nav-item:nth-last-child(-n+2):hover .mega-menu,
-        .nav-item:nth-last-child(-n+2):focus-within .mega-menu {
-            transform: translateY(0);
-        }
-
-        .mega-menu::before {
-            content: "";
-            height: 14px;
-            left: 0;
-            position: absolute;
-            right: 0;
-            top: -14px;
-        }
-
-        .mega-feature {
-            background:
-                linear-gradient(180deg, rgba(18, 5, 31, 0.14), rgba(18, 5, 31, 0.78)),
-                url("https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=700&q=80") center / cover;
-            border-radius: 7px;
-            color: var(--white);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            min-height: 230px;
-            overflow: hidden;
-            padding: 20px;
-        }
-
-        .mega-feature strong {
-            display: block;
-            font-size: 21px;
-            line-height: 1.15;
-            margin-bottom: 8px;
-        }
-
-        .mega-feature span {
-            color: rgba(255, 255, 255, 0.72);
-            font-size: 13px;
-        }
-
-        .mega-links {
-            display: grid;
-            gap: 7px;
-        }
-
-        .mega-link-group {
-            position: relative;
-        }
-
-        .mega-link,
-        .mega-links > a {
-            align-items: flex-start;
-            border-radius: 7px;
-            display: grid;
-            gap: 12px;
-            grid-template-columns: 34px 1fr 14px;
-            padding: 10px;
-            transition: background 150ms ease;
-        }
-
-        .mega-link:hover,
-        .mega-link-group:hover .mega-link,
-        .mega-link-group:focus-within .mega-link,
-        .mega-links > a:hover {
-            background: var(--violet-soft);
-        }
-
-        .mega-links i {
-            align-items: center;
-            background: var(--purple-950);
-            border-radius: 6px;
-            color: var(--white);
-            display: flex;
-            height: 34px;
-            justify-content: center;
-            width: 34px;
-        }
-
-        .mega-link .fa-chevron-right {
-            align-self: center;
-            background: transparent;
-            color: var(--purple-600);
-            font-size: 11px;
-            height: auto;
-            justify-content: flex-end;
-            width: auto;
-        }
-
-        .mega-links strong {
-            color: var(--ink);
-            display: block;
-            font-size: 14px;
-            line-height: 1.15;
-            margin-bottom: 4px;
-        }
-
-        .mega-links span {
-            color: var(--muted);
-            display: block;
-            font-size: 12px;
-            line-height: 1.35;
-        }
-
-        .submenu {
-            background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            box-shadow: 0 18px 46px rgba(31, 11, 53, 0.16);
-            display: grid;
-            gap: 4px;
-            left: calc(100% + 12px);
-            min-width: 245px;
-            opacity: 0;
-            padding: 10px;
-            pointer-events: none;
-            position: absolute;
-            top: 0;
-            transform: translateX(8px);
-            transition: opacity 150ms ease, transform 150ms ease;
-            z-index: 60;
-        }
-
-        .submenu::before {
-            content: "";
-            bottom: 0;
-            left: -12px;
-            position: absolute;
-            top: 0;
-            width: 12px;
-        }
-
-        .mega-link-group:hover .submenu,
-        .mega-link-group:focus-within .submenu {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateX(0);
-        }
-
-        .submenu a {
-            border-radius: 6px;
-            color: var(--text);
-            display: block;
-            font-size: 13px;
-            font-weight: 750;
-            padding: 10px 12px;
-        }
-
-        .submenu a:hover {
-            background: var(--violet-soft);
-            color: var(--purple-700);
-        }
-
-        .mega-compact {
-            grid-template-columns: 1fr;
-            min-width: 330px;
-        }
-
-        .mega-compact .submenu {
-            left: auto;
-            right: calc(100% + 12px);
-            transform: translateX(-8px);
-        }
-
-        .mega-compact .submenu::before {
-            left: auto;
-            right: -12px;
-        }
-
-        .mega-compact .mega-link-group:hover .submenu,
-        .mega-compact .mega-link-group:focus-within .submenu {
-            transform: translateX(0);
-        }
-
-        .header-actions {
-            align-items: center;
-            display: flex;
-            gap: 14px;
-        }
+        /* Header CTA */
+        .header-actions { align-items: center; display: flex; gap: 14px; }
+        .header-actions .button-primary { background: var(--signal); color: var(--purple-950); box-shadow: 0 8px 20px rgba(0,194,168,0.3); }
+        .header-actions .button-primary:hover { background: #00d4b8; }
 
         .hero {
             background:
@@ -1087,6 +850,10 @@
                 display: none;
             }
 
+            .mega-panel {
+                display: none;
+            }
+
             .hero-grid,
             .feature-product,
             .product-showcase,
@@ -1203,6 +970,33 @@
                 flex-direction: column;
                 gap: 16px;
             }
+
+            .mega-panel {
+                display: none;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-grid-nav {
+                grid-template-columns: 1fr;
+            }
+
+            .mega-list-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .mega-list-group {
+                padding-right: 0;
+            }
+
+            .mega-list-group:not(:last-child) {
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -1229,187 +1023,279 @@
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-trigger" href="#products">Products <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu">
-                        <a class="mega-feature" href="#products">
-                            <strong>Explore the GyuTron product stack</strong>
-                            <span>Robotics, vision, sensing, and rugged computing for connected operations.</span>
-                        </a>
-                        <div class="mega-links">
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#products"><i class="fa-solid fa-robot"></i><span><strong>Industrial Robots</strong><span>Six-axis arms and compact automation cells.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#products">GT-R600 6-Axis Arm</a>
-                                    <a href="#products">Collaborative Robot Series</a>
-                                    <a href="#products">SCARA Pick-and-Place</a>
-                                    <a href="#products">Robot Controllers</a>
+                    <div class="mega-panel">
+                        <div class="mega-inner">
+                            <div class="mega-section-label">Products</div>
+                            <div class="product-grid">
+                                <!-- Card 1: Industrial Robots -->
+                                <div class="product-card">
+                                    <div class="product-card-image">
+                                        <img src="https://images.unsplash.com/photo-1516192518150-0d8fee5425e3?auto=format&fit=crop&w=500&q=80" alt="">
+                                        <div class="product-card-icon"><i class="fa-solid fa-robot"></i></div>
+                                    </div>
+                                    <div class="product-card-body">
+                                        <h3>Industrial Robots</h3>
+                                        <p>Six-axis arms and compact automation cells.</p>
+                                        <ul class="product-card-links">
+                                            <li><a href="#products">GT-R600 6-Axis Arm</a></li>
+                                            <li><a href="#products">Collaborative Robot Series</a></li>
+                                            <li><a href="#products">SCARA Pick-and-Place</a></li>
+                                            <li><a href="#products">Robot Controllers</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Card 2: Machine Vision -->
+                                <div class="product-card">
+                                    <div class="product-card-image">
+                                        <img src="https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?auto=format&fit=crop&w=500&q=80" alt="">
+                                        <div class="product-card-icon"><i class="fa-solid fa-eye"></i></div>
+                                    </div>
+                                    <div class="product-card-body">
+                                        <h3>Machine Vision</h3>
+                                        <p>Smart cameras, inspection, and robot guidance.</p>
+                                        <ul class="product-card-links">
+                                            <li><a href="#products">GT-V200 Smart Camera</a></li>
+                                            <li><a href="#products">AI Defect Inspection</a></li>
+                                            <li><a href="#products">Vision Controllers</a></li>
+                                            <li><a href="#products">Lighting and Lenses</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Card 3: Industrial Sensors -->
+                                <div class="product-card">
+                                    <div class="product-card-image">
+                                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80" alt="">
+                                        <div class="product-card-icon"><i class="fa-solid fa-microchip"></i></div>
+                                    </div>
+                                    <div class="product-card-body">
+                                        <h3>Industrial Sensors</h3>
+                                        <p>Laser, proximity, photoelectric, and pressure sensing.</p>
+                                        <ul class="product-card-links">
+                                            <li><a href="#products">Laser Distance Sensors</a></li>
+                                            <li><a href="#products">Photoelectric Sensors</a></li>
+                                            <li><a href="#products">Pressure and Temperature</a></li>
+                                            <li><a href="#products">Safety Sensors</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Card 4: Rugged PDAs -->
+                                <div class="product-card">
+                                    <div class="product-card-image">
+                                        <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=500&q=80" alt="">
+                                        <div class="product-card-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                                    </div>
+                                    <div class="product-card-body">
+                                        <h3>Rugged PDAs</h3>
+                                        <p>Barcode, RFID, NFC, and field data terminals.</p>
+                                        <ul class="product-card-links">
+                                            <li><a href="#products">GT-P50 Warehouse PDA</a></li>
+                                            <li><a href="#products">RFID Handhelds</a></li>
+                                            <li><a href="#products">Vehicle-Mount Terminals</a></li>
+                                            <li><a href="#products">Accessories</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#products"><i class="fa-solid fa-eye"></i><span><strong>Machine Vision</strong><span>Smart cameras, inspection, and robot guidance.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#products">GT-V200 Smart Camera</a>
-                                    <a href="#products">AI Defect Inspection</a>
-                                    <a href="#products">Vision Controllers</a>
-                                    <a href="#products">Lighting and Lenses</a>
-                                </div>
-                            </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#products"><i class="fa-solid fa-microchip"></i><span><strong>Industrial Sensors</strong><span>Laser, proximity, photoelectric, and pressure sensing.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#products">Laser Distance Sensors</a>
-                                    <a href="#products">Photoelectric Sensors</a>
-                                    <a href="#products">Pressure and Temperature</a>
-                                    <a href="#products">Safety Sensors</a>
-                                </div>
-                            </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#products"><i class="fa-solid fa-mobile-screen-button"></i><span><strong>Rugged PDAs</strong><span>Barcode, RFID, NFC, and field data terminals.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#products">GT-P50 Warehouse PDA</a>
-                                    <a href="#products">RFID Handhelds</a>
-                                    <a href="#products">Vehicle-Mount Terminals</a>
-                                    <a href="#products">Accessories</a>
-                                </div>
+                            <div class="mega-footer-bar">
+                                <p>Explore the full GyuTron product stack</p>
+                                <a href="#products">View all products <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-trigger" href="#solutions">Solutions <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu">
-                        <a class="mega-feature" href="#solutions">
-                            <strong>Automation packages for real work sites</strong>
-                            <span>Use-case-led systems that move from pilot to production faster.</span>
-                        </a>
-                        <div class="mega-links">
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#solutions"><i class="fa-solid fa-magnifying-glass-chart"></i><span><strong>Automated Inspection</strong><span>Quality gates, defect checks, labels, and traceability.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#solutions">Surface Defect Detection</a>
-                                    <a href="#solutions">Barcode Traceability</a>
-                                    <a href="#solutions">Dimension Measurement</a>
-                                    <a href="#solutions">End-of-Line Quality</a>
+                    <div class="mega-panel">
+                        <div class="mega-inner">
+                            <div class="mega-section-label">Solutions</div>
+                            <div class="solution-grid-nav">
+                                <!-- Card 1: Automated Inspection -->
+                                <div class="solution-card-nav">
+                                    <div class="solution-card-nav-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                                    <h3>Automated Inspection</h3>
+                                    <p>Quality gates, defect checks, labels, and traceability.</p>
+                                    <ul class="solution-card-nav-links">
+                                        <li><a href="#solutions">Surface Defect Detection</a></li>
+                                        <li><a href="#solutions">Barcode Traceability</a></li>
+                                        <li><a href="#solutions">Dimension Measurement</a></li>
+                                        <li><a href="#solutions">End-of-Line Quality</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Card 2: Warehouse Mobility -->
+                                <div class="solution-card-nav">
+                                    <div class="solution-card-nav-icon"><i class="fa-solid fa-warehouse"></i></div>
+                                    <h3>Warehouse Mobility</h3>
+                                    <p>Receiving, picking, inventory, and dispatch workflows.</p>
+                                    <ul class="solution-card-nav-links">
+                                        <li><a href="#solutions">Inbound Receiving</a></li>
+                                        <li><a href="#solutions">Inventory Counting</a></li>
+                                        <li><a href="#solutions">Pick and Pack</a></li>
+                                        <li><a href="#solutions">Last-Mile Dispatch</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Card 3: Manufacturing Cells -->
+                                <div class="solution-card-nav">
+                                    <div class="solution-card-nav-icon"><i class="fa-solid fa-industry"></i></div>
+                                    <h3>Manufacturing Cells</h3>
+                                    <p>Machine tending, loading, assembly, and sorting.</p>
+                                    <ul class="solution-card-nav-links">
+                                        <li><a href="#solutions">Machine Tending</a></li>
+                                        <li><a href="#solutions">Part Sorting</a></li>
+                                        <li><a href="#solutions">Assembly Assistance</a></li>
+                                        <li><a href="#solutions">Palletizing</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Card 4: Automotive Operations -->
+                                <div class="solution-card-nav">
+                                    <div class="solution-card-nav-icon"><i class="fa-solid fa-car-side"></i></div>
+                                    <h3>Automotive Operations</h3>
+                                    <p>Line-side automation and part verification.</p>
+                                    <ul class="solution-card-nav-links">
+                                        <li><a href="#solutions">Line-Side Verification</a></li>
+                                        <li><a href="#solutions">Weld Support</a></li>
+                                        <li><a href="#solutions">Component Traceability</a></li>
+                                        <li><a href="#solutions">Supplier Quality</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Card 5: Medical & Pharma -->
+                                <div class="solution-card-nav">
+                                    <div class="solution-card-nav-icon"><i class="fa-solid fa-flask-vial"></i></div>
+                                    <h3>Medical & Pharma</h3>
+                                    <p>Clean, repeatable systems for regulated environments.</p>
+                                    <ul class="solution-card-nav-links">
+                                        <li><a href="#solutions">Serialization</a></li>
+                                        <li><a href="#solutions">Environmental Checks</a></li>
+                                        <li><a href="#solutions">Packaging Validation</a></li>
+                                        <li><a href="#solutions">Controlled Production</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#solutions"><i class="fa-solid fa-warehouse"></i><span><strong>Warehouse Mobility</strong><span>Receiving, picking, inventory, and dispatch workflows.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#solutions">Inbound Receiving</a>
-                                    <a href="#solutions">Inventory Counting</a>
-                                    <a href="#solutions">Pick and Pack</a>
-                                    <a href="#solutions">Last-Mile Dispatch</a>
-                                </div>
-                            </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#solutions"><i class="fa-solid fa-industry"></i><span><strong>Manufacturing Cells</strong><span>Machine tending, loading, assembly, and sorting.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#solutions">Machine Tending</a>
-                                    <a href="#solutions">Part Sorting</a>
-                                    <a href="#solutions">Assembly Assistance</a>
-                                    <a href="#solutions">Palletizing</a>
-                                </div>
-                            </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#solutions"><i class="fa-solid fa-car-side"></i><span><strong>Automotive Operations</strong><span>Line-side automation and part verification.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#solutions">Line-Side Verification</a>
-                                    <a href="#solutions">Weld Support</a>
-                                    <a href="#solutions">Component Traceability</a>
-                                    <a href="#solutions">Supplier Quality</a>
-                                </div>
+                            <div class="mega-footer-bar">
+                                <p>Find the right solution for your operation</p>
+                                <a href="#solutions">View all solutions <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-trigger" href="#platform">Platform <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu mega-compact">
-                        <div class="mega-links">
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#platform"><i class="fa-solid fa-network-wired"></i><span><strong>Control Layer</strong><span>Connect robot events, vision data, and handheld scans.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#platform">Robot Cell Monitoring</a>
-                                    <a href="#platform">Vision Event Logs</a>
-                                    <a href="#platform">Scan Data Streams</a>
+                    <div class="mega-panel">
+                        <div class="mega-inner">
+                            <div class="mega-section-label">Platform</div>
+                            <div class="mega-list-layout">
+                                <div class="mega-list-group">
+                                    <div class="mega-list-group-title"><i class="fa-solid fa-network-wired"></i> Control Layer</div>
+                                    <p class="mega-list-group-desc">Connect robot events, vision data, and handheld scans.</p>
+                                    <ul class="mega-list-items">
+                                        <li><a href="#platform">Robot Cell Monitoring</a></li>
+                                        <li><a href="#platform">Vision Event Logs</a></li>
+                                        <li><a href="#platform">Scan Data Streams</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-list-group">
+                                    <div class="mega-list-group-title"><i class="fa-solid fa-plug-circle-bolt"></i> System Integration</div>
+                                    <p class="mega-list-group-desc">MES, WMS, ERP, PLC, and dashboard-ready interfaces.</p>
+                                    <ul class="mega-list-items">
+                                        <li><a href="#platform">PLC Connectivity</a></li>
+                                        <li><a href="#platform">MES and ERP Hooks</a></li>
+                                        <li><a href="#platform">Dashboard APIs</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-list-group">
+                                    <div class="mega-list-group-title"><i class="fa-solid fa-screwdriver-wrench"></i> OEM / ODM</div>
+                                    <p class="mega-list-group-desc">Branding, firmware, accessories, and partner programs.</p>
+                                    <ul class="mega-list-items">
+                                        <li><a href="#platform">Private Label Hardware</a></li>
+                                        <li><a href="#platform">Custom Firmware</a></li>
+                                        <li><a href="#platform">Partner Accessories</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#platform"><i class="fa-solid fa-plug-circle-bolt"></i><span><strong>System Integration</strong><span>MES, WMS, ERP, PLC, and dashboard-ready interfaces.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#platform">PLC Connectivity</a>
-                                    <a href="#platform">MES and ERP Hooks</a>
-                                    <a href="#platform">Dashboard APIs</a>
-                                </div>
-                            </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#platform"><i class="fa-solid fa-screwdriver-wrench"></i><span><strong>OEM / ODM</strong><span>Branding, firmware, accessories, and partner programs.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#platform">Private Label Hardware</a>
-                                    <a href="#platform">Custom Firmware</a>
-                                    <a href="#platform">Partner Accessories</a>
-                                </div>
+                            <div class="mega-footer-bar">
+                                <p>Connect your deployment infrastructure</p>
+                                <a href="#platform">Explore platform <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-trigger" href="#resources">Resources <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu mega-compact">
-                        <div class="mega-links">
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#resources"><i class="fa-solid fa-book-open"></i><span><strong>Buyer Guides</strong><span>How to choose robots, cameras, sensors, and PDAs.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#resources">Robot Cell Checklist</a>
-                                    <a href="#resources">Vision System Guide</a>
-                                    <a href="#resources">Rugged PDA Selection</a>
+                    <div class="mega-panel">
+                        <div class="mega-inner">
+                            <div class="mega-section-label">Resources</div>
+                            <div class="mega-list-layout">
+                                <div class="mega-list-group">
+                                    <div class="mega-list-group-title"><i class="fa-solid fa-book-open"></i> Buyer Guides</div>
+                                    <p class="mega-list-group-desc">How to choose robots, cameras, sensors, and PDAs.</p>
+                                    <ul class="mega-list-items">
+                                        <li><a href="#resources">Robot Cell Checklist</a></li>
+                                        <li><a href="#resources">Vision System Guide</a></li>
+                                        <li><a href="#resources">Rugged PDA Selection</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-list-group">
+                                    <div class="mega-list-group-title"><i class="fa-solid fa-video"></i> Webinars</div>
+                                    <p class="mega-list-group-desc">Automation planning, inspection, and deployment sessions.</p>
+                                    <ul class="mega-list-items">
+                                        <li><a href="#resources">Deployment Planning</a></li>
+                                        <li><a href="#resources">Inspection Workflows</a></li>
+                                        <li><a href="#resources">Warehouse Digitization</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-list-group">
+                                    <div class="mega-list-group-title"><i class="fa-solid fa-file-lines"></i> Case Studies</div>
+                                    <p class="mega-list-group-desc">Manufacturing and warehouse transformation stories.</p>
+                                    <ul class="mega-list-items">
+                                        <li><a href="#resources">Factory Automation</a></li>
+                                        <li><a href="#resources">Warehouse Traceability</a></li>
+                                        <li><a href="#resources">Inspection ROI</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#resources"><i class="fa-solid fa-video"></i><span><strong>Webinars</strong><span>Automation planning, inspection, and deployment sessions.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#resources">Deployment Planning</a>
-                                    <a href="#resources">Inspection Workflows</a>
-                                    <a href="#resources">Warehouse Digitization</a>
-                                </div>
-                            </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#resources"><i class="fa-solid fa-file-lines"></i><span><strong>Case Studies</strong><span>Manufacturing and warehouse transformation stories.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#resources">Factory Automation</a>
-                                    <a href="#resources">Warehouse Traceability</a>
-                                    <a href="#resources">Inspection ROI</a>
-                                </div>
+                            <div class="mega-footer-bar">
+                                <p>Learn from real deployments and expert guidance</p>
+                                <a href="#resources">View all resources <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-trigger" href="#contact">Company <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu mega-compact">
-                        <div class="mega-links">
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#contact"><i class="fa-solid fa-building"></i><span><strong>About GyuTron</strong><span>Industrial automation hardware for global B2B teams.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#contact">Company Overview</a>
-                                    <a href="#contact">Factory Capability</a>
-                                    <a href="#contact">Global Partners</a>
+                    <div class="mega-panel">
+                        <div class="mega-inner">
+                            <div class="mega-section-label">Company</div>
+                            <div class="mega-list-layout">
+                                <div class="mega-list-group">
+                                    <div class="mega-list-group-title"><i class="fa-solid fa-building"></i> About GyuTron</div>
+                                    <p class="mega-list-group-desc">Industrial automation hardware for global B2B teams.</p>
+                                    <ul class="mega-list-items">
+                                        <li><a href="#contact">Company Overview</a></li>
+                                        <li><a href="#contact">Factory Capability</a></li>
+                                        <li><a href="#contact">Global Partners</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-list-group">
+                                    <div class="mega-list-group-title"><i class="fa-solid fa-certificate"></i> Certifications</div>
+                                    <p class="mega-list-group-desc">Quality-managed manufacturing and compliance support.</p>
+                                    <ul class="mega-list-items">
+                                        <li><a href="#contact">ISO Quality System</a></li>
+                                        <li><a href="#contact">CE / FCC / RoHS</a></li>
+                                        <li><a href="#contact">Warranty Policy</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-list-group">
+                                    <div class="mega-list-group-title"><i class="fa-solid fa-headset"></i> Contact Sales</div>
+                                    <p class="mega-list-group-desc">Talk with the team about a pilot or custom quote.</p>
+                                    <ul class="mega-list-items">
+                                        <li><a href="mailto:info@gyutron.com">Request a Quote</a></li>
+                                        <li><a href="mailto:info@gyutron.com">Book a Demo</a></li>
+                                        <li><a href="mailto:info@gyutron.com">Technical Support</a></li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#contact"><i class="fa-solid fa-certificate"></i><span><strong>Certifications</strong><span>Quality-managed manufacturing and compliance support.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="#contact">ISO Quality System</a>
-                                    <a href="#contact">CE / FCC / RoHS</a>
-                                    <a href="#contact">Warranty Policy</a>
-                                </div>
-                            </div>
-                            <div class="mega-link-group">
-                                <a class="mega-link" href="#contact"><i class="fa-solid fa-headset"></i><span><strong>Contact Sales</strong><span>Talk with the team about a pilot or custom quote.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
-                                    <a href="mailto:info@gyutron.com">Request a Quote</a>
-                                    <a href="mailto:info@gyutron.com">Book a Demo</a>
-                                    <a href="mailto:info@gyutron.com">Technical Support</a>
-                                </div>
+                            <div class="mega-footer-bar">
+                                <p>Get in touch with the GyuTron team</p>
+                                <a href="#contact">Contact us <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
