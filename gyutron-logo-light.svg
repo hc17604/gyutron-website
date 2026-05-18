@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 128" role="img" aria-labelledby="title desc">
+  <title id="title">GyuTron logo</title>
+  <desc id="desc">GyuTron automation, vision, innovation brand logo for dark backgrounds.</desc>
+  <defs>
+    <linearGradient id="purple" x1="40" y1="8" x2="132" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8f49ec"/>
+      <stop offset="1" stop-color="#4b2e83"/>
+    </linearGradient>
+    <linearGradient id="light" x1="52" y1="48" x2="140" y2="122" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#d9d5e3"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <polygon points="58 16 154 16 124 48 78 48 30 96 0 96" fill="url(#purple)"/>
+    <polygon points="88 56 160 56 112 112 16 112 48 80 96 80" fill="url(#light)"/>
+  </g>
+  <g fill="#ffffff">
+    <path d="M206 36h86v18h-65c-8 0-12 4-12 12v21c0 8 4 12 12 12h43V82h-38V65h60v52h-70c-18 0-29-10-29-28V64c0-18 11-28 29-28Z"/>
+    <path d="M304 36h28l33 38 33-38h28l-49 57v24h-24V93Z"/>
+    <path d="M434 36h24v51c0 8 4 12 12 12h40c8 0 12-4 12-12V36h24v53c0 18-11 28-29 28h-54c-18 0-29-10-29-28Z"/>
+    <path d="M560 36h104v18h-40v63h-24V54h-40Z"/>
+    <path d="M676 36h90c17 0 27 9 27 25v12c0 15-8 23-23 25l27 19h-34l-34-27h35c4 0 6-2 6-6V64c0-6-3-9-10-9h-60v62h-24Z"/>
+    <path d="M812 36h72c18 0 29 10 29 28v25c0 18-11 28-29 28h-72c-18 0-29-10-29-28V64c0-18 11-28 29-28Zm5 63h62c8 0 12-4 12-12V66c0-8-4-12-12-12h-62c-8 0-12 4-12 12v21c0 8 4 12 12 12Z" transform="translate(-10)"/>
+    <path d="M918 36h36l65 58V36h24v81h-36l-65-58v58h-24Z" transform="translate(-10)"/>
+  </g>
+  <g fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="10">
+    <rect x="196" y="104" width="64" height="2" fill="#7f3fd1"/>
+    <text x="278" y="111">AUTOMATION</text>
+    <circle cx="402" cy="106" r="3" fill="#7f3fd1"/>
+    <text x="422" y="111">VISION</text>
+    <circle cx="500" cy="106" r="3" fill="#7f3fd1"/>
+    <text x="520" y="111">INNOVATION</text>
+    <rect x="660" y="104" width="60" height="2" fill="#ffffff"/>
+  </g>
+</svg>
