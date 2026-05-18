@@ -48,6 +48,7 @@
         }
 
         html {
+            overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
@@ -490,6 +491,10 @@
             box-shadow: 0 10px 22px rgba(75, 46, 131, 0.22);
         }
 
+        .cta-label-short {
+            display: none;
+        }
+
         .hero {
             background:
                 linear-gradient(90deg, rgba(4, 5, 8, 0.96) 0%, rgba(18, 5, 31, 0.84) 38%, rgba(18, 5, 31, 0.24) 100%),
@@ -644,6 +649,7 @@
             display: grid;
             gap: 24px;
             grid-template-columns: 1.15fr 0.85fr;
+            min-width: 0;
         }
 
         .feature-product,
@@ -653,6 +659,7 @@
             background: var(--white);
             border: 1px solid var(--line);
             border-radius: var(--radius);
+            min-width: 0;
             overflow: hidden;
         }
 
@@ -660,11 +667,13 @@
             display: grid;
             grid-template-columns: 1fr 0.92fr;
             min-height: 520px;
+            min-width: 0;
         }
 
         .feature-image {
             background: #1c1429;
             min-height: 380px;
+            min-width: 0;
             position: relative;
         }
 
@@ -689,6 +698,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            min-width: 0;
             padding: 38px;
         }
 
@@ -748,12 +758,14 @@
         .compact-stack {
             display: grid;
             gap: 24px;
+            min-width: 0;
         }
 
         .compact-product {
             display: grid;
             grid-template-columns: 180px 1fr;
             min-height: 248px;
+            min-width: 0;
         }
 
         .compact-image {
@@ -798,6 +810,7 @@
             display: grid;
             gap: 18px;
             grid-template-columns: repeat(3, 1fr);
+            min-width: 0;
         }
 
         .solution-card {
@@ -962,6 +975,7 @@
             display: grid;
             gap: 22px;
             grid-template-columns: repeat(3, 1fr);
+            min-width: 0;
         }
 
         .resource-card {
@@ -1165,9 +1179,20 @@
             width: 34px;
         }
 
-        @media (max-width: 1020px) {
+        @media (max-width: 1180px) {
+            .site-header .container {
+                column-gap: 18px;
+                grid-template-columns: minmax(220px, 1fr) max-content;
+                min-height: 74px;
+            }
+
             .nav {
                 display: none;
+            }
+
+            .brand-logo {
+                height: 44px;
+                width: 270px;
             }
 
             .hero-grid,
@@ -1180,10 +1205,40 @@
 
             .hero {
                 min-height: auto;
+                padding: 78px 0 52px;
+                background-position: 58% center;
+            }
+
+            .hero-grid {
+                gap: 34px;
+                min-height: 0;
+            }
+
+            .hero-copy {
+                max-width: 720px;
             }
 
             .hero-panel {
                 align-self: auto;
+                max-width: 720px;
+            }
+
+            .section-head {
+                align-items: start;
+                grid-template-columns: 1fr;
+            }
+
+            .feature-product {
+                min-height: 0;
+            }
+
+            .feature-image {
+                aspect-ratio: 16 / 9;
+                min-height: 0;
+            }
+
+            .compact-product {
+                grid-template-columns: 220px 1fr;
             }
 
             .solutions-grid,
@@ -1191,36 +1246,46 @@
             .proof-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .footer-grid {
+                grid-template-columns: 1.2fr repeat(2, 1fr);
+            }
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 760px) {
             .container {
                 width: min(100% - 28px, 1180px);
             }
 
             .top-strip,
             .header-quick,
-            .header-actions .button-outline {
+            .header-actions,
+            .header-actions .button-outline,
+            .site-header .button-primary i {
                 display: none;
             }
 
             .site-header .container {
                 display: flex;
+                gap: 12px;
                 justify-content: space-between;
                 min-height: 66px;
             }
 
             .brand {
-                min-width: 150px;
+                flex: 1;
+                min-width: 0;
             }
 
             .brand-logo {
                 height: 34px;
-                width: 200px;
+                max-width: 190px;
+                width: 100%;
             }
 
             .hero {
                 padding: 64px 0 42px;
+                background-position: 64% center;
             }
 
             .hero-grid {
@@ -1239,14 +1304,18 @@
                 width: 100%;
             }
 
-            .header-actions {
-                justify-content: flex-end;
-            }
-
             .site-header .button-primary {
                 font-size: 11px;
                 min-height: 38px;
-                padding: 0 12px;
+                padding: 0 11px;
+            }
+
+            .cta-label-full {
+                display: none;
+            }
+
+            .cta-label-short {
+                display: inline;
             }
 
             .button {
@@ -1260,14 +1329,25 @@
             .resources-grid,
             .proof-grid,
             .compact-product,
+            .feature-product,
             .section-head,
             .footer-grid {
                 grid-template-columns: 1fr;
             }
 
+            .feature-product > *,
+            .compact-product > * {
+                min-width: 0;
+                width: 100%;
+            }
+
             .compact-image {
                 aspect-ratio: 16 / 10;
                 min-height: 0;
+            }
+
+            .hero-panel {
+                padding: 18px;
             }
 
             .section {
@@ -1298,6 +1378,24 @@
                 align-items: flex-start;
                 flex-direction: column;
                 gap: 16px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                width: min(100% - 22px, 1180px);
+            }
+
+            .brand-logo {
+                max-width: 180px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-actions .button {
+                width: 100%;
             }
         }
     </style>
@@ -1490,7 +1588,7 @@
                 </li>
             </ul>
             <div class="header-actions">
-                <a class="button button-primary" href="#contact">Contact Sales <i class="fa-solid fa-arrow-right"></i></a>
+                <a class="button button-primary" href="#contact"><span class="cta-label-full">Contact Sales</span><span class="cta-label-short">Contact</span> <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </header>
