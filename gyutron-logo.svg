@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1508 425" role="img" aria-labelledby="title desc">
+<title id="title">GYUTRON logo</title>
+<desc id="desc">GYUTRON industrial automation, vision and innovation logo.</desc>
+<defs>
+  <linearGradient id="gPurple" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4B2E83"/>
+    <stop offset="1" stop-color="#3B246B"/>
+  </linearGradient>
+  <linearGradient id="gDark" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#242833"/>
+    <stop offset="1" stop-color="#1E1E24"/>
+  </linearGradient>
+  <style><![CDATA[
+    .word{font-family:'Eurostile Extended','Bank Gothic','Orbitron','Arial Black','Noto Sans',Arial,sans-serif;font-weight:900;letter-spacing:7px;fill:#3B246B;}
+    .tag{font-family:'Montserrat','Noto Sans',Arial,sans-serif;font-weight:600;letter-spacing:13px;fill:#1E1E24;}
+    .linep{stroke:#3B246B;stroke-width:4;stroke-linecap:square;}
+    .lined{stroke:#1E1E24;stroke-width:4;stroke-linecap:square;}
+  ]]></style>
+</defs>
+<g id="gyutron-logo" transform="translate(0 0)">
+  <g id="icon" transform="translate(50 90)">
+    <polygon points="0,120 174,120 255,0 81,0" fill="url(#gPurple)"/>
+    <polygon points="156,120 288,120 370,0 238,0" fill="url(#gPurple)" opacity="0.98"/>
+    <polygon points="58,250 233,250 315,130 140,130" fill="url(#gDark)"/>
+  </g>
+  <text class="word" x="410" y="233" font-size="135">GYUTRON</text>
+  <g id="tagline" transform="translate(415 286)">
+    <line class="linep" x1="0" y1="0" x2="126" y2="0"/>
+    <text class="tag" x="164" y="12" font-size="26">AUTOMATION</text>
+    <circle cx="419" cy="0" r="6" fill="#3B246B"/>
+    <text class="tag" x="453" y="12" font-size="26">VISION</text>
+    <circle cx="637" cy="0" r="6" fill="#3B246B"/>
+    <text class="tag" x="671" y="12" font-size="26">INNOVATION</text>
+    <line class="lined" x1="1045" y1="0" x2="1172" y2="0"/>
+  </g>
+</g>
+</svg>
