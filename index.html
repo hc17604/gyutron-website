@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -211,7 +211,7 @@
         .nav-trigger:hover,
         .nav-item:focus-within .nav-trigger,
         .nav-item:hover .nav-trigger {
-            background: #1e1e24;
+            background: var(--violet-soft);
             color: var(--purple-600);
         }
 
@@ -226,10 +226,10 @@
         }
 
         .mega-menu {
-            background: #111318;
-            border: 1px solid #2e313a;
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid var(--line);
             border-radius: 2px;
-            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+            box-shadow: 0 18px 46px rgba(31, 11, 53, 0.12);
             display: grid;
             gap: 22px;
             grid-template-columns: 290px 1fr;
@@ -274,9 +274,9 @@
 
         .mega-feature {
             background:
-                linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.72)),
+                linear-gradient(180deg, rgba(18, 5, 31, 0.12), rgba(18, 5, 31, 0.72)),
                 url("hero-industrial-automation.png") center / cover;
-            border: 1px solid #343844;
+            border: 1px solid var(--line);
             border-radius: 2px;
             color: var(--white);
             display: flex;
@@ -307,7 +307,7 @@
 
         .mega-section-label {
             border-left: 3px solid var(--purple-600);
-            color: #b8a4e8;
+            color: var(--purple-700);
             font-size: 11px;
             font-weight: 900;
             letter-spacing: 0.13em;
@@ -327,7 +327,7 @@
             border-radius: 2px;
             display: grid;
             gap: 12px;
-            grid-template-columns: 34px 1fr 14px;
+            grid-template-columns: 1fr 14px;
             padding: 9px;
             transition: background 150ms ease;
         }
@@ -336,20 +336,8 @@
         .mega-link-group:hover .mega-link,
         .mega-link-group:focus-within .mega-link,
         .mega-links > a:hover {
-            background: #1a1d24;
-            border-color: #343844;
-        }
-
-        .mega-links i {
-            align-items: center;
-            background: #20232c;
-            border: 1px solid #3b246b;
-            border-radius: 2px;
-            color: var(--white);
-            display: flex;
-            height: 34px;
-            justify-content: center;
-            width: 34px;
+            background: var(--violet-soft);
+            border-color: var(--line);
         }
 
         .mega-link .fa-chevron-right,
@@ -365,7 +353,7 @@
         }
 
         .mega-links strong {
-            color: #f3f0f8;
+            color: var(--ink);
             display: block;
             font-size: 14px;
             line-height: 1.15;
@@ -373,17 +361,17 @@
         }
 
         .mega-links span {
-            color: #a7a1b2;
+            color: var(--muted);
             display: block;
             font-size: 12px;
             line-height: 1.35;
         }
 
         .submenu {
-            background: #171a21;
-            border: 1px solid #343844;
+            background: var(--white);
+            border: 1px solid var(--line);
             border-radius: 2px;
-            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.34);
+            box-shadow: 0 18px 46px rgba(31, 11, 53, 0.16);
             display: grid;
             gap: 4px;
             left: calc(100% + 12px);
@@ -416,7 +404,7 @@
 
         .submenu a {
             border-radius: 2px;
-            color: #ece8f5;
+            color: var(--text);
             display: block;
             font-size: 13px;
             font-weight: 750;
@@ -424,8 +412,8 @@
         }
 
         .submenu a:hover {
-            background: #242833;
-            color: #c5b5ef;
+            background: var(--violet-soft);
+            color: var(--purple-700);
         }
 
         .mega-compact {
@@ -1279,7 +1267,7 @@
                         <div class="mega-links">
                             <div class="mega-section-label">Spot</div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="#products"><i class="fa-solid fa-dog"></i><span><strong>Spot</strong><span>Agile mobile robot for sensing and industrial inspection.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="#products"><span><strong>Spot</strong><span>Agile mobile robot for sensing and industrial inspection.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
                                     <a href="#products">Overview</a>
                                     <a href="#products">Specifications</a>
@@ -1288,7 +1276,7 @@
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="#products"><i class="fa-solid fa-hand"></i><span><strong>Arm</strong><span>Integrated arm to enable mobile manipulation.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="#products"><span><strong>Arm</strong><span>Integrated arm to enable mobile manipulation.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
                                     <a href="#products">Grasping</a>
                                     <a href="#products">Valve Turning</a>
@@ -1296,7 +1284,7 @@
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="#products"><i class="fa-solid fa-camera"></i><span><strong>Payload</strong><span>Sensors and hardware that expand robot functionality.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="#products"><span><strong>Payload</strong><span>Sensors and hardware that expand robot functionality.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
                                     <a href="#products">Thermal Payload</a>
                                     <a href="#products">Visual Payload</a>
@@ -1305,7 +1293,7 @@
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="#products"><i class="fa-solid fa-plus"></i><span><strong>Extras</strong><span>Add-ons and accessories to keep robots ready for work.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="#products"><span><strong>Extras</strong><span>Add-ons and accessories to keep robots ready for work.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
                                     <a href="#products">Docks</a>
                                     <a href="#products">Batteries</a>
@@ -1314,9 +1302,9 @@
                                 </div>
                             </div>
                             <div class="mega-section-label">More Products</div>
-                            <a href="#products"><i class="fa-solid fa-person-running"></i><span><strong>Atlas</strong><span>Humanoid robotics research and advanced mobility.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#solutions"><i class="fa-solid fa-boxes-stacked"></i><span><strong>Stretch</strong><span>Warehouse case handling and unloading automation.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#platform"><i class="fa-solid fa-circle-nodes"></i><span><strong>Orbit</strong><span>Fleet management, inspection data, and operational visibility.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#products"><span><strong>Atlas</strong><span>Humanoid robotics research and advanced mobility.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#solutions"><span><strong>Stretch</strong><span>Warehouse case handling and unloading automation.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#platform"><span><strong>Orbit</strong><span>Fleet management, inspection data, and operational visibility.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </li>
@@ -1330,7 +1318,7 @@
                         <div class="mega-links">
                             <div class="mega-section-label">Inspection</div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="#solutions"><i class="fa-solid fa-magnifying-glass-chart"></i><span><strong>Inspection</strong><span>Automate industrial inspection and operator rounds.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="#solutions"><span><strong>Inspection</strong><span>Automate industrial inspection and operator rounds.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
                                     <a href="#solutions">Thermal</a>
                                     <a href="#solutions">Visual</a>
@@ -1339,7 +1327,7 @@
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="#solutions"><i class="fa-solid fa-shield-halved"></i><span><strong>Safety &amp; Response</strong><span>Investigate hazardous situations from a safer distance.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="#solutions"><span><strong>Safety &amp; Response</strong><span>Investigate hazardous situations from a safer distance.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
                                     <a href="#solutions">Remote Investigation</a>
                                     <a href="#solutions">Nuclear Decommissioning</a>
@@ -1348,7 +1336,7 @@
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="#platform"><i class="fa-solid fa-cube"></i><span><strong>Digital Twin</strong><span>Capture data for site planning and maintenance.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="#platform"><span><strong>Digital Twin</strong><span>Capture data for site planning and maintenance.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
                                     <a href="#platform">Laser Scanning</a>
                                     <a href="#platform">Site Documentation</a>
@@ -1356,14 +1344,14 @@
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="#solutions"><i class="fa-solid fa-warehouse"></i><span><strong>Warehouse Automation</strong><span>Automate case handling to keep goods moving.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="#solutions"><span><strong>Warehouse Automation</strong><span>Automate case handling to keep goods moving.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
                                     <a href="#solutions">Container Unloading</a>
                                     <a href="#solutions">Case Picking</a>
                                     <a href="#solutions">Inbound Operations</a>
                                 </div>
                             </div>
-                            <a href="#resources"><i class="fa-solid fa-flask"></i><span><strong>Research &amp; Development</strong><span>Build, test, and validate next-generation robotic applications.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Research &amp; Development</strong><span>Build, test, and validate next-generation robotic applications.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </li>
@@ -1372,13 +1360,13 @@
                     <div class="mega-menu mega-compact">
                         <div class="mega-links">
                             <div class="mega-section-label">Industry</div>
-                            <a href="#solutions"><i class="fa-solid fa-list"></i><span><strong>Industries Overview</strong><span>See where GyuTron automation can be deployed.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#solutions"><i class="fa-solid fa-industry"></i><span><strong>Manufacturing</strong><span>Reliable operations, inspection, and line-side automation.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#solutions"><i class="fa-solid fa-bolt"></i><span><strong>Energy &amp; Natural Resources</strong><span>Reduce downtime with automated inspection workflows.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><i class="fa-solid fa-graduation-cap"></i><span><strong>Academia &amp; Education</strong><span>Explore robotics innovation and applied research.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#solutions"><i class="fa-solid fa-helmet-safety"></i><span><strong>Construction</strong><span>Power comprehensive job-site visibility.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#solutions"><i class="fa-solid fa-landmark"></i><span><strong>Government</strong><span>Keep people out of harm's way and respond to hazards.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#solutions"><i class="fa-solid fa-truck-ramp-box"></i><span><strong>Warehouse &amp; Logistics</strong><span>Automate inbound warehouse tasks and case movement.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#solutions"><span><strong>Industries Overview</strong><span>See where GyuTron automation can be deployed.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#solutions"><span><strong>Manufacturing</strong><span>Reliable operations, inspection, and line-side automation.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#solutions"><span><strong>Energy &amp; Natural Resources</strong><span>Reduce downtime with automated inspection workflows.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Academia &amp; Education</strong><span>Explore robotics innovation and applied research.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#solutions"><span><strong>Construction</strong><span>Power comprehensive job-site visibility.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#solutions"><span><strong>Government</strong><span>Keep people out of harm's way and respond to hazards.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#solutions"><span><strong>Warehouse &amp; Logistics</strong><span>Automate inbound warehouse tasks and case movement.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </li>
@@ -1388,7 +1376,7 @@
                         <div class="mega-links">
                             <div class="mega-section-label">Customer Success</div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="#resources"><i class="fa-solid fa-star"></i><span><strong>Customer Success</strong><span>Build long-term success with GyuTron deployments.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="#resources"><span><strong>Customer Success</strong><span>Build long-term success with GyuTron deployments.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
                                     <a href="#resources">Integration Services</a>
                                     <a href="#contact">Spot Care</a>
@@ -1397,15 +1385,15 @@
                             </div>
                             <div class="mega-section-label">Support &amp; Training</div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="#contact"><i class="fa-solid fa-life-ring"></i><span><strong>Support &amp; Training</strong><span>Documentation, expert help, and technical training.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="#contact"><span><strong>Support &amp; Training</strong><span>Documentation, expert help, and technical training.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
                                     <a href="#contact">Support Center</a>
                                     <a href="#resources">GyuTron University</a>
                                     <a href="#platform">Development Documentation</a>
                                 </div>
                             </div>
-                            <a href="#contact"><i class="fa-solid fa-comments"></i><span><strong>Consulting</strong><span>Evaluate facilities and plan a tailored robotics solution.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><i class="fa-solid fa-file-lines"></i><span><strong>Case Studies</strong><span>See how customers apply automation in the field.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#contact"><span><strong>Consulting</strong><span>Evaluate facilities and plan a tailored robotics solution.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Case Studies</strong><span>See how customers apply automation in the field.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </li>
@@ -1414,12 +1402,12 @@
                     <div class="mega-menu mega-compact">
                         <div class="mega-links">
                             <div class="mega-section-label">Company</div>
-                            <a href="#contact"><i class="fa-solid fa-building"></i><span><strong>About GyuTron</strong><span>How we develop and deploy robots for tough industrial work.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#contact"><i class="fa-solid fa-clock-rotate-left"></i><span><strong>History</strong><span>Past innovation that informs current products.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><i class="fa-solid fa-calendar"></i><span><strong>Events</strong><span>Connect with the team at upcoming industry events.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#contact"><i class="fa-solid fa-briefcase"></i><span><strong>Careers</strong><span>Join the team building practical industrial robotics.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#contact"><i class="fa-solid fa-scale-balanced"></i><span><strong>Ethics</strong><span>Responsible automation and safe deployment principles.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><i class="fa-solid fa-newspaper"></i><span><strong>News</strong><span>Company updates, product notes, and announcements.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#contact"><span><strong>About GyuTron</strong><span>How we develop and deploy robots for tough industrial work.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#contact"><span><strong>History</strong><span>Past innovation that informs current products.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Events</strong><span>Connect with the team at upcoming industry events.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#contact"><span><strong>Careers</strong><span>Join the team building practical industrial robotics.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#contact"><span><strong>Ethics</strong><span>Responsible automation and safe deployment principles.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>News</strong><span>Company updates, product notes, and announcements.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </li>
@@ -1428,13 +1416,13 @@
                     <div class="mega-menu mega-compact">
                         <div class="mega-links">
                             <div class="mega-section-label">Resources</div>
-                            <a href="#resources"><i class="fa-solid fa-layer-group"></i><span><strong>Resources Overview</strong><span>Browse guides, videos, webinars, and technical content.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><i class="fa-solid fa-briefcase"></i><span><strong>Case Studies</strong><span>Discover success stories from industrial customers.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><i class="fa-solid fa-blog"></i><span><strong>Blogs</strong><span>Robotics trends and practical automation insights.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><i class="fa-solid fa-video"></i><span><strong>Videos</strong><span>Watch robots and inspection workflows in action.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><i class="fa-solid fa-chalkboard-user"></i><span><strong>Webinars</strong><span>Live and on-demand sessions with automation experts.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><i class="fa-solid fa-book-open"></i><span><strong>Whitepapers &amp; eBooks</strong><span>Implementation, development, and value of robotics.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#platform"><i class="fa-solid fa-code"></i><span><strong>Development Documentation</strong><span>Application and payload development resources.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Resources Overview</strong><span>Browse guides, videos, webinars, and technical content.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Case Studies</strong><span>Discover success stories from industrial customers.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Blogs</strong><span>Robotics trends and practical automation insights.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Videos</strong><span>Watch robots and inspection workflows in action.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Webinars</strong><span>Live and on-demand sessions with automation experts.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Whitepapers &amp; eBooks</strong><span>Implementation, development, and value of robotics.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#platform"><span><strong>Development Documentation</strong><span>Application and payload development resources.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </li>
@@ -1782,3 +1770,4 @@
     </footer>
 </body>
 </html>
+
