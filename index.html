@@ -305,6 +305,18 @@
             font-size: 13px;
         }
 
+        .mega-feature-products {
+            background:
+                linear-gradient(180deg, rgba(18, 5, 31, 0.12), rgba(18, 5, 31, 0.72)),
+                url("mega-industrial-products.png") center / cover;
+        }
+
+        .mega-feature-solutions {
+            background:
+                linear-gradient(180deg, rgba(18, 5, 31, 0.10), rgba(18, 5, 31, 0.70)),
+                url("team-solutions-meeting.png") center / cover;
+        }
+
         .mega-links {
             display: grid;
             gap: 6px;
@@ -855,7 +867,7 @@
         .platform-visual {
             background:
                 linear-gradient(180deg, rgba(18, 5, 31, 0.08), rgba(18, 5, 31, 0.36)),
-                url("product-vision-cell.png") center / cover;
+                url("team-engineering-lab.png") center / cover;
             border-radius: var(--radius);
             box-shadow: var(--shadow-sm);
             min-height: 520px;
@@ -981,6 +993,21 @@
             font-size: 20px;
             line-height: 1.2;
             margin-bottom: 10px;
+        }
+
+        .esg-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .esg-card .resource-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+
+        .esg-card .resource-body p {
+            margin-top: auto;
         }
 
         .cta {
@@ -1295,7 +1322,7 @@
                 <li class="nav-item">
                     <a class="nav-trigger" href="#products">Products <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="mega-menu">
-                        <a class="mega-feature" href="#products">
+                        <a class="mega-feature mega-feature-products" href="#products">
                             <strong>Industrial Product Portfolio</strong>
                             <span>Rugged PDA terminals, industrial sensors, smart cameras, inspection instruments, robot workcells, and edge control hardware.</span>
                         </a>
@@ -1346,7 +1373,7 @@
                 <li class="nav-item">
                     <a class="nav-trigger" href="#solutions">Solutions <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="mega-menu">
-                        <a class="mega-feature" href="#solutions">
+                        <a class="mega-feature mega-feature-solutions" href="#solutions">
                             <strong>Industrial Intelligence Solutions</strong>
                             <span>Connect sensing, vision, mobile data capture, robot motion, and inspection analytics across production workflows.</span>
                         </a>
@@ -1451,9 +1478,9 @@
                     <div class="mega-menu mega-compact">
                         <div class="mega-links">
                             <div class="mega-section-label">Resources</div>
-                            <a href="#resources"><span><strong>Resources Overview</strong><span>Browse guides, videos, webinars, and technical content.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><span><strong>Case Studies</strong><span>Discover success stories from industrial customers.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="#resources"><span><strong>Blogs</strong><span>Robotics trends and practical automation insights.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>ESG Overview</strong><span>See how GYUTRON frames responsible industrial automation.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Case Studies</strong><span>Discover deployment stories from industrial customers.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="#resources"><span><strong>Engineering Notes</strong><span>Practical automation, sensing, and machine vision insights.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                             <a href="#resources"><span><strong>Videos</strong><span>Watch robots and inspection workflows in action.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                             <a href="#resources"><span><strong>Webinars</strong><span>Live and on-demand sessions with automation experts.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                             <a href="#resources"><span><strong>Whitepapers &amp; eBooks</strong><span>Implementation, development, and value of robotics.</span></span><i class="fa-solid fa-chevron-right"></i></a>
@@ -1692,40 +1719,40 @@
             <div class="container">
                 <div class="section-head">
                     <div>
-                        <span class="eyebrow">Resources</span>
-                        <h2>Build the business case for smarter automation.</h2>
+                        <span class="eyebrow">ESG</span>
+                        <h2>Responsible automation for safer, leaner operations.</h2>
                     </div>
-                    <p>Use case-led resources help buyers understand what to automate, how to pilot, and how to scale once the first cell is running.</p>
+                    <p>GYUTRON designs industrial intelligence around measurable operational value: safer work, lower waste, longer hardware life, and transparent support for customers and partners.</p>
                 </div>
                 <div class="resources-grid">
-                    <article class="resource-card">
+                    <article class="resource-card esg-card">
                         <div class="resource-image">
-                            <img src="product-vision-cell.png" alt="GYUTRON vision inspection workcell">
+                            <img src="team-solutions-meeting.png" alt="American engineering team discussing industrial ESG deployment plan">
                         </div>
                         <div class="resource-body">
-                            <div class="resource-kicker">Guide</div>
-                            <h3>How to specify a robot vision workcell</h3>
-                            <p>Camera selection, lighting, sensors, payload, reach, safety, and PLC integration criteria in one practical checklist.</p>
+                            <div class="resource-kicker">Environment</div>
+                            <h3>Efficiency before expansion</h3>
+                            <p>Smart sensing, inspection, and scan workflows help reduce scrap, avoid unnecessary rework, and improve energy-aware production decisions.</p>
                         </div>
                     </article>
-                    <article class="resource-card">
+                    <article class="resource-card esg-card">
                         <div class="resource-image">
-                            <img src="mega-industrial-products.png" alt="GYUTRON industrial smart cameras sensors and instruments">
+                            <img src="team-engineering-lab.png" alt="American engineers calibrating industrial automation hardware">
                         </div>
                         <div class="resource-body">
-                            <div class="resource-kicker">Webinar</div>
-                            <h3>Machine vision beyond defect detection</h3>
-                            <p>Explore robot guidance, traceability, dimension checks, sensor fusion, and line-level quality analytics.</p>
+                            <div class="resource-kicker">Social</div>
+                            <h3>Safer work with better tools</h3>
+                            <p>Rugged PDAs, sensors, machine vision, and robot workcells help teams move repetitive checks and hazardous tasks into controlled workflows.</p>
                         </div>
                     </article>
-                    <article class="resource-card">
+                    <article class="resource-card esg-card">
                         <div class="resource-image">
                             <img src="product-intelligent-hardware.png" alt="GYUTRON rugged PDA terminal and intelligent hardware">
                         </div>
                         <div class="resource-body">
-                            <div class="resource-kicker">Case Study</div>
-                            <h3>Warehouse visibility with rugged PDAs</h3>
-                            <p>How scan accuracy, durable hardware, and connected workflows reduce rework across logistics teams.</p>
+                            <div class="resource-kicker">Governance</div>
+                            <h3>Lifecycle accountability</h3>
+                            <p>Product documentation, serviceable accessories, configuration records, and partner support make deployments easier to maintain over time.</p>
                         </div>
                     </article>
                 </div>
