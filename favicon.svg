@@ -1,15 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">GYUTRON favicon</title>
+  <desc id="desc">GYUTRON angular purple and dark industrial mark.</desc>
   <defs>
-    <linearGradient id="g" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#8a63d2"/>
-      <stop offset="0.45" stop-color="#6f2dbd"/>
-      <stop offset="1" stop-color="#12051f"/>
+    <linearGradient id="purple" x1="18" y1="13" x2="53" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7f3fd1"/>
+      <stop offset="1" stop-color="#4b2e83"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="26" y1="30" x2="56" y2="54" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2d3038"/>
+      <stop offset="1" stop-color="#11141a"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="14" fill="url(#g)"/>
-  <circle cx="32" cy="32" r="16" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="67 34" stroke-linecap="round" transform="rotate(-24 32 32)"/>
-  <circle cx="32" cy="32" r="5" fill="#00c2a8"/>
-  <circle cx="20" cy="22" r="4" fill="#fff"/>
-  <circle cx="44" cy="28" r="4" fill="#00c2a8"/>
-  <circle cx="27" cy="48" r="4" fill="#fff" opacity="0.9"/>
+  <g transform="translate(4 10) scale(.35)">
+    <polygon points="58 16 154 16 124 48 78 48 30 96 0 96" fill="url(#purple)"/>
+    <polygon points="88 56 160 56 112 112 16 112 48 80 96 80" fill="url(#dark)"/>
+  </g>
 </svg>
