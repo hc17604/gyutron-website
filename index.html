@@ -60,6 +60,7 @@
             background: var(--paper);
             line-height: 1.55;
             overflow-x: hidden;
+            padding-top: 116px;
         }
 
         a {
@@ -138,6 +139,11 @@
             background: var(--purple-950);
             color: rgba(255, 255, 255, 0.74);
             font-size: 12px;
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 110;
         }
 
         .top-strip .container {
@@ -155,8 +161,11 @@
         .site-header {
             background: var(--white);
             border-bottom: 1px solid rgba(230, 224, 238, 0.9);
-            position: sticky;
-            top: 0;
+            box-shadow: 0 12px 28px rgba(18, 5, 31, 0.08);
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 34px;
             z-index: 100;
         }
 
@@ -1182,6 +1191,10 @@
         }
 
         @media (max-width: 1180px) {
+            body {
+                padding-top: 108px;
+            }
+
             .site-header .container {
                 column-gap: 18px;
                 grid-template-columns: minmax(220px, 1fr) max-content;
@@ -1255,6 +1268,10 @@
         }
 
         @media (max-width: 760px) {
+            body {
+                padding-top: 66px;
+            }
+
             .container {
                 width: min(100% - 28px, 1180px);
             }
@@ -1272,6 +1289,10 @@
                 gap: 12px;
                 justify-content: space-between;
                 min-height: 66px;
+            }
+
+            .site-header {
+                top: 0;
             }
 
             .brand {
