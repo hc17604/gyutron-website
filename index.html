@@ -1183,14 +1183,20 @@
             gap: 10px;
         }
 
-        .socials a {
+        .socials span {
             align-items: center;
             border: 1px solid rgba(255, 255, 255, 0.16);
             border-radius: 6px;
+            color: rgba(255, 255, 255, 0.72);
             display: flex;
             height: 34px;
             justify-content: center;
             width: 34px;
+        }
+
+        .socials span:hover {
+            border-color: rgba(117, 59, 189, 0.76);
+            color: var(--white);
         }
 
         @media (max-width: 1180px) {
@@ -1944,10 +1950,13 @@
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2026 GYUTRON. All rights reserved.</span>
-                <div class="socials" aria-label="Social links">
-                    <a href="https://www.linkedin.com/company/gyutron/" aria-label="LinkedIn" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <div class="socials" aria-label="Social media placeholders">
+                    <span aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></span>
+                    <span aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></span>
+                    <span aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube"></i></span>
+                    <span aria-label="X" title="X"><i class="fa-brands fa-x-twitter"></i></span>
+                    <span aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></span>
+                    <span aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok"></i></span>
                 </div>
             </div>
         </div>
