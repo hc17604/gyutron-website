@@ -280,9 +280,7 @@
         }
 
         .mega-feature {
-            background:
-                linear-gradient(180deg, rgba(18, 5, 31, 0.12), rgba(18, 5, 31, 0.72)),
-                url("mega-industrial-products.png") center / cover;
+            background: var(--purple-950);
             border: 1px solid var(--line);
             border-radius: 2px;
             color: var(--white);
@@ -513,6 +511,10 @@
             align-items: center;
         }
 
+        .hero-grid > * {
+            min-width: 0;
+        }
+
         .hero h1 {
             color: var(--white);
             font-size: clamp(46px, 6vw, 78px);
@@ -527,6 +529,7 @@
             color: rgba(255, 255, 255, 0.82);
             font-size: 19px;
             max-width: 660px;
+            overflow-wrap: break-word;
         }
 
         .hero-actions {
@@ -880,7 +883,7 @@
         .platform-visual {
             background:
                 linear-gradient(180deg, rgba(18, 5, 31, 0.08), rgba(18, 5, 31, 0.36)),
-                url("https://images.pexels.com/photos/7652054/pexels-photo-7652054.jpeg?auto=compress&cs=tinysrgb&w=1200") center / cover;
+                url("https://images.pexels.com/photos/15141543/pexels-photo-15141543.jpeg?auto=compress&cs=tinysrgb&w=1200") center / cover;
             border-radius: var(--radius);
             box-shadow: var(--shadow-sm);
             min-height: 520px;
@@ -1010,24 +1013,21 @@
         }
 
         .esg-card {
-            display: flex;
-            flex-direction: column;
+            display: block;
+        }
+
+        .esg-card .resource-image {
+            aspect-ratio: 16 / 9;
         }
 
         .esg-card .resource-body {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-        }
-
-        .esg-card .resource-body p {
-            margin-top: auto;
+            min-height: 260px;
         }
 
         .cta {
             background:
                 linear-gradient(90deg, rgba(18, 5, 31, 0.94), rgba(75, 23, 127, 0.82)),
-                url("product-intelligent-hardware.png") center / cover;
+                url("cta-industrial-control.png") center / cover;
             color: var(--white);
             padding: 86px 0;
         }
@@ -1294,10 +1294,12 @@
 
             .hero h1 {
                 font-size: 42px;
+                max-width: 100%;
             }
 
             .hero-copy {
                 font-size: 16px;
+                max-width: 100%;
             }
 
             .hero-actions {
@@ -1391,7 +1393,8 @@
             }
 
             .hero h1 {
-                font-size: 36px;
+                font-size: 34px;
+                line-height: 1.04;
             }
 
             .hero-actions .button {
@@ -1667,7 +1670,7 @@
                     <div class="compact-stack">
                         <article class="compact-product">
                             <div class="compact-image">
-                                <img src="mega-industrial-products.png" alt="GYUTRON industrial sensors smart cameras and inspection instruments">
+                                <img src="product-smart-camera-detail.png" alt="GYUTRON machine vision camera and inspection lighting detail">
                             </div>
                             <div class="product-body">
                                 <span class="badge"><i class="fa-solid fa-eye"></i> Machine vision</span>
@@ -1825,7 +1828,7 @@
                 <div class="resources-grid">
                     <article class="resource-card esg-card">
                         <div class="resource-image">
-                            <img src="https://images.pexels.com/photos/7433900/pexels-photo-7433900.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Office team discussing a deployment plan">
+                            <img src="https://images.pexels.com/photos/4427613/pexels-photo-4427613.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="American business team discussing responsible operations">
                         </div>
                         <div class="resource-body">
                             <div class="resource-kicker">Environment</div>
@@ -1835,7 +1838,7 @@
                     </article>
                     <article class="resource-card esg-card">
                         <div class="resource-image">
-                            <img src="https://images.pexels.com/photos/7652054/pexels-photo-7652054.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Business professionals reviewing work on a laptop">
+                            <img src="https://images.pexels.com/photos/4344116/pexels-photo-4344116.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Office professionals discussing work around a meeting table">
                         </div>
                         <div class="resource-body">
                             <div class="resource-kicker">Social</div>
@@ -1845,7 +1848,7 @@
                     </article>
                     <article class="resource-card esg-card">
                         <div class="resource-image">
-                            <img src="product-intelligent-hardware.png" alt="GYUTRON rugged PDA terminal and intelligent hardware">
+                            <img src="governance-documentation.png" alt="GYUTRON industrial documentation, inspection device, and service records">
                         </div>
                         <div class="resource-body">
                             <div class="resource-kicker">Governance</div>
