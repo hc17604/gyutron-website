@@ -164,6 +164,9 @@
         }
 
         .nav-item {
+            align-items: center;
+            display: flex;
+            min-height: 82px;
             position: static;
         }
 
@@ -187,6 +190,7 @@
         }
 
         .nav-trigger:hover,
+        .nav-item.is-open .nav-trigger,
         .nav-item:focus-within .nav-trigger,
         .nav-item:hover .nav-trigger {
             background: var(--violet-soft);
@@ -198,6 +202,7 @@
             transition: transform 180ms ease;
         }
 
+        .nav-item.is-open .nav-trigger i,
         .nav-item:hover .nav-trigger i,
         .nav-item:focus-within .nav-trigger i {
             transform: rotate(180deg);
@@ -225,6 +230,7 @@
             z-index: 40;
         }
 
+        .nav-item.is-open .mega-menu,
         .nav-item:hover .mega-menu,
         .nav-item:focus-within .mega-menu {
             opacity: 1;
@@ -300,6 +306,7 @@
 
         .mega-menu:not(.mega-compact):hover .mega-section-label + .mega-link-group .mega-link,
         .mega-link:hover,
+        .mega-link-group.is-open .mega-link,
         .mega-link-group:hover .mega-link,
         .mega-link-group:focus-within .mega-link,
         .mega-links > a:hover {
@@ -307,6 +314,7 @@
             border-color: var(--line);
         }
 
+        .mega-menu:not(.mega-compact):has(.mega-link-group.is-open) .mega-section-label + .mega-link-group:not(.is-open) .mega-link,
         .mega-menu:not(.mega-compact):has(.mega-link-group:hover) .mega-section-label + .mega-link-group:not(:hover) .mega-link,
         .mega-menu:not(.mega-compact):has(.mega-link-group:focus-within) .mega-section-label + .mega-link-group:not(:focus-within) .mega-link {
             background: transparent;
@@ -379,6 +387,7 @@
             min-height: 0;
         }
 
+        .mega-link-group.is-open .submenu,
         .mega-menu:not(.mega-compact):hover .mega-section-label + .mega-link-group .submenu,
         .mega-menu:not(.mega-compact):focus-within .mega-section-label + .mega-link-group .submenu,
         .mega-link-group:hover .submenu,
@@ -471,6 +480,7 @@
         }
 
         .mega-compact .mega-link-group:hover .submenu,
+        .mega-compact .mega-link-group.is-open .submenu,
         .mega-compact .mega-link-group:focus-within .submenu {
             transform: translateX(0);
         }
@@ -1343,6 +1353,81 @@
         </div>
     </footer>
     <script>
+        (() => {
+            const navItems = Array.from(document.querySelectorAll(".nav-item"));
+            const closeDelay = 520;
+
+            const closeItem = (item) => {
+                window.clearTimeout(item.closeTimer);
+                item.closeTimer = window.setTimeout(() => {
+                    item.classList.remove("is-open");
+                    item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+                }, closeDelay);
+            };
+
+            const setActiveGroup = (groups, activeGroup) => {
+                groups.forEach((group) => group.classList.toggle("is-open", group === activeGroup));
+            };
+
+            const openItem = (item, groups) => {
+                navItems.forEach((otherItem) => {
+                    if (otherItem !== item) {
+                        window.clearTimeout(otherItem.closeTimer);
+                        otherItem.classList.remove("is-open");
+                        otherItem.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+                    }
+                });
+
+                window.clearTimeout(item.closeTimer);
+                item.classList.add("is-open");
+
+                if (groups.length && !groups.some((group) => group.classList.contains("is-open"))) {
+                    setActiveGroup(groups, groups[0]);
+                }
+            };
+
+            navItems.forEach((item) => {
+                const menu = item.querySelector(".mega-menu");
+                if (!menu) {
+                    return;
+                }
+
+                const groups = Array.from(item.querySelectorAll(".mega-link-group"));
+
+                item.addEventListener("pointerenter", () => openItem(item, groups));
+                item.addEventListener("pointerleave", () => closeItem(item));
+                menu.addEventListener("pointerenter", () => openItem(item, groups));
+                menu.addEventListener("pointerleave", () => closeItem(item));
+                item.addEventListener("focusin", () => openItem(item, groups));
+                item.addEventListener("focusout", (event) => {
+                    if (!item.contains(event.relatedTarget)) {
+                        closeItem(item);
+                    }
+                });
+
+                groups.forEach((group) => {
+                    group.addEventListener("pointerenter", () => {
+                        openItem(item, groups);
+                        setActiveGroup(groups, group);
+                    });
+                    group.addEventListener("focusin", () => {
+                        openItem(item, groups);
+                        setActiveGroup(groups, group);
+                    });
+                });
+            });
+
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape") {
+                    navItems.forEach((item) => {
+                        window.clearTimeout(item.closeTimer);
+                        item.classList.remove("is-open");
+                        item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+                    });
+                }
+            });
+        })();
+
         const salesForm = document.getElementById("salesInquiryForm");
         const salesStatus = document.getElementById("salesInquiryStatus");
 
