@@ -232,10 +232,238 @@ const GYUTRON_PRODUCTS = {
                 tags: ["DPM", "Traceability", "Quality"]
             }
         ]
+    },
+    "industrial-sensors": {
+        eyebrow: "Industrial Sensors",
+        title: "Industrial Sensors",
+        navLabel: "Industrial Sensors",
+        heroImage: "product-hero-industrial-sensors-matrix.png",
+        intro: "Reliable sensing hardware for presence detection, positioning, pressure monitoring, environmental checks, and machine data capture.",
+        panelMetric: "9 models",
+        panelText: "Photoelectric, inductive, laser, pressure, environmental, and network-ready sensing options.",
+        sectionIntro: "GYUTRON sensor models are structured around common factory automation applications: object detection, precise positioning, process monitoring, and device connectivity.",
+        products: [
+            {
+                name: "GY-PX18",
+                type: "Photoelectric sensor",
+                summary: "Compact photoelectric sensor for conveyor detection, part presence, and general machine automation checks.",
+                kind: "sensor",
+                image: "product-images/gy-px18.png",
+                specs: { Detection: "Diffuse / retroreflective", Range: "20 mm to 2.5 m", Output: "PNP / NPN", Housing: "IP67 compact" },
+                tags: ["White light", "M12 cable", "Fast setup"]
+            },
+            {
+                name: "GY-PR12",
+                type: "Inductive proximity sensor",
+                summary: "Metal target detection for fixtures, index tables, cylinders, tooling, and harsh machine positions.",
+                kind: "sensor",
+                image: "product-images/gy-pr12.png",
+                specs: { Detection: "Ferrous / non-ferrous", Range: "2 to 8 mm", Output: "PNP / NPN", Housing: "M12 stainless IP67" },
+                tags: ["Flush mount", "High repeatability", "Machine tools"]
+            },
+            {
+                name: "GY-LD40",
+                type: "Laser displacement sensor",
+                summary: "Non-contact distance and height measurement for position checks, gap inspection, and presence verification.",
+                kind: "sensor",
+                image: "product-images/gy-ld40.png",
+                specs: { Measurement: "40 mm class", Resolution: "10 um", Output: "IO-Link / analog", Housing: "IP67 metal" },
+                tags: ["Laser position", "Analog output", "Gap check"]
+            },
+            {
+                name: "GY-FB200",
+                type: "Fiber amplifier sensor",
+                summary: "Flexible fiber sensing for tight spaces, transparent targets, small parts, and difficult mounting conditions.",
+                kind: "sensor",
+                image: "product-images/gy-fb200.png",
+                specs: { Channels: "Single / dual", Response: "80 us", Output: "PNP / NPN", Display: "Dual digital" },
+                tags: ["Fiber head", "Tiny targets", "Teach button"]
+            },
+            {
+                name: "GY-PS60",
+                type: "Digital pressure sensor",
+                summary: "Compact pressure monitoring for pneumatic lines, vacuum pick systems, leak checks, and process equipment.",
+                kind: "sensor",
+                image: "product-images/gy-ps60.png",
+                specs: { Range: "-100 to 1000 kPa", Display: "3-color OLED", Output: "2 x switch + analog", Housing: "IP65" },
+                tags: ["Vacuum", "Pneumatics", "Panel mount"]
+            },
+            {
+                name: "GY-ENV32",
+                type: "Environmental sensor",
+                summary: "Monitors temperature, humidity, vibration, and cabinet conditions that can affect equipment uptime.",
+                kind: "sensor",
+                image: "product-images/gy-env32.png",
+                specs: { Inputs: "Temp / RH / vibration", Network: "RS-485 / IO-Link", Power: "12-24 VDC", Housing: "IP54" },
+                tags: ["Cabinet health", "Condition data", "Modbus"]
+            },
+            {
+                name: "GY-UL80",
+                type: "Ultrasonic distance sensor",
+                summary: "Non-contact sensing for level, loop control, and irregular targets where optical sensors struggle.",
+                kind: "sensor",
+                image: "product-images/gy-ul80.png",
+                specs: { Range: "80 to 1200 mm", Output: "Analog + switch", Beam: "Narrow cone", Housing: "IP67" },
+                tags: ["Level", "Clear objects", "Dust tolerant"]
+            },
+            {
+                name: "GY-SAFE24",
+                type: "Safety light curtain",
+                summary: "Protective sensing for machine openings, robotic stations, and operator access points.",
+                kind: "sensor",
+                image: "product-images/gy-safe24.png",
+                specs: { Resolution: "24 mm", Height: "300 to 1200 mm", Safety: "Type 4 / PL e", Housing: "IP65 aluminum" },
+                tags: ["Machine safety", "Muting option", "Alignment aid"]
+            },
+            {
+                name: "GY-NET8",
+                type: "Sensor network hub",
+                summary: "Connects distributed sensors to industrial networks while simplifying diagnostics and wiring.",
+                kind: "sensor",
+                image: "product-images/gy-net8.png",
+                specs: { Ports: "8 x M12 IO-Link", Network: "EtherNet/IP / PROFINET", Power: "24 VDC", Housing: "IP67" },
+                tags: ["IO-Link", "Diagnostics", "IP67 hub"]
+            }
+        ]
+    },
+    "smart-cameras": {
+        eyebrow: "Industrial Smart Cameras",
+        title: "Smart Cameras",
+        navLabel: "Smart Cameras",
+        heroImage: "product-hero-smart-cameras-matrix.png",
+        intro: "Embedded machine vision cameras for inspection, guidance, code reading, AI classification, and traceability workflows.",
+        panelMetric: "7 models",
+        panelText: "2D, AI, line-scan, 3D, code reading, color, and vision-control options.",
+        sectionIntro: "GYUTRON smart camera models follow common machine vision deployment patterns: embedded inspection, distributed line-side checks, 3D profiling, and fixed code reading.",
+        products: [
+            {
+                name: "GY-V120",
+                type: "Compact smart camera",
+                summary: "Entry smart camera for presence checks, label verification, orientation, and basic pass / fail inspection.",
+                kind: "camera",
+                image: "product-images/gy-v120.png",
+                specs: { Sensor: "1.6 MP CMOS", Lens: "C-mount / fixed", Interface: "Ethernet + I/O", Rating: "IP67 housing" },
+                tags: ["2D inspection", "Teach setup", "White light"]
+            },
+            {
+                name: "GY-V280 AI",
+                type: "AI vision sensor",
+                summary: "Embedded AI inspection camera for defect detection, classification, OCR, and variable part appearance.",
+                kind: "camera",
+                image: "product-images/gy-v280-ai.png",
+                specs: { Sensor: "2.8 MP global shutter", AI: "On-device inference", Interface: "GigE / discrete I/O", Rating: "IP67" },
+                tags: ["AI tools", "OCR", "Defects"]
+            },
+            {
+                name: "GY-V380 Pro",
+                type: "High-speed smart camera",
+                summary: "Fast embedded vision system for assembly verification, metrology, guidance, and line-side quality control.",
+                kind: "camera",
+                image: "product-images/gy-v380-pro.png",
+                specs: { Sensor: "5 MP global shutter", Speed: "Up to 90 fps", Interface: "GigE / PROFINET", Rating: "IP67" },
+                tags: ["High speed", "PLC ready", "Metrology"]
+            },
+            {
+                name: "GY-V3D90",
+                type: "3D profile camera",
+                summary: "3D laser profile camera for height, volume, gap, bead, and surface feature measurement.",
+                kind: "camera",
+                image: "product-images/gy-v3d90.png",
+                specs: { Profile: "3D laser triangulation", Range: "90 mm class", Interface: "GigE Vision", Rating: "IP65" },
+                tags: ["3D profile", "Height check", "Robot guidance"]
+            },
+            {
+                name: "GY-VL2048",
+                type: "Line scan smart camera",
+                summary: "Line scan inspection camera for continuous webs, labels, film, packaging, and high-speed surfaces.",
+                kind: "camera",
+                image: "product-images/gy-vl2048.png",
+                specs: { Sensor: "2048 px line", Speed: "45 kHz", Interface: "GigE / encoder", Rating: "Industrial metal" },
+                tags: ["Line scan", "Web inspection", "Encoder"]
+            },
+            {
+                name: "GY-CR390",
+                type: "Fixed code reader camera",
+                summary: "Industrial image-based code reader for DPM, QR, barcode, and high-throughput traceability stations.",
+                kind: "camera",
+                image: "product-images/gy-cr390.png",
+                specs: { Codes: "1D / 2D / DPM", Lens: "Liquid lens option", Interface: "Ethernet / RS-232", Rating: "IP65" },
+                tags: ["DPM", "Traceability", "High read rate"]
+            },
+            {
+                name: "GY-VC8",
+                type: "Vision controller",
+                summary: "Compact controller for multi-camera inspection cells, image storage, PLC exchange, and recipe management.",
+                kind: "camera",
+                image: "product-images/gy-vc8.png",
+                specs: { Cameras: "Up to 8 devices", CPU: "Industrial AI module", Network: "PROFINET / EtherNet/IP", Storage: "512 GB option" },
+                tags: ["Multi-camera", "Recipes", "Edge AI"]
+            }
+        ]
+    },
+    "inspection-instruments": {
+        eyebrow: "Inspection Instruments",
+        title: "Inspection Instruments",
+        navLabel: "Inspection Instruments",
+        heroImage: "product-hero-inspection-instruments-matrix.png",
+        intro: "Portable and inline measurement instruments for dimensional checks, surface review, code grading, and quality documentation.",
+        panelMetric: "5 models",
+        panelText: "Dimensional, optical, surface, code-verification, and handheld electrical test instruments.",
+        sectionIntro: "GYUTRON inspection instruments are designed as practical quality-control tools for production engineers, lab teams, maintenance groups, and integrators.",
+        products: [
+            {
+                name: "GY-MG50",
+                type: "Digital measurement gauge",
+                summary: "Bench and fixture gauge for repeatable dimensional checks, go / no-go inspection, and SPC data capture.",
+                kind: "instrument",
+                image: "product-images/gy-mg50.png",
+                specs: { Range: "50 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
+                tags: ["Dimensional", "SPC", "Fixture ready"]
+            },
+            {
+                name: "GY-VM200",
+                type: "Vision measuring instrument",
+                summary: "Compact optical measurement station for small parts, edges, holes, slots, and profile verification.",
+                kind: "instrument",
+                image: "product-images/gy-vm200.png",
+                specs: { Stage: "200 x 120 mm", Camera: "5 MP", Lighting: "White coaxial / ring", Output: "CSV / report" },
+                tags: ["Optical", "Measurement", "Lab"]
+            },
+            {
+                name: "GY-SF30",
+                type: "Surface finish tester",
+                summary: "Portable surface tester for roughness checks on machined parts, tooling, and incoming materials.",
+                kind: "instrument",
+                image: "product-images/gy-sf30.png",
+                specs: { Parameter: "Ra / Rz / Rq", Stroke: "5.6 mm", Display: "Color LCD", Data: "USB export" },
+                tags: ["Roughness", "Portable", "Machining"]
+            },
+            {
+                name: "GY-CV100",
+                type: "Barcode verifier",
+                summary: "Verification instrument for barcode quality grading, print validation, and regulated traceability workflows.",
+                kind: "instrument",
+                image: "product-images/gy-cv100.png",
+                specs: { Standards: "ISO / IEC grading", Codes: "1D / 2D / DPM", Light: "White calibrated", Report: "PDF / CSV" },
+                tags: ["Code quality", "Traceability", "Reports"]
+            },
+            {
+                name: "GY-ET75",
+                type: "Industrial electrical tester",
+                summary: "Handheld maintenance instrument for voltage, continuity, sensor power, and control-cabinet checks.",
+                kind: "instrument",
+                image: "product-images/gy-et75.png",
+                specs: { Voltage: "600 V CAT III", Inputs: "V / ohm / mA", Display: "Backlit LCD", Data: "Bluetooth option" },
+                tags: ["Maintenance", "Cabinet checks", "Portable"]
+            }
+        ]
     }
 };
 
-const CATEGORY_ORDER = ["android-pda", "rfid-handhelds", "barcode-scanners", "request-specification"];
+const CATEGORY_GROUPS = {
+    "rugged-pda": ["android-pda", "rfid-handhelds", "barcode-scanners", "request-specification"],
+    "industrial-intelligence": ["industrial-sensors", "smart-cameras", "inspection-instruments"]
+};
 let activePage = 1;
 const PRODUCTS_PER_PAGE = 6;
 
@@ -329,7 +557,7 @@ function renderCategoryPage(categoryKey) {
     const pageStart = (activePage - 1) * PRODUCTS_PER_PAGE;
     const visibleProducts = category.products.slice(pageStart, pageStart + PRODUCTS_PER_PAGE);
 
-    document.title = `GYUTRON ${category.title} | Rugged PDA Terminals`;
+    document.title = `GYUTRON ${category.title} | ${category.eyebrow}`;
     document.documentElement.style.setProperty("--hero-image", `url("${category.heroImage}")`);
 
     const hero = document.querySelector("[data-product-hero]");
@@ -347,9 +575,11 @@ function renderCategoryPage(categoryKey) {
     `;
 
     document.querySelector("[data-section-title]").textContent = category.sectionTitle || `${category.title} products`;
-    document.querySelector("[data-section-intro]").textContent = "Model names, options, and specifications are structured for GYUTRON's portfolio and use common industrial device classes as benchmarks.";
+    document.querySelector("[data-section-intro]").textContent = category.sectionIntro || "Model names, options, and specifications are structured for GYUTRON's portfolio and use common industrial device classes as benchmarks.";
 
-    document.querySelector("[data-category-nav]").innerHTML = CATEGORY_ORDER.map((key) => {
+    const groupKey = category.navGroup || (["android-pda", "rfid-handhelds", "barcode-scanners", "request-specification"].includes(categoryKey) ? "rugged-pda" : "industrial-intelligence");
+    const categoryOrder = CATEGORY_GROUPS[groupKey] || CATEGORY_GROUPS["rugged-pda"];
+    document.querySelector("[data-category-nav]").innerHTML = categoryOrder.map((key) => {
         const item = GYUTRON_PRODUCTS[key];
         return `<a class="${key === categoryKey ? "is-active" : ""}" href="${key}.html">${item.navLabel}</a>`;
     }).join("");
@@ -399,8 +629,8 @@ function renderCategoryPage(categoryKey) {
         <thead><tr><th>Model</th><th>Type</th><th>Core capability</th><th>Rugged rating</th></tr></thead>
         <tbody>
             ${category.products.map((product) => {
-                const capability = product.specs.Scan || product.specs.RFID || product.specs.Device || product.specs.Codes || "Industrial data capture";
-                const rugged = product.specs.Rugged || product.specs.Temp || product.specs.Lead || "Project-based";
+                const capability = product.specs.Scan || product.specs.RFID || product.specs.Device || product.specs.Codes || product.specs.Detection || product.specs.Measurement || product.specs.Sensor || product.specs.Range || product.specs.Parameter || "Industrial data capture";
+                const rugged = product.specs.Rugged || product.specs.Temp || product.specs.Lead || product.specs.Housing || product.specs.Rating || product.specs.Output || product.specs.Data || "Project-based";
                 return `<tr><td>${product.name}</td><td>${product.type}</td><td>${capability}</td><td>${rugged}</td></tr>`;
             }).join("")}
         </tbody>
