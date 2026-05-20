@@ -164,7 +164,7 @@
         }
 
         .nav-item {
-            position: relative;
+            position: static;
         }
 
         .nav-trigger {
@@ -212,7 +212,7 @@
             gap: 0;
             grid-template-columns: 270px minmax(540px, 1fr);
             left: 50%;
-            min-height: 430px;
+            min-height: 464px;
             min-width: min(940px, calc(100vw - 72px));
             opacity: 0;
             padding: 0;
@@ -231,17 +231,6 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        .nav-item:nth-last-child(-n+2) .mega-menu {
-            left: auto;
-            right: 0;
-            transform: translateY(8px);
-        }
-
-        .nav-item:nth-last-child(-n+2):hover .mega-menu,
-        .nav-item:nth-last-child(-n+2):focus-within .mega-menu {
-            transform: translateY(0);
-        }
-
         .mega-menu::before {
             content: "";
             height: 14px;
@@ -249,6 +238,18 @@
             position: absolute;
             right: 0;
             top: -14px;
+        }
+
+        .mega-menu::after {
+            background:
+                linear-gradient(180deg, rgba(18, 5, 31, 0.04), rgba(18, 5, 31, 0.18)),
+                var(--menu-overview-image, url("mega-industrial-products.png")) center / cover;
+            border: 1px solid var(--line);
+            content: "";
+            display: block;
+            grid-column: 2;
+            min-height: 190px;
+            margin: 28px 34px;
         }
 
         .mega-feature {
@@ -261,7 +262,8 @@
             display: grid;
             gap: 0;
             align-content: start;
-            max-height: 430px;
+            min-height: 464px;
+            max-height: 464px;
             overflow: auto;
             padding: 18px;
         }
@@ -383,14 +385,30 @@
         }
 
         .submenu a {
-            align-items: center;
+            align-items: flex-start;
             border-radius: 2px;
             color: var(--text);
-            display: flex;
+            display: block;
             font-size: 16px;
             font-weight: 850;
-            min-height: 52px;
+            min-height: 86px;
             padding: 12px 14px;
+        }
+
+        .submenu a strong {
+            color: var(--ink);
+            display: block;
+            font-size: 16px;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .submenu a span {
+            color: var(--muted);
+            display: block;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.42;
         }
 
         .submenu a:hover {
@@ -399,55 +417,51 @@
         }
 
         .mega-compact {
-            grid-template-columns: 1fr;
-            min-height: auto;
-            min-width: 390px;
+            grid-template-columns: 270px minmax(540px, 1fr);
+            min-width: min(940px, calc(100vw - 72px));
         }
 
         .mega-compact .mega-links {
-            background: var(--white);
-            border-right: 0;
-            max-height: none;
+            background: #f4f1f7;
+            border-right: 1px solid var(--line);
+            max-height: 464px;
         }
 
         .mega-compact .mega-links span span {
-            display: block;
+            display: none;
         }
 
         .mega-compact .submenu {
-            border: 1px solid var(--line);
-            box-shadow: 0 18px 46px rgba(31, 11, 53, 0.16);
+            border: 0;
+            box-shadow: none;
             display: grid;
-            gap: 4px;
-            grid-template-columns: 1fr;
-            left: auto;
-            min-height: auto;
-            min-width: 245px;
-            padding: 10px;
-            right: calc(100% + 12px);
-            transform: translateX(-8px);
+            gap: 12px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            left: 270px;
+            min-height: 100%;
+            min-width: 0;
+            padding: 28px 34px;
+            right: 0;
+            transform: translateX(10px);
         }
 
         .mega-compact .submenu::before {
-            background: transparent;
-            border: 0;
-            bottom: 0;
             content: "";
+            background:
+                linear-gradient(180deg, rgba(18, 5, 31, 0.04), rgba(18, 5, 31, 0.18)),
+                var(--submenu-image, url("mega-industrial-products.png")) center / cover;
+            border: 1px solid var(--line);
             display: block;
-            grid-column: auto;
-            min-height: 0;
-            position: absolute;
-            right: -12px;
-            top: 0;
-            width: 12px;
+            grid-column: 1 / -1;
+            min-height: 190px;
         }
 
         .mega-compact .submenu a {
             display: block;
-            font-size: 13px;
-            font-weight: 750;
-            min-height: 0;
-            padding: 10px 12px;
+            font-size: 16px;
+            font-weight: 850;
+            min-height: 86px;
+            padding: 12px 14px;
         }
 
         .mega-compact .mega-link-group:hover .submenu,
@@ -992,7 +1006,7 @@
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-trigger" href="index.html#products">Products <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu">
+                    <div class="mega-menu" style="--menu-overview-image: url('mega-industrial-products.png')">
                         <a class="mega-feature mega-feature-products" href="index.html#products">
                             <strong>Industrial Product Portfolio</strong>
                             <span>Rugged PDA terminals, industrial sensors, smart cameras, inspection instruments, robot workcells, and edge control hardware.</span>
@@ -1002,36 +1016,36 @@
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#products"><span><strong>Rugged PDA Terminals</strong><span>Barcode, RFID, NFC, and field data capture for industrial teams.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-intelligent-hardware.png')">
-                                    <a href="index.html#products">Android PDA</a>
-                                    <a href="index.html#products">RFID Handhelds</a>
-                                    <a href="index.html#products">Barcode Scanners</a>
-                                    <a href="index.html#contact">Request Specification</a>
+                                    <a href="index.html#products"><strong>Android PDA</strong><span>Rugged handheld terminals for barcode, NFC, inventory, and field data capture.</span></a>
+                                    <a href="index.html#products"><strong>RFID Handhelds</strong><span>Long-range RFID reading for warehouse, asset tracking, and production traceability.</span></a>
+                                    <a href="index.html#products"><strong>Barcode Scanners</strong><span>Fast 1D / 2D scan engines for receiving, picking, and line-side verification.</span></a>
+                                    <a href="index.html#contact"><strong>Request Specification</strong><span>Share your use case and get recommended device, accessory, and integration options.</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#products"><span><strong>Industrial Sensors</strong><span>Photoelectric, proximity, laser, pressure, and environmental sensing.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('mega-industrial-products.png')">
-                                    <a href="index.html#products">Proximity Sensors</a>
-                                    <a href="index.html#products">Laser Measurement</a>
-                                    <a href="index.html#products">Environmental Sensing</a>
+                                    <a href="index.html#products"><strong>Proximity Sensors</strong><span>Reliable object detection for fixtures, conveyors, machines, and automated stations.</span></a>
+                                    <a href="index.html#products"><strong>Laser Measurement</strong><span>Non-contact distance and position checks for repeatable industrial inspection.</span></a>
+                                    <a href="index.html#products"><strong>Environmental Sensing</strong><span>Monitor operating conditions that affect equipment, process quality, and safety.</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#products"><span><strong>Industrial Smart Cameras</strong><span>Machine vision hardware for inspection, guidance, and traceability.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-smart-camera-detail.png')">
-                                    <a href="index.html#products">Area Scan Cameras</a>
-                                    <a href="index.html#products">Smart Vision Sensors</a>
-                                    <a href="index.html#products">Code Reading Cameras</a>
-                                    <a href="index.html#products">Vision Lighting</a>
+                                    <a href="index.html#products"><strong>Area Scan Cameras</strong><span>Capture high-quality images for defect detection, metrology, and guidance tasks.</span></a>
+                                    <a href="index.html#products"><strong>Smart Vision Sensors</strong><span>Compact inspection devices with embedded processing for common line-side checks.</span></a>
+                                    <a href="index.html#products"><strong>Code Reading Cameras</strong><span>Industrial readers for DPM, barcode, QR, and traceability applications.</span></a>
+                                    <a href="index.html#products"><strong>Vision Lighting</strong><span>White-light illumination accessories for stable image quality without color distortion.</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#products"><span><strong>Inspection Instruments</strong><span>Portable and inline devices for measurement, verification, and quality control.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-vision-cell.png')">
-                                    <a href="index.html#products">Dimensional Gauges</a>
-                                    <a href="index.html#products">Surface Inspection</a>
-                                    <a href="index.html#products">Portable Testers</a>
-                                    <a href="index.html#products">Calibration Tools</a>
+                                    <a href="index.html#products"><strong>Dimensional Gauges</strong><span>Measurement tools for checking geometry, alignment, and repeatable production tolerances.</span></a>
+                                    <a href="index.html#products"><strong>Surface Inspection</strong><span>Detect visual defects, finish issues, scratches, and inconsistent material conditions.</span></a>
+                                    <a href="index.html#products"><strong>Portable Testers</strong><span>Handheld and bench tools for maintenance teams and quality engineers.</span></a>
+                                    <a href="index.html#products"><strong>Calibration Tools</strong><span>Support consistent measurement, setup verification, and lifecycle documentation.</span></a>
                                 </div>
                             </div>
                             <div class="mega-section-label">More Products</div>
@@ -1043,7 +1057,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-trigger" href="index.html#solutions">Solutions <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu">
+                    <div class="mega-menu" style="--menu-overview-image: url('product-vision-cell.png')">
                         <a class="mega-feature mega-feature-solutions" href="index.html#solutions">
                             <strong>Industrial Intelligence Solutions</strong>
                             <span>Connect sensing, vision, mobile data capture, robot motion, and inspection analytics across production workflows.</span>
@@ -1053,35 +1067,35 @@
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#solutions"><span><strong>Quality Inspection</strong><span>Automate defect detection, measurement, code reading, and traceability.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-vision-cell.png')">
-                                    <a href="index.html#solutions">Vision Inspection</a>
-                                    <a href="index.html#solutions">Dimension Check</a>
-                                    <a href="index.html#solutions">Barcode Traceability</a>
-                                    <a href="index.html#solutions">Surface Defect Detection</a>
+                                    <a href="index.html#solutions"><strong>Vision Inspection</strong><span>Use cameras, sensors, and edge processing to inspect parts at production speed.</span></a>
+                                    <a href="index.html#solutions"><strong>Dimension Check</strong><span>Measure critical features and flag out-of-tolerance parts before they move downstream.</span></a>
+                                    <a href="index.html#solutions"><strong>Barcode Traceability</strong><span>Connect scan records to production lots, work orders, and quality documentation.</span></a>
+                                    <a href="index.html#solutions"><strong>Surface Defect Detection</strong><span>Identify scratches, stains, cracks, and finish problems with repeatable workflows.</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#solutions"><span><strong>Smart Manufacturing</strong><span>Combine robots, sensors, and controllers into repeatable production cells.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('cta-industrial-control.png')">
-                                    <a href="index.html#solutions">Machine Tending</a>
-                                    <a href="index.html#solutions">Assembly Assistance</a>
-                                    <a href="index.html#solutions">Sorting and Packaging</a>
-                                    <a href="index.html#solutions">Line-Side Automation</a>
+                                    <a href="index.html#solutions"><strong>Machine Tending</strong><span>Coordinate robot motion, sensors, and safety logic for repeatable machine loading.</span></a>
+                                    <a href="index.html#solutions"><strong>Assembly Assistance</strong><span>Guide operators and automated tools through consistent assembly steps.</span></a>
+                                    <a href="index.html#solutions"><strong>Sorting and Packaging</strong><span>Use sensing and scan data to route products through packaging workflows.</span></a>
+                                    <a href="index.html#solutions"><strong>Line-Side Automation</strong><span>Deploy compact stations for repetitive checks, handling, and process control.</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#platform"><span><strong>Connected Operations</strong><span>Move equipment events and scan data into operational dashboards.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('contact-sales-hero.png')">
-                                    <a href="index.html#platform">MES Integration</a>
-                                    <a href="index.html#platform">WMS Data Capture</a>
-                                    <a href="index.html#platform">Device Management</a>
+                                    <a href="index.html#platform"><strong>MES Integration</strong><span>Move events, results, and device data into manufacturing execution systems.</span></a>
+                                    <a href="index.html#platform"><strong>WMS Data Capture</strong><span>Connect rugged mobile workflows with receiving, picking, and inventory systems.</span></a>
+                                    <a href="index.html#platform"><strong>Device Management</strong><span>Standardize configuration, updates, and support across deployed hardware fleets.</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#solutions"><span><strong>Warehouse Mobility</strong><span>Digitize receiving, inventory, picking, and field return workflows.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-intelligent-hardware.png')">
-                                    <a href="index.html#solutions">Receiving</a>
-                                    <a href="index.html#solutions">Inventory Cycle Count</a>
-                                    <a href="index.html#solutions">Picking and Dispatch</a>
+                                    <a href="index.html#solutions"><strong>Receiving</strong><span>Capture inbound shipment data accurately with rugged scanning and RFID workflows.</span></a>
+                                    <a href="index.html#solutions"><strong>Inventory Cycle Count</strong><span>Improve stock accuracy with mobile data capture and repeatable count processes.</span></a>
+                                    <a href="index.html#solutions"><strong>Picking and Dispatch</strong><span>Support warehouse teams with guided tasks, scan checks, and dispatch records.</span></a>
                                 </div>
                             </div>
                             <a href="index.html#resources"><span><strong>OEM / ODM Programs</strong><span>Customize hardware, firmware, accessories, and workflows for channel partners.</span></span><i class="fa-solid fa-chevron-right"></i></a>
@@ -1090,7 +1104,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-trigger" href="index.html#solutions">Industries <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu mega-compact">
+                    <div class="mega-menu mega-compact" style="--menu-overview-image: url('cta-industrial-control.png')">
                         <div class="mega-links">
                             <div class="mega-section-label">Industry</div>
                             <a href="index.html#solutions"><span><strong>Industries Overview</strong><span>See where GYUTRON automation can be deployed.</span></span><i class="fa-solid fa-chevron-right"></i></a>
@@ -1105,24 +1119,24 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-trigger" href="index.html#resources">Customers <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu mega-compact">
+                    <div class="mega-menu mega-compact" style="--menu-overview-image: url('business-operations-meeting.jpeg')">
                         <div class="mega-links">
                             <div class="mega-section-label">Customer Success</div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#resources"><span><strong>Customer Success</strong><span>Build long-term success with GYUTRON deployments.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
-                                    <a href="index.html#resources">Integration Services</a>
-                                    <a href="index.html#contact">Deployment Support</a>
-                                    <a href="index.html#contact">Hardware Care</a>
+                                    <a href="index.html#resources"><strong>Integration Services</strong><span>Plan hardware, interfaces, data capture, and workflow fit with technical support.</span></a>
+                                    <a href="index.html#contact"><strong>Deployment Support</strong><span>Get help with pilot setup, rollout planning, training, and operational adoption.</span></a>
+                                    <a href="index.html#contact"><strong>Hardware Care</strong><span>Keep devices serviceable with accessories, documentation, and support planning.</span></a>
                                 </div>
                             </div>
                             <div class="mega-section-label">Support &amp; Training</div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#contact"><span><strong>Support &amp; Training</strong><span>Documentation, expert help, and technical training.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu">
-                                    <a href="index.html#contact">Support Center</a>
-                                    <a href="index.html#resources">GYUTRON University</a>
-                                    <a href="index.html#platform">Development Documentation</a>
+                                    <a href="index.html#contact"><strong>Support Center</strong><span>Find help for device setup, accessories, service questions, and deployment issues.</span></a>
+                                    <a href="index.html#resources"><strong>GYUTRON University</strong><span>Training resources for operators, engineers, integrators, and channel partners.</span></a>
+                                    <a href="index.html#platform"><strong>Development Documentation</strong><span>Technical notes for integration, data exchange, device configuration, and APIs.</span></a>
                                 </div>
                             </div>
                             <a href="index.html#contact"><span><strong>Consulting</strong><span>Evaluate facilities and plan a tailored robotics solution.</span></span><i class="fa-solid fa-chevron-right"></i></a>
@@ -1132,7 +1146,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-trigger" href="index.html#contact">Company <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu mega-compact">
+                    <div class="mega-menu mega-compact" style="--menu-overview-image: url('office-team-discussion.jpeg')">
                         <div class="mega-links">
                             <div class="mega-section-label">Company</div>
                             <a href="index.html#contact"><span><strong>About GYUTRON</strong><span>How we engineer intelligent hardware for demanding industrial work.</span></span><i class="fa-solid fa-chevron-right"></i></a>
@@ -1146,7 +1160,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-trigger" href="index.html#resources">Resources <i class="fa-solid fa-chevron-down"></i></a>
-                    <div class="mega-menu mega-compact">
+                    <div class="mega-menu mega-compact" style="--menu-overview-image: url('governance-documentation.png')">
                         <div class="mega-links">
                             <div class="mega-section-label">Resources</div>
                             <a href="index.html#resources"><span><strong>ESG Overview</strong><span>See how GYUTRON frames responsible industrial automation.</span></span><i class="fa-solid fa-chevron-right"></i></a>
