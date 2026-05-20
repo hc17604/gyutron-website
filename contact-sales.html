@@ -209,12 +209,13 @@
             border-radius: 2px;
             box-shadow: 0 18px 46px rgba(31, 11, 53, 0.12);
             display: grid;
-            gap: 22px;
-            grid-template-columns: 290px 1fr;
+            gap: 0;
+            grid-template-columns: 270px minmax(540px, 1fr);
             left: 50%;
-            min-width: 720px;
+            min-height: 430px;
+            min-width: min(940px, calc(100vw - 72px));
             opacity: 0;
-            padding: 18px;
+            padding: 0;
             pointer-events: none;
             position: absolute;
             top: calc(100% + 12px);
@@ -251,81 +252,61 @@
         }
 
         .mega-feature {
-            background: var(--purple-950);
-            border: 1px solid var(--line);
-            border-radius: 2px;
-            color: var(--white);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            min-height: 300px;
-            overflow: hidden;
-            padding: 20px;
-        }
-
-        .mega-feature strong {
-            display: block;
-            font-size: 21px;
-            line-height: 1.15;
-            margin-bottom: 8px;
-        }
-
-        .mega-feature span {
-            color: rgba(255, 255, 255, 0.72);
-            font-size: 13px;
-        }
-
-        .mega-feature-products {
-            background:
-                linear-gradient(180deg, rgba(18, 5, 31, 0.12), rgba(18, 5, 31, 0.72)),
-                url("mega-industrial-products.png") center / cover;
-        }
-
-        .mega-feature-solutions {
-            background:
-                linear-gradient(180deg, rgba(18, 5, 31, 0.10), rgba(18, 5, 31, 0.70)),
-                url("https://images.pexels.com/photos/7433900/pexels-photo-7433900.jpeg?auto=compress&cs=tinysrgb&w=1200") center / cover;
+            display: none;
         }
 
         .mega-links {
+            background: #f4f1f7;
+            border-right: 1px solid var(--line);
             display: grid;
-            gap: 6px;
+            gap: 0;
             align-content: start;
+            max-height: 430px;
+            overflow: auto;
+            padding: 18px;
         }
 
         .mega-section-label {
-            border-left: 3px solid var(--purple-600);
+            border-left: 0;
             color: var(--purple-700);
             font-size: 11px;
             font-weight: 900;
             letter-spacing: 0.13em;
-            margin: 2px 0 6px;
-            padding-left: 9px;
+            margin: 8px 0 10px;
+            padding-left: 0;
             text-transform: uppercase;
         }
 
         .mega-link-group {
-            position: relative;
+            position: static;
         }
 
         .mega-link,
         .mega-links > a {
-            align-items: flex-start;
+            align-items: center;
             border: 1px solid transparent;
             border-radius: 2px;
             display: grid;
             gap: 12px;
             grid-template-columns: 1fr 14px;
-            padding: 9px;
+            min-height: 54px;
+            padding: 11px 12px;
             transition: background 150ms ease;
         }
 
+        .mega-menu:not(.mega-compact):hover .mega-section-label + .mega-link-group .mega-link,
         .mega-link:hover,
         .mega-link-group:hover .mega-link,
         .mega-link-group:focus-within .mega-link,
         .mega-links > a:hover {
             background: var(--violet-soft);
             border-color: var(--line);
+        }
+
+        .mega-menu:not(.mega-compact):has(.mega-link-group:hover) .mega-section-label + .mega-link-group:not(:hover) .mega-link,
+        .mega-menu:not(.mega-compact):has(.mega-link-group:focus-within) .mega-section-label + .mega-link-group:not(:focus-within) .mega-link {
+            background: transparent;
+            border-color: transparent;
         }
 
         .mega-link .fa-chevron-right,
@@ -343,9 +324,9 @@
         .mega-links strong {
             color: var(--ink);
             display: block;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.15;
-            margin-bottom: 4px;
+            margin-bottom: 0;
         }
 
         .mega-links span {
@@ -355,34 +336,45 @@
             line-height: 1.35;
         }
 
+        .mega-menu:not(.mega-compact) .mega-links span span {
+            display: none;
+        }
+
         .submenu {
             background: var(--white);
-            border: 1px solid var(--line);
+            border: 0;
             border-radius: 2px;
-            box-shadow: 0 18px 46px rgba(31, 11, 53, 0.16);
+            box-shadow: none;
             display: grid;
-            gap: 4px;
-            left: calc(100% + 12px);
-            min-width: 245px;
+            gap: 12px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            left: 270px;
+            min-height: 100%;
+            min-width: 0;
             opacity: 0;
-            padding: 10px;
+            padding: 28px 34px;
             pointer-events: none;
             position: absolute;
             top: 0;
-            transform: translateX(8px);
+            right: 0;
+            transform: translateX(10px);
             transition: opacity 150ms ease, transform 150ms ease;
             z-index: 60;
         }
 
         .submenu::before {
             content: "";
-            bottom: 0;
-            left: -12px;
-            position: absolute;
-            top: 0;
-            width: 12px;
+            background:
+                linear-gradient(180deg, rgba(18, 5, 31, 0.04), rgba(18, 5, 31, 0.18)),
+                var(--submenu-image, url("mega-industrial-products.png")) center / cover;
+            border: 1px solid var(--line);
+            display: block;
+            grid-column: 1 / -1;
+            min-height: 190px;
         }
 
+        .mega-menu:not(.mega-compact):hover .mega-section-label + .mega-link-group .submenu,
+        .mega-menu:not(.mega-compact):focus-within .mega-section-label + .mega-link-group .submenu,
         .mega-link-group:hover .submenu,
         .mega-link-group:focus-within .submenu {
             opacity: 1;
@@ -391,12 +383,14 @@
         }
 
         .submenu a {
+            align-items: center;
             border-radius: 2px;
             color: var(--text);
-            display: block;
-            font-size: 13px;
-            font-weight: 750;
-            padding: 10px 12px;
+            display: flex;
+            font-size: 16px;
+            font-weight: 850;
+            min-height: 52px;
+            padding: 12px 14px;
         }
 
         .submenu a:hover {
@@ -406,18 +400,54 @@
 
         .mega-compact {
             grid-template-columns: 1fr;
+            min-height: auto;
             min-width: 390px;
         }
 
+        .mega-compact .mega-links {
+            background: var(--white);
+            border-right: 0;
+            max-height: none;
+        }
+
+        .mega-compact .mega-links span span {
+            display: block;
+        }
+
         .mega-compact .submenu {
+            border: 1px solid var(--line);
+            box-shadow: 0 18px 46px rgba(31, 11, 53, 0.16);
+            display: grid;
+            gap: 4px;
+            grid-template-columns: 1fr;
             left: auto;
+            min-height: auto;
+            min-width: 245px;
+            padding: 10px;
             right: calc(100% + 12px);
             transform: translateX(-8px);
         }
 
         .mega-compact .submenu::before {
-            left: auto;
+            background: transparent;
+            border: 0;
+            bottom: 0;
+            content: "";
+            display: block;
+            grid-column: auto;
+            min-height: 0;
+            position: absolute;
             right: -12px;
+            top: 0;
+            width: 12px;
+        }
+
+        .mega-compact .submenu a {
+            display: block;
+            font-size: 13px;
+            font-weight: 750;
+            min-height: 0;
+            padding: 10px 12px;
         }
 
         .mega-compact .mega-link-group:hover .submenu,
@@ -971,7 +1001,7 @@
                             <div class="mega-section-label">Hardware</div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#products"><span><strong>Rugged PDA Terminals</strong><span>Barcode, RFID, NFC, and field data capture for industrial teams.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
+                                <div class="submenu" style="--submenu-image: url('product-intelligent-hardware.png')">
                                     <a href="index.html#products">Android PDA</a>
                                     <a href="index.html#products">RFID Handhelds</a>
                                     <a href="index.html#products">Barcode Scanners</a>
@@ -980,7 +1010,7 @@
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#products"><span><strong>Industrial Sensors</strong><span>Photoelectric, proximity, laser, pressure, and environmental sensing.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
+                                <div class="submenu" style="--submenu-image: url('mega-industrial-products.png')">
                                     <a href="index.html#products">Proximity Sensors</a>
                                     <a href="index.html#products">Laser Measurement</a>
                                     <a href="index.html#products">Environmental Sensing</a>
@@ -988,7 +1018,7 @@
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#products"><span><strong>Industrial Smart Cameras</strong><span>Machine vision hardware for inspection, guidance, and traceability.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
+                                <div class="submenu" style="--submenu-image: url('product-smart-camera-detail.png')">
                                     <a href="index.html#products">Area Scan Cameras</a>
                                     <a href="index.html#products">Smart Vision Sensors</a>
                                     <a href="index.html#products">Code Reading Cameras</a>
@@ -997,7 +1027,7 @@
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#products"><span><strong>Inspection Instruments</strong><span>Portable and inline devices for measurement, verification, and quality control.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
+                                <div class="submenu" style="--submenu-image: url('product-vision-cell.png')">
                                     <a href="index.html#products">Dimensional Gauges</a>
                                     <a href="index.html#products">Surface Inspection</a>
                                     <a href="index.html#products">Portable Testers</a>
@@ -1022,7 +1052,7 @@
                             <div class="mega-section-label">Applications</div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#solutions"><span><strong>Quality Inspection</strong><span>Automate defect detection, measurement, code reading, and traceability.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
+                                <div class="submenu" style="--submenu-image: url('product-vision-cell.png')">
                                     <a href="index.html#solutions">Vision Inspection</a>
                                     <a href="index.html#solutions">Dimension Check</a>
                                     <a href="index.html#solutions">Barcode Traceability</a>
@@ -1031,7 +1061,7 @@
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#solutions"><span><strong>Smart Manufacturing</strong><span>Combine robots, sensors, and controllers into repeatable production cells.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
+                                <div class="submenu" style="--submenu-image: url('cta-industrial-control.png')">
                                     <a href="index.html#solutions">Machine Tending</a>
                                     <a href="index.html#solutions">Assembly Assistance</a>
                                     <a href="index.html#solutions">Sorting and Packaging</a>
@@ -1040,7 +1070,7 @@
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#platform"><span><strong>Connected Operations</strong><span>Move equipment events and scan data into operational dashboards.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
+                                <div class="submenu" style="--submenu-image: url('contact-sales-hero.png')">
                                     <a href="index.html#platform">MES Integration</a>
                                     <a href="index.html#platform">WMS Data Capture</a>
                                     <a href="index.html#platform">Device Management</a>
@@ -1048,7 +1078,7 @@
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="index.html#solutions"><span><strong>Warehouse Mobility</strong><span>Digitize receiving, inventory, picking, and field return workflows.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                                <div class="submenu">
+                                <div class="submenu" style="--submenu-image: url('product-intelligent-hardware.png')">
                                     <a href="index.html#solutions">Receiving</a>
                                     <a href="index.html#solutions">Inventory Cycle Count</a>
                                     <a href="index.html#solutions">Picking and Dispatch</a>
