@@ -460,9 +460,218 @@ const GYUTRON_PRODUCTS = {
     }
 };
 
+function getProductsByName(names) {
+    const allProducts = Object.values(GYUTRON_PRODUCTS).flatMap((category) => category.products || []);
+    return names.map((name) => {
+        const product = allProducts.find((item) => item.name === name);
+        if (!product) {
+            throw new Error(`Missing product: ${name}`);
+        }
+        return { ...product };
+    });
+}
+
+GYUTRON_PRODUCTS["industrial-sensors"].navGroup = "sensors";
+GYUTRON_PRODUCTS["smart-cameras"].navGroup = "cameras";
+GYUTRON_PRODUCTS["inspection-instruments"].navGroup = "instruments";
+
+Object.assign(GYUTRON_PRODUCTS, {
+    "proximity-sensors": {
+        eyebrow: "Industrial Sensors",
+        title: "Proximity Sensors",
+        navLabel: "Proximity Sensors",
+        navGroup: "sensors",
+        heroImage: "product-hero-industrial-sensors-matrix.png",
+        intro: "Presence and object-detection sensors for fixtures, conveyors, machine doors, part handling, and safety-adjacent automation.",
+        panelMetric: "5 models",
+        panelText: "Inductive, photoelectric, ultrasonic, safety, and networked proximity detection options.",
+        sectionIntro: "Proximity sensing is organized around practical factory detection tasks: metal target checks, part presence, transparent-object handling, and distributed IO diagnostics.",
+        products: getProductsByName(["GY-PR12", "GY-PX18", "GY-UL80", "GY-SAFE24", "GY-NET8"])
+    },
+    "laser-measurement": {
+        eyebrow: "Industrial Sensors",
+        title: "Laser Measurement",
+        navLabel: "Laser Measurement",
+        navGroup: "sensors",
+        heroImage: "product-hero-industrial-sensors-matrix.png",
+        intro: "Non-contact measurement hardware for distance, height, gap, position, and repeatable process checks.",
+        panelMetric: "4 models",
+        panelText: "Laser displacement, ultrasonic distance, fiber sensing, and IO-Link data collection options.",
+        sectionIntro: "Laser and non-contact measurement devices support dimensional checks, line-side positioning, fixture confirmation, and process monitoring.",
+        products: getProductsByName(["GY-LD40", "GY-UL80", "GY-FB200", "GY-NET8"])
+    },
+    "environmental-sensing": {
+        eyebrow: "Industrial Sensors",
+        title: "Environmental Sensing",
+        navLabel: "Environmental Sensing",
+        navGroup: "sensors",
+        heroImage: "product-hero-industrial-sensors-matrix.png",
+        intro: "Condition monitoring products for cabinets, pneumatic systems, humidity, temperature, vibration, and operating environment visibility.",
+        panelMetric: "4 models",
+        panelText: "Environmental, pressure, ultrasonic, and network-hub monitoring products.",
+        sectionIntro: "Environmental sensing pages focus on the operating conditions that influence uptime, quality stability, and maintenance decisions.",
+        products: getProductsByName(["GY-ENV32", "GY-PS60", "GY-UL80", "GY-NET8"])
+    },
+    "area-scan-cameras": {
+        eyebrow: "Industrial Smart Cameras",
+        title: "Area Scan Cameras",
+        navLabel: "Area Scan Cameras",
+        navGroup: "cameras",
+        heroImage: "product-hero-smart-cameras-matrix.png",
+        intro: "2D area-scan smart cameras for presence checks, assembly verification, metrology, guidance, and label inspection.",
+        panelMetric: "4 models",
+        panelText: "Compact, high-speed, AI-assisted, and controller-supported area-scan options.",
+        sectionIntro: "Area-scan camera pages focus on 2D inspection tasks where a full frame image is needed for repeatable quality checks.",
+        products: getProductsByName(["GY-V120", "GY-V380 Pro", "GY-V280 AI", "GY-VC8"])
+    },
+    "smart-vision-sensors": {
+        eyebrow: "Industrial Smart Cameras",
+        title: "Smart Vision Sensors",
+        navLabel: "Smart Vision Sensors",
+        navGroup: "cameras",
+        heroImage: "product-hero-smart-cameras-matrix.png",
+        intro: "Compact embedded vision sensors for line-side pass / fail inspection, AI classification, OCR, and guided setup.",
+        panelMetric: "4 models",
+        panelText: "AI vision, compact smart-camera, code-reading, and controller-supported options.",
+        sectionIntro: "Smart vision sensors are structured for practical automation teams that need embedded tools without a heavy PC vision stack.",
+        products: getProductsByName(["GY-V280 AI", "GY-V120", "GY-CR390", "GY-VC8"])
+    },
+    "code-reading-cameras": {
+        eyebrow: "Industrial Smart Cameras",
+        title: "Code Reading Cameras",
+        navLabel: "Code Reading Cameras",
+        navGroup: "cameras",
+        heroImage: "product-hero-smart-cameras-matrix.png",
+        intro: "Fixed and handheld image-based readers for barcode, QR, Data Matrix, DPM, and regulated traceability workflows.",
+        panelMetric: "4 models",
+        panelText: "Fixed code reader, compact camera, DPM scanner, and verification instrument options.",
+        sectionIntro: "Code reading products are grouped around read-rate performance, DPM capability, print quality, and traceability record keeping.",
+        products: getProductsByName(["GY-CR390", "GY-V120", "GY-S300 DPM", "GY-CV100"])
+    },
+    "vision-lighting": {
+        eyebrow: "Industrial Smart Cameras",
+        title: "Vision Lighting",
+        navLabel: "Vision Lighting",
+        navGroup: "cameras",
+        heroImage: "product-hero-smart-cameras-matrix.png",
+        intro: "White-light machine vision illumination accessories for stable imaging without color distortion or purple lighting effects.",
+        panelMetric: "3 models",
+        panelText: "Ring, bar, and dome lighting options for common inspection stations.",
+        sectionIntro: "Vision lighting is separated because lighting choice often determines image stability, defect contrast, and inspection repeatability.",
+        products: [
+            {
+                name: "GY-LR70",
+                type: "White ring light",
+                summary: "Compact ring light for lens-centered inspection, label checks, feature contrast, and small-part stations.",
+                kind: "camera",
+                image: "product-images/gy-lr70.png",
+                specs: { Lighting: "White LED", Diameter: "70 mm", Control: "Strobe / constant", Mount: "C-mount adapter" },
+                tags: ["Ring light", "White LED", "Lens mount"]
+            },
+            {
+                name: "GY-LB220",
+                type: "White bar light",
+                summary: "Linear bar light for edge definition, conveyor inspection, packaging checks, and controlled side illumination.",
+                kind: "camera",
+                image: "product-images/gy-lb220.png",
+                specs: { Lighting: "White LED", Length: "220 mm", Control: "PWM / strobe", Housing: "Finned aluminum" },
+                tags: ["Bar light", "Side lighting", "Fixture-ready"]
+            },
+            {
+                name: "GY-LDome120",
+                type: "Dome light",
+                summary: "Diffuse white dome light for reflective parts, curved surfaces, and low-glare vision inspection.",
+                kind: "camera",
+                image: "product-images/gy-ldome120.png",
+                specs: { Lighting: "Diffuse white", Diameter: "120 mm", Opening: "Camera center port", Housing: "Aluminum dome" },
+                tags: ["Dome", "Low glare", "Reflective parts"]
+            }
+        ]
+    },
+    "dimensional-gauges": {
+        eyebrow: "Inspection Instruments",
+        title: "Dimensional Gauges",
+        navLabel: "Dimensional Gauges",
+        navGroup: "instruments",
+        heroImage: "product-hero-inspection-instruments-matrix.png",
+        intro: "Measurement tools for geometry, alignment, height, gap, profile, and production tolerance checks.",
+        panelMetric: "4 models",
+        panelText: "Contact gauge, optical measurement, laser displacement, and 3D profile options.",
+        sectionIntro: "Dimensional gauges combine contact and non-contact measurement tools for production engineers and quality teams.",
+        products: getProductsByName(["GY-MG50", "GY-VM200", "GY-LD40", "GY-V3D90"])
+    },
+    "surface-inspection": {
+        eyebrow: "Inspection Instruments",
+        title: "Surface Inspection",
+        navLabel: "Surface Inspection",
+        navGroup: "instruments",
+        heroImage: "product-hero-inspection-instruments-matrix.png",
+        intro: "Inspection devices for roughness, scratches, finish defects, web surfaces, and variable visual conditions.",
+        panelMetric: "4 models",
+        panelText: "Portable roughness, AI camera, 3D profile, and line-scan inspection options.",
+        sectionIntro: "Surface inspection pages group tools that help teams evaluate finish quality, texture, geometry, and continuous materials.",
+        products: getProductsByName(["GY-SF30", "GY-V280 AI", "GY-V3D90", "GY-VL2048"])
+    },
+    "portable-testers": {
+        eyebrow: "Inspection Instruments",
+        title: "Portable Testers",
+        navLabel: "Portable Testers",
+        navGroup: "instruments",
+        heroImage: "product-hero-inspection-instruments-matrix.png",
+        intro: "Handheld and bench-ready testers for maintenance, measurement, barcode verification, and condition checks.",
+        panelMetric: "4 models",
+        panelText: "Electrical, surface, code-verification, and environmental test options.",
+        sectionIntro: "Portable testers are selected for maintenance teams and quality engineers who need quick checks away from fixed stations.",
+        products: getProductsByName(["GY-ET75", "GY-SF30", "GY-CV100", "GY-ENV32"])
+    },
+    "calibration-tools": {
+        eyebrow: "Inspection Instruments",
+        title: "Calibration Tools",
+        navLabel: "Calibration Tools",
+        navGroup: "instruments",
+        heroImage: "product-hero-inspection-instruments-matrix.png",
+        intro: "Calibration and verification accessories for machine vision, metrology, code quality, and measurement lifecycle documentation.",
+        panelMetric: "4 models",
+        panelText: "Grid target, gauge block, light reference, and barcode verification tools.",
+        sectionIntro: "Calibration tools make inspection systems more repeatable by supporting setup verification, traceable checks, and documented maintenance routines.",
+        products: [
+            {
+                name: "GY-CAL-Grid",
+                type: "Vision calibration target",
+                summary: "Precision grid target for camera setup, field calibration, lens distortion checks, and measurement alignment.",
+                kind: "instrument",
+                image: "product-images/gy-cal-grid.png",
+                specs: { Pattern: "Ceramic grid", Size: "120 x 90 mm", Accuracy: "5 um class", Case: "Protective frame" },
+                tags: ["Vision setup", "Grid target", "Metrology"]
+            },
+            {
+                name: "GY-CAL-Block",
+                type: "Gauge block kit",
+                summary: "Reference block kit for fixture gauges, probe checks, dimensional setup, and routine verification.",
+                kind: "instrument",
+                image: "product-images/gy-cal-block.png",
+                specs: { Material: "Hardened steel", Grade: "Workshop reference", Range: "1 to 50 mm", Case: "Indexed tray" },
+                tags: ["Gauge blocks", "Probe check", "Fixture setup"]
+            },
+            {
+                name: "GY-CAL-Light",
+                type: "Light reference kit",
+                summary: "White-light reference kit for vision lighting consistency, exposure setup, and inspection station checks.",
+                kind: "instrument",
+                image: "product-images/gy-cal-light.png",
+                specs: { Reference: "White diffuser", Control: "Portable module", Output: "Check record", Use: "Vision stations" },
+                tags: ["Light reference", "White balance", "Vision QA"]
+            },
+            { ...getProductsByName(["GY-CV100"])[0], type: "Code grading verifier" }
+        ]
+    }
+});
+
 const CATEGORY_GROUPS = {
     "rugged-pda": ["android-pda", "rfid-handhelds", "barcode-scanners", "request-specification"],
-    "industrial-intelligence": ["industrial-sensors", "smart-cameras", "inspection-instruments"]
+    "sensors": ["industrial-sensors", "proximity-sensors", "laser-measurement", "environmental-sensing"],
+    "cameras": ["smart-cameras", "area-scan-cameras", "smart-vision-sensors", "code-reading-cameras", "vision-lighting"],
+    "instruments": ["inspection-instruments", "dimensional-gauges", "surface-inspection", "portable-testers", "calibration-tools"]
 };
 let activePage = 1;
 const PRODUCTS_PER_PAGE = 6;
@@ -577,7 +786,7 @@ function renderCategoryPage(categoryKey) {
     document.querySelector("[data-section-title]").textContent = category.sectionTitle || `${category.title} products`;
     document.querySelector("[data-section-intro]").textContent = category.sectionIntro || "Model names, options, and specifications are structured for GYUTRON's portfolio and use common industrial device classes as benchmarks.";
 
-    const groupKey = category.navGroup || (["android-pda", "rfid-handhelds", "barcode-scanners", "request-specification"].includes(categoryKey) ? "rugged-pda" : "industrial-intelligence");
+    const groupKey = category.navGroup || "rugged-pda";
     const categoryOrder = CATEGORY_GROUPS[groupKey] || CATEGORY_GROUPS["rugged-pda"];
     document.querySelector("[data-category-nav]").innerHTML = categoryOrder.map((key) => {
         const item = GYUTRON_PRODUCTS[key];
