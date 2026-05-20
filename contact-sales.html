@@ -607,6 +607,15 @@
             gap: 16px;
         }
 
+        .hidden-field {
+            height: 0;
+            left: -9999px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            width: 0;
+        }
+
         .field-grid {
             display: grid;
             gap: 16px;
@@ -660,6 +669,36 @@
             color: var(--muted);
             font-size: 12px;
             max-width: 360px;
+        }
+
+        .form-status {
+            border: 1px solid var(--line);
+            color: var(--muted);
+            display: none;
+            font-size: 14px;
+            padding: 12px 14px;
+        }
+
+        .form-status.is-visible {
+            display: block;
+        }
+
+        .form-status.is-success {
+            background: #f3fff8;
+            border-color: #b9e9ca;
+            color: #155d2c;
+        }
+
+        .form-status.is-error {
+            background: #fff6f6;
+            border-color: #f1c4c4;
+            color: #8b1e1e;
+        }
+
+        .sales-form.is-sending button[type="submit"] {
+            cursor: wait;
+            opacity: 0.72;
+            pointer-events: none;
         }
 
         .process {
@@ -1131,36 +1170,40 @@
             <section class="form-panel">
                 <div class="section-label">Tell us what you need</div>
                 <h2>Request sales support</h2>
-                <p>This form opens your email client with the inquiry details so you can send them directly to GYUTRON.</p>
-                <form class="sales-form" action="mailto:info@gyutron.com" method="post" enctype="text/plain">
+                <p>Submit your request directly to GYUTRON. A sales specialist will review your requirement and follow up by email or WhatsApp.</p>
+                <form class="sales-form" id="salesInquiryForm">
+                    <label class="hidden-field" aria-hidden="true">
+                        Website
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </label>
                     <div class="field-grid">
                         <label>
                             Full name
-                            <input type="text" name="Full name" autocomplete="name" required>
+                            <input type="text" name="fullName" autocomplete="name" required>
                         </label>
                         <label>
                             Company
-                            <input type="text" name="Company" autocomplete="organization" required>
+                            <input type="text" name="company" autocomplete="organization" required>
                         </label>
                     </div>
                     <div class="field-grid">
                         <label>
                             Work email
-                            <input type="email" name="Work email" autocomplete="email" required>
+                            <input type="email" name="workEmail" autocomplete="email" required>
                         </label>
                         <label>
                             Phone / WhatsApp
-                            <input type="tel" name="Phone or WhatsApp" autocomplete="tel">
+                            <input type="tel" name="phone" autocomplete="tel">
                         </label>
                     </div>
                     <div class="field-grid">
                         <label>
                             Country / Region
-                            <input type="text" name="Country or Region" autocomplete="country-name">
+                            <input type="text" name="country" autocomplete="country-name">
                         </label>
                         <label>
                             Product interest
-                            <select name="Product interest" required>
+                            <select name="productInterest" required>
                                 <option value="">Select one</option>
                                 <option>Rugged PDA Terminals</option>
                                 <option>Industrial Sensors</option>
@@ -1174,11 +1217,12 @@
                     </div>
                     <label>
                         Project details
-                        <textarea name="Project details" placeholder="Application, current process, required functions, timeline, quantity, integration interface, or certification needs." required></textarea>
+                        <textarea name="projectDetails" placeholder="Application, current process, required functions, timeline, quantity, integration interface, or certification needs." required></textarea>
                     </label>
+                    <div class="form-status" id="salesInquiryStatus" role="status" aria-live="polite"></div>
                     <div class="form-footer">
                         <button class="button button-primary" type="submit">Send inquiry <i class="fa-solid fa-arrow-right"></i></button>
-                        <p class="form-disclaimer">No online account is required. Your browser may ask which email app to use before sending.</p>
+                        <p class="form-disclaimer">Your inquiry is submitted through the GYUTRON website backend. If the form is unavailable, email info@gyutron.com or use WhatsApp.</p>
                     </div>
                 </form>
             </section>
@@ -1248,5 +1292,53 @@
             </div>
         </div>
     </footer>
+    <script>
+        const salesForm = document.getElementById("salesInquiryForm");
+        const salesStatus = document.getElementById("salesInquiryStatus");
+
+        function setSalesStatus(message, type) {
+            salesStatus.textContent = message;
+            salesStatus.className = `form-status is-visible ${type ? `is-${type}` : ""}`;
+        }
+
+        salesForm?.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            if (!salesForm.reportValidity()) {
+                return;
+            }
+
+            const submitButton = salesForm.querySelector('button[type="submit"]');
+            const formData = new FormData(salesForm);
+            const payload = Object.fromEntries(formData.entries());
+
+            salesForm.classList.add("is-sending");
+            submitButton.disabled = true;
+            setSalesStatus("Sending your inquiry...", "");
+
+            try {
+                const response = await fetch("/api/contact", {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(payload),
+                });
+                const result = await response.json().catch(() => ({}));
+
+                if (!response.ok || !result.ok) {
+                    throw new Error(result.message || "The inquiry could not be sent right now.");
+                }
+
+                salesForm.reset();
+                setSalesStatus(result.message || "Thanks. Your inquiry has been sent to the GYUTRON sales team.", "success");
+            } catch (error) {
+                setSalesStatus(`${error.message} Please email info@gyutron.com or use WhatsApp: +1 (503) 415-1350.`, "error");
+            } finally {
+                salesForm.classList.remove("is-sending");
+                submitButton.disabled = false;
+            }
+        });
+    </script>
 </body>
 </html>
