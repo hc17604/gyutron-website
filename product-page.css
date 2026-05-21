@@ -282,7 +282,7 @@ a {
     top: 0;
     transform: translateX(10px);
     transition: opacity 150ms ease, transform 150ms ease;
-    z-index: 60;
+    z-index: 80;
 }
 
 .submenu::before {
@@ -294,6 +294,7 @@ a {
     display: block;
     grid-column: 1 / -1;
     height: 136px;
+    pointer-events: none;
 }
 
 .mega-link-group.is-open .submenu,
@@ -313,6 +314,8 @@ a {
     font-weight: 850;
     min-height: 86px;
     padding: 12px 14px;
+    position: relative;
+    z-index: 2;
 }
 
 .submenu a strong {
@@ -352,6 +355,7 @@ a {
     grid-column: 2;
     height: 168px;
     margin: 28px 34px;
+    pointer-events: none;
 }
 
 .button {

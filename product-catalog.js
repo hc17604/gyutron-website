@@ -849,6 +849,7 @@ function renderCategoryPage(categoryKey) {
 function setupNavigation() {
     const navItems = Array.from(document.querySelectorAll(".nav-item"));
     const closeDelay = 520;
+    const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
 
     const closeItem = (item) => {
         window.clearTimeout(item.closeTimer);
@@ -886,6 +887,14 @@ function setupNavigation() {
         }
 
         const groups = Array.from(item.querySelectorAll(".mega-link-group"));
+        const trigger = item.querySelector(".nav-trigger");
+        trigger?.addEventListener("click", (event) => {
+            if (isTouchNavigation() && !item.classList.contains("is-open")) {
+                event.preventDefault();
+                openItem(item, groups);
+            }
+        });
+
         item.addEventListener("pointerenter", () => openItem(item, groups));
         item.addEventListener("pointerleave", () => closeItem(item));
         menu.addEventListener("pointerenter", () => openItem(item, groups));
@@ -898,6 +907,15 @@ function setupNavigation() {
         });
 
         groups.forEach((group) => {
+            const groupTrigger = group.querySelector(".mega-link");
+            groupTrigger?.addEventListener("click", (event) => {
+                if (isTouchNavigation() && !group.classList.contains("is-open")) {
+                    event.preventDefault();
+                    openItem(item, groups);
+                    setActiveGroup(groups, group);
+                }
+            });
+
             group.addEventListener("pointerenter", () => {
                 openItem(item, groups);
                 setActiveGroup(groups, group);
@@ -905,6 +923,20 @@ function setupNavigation() {
             group.addEventListener("focusin", () => {
                 openItem(item, groups);
                 setActiveGroup(groups, group);
+            });
+
+            group.querySelectorAll(".submenu a").forEach((link) => {
+                link.addEventListener("pointerenter", () => {
+                    openItem(item, groups);
+                    setActiveGroup(groups, group);
+                });
+                link.addEventListener("focus", () => {
+                    openItem(item, groups);
+                    setActiveGroup(groups, group);
+                });
+                link.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                });
             });
         });
     });

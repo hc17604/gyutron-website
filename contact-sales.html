@@ -258,6 +258,7 @@
             height: 168px;
             min-height: 0;
             margin: 28px 34px;
+            pointer-events: none;
         }
 
         .mega-feature {
@@ -385,6 +386,7 @@
             grid-column: 1 / -1;
             height: 136px;
             min-height: 0;
+            pointer-events: none;
         }
 
         .mega-link-group.is-open .submenu,
@@ -406,6 +408,8 @@
             font-weight: 850;
             min-height: 86px;
             padding: 12px 14px;
+            position: relative;
+            z-index: 2;
         }
 
         .submenu a strong {
@@ -1405,6 +1409,7 @@
         (() => {
             const navItems = Array.from(document.querySelectorAll(".nav-item"));
             const closeDelay = 520;
+            const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
 
             const closeItem = (item) => {
                 window.clearTimeout(item.closeTimer);
@@ -1442,6 +1447,13 @@
                 }
 
                 const groups = Array.from(item.querySelectorAll(".mega-link-group"));
+                const trigger = item.querySelector(".nav-trigger");
+                trigger?.addEventListener("click", (event) => {
+                    if (isTouchNavigation() && !item.classList.contains("is-open")) {
+                        event.preventDefault();
+                        openItem(item, groups);
+                    }
+                });
 
                 item.addEventListener("pointerenter", () => openItem(item, groups));
                 item.addEventListener("pointerleave", () => closeItem(item));
@@ -1455,6 +1467,15 @@
                 });
 
                 groups.forEach((group) => {
+                    const groupTrigger = group.querySelector(".mega-link");
+                    groupTrigger?.addEventListener("click", (event) => {
+                        if (isTouchNavigation() && !group.classList.contains("is-open")) {
+                            event.preventDefault();
+                            openItem(item, groups);
+                            setActiveGroup(groups, group);
+                        }
+                    });
+
                     group.addEventListener("pointerenter", () => {
                         openItem(item, groups);
                         setActiveGroup(groups, group);
@@ -1462,6 +1483,20 @@
                     group.addEventListener("focusin", () => {
                         openItem(item, groups);
                         setActiveGroup(groups, group);
+                    });
+
+                    group.querySelectorAll(".submenu a").forEach((link) => {
+                        link.addEventListener("pointerenter", () => {
+                            openItem(item, groups);
+                            setActiveGroup(groups, group);
+                        });
+                        link.addEventListener("focus", () => {
+                            openItem(item, groups);
+                            setActiveGroup(groups, group);
+                        });
+                        link.addEventListener("click", (event) => {
+                            event.stopPropagation();
+                        });
                     });
                 });
             });
