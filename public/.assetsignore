@@ -1,0 +1,10 @@
+/.assetsignore
+**/.git
+**/.git/**
+**/node_modules
+**/node_modules/**
+**/.env
+**/.env*
+**/.DS_Store
+tmp-*
+*.tmp

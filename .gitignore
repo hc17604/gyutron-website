@@ -4,3 +4,9 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# Local preview / generated scratch files
+tmp-*.jpg
+tmp-*.png
+tmp-*.webp
+*.tmp

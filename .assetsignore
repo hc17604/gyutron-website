@@ -1,0 +1,17 @@
+/.assetsignore
+.git
+.git/**
+node_modules
+node_modules/**
+.env
+.env*
+.wrangler
+.wrangler/**
+tmp-*
+*.tmp
+src
+src/**
+functions
+functions/**
+*.md
+!robots.txt
