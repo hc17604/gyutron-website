@@ -117,8 +117,8 @@ const GYUTRON_PRODUCTS = {
         navLabel: "Barcode Scanners",
         heroImage: "product-hero-barcode-scanners-matrix.png",
         intro: "Industrial handheld barcode scanners for 1D, 2D, DPM, long-range, and wireless scan workflows.",
-        panelMetric: "8 models",
-        panelText: "Wired, wireless, DPM, long-range, wearable, and industrial cradle options.",
+        panelMetric: "7 models",
+        panelText: "Wired, wireless, cold-chain, long-range, wearable, presentation, and dock-door scan options.",
         products: [
             {
                 name: "GY-S210",
@@ -137,15 +137,6 @@ const GYUTRON_PRODUCTS = {
                 image: "product-images/gy-s240w.png",
                 specs: { Scan: "1D/2D area imager", Link: "2.4G / Bluetooth", Range: "Up to 80 m open field", Rugged: "IP54 / 1.5 m drop" },
                 tags: ["Batch memory", "Cradle", "2200 mAh"]
-            },
-            {
-                name: "GY-S300 DPM",
-                type: "DPM code scanner",
-                summary: "Scanner tuned for etched, dot-peen, low-contrast, and curved-surface industrial codes.",
-                kind: "scanner",
-                image: "product-images/gy-s300-dpm.png",
-                specs: { Scan: "DPM / 1D / 2D", Lighting: "White + polarizer", Codes: "Metal, plastic, labels", Rugged: "IP65 / 1.8 m drop" },
-                tags: ["DPM", "AI decode", "Manufacturing"]
             },
             {
                 name: "GY-S330 Cold",
@@ -483,10 +474,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "sensors",
         heroImage: "product-hero-industrial-sensors-matrix.png",
         intro: "Photoelectric, inductive, fiber, ultrasonic, and safety sensing for part presence, fixtures, conveyors, and guarded stations.",
-        panelMetric: "5 models",
-        panelText: "Object detection, metal detection, tight-space sensing, level sensing, and access protection.",
+        panelMetric: "4 models",
+        panelText: "Photoelectric, inductive, fiber, and safety sensing for clear detection jobs.",
         sectionIntro: "This page keeps detection products together instead of mixing them with measurement or condition-monitoring devices.",
-        products: getProductsByName(["GY-PX18", "GY-PR12", "GY-FB200", "GY-UL80", "GY-SAFE24"])
+        products: getProductsByName(["GY-PX18", "GY-PR12", "GY-FB200", "GY-SAFE24"])
     },
     "laser-measurement": {
         eyebrow: "Sensing & I/O",
@@ -546,7 +537,19 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "3 models",
         panelText: "Fixed code reader, industrial DPM scanner, and code-quality verification instrument.",
         sectionIntro: "Traceability buyers think in terms of read rate, DPM capability, print quality, and records, so these products are grouped together even when form factors differ.",
-        products: getProductsByName(["GY-CR390", "GY-S300 DPM", "GY-CV100"])
+        products: [
+            ...getProductsByName(["GY-CR390"]),
+            {
+                name: "GY-S300 DPM",
+                type: "DPM code scanner",
+                summary: "Scanner tuned for etched, dot-peen, low-contrast, and curved-surface industrial codes.",
+                kind: "scanner",
+                image: "product-images/gy-s300-dpm.png",
+                specs: { Scan: "DPM / 1D / 2D", Lighting: "White + polarizer", Codes: "Metal, plastic, labels", Rugged: "IP65 / 1.8 m drop" },
+                tags: ["DPM", "AI decode", "Manufacturing"]
+            },
+            ...getProductsByName(["GY-CV100"])
+        ]
     },
     "vision-lighting": {
         eyebrow: "Machine Vision Systems",
@@ -595,10 +598,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "quality",
         heroImage: "product-hero-inspection-instruments-matrix.png",
         intro: "Measurement tools for geometry, alignment, height, gap, profile, and production tolerance checks.",
-        panelMetric: "4 models",
-        panelText: "Contact gauge, optical measurement, laser displacement, and 3D profile options.",
-        sectionIntro: "Dimensional gauges combine contact and non-contact measurement tools for production engineers and quality teams.",
-        products: getProductsByName(["GY-MG50", "GY-VM200", "GY-LD40", "GY-V3D90"])
+        panelMetric: "2 models",
+        panelText: "Contact gauge and optical measurement station options.",
+        sectionIntro: "Dimensional gauges are kept to dedicated metrology instruments, while distance sensors and 3D profile cameras remain in their own automation categories.",
+        products: getProductsByName(["GY-MG50", "GY-VM200"])
     },
     "surface-inspection": {
         eyebrow: "Quality & Test Instruments",
@@ -606,11 +609,29 @@ Object.assign(GYUTRON_PRODUCTS, {
         navLabel: "Surface Inspection",
         navGroup: "quality",
         heroImage: "product-hero-inspection-instruments-matrix.png",
-        intro: "Inspection devices for roughness, scratches, finish defects, web surfaces, and variable visual conditions.",
-        panelMetric: "4 models",
-        panelText: "Portable roughness, AI camera, 3D profile, and line-scan inspection options.",
-        sectionIntro: "Surface inspection pages group tools that help teams evaluate finish quality, texture, geometry, and continuous materials.",
-        products: getProductsByName(["GY-SF30", "GY-V280 AI", "GY-V3D90", "GY-VL2048"])
+        intro: "Dedicated surface-quality instruments for roughness, gloss, coating thickness, and visible finish checks.",
+        panelMetric: "3 models",
+        panelText: "Roughness, gloss, and coating-thickness tools without borrowing camera-system products.",
+        sectionIntro: "Surface inspection now contains only dedicated surface-quality instruments, so line-scan cameras and AI cameras stay in machine vision.",
+        products: [
+            ...getProductsByName(["GY-SF30"]),
+            {
+                name: "GY-GL20",
+                type: "Industrial gloss meter",
+                summary: "Portable gloss meter for coating, molded-part, painted-metal, and finished-surface consistency checks.",
+                kind: "instrument",
+                specs: { Geometry: "60 degree", Range: "0 to 1000 GU", Repeatability: "+/- 0.2 GU", Data: "USB / Bluetooth" },
+                tags: ["Gloss", "Coatings", "Finish control"]
+            },
+            {
+                name: "GY-CT45",
+                type: "Coating thickness tester",
+                summary: "Handheld coating gauge for paint, plating, anodizing, and protective coating inspection on metal parts.",
+                kind: "instrument",
+                specs: { Range: "0 to 1500 um", Substrate: "Ferrous / non-ferrous", Probe: "Integrated", Data: "CSV export" },
+                tags: ["Coating", "Paint", "Incoming QC"]
+            }
+        ]
     },
     "portable-testers": {
         eyebrow: "Quality & Test Instruments",
@@ -618,11 +639,29 @@ Object.assign(GYUTRON_PRODUCTS, {
         navLabel: "Portable Testers",
         navGroup: "quality",
         heroImage: "product-hero-inspection-instruments-matrix.png",
-        intro: "Handheld and bench-ready testers for maintenance, measurement, barcode verification, and condition checks.",
-        panelMetric: "4 models",
-        panelText: "Electrical, surface, code-verification, and environmental test options.",
-        sectionIntro: "Portable testers are selected for maintenance teams and quality engineers who need quick checks away from fixed stations.",
-        products: getProductsByName(["GY-ET75", "GY-SF30", "GY-PS60", "GY-ENV32"])
+        intro: "Handheld electrical, thermal, and signal testers for maintenance teams and field quality checks.",
+        panelMetric: "3 models",
+        panelText: "Electrical safety, loop-signal, and thermal diagnostic tools.",
+        sectionIntro: "Portable testers are selected for maintenance teams and quality engineers who need quick checks away from fixed stations. Process sensors and environmental monitors stay in Sensing & I/O.",
+        products: [
+            ...getProductsByName(["GY-ET75"]),
+            {
+                name: "GY-LT40",
+                type: "Loop signal tester",
+                summary: "Portable loop calibrator for checking 4-20 mA sensor signals, control loops, and cabinet commissioning work.",
+                kind: "instrument",
+                specs: { Signal: "4-20 mA source / measure", Power: "24 V loop supply", Accuracy: "0.05% class", Display: "Backlit LCD" },
+                tags: ["Loop check", "Commissioning", "Maintenance"]
+            },
+            {
+                name: "GY-TH90",
+                type: "Thermal spot tester",
+                summary: "Non-contact temperature tester for cabinets, motors, bearings, and quick maintenance diagnostics.",
+                kind: "instrument",
+                specs: { Range: "-30 C to 650 C", Optics: "12:1", Emissivity: "Adjustable", Data: "Bluetooth option" },
+                tags: ["Thermal", "Maintenance", "Cabinet checks"]
+            }
+        ]
     },
     "calibration-tools": {
         eyebrow: "Quality & Test Instruments",
@@ -631,8 +670,8 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "quality",
         heroImage: "product-hero-inspection-instruments-matrix.png",
         intro: "Calibration and verification accessories for machine vision, metrology, code quality, and measurement lifecycle documentation.",
-        panelMetric: "4 models",
-        panelText: "Grid target, gauge block, light reference, and barcode verification tools.",
+        panelMetric: "3 models",
+        panelText: "Grid target, gauge block, and light-reference tools.",
         sectionIntro: "Calibration tools make inspection systems more repeatable by supporting setup verification, traceable checks, and documented maintenance routines.",
         products: [
             {
@@ -661,8 +700,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 image: "product-images/gy-cal-light.png",
                 specs: { Reference: "White diffuser", Control: "Portable module", Output: "Check record", Use: "Vision stations" },
                 tags: ["Light reference", "White balance", "Vision QA"]
-            },
-            { ...getProductsByName(["GY-CV100"])[0], type: "Code grading verifier" }
+            }
         ]
     }
 });

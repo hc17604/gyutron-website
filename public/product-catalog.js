@@ -12,6 +12,7 @@ function createProductArt(product) {
     const isRfid = product.kind === "rfid" || product.kind === "sled";
     const isKeypad = product.kind === "keypad";
     const isConfig = product.kind === "config";
+    const isInstrument = product.kind === "instrument";
 
     if (isScanner) {
         return `
@@ -60,6 +61,24 @@ function createProductArt(product) {
                 <path d="M88 184h184" stroke="#4b2e83" stroke-width="10" stroke-linecap="round"/>
                 <circle cx="296" cy="65" r="24" fill="${color}"/>
                 <path d="M286 64l8 8 16-18" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>`;
+    }
+
+    if (isInstrument) {
+        return `
+            <svg viewBox="0 0 360 230" role="img" aria-label="${product.name} instrument image">
+                <defs>
+                    <linearGradient id="instrument-${safeId}" x1="0" x2="1"><stop stop-color="#11131a"/><stop offset="1" stop-color="#2d2b36"/></linearGradient>
+                    <filter id="instrument-shadow-${safeId}" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#12051f" flood-opacity=".24"/></filter>
+                </defs>
+                <rect x="72" y="54" width="216" height="126" rx="18" fill="url(#instrument-${safeId})" filter="url(#instrument-shadow-${safeId})"/>
+                <rect x="94" y="76" width="104" height="58" rx="8" fill="#f6f3fb"/>
+                <rect x="108" y="88" width="76" height="34" rx="4" fill="#202535"/>
+                <rect x="214" y="78" width="48" height="18" rx="5" fill="${color}"/>
+                <circle cx="224" cy="126" r="9" fill="#d8d2e4"/>
+                <circle cx="252" cy="126" r="9" fill="#d8d2e4"/>
+                <path d="M94 157h168" stroke="${color}" stroke-width="8" stroke-linecap="round"/>
+                <path d="M76 70l-24 14v70l24 14Z" fill="${color}" opacity=".82"/>
             </svg>`;
     }
 
