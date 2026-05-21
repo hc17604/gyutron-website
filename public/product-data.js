@@ -434,6 +434,177 @@ const GYUTRON_PRODUCTS = {
                 image: "product-images/gy-vc8.png",
                 specs: { Cameras: "Up to 8 devices", CPU: "Industrial AI module", Network: "PROFINET / EtherNet/IP", Storage: "512 GB option" },
                 tags: ["Multi-camera", "Recipes", "Edge AI"]
+            },
+            {
+                name: "GY-V3D150",
+                type: "Wide-range 3D profile sensor",
+                summary: "Wider field 3D sensor for robot guidance, bead inspection, tray localization, and height-map inspection.",
+                kind: "camera",
+                image: "product-images/gy-v3d150.png",
+                specs: { Profile: "Blue laser triangulation", Range: "150 mm class", Points: "2048 profile points", Rating: "IP65" },
+                tags: ["3D profile", "Wide range", "Robot cells"]
+            },
+            {
+                name: "GY-VX12",
+                type: "AI vision processor",
+                summary: "Rack-style processing unit for multi-camera AI inspection, image archiving, and high-throughput production lines.",
+                kind: "camera",
+                image: "product-images/gy-vx12.png",
+                specs: { Cameras: "Up to 12 streams", AI: "Industrial inference engine", Network: "2.5GigE / PROFINET", Storage: "2 TB option" },
+                tags: ["AI processor", "Rack mount", "Multi-camera"]
+            },
+            {
+                name: "GY-VIO16",
+                type: "Vision I/O expansion module",
+                summary: "Field I/O module for lighting triggers, encoder signals, reject gates, and inspection-cell synchronization.",
+                kind: "camera",
+                image: "product-images/gy-vio16.png",
+                specs: { "I/O": "16 digital inputs / outputs", Timing: "10 us trigger path", Network: "EtherCAT / Ethernet", Rating: "IP67" },
+                tags: ["Trigger I/O", "Encoder sync", "Cell wiring"]
+            },
+            {
+                name: "GY-VFG4",
+                type: "Industrial frame grabber",
+                summary: "Frame-grabber module for high-bandwidth line-scan and specialty camera acquisition in inspection PCs.",
+                kind: "camera",
+                image: "product-images/gy-vfg4.png",
+                specs: { Channels: "4 camera inputs", Bus: "PCIe x8", Throughput: "Up to 6.4 GB/s", SDK: "C / Python / .NET" },
+                tags: ["Frame grabber", "Line scan", "High bandwidth"]
+            },
+            {
+                name: "GY-VRG200",
+                type: "Robot guidance 3D module",
+                summary: "Compact 3D camera module for pick localization, robot path correction, bin edge finding, and fixture-free loading.",
+                kind: "camera",
+                image: "product-images/gy-vrg200.png",
+                specs: { Mode: "3D + 2D acquisition", Range: "200 mm working class", Interface: "GigE Vision + I/O", Rating: "IP65" },
+                tags: ["Robot guidance", "3D locate", "Flexible cells"]
+            },
+            {
+                name: "GY-CR120",
+                type: "Compact fixed code reader",
+                summary: "Small fixed reader for label checks, carton tracking, component traceability, and tight machine mounting.",
+                kind: "camera",
+                image: "product-images/gy-cr120.png",
+                specs: { Codes: "1D / 2D", Sensor: "1.2 MP global shutter", Illumination: "White LED", Rating: "IP65" },
+                tags: ["Compact reader", "Traceability", "White LED"]
+            },
+            {
+                name: "GY-CR520 DPM",
+                type: "DPM fixed code reader",
+                summary: "High-contrast reader for etched, laser-marked, dot-peen, and low-contrast codes on metal or plastic parts.",
+                kind: "camera",
+                image: "product-images/gy-cr520-dpm.png",
+                specs: { Codes: "DPM / QR / Data Matrix", Lighting: "White + polarizer", Lens: "Autofocus option", Rating: "IP67" },
+                tags: ["DPM", "Low contrast", "Manufacturing"]
+            },
+            {
+                name: "GY-CR720 Conveyor",
+                type: "High-speed code reader",
+                summary: "Reader module for conveyor, sortation, package verification, and fast moving traceability lines.",
+                kind: "camera",
+                image: "product-images/gy-cr720-conveyor.png",
+                specs: { Codes: "1D / 2D", Speed: "Up to 5 m/s", Field: "Wide-angle optics", Network: "Ethernet / RS-232" },
+                tags: ["Conveyor", "High speed", "Wide field"]
+            },
+            {
+                name: "GY-S300 DPM",
+                type: "DPM code scanner",
+                summary: "Scanner tuned for etched, dot-peen, low-contrast, and curved-surface industrial codes.",
+                kind: "scanner",
+                image: "product-images/gy-s300-dpm.png",
+                specs: { Scan: "DPM / 1D / 2D", Lighting: "White + polarizer", Codes: "Metal, plastic, labels", Rugged: "IP65 / 1.8 m drop" },
+                tags: ["DPM", "AI decode", "Manufacturing"]
+            },
+            {
+                name: "GY-CV220 Inline",
+                type: "Inline barcode verifier",
+                summary: "Inline grading station for print quality, DPM verification, packaging compliance, and audit records.",
+                kind: "camera",
+                image: "product-images/gy-cv220-inline.png",
+                specs: { Standards: "ISO / IEC grading", Codes: "1D / 2D / DPM", Light: "Calibrated white", Output: "PDF / CSV / API" },
+                tags: ["Code grading", "Inline QA", "Audit trail"]
+            },
+            {
+                name: "GY-RT800",
+                type: "Multi-camera reader module",
+                summary: "Tunnel-style reader module for multi-side package, tote, and tray code capture in logistics lines.",
+                kind: "camera",
+                image: "product-images/gy-rt800.png",
+                specs: { Readers: "4 synchronized imagers", Field: "Multi-side capture", Trigger: "Photoeye / encoder", Network: "Ethernet / API" },
+                tags: ["Tunnel read", "Logistics", "Multi-side"]
+            },
+            {
+                name: "GY-LR70",
+                type: "White ring light",
+                summary: "Compact ring light for lens-centered inspection, label checks, feature contrast, and small-part stations.",
+                kind: "camera",
+                image: "product-images/gy-lr70.png",
+                specs: { Lighting: "White LED", Diameter: "70 mm", Control: "Strobe / constant", Mount: "C-mount adapter" },
+                tags: ["Ring light", "White LED", "Lens mount"]
+            },
+            {
+                name: "GY-LB220",
+                type: "White bar light",
+                summary: "Linear bar light for edge definition, conveyor inspection, packaging checks, and controlled side illumination.",
+                kind: "camera",
+                image: "product-images/gy-lb220.png",
+                specs: { Lighting: "White LED", Length: "220 mm", Control: "PWM / strobe", Housing: "Finned aluminum" },
+                tags: ["Bar light", "Side lighting", "Fixture-ready"]
+            },
+            {
+                name: "GY-LDome120",
+                type: "Dome light",
+                summary: "Diffuse white dome light for reflective parts, curved surfaces, and low-glare vision inspection.",
+                kind: "camera",
+                image: "product-images/gy-ldome120.png",
+                specs: { Lighting: "Diffuse white", Diameter: "120 mm", Opening: "Camera center port", Housing: "Aluminum dome" },
+                tags: ["Dome", "Low glare", "Reflective parts"]
+            },
+            {
+                name: "GY-LBL150",
+                type: "White backlight panel",
+                summary: "Flat backlight for silhouette inspection, hole detection, outline measurement, and transparent-part checks.",
+                kind: "camera",
+                image: "product-images/gy-lbl150.png",
+                specs: { Lighting: "Diffuse white", Area: "150 x 120 mm", Control: "Constant / strobe", Housing: "Slim aluminum" },
+                tags: ["Backlight", "Silhouette", "Measurement"]
+            },
+            {
+                name: "GY-LCX60",
+                type: "Coaxial light module",
+                summary: "Coaxial illumination for flat reflective surfaces, print inspection, alignment marks, and low-shadow imaging.",
+                kind: "camera",
+                image: "product-images/gy-lcx60.png",
+                specs: { Lighting: "White coaxial", Aperture: "60 mm class", Control: "Strobe-ready", Mount: "C-mount path" },
+                tags: ["Coaxial", "Reflective parts", "Print check"]
+            },
+            {
+                name: "GY-LL300",
+                type: "High-output line light",
+                summary: "Long linear light for line-scan inspection, web materials, labels, film, and conveyor edge definition.",
+                kind: "camera",
+                image: "product-images/gy-ll300.png",
+                specs: { Lighting: "White LED line", Length: "300 mm", Control: "High-current strobe", Cooling: "Finned housing" },
+                tags: ["Line scan", "High output", "Web inspection"]
+            },
+            {
+                name: "GY-LC4",
+                type: "Four-channel strobe controller",
+                summary: "Lighting controller for synchronized strobes, intensity recipes, encoder timing, and multi-light stations.",
+                kind: "camera",
+                image: "product-images/gy-lc4.png",
+                specs: { Channels: "4 independent outputs", Timing: "1 us trigger resolution", Power: "24 VDC", Interface: "Ethernet / RS-485" },
+                tags: ["Strobe control", "Recipes", "Multi-light"]
+            },
+            {
+                name: "GY-OPT25",
+                type: "Telecentric optics module",
+                summary: "Telecentric lens module for dimensional inspection, low-distortion imaging, and repeatable measurement setups.",
+                kind: "camera",
+                image: "product-images/gy-opt25.png",
+                specs: { Optics: "25 mm class telecentric", Sensor: "Up to 2/3 inch", Distortion: "<0.08%", Mount: "C-mount" },
+                tags: ["Telecentric", "Metrology", "Low distortion"]
             }
         ]
     },
@@ -570,10 +741,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "vision",
         heroImage: "product-hero-smart-cameras-matrix.png",
         intro: "Vision controllers, 3D profile cameras, and line-scan systems for larger inspection cells and higher-complexity applications.",
-        panelMetric: "3 models",
-        panelText: "Multi-camera control, 3D profiling, and continuous line-scan inspection.",
-        sectionIntro: "This page now holds the vision products that are systems or advanced image-acquisition platforms, rather than compact single-purpose smart cameras.",
-        products: getProductsByName(["GY-VC8", "GY-V3D90", "GY-VL2048"])
+        panelMetric: "8 models",
+        panelText: "Vision controllers, 3D sensors, line-scan acquisition, I/O, frame-grabber, and robot guidance modules.",
+        sectionIntro: "This lineup supports more complete machine vision cells: acquisition, processing, 3D profiling, timing I/O, frame capture, and robot-guidance integration.",
+        products: getProductsByName(["GY-VC8", "GY-V3D90", "GY-V3D150", "GY-VL2048", "GY-VX12", "GY-VIO16", "GY-VFG4", "GY-VRG200"])
     },
     "code-reading-cameras": {
         eyebrow: "Machine Vision Systems",
@@ -582,22 +753,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "vision",
         heroImage: "product-hero-smart-cameras-matrix.png",
         intro: "Fixed and handheld image-based readers for barcode, QR, Data Matrix, DPM, and regulated traceability workflows.",
-        panelMetric: "3 models",
-        panelText: "Fixed code reader, industrial DPM scanner, and code-quality verification instrument.",
-        sectionIntro: "Traceability buyers think in terms of read rate, DPM capability, print quality, and records, so these products are grouped together even when form factors differ.",
-        products: [
-            ...getProductsByName(["GY-CR390"]),
-            {
-                name: "GY-S300 DPM",
-                type: "DPM code scanner",
-                summary: "Scanner tuned for etched, dot-peen, low-contrast, and curved-surface industrial codes.",
-                kind: "scanner",
-                image: "product-images/gy-s300-dpm.png",
-                specs: { Scan: "DPM / 1D / 2D", Lighting: "White + polarizer", Codes: "Metal, plastic, labels", Rugged: "IP65 / 1.8 m drop" },
-                tags: ["DPM", "AI decode", "Manufacturing"]
-            },
-            ...getProductsByName(["GY-CV100"])
-        ]
+        panelMetric: "8 models",
+        panelText: "Compact readers, DPM readers, high-speed conveyor readers, handheld DPM, inline verification, and tunnel capture.",
+        sectionIntro: "Traceability buyers think in terms of read rate, DPM capability, field of view, verification standards, and record output, so this category now covers both fixed readers and grading workflows.",
+        products: getProductsByName(["GY-CR120", "GY-CR390", "GY-CR520 DPM", "GY-CR720 Conveyor", "GY-S300 DPM", "GY-CV100", "GY-CV220 Inline", "GY-RT800"])
     },
     "vision-lighting": {
         eyebrow: "Machine Vision Systems",
@@ -606,38 +765,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "vision",
         heroImage: "product-hero-smart-cameras-matrix.png",
         intro: "White-light machine vision illumination accessories for stable imaging without color distortion or purple lighting effects.",
-        panelMetric: "3 models",
-        panelText: "Ring, bar, and dome lighting options for common inspection stations.",
-        sectionIntro: "Vision lighting is separated because lighting choice often determines image stability, defect contrast, and inspection repeatability.",
-        products: [
-            {
-                name: "GY-LR70",
-                type: "White ring light",
-                summary: "Compact ring light for lens-centered inspection, label checks, feature contrast, and small-part stations.",
-                kind: "camera",
-                image: "product-images/gy-lr70.png",
-                specs: { Lighting: "White LED", Diameter: "70 mm", Control: "Strobe / constant", Mount: "C-mount adapter" },
-                tags: ["Ring light", "White LED", "Lens mount"]
-            },
-            {
-                name: "GY-LB220",
-                type: "White bar light",
-                summary: "Linear bar light for edge definition, conveyor inspection, packaging checks, and controlled side illumination.",
-                kind: "camera",
-                image: "product-images/gy-lb220.png",
-                specs: { Lighting: "White LED", Length: "220 mm", Control: "PWM / strobe", Housing: "Finned aluminum" },
-                tags: ["Bar light", "Side lighting", "Fixture-ready"]
-            },
-            {
-                name: "GY-LDome120",
-                type: "Dome light",
-                summary: "Diffuse white dome light for reflective parts, curved surfaces, and low-glare vision inspection.",
-                kind: "camera",
-                image: "product-images/gy-ldome120.png",
-                specs: { Lighting: "Diffuse white", Diameter: "120 mm", Opening: "Camera center port", Housing: "Aluminum dome" },
-                tags: ["Dome", "Low glare", "Reflective parts"]
-            }
-        ]
+        panelMetric: "8 models",
+        panelText: "Ring, bar, dome, backlight, coaxial, line light, strobe controller, and telecentric optics modules.",
+        sectionIntro: "Vision lighting and optics determine image stability, defect contrast, and measurement repeatability, so this category now includes both illumination hardware and supporting optical accessories.",
+        products: getProductsByName(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LCX60", "GY-LL300", "GY-LC4", "GY-OPT25"])
     },
     "dimensional-gauges": {
         eyebrow: "Quality & Test Instruments",
