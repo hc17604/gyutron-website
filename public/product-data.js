@@ -729,10 +729,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "vision",
         heroImage: "product-hero-smart-cameras-matrix.png",
         intro: "2D smart cameras for full-frame inspection, assembly verification, metrology, guidance, and AI-assisted checks.",
-        panelMetric: "8 models",
-        panelText: "Compact, color, mono, AI, high-resolution, and high-speed area-scan options.",
-        sectionIntro: "Area-scan products are cameras that capture a full image frame. This lineup separates sensor class, speed, resolution, AI capability, and inspection role so buyers can shortlist models more realistically.",
-        products: getProductsByName(["GY-V120", "GY-V160 Compact", "GY-V240 Color", "GY-V280 AI", "GY-V320 Mono", "GY-V380 Pro", "GY-V500 HR", "GY-V640 HS"])
+        panelMetric: "9 models",
+        panelText: "Compact, color, mono, AI, high-resolution, high-speed, and telecentric imaging options.",
+        sectionIntro: "Area-scan products capture a full image frame, with supporting optics kept in the same imaging chain. This lineup separates sensor class, speed, resolution, AI capability, and inspection role so buyers can shortlist models more realistically.",
+        products: getProductsByName(["GY-V120", "GY-V160 Compact", "GY-V240 Color", "GY-V280 AI", "GY-V320 Mono", "GY-V380 Pro", "GY-V500 HR", "GY-V640 HS", "GY-OPT25"])
     },
     "smart-vision-sensors": {
         eyebrow: "Machine Vision Systems",
@@ -741,10 +741,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "vision",
         heroImage: "product-hero-smart-cameras-matrix.png",
         intro: "Vision controllers, 3D profile cameras, and line-scan systems for larger inspection cells and higher-complexity applications.",
-        panelMetric: "8 models",
-        panelText: "Vision controllers, 3D sensors, line-scan acquisition, I/O, frame-grabber, and robot guidance modules.",
-        sectionIntro: "This lineup supports more complete machine vision cells: acquisition, processing, 3D profiling, timing I/O, frame capture, and robot-guidance integration.",
-        products: getProductsByName(["GY-VC8", "GY-V3D90", "GY-V3D150", "GY-VL2048", "GY-VX12", "GY-VIO16", "GY-VFG4", "GY-VRG200"])
+        panelMetric: "9 models",
+        panelText: "Vision controllers, 3D sensors, line-scan acquisition, timing I/O, frame-grabber, strobe control, and robot guidance modules.",
+        sectionIntro: "This lineup supports more complete machine vision cells: acquisition, processing, 3D profiling, timing I/O, illumination triggering, frame capture, and robot-guidance integration.",
+        products: getProductsByName(["GY-VC8", "GY-V3D90", "GY-V3D150", "GY-VL2048", "GY-VX12", "GY-VIO16", "GY-LC4", "GY-VFG4", "GY-VRG200"])
     },
     "code-reading-cameras": {
         eyebrow: "Machine Vision Systems",
@@ -760,15 +760,15 @@ Object.assign(GYUTRON_PRODUCTS, {
     },
     "vision-lighting": {
         eyebrow: "Machine Vision Systems",
-        title: "Vision Lighting & Optics",
-        navLabel: "Vision Lighting & Optics",
+        title: "Vision Lighting",
+        navLabel: "Vision Lighting",
         navGroup: "vision",
         heroImage: "product-hero-smart-cameras-matrix.png",
         intro: "White-light machine vision illumination accessories for stable imaging without color distortion or purple lighting effects.",
-        panelMetric: "8 models",
-        panelText: "Ring, bar, dome, backlight, coaxial, line light, strobe controller, and telecentric optics modules.",
-        sectionIntro: "Vision lighting and optics determine image stability, defect contrast, and measurement repeatability, so this category now includes both illumination hardware and supporting optical accessories.",
-        products: getProductsByName(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LCX60", "GY-LL300", "GY-LC4", "GY-OPT25"])
+        panelMetric: "6 models",
+        panelText: "Ring, bar, dome, backlight, coaxial, and line-light illumination products.",
+        sectionIntro: "Vision lighting products determine image stability, defect contrast, and measurement repeatability. This category now keeps only illumination hardware, while controllers and optics live with the broader vision system categories.",
+        products: getProductsByName(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LCX60", "GY-LL300"])
     },
     "dimensional-gauges": {
         eyebrow: "Quality & Test Instruments",

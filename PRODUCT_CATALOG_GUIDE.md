@@ -11,7 +11,7 @@ Current product groups:
 
 - `rugged-pda`: Android PDA, RFID Handhelds, Barcode Scanners, Request Specification.
 - `sensors`: Presence & Object Detection, Distance & Position, Process & Condition.
-- `vision`: Smart & Area Scan Cameras, Controllers & 3D Vision, Code Reading & Verification, Vision Lighting & Optics.
+- `vision`: Smart & Area Scan Cameras, Controllers & 3D Vision, Code Reading & Verification, Vision Lighting.
 - `quality`: Dimensional Gauges, Surface Inspection, Portable Testers, Calibration Tools.
 
 Do not expose secondary product-line overview pages in product-page tabs. If a secondary entry is needed for an old URL, set `redirectTo` and keep the actual products inside the focused tertiary categories only.
