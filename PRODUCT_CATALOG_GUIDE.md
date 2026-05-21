@@ -22,4 +22,5 @@ Product image standards:
 - Keep images within the same product line on a consistent catalog canvas, preferably the same aspect ratio, white background, product direction, visual scale, and baseline.
 - Check product-line pages as a grid before committing. If one image feels larger, smaller, rotated differently, or cropped differently, normalize the asset itself instead of relying only on CSS.
 - Remove stray generated edges, partial objects, dirty marks, and excessive white margins before publishing. Wide controller modules may stay physically wide, but they still need balanced scale and clean centering inside the card.
+- Do not use flat programmatic drawings, icon-like mockups, or simplified vector-style product art for product cards. Product images must look like credible industrial catalog photography or realistic 3D product renders.
 - Do not reuse the same product image for different models unless the page explicitly describes a configuration variant.
