@@ -337,6 +337,24 @@ const GYUTRON_PRODUCTS = {
                 tags: ["2D inspection", "Teach setup", "White light"]
             },
             {
+                name: "GY-V160 Compact",
+                type: "Compact area scan camera",
+                summary: "Small-format industrial camera for tight machine spaces, fixture checks, part presence, and label verification.",
+                kind: "camera",
+                image: "product-images/gy-v160-compact.png",
+                specs: { Sensor: "1.6 MP global shutter", Lens: "C-mount", Interface: "GigE + trigger I/O", Rating: "IP65 metal" },
+                tags: ["Compact body", "Global shutter", "Fixture-ready"]
+            },
+            {
+                name: "GY-V240 Color",
+                type: "Color inspection camera",
+                summary: "Color area camera for packaging, label print, assembly color checks, and mixed-product verification.",
+                kind: "camera",
+                image: "product-images/gy-v240-color.png",
+                specs: { Sensor: "2.4 MP color CMOS", Lens: "C-mount / liquid lens option", Interface: "GigE Vision", Rating: "IP65" },
+                tags: ["Color inspection", "White light", "Label checks"]
+            },
+            {
                 name: "GY-V280 AI",
                 type: "AI vision sensor",
                 summary: "Embedded AI inspection camera for defect detection, classification, OCR, and variable part appearance.",
@@ -346,6 +364,15 @@ const GYUTRON_PRODUCTS = {
                 tags: ["AI tools", "OCR", "Defects"]
             },
             {
+                name: "GY-V320 Mono",
+                type: "Monochrome area scan camera",
+                summary: "High-contrast monochrome camera for metrology, edge detection, alignment, and feature inspection.",
+                kind: "camera",
+                image: "product-images/gy-v320-mono.png",
+                specs: { Sensor: "3.2 MP mono global shutter", Pixel: "3.45 um", Interface: "GigE / strobe I/O", Rating: "IP65" },
+                tags: ["Mono sensor", "Edge contrast", "Measurement"]
+            },
+            {
                 name: "GY-V380 Pro",
                 type: "High-speed smart camera",
                 summary: "Fast embedded vision system for assembly verification, metrology, guidance, and line-side quality control.",
@@ -353,6 +380,24 @@ const GYUTRON_PRODUCTS = {
                 image: "product-images/gy-v380-pro.png",
                 specs: { Sensor: "5 MP global shutter", Speed: "Up to 90 fps", Interface: "GigE / PROFINET", Rating: "IP67" },
                 tags: ["High speed", "PLC ready", "Metrology"]
+            },
+            {
+                name: "GY-V500 HR",
+                type: "High-resolution area camera",
+                summary: "High-resolution inspection camera for small defects, fine print, dense labels, and precision assembly checks.",
+                kind: "camera",
+                image: "product-images/gy-v500-hr.png",
+                specs: { Sensor: "5.0 MP global shutter", Speed: "Up to 72 fps", Interface: "GigE Vision / USB3 option", Rating: "IP65" },
+                tags: ["High resolution", "Fine detail", "Print quality"]
+            },
+            {
+                name: "GY-V640 HS",
+                type: "High-speed area scan camera",
+                summary: "Fast area-scan model for moving parts, conveyor inspection, pick verification, and motion-sensitive capture.",
+                kind: "camera",
+                image: "product-images/gy-v640-hs.png",
+                specs: { Sensor: "6.4 MP global shutter", Speed: "Up to 118 fps", Interface: "2.5GigE + encoder", Rating: "IP65" },
+                tags: ["High speed", "Conveyor", "Encoder sync"]
             },
             {
                 name: "GY-V3D90",
@@ -513,10 +558,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "vision",
         heroImage: "product-hero-smart-cameras-matrix.png",
         intro: "2D smart cameras for full-frame inspection, assembly verification, metrology, guidance, and AI-assisted checks.",
-        panelMetric: "3 models",
-        panelText: "Compact, AI-assisted, and high-speed area-scan options.",
-        sectionIntro: "Area-scan products are cameras that capture a full image frame. Controllers and lighting are now kept in their own more relevant pages.",
-        products: getProductsByName(["GY-V120", "GY-V280 AI", "GY-V380 Pro"])
+        panelMetric: "8 models",
+        panelText: "Compact, color, mono, AI, high-resolution, and high-speed area-scan options.",
+        sectionIntro: "Area-scan products are cameras that capture a full image frame. This lineup separates sensor class, speed, resolution, AI capability, and inspection role so buyers can shortlist models more realistically.",
+        products: getProductsByName(["GY-V120", "GY-V160 Compact", "GY-V240 Color", "GY-V280 AI", "GY-V320 Mono", "GY-V380 Pro", "GY-V500 HR", "GY-V640 HS"])
     },
     "smart-vision-sensors": {
         eyebrow: "Machine Vision Systems",
