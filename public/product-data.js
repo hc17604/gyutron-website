@@ -465,6 +465,9 @@ function getProductsByName(names) {
 GYUTRON_PRODUCTS["industrial-sensors"].navGroup = "sensors";
 GYUTRON_PRODUCTS["smart-cameras"].navGroup = "vision";
 GYUTRON_PRODUCTS["inspection-instruments"].navGroup = "quality";
+GYUTRON_PRODUCTS["industrial-sensors"].redirectTo = "proximity-sensors";
+GYUTRON_PRODUCTS["smart-cameras"].redirectTo = "area-scan-cameras";
+GYUTRON_PRODUCTS["inspection-instruments"].redirectTo = "dimensional-gauges";
 
 Object.assign(GYUTRON_PRODUCTS, {
     "proximity-sensors": {
@@ -711,7 +714,13 @@ Object.assign(GYUTRON_PRODUCTS, {
 
 const CATEGORY_GROUPS = {
     "rugged-pda": ["android-pda", "rfid-handhelds", "barcode-scanners", "request-specification"],
-    "sensors": ["industrial-sensors", "proximity-sensors", "laser-measurement", "environmental-sensing"],
-    "vision": ["smart-cameras", "area-scan-cameras", "smart-vision-sensors", "code-reading-cameras", "vision-lighting"],
-    "quality": ["inspection-instruments", "dimensional-gauges", "surface-inspection", "portable-testers", "calibration-tools"]
+    "sensors": ["proximity-sensors", "laser-measurement", "environmental-sensing"],
+    "vision": ["area-scan-cameras", "smart-vision-sensors", "code-reading-cameras", "vision-lighting"],
+    "quality": ["dimensional-gauges", "surface-inspection", "portable-testers", "calibration-tools"]
 };
+
+["industrial-sensors", "smart-cameras", "inspection-instruments"].forEach((key) => {
+    GYUTRON_PRODUCTS[key].products = [];
+    GYUTRON_PRODUCTS[key].panelMetric = "Redirect";
+    GYUTRON_PRODUCTS[key].panelText = "This product line is organized into focused tertiary categories.";
+});

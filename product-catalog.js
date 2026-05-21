@@ -105,6 +105,11 @@ function createProductArt(product) {
 
 function renderCategoryPage(categoryKey) {
     const category = GYUTRON_PRODUCTS[categoryKey] || GYUTRON_PRODUCTS["android-pda"];
+    if (category.redirectTo) {
+        window.location.replace(`${category.redirectTo}.html`);
+        return;
+    }
+
     const totalPages = Math.ceil(category.products.length / PRODUCTS_PER_PAGE);
     activePage = Math.min(activePage, totalPages);
     const pageStart = (activePage - 1) * PRODUCTS_PER_PAGE;
