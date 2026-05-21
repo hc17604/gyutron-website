@@ -5,7 +5,7 @@ This site keeps product content separate from page rendering.
 - Edit product names, category titles, descriptions, specs, and category membership in `product-data.js`.
 - Edit product-card rendering, pagination, comparison tables, and navigation behavior in `product-catalog.js`.
 - The live Cloudflare asset directory is `public/`. After changing static files, sync the matching files into `public/` before deploying.
-- Cloudflare must never deploy the repository root. Use `wrangler deploy` for Workers, or set Cloudflare Pages build output directory to `public`. Do not use `.` or `/opt/buildhome/repo` as the assets/output directory.
+- Cloudflare must never deploy the repository root. Use `wrangler deploy --config wrangler.toml` for Workers, or set Cloudflare Pages build output directory to `public`. Do not use `.` or `/opt/buildhome/repo` as the assets/output directory.
 - Product category pages are generated from `body data-category="..."`. The page filename should match the category key, for example `vision-lighting.html` uses `data-category="vision-lighting"`.
 
 Current product groups:

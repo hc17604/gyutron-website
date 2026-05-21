@@ -10,16 +10,21 @@ Use the checked-in Wrangler config:
 npx wrangler deploy
 ```
 
-`wrangler.jsonc` sets:
+`wrangler.toml` sets:
 
-```json
-"assets": {
-  "directory": "./public",
-  "binding": "ASSETS"
-}
+```toml
+[assets]
+directory = "./public"
+binding = "ASSETS"
 ```
 
 Do not use `--assets .`, `--assets /opt/buildhome/repo`, or any deploy command that points assets at the repository root. That can upload `.git/`, source files, and temporary files.
+
+If Cloudflare still logs `assets directory /opt/buildhome/repo`, its dashboard deployment settings are overriding or ignoring the repo config. Change the deploy command to:
+
+```bash
+npx wrangler deploy --config wrangler.toml
+```
 
 ## Cloudflare Pages fallback
 
