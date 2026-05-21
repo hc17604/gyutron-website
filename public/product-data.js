@@ -620,6 +620,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Industrial gloss meter",
                 summary: "Portable gloss meter for coating, molded-part, painted-metal, and finished-surface consistency checks.",
                 kind: "instrument",
+                image: "product-images/gy-gl20.png",
                 specs: { Geometry: "60 degree", Range: "0 to 1000 GU", Repeatability: "+/- 0.2 GU", Data: "USB / Bluetooth" },
                 tags: ["Gloss", "Coatings", "Finish control"]
             },
@@ -628,6 +629,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Coating thickness tester",
                 summary: "Handheld coating gauge for paint, plating, anodizing, and protective coating inspection on metal parts.",
                 kind: "instrument",
+                image: "product-images/gy-ct45.png",
                 specs: { Range: "0 to 1500 um", Substrate: "Ferrous / non-ferrous", Probe: "Integrated", Data: "CSV export" },
                 tags: ["Coating", "Paint", "Incoming QC"]
             }
@@ -650,6 +652,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Loop signal tester",
                 summary: "Portable loop calibrator for checking 4-20 mA sensor signals, control loops, and cabinet commissioning work.",
                 kind: "instrument",
+                image: "product-images/gy-lt40.png",
                 specs: { Signal: "4-20 mA source / measure", Power: "24 V loop supply", Accuracy: "0.05% class", Display: "Backlit LCD" },
                 tags: ["Loop check", "Commissioning", "Maintenance"]
             },
@@ -658,6 +661,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Thermal spot tester",
                 summary: "Non-contact temperature tester for cabinets, motors, bearings, and quick maintenance diagnostics.",
                 kind: "instrument",
+                image: "product-images/gy-th90.png",
                 specs: { Range: "-30 C to 650 C", Optics: "12:1", Emissivity: "Adjustable", Data: "Bluetooth option" },
                 tags: ["Thermal", "Maintenance", "Cabinet checks"]
             }
