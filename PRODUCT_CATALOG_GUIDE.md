@@ -15,3 +15,9 @@ Current product groups:
 - `quality`: Dimensional Gauges, Surface Inspection, Portable Testers, Calibration Tools.
 
 Do not expose secondary product-line overview pages in product-page tabs. If a secondary entry is needed for an old URL, set `redirectTo` and keep the actual products inside the focused tertiary categories only.
+
+Product image standards:
+
+- Keep images within the same product line on a consistent catalog canvas, preferably the same aspect ratio, white background, product direction, visual scale, and baseline.
+- Check product-line pages as a grid before committing. If one image feels larger, smaller, rotated differently, or cropped differently, normalize the asset itself instead of relying only on CSS.
+- Do not reuse the same product image for different models unless the page explicitly describes a configuration variant.
