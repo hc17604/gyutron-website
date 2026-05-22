@@ -7,6 +7,7 @@ node_modules/**
 .env*
 .wrangler
 .wrangler/**
+!.wrangler/deploy/config.json
 tmp-*
 *.tmp
 src

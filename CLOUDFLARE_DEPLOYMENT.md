@@ -26,6 +26,8 @@ If Cloudflare still logs `assets directory /opt/buildhome/repo`, its dashboard d
 npx wrangler deploy --config wrangler.toml
 ```
 
+The repo also includes `.wrangler/deploy/config.json` so the plain dashboard command `npx wrangler deploy` is redirected to `wrangler.toml`.
+
 ## Cloudflare Pages fallback
 
 If deploying as a plain static Pages project instead of Workers, use:
