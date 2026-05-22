@@ -1,0 +1,11 @@
+{
+  "name": "gyutron-website",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "deploy": "wrangler deploy --config wrangler.toml --assets ./public/"
+  },
+  "devDependencies": {
+    "wrangler": "4.93.1"
+  }
+}

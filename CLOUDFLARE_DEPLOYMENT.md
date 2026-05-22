@@ -7,7 +7,7 @@ This site must deploy from the clean `public/` asset directory, not from the rep
 Use the checked-in Wrangler config:
 
 ```bash
-npx wrangler deploy
+npm run deploy
 ```
 
 `wrangler.toml` sets:
@@ -20,13 +20,25 @@ binding = "ASSETS"
 
 Do not use `--assets .`, `--assets /opt/buildhome/repo`, or any deploy command that points assets at the repository root. That can upload `.git/`, source files, and temporary files.
 
-If Cloudflare still logs `assets directory /opt/buildhome/repo`, its dashboard deployment settings are overriding or ignoring the repo config. Change the deploy command to:
+If Cloudflare logs `assets directory /opt/buildhome/repo`, its dashboard deployment settings are not applying the repository config and Wrangler is auto-detecting the repository root as the asset directory. Change the Worker Build deploy command to one of these:
+
+```bash
+npm run deploy
+```
+
+or:
 
 ```bash
 npx wrangler deploy --config wrangler.toml
 ```
 
-The repo also includes `.wrangler/deploy/config.json` so the plain dashboard command `npx wrangler deploy` is redirected to `wrangler.toml`.
+The safest explicit command is:
+
+```bash
+npx wrangler deploy --config wrangler.toml --assets ./public/
+```
+
+The repo also includes `.wrangler/deploy/config.json` so the plain dashboard command `npx wrangler deploy` can be redirected to `wrangler.toml`, but the dashboard command with `--assets ./public/` is the most reliable because it bypasses Wrangler auto-detection entirely.
 
 ## Cloudflare Pages fallback
 
