@@ -564,10 +564,10 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-LBL150",
                 type: "White backlight panel",
-                summary: "Flat backlight for silhouette inspection, hole detection, outline measurement, and transparent-part checks.",
+                summary: "Diffuse framed backlight for silhouette inspection, hole detection, outline measurement, and transparent-part checks.",
                 kind: "camera",
                 image: "product-images/gy-lbl150.png",
-                specs: { Lighting: "Diffuse white", Area: "150 x 120 mm", Control: "Constant / strobe", Housing: "Slim aluminum" },
+                specs: { Lighting: "Diffuse white", Area: "150 x 120 mm", Control: "Constant / strobe", Housing: "Finned aluminum frame" },
                 tags: ["Backlight", "Silhouette", "Measurement"]
             },
             {
@@ -765,10 +765,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "vision",
         heroImage: "product-hero-smart-cameras-matrix.png",
         intro: "White-light machine vision illumination accessories for stable imaging without color distortion or purple lighting effects.",
-        panelMetric: "6 models",
-        panelText: "Ring, bar, dome, backlight, coaxial, and line-light illumination products.",
+        panelMetric: "5 models",
+        panelText: "Ring, bar, dome, backlight, and line-light illumination products.",
         sectionIntro: "Vision lighting products determine image stability, defect contrast, and measurement repeatability. This category now keeps only illumination hardware, while controllers and optics live with the broader vision system categories.",
-        products: getProductsByName(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LCX60", "GY-LL300"])
+        products: getProductsByName(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LL300"])
     },
     "dimensional-gauges": {
         eyebrow: "Quality & Test Instruments",
