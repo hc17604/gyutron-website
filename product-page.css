@@ -878,7 +878,8 @@ a {
     }
 
     .container {
-        width: min(100% - 28px, 1180px);
+        max-width: 1180px;
+        width: calc(100% - 28px);
     }
 
     .top-strip,
@@ -925,8 +926,30 @@ a {
         padding: 62px 0 42px;
     }
 
+    .product-hero-grid,
+    .hero-copy,
+    .hero-panel {
+        min-width: 0;
+    }
+
+    .product-hero-grid {
+        max-width: calc(100vw - 28px);
+    }
+
     .product-hero h1 {
         font-size: 40px;
+        max-width: calc(100vw - 28px);
+        overflow-wrap: break-word;
+    }
+
+    .product-hero p,
+    .hero-panel p {
+        max-width: calc(100vw - 28px);
+        overflow-wrap: break-word;
+    }
+
+    .hero-panel {
+        max-width: calc(100vw - 28px);
     }
 
     .product-grid,
