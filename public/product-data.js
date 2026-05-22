@@ -228,7 +228,7 @@ const GYUTRON_PRODUCTS = {
         eyebrow: "Sensing & I/O",
         title: "Sensing & I/O",
         navLabel: "Sensing & I/O",
-        heroImage: "product-hero-proximity-sensors-matrix.png",
+        heroImage: "product-hero-industrial-sensors-matrix.png",
         intro: "Industrial sensing, measurement, safety, and IO hardware for machine builders and factory automation teams.",
         panelMetric: "9 models",
         panelText: "Presence detection, distance measurement, process monitoring, safety, and IO-Link connectivity.",
