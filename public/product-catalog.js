@@ -187,8 +187,8 @@ function renderCategoryPage(categoryKey) {
         <thead><tr><th>Model</th><th>Type</th><th>Core capability</th><th>Rugged rating</th></tr></thead>
         <tbody>
             ${category.products.map((product) => {
-                const capability = product.specs.Scan || product.specs.RFID || product.specs.Device || product.specs.Codes || product.specs.Detection || product.specs.Measurement || product.specs.Sensor || product.specs.Range || product.specs.Parameter || product.specs.Payload || product.specs.Vision || product.specs.CPU || product.specs.Protocols || product.specs.Channels || product.specs.Slots || product.specs.Connector || product.specs.Focal || product.specs.Fit || "Industrial automation";
-                const rugged = product.specs.Rugged || product.specs.Temp || product.specs.Lead || product.specs.Housing || product.specs.Rating || product.specs.Output || product.specs.Data || product.specs.Safety || product.specs.Interface || product.specs.Mount || product.specs.Power || product.specs.Use || "Project-based";
+                const capability = product.specs.Scan || product.specs.RFID || product.specs.Device || product.specs.Codes || product.specs.Detection || product.specs.Measurement || product.specs.Sensor || product.specs.Range || product.specs.Parameter || "Industrial data capture";
+                const rugged = product.specs.Rugged || product.specs.Temp || product.specs.Lead || product.specs.Housing || product.specs.Rating || product.specs.Output || product.specs.Data || "Project-based";
                 return `<tr><td>${product.name}</td><td>${product.type}</td><td>${capability}</td><td>${rugged}</td></tr>`;
             }).join("")}
         </tbody>
