@@ -72,10 +72,18 @@
         }).filter((item) => item.label);
     }
 
-    function makeIcon(className) {
+    function makeChevronIcon() {
         const icon = document.createElement("i");
-        icon.className = className;
+        icon.className = "fa-solid fa-chevron-right";
         icon.setAttribute("aria-hidden", "true");
+        return icon;
+    }
+
+    function makeMenuIcon() {
+        const icon = document.createElement("span");
+        icon.className = "mobile-menu-icon";
+        icon.setAttribute("aria-hidden", "true");
+        icon.innerHTML = "<span></span><span></span><span></span>";
         return icon;
     }
 
@@ -122,7 +130,7 @@
         toggle.type = "button";
         toggle.setAttribute("aria-expanded", "false");
         toggle.setAttribute("aria-controls", "mobile-navigation-panel");
-        toggle.append("Menu", makeIcon("fa-solid fa-bars"));
+        toggle.append("Menu", makeMenuIcon());
         brand.insertAdjacentElement("afterend", toggle);
 
         const panel = document.createElement("aside");
@@ -181,7 +189,7 @@
                     const button = document.createElement("button");
                     button.className = "mobile-nav-row";
                     button.type = "button";
-                    button.append(createTextBlock(item), makeIcon("fa-solid fa-chevron-right"));
+                    button.append(createTextBlock(item), makeChevronIcon());
                     button.addEventListener("click", () => {
                         stack.push({ title: item.label, items: item.children });
                         render();
@@ -191,7 +199,7 @@
                     const link = document.createElement("a");
                     link.className = `mobile-nav-link${item.quick ? " mobile-nav-quick" : ""}`;
                     link.href = item.href || "#";
-                    link.append(createTextBlock(item), makeIcon("fa-solid fa-arrow-right"));
+                    link.append(createTextBlock(item), makeChevronIcon());
                     link.addEventListener("click", closeMenu);
                     li.appendChild(link);
                 }
