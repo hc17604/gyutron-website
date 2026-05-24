@@ -207,18 +207,27 @@ body.mobile-nav-open .mobile-nav-panel {
     }
 
     .site-header .container {
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        justify-content: stretch;
+        padding: 0 14px;
+        width: 100%;
     }
 
     .site-header .brand-logo {
-        max-width: min(190px, calc(100vw - 130px));
+        max-width: min(190px, calc(100vw - 128px));
     }
 
     .mobile-menu-toggle {
         height: 40px;
         font-size: 11px;
+        min-width: 88px;
         padding: 0 10px;
-        position: static;
+        position: absolute;
+        left: min(calc(100vw - 102px), 288px);
+        right: auto;
+        top: 13px;
+        justify-self: end;
     }
 
     .mobile-menu-icon {

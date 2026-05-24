@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GYUTRON Android PDA | Rugged PDA Terminals</title>
-    <meta name="description" content="GYUTRON Android PDA terminals for industrial scanning, warehouse mobility, manufacturing, logistics, and field service.">
+    <title>GYUTRON Automated Vision Inspection | Industrial Quality Solutions</title>
+    <meta name="description" content="GYUTRON automated vision inspection solutions combine smart cameras, sensors, lighting, barcode verification, edge control, and traceability for modern manufacturing quality teams.">
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon-32x32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -12,8 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="product-page.css">
     <link rel="stylesheet" href="mobile-navigation.css">
+    <link rel="stylesheet" href="solution-page.css">
 </head>
-<body data-category="android-pda">
+<body>
     <div class="top-strip">
         <div class="container">
             <span><i class="fa-solid fa-location-crosshairs"></i> Robotics, vision, sensors, and rugged computing for industrial teams</span>
@@ -216,17 +217,189 @@
     </header>
 
     <main>
-        <section class="product-hero"><div class="container"><div class="product-hero-grid" data-product-hero></div></div></section>
-        <nav class="category-nav"><div class="container" data-category-nav></div></nav>
-        <section class="section"><div class="container"><div class="section-head"><div><span class="eyebrow">Product Line</span><h2 data-section-title></h2></div><p data-section-intro></p></div><div class="product-grid" data-product-grid></div><div class="pagination" data-pagination hidden></div></div></section>
-        <section class="compare-band"><div class="container"><span class="eyebrow">Model Comparison</span><h2>Fast shortlist for industrial buying teams.</h2><div class="compare-scroll"><table class="compare-table" data-compare-table></table></div></div></section>
-        <section class="cta-band"><div class="container"><div class="cta-inner"><div><h2>Need a sample, quotation, or OEM version?</h2><p>Send your application, environment, scan distance, network requirement, and target quantity. GYUTRON will recommend a hardware stack and pilot path.</p></div><a class="button button-primary" href="contact-sales.html">Contact Sales <i class="fa-solid fa-arrow-right"></i></a></div></div></section>
+        <section class="solution-hero">
+            <div class="container">
+                <div class="solution-hero-grid">
+                    <div>
+                        <span class="eyebrow">Solutions / Quality Inspection</span>
+                        <h1>Automated Vision Inspection</h1>
+                        <p>GYUTRON combines smart cameras, white-light vision lighting, industrial sensors, barcode verification, edge control, and quality data workflows into inspection systems that help factories find defects earlier and protect downstream processes.</p>
+                    </div>
+                    <aside class="solution-panel">
+                        <span>Primary solution</span>
+                        <strong>Vision + Data</strong>
+                        <p>Built for inline inspection, assembly verification, traceability, and repeatable quality evidence across production lines.</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <nav class="solution-tabs" aria-label="Solution page sections">
+            <div class="container">
+                <a href="#capabilities">Capabilities</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#workflow">Workflow</a>
+                <a href="#deployment">Deployment</a>
+            </div>
+        </nav>
+
+        <section class="solution-section" id="capabilities">
+            <div class="container">
+                <div class="solution-head">
+                    <div>
+                        <span class="eyebrow">Inspection Coverage</span>
+                        <h2>From visual checks to traceable quality decisions.</h2>
+                    </div>
+                    <p>Inspired by advanced industrial inspection ecosystems, this solution positions GYUTRON as more than a hardware supplier: cameras, sensing, code reading, lighting, controllers, and quality records are planned as one operational system.</p>
+                </div>
+                <div class="capability-grid">
+                    <article class="capability-card">
+                        <i class="fa-solid fa-camera-retro"></i>
+                        <h3>2D / 3D Optical Inspection</h3>
+                        <p>Detect missing parts, wrong orientation, assembly errors, surface issues, height variance, and visible defects at production speed.</p>
+                    </article>
+                    <article class="capability-card">
+                        <i class="fa-solid fa-barcode"></i>
+                        <h3>Code Reading &amp; Verification</h3>
+                        <p>Read barcodes and DPM codes, validate labels, connect scan records to lots, and keep inspection evidence tied to each unit.</p>
+                    </article>
+                    <article class="capability-card">
+                        <i class="fa-solid fa-ruler-combined"></i>
+                        <h3>Dimensional &amp; Surface Quality</h3>
+                        <p>Use calibrated imaging, laser measurement, and inspection instruments for repeatable tolerance checks and appearance review.</p>
+                    </article>
+                    <article class="capability-card">
+                        <i class="fa-solid fa-robot"></i>
+                        <h3>Robotic Final Inspection</h3>
+                        <p>Combine robot movement, fixed vision, and guided inspection points for final assembly, packaging, and multi-side product review.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution-section dark" id="architecture">
+            <div class="container">
+                <div class="solution-head">
+                    <div>
+                        <span class="eyebrow">System Architecture</span>
+                        <h2>Inspection hardware connected to factory decisions.</h2>
+                    </div>
+                    <p>The architecture links image acquisition, sensor triggers, lighting control, edge analysis, PLC handshakes, and quality data capture so inspection results can stop defects before they travel downstream.</p>
+                </div>
+                <div class="architecture-grid">
+                    <div class="architecture-visual" aria-label="GYUTRON smart camera and inspection cell visual"></div>
+                    <div class="capability-grid">
+                        <article class="architecture-card">
+                            <h3>Acquire</h3>
+                            <p>Smart cameras, code readers, sensors, and stable white-light illumination capture reliable data at the inspection point.</p>
+                        </article>
+                        <article class="architecture-card">
+                            <h3>Analyze</h3>
+                            <p>Edge controllers and vision tools evaluate presence, position, dimensions, code quality, and surface conditions.</p>
+                        </article>
+                        <article class="architecture-card">
+                            <h3>Interlock</h3>
+                            <p>PLC signals, I/O modules, and robot or conveyor logic can reject, stop, route, or release units based on inspection outcomes.</p>
+                        </article>
+                        <article class="architecture-card">
+                            <h3>Record</h3>
+                            <p>Images, results, device events, and scan IDs can be structured for MES, WMS, dashboards, or customer quality reports.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution-section alt" id="workflow">
+            <div class="container">
+                <div class="solution-head">
+                    <div>
+                        <span class="eyebrow">Implementation Workflow</span>
+                        <h2>A practical path from pilot station to repeatable line deployment.</h2>
+                    </div>
+                    <p>GYUTRON solution work should start from the production problem, then map device choice, inspection logic, data interfaces, and operational handoff in a controlled sequence.</p>
+                </div>
+                <div class="workflow-grid">
+                    <article class="workflow-step">
+                        <i class="fa-solid fa-list-check"></i>
+                        <h3>Define Quality Gates</h3>
+                        <p>Clarify defect types, line speed, sample parts, reject logic, traceability records, and pass/fail ownership.</p>
+                    </article>
+                    <article class="workflow-step">
+                        <i class="fa-solid fa-sitemap"></i>
+                        <h3>Map Hardware Stack</h3>
+                        <p>Select cameras, lighting, sensors, scanners, edge controllers, mounting, and interfaces around the physical station.</p>
+                    </article>
+                    <article class="workflow-step">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h3>Validate &amp; Scale</h3>
+                        <p>Run pilot checks, tune thresholds, document repeatability, and prepare the same architecture for adjacent stations.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution-cta" id="deployment">
+            <div class="container">
+                <div class="solution-cta-inner">
+                    <div>
+                        <h2>Plan an inspection station with GYUTRON.</h2>
+                        <p>Share your part, defect examples, required throughput, lighting constraints, PLC/MES needs, and traceability goals. The GYUTRON team can recommend the right inspection stack and pilot route.</p>
+                    </div>
+                    <a class="button button-primary" href="contact-sales.html">Contact Sales <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
     </main>
     <footer class="footer"><div class="container"><div class="footer-grid"><div><h3>GYUTRON</h3><p>Industrial intelligent hardware for mobile data capture, RFID, machine vision, sensing, and connected automation.</p></div><div><h4>Products</h4><a href="android-pda.html">Android PDA</a><a href="rfid-handhelds.html">RFID Handhelds</a><a href="barcode-scanners.html">Barcode Scanners</a><a href="request-specification.html">Request Specification</a><a href="proximity-sensors.html">Sensing &amp; I/O</a><a href="area-scan-cameras.html">Machine Vision Systems</a><a href="dimensional-gauges.html">Quality &amp; Test Instruments</a></div><div><h4>Solutions</h4><a href="automated-vision-inspection.html">Automated Vision Inspection</a><a href="index.html#solutions">Electronics Manufacturing</a><a href="index.html#platform">Manufacturing Intelligence</a></div><div><h4>Contact</h4><a href="contact-sales.html">Contact Sales</a><a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a></div></div><div class="footer-bottom"><span>&copy; 2026 GYUTRON. All rights reserved.</span><span>Automation / Vision / Innovation</span></div></div></footer>
-    <script src="product-data.js"></script>
-    <script src="product-catalog.js"></script>
+    <script>
+        (() => {
+            const navItems = Array.from(document.querySelectorAll(".nav-item"));
+            const closeDelay = 520;
+            const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
+            const closeItem = (item) => {
+                window.clearTimeout(item.closeTimer);
+                item.closeTimer = window.setTimeout(() => {
+                    item.classList.remove("is-open");
+                    item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+                }, closeDelay);
+            };
+            const setActiveGroup = (groups, activeGroup) => groups.forEach((group) => group.classList.toggle("is-open", group === activeGroup));
+            const openItem = (item, groups) => {
+                navItems.forEach((otherItem) => {
+                    if (otherItem !== item) {
+                        window.clearTimeout(otherItem.closeTimer);
+                        otherItem.classList.remove("is-open");
+                        otherItem.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+                    }
+                });
+                window.clearTimeout(item.closeTimer);
+                item.classList.add("is-open");
+                if (groups.length && !groups.some((group) => group.classList.contains("is-open"))) setActiveGroup(groups, groups[0]);
+            };
+            navItems.forEach((item) => {
+                const menu = item.querySelector(".mega-menu");
+                if (!menu) return;
+                const groups = Array.from(item.querySelectorAll(".mega-link-group"));
+                const trigger = item.querySelector(".nav-trigger");
+                trigger?.addEventListener("click", (event) => {
+                    if (isTouchNavigation() && !item.classList.contains("is-open")) { event.preventDefault(); openItem(item, groups); }
+                });
+                item.addEventListener("pointerenter", () => openItem(item, groups));
+                item.addEventListener("pointerleave", () => closeItem(item));
+                menu.addEventListener("pointerenter", () => openItem(item, groups));
+                menu.addEventListener("pointerleave", () => closeItem(item));
+                groups.forEach((group) => {
+                    group.addEventListener("pointerenter", () => { openItem(item, groups); setActiveGroup(groups, group); });
+                    group.addEventListener("focusin", () => { openItem(item, groups); setActiveGroup(groups, group); });
+                });
+            });
+        })();
+    </script>
     <script src="mobile-navigation.js"></script>
 </body>
 </html>
+
+
 
 
