@@ -531,6 +531,18 @@
         .mega-compact .mega-link-group:focus-within .submenu {
             transform: translateX(0);
         }
+        .mega-menu:has(.mega-link-group:hover) .mega-link-group.is-open:not(:hover) .mega-link,
+        .mega-menu:has(.mega-link-group:focus-within) .mega-link-group.is-open:not(:focus-within) .mega-link {
+            background: transparent;
+            border-color: transparent;
+        }
+
+        .mega-menu:has(.mega-link-group:hover) .mega-link-group.is-open:not(:hover) .submenu,
+        .mega-menu:has(.mega-link-group:focus-within) .mega-link-group.is-open:not(:focus-within) .submenu {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(10px);
+        }
 
         .header-actions {
             align-items: center;
