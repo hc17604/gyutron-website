@@ -6,7 +6,7 @@
 - Check that header, logo, CTA buttons, hero text, product cards, ESG/resources cards, footer, and dropdown menus remain orderly at common widths: 1440px, 1024px, 768px, 430px, and 390px.
 - Prefer responsive grid/flex rules, constrained image dimensions, and earlier tablet breakpoints over simply shrinking text.
 - Keep GYUTRON brand text uppercase in visible copy, while preserving lowercase URLs, emails, and file paths.
-- Do not use AI-generated photos of people on the website. If a section needs people imagery, use credible real-world stock/editorial photos from a suitable public source and keep source URLs traceable.
+- Avoid fake-looking AI people photos. The user approved the current generated people imagery used in `nav-*.png` navigation assets because it does not read as obviously AI-generated; these approved nav assets may be reused.
 - Product catalog work must look rigorous and professional. Within the same product line, product images must use consistent canvas ratio, background, camera angle, subject scale, direction, alignment, and baseline before shipping.
 - Do not mix product photos with mismatched crops, inconsistent directions, random generated angles, or misleading repeated assets. Product model names, specs, and image assignments must read like a real industrial catalog.
 - Solutions navigation should frame GYUTRON as a system-level industrial solution provider. Keep the current Solutions taxonomy unless the user requests a global redesign: Automated Vision Inspection; Electronics & Semiconductor Manufacturing; Integrated Industrial Embedded Systems; Manufacturing Intelligence & Traceability; Warehouse & Field Operations; OEM / ODM Solution Programs.
