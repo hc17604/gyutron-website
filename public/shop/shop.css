@@ -90,9 +90,9 @@ textarea {
 }
 
 .site-header .container {
-    column-gap: 26px;
+    column-gap: clamp(26px, 3vw, 54px);
     display: grid;
-    grid-template-columns: 300px minmax(0, 1fr) max-content;
+    grid-template-columns: max-content minmax(0, 1fr) max-content;
     min-height: 82px;
 }
 
@@ -125,17 +125,26 @@ textarea {
 
 .nav {
     align-items: center;
-    display: flex;
+    display: grid;
     gap: 18px;
     font-size: 12px;
     font-weight: 900;
-    justify-content: flex-end;
+    grid-template-columns: max-content minmax(260px, 300px);
+    justify-content: space-between;
     letter-spacing: 0.08em;
     min-width: 0;
     text-transform: uppercase;
 }
 
-.nav a:hover {
+.nav-links {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    white-space: nowrap;
+}
+
+.nav a:hover,
+.nav-links a:hover {
     color: var(--purple);
 }
 
@@ -970,7 +979,8 @@ h1 {
 
     .nav {
         order: 2;
-        justify-content: flex-start;
+        grid-template-columns: max-content minmax(260px, 300px);
+        justify-content: space-between;
         gap: 16px;
         width: 100%;
     }
@@ -1038,7 +1048,7 @@ h1 {
         width: 100%;
     }
 
-    .nav > a {
+    .nav-links {
         display: none;
     }
 
