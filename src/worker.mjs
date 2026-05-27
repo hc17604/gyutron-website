@@ -9,29 +9,21 @@ export default {
     }
 
     if (url.hostname === "shop.gyutron.com") {
-      const rootAssetPrefixes = [
-        "/product-images/",
-        "/favicon",
-        "/apple-touch-icon",
-        "/gyutron-logo",
-        "/hero-industrial-automation.png",
-        "/product-hero-",
-      ];
-      const isRootAsset = rootAssetPrefixes.some((prefix) => url.pathname.startsWith(prefix));
+      const assetUrl = new URL(request.url);
+      assetUrl.hostname = "gyutron-website.muddy-disk-1397.workers.dev";
+      assetUrl.protocol = "https:";
 
-      if (!isRootAsset) {
-        if (url.pathname === "/") {
-          url.pathname = "/shop/index.html";
-        } else if (!url.pathname.startsWith("/shop/")) {
-          url.pathname = `/shop${url.pathname}`;
-        }
-
-        if (!url.pathname.includes(".") && !url.pathname.endsWith("/")) {
-          url.pathname = `${url.pathname}.html`;
-        }
+      if (url.pathname === "/") {
+        assetUrl.pathname = "/shop/index.html";
+      } else if (!url.pathname.startsWith("/shop/")) {
+        assetUrl.pathname = `/shop${url.pathname}`;
       }
 
-      return env.ASSETS.fetch(new Request(url, request));
+      if (!assetUrl.pathname.includes(".") && !assetUrl.pathname.endsWith("/")) {
+        assetUrl.pathname = `${assetUrl.pathname}.html`;
+      }
+
+      return fetch(new Request(assetUrl, request));
     }
 
     return env.ASSETS.fetch(request);
