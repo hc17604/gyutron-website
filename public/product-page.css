@@ -427,6 +427,10 @@ a {
     display: none;
 }
 
+.language-icon-desktop {
+    margin-right: 10px;
+}
+
 .cta-label-short {
     display: none;
 }
