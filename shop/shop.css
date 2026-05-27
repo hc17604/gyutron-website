@@ -115,7 +115,7 @@ textarea {
 
 .brand span {
     color: var(--muted);
-    display: block;
+    display: none;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.12em;
@@ -129,7 +129,7 @@ textarea {
     gap: 18px;
     font-size: 12px;
     font-weight: 900;
-    justify-content: center;
+    justify-content: flex-end;
     letter-spacing: 0.08em;
     min-width: 0;
     text-transform: uppercase;
@@ -159,7 +159,7 @@ textarea {
     padding: 0 5px 0 14px;
     position: relative;
     transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-    width: clamp(280px, 24vw, 340px);
+    width: clamp(260px, 18vw, 300px);
 }
 
 .store-search::after {
@@ -980,7 +980,7 @@ h1 {
     }
 
     .store-search {
-        width: min(340px, 44vw);
+        width: min(300px, 40vw);
     }
 
     .account-link span,
