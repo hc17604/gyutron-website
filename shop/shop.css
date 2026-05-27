@@ -60,11 +60,16 @@ textarea {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    max-width: none;
+    padding: 0;
+    width: calc(100% - clamp(48px, 5vw, 96px));
 }
 
 .top-links {
     display: flex;
     gap: 18px;
+    justify-content: flex-end;
+    margin-left: auto;
 }
 
 .site-header {
@@ -76,6 +81,9 @@ textarea {
 }
 
 .site-header .container {
+    column-gap: 26px;
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr) max-content;
     min-height: 82px;
 }
 
@@ -83,6 +91,7 @@ textarea {
     align-items: center;
     display: inline-flex;
     gap: 14px;
+    justify-self: start;
     min-width: 0;
 }
 
@@ -111,7 +120,9 @@ textarea {
     gap: 26px;
     font-size: 13px;
     font-weight: 900;
+    justify-content: center;
     letter-spacing: 0.04em;
+    min-width: 0;
     text-transform: uppercase;
 }
 
@@ -123,6 +134,7 @@ textarea {
     align-items: center;
     display: flex;
     gap: 12px;
+    justify-self: end;
 }
 
 .cart-link {
@@ -769,6 +781,11 @@ h1 {
 }
 
 @media (max-width: 1040px) {
+    .site-header .container {
+        column-gap: 18px;
+        grid-template-columns: 250px minmax(0, 1fr) max-content;
+    }
+
     .nav {
         gap: 16px;
     }
@@ -815,6 +832,7 @@ h1 {
     }
 
     .site-header .container {
+        display: flex;
         flex-wrap: wrap;
         gap: 14px;
         min-height: 76px;
