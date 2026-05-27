@@ -17,6 +17,7 @@
 - Official store scope must stay industrial and B2B: cameras, lenses, lighting, sensors, barcode scanners, PDA terminals, cables, acquisition cards, robot accessories, test equipment, and industrial consumables. Do not add unrelated consumer goods.
 - Store product CTAs should include `Buy Now`, `Request a Quote`, and `Contact Engineer`; industrial buyers often need parameter, lead time, certification, stock, and customization confirmation.
 - Current store files live in `shop/` and must be mirrored to `public/shop/` before deployment. `src/worker.mjs` maps `shop.gyutron.com` root and clean paths to `/shop/` assets.
-- Cloudflare should keep `shop.gyutron.com/*` as a Worker Route plus a proxied DNS CNAME `shop -> gyutron-website.muddy-disk-1397.workers.dev`. The old `shop.gyutron.com` Custom Domain was removed because it served the brand-site root before host routing.
+- Cloudflare should keep `shop.gyutron.com` as a Custom Domain on the `gyutron-website` Worker. `wrangler.toml` must keep `run_worker_first = true`, otherwise `/` is served from the brand-site `index.html` before Worker host routing can map it to `/shop/index.html`.
+- Route patterns for `shop.gyutron.com`, `shop.gyutron.com/`, and `shop.gyutron.com/*` may remain as extra coverage, but the Custom Domain is the important clean-root binding.
 - Brand HTML currently has a fallback redirect guard that sends `shop.gyutron.com` non-`/shop/` paths to `/shop/index.html`; preserve it until Worker host routing is verified live at the subdomain root.
 - The current checkout page is an order-intent/static prototype only; do not describe it as real payment capture until a commerce/payment provider is integrated.
