@@ -6,6 +6,7 @@
 - Check that header, logo, CTA buttons, hero text, product cards, ESG/resources cards, footer, and dropdown menus remain orderly at common widths: 1440px, 1024px, 768px, 430px, and 390px.
 - Prefer responsive grid/flex rules, constrained image dimensions, and earlier tablet breakpoints over simply shrinking text.
 - Keep GYUTRON brand text uppercase in visible copy, while preserving lowercase URLs, emails, and file paths.
+- Store and brand-site headers must reuse the existing main-site logo asset `gyutron-logo-purple.png` for light backgrounds. Do not substitute generated logos, rebuilt SVG wordmarks, or mismatched logo files unless the user explicitly approves a new brand asset.
 - Avoid fake-looking AI people photos. The user approved the current generated people imagery used in `nav-*.png` navigation assets because it does not read as obviously AI-generated; these approved nav assets may be reused.
 - Product catalog work must look rigorous and professional. Within the same product line, product images must use consistent canvas ratio, background, camera angle, subject scale, direction, alignment, and baseline before shipping.
 - Do not mix product photos with mismatched crops, inconsistent directions, random generated angles, or misleading repeated assets. Product model names, specs, and image assignments must read like a real industrial catalog.

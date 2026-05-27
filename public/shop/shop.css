@@ -87,9 +87,11 @@ textarea {
 }
 
 .brand img {
-    height: 38px;
-    max-width: 280px;
+    display: block;
+    height: 50px;
+    max-width: 300px;
     object-fit: contain;
+    object-position: left center;
     width: auto;
 }
 
@@ -772,7 +774,7 @@ h1 {
     }
 
     .brand img {
-        max-width: 230px;
+        max-width: 250px;
     }
 
     .hero-grid,
@@ -808,8 +810,8 @@ h1 {
     }
 
     .brand img {
-        height: 34px;
-        max-width: 210px;
+        height: 40px;
+        max-width: 220px;
     }
 
     .site-header .container {
