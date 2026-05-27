@@ -19,5 +19,5 @@
 - Current store files live in `shop/` and must be mirrored to `public/shop/` before deployment. `src/worker.mjs` maps `shop.gyutron.com` root and clean paths to `/shop/` assets.
 - Cloudflare should keep `shop.gyutron.com` as a Custom Domain on the `gyutron-website` Worker. `wrangler.toml` must keep `run_worker_first = true`, otherwise `/` is served from the brand-site `index.html` before Worker host routing can map it to `/shop/index.html`.
 - Route patterns for `shop.gyutron.com`, `shop.gyutron.com/`, and `shop.gyutron.com/*` may remain as extra coverage, but the Custom Domain is the important clean-root binding.
-- Brand HTML currently has a fallback redirect guard that sends `shop.gyutron.com` non-`/shop/` paths to `/shop/index.html`; preserve it until Worker host routing is verified live at the subdomain root.
+- Brand HTML currently has a fallback redirect guard that sends `shop.gyutron.com` non-`/shop/` paths to `/shop/index.html`; Worker-first routing is verified live, so this guard is fallback-only and can be removed later if desired.
 - The current checkout page is an order-intent/static prototype only; do not describe it as real payment capture until a commerce/payment provider is integrated.
