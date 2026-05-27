@@ -984,7 +984,7 @@ h1 {
 
 @media (max-width: 760px) {
     body {
-        padding-top: 76px;
+        padding-top: 130px;
     }
 
     .top-strip {
@@ -995,9 +995,32 @@ h1 {
         top: 0;
     }
 
-    .top-links,
-    .nav {
+    .top-links {
         display: none;
+    }
+
+    .nav {
+        display: flex;
+        order: 2;
+        width: 100%;
+    }
+
+    .nav > a {
+        display: none;
+    }
+
+    .store-search,
+    .store-search:focus-within,
+    .store-search:hover {
+        grid-template-columns: 18px minmax(0, 1fr) 30px;
+        width: 100%;
+    }
+
+    .store-search input,
+    .store-search:focus-within input,
+    .store-search:hover input {
+        opacity: 1;
+        padding: 0 8px;
     }
 
     .brand img {
@@ -1007,9 +1030,11 @@ h1 {
 
     .site-header .container {
         display: flex;
-        flex-wrap: nowrap;
-        gap: 14px;
-        min-height: 76px;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        min-height: 118px;
+        padding-bottom: 12px;
+        padding-top: 12px;
     }
 
     .header-actions {
