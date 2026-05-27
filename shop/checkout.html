@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | GYUTRON Official Store</title>
+    <meta name="description" content="GYUTRON checkout request for industrial product orders.">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/shop/shop.css">
+</head>
+<body>
+    <div class="top-strip"><div class="container"><span>Secure B2B checkout preparation</span><div class="top-links"><a href="/payment-methods.html">Payment Methods</a><a href="/cart.html">Cart</a></div></div></div>
+    <header class="site-header"><div class="container"><a class="brand" href="/"><img src="/gyutron-logo.svg" alt="GYUTRON"><span>Official Store</span></a><nav class="nav"><a href="/products.html">Products</a><a href="/request-quote.html">Request Quote</a><a href="/contact-engineer.html">Contact Engineer</a><a href="https://www.gyutron.com/">Brand Site</a></nav><div class="header-actions"><a class="cart-link" href="/cart.html"><i class="fa-solid fa-cart-shopping"></i> Cart <span class="cart-count" data-cart-count>0</span></a><a class="button button-primary" href="/checkout.html">Checkout</a></div></div></header>
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-head"><div><span class="eyebrow">Checkout</span><h1 style="color:var(--ink);font-size:48px;">Confirm purchasing details.</h1></div><p>This static first version captures order intent. Connect the form to Shopify, Shopline, Shoplazza, WooCommerce, Stripe, PayPal, or CRM automation before public payment launch.</p></div>
+                <div class="checkout-layout">
+                    <form class="form" data-demo-form>
+                        <div class="notice">Payment capture is not enabled in this static prototype. It is structured for low-cost ecommerce platform integration after DNS and store foundation are ready.</div>
+                        <div class="form-grid">
+                            <div class="field"><label>First Name</label><input required name="firstName" autocomplete="given-name"></div>
+                            <div class="field"><label>Last Name</label><input required name="lastName" autocomplete="family-name"></div>
+                            <div class="field"><label>Work Email</label><input required type="email" name="email" autocomplete="email"></div>
+                            <div class="field"><label>Phone / WhatsApp</label><input name="phone" autocomplete="tel"></div>
+                            <div class="field"><label>Company</label><input name="company" autocomplete="organization"></div>
+                            <div class="field"><label>Country / Region</label><input name="country" autocomplete="country-name"></div>
+                            <div class="field field-wide"><label>Shipping Address</label><input name="address" autocomplete="street-address"></div>
+                            <div class="field"><label>Preferred Payment</label><select name="payment"><option>Credit card / online payment</option><option>PayPal</option><option>Wire transfer</option><option>Proforma invoice</option></select></div>
+                            <div class="field"><label>Order Type</label><select name="orderType"><option>Sample purchase</option><option>Small-batch order</option><option>Accessories order</option><option>Quote required before payment</option></select></div>
+                            <div class="field field-wide"><label>Procurement Notes</label><textarea name="notes" placeholder="Lead time, certification, tax ID, shipping account, customization, or application notes."></textarea></div>
+                        </div>
+                        <button class="button button-primary" type="submit">Submit Checkout Request</button>
+                    </form>
+                    <aside class="summary-card" data-checkout-summary></aside>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 GYUTRON.</span><span>Official Store: shop.gyutron.com</span></div></div></footer>
+    <script src="/shop/shop.js"></script>
+</body>
+</html>
