@@ -12,13 +12,13 @@ export default {
       const assetUrl = new URL(request.url);
 
       if (url.pathname === "/") {
-        assetUrl.pathname = "/shop/index.html";
+        assetUrl.pathname = "/shop/";
       } else if (!url.pathname.startsWith("/shop/")) {
         assetUrl.pathname = `/shop${url.pathname}`;
       }
 
-      if (!assetUrl.pathname.includes(".") && !assetUrl.pathname.endsWith("/")) {
-        assetUrl.pathname = `${assetUrl.pathname}.html`;
+      if (assetUrl.pathname.endsWith(".html")) {
+        assetUrl.pathname = assetUrl.pathname.slice(0, -5);
       }
 
       return env.ASSETS.fetch(new Request(assetUrl, request));
