@@ -113,6 +113,7 @@
         }
 
         const contact = header.querySelector(".button-primary");
+        const mobileLanguage = header.querySelector(".language-icon-mobile");
         const menuData = readDesktopNavigation();
         if (contact) {
             const contactLabel = normalizeText(contact.querySelector(".cta-label-full")?.textContent || contact.textContent);
@@ -131,7 +132,7 @@
         toggle.setAttribute("aria-expanded", "false");
         toggle.setAttribute("aria-controls", "mobile-navigation-panel");
         toggle.append("Menu", makeMenuIcon());
-        brand.insertAdjacentElement("afterend", toggle);
+        (mobileLanguage || brand).insertAdjacentElement("afterend", toggle);
 
         const panel = document.createElement("aside");
         panel.className = "mobile-nav-panel";

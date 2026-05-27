@@ -8,6 +8,8 @@
 - Keep GYUTRON brand text uppercase in visible copy, while preserving lowercase URLs, emails, and file paths.
 - Store and brand-site headers must reuse the existing main-site logo asset `gyutron-logo-purple.png` for light backgrounds. Do not substitute generated logos, rebuilt SVG wordmarks, or mismatched logo files unless the user explicitly approves a new brand asset.
 - Store top-strip and header rows should follow the main-site edge alignment: header containers use `width: calc(100% - clamp(48px, 5vw, 96px))`; the top strip aligns left text and right links to opposite edges; the navigation row aligns brand left, nav center, and cart/checkout actions right.
+- Main-site and store headers include an unframed globe icon as a reserved language / international-site switcher. Keep it as a standalone icon without a surrounding button box unless the user requests a functional language selector.
+- Store search should remain visibly long and usable on desktop and tablet, with a full-width mobile search row; avoid collapsing it into a tiny icon-only control.
 - Avoid fake-looking AI people photos. The user approved the current generated people imagery used in `nav-*.png` navigation assets because it does not read as obviously AI-generated; these approved nav assets may be reused.
 - Product catalog work must look rigorous and professional. Within the same product line, product images must use consistent canvas ratio, background, camera angle, subject scale, direction, alignment, and baseline before shipping.
 - Do not mix product photos with mismatched crops, inconsistent directions, random generated angles, or misleading repeated assets. Product model names, specs, and image assignments must read like a real industrial catalog.

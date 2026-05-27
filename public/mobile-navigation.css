@@ -182,16 +182,22 @@ body.mobile-nav-open .mobile-nav-panel {
 
 @media (max-width: 1180px) {
     .site-header .container {
-        grid-template-columns: minmax(0, 1fr) max-content;
+        grid-template-columns: minmax(0, 1fr) auto max-content;
     }
 
     .site-header .header-actions {
         display: none;
     }
 
-    .mobile-menu-toggle {
+    .language-icon-mobile {
         display: inline-flex;
         grid-column: 2;
+        justify-self: end;
+    }
+
+    .mobile-menu-toggle {
+        display: inline-flex;
+        grid-column: 3;
         justify-self: end;
         margin-left: auto;
     }
@@ -208,14 +214,21 @@ body.mobile-nav-open .mobile-nav-panel {
 
     .site-header .container {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+        grid-template-columns: minmax(0, 1fr) 34px auto;
         justify-content: stretch;
         padding: 0 14px;
         width: 100%;
     }
 
     .site-header .brand-logo {
-        max-width: min(190px, calc(100vw - 128px));
+        max-width: min(190px, calc(100vw - 174px));
+    }
+
+    .language-icon-mobile {
+        font-size: 17px;
+        height: 40px;
+        width: 28px;
     }
 
     .mobile-menu-toggle {
@@ -223,10 +236,10 @@ body.mobile-nav-open .mobile-nav-panel {
         font-size: 11px;
         min-width: 88px;
         padding: 0 10px;
-        position: absolute;
-        left: min(calc(100vw - 102px), 288px);
+        position: static;
+        left: auto;
         right: auto;
-        top: 13px;
+        top: auto;
         justify-self: end;
     }
 

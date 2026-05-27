@@ -142,29 +142,50 @@ textarea {
 .header-actions {
     align-items: center;
     display: flex;
-    gap: 10px;
+    gap: 12px;
     justify-self: end;
 }
 
 .store-search {
     align-items: center;
-    background: #f7f4fb;
-    border: 1px solid rgba(75, 46, 131, 0.14);
+    background: linear-gradient(180deg, #ffffff 0%, #fbf8ff 100%);
+    border: 1px solid rgba(75, 46, 131, 0.16);
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.72);
     display: inline-grid;
-    grid-template-columns: 18px minmax(0, 1fr) 30px;
-    min-height: 38px;
+    grid-template-columns: 18px minmax(0, 1fr) 34px;
+    min-height: 42px;
     overflow: hidden;
-    padding: 0 4px 0 12px;
-    transition: width 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
-    width: 190px;
+    padding: 0 5px 0 14px;
+    position: relative;
+    transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    width: clamp(280px, 24vw, 340px);
+}
+
+.store-search::after {
+    background: linear-gradient(90deg, var(--purple), rgba(111, 59, 210, 0));
+    bottom: 7px;
+    content: "";
+    height: 1px;
+    left: 42px;
+    position: absolute;
+    right: 46px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 220ms ease;
 }
 
 .store-search:focus-within,
 .store-search:hover {
     background: var(--white);
-    border-color: rgba(111, 59, 210, 0.46);
-    box-shadow: 0 12px 24px rgba(75, 46, 131, 0.14);
-    width: 236px;
+    border-color: rgba(111, 59, 210, 0.42);
+    box-shadow: 0 14px 32px rgba(75, 46, 131, 0.13);
+    transform: translateY(-1px);
+}
+
+.store-search:focus-within::after,
+.store-search:hover::after {
+    transform: scaleX(1);
 }
 
 .store-search i {
@@ -191,19 +212,39 @@ textarea {
     align-items: center;
     background: var(--purple);
     border: 0;
+    border-radius: 6px;
     color: var(--white);
     cursor: pointer;
     display: inline-flex;
-    height: 30px;
+    height: 32px;
     justify-content: center;
-    transition: background 180ms ease, transform 180ms ease;
-    width: 30px;
+    transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    width: 32px;
 }
 
 .store-search:focus-within button,
 .store-search button:hover {
     background: var(--purple-600);
+    box-shadow: 0 8px 16px rgba(111, 59, 210, 0.24);
     transform: translateX(1px);
+}
+
+.language-icon {
+    align-items: center;
+    color: var(--ink);
+    display: inline-flex;
+    flex-shrink: 0;
+    font-size: 18px;
+    height: 42px;
+    justify-content: center;
+    line-height: 1;
+    transition: color 180ms ease, transform 180ms ease;
+    width: 28px;
+}
+
+.language-icon:hover {
+    color: var(--purple);
+    transform: translateY(-1px);
 }
 
 .icon-action {
@@ -914,13 +955,24 @@ h1 {
 }
 
 @media (max-width: 1040px) {
+    body {
+        padding-top: 164px;
+    }
+
     .site-header .container {
-        column-gap: 18px;
-        grid-template-columns: 250px minmax(0, 1fr) max-content;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 18px;
+        min-height: 130px;
+        padding-bottom: 12px;
+        padding-top: 12px;
     }
 
     .nav {
+        order: 2;
+        justify-content: flex-start;
         gap: 16px;
+        width: 100%;
     }
 
     .brand img {
@@ -928,26 +980,7 @@ h1 {
     }
 
     .store-search {
-        grid-template-columns: 18px 0 30px;
-        padding-left: 12px;
-        width: 66px;
-    }
-
-    .store-search input {
-        opacity: 0;
-        padding: 0;
-    }
-
-    .store-search:focus-within,
-    .store-search:hover {
-        grid-template-columns: 18px minmax(0, 1fr) 30px;
-        width: 190px;
-    }
-
-    .store-search:focus-within input,
-    .store-search:hover input {
-        opacity: 1;
-        padding: 0 8px;
+        width: min(340px, 44vw);
     }
 
     .account-link span,
@@ -1012,7 +1045,8 @@ h1 {
     .store-search,
     .store-search:focus-within,
     .store-search:hover {
-        grid-template-columns: 18px minmax(0, 1fr) 30px;
+        grid-template-columns: 18px minmax(0, 1fr) 34px;
+        transform: none;
         width: 100%;
     }
 
@@ -1024,15 +1058,19 @@ h1 {
     }
 
     .brand img {
-        height: 40px;
-        max-width: 220px;
+        height: 34px;
+        max-width: min(190px, calc(100vw - 184px));
+    }
+
+    .brand span {
+        display: none;
     }
 
     .site-header .container {
         display: flex;
         flex-wrap: wrap;
         gap: 10px 14px;
-        min-height: 118px;
+        min-height: 116px;
         padding-bottom: 12px;
         padding-top: 12px;
     }
@@ -1044,9 +1082,14 @@ h1 {
     }
 
     .icon-action {
-        height: 42px;
+        height: 36px;
         padding: 0;
-        width: 42px;
+        width: 36px;
+    }
+
+    .language-icon {
+        height: 36px;
+        width: 24px;
     }
 
     h1,

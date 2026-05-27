@@ -567,6 +567,27 @@
         .header-quick:hover {
             color: var(--purple-600);
         }
+        .language-icon {
+            align-items: center;
+            color: var(--text);
+            display: inline-flex;
+            flex-shrink: 0;
+            font-size: 18px;
+            height: 42px;
+            justify-content: center;
+            line-height: 1;
+            transition: color 160ms ease, transform 160ms ease;
+            width: 30px;
+        }
+
+        .language-icon:hover {
+            color: var(--purple-600);
+            transform: translateY(-1px);
+        }
+
+        .language-icon-mobile {
+            display: none;
+        }
 
         .site-header .button-primary {
             background: var(--brand-purple);
@@ -1594,6 +1615,7 @@
             <a class="brand" href="#" aria-label="GYUTRON home">
                 <img class="brand-logo" src="gyutron-logo-purple.png" alt="GYUTRON">
             </a>
+            <a class="language-icon language-icon-mobile" href="#" aria-label="Language and region selector"><i class="fa-solid fa-globe"></i></a>
             <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-trigger" href="index.html#products">Products <i class="fa-solid fa-chevron-down"></i></a>
@@ -1882,6 +1904,7 @@
                 </li>
             </ul>
             <div class="header-actions">
+                <a class="language-icon language-icon-desktop" href="#" aria-label="Language and region selector"><i class="fa-solid fa-globe"></i></a>
                 <a class="button button-outline" href="https://shop.gyutron.com">Shop</a>
                 <a class="button button-primary" href="contact-sales.html"><span class="cta-label-full">Contact Sales</span><span class="cta-label-short">Contact</span> <i class="fa-solid fa-arrow-right"></i></a>
             </div>
