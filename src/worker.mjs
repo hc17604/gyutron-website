@@ -10,9 +10,13 @@ export default {
 
     if (url.hostname === "shop.gyutron.com") {
       const assetUrl = new URL(request.url);
+      const lastPathSegment = url.pathname.split("/").pop() || "";
+      const hasFileExtension = /\.[a-z0-9]+$/i.test(lastPathSegment);
 
       if (url.pathname === "/") {
         assetUrl.pathname = "/shop/";
+      } else if (hasFileExtension && !url.pathname.endsWith(".html") && !url.pathname.startsWith("/shop/")) {
+        return env.ASSETS.fetch(request);
       } else if (!url.pathname.startsWith("/shop/")) {
         assetUrl.pathname = `/shop${url.pathname}`;
       }
