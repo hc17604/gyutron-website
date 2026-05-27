@@ -23,7 +23,14 @@ export default {
         assetUrl.pathname = `${assetUrl.pathname}.html`;
       }
 
-      return fetch(new Request(assetUrl, request));
+      const assetHeaders = new Headers(request.headers);
+      assetHeaders.delete("host");
+
+      return fetch(assetUrl.toString(), {
+        method: request.method,
+        headers: assetHeaders,
+        redirect: "manual",
+      });
     }
 
     return env.ASSETS.fetch(request);
