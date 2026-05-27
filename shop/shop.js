@@ -272,6 +272,55 @@ function hydrateSearch() {
     });
 }
 
+function initStoreMobileMenu() {
+    const toggle = document.querySelector(".store-menu-toggle");
+    if (!toggle || document.querySelector(".store-mobile-panel")) return;
+
+    const panel = document.createElement("aside");
+    panel.className = "store-mobile-panel";
+    panel.setAttribute("aria-label", "Store menu");
+    panel.innerHTML = `
+        <div class="store-mobile-section">Store</div>
+        <a href="/shop/products.html">Products <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/shop/request-quote.html">Request Quote <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/shop/contact-engineer.html">Contact Engineer <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/shop/account.html">Account Registration <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/shop/cart.html">Cart <i class="fa-solid fa-chevron-right"></i></a>
+        <div class="store-mobile-section">Product Categories</div>
+        ${CATEGORY_META.map((category) => `<a href="/shop/products.html?category=${encodeURIComponent(category.name)}">${category.name} <i class="fa-solid fa-chevron-right"></i></a>`).join("")}
+        <div class="store-mobile-section">Company & Policies</div>
+        <a href="https://www.gyutron.com/">Brand Site <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/shop/about-us.html">About Us <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/shop/contact-us.html">Contact Us <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/shop/shipping-policy.html">Shipping Policy <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/shop/warranty-policy.html">Warranty Policy <i class="fa-solid fa-chevron-right"></i></a>
+    `;
+    document.body.appendChild(panel);
+
+    const closeMenu = () => {
+        document.body.classList.remove("store-mobile-menu-open");
+        toggle.setAttribute("aria-expanded", "false");
+    };
+    const openMenu = () => {
+        document.body.classList.add("store-mobile-menu-open");
+        toggle.setAttribute("aria-expanded", "true");
+    };
+
+    toggle.addEventListener("click", () => {
+        if (document.body.classList.contains("store-mobile-menu-open")) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    });
+    panel.addEventListener("click", (event) => {
+        if (event.target.closest("a")) closeMenu();
+    });
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+    });
+}
+
 function renderProductDetail() {
     const target = document.querySelector("[data-product-detail]");
     if (!target) return;
@@ -407,6 +456,7 @@ renderProductDetail();
 renderCart();
 renderCheckoutSummary();
 hydrateSearch();
+initStoreMobileMenu();
 handleCartEvents();
 handleForms();
 prefillSku();
