@@ -10,8 +10,6 @@ export default {
 
     if (url.hostname === "shop.gyutron.com") {
       const assetUrl = new URL(request.url);
-      assetUrl.hostname = "gyutron-website.muddy-disk-1397.workers.dev";
-      assetUrl.protocol = "https:";
 
       if (url.pathname === "/") {
         assetUrl.pathname = "/shop/index.html";
@@ -23,14 +21,7 @@ export default {
         assetUrl.pathname = `${assetUrl.pathname}.html`;
       }
 
-      const assetHeaders = new Headers(request.headers);
-      assetHeaders.delete("host");
-
-      return fetch(assetUrl.toString(), {
-        method: request.method,
-        headers: assetHeaders,
-        redirect: "manual",
-      });
+      return env.ASSETS.fetch(new Request(assetUrl, request));
     }
 
     return env.ASSETS.fetch(request);
