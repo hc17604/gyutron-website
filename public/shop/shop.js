@@ -234,14 +234,24 @@ function renderProducts() {
 
     const params = new URLSearchParams(location.search);
     let active = params.get("category") || "All Products";
+    const query = (params.get("q") || "").trim().toLowerCase();
     const categories = ["All Products", ...CATEGORY_META.map((item) => item.name), "Test Equipment"];
 
     const draw = () => {
         filters.innerHTML = categories.map((category) => `
             <button class="filter-button ${category === active ? "is-active" : ""}" data-category="${category}">${category}</button>
         `).join("");
-        const visible = active === "All Products" ? SHOP_PRODUCTS : SHOP_PRODUCTS.filter((product) => product.category === active);
-        grid.innerHTML = visible.map(productCard).join("");
+        const visible = (active === "All Products" ? SHOP_PRODUCTS : SHOP_PRODUCTS.filter((product) => product.category === active))
+            .filter((product) => {
+                if (!query) return true;
+                return [product.sku, product.name, product.category, product.summary, ...product.tags]
+                    .join(" ")
+                    .toLowerCase()
+                    .includes(query);
+            });
+        grid.innerHTML = visible.length
+            ? visible.map(productCard).join("")
+            : '<div class="empty-state">No products matched this search. Try another keyword or request a quote.</div>';
     };
 
     filters.addEventListener("click", (event) => {
@@ -253,6 +263,13 @@ function renderProducts() {
     });
 
     draw();
+}
+
+function hydrateSearch() {
+    const query = new URLSearchParams(location.search).get("q") || "";
+    document.querySelectorAll(".store-search input[name='q']").forEach((input) => {
+        input.value = query;
+    });
 }
 
 function renderProductDetail() {
@@ -373,7 +390,10 @@ function handleForms() {
     document.querySelectorAll("[data-demo-form]").forEach((form) => {
         form.addEventListener("submit", (event) => {
             event.preventDefault();
-            showToast("Request saved locally. Connect this form to the commerce platform or CRM before launch.");
+            const message = form.classList.contains("account-card")
+                ? "Account request saved locally. Connect account registration to the commerce platform before launch."
+                : "Request saved locally. Connect this form to the commerce platform or CRM before launch.";
+            showToast(message);
             form.reset();
             prefillSku();
         });
@@ -386,6 +406,7 @@ renderProducts();
 renderProductDetail();
 renderCart();
 renderCheckoutSummary();
+hydrateSearch();
 handleCartEvents();
 handleForms();
 prefillSku();

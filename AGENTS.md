@@ -15,6 +15,7 @@
 - Navigation menu images must be unique within the full desktop nav. Run a duplicate check against `url('...')` references in the nav before finishing any header/menu update.
 - Keep regenerated `nav-*.png` URLs versioned in shared nav markup after image updates so browser/Cloudflare cache does not keep serving older blurry files.
 - Use `tools/update_navigation.py` to propagate shared header navigation changes across root HTML pages and matching `public/` pages.
+- Do not create or maintain Claude-specific handoff prompts or adaptations for future tasks unless the user explicitly asks for Claude handoff again.
 - Ecommerce direction: keep `www.gyutron.com` as the brand website and use `shop.gyutron.com` for the official store / checkout / procurement entry. Do not prioritize a separate store domain or a `gyutron.com/shop` directory unless the user changes direction.
 - Official store scope must stay industrial and B2B: cameras, lenses, lighting, sensors, barcode scanners, PDA terminals, cables, acquisition cards, robot accessories, test equipment, and industrial consumables. Do not add unrelated consumer goods.
 - Store product CTAs should include `Buy Now`, `Request a Quote`, and `Contact Engineer`; industrial buyers often need parameter, lead time, certification, stock, and customization confirmation.

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Registration | GYUTRON Official Store</title>
+    <meta name="description" content="Create a GYUTRON official store account for B2B purchasing, quote requests, order history, and engineering support.">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/shop/shop.css">
+</head>
+<body>
+    <div class="top-strip">
+        <div class="container">
+            <span>Official GYUTRON industrial purchasing entrance</span>
+            <div class="top-links">
+                <a href="mailto:info@gyutron.com">info@gyutron.com</a>
+                <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
+            </div>
+        </div>
+    </div>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="/shop/index.html">
+                <img src="/gyutron-logo-purple.png" alt="GYUTRON">
+                <span>Official Store</span>
+            </a>
+            <nav class="nav" aria-label="Store navigation">
+                <a href="/shop/products.html">Products</a>
+                <a href="/shop/request-quote.html">Request Quote</a>
+                <a href="https://www.gyutron.com/">Brand Site</a>
+                <form class="store-search" action="/shop/products.html" method="get" role="search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input type="search" name="q" placeholder="Search products" aria-label="Search products">
+                    <button type="submit" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </nav>
+            <div class="header-actions" aria-label="Store actions">
+                <a class="icon-action account-link" href="/shop/account.html" aria-label="Create account"><i class="fa-regular fa-user"></i><span>Account</span></a>
+                <a class="icon-action cart-link" href="/shop/cart.html" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="section account-section">
+            <div class="container">
+                <div class="account-layout">
+                    <div class="account-copy">
+                        <span class="eyebrow">Store Account</span>
+                        <h1>Create a purchasing account.</h1>
+                        <p>Use one account to prepare sample orders, request quotes, keep company purchasing details ready, and coordinate engineering support before industrial products ship.</p>
+                        <div class="account-benefits">
+                            <div><i class="fa-solid fa-file-invoice"></i><span>Quote and order history</span></div>
+                            <div><i class="fa-solid fa-building"></i><span>Company purchasing profile</span></div>
+                            <div><i class="fa-solid fa-headset"></i><span>Engineering support context</span></div>
+                        </div>
+                    </div>
+                    <form class="form account-card" data-demo-form>
+                        <div class="form-grid">
+                            <div class="field">
+                                <label>Full Name</label>
+                                <input required name="name" autocomplete="name">
+                            </div>
+                            <div class="field">
+                                <label>Work Email</label>
+                                <input required type="email" name="email" autocomplete="email">
+                            </div>
+                            <div class="field">
+                                <label>Company</label>
+                                <input required name="company" autocomplete="organization">
+                            </div>
+                            <div class="field">
+                                <label>Phone / WhatsApp</label>
+                                <input name="phone" autocomplete="tel">
+                            </div>
+                            <div class="field">
+                                <label>Password</label>
+                                <input required type="password" name="password" autocomplete="new-password">
+                            </div>
+                            <div class="field">
+                                <label>Primary Interest</label>
+                                <select name="interest">
+                                    <option>Machine vision products</option>
+                                    <option>Barcode and RFID devices</option>
+                                    <option>Industrial sensors</option>
+                                    <option>Accessories and spare parts</option>
+                                    <option>Configured automation project</option>
+                                </select>
+                            </div>
+                            <div class="field field-wide">
+                                <label>Purchasing Notes</label>
+                                <textarea name="notes" placeholder="Optional: target product, quantity range, country, certification, or lead-time needs."></textarea>
+                            </div>
+                        </div>
+                        <button class="button button-primary" type="submit">Create Account</button>
+                        <p class="notice">This registration form is a front-end prototype until the commerce account system is connected.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 GYUTRON.</span><span>Official Store: shop.gyutron.com</span></div></div></footer>
+    <script src="/shop/shop.js"></script>
+</body>
+</html>

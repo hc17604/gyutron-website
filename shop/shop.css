@@ -27,6 +27,7 @@ body {
     color: var(--text);
     font-family: "Inter", "Segoe UI", Arial, sans-serif;
     margin: 0;
+    padding-top: 116px;
 }
 
 a {
@@ -50,9 +51,13 @@ textarea {
 
 .top-strip {
     background: #12051f;
-    color: rgba(255, 255, 255, 0.82);
-    font-size: 13px;
-    padding: 9px 0;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 12px;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 110;
 }
 
 .top-strip .container,
@@ -61,23 +66,27 @@ textarea {
     display: flex;
     justify-content: space-between;
     max-width: none;
+    min-height: 34px;
     padding: 0;
     width: calc(100% - clamp(48px, 5vw, 96px));
 }
 
 .top-links {
     display: flex;
-    gap: 18px;
+    gap: 20px;
     justify-content: flex-end;
     margin-left: auto;
 }
 
 .site-header {
-    background: rgba(255, 255, 255, 0.94);
-    border-bottom: 1px solid var(--line);
-    position: sticky;
-    top: 0;
-    z-index: 50;
+    background: var(--white);
+    border-bottom: 1px solid rgba(230, 224, 238, 0.9);
+    box-shadow: 0 12px 28px rgba(18, 5, 31, 0.08);
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 34px;
+    z-index: 100;
 }
 
 .site-header .container {
@@ -117,11 +126,11 @@ textarea {
 .nav {
     align-items: center;
     display: flex;
-    gap: 26px;
-    font-size: 13px;
+    gap: 18px;
+    font-size: 12px;
     font-weight: 900;
     justify-content: center;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.08em;
     min-width: 0;
     text-transform: uppercase;
 }
@@ -133,18 +142,87 @@ textarea {
 .header-actions {
     align-items: center;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     justify-self: end;
 }
 
-.cart-link {
+.store-search {
+    align-items: center;
+    background: #f7f4fb;
+    border: 1px solid rgba(75, 46, 131, 0.14);
+    display: inline-grid;
+    grid-template-columns: 18px minmax(0, 1fr) 30px;
+    min-height: 38px;
+    overflow: hidden;
+    padding: 0 4px 0 12px;
+    transition: width 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+    width: 190px;
+}
+
+.store-search:focus-within,
+.store-search:hover {
+    background: var(--white);
+    border-color: rgba(111, 59, 210, 0.46);
+    box-shadow: 0 12px 24px rgba(75, 46, 131, 0.14);
+    width: 236px;
+}
+
+.store-search i {
+    color: var(--purple);
+    font-size: 13px;
+}
+
+.store-search input {
+    background: transparent;
+    border: 0;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 800;
+    min-width: 0;
+    outline: 0;
+    padding: 0 8px;
+}
+
+.store-search input::placeholder {
+    color: rgba(52, 47, 63, 0.55);
+}
+
+.store-search button {
+    align-items: center;
+    background: var(--purple);
+    border: 0;
+    color: var(--white);
+    cursor: pointer;
+    display: inline-flex;
+    height: 30px;
+    justify-content: center;
+    transition: background 180ms ease, transform 180ms ease;
+    width: 30px;
+}
+
+.store-search:focus-within button,
+.store-search button:hover {
+    background: var(--purple-600);
+    transform: translateX(1px);
+}
+
+.icon-action {
     align-items: center;
     border: 1px solid var(--line);
+    color: var(--ink);
     display: inline-flex;
     font-weight: 900;
     gap: 8px;
+    justify-content: center;
     min-height: 42px;
-    padding: 0 14px;
+    padding: 0 12px;
+    transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+}
+
+.icon-action:hover {
+    background: var(--purple-soft);
+    border-color: rgba(75, 46, 131, 0.28);
+    color: var(--purple);
 }
 
 .cart-count {
@@ -155,6 +233,12 @@ textarea {
     height: 22px;
     min-width: 22px;
     place-items: center;
+}
+
+.account-link span,
+.cart-label {
+    font-size: 12px;
+    letter-spacing: 0.03em;
 }
 
 .button {
@@ -780,6 +864,55 @@ h1 {
     transform: translateY(0);
 }
 
+.account-section {
+    background: linear-gradient(135deg, #ffffff 0%, #f7f4fb 100%);
+}
+
+.account-layout {
+    align-items: start;
+    display: grid;
+    gap: 42px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+}
+
+.account-copy h1 {
+    color: var(--ink);
+    font-size: 54px;
+    line-height: 1.02;
+    margin: 16px 0;
+}
+
+.account-copy p {
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.account-benefits {
+    display: grid;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.account-benefits div {
+    align-items: center;
+    background: var(--white);
+    border: 1px solid var(--line);
+    display: flex;
+    font-weight: 900;
+    gap: 12px;
+    padding: 16px;
+}
+
+.account-benefits i {
+    color: var(--purple);
+}
+
+.account-card {
+    box-shadow: var(--shadow);
+}
+
 @media (max-width: 1040px) {
     .site-header .container {
         column-gap: 18px;
@@ -794,11 +927,40 @@ h1 {
         max-width: 250px;
     }
 
+    .store-search {
+        grid-template-columns: 18px 0 30px;
+        padding-left: 12px;
+        width: 66px;
+    }
+
+    .store-search input {
+        opacity: 0;
+        padding: 0;
+    }
+
+    .store-search:focus-within,
+    .store-search:hover {
+        grid-template-columns: 18px minmax(0, 1fr) 30px;
+        width: 190px;
+    }
+
+    .store-search:focus-within input,
+    .store-search:hover input {
+        opacity: 1;
+        padding: 0 8px;
+    }
+
+    .account-link span,
+    .cart-label {
+        display: none;
+    }
+
     .hero-grid,
     .store-layout,
     .product-detail,
     .cart-layout,
-    .checkout-layout {
+    .checkout-layout,
+    .account-layout {
         grid-template-columns: 1fr;
     }
 
@@ -821,6 +983,18 @@ h1 {
 }
 
 @media (max-width: 760px) {
+    body {
+        padding-top: 76px;
+    }
+
+    .top-strip {
+        display: none;
+    }
+
+    .site-header {
+        top: 0;
+    }
+
     .top-links,
     .nav {
         display: none;
@@ -833,20 +1007,26 @@ h1 {
 
     .site-header .container {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         gap: 14px;
         min-height: 76px;
-        padding-bottom: 14px;
-        padding-top: 14px;
     }
 
     .header-actions {
-        justify-content: space-between;
-        width: 100%;
+        justify-content: flex-end;
+        margin-left: auto;
+        width: auto;
+    }
+
+    .icon-action {
+        height: 42px;
+        padding: 0;
+        width: 42px;
     }
 
     h1,
-    .detail-info h1 {
+    .detail-info h1,
+    .account-copy h1 {
         font-size: 38px;
     }
 
@@ -869,7 +1049,8 @@ h1 {
     .trust-grid,
     .product-grid,
     .footer-grid,
-    .form-grid {
+    .form-grid,
+    .account-layout {
         grid-template-columns: 1fr;
     }
 
