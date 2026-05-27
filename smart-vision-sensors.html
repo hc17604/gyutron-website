@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+        if (location.hostname === "shop.gyutron.com" && !location.pathname.startsWith("/shop/")) {
+            location.replace("/shop/index.html" + location.search + location.hash);
+        }
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GYUTRON Controllers & 3D Vision | Machine Vision</title>
     <meta name="description" content="GYUTRON smart vision sensors for embedded AI inspection, OCR, line-side pass/fail checks, and guided setup.">

@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+        if (location.hostname === "shop.gyutron.com" && !location.pathname.startsWith("/shop/")) {
+            location.replace("/shop/index.html" + location.search + location.hash);
+        }
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GYUTRON Dimensional Gauges | Quality Instruments</title>
     <meta name="description" content="GYUTRON dimensional gauges for contact measurement, optical measurement, laser displacement, and 3D profile checks.">

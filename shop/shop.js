@@ -1,4 +1,4 @@
-const SHOP_PRODUCTS = [
+﻿const SHOP_PRODUCTS = [
     {
         sku: "GY-CV220-INLINE",
         name: "GY-CV220 Inline Vision Camera",
@@ -184,7 +184,7 @@ function showToast(message) {
 function productCard(product) {
     return `
         <article class="product-card">
-            <a class="product-media" href="/product.html?sku=${product.sku}" aria-label="${product.name}">
+            <a class="product-media" href="/shop/product.html?sku=${product.sku}" aria-label="${product.name}">
                 <img src="${product.image}" alt="${product.name}" loading="lazy">
             </a>
             <div class="product-body">
@@ -199,8 +199,8 @@ function productCard(product) {
                 </div>
                 <div class="card-actions">
                     <button class="button button-primary" data-add-cart="${product.sku}">Buy Now</button>
-                    <a class="button button-outline" href="/request-quote.html?sku=${product.sku}">Request a Quote</a>
-                    <a class="button button-soft" href="/contact-engineer.html?sku=${product.sku}">Contact Engineer</a>
+                    <a class="button button-outline" href="/shop/request-quote.html?sku=${product.sku}">Request a Quote</a>
+                    <a class="button button-soft" href="/shop/contact-engineer.html?sku=${product.sku}">Contact Engineer</a>
                 </div>
             </div>
         </article>
@@ -217,7 +217,7 @@ function renderCategories() {
     const target = document.querySelector("[data-categories]");
     if (!target) return;
     target.innerHTML = CATEGORY_META.map((category) => `
-        <a class="category-card" href="/products.html?category=${encodeURIComponent(category.name)}">
+        <a class="category-card" href="/shop/products.html?category=${encodeURIComponent(category.name)}">
             <img src="${category.image}" alt="${category.name}" loading="lazy">
             <div>
                 <h3>${category.name}</h3>
@@ -248,7 +248,7 @@ function renderProducts() {
         const button = event.target.closest("[data-category]");
         if (!button) return;
         active = button.dataset.category;
-        history.replaceState(null, "", active === "All Products" ? "/products.html" : `/products.html?category=${encodeURIComponent(active)}`);
+        history.replaceState(null, "", active === "All Products" ? "/shop/products.html" : `/shop/products.html?category=${encodeURIComponent(active)}`);
         draw();
     });
 
@@ -262,7 +262,7 @@ function renderProductDetail() {
     const product = SHOP_PRODUCTS.find((item) => item.sku === sku) || SHOP_PRODUCTS[0];
     document.title = `${product.name} | GYUTRON Official Store`;
     target.innerHTML = `
-        <div class="breadcrumb"><a href="/">Store</a><span>/</span><a href="/products.html?category=${encodeURIComponent(product.category)}">${product.category}</a><span>/</span><span>${product.name}</span></div>
+        <div class="breadcrumb"><a href="/shop/index.html">Store</a><span>/</span><a href="/shop/products.html?category=${encodeURIComponent(product.category)}">${product.category}</a><span>/</span><span>${product.name}</span></div>
         <div class="product-detail">
             <div class="detail-media"><img src="${product.image}" alt="${product.name}"></div>
             <div class="detail-info">
@@ -280,8 +280,8 @@ function renderProductDetail() {
                 </div>
                 <div class="detail-actions">
                     <button class="button button-primary" data-detail-add="${product.sku}">Buy Now</button>
-                    <a class="button button-outline" href="/request-quote.html?sku=${product.sku}">Request a Quote</a>
-                    <a class="button button-soft" href="/contact-engineer.html?sku=${product.sku}">Contact Engineer</a>
+                    <a class="button button-outline" href="/shop/request-quote.html?sku=${product.sku}">Request a Quote</a>
+                    <a class="button button-soft" href="/shop/contact-engineer.html?sku=${product.sku}">Contact Engineer</a>
                 </div>
                 <p class="notice" style="margin-top:18px;">Industrial orders may require parameter confirmation, certification checks, stock validation, or lead-time review before shipment.</p>
             </div>
@@ -320,8 +320,8 @@ function renderSummary(target) {
         <div class="summary-line"><span>Shipping</span><strong>Quoted</strong></div>
         <div class="summary-total"><span>Total before shipping</span><br>${money(subtotal)}</div>
         <p class="notice">Final shipping, duties, lead time, and certification documents are confirmed before payment capture.</p>
-        <a class="button button-primary" style="width:100%;" href="/checkout.html">Proceed to Checkout</a>
-        <a class="button button-outline" style="width:100%; margin-top:10px;" href="/request-quote.html">Request a Quote</a>
+        <a class="button button-primary" style="width:100%;" href="/shop/checkout.html">Proceed to Checkout</a>
+        <a class="button button-outline" style="width:100%; margin-top:10px;" href="/shop/request-quote.html">Request a Quote</a>
     `;
 }
 

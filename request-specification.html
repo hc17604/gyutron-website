@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+        if (location.hostname === "shop.gyutron.com" && !location.pathname.startsWith("/shop/")) {
+            location.replace("/shop/index.html" + location.search + location.hash);
+        }
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GYUTRON Request Specification | Rugged PDA Terminals</title>
     <meta name="description" content="Request GYUTRON rugged PDA, RFID, barcode scanner, and OEM specification packages for industrial deployment planning.">

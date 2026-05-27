@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+        if (location.hostname === "shop.gyutron.com" && !location.pathname.startsWith("/shop/")) {
+            location.replace("/shop/index.html" + location.search + location.hash);
+        }
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GYUTRON | Industrial Intelligence, Machine Vision & Rugged Automation</title>
     <meta name="description" content="GYUTRON provides industrial intelligent hardware, machine vision systems, sensors, rugged PDA terminals, inspection instruments, and connected automation solutions for modern manufacturing and logistics teams.">
