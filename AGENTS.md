@@ -24,6 +24,7 @@
 - Official store scope must stay industrial and B2B: cameras, lenses, lighting, sensors, barcode scanners, PDA terminals, cables, acquisition cards, robot accessories, test equipment, and industrial consumables. Do not add unrelated consumer goods.
 - Store product CTAs should include `Buy Now`, `Request a Quote`, and `Contact Engineer`; industrial buyers often need parameter, lead time, certification, stock, and customization confirmation.
 - Current store files live in `shop/` and must be mirrored to `public/shop/` before deployment. `src/worker.mjs` maps `shop.gyutron.com` root and clean paths to `/shop/` assets.
+- Store homepage hero should feel like a commerce/procurement entry, not a main-brand landing hero: keep it compact enough that featured product content appears in the first viewport on desktop, tablet, and common phone widths.
 - Cloudflare should keep `shop.gyutron.com` as a Custom Domain on the `gyutron-website` Worker. `wrangler.toml` must keep `run_worker_first = true`, otherwise `/` is served from the brand-site `index.html` before Worker host routing can map it to `/shop/index.html`.
 - Route patterns for `shop.gyutron.com`, `shop.gyutron.com/`, and `shop.gyutron.com/*` may remain as extra coverage, but the Custom Domain is the important clean-root binding.
 - `src/worker.mjs` must let non-HTML root assets such as `/gyutron-logo-purple.png`, `/favicon.ico`, and `/product-images/*.png` pass through unchanged on `shop.gyutron.com`; only page paths should map to `/shop/`.

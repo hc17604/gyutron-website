@@ -430,17 +430,17 @@ textarea {
 .hero {
     background:
         linear-gradient(90deg, rgba(18, 5, 31, 0.94), rgba(18, 5, 31, 0.68)),
-        url("../hero-industrial-automation.png") center / cover;
+        url("../hero-industrial-automation.png") center 45% / cover;
     color: var(--white);
-    min-height: 560px;
-    padding: 78px 0 66px;
+    min-height: 430px;
+    padding: 48px 0 42px;
 }
 
 .hero-grid {
-    align-items: end;
+    align-items: center;
     display: grid;
-    gap: 42px;
-    grid-template-columns: minmax(0, 1.05fr) 420px;
+    gap: 34px;
+    grid-template-columns: minmax(0, 1fr) 360px;
 }
 
 .eyebrow {
@@ -468,37 +468,48 @@ h1 {
     max-width: 760px;
 }
 
+.hero h1 {
+    font-size: clamp(42px, 3.55vw, 52px);
+    line-height: 1;
+    margin-bottom: 16px;
+    max-width: 650px;
+}
+
+.hero .eyebrow {
+    margin-bottom: 12px;
+}
+
 .hero p {
     color: rgba(255, 255, 255, 0.82);
-    font-size: 18px;
-    line-height: 1.62;
-    max-width: 690px;
+    font-size: 16px;
+    line-height: 1.52;
+    max-width: 650px;
 }
 
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 28px;
+    margin-top: 22px;
 }
 
 .buy-panel {
     background: rgba(255, 255, 255, 0.96);
     color: var(--ink);
-    padding: 26px;
+    padding: 22px;
 }
 
 .buy-panel h2 {
-    font-size: 22px;
-    margin-bottom: 14px;
+    font-size: 20px;
+    margin-bottom: 12px;
 }
 
 .buy-panel ul {
     color: var(--muted);
     display: grid;
-    gap: 12px;
+    gap: 10px;
     list-style: none;
-    margin: 0 0 24px;
+    margin: 0 0 18px;
     padding: 0;
 }
 
@@ -515,6 +526,10 @@ h1 {
 
 .section {
     padding: 78px 0;
+}
+
+.hero + .section {
+    padding-top: 50px;
 }
 
 .section-soft {
@@ -1125,10 +1140,33 @@ h1 {
         grid-template-columns: 1fr;
     }
 
+    .hero {
+        min-height: auto;
+        padding: 42px 0 36px;
+    }
+
+    .hero h1 {
+        font-size: clamp(38px, 6vw, 48px);
+        max-width: 720px;
+    }
+
+    .hero p {
+        max-width: 720px;
+    }
+
+    .buy-panel {
+        padding: 20px;
+    }
+
     .buy-panel,
     .filter-panel,
     .summary-card {
         position: static;
+    }
+
+    .buy-panel,
+    .hero-actions .button-soft {
+        display: none;
     }
 
     .spotlight-grid,
@@ -1257,16 +1295,57 @@ h1 {
 
     .hero {
         min-height: auto;
-        padding: 54px 0;
+        padding: 32px 0 28px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+        line-height: 1.03;
+        margin-bottom: 12px;
+    }
+
+    .hero .eyebrow {
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 15px;
+        line-height: 1.48;
+    }
+
+    .hero-actions {
+        gap: 10px;
+        margin-top: 16px;
+    }
+
+    .hero-actions .button-soft {
+        display: none;
+    }
+
+    .buy-panel {
+        display: none;
     }
 
     .section {
         padding: 52px 0;
     }
 
+    .hero + .section {
+        padding-top: 28px;
+    }
+
+    .hero + .section .section-head p {
+        display: none;
+    }
+
+    .hero + .section .section-head h2 {
+        font-size: 29px;
+    }
+
     .section-head {
         align-items: flex-start;
         flex-direction: column;
+        margin-bottom: 22px;
     }
 
     .spotlight-grid,
