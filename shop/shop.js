@@ -108,6 +108,72 @@
         summary: "Calibration target for vision setup, measurement checks, and camera alignment routines.",
         tags: ["Calibration", "Vision setup", "Glass plate"],
         specs: { Pattern: "Grid", Size: "120 x 120 mm", Material: "Glass", Use: "Camera calibration" }
+    },
+    {
+        sku: "GY-V240-COLOR",
+        name: "GY-V240 Color Area Scan Camera",
+        category: "Industrial Cameras",
+        price: 536,
+        leadTime: "Quote lead time",
+        image: "/product-images/gy-v240-color.png",
+        summary: "Color area-scan camera for inspection cells, robot guidance, and measurement stations.",
+        tags: ["Color CMOS", "GigE", "Trigger I/O"],
+        specs: { Sensor: "2.4 MP color", Interface: "GigE Vision", Shutter: "Global shutter", Use: "Inspection cells" }
+    },
+    {
+        sku: "GY-V3D150",
+        name: "GY-V3D150 3D Profiling Camera",
+        category: "Industrial Cameras",
+        price: 1280,
+        leadTime: "Quote lead time",
+        image: "/product-images/gy-v3d150.png",
+        summary: "3D profiling camera for height checks, surface inspection, and dimensional verification.",
+        tags: ["3D profile", "Laser line", "Inspection"],
+        specs: { Scan: "3D profile", Range: "150 mm class", Output: "GigE", Use: "Height and surface checks" }
+    },
+    {
+        sku: "GY-LDOME120",
+        name: "GY-LDOME120 Dome Light",
+        category: "Vision Lighting",
+        price: 188,
+        leadTime: "Ships in 5-8 days",
+        image: "/product-images/gy-ldome120.png",
+        summary: "Diffuse white dome light for reflective parts, curved surfaces, and label inspection.",
+        tags: ["Diffuse", "White LED", "24 VDC"],
+        specs: { Type: "Dome", Diameter: "120 mm", Color: "White", Use: "Reflective surfaces" }
+    },
+    {
+        sku: "GY-PS60",
+        name: "GY-PS60 Photoelectric Sensor",
+        category: "Sensors",
+        price: 58,
+        leadTime: "In stock",
+        image: "/product-images/gy-ps60.png",
+        summary: "Photoelectric sensor for cartons, trays, fixtures, and product presence detection.",
+        tags: ["Photoelectric", "IP67", "Fast response"],
+        specs: { Type: "Diffuse / retroreflective", Range: "60 cm class", Output: "PNP/NPN", Rating: "IP67" }
+    },
+    {
+        sku: "GY-S300-DPM",
+        name: "GY-S300 DPM Barcode Scanner",
+        category: "Barcode Scanners",
+        price: 328,
+        leadTime: "Ships in 5-8 days",
+        image: "/product-images/gy-s300-dpm.png",
+        summary: "DPM-ready scanner for etched, printed, and low-contrast production codes.",
+        tags: ["DPM", "1D/2D", "Factory floor"],
+        specs: { Scan: "1D/2D + DPM", Lighting: "Integrated", Interface: "USB / RS232", Use: "Traceability" }
+    },
+    {
+        sku: "GY-A80-ULTRA",
+        name: "GY-A80 Ultra Rugged PDA",
+        category: "Rugged PDA",
+        price: 612,
+        leadTime: "Quote lead time",
+        image: "/product-images/gy-a80-ultra.png",
+        summary: "High-performance Android PDA for scan-intensive warehouse and field operations.",
+        tags: ["Android", "5G option", "Rugged"],
+        specs: { OS: "Android", Display: "Large HD", Scan: "Long-range 2D option", Rugged: "Industrial handheld" }
     }
 ];
 
@@ -207,10 +273,28 @@ function productCard(product) {
     `;
 }
 
+function spotlightCard(product) {
+    return `
+        <article class="spotlight-card">
+            <a class="spotlight-media" href="/shop/product.html?sku=${product.sku}" aria-label="${product.name}">
+                <img src="${product.image}" alt="${product.name}" loading="lazy">
+            </a>
+            <div class="spotlight-body">
+                <span class="spotlight-category">${product.category}</span>
+                <h3>${product.name}</h3>
+                <div class="spotlight-actions">
+                    <a href="/shop/product.html?sku=${product.sku}">View</a>
+                    <a href="/shop/request-quote.html?sku=${product.sku}">Quote</a>
+                </div>
+            </div>
+        </article>
+    `;
+}
+
 function renderSpotlight() {
     const target = document.querySelector("[data-spotlight]");
     if (!target) return;
-    target.innerHTML = SHOP_PRODUCTS.slice(0, 3).map(productCard).join("");
+    target.innerHTML = SHOP_PRODUCTS.slice(0, 16).map(spotlightCard).join("");
 }
 
 function renderCategories() {

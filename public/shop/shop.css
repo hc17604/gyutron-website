@@ -567,7 +567,85 @@ h1 {
 }
 
 .spotlight-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.spotlight-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.spotlight-media {
+    align-items: center;
+    background: #f4f1f7;
+    display: flex;
+    height: 112px;
+    justify-content: center;
+    padding: 12px;
+}
+
+.spotlight-media img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.spotlight-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+}
+
+.spotlight-category {
+    color: var(--purple);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.spotlight-body h3 {
+    color: var(--ink);
+    display: -webkit-box;
+    font-size: 13px;
+    line-height: 1.2;
+    margin: 0;
+    min-height: 47px;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.spotlight-actions {
+    display: grid;
+    gap: 6px;
+    grid-template-columns: 1fr 1fr;
+    margin-top: auto;
+}
+
+.spotlight-actions a {
+    align-items: center;
+    border: 1px solid rgba(75, 46, 131, 0.16);
+    color: var(--purple-700);
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 900;
+    height: 30px;
+    justify-content: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.spotlight-actions a:first-child {
+    background: var(--purple);
+    border-color: var(--purple);
+    color: var(--white);
 }
 
 .category-grid {
@@ -1078,6 +1156,12 @@ h1 {
     box-shadow: var(--shadow);
 }
 
+@media (max-width: 1180px) {
+    .spotlight-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 1040px) {
     body {
         padding-top: 164px;
@@ -1169,9 +1253,12 @@ h1 {
         display: none;
     }
 
-    .spotlight-grid,
     .product-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .spotlight-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .category-grid,
@@ -1348,7 +1435,6 @@ h1 {
         margin-bottom: 22px;
     }
 
-    .spotlight-grid,
     .category-grid,
     .trust-grid,
     .product-grid,
@@ -1356,6 +1442,14 @@ h1 {
     .form-grid,
     .account-layout {
         grid-template-columns: 1fr;
+    }
+
+    .spotlight-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .spotlight-media {
+        height: 124px;
     }
 
     .cart-item {
