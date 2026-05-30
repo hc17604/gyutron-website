@@ -19,6 +19,9 @@
     --white: #ffffff;
     --signal: #00c2a8;
     --shadow: 0 24px 70px rgba(31, 11, 53, 0.18);
+    --motion-fast: 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    --motion: 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    --motion-slow: 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 html {
@@ -177,8 +180,8 @@ a {
     pointer-events: none;
     position: absolute;
     top: 100%;
-    transform: translateX(-50%);
-    transition: opacity 160ms ease;
+    transform: translateX(-50%) translateY(8px);
+    transition: opacity var(--motion-fast), transform var(--motion);
     z-index: 40;
 }
 
@@ -187,6 +190,7 @@ a {
 .nav-item:focus-within .mega-menu {
     opacity: 1;
     pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
 }
 
 .mega-links {
@@ -376,8 +380,34 @@ a {
     justify-content: center;
     min-height: 46px;
     padding: 0 20px;
-    transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+    overflow: hidden;
+    position: relative;
+    transition: background var(--motion-fast), border-color var(--motion-fast), box-shadow var(--motion), color var(--motion-fast), transform var(--motion);
     white-space: nowrap;
+}
+
+.button::after {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+    content: "";
+    inset: 0 auto 0 -80%;
+    pointer-events: none;
+    position: absolute;
+    transform: skewX(-18deg);
+    transition: left var(--motion-slow);
+    width: 54%;
+}
+
+.button:hover {
+    box-shadow: 0 16px 34px rgba(31, 11, 53, 0.16);
+    transform: translateY(-2px);
+}
+
+.button:hover::after {
+    left: 124%;
+}
+
+.button:active {
+    transform: translateY(0) scale(0.985);
 }
 
 .button-primary {
@@ -533,12 +563,21 @@ a {
     letter-spacing: 0.08em;
     padding: 10px 14px;
     text-transform: uppercase;
+    transition: background var(--motion-fast), border-color var(--motion-fast), box-shadow var(--motion), color var(--motion-fast), transform var(--motion);
 }
 
 .category-nav a.is-active {
     background: var(--brand-purple);
     border-color: var(--brand-purple);
     color: var(--white);
+}
+
+.category-nav a:hover {
+    background: var(--violet-soft);
+    border-color: rgba(111, 45, 189, 0.32);
+    box-shadow: 0 10px 24px rgba(31, 11, 53, 0.08);
+    color: var(--purple-700);
+    transform: translateY(-1px);
 }
 
 .section {
@@ -580,6 +619,7 @@ a {
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
+    transition: border-color var(--motion), box-shadow var(--motion), transform var(--motion);
 }
 
 .product-art {
@@ -597,6 +637,7 @@ a {
     height: 218px;
     max-width: 100%;
     object-fit: contain;
+    transition: filter var(--motion), transform var(--motion-slow);
     width: 100%;
 }
 
@@ -690,6 +731,29 @@ a {
     font-size: 12px;
     font-weight: 900;
     padding: 9px 11px;
+    transition: background var(--motion-fast), border-color var(--motion-fast), color var(--motion-fast), transform var(--motion);
+}
+
+.product-card:hover {
+    border-color: rgba(111, 45, 189, 0.34);
+    box-shadow: 0 24px 52px rgba(31, 11, 53, 0.14);
+    transform: translateY(-5px);
+}
+
+.product-card:hover .product-art img {
+    filter: saturate(1.08) contrast(1.04);
+    transform: scale(1.045);
+}
+
+.product-card:hover h3 {
+    color: var(--brand-purple);
+}
+
+.product-actions a:hover {
+    background: var(--violet-soft);
+    border-color: rgba(111, 45, 189, 0.32);
+    color: var(--purple-700);
+    transform: translateY(-1px);
 }
 
 .pagination {
@@ -724,12 +788,32 @@ a {
     font-weight: 900;
     min-height: 36px;
     min-width: 36px;
+    transition: background var(--motion-fast), border-color var(--motion-fast), box-shadow var(--motion), color var(--motion-fast), transform var(--motion);
 }
 
 .pagination button.is-active {
     background: var(--brand-purple);
     border-color: var(--brand-purple);
     color: var(--white);
+}
+
+.pagination button:hover {
+    background: var(--violet-soft);
+    border-color: rgba(111, 45, 189, 0.32);
+    box-shadow: 0 10px 24px rgba(31, 11, 53, 0.08);
+    color: var(--purple-700);
+    transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+    }
 }
 
 .compare-band {
