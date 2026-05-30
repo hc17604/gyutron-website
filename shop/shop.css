@@ -1346,6 +1346,18 @@ h1 {
         max-width: 720px;
     }
 
+    main .section > .container > h1[style],
+    main .section .section-head h1[style] {
+        font-size: 38px !important;
+        line-height: 1.06;
+        margin-bottom: 12px;
+        max-width: 720px;
+    }
+
+    main .section > .container > .eyebrow {
+        margin-bottom: 12px;
+    }
+
     .buy-panel {
         padding: 20px;
     }
@@ -1518,6 +1530,10 @@ h1 {
     .trust-grid,
     .footer-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .policy-grid[style] {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
 }
 
@@ -1697,6 +1713,19 @@ h1 {
         font-size: 38px;
     }
 
+    main .section > .container > h1[style],
+    main .section .section-head h1[style] {
+        font-size: 27px !important;
+        line-height: 1.08;
+        margin-bottom: 10px;
+    }
+
+    .account-copy h1 {
+        font-size: 29px !important;
+        line-height: 1.08;
+        margin-bottom: 10px;
+    }
+
     .hero {
         min-height: auto;
         padding: 32px 0 28px;
@@ -1731,7 +1760,7 @@ h1 {
     }
 
     .section {
-        padding: 52px 0;
+        padding: 34px 0;
     }
 
     .hero + .section {
@@ -1749,7 +1778,26 @@ h1 {
     .section-head {
         align-items: flex-start;
         flex-direction: column;
+        gap: 8px;
         margin-bottom: 22px;
+    }
+
+    .section-head p,
+    .account-copy p,
+    main .section > .container > p {
+        display: -webkit-box;
+        font-size: 13px;
+        line-height: 1.42;
+        margin-bottom: 0;
+        max-width: none;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    main .section > .container > .eyebrow {
+        font-size: 10px;
+        margin-bottom: 8px;
     }
 
     .catalog-title {
@@ -1959,9 +2007,44 @@ h1 {
     .category-grid,
     .trust-grid,
     .footer-grid,
+    .policy-grid,
     .form-grid,
     .account-layout {
         grid-template-columns: 1fr;
+    }
+
+    .policy-grid[style] {
+        gap: 12px;
+        grid-template-columns: 1fr !important;
+        margin-top: 16px !important;
+    }
+
+    .policy-card,
+    .trust-card {
+        padding: 16px;
+    }
+
+    .policy-card h3,
+    .trust-card h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .policy-card p,
+    .trust-card p {
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    .account-benefits {
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    .account-benefits div {
+        font-size: 12px;
+        gap: 8px;
+        padding: 10px 12px;
     }
 
     .product-grid {
