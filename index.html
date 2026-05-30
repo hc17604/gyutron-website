@@ -642,20 +642,22 @@
         .hero {
             background: var(--purple-950);
             color: var(--white);
-            min-height: calc(100vh - 110px);
+            height: clamp(560px, calc(100vh - 150px), 720px);
+            min-height: 0;
             overflow: hidden;
             position: relative;
         }
 
         .hero-carousel {
-            min-height: inherit;
+            height: 100%;
             position: relative;
         }
 
         .hero-slide {
+            height: 100%;
             inset: 0;
             opacity: 0;
-            padding: 64px 0 72px;
+            padding: 0;
             pointer-events: none;
             position: absolute;
             transform: scale(1.01);
@@ -687,10 +689,18 @@
             transform: scale(1);
         }
 
+        .hero-slide > .container {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            padding-bottom: 96px;
+            padding-top: 28px;
+        }
+
         .hero-slide::after {
             background:
                 radial-gradient(circle at 72% 34%, rgba(111, 45, 189, 0.28), transparent 28%),
-                linear-gradient(180deg, rgba(18, 5, 31, 0) 72%, rgba(18, 5, 31, 0.78) 100%);
+                linear-gradient(180deg, rgba(18, 5, 31, 0) 66%, rgba(18, 5, 31, 0.82) 100%);
             content: "";
             inset: 0;
             pointer-events: none;
@@ -699,12 +709,10 @@
         }
 
         .hero-grid {
-            align-items: center;
-            display: grid;
-            gap: 56px;
-            grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.72fr);
-            min-height: 500px;
+            display: block;
+            max-width: 760px;
             position: relative;
+            width: 100%;
         }
 
         .hero-grid > * {
@@ -713,12 +721,12 @@
 
         .hero h1 {
             color: var(--white);
-            font-size: clamp(46px, 5.4vw, 70px);
+            font-size: clamp(42px, 4.4vw, 64px);
             font-weight: 900;
             letter-spacing: 0;
-            line-height: 0.98;
-            margin: 18px 0 24px;
-            max-width: 790px;
+            line-height: 1.02;
+            margin: 16px 0 22px;
+            max-width: 720px;
         }
 
         .hero-slide .eyebrow,
@@ -764,8 +772,9 @@
 
         .hero-copy {
             color: rgba(255, 255, 255, 0.82);
-            font-size: 19px;
-            max-width: 660px;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 610px;
             overflow-wrap: break-word;
         }
 
@@ -773,7 +782,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 14px;
-            margin-top: 34px;
+            margin-top: 30px;
         }
 
         .hero-panel {
@@ -874,6 +883,11 @@
             color: var(--signal);
         }
 
+        .hero .ticker,
+        .hero-panel {
+            display: none;
+        }
+
         .hero-controls {
             bottom: 28px;
             left: 50%;
@@ -885,18 +899,18 @@
 
         .hero-control-grid {
             display: grid;
-            gap: 10px;
+            gap: 12px;
             grid-template-columns: repeat(3, minmax(0, 1fr));
-            max-width: 720px;
+            max-width: 760px;
         }
 
         .hero-tab {
-            background: rgba(255, 255, 255, 0.09);
-            border: 1px solid rgba(255, 255, 255, 0.20);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.16);
             color: rgba(255, 255, 255, 0.72);
             cursor: pointer;
-            min-height: 58px;
-            padding: 10px 12px;
+            min-height: 54px;
+            padding: 11px 14px;
             position: relative;
             text-align: left;
             transition: background var(--motion), border-color var(--motion), color var(--motion), transform var(--motion);
@@ -904,10 +918,10 @@
 
         .hero-tab:hover,
         .hero-tab.is-active {
-            background: rgba(255, 255, 255, 0.16);
-            border-color: rgba(255, 255, 255, 0.38);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.30);
             color: var(--white);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .hero-tab strong {
@@ -1674,15 +1688,21 @@
             }
 
             .hero {
-                min-height: auto;
+                height: clamp(520px, calc(100vh - 130px), 680px);
+                min-height: 0;
             }
 
             .hero-slide {
-                padding: 78px 0 106px;
+                padding: 0;
+            }
+
+            .hero-slide > .container {
+                padding-bottom: 92px;
+                padding-top: 24px;
             }
 
             .hero-grid {
-                gap: 34px;
+                max-width: 720px;
                 min-height: 0;
             }
 
@@ -1769,11 +1789,23 @@
             }
 
             .hero {
-                min-height: auto;
+                height: auto;
+                min-height: 0;
+            }
+
+            .hero-carousel {
+                height: auto;
             }
 
             .hero-slide {
-                padding: 48px 0 24px;
+                height: auto;
+                padding: 0;
+            }
+
+            .hero-slide > .container {
+                display: block;
+                padding-bottom: 24px;
+                padding-top: 42px;
             }
 
             .hero-slide::before {
@@ -1783,12 +1815,12 @@
             }
 
             .hero-grid {
-                gap: 18px;
+                max-width: none;
                 min-height: 0;
             }
 
             .hero h1 {
-                font-size: 42px;
+                font-size: 36px;
                 max-width: 100%;
             }
 
