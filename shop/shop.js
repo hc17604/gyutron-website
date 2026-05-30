@@ -265,7 +265,7 @@ function productCard(product) {
                 </div>
                 <div class="card-actions">
                     <button class="button button-primary" data-add-cart="${product.sku}">Buy Now</button>
-                    <a class="button button-outline" href="/shop/request-quote.html?sku=${product.sku}">Request a Quote</a>
+                    <a class="button button-outline" href="/shop/request-quote.html?sku=${product.sku}">Quote</a>
                     <a class="button button-soft" href="/shop/contact-engineer.html?sku=${product.sku}">Contact Engineer</a>
                 </div>
             </div>

@@ -561,6 +561,11 @@ h1 {
     max-width: 760px;
 }
 
+.catalog-title {
+    color: var(--ink);
+    font-size: 48px;
+}
+
 .hero h1 {
     font-size: clamp(42px, 3.55vw, 52px);
     line-height: 1;
@@ -869,6 +874,7 @@ h1 {
     display: grid;
     gap: 28px;
     grid-template-columns: 260px minmax(0, 1fr);
+    min-width: 0;
 }
 
 .filter-panel {
@@ -878,6 +884,7 @@ h1 {
     padding: 18px;
     position: sticky;
     top: 106px;
+    min-width: 0;
 }
 
 .filter-panel h3 {
@@ -912,6 +919,7 @@ h1 {
     display: grid;
     gap: 18px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    min-width: 0;
 }
 
 .breadcrumb {
@@ -1350,6 +1358,133 @@ h1 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .catalog-title {
+        font-size: 34px;
+        line-height: 1.08;
+        margin-bottom: 10px;
+    }
+
+    .catalog-copy {
+        font-size: 14px;
+        line-height: 1.45;
+        max-width: none;
+    }
+
+    .section-soft:first-child .section-head {
+        margin-bottom: 14px;
+    }
+
+    .filter-panel {
+        background: rgba(255, 255, 255, 0.96);
+        overflow: hidden;
+        padding: 10px;
+        position: sticky;
+        top: 164px;
+        z-index: 70;
+    }
+
+    .filter-panel h3 {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    .filter-list {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 0 0 2px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-button {
+        background: var(--white);
+        border: 1px solid var(--line);
+        flex: 0 0 auto;
+        font-size: 12px;
+        min-height: 34px;
+        padding: 7px 10px;
+        white-space: nowrap;
+    }
+
+    .product-media {
+        height: 160px;
+        padding: 12px;
+    }
+
+    .product-body {
+        gap: 10px;
+        padding: 14px;
+    }
+
+    .product-body h3 {
+        font-size: 15px;
+        line-height: 1.22;
+        margin-bottom: 0;
+    }
+
+    .product-body p {
+        display: -webkit-box;
+        font-size: 12px;
+        line-height: 1.4;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .product-grid .tag-row {
+        gap: 6px;
+        margin: 0;
+    }
+
+    .product-grid .tag {
+        font-size: 10px;
+        padding: 5px 7px;
+    }
+
+    .product-grid .tag:nth-child(n+3) {
+        display: none;
+    }
+
+    .price-row {
+        gap: 6px;
+        margin-top: 0;
+    }
+
+    .price {
+        font-size: 17px;
+    }
+
+    .lead-time {
+        font-size: 10px;
+        line-height: 1.2;
+    }
+
+    .card-actions {
+        gap: 6px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card-actions .button {
+        font-size: 11px;
+        min-height: 36px;
+        padding: 8px 6px;
+    }
+
+    .card-actions .button:first-child {
+        grid-column: auto;
+    }
+
+    .product-grid .card-actions .button-soft {
+        display: none;
+    }
+
     .spotlight-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
@@ -1592,13 +1727,168 @@ h1 {
         margin-bottom: 22px;
     }
 
+    .catalog-title {
+        font-size: 28px;
+        line-height: 1.08;
+        margin-bottom: 8px;
+    }
+
+    .catalog-copy {
+        display: -webkit-box;
+        font-size: 13px;
+        line-height: 1.42;
+        max-width: none;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .section-soft:first-child {
+        padding-top: 28px;
+    }
+
+    .section-soft:first-child .section-head {
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .section-soft:first-child .eyebrow {
+        font-size: 10px;
+        margin-bottom: 8px;
+    }
+
+    .store-layout {
+        gap: 14px;
+    }
+
+    .filter-panel {
+        background: rgba(255, 255, 255, 0.96);
+        border-left: 0;
+        border-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px;
+        position: sticky;
+        top: 142px;
+        z-index: 70;
+    }
+
+    .filter-panel h3 {
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    .filter-list {
+        display: flex;
+        gap: 8px;
+        margin: 0;
+        overflow-x: auto;
+        padding: 0 0 2px;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .filter-list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-button {
+        background: var(--white);
+        border: 1px solid var(--line);
+        flex: 0 0 auto;
+        font-size: 12px;
+        min-height: 34px;
+        padding: 7px 10px;
+        white-space: nowrap;
+    }
+
     .category-grid,
     .trust-grid,
-    .product-grid,
     .footer-grid,
     .form-grid,
     .account-layout {
         grid-template-columns: 1fr;
+    }
+
+    .product-grid {
+        gap: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-media {
+        height: 118px;
+        padding: 10px;
+    }
+
+    .product-body {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .product-body h3 {
+        display: -webkit-box;
+        font-size: 13px;
+        line-height: 1.2;
+        margin-bottom: 0;
+        min-height: 47px;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+
+    .product-body p {
+        display: none;
+    }
+
+    .product-grid .tag-row {
+        gap: 5px;
+        margin: 0;
+    }
+
+    .product-grid .tag {
+        font-size: 9px;
+        padding: 5px 6px;
+    }
+
+    .product-grid .tag:nth-child(n+3) {
+        display: none;
+    }
+
+    .price-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2px;
+        margin-top: 0;
+    }
+
+    .price {
+        font-size: 15px;
+    }
+
+    .lead-time {
+        font-size: 9px;
+        line-height: 1.2;
+    }
+
+    .card-actions {
+        gap: 6px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card-actions .button {
+        font-size: 10px;
+        min-height: 34px;
+        padding: 8px 6px;
+    }
+
+    .card-actions .button:first-child {
+        grid-column: auto;
+    }
+
+    .product-grid .card-actions .button-soft {
+        display: none;
     }
 
     .spotlight-grid {
