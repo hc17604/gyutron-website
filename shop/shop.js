@@ -386,6 +386,10 @@ function getSearchMatches(query) {
         .map((item) => item.product);
 }
 
+function getSearchPath(product) {
+    return [product.category, ...product.tags.slice(0, 2)].filter(Boolean).join(" / ");
+}
+
 function initSearchSuggestions() {
     document.querySelectorAll(".store-search").forEach((form) => {
         const input = form.querySelector("input[name='q']");
@@ -396,6 +400,15 @@ function initSearchSuggestions() {
         panel.setAttribute("role", "listbox");
         panel.hidden = true;
         form.appendChild(panel);
+
+        const openSearch = () => {
+            form.classList.add("is-search-open");
+        };
+
+        const closeSearch = () => {
+            if (input.value.trim() || document.activeElement === input) return;
+            form.classList.remove("is-search-open");
+        };
 
         const close = () => {
             panel.hidden = true;
@@ -411,13 +424,13 @@ function initSearchSuggestions() {
                 return;
             }
             panel.innerHTML = `
-                <div class="search-suggestion-title">Matching products</div>
+                <div class="search-suggestion-title">Suggested products</div>
                 ${matches.map((product) => `
                     <a class="search-suggestion" role="option" href="/shop/product.html?sku=${encodeURIComponent(product.sku)}">
                         <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy">
                         <span>
                             <strong>${escapeHtml(product.name)}</strong>
-                            <em>${escapeHtml(product.category)} / ${escapeHtml(product.tags[0] || "Industrial products")}</em>
+                            <em>${escapeHtml(getSearchPath(product) || "Industrial products")}</em>
                             <small>${escapeHtml(product.sku)}</small>
                         </span>
                     </a>
@@ -428,10 +441,30 @@ function initSearchSuggestions() {
             form.classList.add("has-suggestions");
         };
 
-        input.addEventListener("input", render);
-        input.addEventListener("focus", render);
+        form.addEventListener("pointerenter", openSearch);
+        form.addEventListener("pointerleave", closeSearch);
+        form.addEventListener("click", () => {
+            openSearch();
+            input.focus();
+        });
+        form.addEventListener("focusin", openSearch);
+        form.addEventListener("focusout", () => {
+            window.setTimeout(closeSearch, 120);
+        });
+        input.addEventListener("input", () => {
+            openSearch();
+            render();
+        });
+        input.addEventListener("focus", () => {
+            openSearch();
+            render();
+        });
         input.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") close();
+            if (event.key === "Escape") {
+                close();
+                input.blur();
+                closeSearch();
+            }
         });
         document.addEventListener("click", (event) => {
             if (!form.contains(event.target)) close();
