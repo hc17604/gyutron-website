@@ -356,6 +356,90 @@ function hydrateSearch() {
     });
 }
 
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, (char) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#039;"
+    })[char]);
+}
+
+function getSearchMatches(query) {
+    const normalized = query.trim().toLowerCase();
+    if (!normalized) return [];
+    return SHOP_PRODUCTS
+        .map((product) => {
+            const haystack = [product.sku, product.name, product.category, product.summary, ...product.tags]
+                .join(" ")
+                .toLowerCase();
+            const score = product.name.toLowerCase().includes(normalized) ? 3
+                : product.sku.toLowerCase().includes(normalized) ? 2
+                    : haystack.includes(normalized) ? 1
+                        : 0;
+            return { product, score };
+        })
+        .filter((item) => item.score > 0)
+        .sort((a, b) => b.score - a.score || a.product.name.localeCompare(b.product.name))
+        .slice(0, 6)
+        .map((item) => item.product);
+}
+
+function initSearchSuggestions() {
+    document.querySelectorAll(".store-search").forEach((form) => {
+        const input = form.querySelector("input[name='q']");
+        if (!input || form.querySelector(".search-suggestions")) return;
+
+        const panel = document.createElement("div");
+        panel.className = "search-suggestions";
+        panel.setAttribute("role", "listbox");
+        panel.hidden = true;
+        form.appendChild(panel);
+
+        const close = () => {
+            panel.hidden = true;
+            panel.innerHTML = "";
+            form.classList.remove("has-suggestions");
+        };
+
+        const render = () => {
+            const query = input.value.trim();
+            const matches = getSearchMatches(query);
+            if (!query || !matches.length) {
+                close();
+                return;
+            }
+            panel.innerHTML = `
+                <div class="search-suggestion-title">Matching products</div>
+                ${matches.map((product) => `
+                    <a class="search-suggestion" role="option" href="/shop/product.html?sku=${encodeURIComponent(product.sku)}">
+                        <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy">
+                        <span>
+                            <strong>${escapeHtml(product.name)}</strong>
+                            <em>${escapeHtml(product.category)} / ${escapeHtml(product.tags[0] || "Industrial products")}</em>
+                            <small>${escapeHtml(product.sku)}</small>
+                        </span>
+                    </a>
+                `).join("")}
+                <a class="search-suggestion-all" href="/shop/products.html?q=${encodeURIComponent(query)}">Search all results for "${escapeHtml(query)}"</a>
+            `;
+            panel.hidden = false;
+            form.classList.add("has-suggestions");
+        };
+
+        input.addEventListener("input", render);
+        input.addEventListener("focus", render);
+        input.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") close();
+        });
+        document.addEventListener("click", (event) => {
+            if (!form.contains(event.target)) close();
+        });
+        form.addEventListener("submit", () => close());
+    });
+}
+
 function initStoreMobileMenu() {
     const toggle = document.querySelector(".store-menu-toggle");
     if (!toggle || document.querySelector(".store-mobile-panel")) return;
@@ -540,6 +624,7 @@ renderProductDetail();
 renderCart();
 renderCheckoutSummary();
 hydrateSearch();
+initSearchSuggestions();
 initStoreMobileMenu();
 handleCartEvents();
 handleForms();
