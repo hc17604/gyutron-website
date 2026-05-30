@@ -189,7 +189,7 @@ textarea {
     position: fixed;
     right: 0;
     top: 130px;
-    z-index: 90;
+    z-index: 130;
 }
 
 .store-mobile-menu-open .store-mobile-panel {
@@ -198,6 +198,12 @@ textarea {
 
 .store-mobile-menu-open {
     overflow: hidden;
+}
+
+.store-mobile-menu-open .filter-panel {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
 }
 
 .store-mobile-section {
