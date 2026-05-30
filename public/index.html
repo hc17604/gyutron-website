@@ -640,9 +640,9 @@
         }
 
         .hero {
-            background: var(--purple-950);
+            background: #07070b;
             color: var(--white);
-            height: clamp(560px, calc(100vh - 150px), 720px);
+            height: clamp(560px, calc(100vh - 155px), 665px);
             min-height: 0;
             overflow: hidden;
             position: relative;
@@ -657,11 +657,9 @@
             height: 100%;
             inset: 0;
             opacity: 0;
-            padding: 0;
             pointer-events: none;
             position: absolute;
-            transform: scale(1.01);
-            transition: opacity 780ms ease, transform 1100ms ease;
+            transition: opacity 900ms ease, transform 1100ms ease;
             z-index: 1;
         }
 
@@ -669,112 +667,139 @@
             opacity: 1;
             pointer-events: auto;
             position: relative;
-            transform: scale(1);
             z-index: 2;
         }
 
         .hero-slide::before {
             background:
-                linear-gradient(90deg, rgba(4, 5, 8, 0.97) 0%, rgba(18, 5, 31, 0.88) 40%, rgba(18, 5, 31, 0.18) 100%),
+                linear-gradient(90deg, rgba(2, 3, 7, 0.96) 0%, rgba(7, 8, 14, 0.86) 34%, rgba(7, 8, 14, 0.48) 66%, rgba(7, 8, 14, 0.82) 100%),
                 var(--hero-bg) center / cover;
             content: "";
+            filter: contrast(1.08) saturate(0.95);
             inset: 0;
             position: absolute;
-            transform: scale(1.04);
-            transition: transform 6500ms ease;
-            z-index: -2;
+            transform: scale(1.06);
+            transition: transform 6800ms ease;
+            z-index: -3;
         }
 
         .hero-slide.is-active::before {
             transform: scale(1);
         }
 
-        .hero-slide > .container {
-            align-items: center;
-            display: flex;
-            height: 100%;
-            padding-bottom: 96px;
-            padding-top: 28px;
-        }
-
         .hero-slide::after {
             background:
-                radial-gradient(circle at 72% 34%, rgba(111, 45, 189, 0.28), transparent 28%),
-                linear-gradient(180deg, rgba(18, 5, 31, 0) 66%, rgba(18, 5, 31, 0.82) 100%);
+                radial-gradient(circle at 58% 52%, rgba(0, 210, 190, 0.16), transparent 24%),
+                linear-gradient(180deg, rgba(0, 0, 0, 0) 72%, rgba(0, 0, 0, 0.44) 100%);
             content: "";
             inset: 0;
             pointer-events: none;
             position: absolute;
-            z-index: -1;
+            z-index: -2;
         }
 
-        .hero-grid {
-            display: block;
-            max-width: 760px;
+        .hero-stage {
+            align-items: center;
+            display: grid;
+            gap: 44px;
+            grid-template-columns: minmax(500px, 0.78fr) minmax(520px, 1.22fr);
+            height: 100%;
+            padding-bottom: 72px;
+            padding-top: 52px;
             position: relative;
-            width: 100%;
         }
 
-        .hero-grid > * {
+        .hero-stage > * {
             min-width: 0;
+        }
+
+        .hero-copy-block {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-bars {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 16px;
+            width: 30px;
+        }
+
+        .hero-bars span {
+            background: var(--hero-accent, #00d2be);
+            display: block;
+            height: 6px;
+        }
+
+        .hero-bars span:nth-child(2) {
+            background: #32c36c;
+            width: 24px;
+        }
+
+        .hero-bars span:nth-child(3) {
+            background: #ff3048;
+            width: 26px;
         }
 
         .hero h1 {
             color: var(--white);
-            font-size: clamp(42px, 4.4vw, 64px);
+            font-size: clamp(38px, 4.1vw, 58px);
             font-weight: 900;
             letter-spacing: 0;
             line-height: 1.02;
-            margin: 16px 0 22px;
-            max-width: 720px;
+            margin: 8px 0 18px;
+            max-width: 580px;
+            text-shadow: 0 12px 32px rgba(0, 0, 0, 0.38);
         }
 
+        .hero-slide .hero-bars,
         .hero-slide .eyebrow,
         .hero-slide h1,
         .hero-slide .hero-copy,
         .hero-slide .hero-actions,
-        .hero-slide .ticker,
-        .hero-slide .hero-panel {
+        .hero-slide .hero-feature-row,
+        .hero-slide .hero-product {
             opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 520ms ease, transform 640ms ease;
+            transform: translateY(22px);
+            transition: opacity 620ms ease, transform 760ms ease;
         }
 
+        .hero-slide.is-active .hero-bars,
         .hero-slide.is-active .eyebrow,
         .hero-slide.is-active h1,
         .hero-slide.is-active .hero-copy,
         .hero-slide.is-active .hero-actions,
-        .hero-slide.is-active .ticker,
-        .hero-slide.is-active .hero-panel {
+        .hero-slide.is-active .hero-feature-row,
+        .hero-slide.is-active .hero-product {
             opacity: 1;
             transform: translateY(0);
         }
 
         .hero-slide.is-active h1 {
-            transition-delay: 80ms;
+            transition-delay: 90ms;
         }
 
         .hero-slide.is-active .hero-copy {
-            transition-delay: 150ms;
+            transition-delay: 160ms;
         }
 
         .hero-slide.is-active .hero-actions {
-            transition-delay: 220ms;
-        }
-
-        .hero-slide.is-active .ticker {
-            transition-delay: 300ms;
-        }
-
-        .hero-slide.is-active .hero-panel {
             transition-delay: 240ms;
         }
 
+        .hero-slide.is-active .hero-feature-row {
+            transition-delay: 320ms;
+        }
+
+        .hero-slide.is-active .hero-product {
+            transition-delay: 180ms;
+        }
+
         .hero-copy {
-            color: rgba(255, 255, 255, 0.82);
+            color: rgba(255, 255, 255, 0.84);
             font-size: 18px;
-            line-height: 1.7;
-            max-width: 610px;
+            line-height: 1.62;
+            max-width: 570px;
             overflow-wrap: break-word;
         }
 
@@ -783,6 +808,99 @@
             flex-wrap: wrap;
             gap: 14px;
             margin-top: 30px;
+        }
+
+        .hero-feature-row {
+            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .hero-feature-row span {
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.76);
+            display: inline-flex;
+            font-size: 12px;
+            font-weight: 850;
+            gap: 8px;
+            letter-spacing: 0.04em;
+            min-height: 34px;
+            padding: 0 12px;
+            text-transform: uppercase;
+        }
+
+        .hero-feature-row i {
+            color: var(--hero-accent, #00d2be);
+        }
+
+        .hero-product {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            min-height: 440px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-product::before {
+            background: radial-gradient(circle, rgba(0, 210, 190, 0.28), transparent 58%);
+            content: "";
+            filter: blur(10px);
+            height: 430px;
+            opacity: 0.52;
+            position: absolute;
+            width: 520px;
+            z-index: -1;
+        }
+
+        .hero-product img {
+            display: block;
+            max-height: 430px;
+            max-width: min(680px, 100%);
+            object-fit: contain;
+            transform: translate3d(22px, 12px, 0) scale(0.98);
+            transition: transform 920ms ease, filter 920ms ease;
+            filter: drop-shadow(0 36px 55px rgba(0, 0, 0, 0.54));
+        }
+
+        .hero-slide.is-active .hero-product img {
+            animation: hero-product-float 6200ms ease-in-out infinite;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        .hero-product-card {
+            background: rgba(255, 255, 255, 0.84);
+            border: 1px solid rgba(255, 255, 255, 0.72);
+            box-shadow: 0 22px 48px rgba(0, 0, 0, 0.24);
+            color: #15121f;
+            min-width: 190px;
+            padding: 14px 16px;
+            position: absolute;
+            right: 7%;
+            top: 54%;
+        }
+
+        .hero-product-card strong {
+            display: block;
+            font-size: 13px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .hero-product-card span {
+            color: rgba(21, 18, 31, 0.66);
+            display: block;
+            font-size: 12px;
+            font-weight: 750;
+            margin-top: 6px;
+        }
+
+        @keyframes hero-product-float {
+            0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(0, -12px, 0) scale(1.012); }
         }
 
         .hero-panel {
@@ -1679,7 +1797,6 @@
                 width: 270px;
             }
 
-            .hero-grid,
             .feature-product,
             .product-showcase,
             .platform,
@@ -1701,18 +1818,30 @@
                 padding-top: 24px;
             }
 
-            .hero-grid {
-                max-width: 720px;
-                min-height: 0;
+            .hero-stage {
+                gap: 28px;
+                grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
+            }
+
+            .hero h1 {
+                font-size: clamp(36px, 5vw, 54px);
             }
 
             .hero-copy {
-                max-width: 720px;
+                max-width: 540px;
             }
 
-            .hero-panel {
-                align-self: auto;
-                max-width: 720px;
+            .hero-product {
+                min-height: 360px;
+            }
+
+            .hero-product img {
+                max-height: 350px;
+            }
+
+            .hero-product-card {
+                right: 0;
+                top: 58%;
             }
 
             .hero-controls {
@@ -1814,9 +1943,8 @@
                     var(--hero-bg) center / cover;
             }
 
-            .hero-grid {
-                max-width: none;
-                min-height: 0;
+            .hero-stage {
+                height: auto;
             }
 
             .hero h1 {
@@ -1835,6 +1963,21 @@
 
             .hero-actions {
                 width: 100%;
+            }
+
+            .hero-feature-row {
+                gap: 8px;
+                margin-top: 18px;
+            }
+
+            .hero-feature-row span {
+                font-size: 10px;
+                min-height: 28px;
+                padding: 0 8px;
+            }
+
+            .hero-product {
+                display: none;
             }
 
             .hero-panel,
@@ -2284,119 +2427,83 @@
     <main>
         <section class="hero" data-hero-carousel>
             <div class="hero-carousel">
-                <article class="hero-slide is-active" style="--hero-bg: url('hero-industrial-automation.png')" data-hero-slide>
-                    <div class="container">
-                        <div class="hero-grid">
-                            <div>
+                <article class="hero-slide is-active" style="--hero-bg: url('product-vision-cell.png'); --hero-accent: #00d2be;" data-hero-slide>
+                    <div class="container hero-stage">
+                        <div class="hero-copy-block">
+                            <div class="hero-bars" aria-hidden="true"><span></span><span></span><span></span></div>
+                            <span class="eyebrow">Automated Vision Inspection</span>
+                            <h1>Industrial Vision Systems</h1>
+                            <p class="hero-copy">Inline quality decisions with smart cameras, lighting, code reading, dimensional checks, and robot guidance configured as one inspection layer.</p>
+                            <div class="hero-actions">
+                                <a class="button button-light" href="automated-vision-inspection.html">Learn More <i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="button button-outline" href="area-scan-cameras.html">Browse Cameras</a>
+                            </div>
+                            <div class="hero-feature-row" aria-label="Vision system highlights">
+                                <span><i class="fa-solid fa-wave-square"></i> 2D / 3D</span>
+                                <span><i class="fa-solid fa-barcode"></i> Code Verify</span>
+                                <span><i class="fa-solid fa-robot"></i> Robot Ready</span>
+                            </div>
+                        </div>
+                        <div class="hero-product" aria-hidden="true">
+                            <img src="product-vision-cell.png" alt="">
+                            <div class="hero-product-card"><strong>Vision Cell</strong><span>Inspection, traceability, and reject logic</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="hero-slide" style="--hero-bg: url('product-intelligent-hardware.png'); --hero-accent: #6f2dbd;" data-hero-slide>
+                    <div class="container hero-stage">
+                        <div class="hero-copy-block">
+                            <div class="hero-bars" aria-hidden="true"><span></span><span></span><span></span></div>
+                            <span class="eyebrow">Rugged Data Capture</span>
+                            <h1>Rugged Data Capture</h1>
+                            <p class="hero-copy">Android PDAs, RFID handhelds, barcode scanners, and field accessories for receiving, inventory, dispatch, asset tracking, and service workflows.</p>
+                            <div class="hero-actions">
+                                <a class="button button-light" href="android-pda.html">Learn More <i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="button button-outline" href="rfid-handhelds.html">RFID Handhelds</a>
+                            </div>
+                            <div class="hero-feature-row" aria-label="Data capture highlights">
+                                <span><i class="fa-solid fa-barcode"></i> Barcode</span>
+                                <span><i class="fa-solid fa-wifi"></i> RFID / NFC</span>
+                                <span><i class="fa-brands fa-android"></i> Android Fleet</span>
+                            </div>
+                        </div>
+                        <div class="hero-product" aria-hidden="true">
+                            <img src="product-intelligent-hardware.png" alt="">
+                            <div class="hero-product-card"><strong>Rugged Edge</strong><span>Capture work events where teams move</span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="hero-slide" style="--hero-bg: url('hero-industrial-automation.png'); --hero-accent: #29b6f6;" data-hero-slide>
+                    <div class="container hero-stage">
+                        <div class="hero-copy-block">
+                            <div class="hero-bars" aria-hidden="true"><span></span><span></span><span></span></div>
                                 <span class="eyebrow">GYUTRON Industrial Intelligence</span>
-                                <h1>Industrial intelligence for connected production.</h1>
-                                <p class="hero-copy">Rugged data capture, industrial sensing, smart vision, inspection instruments, robot workcells, and edge control systems designed to operate as one connected automation layer.</p>
+                                <h1>Connected Factory Hardware</h1>
+                                <p class="hero-copy">Sensors, inspection instruments, vision hardware, robot workcells, and edge control devices brought together for disciplined factory execution.</p>
                                 <div class="hero-actions">
                                     <a class="button button-light" href="#products">Explore Products <i class="fa-solid fa-chevron-right"></i></a>
                                     <a class="button button-outline" href="#solutions">View Solutions</a>
                                 </div>
-                                <div class="ticker">
-                                    <div class="ticker-label">Engineered for industrial environments</div>
-                                    <div class="ticker-grid">
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> Manufacturing</div>
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> Logistics</div>
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> Inspection</div>
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> Field Service</div>
-                                    </div>
-                                </div>
+                            <div class="hero-feature-row" aria-label="Industrial workflow highlights">
+                                <span><i class="fa-solid fa-industry"></i> Manufacturing</span>
+                                <span><i class="fa-solid fa-microchip"></i> Sensing</span>
+                                <span><i class="fa-solid fa-circle-nodes"></i> Edge I/O</span>
                             </div>
-                            <aside class="hero-panel" aria-label="GYUTRON intelligence stack">
-                                <div class="hero-panel-title">Industrial intelligence stack</div>
-                                <div class="metric-row">
-                                    <div class="metric"><strong>6</strong><span>Product families</span></div>
-                                    <div class="metric"><strong>10K+</strong><span>Daily data events</span></div>
-                                    <div class="metric"><strong>24/7</strong><span>Operational readiness</span></div>
-                                </div>
-                                <div class="hero-panel-micro">
-                                    <div><i class="fa-solid fa-circle-nodes"></i> Devices, sensors, vision, and control connected around real workflows.</div>
-                                </div>
-                            </aside>
                         </div>
-                    </div>
-                </article>
-
-                <article class="hero-slide" style="--hero-bg: url('product-vision-cell.png')" data-hero-slide>
-                    <div class="container">
-                        <div class="hero-grid">
-                            <div>
-                                <span class="eyebrow">Automated Vision Inspection</span>
-                                <h1>Vision systems for inline quality decisions.</h1>
-                                <p class="hero-copy">Combine smart cameras, white lighting, code verification, sensors, and robot guidance to inspect surfaces, assemblies, labels, and packaging without slowing the line.</p>
-                                <div class="hero-actions">
-                                    <a class="button button-light" href="automated-vision-inspection.html">View Vision Solutions <i class="fa-solid fa-chevron-right"></i></a>
-                                    <a class="button button-outline" href="area-scan-cameras.html">Browse Cameras</a>
-                                </div>
-                                <div class="ticker">
-                                    <div class="ticker-label">Inspection workflows</div>
-                                    <div class="ticker-grid">
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> 2D / 3D checks</div>
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> Code reading</div>
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> Surface review</div>
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> Robot final inspection</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <aside class="hero-panel" aria-label="Vision system capability">
-                                <div class="hero-panel-title">Quality automation layer</div>
-                                <div class="metric-row">
-                                    <div class="metric"><strong>2D</strong><span>Area inspection</span></div>
-                                    <div class="metric"><strong>3D</strong><span>Depth sensing</span></div>
-                                    <div class="metric"><strong>I/O</strong><span>Line interlock</span></div>
-                                </div>
-                                <div class="hero-panel-micro">
-                                    <div><i class="fa-solid fa-wave-square"></i> Inspection events can trigger reject, route, stop, or traceability records.</div>
-                                </div>
-                            </aside>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="hero-slide" style="--hero-bg: url('product-intelligent-hardware.png')" data-hero-slide>
-                    <div class="container">
-                        <div class="hero-grid">
-                            <div>
-                                <span class="eyebrow">Rugged Traceability Hardware</span>
-                                <h1>Mobile data capture for the edge of operations.</h1>
-                                <p class="hero-copy">Deploy rugged PDAs, RFID handhelds, barcode scanners, sensors, and accessories for receiving, inventory, dispatch, asset tracking, and field service workflows.</p>
-                                <div class="hero-actions">
-                                    <a class="button button-light" href="android-pda.html">View Rugged PDAs <i class="fa-solid fa-chevron-right"></i></a>
-                                    <a class="button button-outline" href="rfid-handhelds.html">RFID Handhelds</a>
-                                </div>
-                                <div class="ticker">
-                                    <div class="ticker-label">Operational data capture</div>
-                                    <div class="ticker-grid">
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> Barcode</div>
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> RFID</div>
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> NFC</div>
-                                        <div class="ticker-item"><i class="fa-solid fa-check"></i> Android fleet</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <aside class="hero-panel" aria-label="Mobile traceability metrics">
-                                <div class="hero-panel-title">Traceability-ready hardware</div>
-                                <div class="metric-row">
-                                    <div class="metric"><strong>IP</strong><span>Rugged housing</span></div>
-                                    <div class="metric"><strong>RFID</strong><span>Asset visibility</span></div>
-                                    <div class="metric"><strong>WMS</strong><span>System-ready</span></div>
-                                </div>
-                                <div class="hero-panel-micro">
-                                    <div><i class="fa-solid fa-database"></i> Capture work events where operators, inventory, and equipment actually move.</div>
-                                </div>
-                            </aside>
+                        <div class="hero-product" aria-hidden="true">
+                            <img src="hero-industrial-automation.png" alt="">
+                            <div class="hero-product-card"><strong>Automation Layer</strong><span>Vision, sensing, control, and data capture</span></div>
                         </div>
                     </div>
                 </article>
             </div>
             <div class="hero-controls" aria-label="Hero slides">
                 <div class="hero-control-grid">
-                    <button class="hero-tab is-active" type="button" data-hero-tab="0"><strong>Intelligence Stack</strong><span>Connected hardware portfolio</span></button>
-                    <button class="hero-tab" type="button" data-hero-tab="1"><strong>Vision Inspection</strong><span>Inline quality automation</span></button>
-                    <button class="hero-tab" type="button" data-hero-tab="2"><strong>Traceability</strong><span>Mobile data capture</span></button>
+                    <button class="hero-tab is-active" type="button" data-hero-tab="0"><strong>01 Vision Systems</strong><span>Inline inspection layer</span></button>
+                    <button class="hero-tab" type="button" data-hero-tab="1"><strong>02 Rugged Edge</strong><span>Mobile data capture</span></button>
+                    <button class="hero-tab" type="button" data-hero-tab="2"><strong>03 Smart Factory</strong><span>Connected hardware</span></button>
                 </div>
             </div>
         </section>
