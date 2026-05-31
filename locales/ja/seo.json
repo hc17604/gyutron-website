@@ -1,10 +1,27 @@
 {
   "_meta": {
     "locale": "ja-JP",
-    "status": "planned",
-    "localization": "pending professional adaptation"
+    "status": "draft",
+    "localization": "Japanese main-site sample, pending native technical review"
   },
-  "__fallbackLocale": "en",
-  "__sourceNamespace": "seo",
-  "__todo": "Mirror keys from locales/en/seo.json before launch."
+  "mainSite": {
+    "home": {
+      "title": "GYUTRON | 産業用画像処理・センサー・データ収集・自動化ハードウェア",
+      "description": "GYUTRONは、現代の製造、物流、現場業務向けに産業用カメラ、堅牢なデータ収集端末、センサー、検査機器、自動化ソリューションを提供します。"
+    },
+    "contactSales": {
+      "title": "営業に問い合わせ | GYUTRON",
+      "description": "製品選定、見積、エンジニアリング支援、産業自動化プロジェクトの相談はGYUTRONへお問い合わせください。"
+    }
+  },
+  "store": {
+    "home": {
+      "title": "GYUTRON 公式ストア | 産業用自動化製品",
+      "description": "GYUTRONの産業用カメラ、センサー、データ収集端末、アクセサリ、自動化ハードウェアを確認し、見積を依頼できます。"
+    },
+    "catalog": {
+      "title": "製品カタログ | GYUTRON 公式ストア",
+      "description": "マシンビジョン、センサー、データ収集、検査、自動化調達向けのGYUTRON製品ファミリーをご覧ください。"
+    }
+  }
 }

@@ -1,10 +1,49 @@
 {
   "_meta": {
     "locale": "ja-JP",
-    "status": "planned",
-    "localization": "pending professional adaptation"
+    "status": "draft",
+    "localization": "Japanese main-site sample, pending native technical review"
   },
-  "__fallbackLocale": "en",
-  "__sourceNamespace": "common",
-  "__todo": "Mirror keys from locales/en/common.json before launch."
+  "brand": {
+    "name": "GYUTRON",
+    "officialStore": "GYUTRON 公式ストア"
+  },
+  "actions": {
+    "learnMore": "詳しく見る",
+    "exploreProducts": "製品を見る",
+    "viewSolutions": "ソリューションを見る",
+    "contactSales": "営業に問い合わせ",
+    "requestQuote": "見積依頼",
+    "contactEngineer": "エンジニアに相談",
+    "buyNow": "購入する",
+    "addToCart": "カートに追加",
+    "viewDetails": "詳細を見る",
+    "submit": "送信",
+    "send": "送信",
+    "back": "戻る",
+    "continue": "続ける"
+  },
+  "forms": {
+    "name": "氏名",
+    "company": "会社名",
+    "email": "メール",
+    "phone": "電話番号",
+    "country": "国 / 地域",
+    "message": "お問い合わせ内容",
+    "application": "用途",
+    "quantity": "数量",
+    "timeline": "導入時期"
+  },
+  "search": {
+    "placeholder": "製品、SKU、カテゴリを検索",
+    "noResults": "一致する製品が見つかりません",
+    "suggestions": "検索候補"
+  },
+  "commerce": {
+    "account": "アカウント",
+    "cart": "カート",
+    "checkout": "チェックアウト",
+    "subtotal": "小計",
+    "emptyCart": "カートは空です"
+  }
 }

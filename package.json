@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "deploy": "wrangler deploy --config wrangler.toml --assets ./public/",
+    "i18n:build": "python tools/generate_localized_site.py",
     "i18n:check": "python tools/i18n_validate.py",
     "i18n:check:strict": "python tools/i18n_validate.py --strict"
   },

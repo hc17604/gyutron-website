@@ -1,10 +1,36 @@
 {
   "_meta": {
     "locale": "ja-JP",
-    "status": "planned",
-    "localization": "pending professional adaptation"
+    "status": "draft",
+    "localization": "Japanese main-site sample, pending native technical review"
   },
-  "__fallbackLocale": "en",
-  "__sourceNamespace": "home",
-  "__todo": "Mirror keys from locales/en/home.json before launch."
+  "hero": {
+    "slides": {
+      "vision": {
+        "eyebrow": "自動画像検査",
+        "title": "産業用画像処理システム",
+        "summary": "スマートカメラ、照明、コード読み取り、寸法確認、ロボットガイダンスを一体化し、ライン上で品質判断を行います。"
+      },
+      "mobile": {
+        "eyebrow": "堅牢なデータ収集",
+        "title": "堅牢なデータ収集",
+        "summary": "Android PDA、RFIDハンドヘルド、バーコードスキャナー、現場用アクセサリにより、物流・在庫・出荷・保全業務を支援します。"
+      },
+      "automation": {
+        "eyebrow": "GYUTRON Industrial Intelligence",
+        "title": "つながる工場ハードウェア",
+        "summary": "センサー、検査機器、画像処理ハードウェア、ロボットセル、Edge Controlを組み合わせ、工場の実行力を高めます。"
+      }
+    }
+  },
+  "sections": {
+    "products": {
+      "title": "産業用製品",
+      "summary": "見る、検知する、読み取る、測る、動かすためのハードウェア。"
+    },
+    "solutions": {
+      "title": "産業ソリューション",
+      "summary": "現場で機能する産業インテリジェンス。"
+    }
+  }
 }

@@ -437,7 +437,10 @@ a {
 
 .language-icon {
     align-items: center;
+    background: transparent;
+    border: 0;
     color: var(--text);
+    cursor: pointer;
     display: inline-flex;
     flex-shrink: 0;
     font-size: 18px;

@@ -9,7 +9,8 @@ Scope: main brand site, official store, shared navigation, product data, generat
 - The site is English-only at the source level. HTML files use `lang="en"`.
 - There is no `data-i18n`, translation dictionary, locale router, `hreflang`, `og:locale`, or per-language metadata layer.
 - The site is not currently ready for professional one-click language switching. It needs a structured localization layer first.
-- A localization scaffold now exists under `locales/` with English source dictionaries and planned target folders for Simplified Chinese, German, Spanish, Japanese, and Korean. The scaffold is not yet wired into page rendering.
+- A localization scaffold now exists under `locales/` with English source dictionaries and planned target folders for Simplified Chinese, German, Spanish, Japanese, and Korean.
+- Main-site German and Japanese draft pages are generated from English source pages with `npm.cmd run i18n:build`. Generated outputs live in `de/`, `ja/`, `public/de/`, and `public/ja/`.
 - Main-site text is mostly hardcoded directly in static HTML files, especially `index.html`, `contact-sales.html`, and `automated-vision-inspection.html`.
 - Product category content is partly centralized in `product-data.js` and rendered through `product-catalog.js`, which is a good starting point for localization.
 - Store product content is centralized in `shop/shop.js`, but store page chrome, policy pages, forms, footers, headers, placeholders, and notices are still hardcoded in `shop/*.html` and `shop/shop.js`.
@@ -52,6 +53,7 @@ Use the new `locales/` content layer instead of browser translation:
 - Keep `www.gyutron.com` and `shop.gyutron.com` English until a target market is explicitly launched.
 - Add locale routing and `hreflang` only once translated pages actually exist.
 - Routine scaffold validation: `npm.cmd run i18n:check`.
+- Main-site locale generation: `npm.cmd run i18n:build`.
 - Pre-launch strict validation: `npm.cmd run i18n:check:strict`. Strict mode currently fails because target locale files intentionally fall back to English placeholders until professional localization begins.
 
 ## Migration Priority

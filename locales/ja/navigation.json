@@ -1,10 +1,36 @@
 {
   "_meta": {
     "locale": "ja-JP",
-    "status": "planned",
-    "localization": "pending professional adaptation"
+    "status": "draft",
+    "localization": "Japanese main-site sample, pending native technical review"
   },
-  "__fallbackLocale": "en",
-  "__sourceNamespace": "navigation",
-  "__todo": "Mirror keys from locales/en/navigation.json before launch."
+  "topStrip": {
+    "officialStore": "公式ストア",
+    "supportCenter": "サポートセンター",
+    "languageSwitch": "言語と地域"
+  },
+  "mainSite": {
+    "products": "製品",
+    "solutions": "ソリューション",
+    "industries": "業界",
+    "customers": "顧客",
+    "company": "会社情報",
+    "resources": "リソース",
+    "contactSales": "営業に問い合わせ"
+  },
+  "store": {
+    "products": "製品",
+    "requestQuote": "見積依頼",
+    "brandSite": "ブランドサイト",
+    "account": "アカウント",
+    "cart": "カート",
+    "menu": "製品カタログ"
+  },
+  "footer": {
+    "officialStore": "公式ストア",
+    "products": "製品",
+    "solutions": "ソリューション",
+    "company": "会社情報",
+    "support": "サポート"
+  }
 }
