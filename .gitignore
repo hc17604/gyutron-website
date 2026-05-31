@@ -7,6 +7,10 @@
 .env*
 !.env.example
 
+# Python
+__pycache__/
+*.pyc
+
 # Local preview / generated scratch files
 tmp-*.jpg
 tmp-*.png

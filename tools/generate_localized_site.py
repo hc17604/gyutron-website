@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 import shutil
 from pathlib import Path
@@ -1233,6 +1234,24 @@ def localize_html(source: str, folder: str, settings: dict[str, object], filenam
     return html
 
 
+_STRINGS_CACHE: dict[str, dict[str, str]] = {}
+
+
+def load_strings(locale_code: str) -> dict[str, str]:
+    """Load the flat English -> translated translation memory for a locale.
+
+    locales/<code>/strings.json is the single source of truth for copy. To fix
+    or add a translation, edit that JSON file -- no Python edits needed. To add
+    a new market language, create locales/<newcode>/strings.json and register
+    the locale in locales/locale-meta.json.
+    """
+    if locale_code not in _STRINGS_CACHE:
+        path = ROOT / "locales" / locale_code / "strings.json"
+        with path.open("r", encoding="utf-8") as handle:
+            _STRINGS_CACHE[locale_code] = json.load(handle)
+    return _STRINGS_CACHE[locale_code]
+
+
 def apply_replacements(text: str, settings: dict[str, object]) -> str:
     for before, after in sorted(settings["replacements"].items(), key=lambda item: len(item[0]), reverse=True):
         text = text.replace(before, after)
@@ -1357,6 +1376,10 @@ def main() -> None:
         sync_public_file(path)
 
     for folder, settings in LOCALES.items():
+        # locales/<folder>/strings.json is the source of truth; it overrides the
+        # legacy in-Python replacement dicts for both localize_html() and
+        # apply_replacements() (which read settings["replacements"]).
+        settings = {**settings, "replacements": load_strings(folder)}
         locale_dir = ROOT / folder
         locale_dir.mkdir(exist_ok=True)
         for page in PAGE_FILES:

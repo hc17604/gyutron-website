@@ -1,0 +1,18 @@
+{
+  "de": {
+    "html_lang": "de",
+    "label": "Deutsch",
+    "short": "DE",
+    "og_locale": "de_DE",
+    "title": "GYUTRON | Industrielle Bildverarbeitung, Sensorik und Automatisierungshardware",
+    "description": "GYUTRON bietet industrielle intelligente Hardware, Machine-Vision-Systeme, Sensoren, robuste PDA-Terminals, Prüfgeräte und vernetzte Automatisierungslösungen für moderne Fertigungs- und Logistikteams."
+  },
+  "ja": {
+    "html_lang": "ja",
+    "label": "日本語",
+    "short": "JA",
+    "og_locale": "ja_JP",
+    "title": "GYUTRON | 産業用画像処理・センサー・データ収集・自動化ハードウェア",
+    "description": "GYUTRONは、現代の製造、物流、現場業務向けに産業用カメラ、堅牢なデータ収集端末、センサー、検査機器、自動化ソリューションを提供します。"
+  }
+}
