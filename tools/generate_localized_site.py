@@ -192,15 +192,21 @@ def localize_html(source: str, folder: str, settings: dict[str, object], filenam
             html,
             count=1,
         )
-    else:
-        stem = filename.removesuffix(".html")
-        html = re.sub(r"<title>GYUTRON ", f"<title>GYUTRON {settings['label']} | ", html, count=1)
         html = re.sub(
-            r'<meta name="description" content="([^"]*)">',
-            rf'<meta name="description" content="\1">',
+            r'<meta property="og:title" content="[^"]*">',
+            f'<meta property="og:title" content="{settings["title"]}">',
             html,
             count=1,
         )
+    # Non-index pages: the full <title> and <meta description> are translated by
+    # the strings.json replacement pass below (keyed on the exact English source
+    # text), so no per-page munging is needed here. og:locale is set for all.
+    html = re.sub(
+        r'<meta property="og:locale" content="[^"]*">',
+        f'<meta property="og:locale" content="{settings["og_locale"]}">',
+        html,
+        count=1,
+    )
 
     html = localize_links(html, folder)
     html = ensure_language_switch(html, folder if folder in {"de", "ja"} else "en", filename)
