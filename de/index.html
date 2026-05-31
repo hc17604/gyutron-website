@@ -23,11 +23,11 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.gyutron.com/de/">
     <meta property="og:locale" content="de_DE">
-    <meta property="og:title" content="GYUTRON | Industrial Intelligence, Machine Vision & Automation">
+    <meta property="og:title" content="GYUTRON | Industrial Intelligence, Bildverarbeitung & Automation">
     <meta property="og:description" content="Industrielle intelligente Hardware, Bildverarbeitung, Sensorik, robuste PDA-Terminals und vernetzte Automatisierungssysteme.">
     <meta property="og:site_name" content="GYUTRON">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GYUTRON | Industrial Intelligence, Machine Vision & Automation">
+    <meta name="twitter:title" content="GYUTRON | Industrial Intelligence, Bildverarbeitung & Automation">
     <meta name="twitter:description" content="Industrielle intelligente Hardware für Fertigung, Logistik, Prüfung und vernetzte Betriebsabläufe.">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -2264,7 +2264,7 @@
                             <div class="mega-link-group">
                                 <a class="mega-link" href="de/area-scan-cameras.html"><span><strong>Machine-Vision-Systeme</strong><span>Smart-Kameras, Codeleser, 3D-Vision, Controller und Beleuchtungszubehör.</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-smart-camera-detail.png')">
-                                    <a href="de/area-scan-cameras.html"><strong>Smart- &amp; Area-Scan-Kameras</strong><span>Vollbild-2D-Kameras für Montageprüfung, KI-Inspektion, Messtechnik und Führung.</span></a>
+                                    <a href="de/area-scan-cameras.html"><strong>Smart- &amp; Flächenkameras</strong><span>Vollbild-2D-Kameras für Montageprüfung, KI-Inspektion, Messtechnik und Führung.</span></a>
                                     <a href="de/smart-vision-sensors.html"><strong>Controllers &amp; 3D Vision</strong><span>Vision-Controller, Line-Scan-Systeme und 3D-Profilkameras für größere Prüfzellen.</span></a>
                                     <a href="de/code-reading-cameras.html"><strong>Codelesen &amp; Verifikation</strong><span>Stationäre Leser, DPM-Scanner und Verifier für Rückverfolgbarkeit und Codequalität.</span></a>
                                     <a href="de/vision-lighting.html"><strong>Vision-Beleuchtung</strong><span>Weißlicht-Ring-, Balken- und Dome-Beleuchtung für stabile Machine-Vision-Bilder.</span></a>
@@ -2291,7 +2291,7 @@
                     <div class="mega-menu" style="--menu-overview-image: url('product-vision-cell.png')">
                         <a class="mega-feature mega-feature-solutions" href="de/automated-vision-inspection.html">
                             <strong>Integrierte industrielle Lösungen</strong>
-                            <span>Machine Vision, Embedded Control, Rückverfolgbarkeit und mobile Datenerfassung als Lösungen für konkrete Fabrikprozesse.</span>
+                            <span>Bildverarbeitung, Embedded Control, Rückverfolgbarkeit und mobile Datenerfassung als Lösungen für konkrete Fabrikprozesse.</span>
                         </a>
                         <div class="mega-links">
                             <div class="mega-section-label">Lösungsplattformen</div>
@@ -2552,7 +2552,7 @@
                             <div class="hero-feature-row" aria-label="Vision system highlights">
                                 <span><i class="fa-solid fa-wave-square"></i> 2D / 3D</span>
                                 <span><i class="fa-solid fa-barcode"></i> Code Verify</span>
-                                <span><i class="fa-solid fa-robot"></i> Robot Ready</span>
+                                <span><i class="fa-solid fa-robot"></i> Roboterbereit</span>
                             </div>
                         </div>
                         <div class="hero-product" aria-hidden="true">
@@ -2771,7 +2771,7 @@
                             <li>
                                 <i class="fa-solid fa-network-wired"></i>
                                 <div>
-                                    <strong>Integration-ready architecture</strong>
+                                    <strong>Integrationsfähige Architektur</strong>
                                     <span>Standardschnittstellen für MES, WMS, ERP, PLCs und individuelle Dashboards.</span>
                                 </div>
                             </li>
@@ -2823,7 +2823,7 @@
                         <div class="resource-body">
                             <div class="resource-kicker">Social</div>
                             <h3>Sicherere Arbeit mit besseren Werkzeugen</h3>
-                            <p>Robuste PDAs, Sensoren, Machine Vision und Roboter-Arbeitszellen helfen Teams, wiederkehrende Prüfungen und gefährliche Aufgaben in kontrollierte Abläufe zu überführen.</p>
+                            <p>Robuste PDAs, Sensoren, Bildverarbeitung und Roboter-Arbeitszellen helfen Teams, wiederkehrende Prüfungen und gefährliche Aufgaben in kontrollierte Abläufe zu überführen.</p>
                         </div>
                     </article>
                     <article class="resource-card esg-card">
@@ -2875,8 +2875,8 @@
                 </div>
                 <div>
                     <h4>Produkte</h4>
-                    <a href="de/android-pda.html">Rugged PDA terminals</a>
-                    <a href="de/proximity-sensors.html">Industrial sensors</a>
+                    <a href="de/android-pda.html">Robuste PDA terminals</a>
+                    <a href="de/proximity-sensors.html">Branchenensoren</a>
                     <a href="de/area-scan-cameras.html">Smart-Kameras</a>
                     <a href="de/dimensional-gauges.html">Inspection instruments</a>
                 </div>
@@ -2959,7 +2959,7 @@
                 startHero();
             }
 
-            const navItems = Array.from(document.querySelectorAll(".nav-item"));
+            const navArtikel = Array.from(document.querySelectorAll(".nav-item"));
             const closeDelay = 520;
             const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
 
@@ -2976,7 +2976,7 @@
             };
 
             const openItem = (item, groups) => {
-                navItems.forEach((otherItem) => {
+                navArtikel.forEach((otherItem) => {
                     if (otherItem !== item) {
                         window.clearTimeout(otherItem.closeTimer);
                         otherItem.classList.remove("is-open");
@@ -2992,7 +2992,7 @@
                 }
             };
 
-            navItems.forEach((item) => {
+            navArtikel.forEach((item) => {
                 const menu = item.querySelector(".mega-menu");
                 if (!menu) {
                     return;
@@ -3055,7 +3055,7 @@
 
             document.addEventListener("keydown", (event) => {
                 if (event.key === "Escape") {
-                    navItems.forEach((item) => {
+                    navArtikel.forEach((item) => {
                         window.clearTimeout(item.closeTimer);
                         item.classList.remove("is-open");
                         item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));

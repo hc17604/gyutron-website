@@ -2293,3 +2293,57 @@ h1 {
         gap: 10px;
     }
 }
+
+/* Store language switcher (injected by tools/generate_localized_site.py) */
+.store-language-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+.store-language-switch .store-language {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+.store-language-switch .store-language-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 160px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 6px;
+    display: none;
+    z-index: 80;
+}
+.store-language-switch:hover .store-language-menu,
+.store-language-switch:focus-within .store-language-menu {
+    display: block;
+}
+.store-language-menu a {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+    text-decoration: none;
+}
+.store-language-menu a:hover,
+.store-language-menu a[aria-current="page"] {
+    background: var(--purple-soft);
+}
+.store-language-menu a span {
+    color: var(--muted);
+    font-weight: 700;
+}

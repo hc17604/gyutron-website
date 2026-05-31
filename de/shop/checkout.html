@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasse | Offizieller GYUTRON Store</title>
+    <meta name="description" content="GYUTRON Kassenanfrage für Bestellungen von Industrieprodukten.">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/de/shop/shop.css">
+</head>
+<body>
+    <div class="top-strip">
+        <div class="container">
+            <span>Offizieller industrieller Einkaufszugang von GYUTRON</span>
+            <div class="top-links">
+                <a href="mailto:info@gyutron.com">info@gyutron.com</a>
+                <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
+            </div>
+        </div>
+    </div>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="/de/shop/index.html">
+                <img src="/gyutron-logo-purple.png" alt="GYUTRON">
+                <span>Offizieller Store</span>
+            </a>
+            <nav class="nav" aria-label="Store-Navigation">
+                <div class="nav-links">
+                    <a href="/de/shop/products.html">Produkte</a>
+                    <a href="/de/shop/request-quote.html">Angebot anfordern</a>
+                    <a href="https://www.gyutron.com/">Markenwebsite</a>
+                </div>
+                <form class="store-search" action="/de/shop/products.html" method="get" role="search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input type="search" name="q" placeholder="Produkte suchen" aria-label="Produkte suchen">
+                    <button type="submit" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </nav>
+            <div class="header-actions" aria-label="Store-Aktionen">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span>Menü</span></button>
+                <div class="store-language-switch">
+                    <button class="language-icon store-language" type="button" aria-label="Sprache und Region auswählen" aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>
+                    <div class="store-language-menu" aria-label="Sprachoptionen">
+                        <a href="/shop/checkout.html">English <span>EN</span></a>
+                        <a href="/de/shop/checkout.html" aria-current="page">Deutsch <span>DE</span></a>
+                        <a href="/ja/shop/checkout.html">日本語 <span>JA</span></a>
+                    </div>
+                </div>
+                <a class="icon-action account-link" href="/de/shop/account.html" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span>Konto</span></a>
+                <a class="icon-action cart-link" href="/de/shop/cart.html" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-head"><div><span class="eyebrow">Zur Kasse</span><h1 style="color:var(--ink);font-size:48px;">Einkaufsdetails bestätigen.</h1></div><p>Diese erste statische Version erfasst die Bestellabsicht. Binden Sie das Formular vor dem öffentlichen Zahlungsstart an Shopify, Shopline, Shoplazza, WooCommerce, Stripe, PayPal oder eine CRM-Automatisierung an.</p></div>
+                <div class="checkout-layout">
+                    <form class="form" data-demo-form>
+                        <div class="notice">Die Zahlungsabwicklung ist in diesem statischen Prototyp nicht aktiviert. Er ist auf eine kostengünstige E-Commerce-Plattform-Integration ausgelegt, sobald DNS und Store-Grundlage bereit sind.</div>
+                        <div class="form-grid">
+                            <div class="field"><label>Vorname</label><input required name="firstName" autocomplete="given-name"></div>
+                            <div class="field"><label>Nachname</label><input required name="lastName" autocomplete="family-name"></div>
+                            <div class="field"><label>Geschäftliche E-Mail</label><input required type="email" name="email" autocomplete="email"></div>
+                            <div class="field"><label>Telefon / WhatsApp</label><input name="phone" autocomplete="tel"></div>
+                            <div class="field"><label>Unternehmen</label><input name="company" autocomplete="organization"></div>
+                            <div class="field"><label>Land / Region</label><input name="country" autocomplete="country-name"></div>
+                            <div class="field field-wide"><label>Lieferadresse</label><input name="address" autocomplete="street-address"></div>
+                            <div class="field"><label>Bevorzugte Zahlung</label><select name="payment"><option>Kreditkarte / Online-Zahlung</option><option>PayPal</option><option>Überweisung</option><option>Proforma-Rechnung</option></select></div>
+                            <div class="field"><label>Bestelltyp</label><select name="orderTyp"><option>Musterkauf</option><option>Kleinserienbestellung</option><option>Zubehörbestellung</option><option>Angebot vor Zahlung erforderlich</option></select></div>
+                            <div class="field field-wide"><label>Beschaffungsnotizen</label><textarea name="notes" placeholder="Lieferzeit, Zertifizierung, Steuernummer, Versandkonto, Individualisierung oder Anwendungshinweise."></textarea></div>
+                        </div>
+                        <button class="button button-primary" type="submit">Kassenanfrage senden</button>
+                    </form>
+                    <aside class="summary-card" data-checkout-summary></aside>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 GYUTRON.</span><span>Offizieller Store: shop.gyutron.com</span></div></div></footer>
+    <script src="/de/shop/shop.js"></script>
+</body>
+</html>

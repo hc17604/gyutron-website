@@ -78,13 +78,13 @@
                                     <a href="ja/area-scan-cameras.html"><strong>スマート・エリアスキャンカメラ</strong><span>組立確認、AI検査、計測、ガイダンス向けのフルフレーム2Dカメラ。</span></a>
                                     <a href="ja/smart-vision-sensors.html"><strong>Controllers &amp; 3D Vision</strong><span>大型検査セル向けのビジョンコントローラ、ラインスキャンシステム、3Dプロファイルカメラ。</span></a>
                                     <a href="ja/code-reading-cameras.html"><strong>コード読み取り・検証</strong><span>トレーサビリティとコード品質管理に対応する固定式リーダー、DPMスキャナー、検証機。</span></a>
-                                    <a href="ja/vision-lighting.html"><strong>画像処理照明</strong><span>安定した画像取得を支える白色リング照明、バー照明、ドーム照明。</span></a>
+                                    <a href="ja/vision-lighting.html"><strong>ビジョン照明</strong><span>安定した画像取得を支える白色リング照明、バー照明、ドーム照明。</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="ja/dimensional-gauges.html"><span><strong>品質・試験機器</strong><span>測定、表面確認、コード評価、校正、保全ツール。</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-hero-inspection-instruments-matrix.png')">
-                                    <a href="ja/dimensional-gauges.html"><strong>寸法測定機器</strong><span>形状、位置合わせ、量産時の繰返し公差確認に対応する測定ツール。</span></a>
+                                    <a href="ja/dimensional-gauges.html"><strong>寸法ゲージ</strong><span>形状、位置合わせ、量産時の繰返し公差確認に対応する測定ツール。</span></a>
                                     <a href="ja/surface-inspection.html"><strong>表面検査</strong><span>外観欠陥、仕上げ不良、傷、材質ばらつきを検出します。</span></a>
                                     <a href="ja/portable-testers.html"><strong>ポータブルテスター</strong><span>保全チームと品質技術者向けのハンドヘルドおよびベンチトップツール。</span></a>
                                     <a href="ja/calibration-tools.html"><strong>校正ツール</strong><span>安定した測定、セットアップ確認、ライフサイクル記録を支援します。</span></a>
@@ -244,10 +244,10 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-trigger" href="ja/index.html#contact">会社情報 <i class="fa-solid fa-chevron-down"></i></a>
+                    <a class="nav-trigger" href="ja/index.html#contact">会社名 <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="mega-menu mega-compact" style="--menu-overview-image: url('nav-company-overview.png?v=20260525-hd2')">
                         <div class="mega-links">
-                            <div class="mega-section-label">会社情報</div>
+                            <div class="mega-section-label">会社名</div>
                             <div class="mega-link-group">
                                 <a class="mega-link" href="ja/index.html#contact"><span><strong>GYUTRONについて</strong><span>工場、物流、現場業務のために設計された産業用インテリジェンスハードウェア。</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-company-engineering-lab.png?v=20260525-hd2')">
@@ -484,7 +484,7 @@
     <footer class="footer"><div class="container"><div class="footer-grid"><div><h3>GYUTRON</h3><p>モバイルデータ収集、RFID、マシンビジョン、センシング、連携自動化に対応する産業用インテリジェントハードウェア。</p></div><div><h4>製品</h4><a href="ja/android-pda.html">Android PDA</a><a href="ja/rfid-handhelds.html">RFIDハンドヘルド</a><a href="ja/barcode-scanners.html">バーコードスキャナー</a><a href="ja/request-specification.html">仕様相談</a><a href="ja/proximity-sensors.html">センシング &amp; I/O</a><a href="ja/area-scan-cameras.html">マシンビジョンシステム</a><a href="ja/dimensional-gauges.html">品質・試験機器</a></div><div><h4>ソリューション</h4><a href="ja/automated-vision-inspection.html">自動画像検査</a><a href="ja/index.html#solutions">電子機器製造</a><a href="ja/index.html#platform">製造インテリジェンス</a></div><div><h4>お問い合わせ</h4><a href="ja/contact-sales.html">営業に問い合わせ</a><a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a></div></div><div class="footer-bottom"><span>&copy; 2026 GYUTRON. 無断転載を禁じます。</span><span>自動化 / 画像処理 / イノベーション</span></div></div></footer>
     <script>
         (() => {
-            const navItems = Array.from(document.querySelectorAll(".nav-item"));
+            const nav点数 = Array.from(document.querySelectorAll(".nav-item"));
             const closeDelay = 520;
             const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
             const closeItem = (item) => {
@@ -496,7 +496,7 @@
             };
             const setActiveGroup = (groups, activeGroup) => groups.forEach((group) => group.classList.toggle("is-open", group === activeGroup));
             const openItem = (item, groups) => {
-                navItems.forEach((otherItem) => {
+                nav点数.forEach((otherItem) => {
                     if (otherItem !== item) {
                         window.clearTimeout(otherItem.closeTimer);
                         otherItem.classList.remove("is-open");
@@ -507,7 +507,7 @@
                 item.classList.add("is-open");
                 if (groups.length && !groups.some((group) => group.classList.contains("is-open"))) setActiveGroup(groups, groups[0]);
             };
-            navItems.forEach((item) => {
+            nav点数.forEach((item) => {
                 const menu = item.querySelector(".mega-menu");
                 if (!menu) return;
                 const groups = Array.from(item.querySelectorAll(".mega-link-group"));

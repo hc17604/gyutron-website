@@ -227,7 +227,7 @@ function renderCategoryPage(categoryKey) {
 }
 
 function setupNavigation() {
-    const navItems = Array.from(document.querySelectorAll(".nav-item"));
+    const navArtikel = Array.from(document.querySelectorAll(".nav-item"));
     const closeDelay = 520;
     const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
 
@@ -244,7 +244,7 @@ function setupNavigation() {
     };
 
     const openItem = (item, groups) => {
-        navItems.forEach((otherItem) => {
+        navArtikel.forEach((otherItem) => {
             if (otherItem !== item) {
                 window.clearTimeout(otherItem.closeTimer);
                 otherItem.classList.remove("is-open");
@@ -260,7 +260,7 @@ function setupNavigation() {
         }
     };
 
-    navItems.forEach((item) => {
+    navArtikel.forEach((item) => {
         const menu = item.querySelector(".mega-menu");
         if (!menu) {
             return;

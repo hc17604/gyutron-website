@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>見積を依頼 | GYUTRON 公式ストア</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/ja/shop/shop.css">
+</head>
+<body>
+    <div class="top-strip">
+        <div class="container">
+            <span>GYUTRON 公式 産業用調達窓口</span>
+            <div class="top-links">
+                <a href="mailto:info@gyutron.com">info@gyutron.com</a>
+                <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
+            </div>
+        </div>
+    </div>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="/ja/shop/index.html">
+                <img src="/gyutron-logo-purple.png" alt="GYUTRON">
+                <span>公式ストア</span>
+            </a>
+            <nav class="nav" aria-label="ストアナビゲーション">
+                <div class="nav-links">
+                    <a href="/ja/shop/products.html">製品</a>
+                    <a href="/ja/shop/request-quote.html">見積依頼</a>
+                    <a href="https://www.gyutron.com/">ブランドサイト</a>
+                </div>
+                <form class="store-search" action="/ja/shop/products.html" method="get" role="search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input type="search" name="q" placeholder="製品を検索" aria-label="製品を検索">
+                    <button type="submit" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </nav>
+            <div class="header-actions" aria-label="ストア操作">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" aria-label="ストアメニューを開く"><i class="fa-solid fa-bars"></i><span>メニュー</span></button>
+                <div class="store-language-switch">
+                    <button class="language-icon store-language" type="button" aria-label="言語と地域を選択" aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>
+                    <div class="store-language-menu" aria-label="言語オプション">
+                        <a href="/shop/request-quote.html">English <span>EN</span></a>
+                        <a href="/de/shop/request-quote.html">Deutsch <span>DE</span></a>
+                        <a href="/ja/shop/request-quote.html" aria-current="page">日本語 <span>JA</span></a>
+                    </div>
+                </div>
+                <a class="icon-action account-link" href="/ja/shop/account.html" aria-label="アカウントを作成"><i class="fa-regular fa-user"></i><span>アカウント</span></a>
+                <a class="icon-action cart-link" href="/ja/shop/cart.html" aria-label="カート"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label">カート</span><span class="cart-count" data-cart-count>0</span></a>
+            </div>
+        </div>
+    </header>
+    <main><section class="section section-soft"><div class="container"><div class="section-head"><div><span class="eyebrow">見積を依頼</span><h1 style="color:var(--ink);font-size:48px;">価格、納期、調達条件を取得。</h1></div><p>数量購入、機種選定が不確かな場合、コンプライアンス文書、アクセサリ、配送確認にご利用ください。</p></div><form class="form" data-demo-form><div class="form-grid"><div class="field"><label>製品SKU</label><input name="sku" data-prefill-sku placeholder="任意"></div><div class="field"><label>想定数量</label><input name="quantity" placeholder="10 / 50 / 100"></div><div class="field"><label>勤務先メール</label><input required type="email" name="email"></div><div class="field"><label>会社名</label><input name="company"></div><div class="field"><label>国 / 地域</label><input name="country"></div><div class="field"><label>購入時期</label><select name="timeline"><option>できるだけ早く</option><option>30日以内</option><option>今四半期</option><option>計画段階</option></select></div><div class="field field-wide"><label>用途 / 要件</label><textarea required name="requirements" placeholder="用途、インターフェース、環境、認証、梱包、納期、目標予算など。"></textarea></div></div><button class="button button-primary" type="submit">見積依頼を送信</button></form></div></section></main>
+    <footer class="footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 GYUTRON.</span><span>公式ストア: shop.gyutron.com</span></div></div></footer>
+    <script src="/ja/shop/shop.js"></script>
+</body>
+</html>

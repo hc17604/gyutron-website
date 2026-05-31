@@ -667,7 +667,7 @@ const GYUTRON_PRODUCTS = {
     }
 };
 
-function get製品ByName(names) {
+function get製品Byお名前(names) {
     const all製品 = Object.values(GYUTRON_PRODUCTS).flatMap((category) => category.products || []);
     return names.map((name) => {
         const product = all製品.find((item) => item.name === name);
@@ -696,11 +696,11 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "4モデル",
         panelText: "Photoelectric, inductive, fiber, and safety sensing for clear detection jobs.",
         sectionIntro: "This page keeps detection products together instead of mixing them with measurement or condition-monitoring devices.",
-        products: get製品ByName(["GY-PX18", "GY-PR12", "GY-FB200", "GY-SAFE24"])
+        products: get製品Byお名前(["GY-PX18", "GY-PR12", "GY-FB200", "GY-SAFE24"])
     },
     "laser-measurement": {
         eyebrow: "Sensing & I/O",
-        title: "Distance & Position Sensors",
+        title: "Distance & Position センサー",
         navLabel: "Distance & Position",
         navGroup: "sensors",
         heroImage: "product-hero-laser-measurement-matrix.png",
@@ -708,7 +708,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "2 models",
         panelText: "Laser displacement and ultrasonic distance sensing, without unrelated IO or fiber-amplifier products.",
         sectionIntro: "This category now uses a broader distance-and-position framing and only includes products that genuinely measure position or distance.",
-        products: get製品ByName(["GY-LD40", "GY-UL80"])
+        products: get製品Byお名前(["GY-LD40", "GY-UL80"])
     },
     "environmental-sensing": {
         eyebrow: "Sensing & I/O",
@@ -720,7 +720,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "3モデル",
         panelText: "Environmental monitoring, pneumatic pressure checks, and distributed IO diagnostics.",
         sectionIntro: "Process and condition products belong together because buyers use them to monitor machine health, cabinet conditions, pneumatic performance, and connected sensor status.",
-        products: get製品ByName(["GY-PS60", "GY-ENV32", "GY-NET8"])
+        products: get製品Byお名前(["GY-PS60", "GY-ENV32", "GY-NET8"])
     },
     "area-scan-cameras": {
         eyebrow: "マシンビジョンシステム",
@@ -732,7 +732,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "9 models",
         panelText: "Compact, color, mono, AI, high-resolution, high-speed, and telecentric imaging options.",
         sectionIntro: "Area-scan products capture a full image frame, with supporting optics kept in the same imaging chain. This lineup separates sensor class, speed, resolution, AI capability, and inspection role so buyers can shortlist models more realistically.",
-        products: get製品ByName(["GY-V120", "GY-V160 Compact", "GY-V240 Color", "GY-V280 AI", "GY-V320 Mono", "GY-V380 Pro", "GY-V500 HR", "GY-V640 HS", "GY-OPT25"])
+        products: get製品Byお名前(["GY-V120", "GY-V160 Compact", "GY-V240 Color", "GY-V280 AI", "GY-V320 Mono", "GY-V380 Pro", "GY-V500 HR", "GY-V640 HS", "GY-OPT25"])
     },
     "smart-vision-sensors": {
         eyebrow: "マシンビジョンシステム",
@@ -744,7 +744,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "9 models",
         panelText: "Vision controllers, 3D sensors, line-scan acquisition, timing I/O, frame-grabber, strobe control, and robot guidance modules.",
         sectionIntro: "This lineup supports more complete machine vision cells: acquisition, processing, 3D profiling, timing I/O, illumination triggering, frame capture, and robot-guidance integration.",
-        products: get製品ByName(["GY-VC8", "GY-V3D90", "GY-V3D150", "GY-VL2048", "GY-VX12", "GY-VIO16", "GY-LC4", "GY-VFG4", "GY-VRG200"])
+        products: get製品Byお名前(["GY-VC8", "GY-V3D90", "GY-V3D150", "GY-VL2048", "GY-VX12", "GY-VIO16", "GY-LC4", "GY-VFG4", "GY-VRG200"])
     },
     "code-reading-cameras": {
         eyebrow: "マシンビジョンシステム",
@@ -756,31 +756,31 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "8 models",
         panelText: "Compact readers, DPM readers, high-speed conveyor readers, handheld DPM, inline verification, and tunnel capture.",
         sectionIntro: "トレーサビリティ buyers think in terms of read rate, DPM capability, field of view, verification standards, and record output, so this category now covers both fixed readers and grading workflows.",
-        products: get製品ByName(["GY-CR120", "GY-CR390", "GY-CR520 DPM", "GY-CR720 コンベヤ", "GY-S300 DPM", "GY-CV100", "GY-CV220 Inline", "GY-RT800"])
+        products: get製品Byお名前(["GY-CR120", "GY-CR390", "GY-CR520 DPM", "GY-CR720 コンベヤ", "GY-S300 DPM", "GY-CV100", "GY-CV220 Inline", "GY-RT800"])
     },
     "vision-lighting": {
         eyebrow: "マシンビジョンシステム",
-        title: "画像処理照明",
-        navLabel: "画像処理照明",
+        title: "ビジョン照明",
+        navLabel: "ビジョン照明",
         navGroup: "vision",
         heroImage: "product-hero-vision-lighting-matrix.png",
         intro: "色ずれや紫色照明感を抑え、安定した画像取得を支える白色マシンビジョン照明アクセサリ。",
         panelMetric: "5モデル",
         panelText: "Ring, bar, dome, backlight, and line-light illumination products.",
         sectionIntro: "Vision lighting products determine image stability, defect contrast, and measurement repeatability. This category now keeps only illumination hardware, while controllers and optics live with the broader vision system categories.",
-        products: get製品ByName(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LL300"])
+        products: get製品Byお名前(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LL300"])
     },
     "dimensional-gauges": {
         eyebrow: "品質 & Test Instruments",
-        title: "寸法測定機器",
-        navLabel: "寸法測定機器",
+        title: "寸法ゲージ",
+        navLabel: "寸法ゲージ",
         navGroup: "quality",
         heroImage: "product-hero-dimensional-gauges-matrix.png",
         intro: "形状、位置合わせ、高さ、ギャップ、プロファイル、生産公差確認のための計測ツール。",
         panelMetric: "2 models",
         panelText: "Contact gauge and optical measurement station options.",
         sectionIntro: "寸法測定 gauges are kept to dedicated metrology instruments, while distance sensors and 3D profile cameras remain in their own automation categories.",
-        products: get製品ByName(["GY-MG50", "GY-VM200"])
+        products: get製品Byお名前(["GY-MG50", "GY-VM200"])
     },
     "surface-inspection": {
         eyebrow: "品質 & Test Instruments",
@@ -793,7 +793,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelText: "粗さ, gloss, and coating-thickness tools without borrowing camera-system products.",
         sectionIntro: "Surface inspection now contains only dedicated surface-quality instruments, so line-scan cameras and AI cameras stay in machine vision.",
         products: [
-            ...get製品ByName(["GY-SF30"]),
+            ...get製品Byお名前(["GY-SF30"]),
             {
                 name: "GY-GL20",
                 type: "Industrial gloss meter",
@@ -825,7 +825,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelText: "Electrical safety, loop-signal, and thermal diagnostic tools.",
         sectionIntro: "Portable testers are selected for maintenance teams and quality engineers who need quick checks away from fixed stations. Process sensors and environmental monitors stay in Sensing & I/O.",
         products: [
-            ...get製品ByName(["GY-ET75"]),
+            ...get製品Byお名前(["GY-ET75"]),
             {
                 name: "GY-LT40",
                 type: "Loop signal tester",

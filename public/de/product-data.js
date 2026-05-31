@@ -700,7 +700,7 @@ Object.assign(GYUTRON_PRODUCTS, {
     },
     "laser-measurement": {
         eyebrow: "Sensing & I/O",
-        title: "Distance & Position Sensors",
+        title: "Distance & Position Sensoren",
         navLabel: "Distance & Position",
         navGroup: "sensors",
         heroImage: "product-hero-laser-measurement-matrix.png",
@@ -852,7 +852,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         navLabel: "Kalibrierwerkzeuge",
         navGroup: "quality",
         heroImage: "product-hero-calibration-tools-matrix.png",
-        intro: "Kalibrier- und Verifizierungszubehör für Machine Vision, Messtechnik, Codequalität und dokumentierte Messmittelpflege.",
+        intro: "Kalibrier- und Verifizierungszubehör für Bildverarbeitung, Messtechnik, Codequalität und dokumentierte Messmittelpflege.",
         panelMetric: "3 Modelle",
         panelText: "Kalibriergitter, gauge block, and light-reference tools.",
         sectionIntro: "Calibration tools make inspection systems more repeatable by supporting setup verification, traceable checks, and documented maintenance routines.",

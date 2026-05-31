@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angebot anfordern | Offizieller GYUTRON Store</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/de/shop/shop.css">
+</head>
+<body>
+    <div class="top-strip">
+        <div class="container">
+            <span>Offizieller industrieller Einkaufszugang von GYUTRON</span>
+            <div class="top-links">
+                <a href="mailto:info@gyutron.com">info@gyutron.com</a>
+                <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
+            </div>
+        </div>
+    </div>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="/de/shop/index.html">
+                <img src="/gyutron-logo-purple.png" alt="GYUTRON">
+                <span>Offizieller Store</span>
+            </a>
+            <nav class="nav" aria-label="Store-Navigation">
+                <div class="nav-links">
+                    <a href="/de/shop/products.html">Produkte</a>
+                    <a href="/de/shop/request-quote.html">Angebot anfordern</a>
+                    <a href="https://www.gyutron.com/">Markenwebsite</a>
+                </div>
+                <form class="store-search" action="/de/shop/products.html" method="get" role="search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input type="search" name="q" placeholder="Produkte suchen" aria-label="Produkte suchen">
+                    <button type="submit" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </nav>
+            <div class="header-actions" aria-label="Store-Aktionen">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span>Menü</span></button>
+                <div class="store-language-switch">
+                    <button class="language-icon store-language" type="button" aria-label="Sprache und Region auswählen" aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>
+                    <div class="store-language-menu" aria-label="Sprachoptionen">
+                        <a href="/shop/request-quote.html">English <span>EN</span></a>
+                        <a href="/de/shop/request-quote.html" aria-current="page">Deutsch <span>DE</span></a>
+                        <a href="/ja/shop/request-quote.html">日本語 <span>JA</span></a>
+                    </div>
+                </div>
+                <a class="icon-action account-link" href="/de/shop/account.html" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span>Konto</span></a>
+                <a class="icon-action cart-link" href="/de/shop/cart.html" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
+            </div>
+        </div>
+    </header>
+    <main><section class="section section-soft"><div class="container"><div class="section-head"><div><span class="eyebrow">Angebot anfordern</span><h1 style="color:var(--ink);font-size:48px;">Preise, Lieferzeit und Beschaffungsbedingungen erhalten.</h1></div><p>Nutzen Sie dies für Mengenkäufe, unklare Modellauswahl, Compliance-Dokumente, Zubehör und Versandprüfung.</p></div><form class="form" data-demo-form><div class="form-grid"><div class="field"><label>Produkt-SKU</label><input name="sku" data-prefill-sku placeholder="Optional"></div><div class="field"><label>Geschätzte Menge</label><input name="quantity" placeholder="10 / 50 / 100"></div><div class="field"><label>Geschäftliche E-Mail</label><input required type="email" name="email"></div><div class="field"><label>Unternehmen</label><input name="company"></div><div class="field"><label>Land / Region</label><input name="country"></div><div class="field"><label>Beschaffungszeitraum</label><select name="timeline"><option>So bald wie möglich</option><option>Innerhalb von 30 Tagen</option><option>Dieses Quartal</option><option>Planungsphase</option></select></div><div class="field field-wide"><label>Anwendung / Anforderungen</label><textarea required name="requirements" placeholder="Anwendung, Schnittstelle, Umgebung, Zertifizierungen, Verpackung, Lieferzeit oder Zielbudget."></textarea></div></div><button class="button button-primary" type="submit">Angebotsanfrage senden</button></form></div></section></main>
+    <footer class="footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 GYUTRON.</span><span>Offizieller Store: shop.gyutron.com</span></div></div></footer>
+    <script src="/de/shop/shop.js"></script>
+</body>
+</html>

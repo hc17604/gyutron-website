@@ -41,7 +41,14 @@
             </nav>
             <div class="header-actions" aria-label="Store actions">
                 <button class="store-menu-toggle" type="button" aria-expanded="false" aria-label="Open store menu"><i class="fa-solid fa-bars"></i><span>Menu</span></button>
-                <a class="language-icon store-language" href="#" aria-label="Language and region selector"><i class="fa-solid fa-globe"></i></a>
+                <div class="store-language-switch">
+                    <button class="language-icon store-language" type="button" aria-label="Language and region selector" aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>
+                    <div class="store-language-menu" aria-label="Language options">
+                        <a href="/shop/cart.html" aria-current="page">English <span>EN</span></a>
+                        <a href="/de/shop/cart.html">Deutsch <span>DE</span></a>
+                        <a href="/ja/shop/cart.html">日本語 <span>JA</span></a>
+                    </div>
+                </div>
                 <a class="icon-action account-link" href="/shop/account.html" aria-label="Create account"><i class="fa-regular fa-user"></i><span>Account</span></a>
                 <a class="icon-action cart-link" href="/shop/cart.html" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
             </div>

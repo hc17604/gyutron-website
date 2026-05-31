@@ -10,15 +10,25 @@ export default {
 
     if (url.hostname === "shop.gyutron.com") {
       const assetUrl = new URL(request.url);
-      const lastPathSegment = url.pathname.split("/").pop() || "";
+
+      // Localized store: a leading /de or /ja maps to that locale's store
+      // directory (/de/shop/..., /ja/shop/...). English stays at /shop/...
+      const localeMatch = url.pathname.match(/^\/(de|ja)(?=\/|$)/);
+      const localePrefix = localeMatch ? localeMatch[0] : "";
+      let path = localePrefix ? url.pathname.slice(localePrefix.length) || "/" : url.pathname;
+      const shopRoot = `${localePrefix}/shop`;
+
+      const lastPathSegment = path.split("/").pop() || "";
       const hasFileExtension = /\.[a-z0-9]+$/i.test(lastPathSegment);
 
-      if (url.pathname === "/") {
-        assetUrl.pathname = "/shop/";
-      } else if (hasFileExtension && !url.pathname.endsWith(".html") && !url.pathname.startsWith("/shop/")) {
+      if (path === "/" || path === "") {
+        assetUrl.pathname = `${shopRoot}/`;
+      } else if (hasFileExtension && !path.endsWith(".html") && !path.startsWith("/shop/")) {
         return env.ASSETS.fetch(request);
-      } else if (!url.pathname.startsWith("/shop/")) {
-        assetUrl.pathname = `/shop${url.pathname}`;
+      } else if (path.startsWith("/shop/")) {
+        assetUrl.pathname = `${localePrefix}${path}`;
+      } else {
+        assetUrl.pathname = `${shopRoot}${path}`;
       }
 
       if (assetUrl.pathname.endsWith(".html")) {
