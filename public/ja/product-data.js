@@ -10,8 +10,8 @@ const GYUTRON_PRODUCTS = {
         products: [
             {
                 name: "GY-A50",
-                type: "Compact Android PDA",
-                summary: "Pocketable 5-inch terminal for receiving, picking, stock counts, and line-side verification.",
+                type: "コンパクトAndroid PDA",
+                summary: "入荷、ピッキング、棚卸、ラインサイド照合に適した携帯しやすい5インチ端末。",
                 kind: "pda",
                 image: "product-images/gy-a50.png",
                 specs: { OS: "Android 14", Display: "5.0 in HD", Scan: "1D/2D imager", Rugged: "IP67 / 1.6 m drop" },
@@ -19,8 +19,8 @@ const GYUTRON_PRODUCTS = {
             },
             {
                 name: "GY-A55 Pro",
-                type: "All-purpose PDA",
-                summary: "Balanced handheld computer for logistics teams that need scanning, camera capture, and fast roaming.",
+                type: "汎用PDA",
+                summary: "スキャン、カメラ記録、高速ローミングを必要とする物流チーム向けのバランス型ハンドヘルド。",
                 kind: "pda",
                 image: "product-images/gy-a55-pro.png",
                 specs: { OS: "Android 14", Display: "5.5 in HD+", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
@@ -28,8 +28,8 @@ const GYUTRON_PRODUCTS = {
             },
             {
                 name: "GY-A60 Max",
-                type: "Large-screen PDA",
-                summary: "6-inch rugged terminal for mobile workflows with dense forms, WMS screens, and work instructions.",
+                type: "大画面PDA",
+                summary: "帳票、WMS画面、作業指示を扱うモバイル業務に適した6インチ堅牢端末。",
                 kind: "pda",
                 image: "product-images/gy-a60-max.png",
                 specs: { OS: "Android 14", Display: "6.0 in FHD", Scan: "High-speed 2D", Rugged: "IP68 / 1.8 m drop" },
@@ -37,8 +37,8 @@ const GYUTRON_PRODUCTS = {
             },
             {
                 name: "GY-A62K",
-                type: "Keypad PDA",
-                summary: "Physical keypad model for glove use, repetitive scan tasks, and high-throughput warehouse teams.",
+                type: "キーパッドPDA",
+                summary: "手袋操作、反復スキャン、高処理量の倉庫業務に適した物理キー搭載モデル。",
                 kind: "keypad",
                 image: "product-images/gy-a62k.png",
                 specs: { OS: "Android 13", Display: "4.0 in touch", Scan: "1D/2D angled", Rugged: "IP65 / 1.8 m drop" },
@@ -46,8 +46,8 @@ const GYUTRON_PRODUCTS = {
             },
             {
                 name: "GY-A70 Cold",
-                type: "Cold-chain PDA",
-                summary: "Rugged handheld for freezer aisles, food logistics, pharmaceutical storage, and outdoor winter work.",
+                type: "コールドチェーンPDA",
+                summary: "冷凍倉庫、食品物流、医薬品保管、冬季屋外作業に対応する堅牢ハンドヘルド。",
                 kind: "pda",
                 image: "product-images/gy-a70-cold.png",
                 specs: { OS: "Android 14", Display: "5.7 in glove touch", Scan: "Condensation-ready 2D", Rugged: "IP67 / -25 C" },
@@ -55,8 +55,8 @@ const GYUTRON_PRODUCTS = {
             },
             {
                 name: "GY-A80 Ultra",
-                type: "Ultra-rugged PDA",
-                summary: "High-end field computer for utilities, yards, maintenance teams, and long-shift industrial operations.",
+                type: "超堅牢PDA",
+                summary: "インフラ、ヤード、保全チーム、長時間の産業現場運用に向けた上位フィールドコンピュータ。",
                 kind: "pda",
                 image: "product-images/gy-a80-ultra.png",
                 specs: { OS: "Android 14", Display: "6.2 in FHD", Scan: "Extended range 2D", Rugged: "IP68 / 2.0 m drop" },
@@ -75,26 +75,26 @@ const GYUTRON_PRODUCTS = {
         products: [
             {
                 name: "GY-R52 Compact",
-                type: "Built-in UHF PDA",
-                summary: "Compact RFID terminal for retail cycle counts, light warehouse work, and asset verification.",
+                type: "UHF内蔵PDA",
+                summary: "店舗棚卸、軽量倉庫業務、資産確認に適したコンパクトRFID端末。",
                 kind: "rfid",
                 image: "product-images/gy-r52-compact.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 4 m", Scan: "1D/2D optional", Rugged: "IP65 / 1.5 m drop" },
-                tags: ["Internal antenna", "NFC", "4500 mAh"]
+                tags: ["内蔵アンテナ", "NFC", "4500 mAh"]
             },
             {
                 name: "GY-R60 Grip",
-                type: "Ergonomic RFID reader",
-                summary: "Balanced pistol-grip reader for daily stock counts, pallet checks, and returns processing.",
+                type: "エルゴノミックRFIDリーダー",
+                summary: "日次棚卸、パレット確認、返品処理に適したバランス型ピストルグリップRFIDリーダー。",
                 kind: "rfid",
                 image: "product-images/gy-r60-grip.png",
                 specs: { OS: "Android 13", RFID: "UHF up to 8 m", Scan: "2D imager", Rugged: "IP65 / 1.6 m drop" },
-                tags: ["Circular antenna", "Wi-Fi 6", "6000 mAh"]
+                tags: ["円偏波アンテナ", "Wi-Fi 6", "6000 mAh"]
             },
             {
                 name: "GY-R70 LongRange",
-                type: "Long-range RFID reader",
-                summary: "High-power UHF handheld for warehouse aisles, dock doors, and bulk tag collection.",
+                type: "長距離RFIDリーダー",
+                summary: "倉庫通路、ドックドア、一括タグ収集に対応する高出力UHFハンドヘルド。",
                 kind: "rfid",
                 image: "product-images/gy-r70-longrange.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 12 m", Scan: "2D + DPM option", Rugged: "IP67 / 1.8 m drop" },
@@ -102,8 +102,8 @@ const GYUTRON_PRODUCTS = {
             },
             {
                 name: "GY-R86 5G",
-                type: "5G RFID terminal",
-                summary: "Connected RFID computer for field asset teams that need wide-area data sync and secure Android apps.",
+                type: "5G RFID端末",
+                summary: "広域データ同期と安全なAndroidアプリ運用を必要とする現場資産管理チーム向けRFIDコンピュータ。",
                 kind: "rfid",
                 image: "product-images/gy-r86-5g.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 10 m", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
@@ -122,66 +122,66 @@ const GYUTRON_PRODUCTS = {
         products: [
             {
                 name: "GY-S210",
-                type: "Universal wired scanner",
+                type: "汎用有線スキャナー",
                 summary: "Durable area-imaging scanner for receiving desks, production benches, and packaging stations.",
                 kind: "scanner",
                 image: "product-images/gy-s210.png",
                 specs: { Scan: "1D/2D area imager", Link: "USB-C / RS232", Motion: "Up to 4 m/s", Rugged: "IP54 / 1.5 m drop" },
-                tags: ["Presentation mode", "White LED", "Fast decode"]
+                tags: ["プレゼンテーションモード", "白色LED", "高速デコード"]
             },
             {
                 name: "GY-S240W",
-                type: "Wireless industrial scanner",
+                type: "産業用ワイヤレススキャナー",
                 summary: "Cordless scanner with base station for pick-pack, shipping, and flexible workcells.",
                 kind: "scanner",
                 image: "product-images/gy-s240w.png",
                 specs: { Scan: "1D/2D area imager", Link: "2.4G / Bluetooth", Range: "Up to 80 m open field", Rugged: "IP54 / 1.5 m drop" },
-                tags: ["Batch memory", "Cradle", "2200 mAh"]
+                tags: ["バッチメモリ", "充電クレードル", "2200 mAh"]
             },
             {
                 name: "GY-S330 Cold",
-                type: "Cold-chain scanner",
+                type: "コールドチェーンスキャナー",
                 summary: "Wireless scanner for refrigerated warehouses, food processing, and low-temperature receiving.",
                 kind: "scanner",
                 image: "product-images/gy-s330-cold.png",
                 specs: { Scan: "1D/2D", Link: "Bluetooth 5.2", Temp: "-30 C to 50 C", Rugged: "IP65 / 1.8 m drop" },
-                tags: ["Anti-condensation", "Glove grip", "3200 mAh"]
+                tags: ["結露対策", "手袋対応グリップ", "3200 mAh"]
             },
             {
                 name: "GY-S360 XR",
-                type: "Extended-range scanner",
+                type: "長距離対応スキャナー",
                 summary: "Long-range model for rack labels, dock doors, pallet positions, and forklift-adjacent scan tasks.",
                 kind: "scanner",
                 image: "product-images/gy-s360-xr.png",
                 specs: { Scan: "Near/far 1D/2D", Range: "10 cm to 15 m", Link: "Bluetooth / USB", Rugged: "IP65 / 2.0 m drop" },
-                tags: ["Long range", "Laser aimer", "Warehouse"]
+                tags: ["長距離", "レーザー照準", "倉庫"]
             },
             {
                 name: "GY-S410 Base",
-                type: "Hands-free scan station",
+                type: "ハンズフリースキャンステーション",
                 summary: "Desktop scan module for benchtop verification, kitting, and small-parts traceability stations.",
                 kind: "scanner",
                 image: "product-images/gy-s410-base.png",
                 specs: { Scan: "2D presentation", Mount: "Desktop / fixture", Link: "USB / Ethernet option", Rugged: "Sealed front window" },
-                tags: ["Auto trigger", "Fixture-ready", "White light"]
+                tags: ["自動トリガー", "治具組込対応", "白色光"]
             },
             {
                 name: "GY-S520 Wear",
-                type: "Wearable ring scanner",
+                type: "ウェアラブルリングスキャナー",
                 summary: "Lightweight wearable scanner for hands-free picking, sorting, and replenishment tasks.",
                 kind: "scanner",
                 image: "product-images/gy-s520-wear.png",
                 specs: { Scan: "1D/2D short range", Link: "Bluetooth 5.2", Battery: "Hot-swap 900 mAh", Rugged: "IP54 / 1.5 m drop" },
-                tags: ["Wearable", "Hands-free", "Warehouse"]
+                tags: ["ウェアラブル", "ハンズフリー", "倉庫"]
             },
             {
                 name: "GY-S680 Dock",
-                type: "Industrial dock-door scanner",
+                type: "産業用ドックドアスキャナー",
                 summary: "Fixed-position scanner for dock verification, pallet pass-through checks, and automated conveyor reads.",
                 kind: "scanner",
                 image: "product-images/gy-s680-dock.png",
                 specs: { Scan: "Wide-angle 2D", Link: "Ethernet / USB", Trigger: "Photoeye input", Rugged: "IP65 metal housing" },
-                tags: ["Dock door", "Conveyor", "Ethernet"]
+                tags: ["ドックドア", "コンベヤ", "Ethernet"]
             }
         ]
     },
@@ -201,8 +201,8 @@ const GYUTRON_PRODUCTS = {
                 summary: "Recommended baseline for warehouse teams that need Android PDA, 2D scan engine, dock, spare battery, and MDM profile.",
                 kind: "config",
                 image: "product-images/gy-conf-scan.png",
-                specs: { Device: "A50 / A55 class", Scan: "Standard 2D", Accessories: "Dock + boot", Lead: "Sample in 7-10 days" },
-                tags: ["Warehouse", "Inventory", "Starter kit"]
+                specs: { Device: "A50 / A55 class", Scan: "Standard 2D", アクセサリ: "Dock + boot", Lead: "Sample in 7-10 days" },
+                tags: ["倉庫", "棚卸", "スターターキット"]
             },
             {
                 name: "GY-CONF-RFID",
@@ -210,8 +210,8 @@ const GYUTRON_PRODUCTS = {
                 summary: "UHF reader bundle for bulk stock count, asset tagging, retail stock rooms, and warehouse receiving.",
                 kind: "config",
                 image: "product-images/gy-conf-rfid.png",
-                specs: { Device: "R60 / R70 class", RFID: "8-12 m option", Accessories: "Grip + charger", Lead: "Sample in 10-14 days" },
-                tags: ["UHF", "Asset tracking", "Bulk count"]
+                specs: { Device: "R60 / R70 class", RFID: "8-12 m option", アクセサリ: "Grip + charger", Lead: "Sample in 10-14 days" },
+                tags: ["UHF", "資産追跡", "一括読取"]
             },
             {
                 name: "GY-CONF-DPM",
@@ -219,8 +219,8 @@ const GYUTRON_PRODUCTS = {
                 summary: "DPM scanner and PDA option for etched metal codes, traceability stations, and production verification.",
                 kind: "config",
                 image: "product-images/gy-conf-dpm.png",
-                specs: { Device: "S300 / A60 class", Codes: "DPM + QR + DataMatrix", Lighting: "White light", Lead: "Pilot in 2-3 weeks" },
-                tags: ["DPM", "Traceability", "Quality"]
+                specs: { Device: "S300 / A60 class", Codes: "DPM + QR + DataMatrix", Lighting: "白色光", Lead: "Pilot in 2-3 weeks" },
+                tags: ["DPM", "トレーサビリティ", "品質"]
             }
         ]
     },
@@ -236,30 +236,30 @@ const GYUTRON_PRODUCTS = {
         products: [
             {
                 name: "GY-PX18",
-                type: "Photoelectric sensor",
+                type: "光電センサー",
                 summary: "Compact photoelectric sensor for conveyor detection, part presence, and general machine automation checks.",
                 kind: "sensor",
                 image: "product-images/gy-px18.png",
                 specs: { Detection: "Diffuse / retroreflective", Range: "20 mm to 2.5 m", Output: "PNP / NPN", Housing: "IP67 compact" },
-                tags: ["White light", "M12 cable", "Fast setup"]
+                tags: ["白色光", "M12 cable", "かんたん設定"]
             },
             {
                 name: "GY-PR12",
-                type: "Inductive proximity sensor",
+                type: "誘導形近接センサー",
                 summary: "Metal target detection for fixtures, index tables, cylinders, tooling, and harsh machine positions.",
                 kind: "sensor",
                 image: "product-images/gy-pr12.png",
                 specs: { Detection: "Ferrous / non-ferrous", Range: "2 to 8 mm", Output: "PNP / NPN", Housing: "M12 stainless IP67" },
-                tags: ["Flush mount", "High repeatability", "Machine tools"]
+                tags: ["埋込取付", "高い繰返し精度", "工作機械"]
             },
             {
                 name: "GY-LD40",
-                type: "Laser displacement sensor",
+                type: "レーザー変位センサー",
                 summary: "Non-contact distance and height measurement for position checks, gap inspection, and presence verification.",
                 kind: "sensor",
                 image: "product-images/gy-ld40.png",
                 specs: { Measurement: "40 mm class", Resolution: "10 um", Output: "IO-Link / analog", Housing: "IP67 metal" },
-                tags: ["Laser position", "Analog output", "Gap check"]
+                tags: ["レーザー位置決め", "アナログ出力", "ギャップ確認"]
             },
             {
                 name: "GY-FB200",
@@ -268,7 +268,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "sensor",
                 image: "product-images/gy-fb200.png",
                 specs: { Channels: "Single / dual", Response: "80 us", Output: "PNP / NPN", Display: "Dual digital" },
-                tags: ["Fiber head", "Tiny targets", "Teach button"]
+                tags: ["Fiber head", "微小ワーク", "ティーチボタン"]
             },
             {
                 name: "GY-PS60",
@@ -286,7 +286,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "sensor",
                 image: "product-images/gy-env32.png",
                 specs: { Inputs: "Temp / RH / vibration", Network: "RS-485 / IO-Link", Power: "12-24 VDC", Housing: "IP54" },
-                tags: ["Cabinet health", "Condition data", "Modbus"]
+                tags: ["制御盤状態", "状態データ", "Modbus"]
             },
             {
                 name: "GY-UL80",
@@ -295,7 +295,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "sensor",
                 image: "product-images/gy-ul80.png",
                 specs: { Range: "80 to 1200 mm", Output: "Analog + switch", Beam: "Narrow cone", Housing: "IP67" },
-                tags: ["Level", "Clear objects", "Dust tolerant"]
+                tags: ["レベル", "透明体", "粉じん耐性"]
             },
             {
                 name: "GY-SAFE24",
@@ -304,7 +304,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "sensor",
                 image: "product-images/gy-safe24.png",
                 specs: { Resolution: "24 mm", Height: "300 to 1200 mm", Safety: "タイプ 4 / PL e", Housing: "IP65 aluminum" },
-                tags: ["Machine safety", "Muting option", "Alignment aid"]
+                tags: ["機械安全", "Muting option", "位置合わせ支援"]
             },
             {
                 name: "GY-NET8",
@@ -313,7 +313,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "sensor",
                 image: "product-images/gy-net8.png",
                 specs: { Ports: "8 x M12 IO-Link", Network: "EtherNet/IP / PROFINET", Power: "24 VDC", Housing: "IP67" },
-                tags: ["IO-Link", "Diagnostics", "IP67 hub"]
+                tags: ["IO-Link", "診断", "IP67 hub"]
             }
         ]
     },
@@ -334,7 +334,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-v120.png",
                 specs: { Sensor: "1.6 MP CMOS", Lens: "C-mount / fixed", Interface: "Ethernet + I/O", Rating: "IP67 housing" },
-                tags: ["2D inspection", "Teach setup", "White light"]
+                tags: ["2D inspection", "ティーチ設定", "白色光"]
             },
             {
                 name: "GY-V160 Compact",
@@ -343,16 +343,16 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-v160-compact.png",
                 specs: { Sensor: "1.6 MP global shutter", Lens: "C-mount", Interface: "GigE + trigger I/O", Rating: "IP65 metal" },
-                tags: ["Compact body", "Global shutter", "Fixture-ready"]
+                tags: ["コンパクト筐体", "グローバルシャッター", "治具組込対応"]
             },
             {
                 name: "GY-V240 Color",
-                type: "Color inspection camera",
+                type: "色検査 camera",
                 summary: "Color area camera for packaging, label print, assembly color checks, and mixed-product verification.",
                 kind: "camera",
                 image: "product-images/gy-v240-color.png",
                 specs: { Sensor: "2.4 MP color CMOS", Lens: "C-mount / liquid lens option", Interface: "GigE Vision", Rating: "IP65" },
-                tags: ["Color inspection", "White light", "Label checks"]
+                tags: ["色検査", "白色光", "ラベル検査"]
             },
             {
                 name: "GY-V280 AI",
@@ -361,7 +361,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-v280-ai.png",
                 specs: { Sensor: "2.8 MP global shutter", AI: "On-device inference", Interface: "GigE / discrete I/O", Rating: "IP67" },
-                tags: ["AI tools", "OCR", "Defects"]
+                tags: ["AI tools", "OCR", "欠陥"]
             },
             {
                 name: "GY-V320 Mono",
@@ -370,7 +370,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-v320-mono.png",
                 specs: { Sensor: "3.2 MP mono global shutter", Pixel: "3.45 um", Interface: "GigE / strobe I/O", Rating: "IP65" },
-                tags: ["Mono sensor", "Edge contrast", "Measurement"]
+                tags: ["モノクロセンサー", "エッジコントラスト", "Measurement"]
             },
             {
                 name: "GY-V380 Pro",
@@ -379,7 +379,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-v380-pro.png",
                 specs: { Sensor: "5 MP global shutter", Speed: "Up to 90 fps", Interface: "GigE / PROFINET", Rating: "IP67" },
-                tags: ["High speed", "PLC ready", "Metrology"]
+                tags: ["High speed", "PLC接続対応", "Metrology"]
             },
             {
                 name: "GY-V500 HR",
@@ -388,7 +388,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-v500-hr.png",
                 specs: { Sensor: "5.0 MP global shutter", Speed: "Up to 72 fps", Interface: "GigE Vision / USB3 option", Rating: "IP65" },
-                tags: ["High resolution", "Fine detail", "Print quality"]
+                tags: ["高解像度", "微細ディテール", "印字品質"]
             },
             {
                 name: "GY-V640 HS",
@@ -397,7 +397,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-v640-hs.png",
                 specs: { Sensor: "6.4 MP global shutter", Speed: "Up to 118 fps", Interface: "2.5GigE + encoder", Rating: "IP65" },
-                tags: ["High speed", "Conveyor", "Encoder sync"]
+                tags: ["High speed", "コンベヤ", "Encoder sync"]
             },
             {
                 name: "GY-V3D90",
@@ -406,7 +406,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-v3d90.png",
                 specs: { Profile: "3D laser triangulation", Range: "90 mm class", Interface: "GigE Vision", Rating: "IP65" },
-                tags: ["3D profile", "Height check", "Robot guidance"]
+                tags: ["3D profile", "高さ確認", "Robot guidance"]
             },
             {
                 name: "GY-VL2048",
@@ -424,7 +424,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-cr390.png",
                 specs: { Codes: "1D / 2D / DPM", Lens: "Liquid lens option", Interface: "Ethernet / RS-232", Rating: "IP65" },
-                tags: ["DPM", "Traceability", "High read rate"]
+                tags: ["DPM", "トレーサビリティ", "高読取率"]
             },
             {
                 name: "GY-VC8",
@@ -442,7 +442,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-v3d150.png",
                 specs: { Profile: "Blue laser triangulation", Range: "150 mm class", Points: "2048 profile points", Rating: "IP65" },
-                tags: ["3D profile", "Wide range", "Robot cells"]
+                tags: ["3D profile", "広範囲", "ロボットセル"]
             },
             {
                 name: "GY-VX12",
@@ -451,7 +451,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-vx12.png",
                 specs: { Cameras: "Up to 12 streams", AI: "Industrial inference engine", Network: "2.5GigE / PROFINET", Storage: "2 TB option" },
-                tags: ["AI processor", "Rack mount", "Multi-camera"]
+                tags: ["AI processor", "ラックマウント", "Multi-camera"]
             },
             {
                 name: "GY-VIO16",
@@ -460,7 +460,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-vio16.png",
                 specs: { "I/O": "16 digital inputs / outputs", Timing: "10 us trigger path", Network: "EtherCAT / Ethernet", Rating: "IP67" },
-                tags: ["Trigger I/O", "Encoder sync", "Cell wiring"]
+                tags: ["Trigger I/O", "Encoder sync", "セル配線"]
             },
             {
                 name: "GY-VFG4",
@@ -469,7 +469,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-vfg4.png",
                 specs: { Channels: "4 camera inputs", Bus: "PCIe x8", Throughput: "Up to 6.4 GB/s", SDK: "C / Python / .NET" },
-                tags: ["Frame grabber", "Line scan", "High bandwidth"]
+                tags: ["Frame grabber", "Line scan", "高帯域"]
             },
             {
                 name: "GY-VRG200",
@@ -486,8 +486,8 @@ const GYUTRON_PRODUCTS = {
                 summary: "Small fixed reader for label checks, carton tracking, component traceability, and tight machine mounting.",
                 kind: "camera",
                 image: "product-images/gy-cr120.png",
-                specs: { Codes: "1D / 2D", Sensor: "1.2 MP global shutter", Illumination: "White LED", Rating: "IP65" },
-                tags: ["Compact reader", "Traceability", "White LED"]
+                specs: { Codes: "1D / 2D", Sensor: "1.2 MP global shutter", Illumination: "白色LED", Rating: "IP65" },
+                tags: ["Compact reader", "トレーサビリティ", "白色LED"]
             },
             {
                 name: "GY-CR520 DPM",
@@ -496,16 +496,16 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-cr520-dpm.png",
                 specs: { Codes: "DPM / QR / Data Matrix", Lighting: "White + polarizer", Lens: "Autofocus option", Rating: "IP67" },
-                tags: ["DPM", "Low contrast", "Manufacturing"]
+                tags: ["DPM", "低コントラスト", "Manufacturing"]
             },
             {
-                name: "GY-CR720 Conveyor",
+                name: "GY-CR720 コンベヤ",
                 type: "High-speed code reader",
                 summary: "Reader module for conveyor, sortation, package verification, and fast moving traceability lines.",
                 kind: "camera",
                 image: "product-images/gy-cr720-conveyor.png",
                 specs: { Codes: "1D / 2D", Speed: "Up to 5 m/s", Field: "Wide-angle optics", Network: "Ethernet / RS-232" },
-                tags: ["Conveyor", "High speed", "Wide field"]
+                tags: ["コンベヤ", "High speed", "広視野"]
             },
             {
                 name: "GY-S300 DPM",
@@ -523,7 +523,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-cv220-inline.png",
                 specs: { Standards: "ISO / IEC grading", Codes: "1D / 2D / DPM", Light: "Calibrated white", Output: "PDF / CSV / API" },
-                tags: ["Code grading", "Inline QA", "Audit trail"]
+                tags: ["コードグレーディング", "インライン品質保証", "監査証跡"]
             },
             {
                 name: "GY-RT800",
@@ -532,7 +532,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-rt800.png",
                 specs: { Readers: "4 synchronized imagers", Field: "Multi-side capture", Trigger: "Photoeye / encoder", Network: "Ethernet / API" },
-                tags: ["Tunnel read", "Logistics", "Multi-side"]
+                tags: ["トンネル読取", "Logistics", "Multi-side"]
             },
             {
                 name: "GY-LR70",
@@ -540,8 +540,8 @@ const GYUTRON_PRODUCTS = {
                 summary: "Compact ring light for lens-centered inspection, label checks, feature contrast, and small-part stations.",
                 kind: "camera",
                 image: "product-images/gy-lr70.png",
-                specs: { Lighting: "White LED", Diameter: "70 mm", Control: "Strobe / constant", Mount: "C-mount adapter" },
-                tags: ["Ring light", "White LED", "Lens mount"]
+                specs: { Lighting: "白色LED", Diameter: "70 mm", Control: "Strobe / constant", Mount: "C-mount adapter" },
+                tags: ["リング照明", "白色LED", "レンズマウント"]
             },
             {
                 name: "GY-LB220",
@@ -549,8 +549,8 @@ const GYUTRON_PRODUCTS = {
                 summary: "Linear bar light for edge definition, conveyor inspection, packaging checks, and controlled side illumination.",
                 kind: "camera",
                 image: "product-images/gy-lb220.png",
-                specs: { Lighting: "White LED", Length: "220 mm", Control: "PWM / strobe", Housing: "Finned aluminum" },
-                tags: ["Bar light", "Side lighting", "Fixture-ready"]
+                specs: { Lighting: "白色LED", Length: "220 mm", Control: "PWM / strobe", Housing: "Finned aluminum" },
+                tags: ["バー照明", "サイド照明", "治具組込対応"]
             },
             {
                 name: "GY-LDome120",
@@ -559,7 +559,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-ldome120.png",
                 specs: { Lighting: "Diffuse white", Diameter: "120 mm", Opening: "Camera center port", Housing: "Aluminum dome" },
-                tags: ["Dome", "Low glare", "Reflective parts"]
+                tags: ["Dome", "低グレア", "Reflective parts"]
             },
             {
                 name: "GY-LBL150",
@@ -568,7 +568,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-lbl150.png",
                 specs: { Lighting: "Diffuse white", Area: "150 x 120 mm", Control: "Constant / strobe", Housing: "Finned aluminum frame" },
-                tags: ["Backlight", "Silhouette", "Measurement"]
+                tags: ["バックライト", "シルエット", "Measurement"]
             },
             {
                 name: "GY-LCX60",
@@ -577,7 +577,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-lcx60.png",
                 specs: { Lighting: "White coaxial", Aperture: "60 mm class", Control: "Strobe-ready", Mount: "C-mount path" },
-                tags: ["Coaxial", "Reflective parts", "Print check"]
+                tags: ["Coaxial", "Reflective parts", "印字検査"]
             },
             {
                 name: "GY-LL300",
@@ -585,8 +585,8 @@ const GYUTRON_PRODUCTS = {
                 summary: "Long linear light for line-scan inspection, web materials, labels, film, and conveyor edge definition.",
                 kind: "camera",
                 image: "product-images/gy-ll300.png",
-                specs: { Lighting: "White LED line", Length: "300 mm", Control: "High-current strobe", Cooling: "Finned housing" },
-                tags: ["Line scan", "High output", "Web inspection"]
+                specs: { Lighting: "白色LED line", Length: "300 mm", Control: "High-current strobe", Cooling: "Finned housing" },
+                tags: ["Line scan", "高出力", "Web inspection"]
             },
             {
                 name: "GY-LC4",
@@ -595,7 +595,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-lc4.png",
                 specs: { Channels: "4 independent outputs", Timing: "1 us trigger resolution", Power: "24 VDC", Interface: "Ethernet / RS-485" },
-                tags: ["Strobe control", "Recipes", "Multi-light"]
+                tags: ["ストロボ制御", "Recipes", "複数照明"]
             },
             {
                 name: "GY-OPT25",
@@ -604,14 +604,14 @@ const GYUTRON_PRODUCTS = {
                 kind: "camera",
                 image: "product-images/gy-opt25.png",
                 specs: { Optics: "25 mm class telecentric", Sensor: "Up to 2/3 inch", Distortion: "<0.08%", Mount: "C-mount" },
-                tags: ["Telecentric", "Metrology", "Low distortion"]
+                tags: ["Telecentric", "Metrology", "低歪み"]
             }
         ]
     },
     "inspection-instruments": {
-        eyebrow: "Quality & Test Instruments",
-        title: "Quality & Test Instruments",
-        navLabel: "Quality & Test Instruments",
+        eyebrow: "品質 & Test Instruments",
+        title: "品質 & Test Instruments",
+        navLabel: "品質 & Test Instruments",
         heroImage: "product-hero-inspection-instruments-matrix.png",
         intro: "寸法確認、表面評価、コードグレーディング、品質記録に対応するポータブルおよびインライン計測機器。",
         panelMetric: "5モデル",
@@ -625,7 +625,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "instrument",
                 image: "product-images/gy-mg50.png",
                 specs: { Range: "50 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
-                tags: ["Dimensional", "SPC", "Fixture ready"]
+                tags: ["寸法測定", "SPC", "治具対応"]
             },
             {
                 name: "GY-VM200",
@@ -643,7 +643,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "instrument",
                 image: "product-images/gy-sf30.png",
                 specs: { Parameter: "Ra / Rz / Rq", Stroke: "5.6 mm", Display: "Color LCD", Data: "USB export" },
-                tags: ["Roughness", "Portable", "Machining"]
+                tags: ["粗さ", "Portable", "加工"]
             },
             {
                 name: "GY-CV100",
@@ -652,7 +652,7 @@ const GYUTRON_PRODUCTS = {
                 kind: "instrument",
                 image: "product-images/gy-cv100.png",
                 specs: { Standards: "ISO / IEC grading", Codes: "1D / 2D / DPM", Light: "White calibrated", Report: "PDF / CSV" },
-                tags: ["Code quality", "Traceability", "Reports"]
+                tags: ["コード品質", "トレーサビリティ", "レポート"]
             },
             {
                 name: "GY-ET75",
@@ -724,8 +724,8 @@ Object.assign(GYUTRON_PRODUCTS, {
     },
     "area-scan-cameras": {
         eyebrow: "マシンビジョンシステム",
-        title: "Smart & Area Scan Cameras",
-        navLabel: "Smart & Area Scan Cameras",
+        title: "スマート・エリアスキャンカメラ",
+        navLabel: "スマート・エリアスキャンカメラ",
         navGroup: "vision",
         heroImage: "product-hero-area-scan-cameras-matrix.png",
         intro: "フルフレーム検査、組立確認、計測、ガイダンス、AI支援検査に対応する2Dスマートカメラ。",
@@ -737,7 +737,7 @@ Object.assign(GYUTRON_PRODUCTS, {
     "smart-vision-sensors": {
         eyebrow: "マシンビジョンシステム",
         title: "Vision Controllers & 3D Systems",
-        navLabel: "Controllers & 3D Vision",
+        navLabel: "コントローラ・3Dビジョン",
         navGroup: "vision",
         heroImage: "product-hero-smart-vision-sensors-matrix.png",
         intro: "大型検査セルや複雑な用途向けのビジョンコントローラー、3Dプロファイルカメラ、ラインスキャンシステム。",
@@ -755,13 +755,13 @@ Object.assign(GYUTRON_PRODUCTS, {
         intro: "バーコード、QR、Data Matrix、DPM、規制対応トレーサビリティ向けの固定式・ハンドヘルド画像リーダー。",
         panelMetric: "8 models",
         panelText: "Compact readers, DPM readers, high-speed conveyor readers, handheld DPM, inline verification, and tunnel capture.",
-        sectionIntro: "Traceability buyers think in terms of read rate, DPM capability, field of view, verification standards, and record output, so this category now covers both fixed readers and grading workflows.",
-        products: get製品ByName(["GY-CR120", "GY-CR390", "GY-CR520 DPM", "GY-CR720 Conveyor", "GY-S300 DPM", "GY-CV100", "GY-CV220 Inline", "GY-RT800"])
+        sectionIntro: "トレーサビリティ buyers think in terms of read rate, DPM capability, field of view, verification standards, and record output, so this category now covers both fixed readers and grading workflows.",
+        products: get製品ByName(["GY-CR120", "GY-CR390", "GY-CR520 DPM", "GY-CR720 コンベヤ", "GY-S300 DPM", "GY-CV100", "GY-CV220 Inline", "GY-RT800"])
     },
     "vision-lighting": {
         eyebrow: "マシンビジョンシステム",
-        title: "Vision Lighting",
-        navLabel: "Vision Lighting",
+        title: "画像処理照明",
+        navLabel: "画像処理照明",
         navGroup: "vision",
         heroImage: "product-hero-vision-lighting-matrix.png",
         intro: "色ずれや紫色照明感を抑え、安定した画像取得を支える白色マシンビジョン照明アクセサリ。",
@@ -771,26 +771,26 @@ Object.assign(GYUTRON_PRODUCTS, {
         products: get製品ByName(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LL300"])
     },
     "dimensional-gauges": {
-        eyebrow: "Quality & Test Instruments",
-        title: "Dimensional Gauges",
-        navLabel: "Dimensional Gauges",
+        eyebrow: "品質 & Test Instruments",
+        title: "寸法測定機器",
+        navLabel: "寸法測定機器",
         navGroup: "quality",
         heroImage: "product-hero-dimensional-gauges-matrix.png",
         intro: "形状、位置合わせ、高さ、ギャップ、プロファイル、生産公差確認のための計測ツール。",
         panelMetric: "2 models",
         panelText: "Contact gauge and optical measurement station options.",
-        sectionIntro: "Dimensional gauges are kept to dedicated metrology instruments, while distance sensors and 3D profile cameras remain in their own automation categories.",
+        sectionIntro: "寸法測定 gauges are kept to dedicated metrology instruments, while distance sensors and 3D profile cameras remain in their own automation categories.",
         products: get製品ByName(["GY-MG50", "GY-VM200"])
     },
     "surface-inspection": {
-        eyebrow: "Quality & Test Instruments",
-        title: "Surface Inspection",
-        navLabel: "Surface Inspection",
+        eyebrow: "品質 & Test Instruments",
+        title: "表面検査",
+        navLabel: "表面検査",
         navGroup: "quality",
         heroImage: "product-hero-surface-inspection-matrix.png",
         intro: "粗さ、光沢、膜厚、外観仕上げ確認に対応する専用の表面品質機器。",
         panelMetric: "3モデル",
-        panelText: "Roughness, gloss, and coating-thickness tools without borrowing camera-system products.",
+        panelText: "粗さ, gloss, and coating-thickness tools without borrowing camera-system products.",
         sectionIntro: "Surface inspection now contains only dedicated surface-quality instruments, so line-scan cameras and AI cameras stay in machine vision.",
         products: [
             ...get製品ByName(["GY-SF30"]),
@@ -801,7 +801,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 kind: "instrument",
                 image: "product-images/gy-gl20.png",
                 specs: { Geometry: "60 degree", Range: "0 to 1000 GU", Repeatability: "+/- 0.2 GU", Data: "USB / Bluetooth" },
-                tags: ["Gloss", "Coatings", "Finish control"]
+                tags: ["Gloss", "コーティング", "外観仕上げ管理"]
             },
             {
                 name: "GY-CT45",
@@ -810,14 +810,14 @@ Object.assign(GYUTRON_PRODUCTS, {
                 kind: "instrument",
                 image: "product-images/gy-ct45.png",
                 specs: { Range: "0 to 1500 um", Substrate: "Ferrous / non-ferrous", Probe: "Integrated", Data: "CSV export" },
-                tags: ["Coating", "Paint", "Incoming QC"]
+                tags: ["Coating", "塗装", "受入検査"]
             }
         ]
     },
     "portable-testers": {
-        eyebrow: "Quality & Test Instruments",
-        title: "Portable Testers",
-        navLabel: "Portable Testers",
+        eyebrow: "品質 & Test Instruments",
+        title: "ポータブルテスター",
+        navLabel: "ポータブルテスター",
         navGroup: "quality",
         heroImage: "product-hero-portable-testers-matrix.png",
         intro: "保全チームと現場品質確認向けの電気、熱、信号用ハンドヘルドテスター。",
@@ -833,7 +833,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 kind: "instrument",
                 image: "product-images/gy-lt40.png",
                 specs: { Signal: "4-20 mA source / measure", Power: "24 V loop supply", Accuracy: "0.05% class", Display: "Backlit LCD" },
-                tags: ["Loop check", "Commissioning", "Maintenance"]
+                tags: ["ループチェック", "立ち上げ", "Maintenance"]
             },
             {
                 name: "GY-TH90",
@@ -847,14 +847,14 @@ Object.assign(GYUTRON_PRODUCTS, {
         ]
     },
     "calibration-tools": {
-        eyebrow: "Quality & Test Instruments",
-        title: "Calibration Tools",
-        navLabel: "Calibration Tools",
+        eyebrow: "品質 & Test Instruments",
+        title: "校正ツール",
+        navLabel: "校正ツール",
         navGroup: "quality",
         heroImage: "product-hero-calibration-tools-matrix.png",
         intro: "マシンビジョン、計測、コード品質、測定ライフサイクル記録向けの校正・検証アクセサリ。",
         panelMetric: "3モデル",
-        panelText: "Grid target, gauge block, and light-reference tools.",
+        panelText: "グリッドターゲット, gauge block, and light-reference tools.",
         sectionIntro: "Calibration tools make inspection systems more repeatable by supporting setup verification, traceable checks, and documented maintenance routines.",
         products: [
             {
@@ -864,7 +864,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 kind: "instrument",
                 image: "product-images/gy-cal-grid.png",
                 specs: { Pattern: "Ceramic grid", Size: "120 x 90 mm", Accuracy: "5 um class", Case: "Protective frame" },
-                tags: ["Vision setup", "Grid target", "Metrology"]
+                tags: ["画像処理設定", "グリッドターゲット", "Metrology"]
             },
             {
                 name: "GY-CAL-Block",
@@ -873,16 +873,16 @@ Object.assign(GYUTRON_PRODUCTS, {
                 kind: "instrument",
                 image: "product-images/gy-cal-block.png",
                 specs: { Material: "Hardened steel", Grade: "Workshop reference", Range: "1 to 50 mm", Case: "Indexed tray" },
-                tags: ["Gauge blocks", "Probe check", "Fixture setup"]
+                tags: ["ゲージブロック", "プローブ確認", "治具設定"]
             },
             {
                 name: "GY-CAL-Light",
-                type: "Light reference kit",
-                summary: "White-light reference kit for vision lighting consistency, exposure setup, and inspection station checks.",
+                type: "照明基準 kit",
+                summary: "画像処理照明の一貫性、露光設定、検査ステーション確認に使う白色光リファレンスキット。",
                 kind: "instrument",
                 image: "product-images/gy-cal-light.png",
                 specs: { Reference: "White diffuser", Control: "Portable module", Output: "Check record", Use: "Vision stations" },
-                tags: ["Light reference", "White balance", "Vision QA"]
+                tags: ["照明基準", "ホワイトバランス", "画像処理QA"]
             }
         ]
     }

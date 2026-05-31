@@ -1,6 +1,37 @@
 let activePage = 1;
 const PRODUCTS_PER_PAGE = 6;
 
+function localizeProductTyp(product) {
+    return product.type
+        .replace("Compact", "Kompaktes")
+        .replace("All-purpose", "Universelles")
+        .replace("Large-screen", "Großdisplay")
+        .replace("Keypad", "Tastatur")
+        .replace("Cold-chain", "Kühlketten")
+        .replace("Ultra-rugged", "Ultra-robustes")
+        .replace("Built-in", "Integriertes")
+        .replace("Ergonomic", "Ergonomisches")
+        .replace("Long-range", "Long-Range")
+        .replace("Universal", "Universeller")
+        .replace("Wireless", "Kabelloser")
+        .replace("Wired", "Kabelgebundener")
+        .replace("Industrial", "Industrieller")
+        .replace("scanner", "Scanner")
+        .replace("reader", "Leser")
+        .replace("terminal", "Terminal")
+        .replace("sensor", "Sensor")
+        .replace("camera", "Kamera")
+        .replace("instrument", "Instrument")
+        .replace("tester", "Tester")
+        .replace("gauge", "Messgerät");
+}
+
+function localizeProductSummary(product, category) {
+    const tags = product.tags && product.tags.length ? ` Wichtige Optionen: ${product.tags.join(", ")}.` : "";
+    return `Professionelle Modellvariante für ${category.title}. Ausgelegt für industrielle Beschaffung, Pilotierung und Systemintegration.${tags}`;
+}
+
+
 function createProductArt(product) {
     if (product.image) {
         return `<img src="${product.image}" alt="${product.name} Produktbild" loading="lazy">`;
@@ -146,9 +177,9 @@ function renderCategoryPage(categoryKey) {
         <article class="product-card">
             <div class="product-art">${createProductArt(product)}</div>
             <div class="product-body">
-                <div class="product-kicker">${product.type}</div>
+                <div class="product-kicker">${localizeProductTyp(product)}</div>
                 <h3>${product.name}</h3>
-                <p>${product.summary}</p>
+                <p>${localizeProductSummary(product, category)}</p>
                 <dl class="spec-list">
                     ${Object.entries(product.specs).map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("")}
                 </dl>
@@ -164,7 +195,7 @@ function renderCategoryPage(categoryKey) {
     const pagination = document.querySelector("[data-pagination]");
     if (totalPages > 1) {
         pagination.innerHTML = `
-            <span>Page ${activePage} of ${totalPages}</span>
+            <span>Seite ${activePage} von ${totalPages}</span>
             ${Array.from({ length: totalPages }, (_, index) => {
                 const page = index + 1;
                 return `<button class="${page === activePage ? "is-active" : ""}" type="button" data-page="${page}">${page}</button>`;
@@ -189,7 +220,7 @@ function renderCategoryPage(categoryKey) {
             ${category.products.map((product) => {
                 const capability = product.specs.Scan || product.specs.RFID || product.specs.Device || product.specs.Codes || product.specs.Detection || product.specs.Measurement || product.specs.Sensor || product.specs.Range || product.specs.Parameter || "Industrielle Datenerfassung";
                 const rugged = product.specs.Rugged || product.specs.Temp || product.specs.Lead || product.specs.Housing || product.specs.Rating || product.specs.Output || product.specs.Data || "Projektabhängig";
-                return `<tr><td>${product.name}</td><td>${product.type}</td><td>${capability}</td><td>${rugged}</td></tr>`;
+                return `<tr><td>${product.name}</td><td>${localizeProductTyp(product)}</td><td>${capability}</td><td>${rugged}</td></tr>`;
             }).join("")}
         </tbody>
     `;

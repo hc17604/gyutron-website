@@ -1,6 +1,37 @@
 let activePage = 1;
 const PRODUCTS_PER_PAGE = 6;
 
+function localizeProductタイプ(product) {
+    return product.type
+        .replace("Compact", "コンパクト")
+        .replace("All-purpose", "汎用")
+        .replace("Large-screen", "大画面")
+        .replace("Keypad", "キーパッド")
+        .replace("Cold-chain", "コールドチェーン")
+        .replace("Ultra-rugged", "超堅牢")
+        .replace("Built-in", "内蔵型")
+        .replace("Ergonomic", "エルゴノミック")
+        .replace("Long-range", "長距離")
+        .replace("Universal", "汎用")
+        .replace("Wireless", "ワイヤレス")
+        .replace("Wired", "有線")
+        .replace("Industrial", "産業用")
+        .replace("scanner", "スキャナー")
+        .replace("reader", "リーダー")
+        .replace("terminal", "端末")
+        .replace("sensor", "センサー")
+        .replace("camera", "カメラ")
+        .replace("instrument", "機器")
+        .replace("tester", "テスター")
+        .replace("gauge", "ゲージ");
+}
+
+function localizeProductSummary(product, category) {
+    const tags = product.tags && product.tags.length ? ` 主なオプション: ${product.tags.join("、")}。` : "";
+    return `${category.title}向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。${tags}`;
+}
+
+
 function createProductArt(product) {
     if (product.image) {
         return `<img src="${product.image}" alt="${product.name} 製品画像" loading="lazy">`;
@@ -146,9 +177,9 @@ function renderCategoryPage(categoryKey) {
         <article class="product-card">
             <div class="product-art">${createProductArt(product)}</div>
             <div class="product-body">
-                <div class="product-kicker">${product.type}</div>
+                <div class="product-kicker">${localizeProductタイプ(product)}</div>
                 <h3>${product.name}</h3>
-                <p>${product.summary}</p>
+                <p>${localizeProductSummary(product, category)}</p>
                 <dl class="spec-list">
                     ${Object.entries(product.specs).map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("")}
                 </dl>
@@ -164,7 +195,7 @@ function renderCategoryPage(categoryKey) {
     const pagination = document.querySelector("[data-pagination]");
     if (totalPages > 1) {
         pagination.innerHTML = `
-            <span>Page ${activePage} of ${totalPages}</span>
+            <span>${activePage} / ${totalPages} ページ</span>
             ${Array.from({ length: totalPages }, (_, index) => {
                 const page = index + 1;
                 return `<button class="${page === activePage ? "is-active" : ""}" type="button" data-page="${page}">${page}</button>`;
@@ -189,7 +220,7 @@ function renderCategoryPage(categoryKey) {
             ${category.products.map((product) => {
                 const capability = product.specs.Scan || product.specs.RFID || product.specs.Device || product.specs.Codes || product.specs.Detection || product.specs.Measurement || product.specs.Sensor || product.specs.Range || product.specs.Parameter || "産業用データ収集";
                 const rugged = product.specs.Rugged || product.specs.Temp || product.specs.Lead || product.specs.Housing || product.specs.Rating || product.specs.Output || product.specs.Data || "案件別";
-                return `<tr><td>${product.name}</td><td>${product.type}</td><td>${capability}</td><td>${rugged}</td></tr>`;
+                return `<tr><td>${product.name}</td><td>${localizeProductタイプ(product)}</td><td>${capability}</td><td>${rugged}</td></tr>`;
             }).join("")}
         </tbody>
     `;
