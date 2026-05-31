@@ -16,3 +16,7 @@ tmp-*.jpg
 tmp-*.png
 tmp-*.webp
 *.tmp
+
+# Node deps (not committed)
+node_modules/
+package-lock.json

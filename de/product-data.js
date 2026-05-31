@@ -113,8 +113,8 @@ const GYUTRON_PRODUCTS = {
     },
     "barcode-scanners": {
         eyebrow: "Robuste PDA-Terminals",
-        title: "Barcode-Scanner",
-        navLabel: "Barcode-Scanner",
+        title: "Barcodescanner",
+        navLabel: "Barcodescanner",
         heroImage: "product-hero-barcode-scanners-matrix.png",
         intro: "Industrielle Handheld-Barcode-Scanner für 1D-, 2D-, DPM-, Long-Range- und Wireless-Scan-Workflows.",
         panelMetric: "7 Modelle",

@@ -11,6 +11,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/ja/shop/shop.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style id="gyutron-ja-typography">
+      body, button, input, select, textarea {
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+      }
+      body { line-height: 1.7; }
+      h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
+      p, li, span, a, label, td, th { font-weight: 400; }
+    </style>
 </head>
 <body>
     <div class="top-strip">
@@ -58,10 +70,10 @@
     <main>
         <section class="section">
             <div class="container">
-                <div class="section-head"><div><span class="eyebrow">ご購入手続き</span><h1 style="color:var(--ink);font-size:48px;">購入内容を確認。</h1></div><p>この最初の静的バージョンは注文意向を記録します。公開決済の開始前に、フォームを Shopify、Shopline、Shoplazza、WooCommerce、Stripe、PayPal、またはCRM自動化に接続してください。</p></div>
+                <div class="section-head"><div><span class="eyebrow">ご購入手続き</span><h1 style="color:var(--ink);font-size:48px;">購入内容を確認。</h1></div><p>This static first version captures order intent. Connect the form to Shopify, Shopline, Shoplazza, WooCommerce, Stripe, PayPal, or CRM automation before public payment launch.</p></div>
                 <div class="checkout-layout">
                     <form class="form" data-demo-form>
-                        <div class="notice">この静的プロトタイプでは決済処理は有効化されていません。DNSとストア基盤の準備後に、低コストなECプラットフォーム連携ができる構成になっています。</div>
+                        <div class="notice">Payment capture is not enabled in this static prototype. It is structured for low-cost ecommerce platform integration after DNS and store foundation are ready.</div>
                         <div class="form-grid">
                             <div class="field"><label>名</label><input required name="firstお名前" autocomplete="given-name"></div>
                             <div class="field"><label>姓</label><input required name="lastお名前" autocomplete="family-name"></div>

@@ -760,8 +760,8 @@ Object.assign(GYUTRON_PRODUCTS, {
     },
     "vision-lighting": {
         eyebrow: "マシンビジョンシステム",
-        title: "ビジョン照明",
-        navLabel: "ビジョン照明",
+        title: "画像処理用照明",
+        navLabel: "画像処理用照明",
         navGroup: "vision",
         heroImage: "product-hero-vision-lighting-matrix.png",
         intro: "色ずれや紫色照明感を抑え、安定した画像取得を支える白色マシンビジョン照明アクセサリ。",

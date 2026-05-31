@@ -35,7 +35,7 @@
     {
         sku: "GY-S240W",
         name: "GY-S240W Wireless Barcode Scanner",
-        category: "Barcode-Scanner",
+        category: "Barcodescanner",
         price: 168,
         leadTime: "Ships in 3-6 days",
         image: "/product-images/gy-s240w.png",
@@ -45,8 +45,8 @@
     },
     {
         sku: "GY-A55-PRO",
-        name: "GY-A55 Pro Robuste PDA",
-        category: "Robuste PDA",
+        name: "GY-A55 Pro Robuste PDA-Terminals",
+        category: "Robuste PDA-Terminals",
         price: 429,
         leadTime: "Ships in 7-10 days",
         image: "/product-images/gy-a55-pro.png",
@@ -57,7 +57,7 @@
     {
         sku: "GY-R70-LONGRANGE",
         name: "GY-R70 LongRange RFID Handheld",
-        category: "Robuste PDA",
+        category: "Robuste PDA-Terminals",
         price: 899,
         leadTime: "Quote lead time",
         image: "/product-images/gy-r70-longrange.png",
@@ -101,7 +101,7 @@
     {
         sku: "GY-CAL-GRID",
         name: "GY-CAL Grid Calibration Plate",
-        category: "Prüfausrüstung",
+        category: "Prüf- und Messgeräte",
         price: 78,
         leadTime: "In stock",
         image: "/product-images/gy-cal-grid.png",
@@ -156,7 +156,7 @@
     {
         sku: "GY-S300-DPM",
         name: "GY-S300 DPM Barcode Scanner",
-        category: "Barcode-Scanner",
+        category: "Barcodescanner",
         price: 328,
         leadTime: "Ships in 5-8 days",
         image: "/product-images/gy-s300-dpm.png",
@@ -166,8 +166,8 @@
     },
     {
         sku: "GY-A80-ULTRA",
-        name: "GY-A80 Ultra Robuste PDA",
-        category: "Robuste PDA",
+        name: "GY-A80 Ultra Robuste PDA-Terminals",
+        category: "Robuste PDA-Terminals",
         price: 612,
         leadTime: "Quote lead time",
         image: "/product-images/gy-a80-ultra.png",
@@ -181,8 +181,8 @@ const CATEGORY_META = [
     { name: "Industriekameras", image: "/product-hero-area-scan-cameras-matrix.png", text: "Smart- und Flächenkameras für Prüfung, Führung und Codeverifikation." },
     { name: "Vision-Beleuchtung", image: "/product-hero-vision-lighting-matrix.png", text: "Weißlicht-Balken-, Ring-, Dome- und Durchlichtbeleuchtung für stabile Bildaufnahme." },
     { name: "Sensoren", image: "/product-hero-industrial-sensors-matrix.png", text: "Anwesenheits-, Abstands-, Umwelt- und Prozesssensorik für Fabrikausrüstung." },
-    { name: "Barcode-Scanner", image: "/product-hero-barcode-scanners-matrix.png", text: "Mobile und stationäre Barcode-Lesung für Lager- und Produktionsrückverfolgbarkeit." },
-    { name: "Robuste PDA", image: "/product-hero-android-pda-matrix.png", text: "Android-PDA und RFID-Handhelds für die industrielle mobile Datenerfassung." },
+    { name: "Barcodescanner", image: "/product-hero-barcode-scanners-matrix.png", text: "Mobile und stationäre Barcode-Lesung für Lager- und Produktionsrückverfolgbarkeit." },
+    { name: "Robuste PDA-Terminals", image: "/product-hero-android-pda-matrix.png", text: "Android-PDA und RFID-Handhelds für die industrielle mobile Datenerfassung." },
     { name: "Objektive", image: "/product-images/gy-opt25.png", text: "C-Mount-Optik und Prüfzubehör für Machine-Vision-Systeme." },
     { name: "Acquisition-Karten", image: "/product-images/gy-fb200.png", text: "Frame-Grabber und synchronisierte Erfassungshardware für Prüf-PCs." },
     { name: "Roboterzubehör", image: "/product-images/gy-mg50.png", text: "Greifer, Halterungen und Zellenzubehör für Industrieautomatisierungsprojekte." }
@@ -266,7 +266,7 @@ function productCard(product) {
                 <div class="card-actions">
                     <button class="button button-primary" data-add-cart="${product.sku}">Jetzt kaufen</button>
                     <a class="button button-outline" href="/de/shop/request-quote.html?sku=${product.sku}">Angebot</a>
-                    <a class="button button-soft" href="/de/shop/contact-engineer.html?sku=${product.sku}">Ingenieur kontaktieren</a>
+                    <a class="button button-soft" href="/de/shop/contact-engineer.html?sku=${product.sku}">Technischen Ansprechpartner kontaktieren</a>
                 </div>
             </div>
         </article>
@@ -319,7 +319,7 @@ function renderProdukte() {
     const params = new URLSearchParams(location.search);
     let active = params.get("category") || "Alle Produkte";
     const query = (params.get("q") || "").trim().toLowerCase();
-    const categories = ["Alle Produkte", ...CATEGORY_META.map((item) => item.name), "Prüfausrüstung"];
+    const categories = ["Alle Produkte", ...CATEGORY_META.map((item) => item.name), "Prüf- und Messgeräte"];
 
     const draw = () => {
         filters.innerHTML = categories.map((category) => `
@@ -484,7 +484,7 @@ function initStoreMobileMenü() {
         <div class="store-mobile-section">Store</div>
         <a href="/de/shop/products.html">Produkte <i class="fa-solid fa-chevron-right"></i></a>
         <a href="/de/shop/request-quote.html">Angebot anfordern <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/de/shop/contact-engineer.html">Ingenieur kontaktieren <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/de/shop/contact-engineer.html">Technischen Ansprechpartner kontaktieren <i class="fa-solid fa-chevron-right"></i></a>
         <a href="/de/shop/account.html">Kontoregistrierung <i class="fa-solid fa-chevron-right"></i></a>
         <a href="/de/shop/cart.html">Warenkorb <i class="fa-solid fa-chevron-right"></i></a>
         <div class="store-mobile-section">Produktkategorien</div>
@@ -548,7 +548,7 @@ function renderProductDetail() {
                 <div class="detail-actions">
                     <button class="button button-primary" data-detail-add="${product.sku}">Jetzt kaufen</button>
                     <a class="button button-outline" href="/de/shop/request-quote.html?sku=${product.sku}">Angebot anfordern</a>
-                    <a class="button button-soft" href="/de/shop/contact-engineer.html?sku=${product.sku}">Ingenieur kontaktieren</a>
+                    <a class="button button-soft" href="/de/shop/contact-engineer.html?sku=${product.sku}">Technischen Ansprechpartner kontaktieren</a>
                 </div>
                 <p class="notice" style="margin-top:18px;">Industriebestellungen können vor dem Versand eine Parameterbestätigung, Zertifizierungsprüfung, Bestandsvalidierung oder Lieferzeitprüfung erfordern.</p>
             </div>

@@ -166,6 +166,39 @@ def localize_links(html: str, folder: str) -> str:
     return re.sub(r'href="([^"]+)"', replace_href, html)
 
 
+JA_FONT_BLOCK = (
+    '\n    <link rel="preconnect" href="https://fonts.googleapis.com">'
+    '\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    '\n    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">'
+    '\n    <style id="gyutron-ja-typography">'
+    '\n      body, button, input, select, textarea {'
+    '\n        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;'
+    '\n      }'
+    '\n      body { line-height: 1.7; }'
+    '\n      h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }'
+    '\n      p, li, span, a, label, td, th { font-weight: 400; }'
+    '\n    </style>\n'
+)
+
+
+def _finalize_head(html: str, locale: str) -> str:
+    """Locale-specific <head> finalization: professional Japanese font stack
+    (Noto Sans JP + system fallback, line-height 1.7, sensible weights) and a
+    `ja` hreflang alternate. Idempotent — guards on marker presence."""
+    if locale == "ja" and "gyutron-ja-typography" not in html:
+        html = html.replace("</head>", JA_FONT_BLOCK + "</head>", 1)
+    # Ensure a Japanese hreflang alternate exists wherever a German one does.
+    if 'hreflang="de"' in html and 'hreflang="ja"' not in html:
+        html = re.sub(
+            r'(<link rel="alternate" hreflang="de" href="([^"]*)">)',
+            lambda m: m.group(1) + '\n    <link rel="alternate" hreflang="ja" href="'
+                      + m.group(2).replace("/de/", "/ja/").replace("/de", "/ja") + '">',
+            html,
+            count=1,
+        )
+    return html
+
+
 def localize_html(source: str, folder: str, settings: dict[str, object], filename: str) -> str:
     html = source
     html = re.sub(r'<html lang="[^"]+">', f'<html lang="{settings["html_lang"]}">', html, count=1)
@@ -214,6 +247,7 @@ def localize_html(source: str, folder: str, settings: dict[str, object], filenam
     html = html.replace('src="product-catalog.js"', f'src="{folder}/product-catalog.js"')
 
     html = _apply_phrase_map(html, settings["replacements"])
+    html = _finalize_head(html, folder)
     return html
 
 
@@ -418,6 +452,7 @@ def localize_shop_html(source: str, locale: str, filename: str) -> str:
         html = html.replace(f"/{SHOP_DIR}/", f"/{locale}/{SHOP_DIR}/")
         html = apply_replacements(html, {"__locale_code": locale, "replacements": load_strings(locale)})
     html = html.replace(placeholder, shop_language_menu(locale, filename))
+    html = _finalize_head(html, locale)
     return html
 
 

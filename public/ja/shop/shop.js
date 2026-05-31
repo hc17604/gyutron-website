@@ -13,7 +13,7 @@
     {
         sku: "GY-LB220",
         name: "GY-LB220 マシンビジョン Bar Light",
-        category: "ビジョン照明",
+        category: "画像処理用照明",
         price: 129,
         leadTime: "Ships in 3-6 days",
         image: "/product-images/gy-lb220.png",
@@ -45,8 +45,8 @@
     },
     {
         sku: "GY-A55-PRO",
-        name: "GY-A55 Pro 堅牢PDA",
-        category: "堅牢PDA",
+        name: "GY-A55 Pro 堅牢型PDA",
+        category: "堅牢型PDA",
         price: 429,
         leadTime: "Ships in 7-10 days",
         image: "/product-images/gy-a55-pro.png",
@@ -57,7 +57,7 @@
     {
         sku: "GY-R70-LONGRANGE",
         name: "GY-R70 LongRange RFID Handheld",
-        category: "堅牢PDA",
+        category: "堅牢型PDA",
         price: 899,
         leadTime: "Quote lead time",
         image: "/product-images/gy-r70-longrange.png",
@@ -101,7 +101,7 @@
     {
         sku: "GY-CAL-GRID",
         name: "GY-CAL Grid Calibration Plate",
-        category: "試験機器",
+        category: "試験・測定機器",
         price: 78,
         leadTime: "In stock",
         image: "/product-images/gy-cal-grid.png",
@@ -134,7 +134,7 @@
     {
         sku: "GY-LDOME120",
         name: "GY-LDOME120 Dome Light",
-        category: "ビジョン照明",
+        category: "画像処理用照明",
         price: 188,
         leadTime: "Ships in 5-8 days",
         image: "/product-images/gy-ldome120.png",
@@ -166,8 +166,8 @@
     },
     {
         sku: "GY-A80-ULTRA",
-        name: "GY-A80 Ultra 堅牢PDA",
-        category: "堅牢PDA",
+        name: "GY-A80 Ultra 堅牢型PDA",
+        category: "堅牢型PDA",
         price: 612,
         leadTime: "Quote lead time",
         image: "/product-images/gy-a80-ultra.png",
@@ -179,10 +179,10 @@
 
 const CATEGORY_META = [
     { name: "産業用カメラ", image: "/product-hero-area-scan-cameras-matrix.png", text: "検査、ガイダンス、コード検証のためのスマートカメラ・エリアスキャンカメラ。" },
-    { name: "ビジョン照明", image: "/product-hero-vision-lighting-matrix.png", text: "安定した画像取得のための白色バー・リング・ドーム・バックライト照明。" },
+    { name: "画像処理用照明", image: "/product-hero-vision-lighting-matrix.png", text: "安定した画像取得のための白色バー・リング・ドーム・バックライト照明。" },
     { name: "センサー", image: "/product-hero-industrial-sensors-matrix.png", text: "工場設備向けの有無・距離・環境・プロセスセンシング。" },
     { name: "バーコードスキャナー", image: "/product-hero-barcode-scanners-matrix.png", text: "倉庫・生産のトレーサビリティ向けのハンディおよび固定式バーコード読み取り。" },
-    { name: "堅牢PDA", image: "/product-hero-android-pda-matrix.png", text: "産業用モバイルデータ収集のためのAndroid PDA・RFIDハンドヘルド。" },
+    { name: "堅牢型PDA", image: "/product-hero-android-pda-matrix.png", text: "産業用モバイルデータ収集のためのAndroid PDA・RFIDハンドヘルド。" },
     { name: "レンズ", image: "/product-images/gy-opt25.png", text: "マシンビジョンシステム向けのCマウント光学部品・検査アクセサリ。" },
     { name: "画像取得ボード", image: "/product-images/gy-fb200.png", text: "検査用PC向けのフレームグラバーと同期取得ハードウェア。" },
     { name: "ロボットアクセサリ", image: "/product-images/gy-mg50.png", text: "産業オートメーション案件向けのグリッパー、マウント、セルアクセサリ。" }
@@ -266,7 +266,7 @@ function productCard(product) {
                 <div class="card-actions">
                     <button class="button button-primary" data-add-cart="${product.sku}">今すぐ購入</button>
                     <a class="button button-outline" href="/ja/shop/request-quote.html?sku=${product.sku}">見積</a>
-                    <a class="button button-soft" href="/ja/shop/contact-engineer.html?sku=${product.sku}">エンジニアに相談</a>
+                    <a class="button button-soft" href="/ja/shop/contact-engineer.html?sku=${product.sku}">技術担当に相談</a>
                 </div>
             </div>
         </article>
@@ -319,7 +319,7 @@ function render製品() {
     const params = new URLSearchParams(location.search);
     let active = params.get("category") || "すべての製品";
     const query = (params.get("q") || "").trim().toLowerCase();
-    const categories = ["すべての製品", ...CATEGORY_META.map((item) => item.name), "試験機器"];
+    const categories = ["すべての製品", ...CATEGORY_META.map((item) => item.name), "試験・測定機器"];
 
     const draw = () => {
         filters.innerHTML = categories.map((category) => `
@@ -484,7 +484,7 @@ function initストアMobileメニュー() {
         <div class="store-mobile-section">ストア</div>
         <a href="/ja/shop/products.html">製品 <i class="fa-solid fa-chevron-right"></i></a>
         <a href="/ja/shop/request-quote.html">見積依頼 <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/contact-engineer.html">エンジニアに相談 <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/ja/shop/contact-engineer.html">技術担当に相談 <i class="fa-solid fa-chevron-right"></i></a>
         <a href="/ja/shop/account.html">アカウント登録 <i class="fa-solid fa-chevron-right"></i></a>
         <a href="/ja/shop/cart.html">カート <i class="fa-solid fa-chevron-right"></i></a>
         <div class="store-mobile-section">製品カテゴリ</div>
@@ -548,7 +548,7 @@ function renderProductDetail() {
                 <div class="detail-actions">
                     <button class="button button-primary" data-detail-add="${product.sku}">今すぐ購入</button>
                     <a class="button button-outline" href="/ja/shop/request-quote.html?sku=${product.sku}">見積を依頼</a>
-                    <a class="button button-soft" href="/ja/shop/contact-engineer.html?sku=${product.sku}">エンジニアに相談</a>
+                    <a class="button button-soft" href="/ja/shop/contact-engineer.html?sku=${product.sku}">技術担当に相談</a>
                 </div>
                 <p class="notice" style="margin-top:18px;">産業向け注文では、出荷前にパラメータ確認、認証チェック、在庫確認、納期確認が必要な場合があります。</p>
             </div>
