@@ -1,71 +1,83 @@
-# GYUTRON i18n — Handoff (for Codex to continue)
+# GYUTRON i18n — Status & Maintenance Guide
 
-Last updated: 2026-05-31. Picked up from Claude. Goal restated by owner:
-**正规、可持续。英文主站（gyutron.com）的每一处改动，都要能同步到其它语言站（de/ja/…）和独立站 shop.gyutron.com。绝不能再出现英文残留。**
+Owner goal: **正规、可持续。英文主站（gyutron.com）的每一处改动都能同步到其它语言站
+（de/ja/…）和独立站 shop.gyutron.com，绝不再出现英文残留。**
 
-## TL;DR of what changed
-- The translation layer is now **JSON-driven and self-checking**. English source pages are the single structural source; translations live in `locales/<code>/strings.json`; a build regenerates every localized page; an **audit gate** fails the build if any localized page still shows English.
-- Residual English on the **main site** dropped from **DE 87 / JA 80** distinct segments to **2 / 2** (see "Remaining" below).
-- Everything in this doc's "DONE" section is committed and pushed to `origin/main` (hc17604/gyutron-website).
+✅ **DONE for German (de) and Japanese (ja) across the FULL site: main brand site
+AND the official store (shop.gyutron.com), including SEO titles/metas.** The
+pipeline is JSON-driven, byte-stable, idempotent, and guarded by an automated
+audit that fails on any residual English. Current state: `npm run i18n:sync`
+→ audit PASS, 0 residual English.
 
-## The pipeline (how it works now)
-1. `locales/<code>/strings.json` — flat `"English source" -> "translation"` map. **Single source of truth for copy.** 592 phrases each for de/ja.
-2. `locales/locale-meta.json` — per-locale html_lang/label/short/og_locale/title/description.
-3. `tools/generate_localized_site.py` — reads the English source pages + strings.json, writes `de/`, `ja/` and their `public/` mirrors. `main()` does `settings = {**settings, "replacements": load_strings(folder)}`, so strings.json overrides the legacy in-Python dicts.
-4. `tools/i18n_audit.py` — **the sustainability gate.** Scans generated localized pages for untranslated English using English-only stop words + a no-CJK / no-German-letter check (Unicode-aware so it won't false-flag "Gehäuse"). Exit 1 if any residual English; `--emit-missing out.json` writes a `{locale:{english:""}}` template to fill in.
+## How it works
+- **English source pages are the single structural source.** Edit them normally.
+- **Translations live in `locales/<code>/strings.json`** — a flat
+  `"English source string": "translation"` map. To fix wording, edit this file.
+- **`tools/generate_localized_site.py`** regenerates every localized page:
+  - Main site → `de/`, `ja/` (+ `public/` mirrors)
+  - Store → `de/shop/`, `ja/shop/` (+ `public/` mirrors), incl. localized
+    `shop.js` UI strings and a per-page language switcher
+  - Localizes `<title>`, `<meta description>`, `og:title`/`og:locale`,
+    `hreflang`, `alt`, `aria-label`; rewrites store `/shop/…` → `/de/shop/…`.
+  - **Idempotent + byte-stable**: re-running changes 0 files.
+- **`tools/i18n_audit.py`** = the sustainability gate. Scans generated pages
+  (main + shop) for untranslated English in BOTH body text and SEO title/meta,
+  exits non-zero listing exact strings. Unicode-aware; treats strings.json
+  values + locale-meta index title/desc as known-good (no false positives).
+- **`src/worker.mjs`** routes `shop.gyutron.com/de/…` and `/ja/…` to the
+  localized store; English at `/`.
 
-### Standard workflow after ANY English edit (give this to the owner)
+## THE workflow after ANY English edit (every time)
 ```bash
-# 1. edit English source page(s) as usual
-python tools/generate_localized_site.py          # npm run i18n:build
-python tools/i18n_audit.py de ja                 # gate: lists any new untranslated English
-# 2. if it FAILS, get the exact missing strings:
-python tools/i18n_audit.py de ja --emit-missing missing.json
-#    fill translations into locales/de|ja/strings.json, then rebuild + re-audit until PASS
+npm run i18n:sync          # = build + audit
 ```
-(Windows: set `PYTHONUTF8=1` or the console crashes on German/Japanese. Run `python` after refreshing PATH.)
+If audit FAILS it prints each untranslated string. Get a fill-in template:
+```bash
+python tools/i18n_audit.py de ja --emit-missing missing.json
+```
+Add translations to both `locales/de/strings.json` and `locales/ja/strings.json`,
+rebuild, re-audit until PASS. Commit source edit + strings.json + regenerated
+pages together.
+
+> Windows: set `PYTHONUTF8=1` (`$env:PYTHONUTF8="1"` in PowerShell) or the
+> console crashes on de/ja output.
 
 ## DONE (committed + pushed)
-- Refactored generator to be JSON-driven (commit "refactor(i18n): make locales/*/strings.json the source of truth"). Verified byte-identical regen + probe proving JSON actually drives output.
-- Added `tools/i18n_audit.py` gate.
-- Translated 82+ previously-missing DE & JA segments (hero, solution cards, automated-vision-inspection page, contact-sales page, footer mega-menu copy, alt text). Main-site residual now 2/2.
-- `.gitignore`: added `__pycache__/`.
+- JSON-driven generator; strings.json is the source of truth.
+- Main site DE & JA: 0 residual English (body + SEO titles/metas).
+- Store DE & JA fully localized: all 16 pages × 2 locales + public mirrors,
+  localized `shop.js`, language switcher + CSS, localized SEO.
+- `src/worker.mjs` localized-store routing.
+- `tools/i18n_audit.py` gate (+ `npm run i18n:audit` / `i18n:sync`), checks
+  body + `<title>` + `<meta description>`.
+- Removed dead Python translation dicts from the generator (byte-identical proof).
+- Fixed an earlier-session bug where contact-sales title/meta were mis-mapped to
+  the homepage title/description.
+- **Audit: PASS — 0 residual English, main + store, de + ja.**
 
-## REMAINING (please finish, in priority order)
+## REMAINING (future, non-blocking)
+1. **es / ko / zh-cn**: not built yet (placeholder shells). To add Spanish:
+   - Create `locales/es/strings.json` (copy de key set as template; translate
+     values; keep locked terms).
+   - Add `"es"` to `LOCALES` in `tools/generate_localized_site.py`
+     (html_lang/label/short/og_locale/title/description) + to `SHOP_LANG_OPTIONS`
+     / `SHOP_LANG_ARIA`; register in `locales/locale-meta.json`.
+   - `npm run i18n:sync`, fix audit misses, commit.
+2. **Visual QA**: preview each language at widths 1440/1024/768/430/390
+   (AGENTS.md). German runs ~30% longer — watch nav/buttons/hero/cards/footer.
+3. `tools/i18n_validate.py --strict` (older namespace validator) still fails for
+   es/ko/zh-cn placeholders — expected. Authoritative gate is `i18n_audit.py`.
 
-### 1. Last 2 residual strings on main site (quick)
-Audit still reports these two (each in both de & ja):
-- `"Channel, OEM, integration, and solution ecosystem updates."` (appears in 21 files — it's shared nav/footer chrome)
-- `"Validate & Scale"` (1 file: automated-vision-inspection)
-
-Root cause: **these strings are injected by `tools/update_navigation.py`, not present in the page source HTML**, so `generate_localized_site.py` never sees them to replace. Translations are ALREADY in `locales/de|ja/strings.json` (keys: exact English above, plus `"Validate &amp; Scale"` entity form). Two options:
-  - (a) Make `update_navigation.py` locale-aware (inject translated nav/footer per locale), OR
-  - (b) Have `generate_localized_site.py` run its replacement over the nav/footer fragments too.
-Recommend (a) for consistency. After fixing, `python tools/i18n_audit.py de ja` must print PASS.
-
-### 2. Remove dead code in generate_localized_site.py
-The legacy Python dicts `LOCALES[*]["replacements"]`, `POLISH_REPLACEMENTS`, `FINAL_COPY_REPLACEMENTS` (lines ~46–1099) are now **dead** (output comes from strings.json). Delete them but KEEP each locale's non-replacement settings (html_lang/label/short/og_locale/title/description) — or better, load those from `locales/locale-meta.json`. After deleting: rebuild + confirm `git diff` on generated pages is empty (byte-identical) and audit still PASS.
-
-### 3. shop.gyutron.com is NOT localized at all (biggest remaining chunk)
-`generate_localized_site.py` only covers the 21 main-site `PAGE_FILES`. The **18 shop pages** under `shop/` (index, products, product, cart, checkout, account, request-quote, contact-us, contact-engineer, about-us, + 6 policy pages, warranty) are **100% English** in every locale — there are no `de/shop/` or `ja/shop/` outputs.
-Work needed:
-  - Extend the generator (or add a parallel `shop` page list) to emit `de/shop/*.html`, `ja/shop/*.html` + `public/` mirrors.
-  - Store UI strings also live in `shop/shop.js` (cart/search/account templates) and `shop/shop.css` — localize the JS strings too (same strings.json approach).
-  - Update `src/worker.mjs` so `shop.gyutron.com` routing serves the right locale (currently rewrites everything to `/shop/`; needs `/de/shop/` etc. or Accept-Language / path logic).
-  - Add shop strings to `locales/de|ja/strings.json`; audit covers `<locale>/shop/` automatically (already coded in i18n_audit.py).
-
-### 4. Other languages (es / ko / zh-cn) — deferred
-`locales/es|ko|zh-cn/*.json` are still placeholder shells (`__fallbackLocale: en`). They are NOT generated. When ready, create `locales/<code>/strings.json` (copy the en→en keys from the audit `--emit-missing` template against a temporary build, or reuse the de/ja key set) + register in `locales/locale-meta.json` + add to `LOCALES`/PAGE list, then build + audit.
-
-### 5. Final QA before launch
-- `npm run i18n:check:strict` (the older namespace validator) — currently fails because es/ko/zh-cn namespace files are placeholders; that's expected until they're done.
-- Local preview each language on desktop + mobile widths 1440/1024/768/430/390 (AGENTS.md rule) — check German text overflow (German is ~30% longer).
-- Confirm no AI-generated people photos; brand "GYUTRON" stays uppercase & untranslated; locked terms (RFID/IP67/model names/units) unchanged.
-
-## Helper scripts (in D:\Codex Data, NOT committed — reference only)
-- `_scan_residual_en.py`, `_add_translations.py`, `_migrate_dicts_to_json.py` — one-off scripts used during this pass. The committed `tools/i18n_audit.py` supersedes the scanner.
-
-## Gotchas
-- `git reset --hard` is blocked by the safety classifier here; use `git checkout -- .` / `git pull --ff-only`.
-- Generator writes LF (`newline=""`); git warns "LF will be replaced by CRLF" — harmless, ignore.
-- Always verify a generator change two ways: (1) byte-identical regen when behavior shouldn't change, (2) a probe that breaks one strings.json value to confirm JSON is actually consumed.
+## Conventions / gotchas
+- Brand "GYUTRON" stays uppercase + untranslated; locked terms (RFID, NFC, PDA,
+  IP67, model numbers, SKU, units, B2B, WhatsApp) unchanged.
+- Store pages use absolute `/shop/...` paths (main site uses relative) — the
+  generator rewrites the prefix for locales; don't convert them to relative.
+- Product-page `<title>`/`<meta>` are translated as FULL strings via strings.json
+  keys (keyed on exact English source, literal `&`). Don't reintroduce per-page
+  label munging in the generator.
+- `git reset --hard` is blocked by the safety classifier; use
+  `git checkout -- .` / `git pull --ff-only`.
+- After any generator change, verify two ways: (1) byte-identical regen when
+  behavior shouldn't change; (2) a probe — break one strings.json value, rebuild,
+  confirm generated files change — to prove JSON drives output.
