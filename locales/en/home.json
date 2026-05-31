@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "locale": "en",
+    "status": "source"
+  },
+  "hero": {
+    "slides": {
+      "vision": {
+        "eyebrow": "Industrial Vision",
+        "title": "Smart Cameras for Connected Inspection",
+        "summary": "Compact imaging, onboard processing, and industrial connectivity for quality automation."
+      },
+      "mobile": {
+        "eyebrow": "Rugged Data Capture",
+        "title": "Android PDA Terminals for Field Workflows",
+        "summary": "Barcode, RFID, wireless connectivity, and rugged mobility for warehouse and service teams."
+      },
+      "automation": {
+        "eyebrow": "Automation Edge",
+        "title": "Sensors and Control Hardware for Modern Workcells",
+        "summary": "Sensing, measurement, lighting, and machine integration components for industrial systems."
+      }
+    }
+  },
+  "sections": {
+    "products": {
+      "title": "Industrial Products",
+      "summary": "Hardware families for inspection, sensing, data capture, and connected automation."
+    },
+    "solutions": {
+      "title": "Industrial Solutions",
+      "summary": "System-level building blocks for vision inspection, traceability, embedded control, and field operations."
+    }
+  }
+}

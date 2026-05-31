@@ -1,0 +1,21 @@
+{
+  "_meta": {
+    "locale": "en",
+    "status": "source"
+  },
+  "pages": {
+    "about": "About Us",
+    "contact": "Contact Us",
+    "shipping": "Shipping Policy",
+    "returns": "Return & Refund Policy",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "payment": "Payment Methods",
+    "warranty": "Warranty Policy",
+    "quote": "Request a Quote"
+  },
+  "status": {
+    "draft": "Draft pending legal review",
+    "reviewed": "Reviewed for publication"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "locale": "en",
+    "status": "source"
+  },
+  "categories": {
+    "automatedVisionInspection": "Automated Vision Inspection",
+    "electronicsSemiconductor": "Electronics & Semiconductor Manufacturing",
+    "embeddedSystems": "Integrated Industrial Embedded Systems",
+    "traceability": "Manufacturing Intelligence & Traceability",
+    "warehouseField": "Warehouse & Field Operations",
+    "oemOdm": "OEM / ODM Solution Programs"
+  },
+  "shared": {
+    "systemArchitecture": "System Architecture",
+    "applications": "Applications",
+    "recommendedProducts": "Recommended Products",
+    "engineeringSupport": "Engineering Support"
+  }
+}

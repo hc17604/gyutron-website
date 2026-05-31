@@ -9,6 +9,7 @@ Scope: main brand site, official store, shared navigation, product data, generat
 - The site is English-only at the source level. HTML files use `lang="en"`.
 - There is no `data-i18n`, translation dictionary, locale router, `hreflang`, `og:locale`, or per-language metadata layer.
 - The site is not currently ready for professional one-click language switching. It needs a structured localization layer first.
+- A localization scaffold now exists under `locales/` with English source dictionaries and planned target folders for Simplified Chinese, German, Spanish, Japanese, and Korean. The scaffold is not yet wired into page rendering.
 - Main-site text is mostly hardcoded directly in static HTML files, especially `index.html`, `contact-sales.html`, and `automated-vision-inspection.html`.
 - Product category content is partly centralized in `product-data.js` and rendered through `product-catalog.js`, which is a good starting point for localization.
 - Store product content is centralized in `shop/shop.js`, but store page chrome, policy pages, forms, footers, headers, placeholders, and notices are still hardcoded in `shop/*.html` and `shop/shop.js`.
@@ -34,10 +35,10 @@ Scope: main brand site, official store, shared navigation, product data, generat
 
 ## Recommended Target Architecture
 
-Use a real content/locale layer instead of browser translation:
+Use the new `locales/` content layer instead of browser translation:
 
 - `locales/en/*.json` as the source of truth.
-- Additional locales such as `locales/de/*.json`, `locales/fr/*.json`, `locales/es/*.json`, `locales/ja/*.json`, `locales/ko/*.json`, `locales/zh-cn/*.json`, etc.
+- Planned target locales: `locales/zh-cn/*.json`, `locales/de/*.json`, `locales/es/*.json`, `locales/ja/*.json`, and `locales/ko/*.json`.
 - Separate dictionaries by domain:
   - `common.json`: header, footer, buttons, forms, shared labels.
   - `home.json`: homepage sections and hero slides.
@@ -50,6 +51,8 @@ Use a real content/locale layer instead of browser translation:
 - Generate static localized pages into `public/{locale}/...` or subdomains (`cn.gyutron.com`, future country sites) from the same source dictionaries.
 - Keep `www.gyutron.com` and `shop.gyutron.com` English until a target market is explicitly launched.
 - Add locale routing and `hreflang` only once translated pages actually exist.
+- Routine scaffold validation: `npm.cmd run i18n:check`.
+- Pre-launch strict validation: `npm.cmd run i18n:check:strict`. Strict mode currently fails because target locale files intentionally fall back to English placeholders until professional localization begins.
 
 ## Migration Priority
 

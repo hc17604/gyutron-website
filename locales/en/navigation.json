@@ -1,0 +1,35 @@
+{
+  "_meta": {
+    "locale": "en",
+    "status": "source"
+  },
+  "topStrip": {
+    "officialStore": "Official Store",
+    "supportCenter": "Support Center",
+    "languageSwitch": "Language and region"
+  },
+  "mainSite": {
+    "products": "Products",
+    "solutions": "Solutions",
+    "industries": "Industries",
+    "customers": "Customers",
+    "company": "Company",
+    "resources": "Resources",
+    "contactSales": "Contact Sales"
+  },
+  "store": {
+    "products": "Products",
+    "requestQuote": "Request Quote",
+    "brandSite": "Brand Site",
+    "account": "Account",
+    "cart": "Cart",
+    "menu": "Product Catalog"
+  },
+  "footer": {
+    "officialStore": "Official Store",
+    "products": "Products",
+    "solutions": "Solutions",
+    "company": "Company",
+    "support": "Support"
+  }
+}

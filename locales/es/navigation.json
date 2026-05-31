@@ -1,0 +1,10 @@
+{
+  "_meta": {
+    "locale": "es-ES",
+    "status": "planned",
+    "localization": "pending professional adaptation"
+  },
+  "__fallbackLocale": "en",
+  "__sourceNamespace": "navigation",
+  "__todo": "Mirror keys from locales/en/navigation.json before launch."
+}

@@ -1,0 +1,92 @@
+{
+  "sourceLocale": "en",
+  "defaultLocale": "en",
+  "locales": [
+    {
+      "code": "en",
+      "folder": "en",
+      "label": "English",
+      "nativeLabel": "English",
+      "routePrefix": "/",
+      "market": "Global",
+      "status": "source"
+    },
+    {
+      "code": "zh-CN",
+      "folder": "zh-cn",
+      "label": "Chinese (Simplified)",
+      "nativeLabel": "简体中文",
+      "routePrefix": "/zh-cn/",
+      "market": "China and Chinese-speaking industrial buyers",
+      "status": "planned"
+    },
+    {
+      "code": "de-DE",
+      "folder": "de",
+      "label": "German",
+      "nativeLabel": "Deutsch",
+      "routePrefix": "/de/",
+      "market": "Germany and DACH industrial buyers",
+      "status": "planned"
+    },
+    {
+      "code": "es-ES",
+      "folder": "es",
+      "label": "Spanish",
+      "nativeLabel": "Español",
+      "routePrefix": "/es/",
+      "market": "Spain and Spanish-speaking industrial buyers",
+      "status": "planned"
+    },
+    {
+      "code": "ja-JP",
+      "folder": "ja",
+      "label": "Japanese",
+      "nativeLabel": "日本語",
+      "routePrefix": "/ja/",
+      "market": "Japan",
+      "status": "planned"
+    },
+    {
+      "code": "ko-KR",
+      "folder": "ko",
+      "label": "Korean",
+      "nativeLabel": "한국어",
+      "routePrefix": "/ko/",
+      "market": "Korea",
+      "status": "planned"
+    }
+  ],
+  "namespaces": [
+    "common",
+    "navigation",
+    "home",
+    "products",
+    "solutions",
+    "store",
+    "policies",
+    "seo"
+  ],
+  "lockedTerms": [
+    "GYUTRON",
+    "SKU",
+    "RFID",
+    "NFC",
+    "PDA",
+    "IP67",
+    "IP65",
+    "GigE",
+    "USB",
+    "PoE",
+    "PROFINET",
+    "EtherNet/IP",
+    "IO-Link",
+    "MES",
+    "WMS"
+  ],
+  "assetPolicy": {
+    "brandImagesRemainGlobal": true,
+    "avoidBakedMarketingText": true,
+    "localeAssetPattern": "assets/{locale}/{asset-name}"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "_meta": {
+    "locale": "ko-KR",
+    "status": "planned",
+    "localization": "pending professional adaptation"
+  },
+  "__fallbackLocale": "en",
+  "__sourceNamespace": "seo",
+  "__todo": "Mirror keys from locales/en/seo.json before launch."
+}

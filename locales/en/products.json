@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "locale": "en",
+    "status": "source"
+  },
+  "families": {
+    "machineVision": {
+      "title": "Machine Vision",
+      "summary": "Area scan cameras, smart cameras, code reading cameras, lenses, lighting, and acquisition hardware."
+    },
+    "dataCapture": {
+      "title": "Data Capture",
+      "summary": "Barcode scanners, RFID handhelds, rugged Android PDA terminals, and traceability accessories."
+    },
+    "sensingMeasurement": {
+      "title": "Sensing and Measurement",
+      "summary": "Industrial sensors, proximity sensors, laser measurement, gauges, and environmental sensing modules."
+    },
+    "testInstrumentation": {
+      "title": "Test and Inspection Instruments",
+      "summary": "Portable testers, calibration tools, dimensional gauges, and inspection instruments."
+    }
+  },
+  "specLabels": {
+    "resolution": "Resolution",
+    "interface": "Interface",
+    "ingressProtection": "Ingress Protection",
+    "operatingTemperature": "Operating Temperature",
+    "application": "Application"
+  }
+}

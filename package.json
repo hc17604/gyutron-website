@@ -3,7 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "deploy": "wrangler deploy --config wrangler.toml --assets ./public/"
+    "deploy": "wrangler deploy --config wrangler.toml --assets ./public/",
+    "i18n:check": "python tools/i18n_validate.py",
+    "i18n:check:strict": "python tools/i18n_validate.py --strict"
   },
   "devDependencies": {
     "wrangler": "4.93.1"

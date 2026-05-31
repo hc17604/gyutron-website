@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "locale": "en",
+    "status": "source"
+  },
+  "home": {
+    "eyebrow": "Official Store",
+    "title": "Industrial automation products for procurement teams",
+    "summary": "Browse cameras, sensors, data capture devices, cables, and accessories for direct purchase or engineering quotation."
+  },
+  "catalog": {
+    "title": "Product Catalog",
+    "featuredTitle": "Featured industrial products",
+    "filters": "Filters",
+    "allProducts": "All Products",
+    "category": "Category"
+  },
+  "productDetail": {
+    "overview": "Overview",
+    "specifications": "Specifications",
+    "downloads": "Downloads",
+    "relatedProducts": "Related Products"
+  },
+  "quote": {
+    "title": "Request a Quote",
+    "summary": "Send product requirements, quantity, timeline, and integration notes for engineering review."
+  }
+}

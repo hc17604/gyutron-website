@@ -1,0 +1,26 @@
+{
+  "_meta": {
+    "locale": "en",
+    "status": "source"
+  },
+  "mainSite": {
+    "home": {
+      "title": "GYUTRON | Industrial Vision, Sensing, Data Capture and Automation Hardware",
+      "description": "GYUTRON provides industrial cameras, rugged data capture devices, sensors, inspection instruments, and automation solutions for modern factories and field operations."
+    },
+    "contactSales": {
+      "title": "Contact Sales | GYUTRON",
+      "description": "Contact GYUTRON for product selection, quotation, engineering support, and industrial automation project consultation."
+    }
+  },
+  "store": {
+    "home": {
+      "title": "GYUTRON Official Store | Industrial Automation Products",
+      "description": "Shop GYUTRON industrial cameras, sensors, data capture devices, accessories, and automation hardware, or request an engineering quote."
+    },
+    "catalog": {
+      "title": "Product Catalog | GYUTRON Official Store",
+      "description": "Browse GYUTRON industrial product families for machine vision, sensing, data capture, testing, and automation procurement."
+    }
+  }
+}

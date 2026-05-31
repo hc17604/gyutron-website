@@ -1,0 +1,10 @@
+{
+  "_meta": {
+    "locale": "de-DE",
+    "status": "planned",
+    "localization": "pending professional adaptation"
+  },
+  "__fallbackLocale": "en",
+  "__sourceNamespace": "products",
+  "__todo": "Mirror keys from locales/en/products.json before launch."
+}

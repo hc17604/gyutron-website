@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "locale": "en",
+    "status": "source"
+  },
+  "brand": {
+    "name": "GYUTRON",
+    "officialStore": "GYUTRON Official Store"
+  },
+  "actions": {
+    "learnMore": "Learn More",
+    "exploreProducts": "Explore Products",
+    "viewSolutions": "View Solutions",
+    "contactSales": "Contact Sales",
+    "requestQuote": "Request Quote",
+    "contactEngineer": "Contact Engineer",
+    "buyNow": "Buy Now",
+    "addToCart": "Add to Cart",
+    "viewDetails": "View Details",
+    "submit": "Submit",
+    "send": "Send",
+    "back": "Back",
+    "continue": "Continue"
+  },
+  "forms": {
+    "name": "Name",
+    "company": "Company",
+    "email": "Email",
+    "phone": "Phone",
+    "country": "Country / Region",
+    "message": "Message",
+    "application": "Application",
+    "quantity": "Quantity",
+    "timeline": "Project Timeline"
+  },
+  "search": {
+    "placeholder": "Search products, SKUs, categories",
+    "noResults": "No matching products found",
+    "suggestions": "Search suggestions"
+  },
+  "commerce": {
+    "account": "Account",
+    "cart": "Cart",
+    "checkout": "Checkout",
+    "subtotal": "Subtotal",
+    "emptyCart": "Your cart is empty"
+  }
+}
