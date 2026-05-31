@@ -213,11 +213,7 @@ def localize_html(source: str, folder: str, settings: dict[str, object], filenam
     html = html.replace('src="product-data.js"', f'src="{folder}/product-data.js"')
     html = html.replace('src="product-catalog.js"', f'src="{folder}/product-catalog.js"')
 
-    for before, after in sorted(settings["replacements"].items(), key=lambda item: len(item[0]), reverse=True):
-        html = html.replace(before, after)
-
-    if folder == "de":
-        html = html.replace("Bildverarbeitungssysteme", "Bildverarbeitungssysteme")
+    html = _apply_phrase_map(html, settings["replacements"])
     return html
 
 
@@ -239,10 +235,34 @@ def load_strings(locale_code: str) -> dict[str, str]:
     return _STRINGS_CACHE[locale_code]
 
 
+_PHRASE_RE_CACHE: dict[int, "re.Pattern[str]"] = {}
+
+
+def _apply_phrase_map(text: str, mapping: dict[str, str]) -> str:
+    """Replace every English source phrase with its translation in a SINGLE
+    left-to-right pass.
+
+    Using repeated str.replace() (longest-first) is unsafe: a short key can hit
+    a substring of text another key already produced. E.g. after
+    "Industrial Sensors" -> "Industriesensoren", a later "Industries" -> "Branchen"
+    key would corrupt it into "Branchenensoren". A single regex pass matches each
+    position once (longest alternative wins) and never re-scans replaced text, so
+    translations can't bleed into one another.
+    """
+    if not mapping:
+        return text
+    key = id(mapping)
+    pattern = _PHRASE_RE_CACHE.get(key)
+    if pattern is None:
+        # Longest keys first so the most specific phrase wins at each position.
+        sources = sorted(mapping, key=len, reverse=True)
+        pattern = re.compile("|".join(re.escape(s) for s in sources))
+        _PHRASE_RE_CACHE[key] = pattern
+    return pattern.sub(lambda m: mapping[m.group(0)], text)
+
+
 def apply_replacements(text: str, settings: dict[str, object]) -> str:
-    for before, after in sorted(settings["replacements"].items(), key=lambda item: len(item[0]), reverse=True):
-        text = text.replace(before, after)
-    return text
+    return _apply_phrase_map(text, settings["replacements"])
 
 
 def localized_catalog_js(folder: str, settings: dict[str, object]) -> str:

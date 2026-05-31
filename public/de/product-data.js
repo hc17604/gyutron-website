@@ -56,7 +56,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-A80 Ultra",
                 type: "Ultra-robustes PDA",
-                summary: "Hochwertiger Feldcomputer für Versorger, Außenlager, Instandhaltungsteams und lange Branchenchichten.",
+                summary: "Hochwertiger Feldcomputer für Versorger, Außenlager, Instandhaltungsteams und lange Industrieschichten.",
                 kind: "pda",
                 image: "product-images/gy-a80-ultra.png",
                 specs: { OS: "Android 14", Display: "6.2 in FHD", Scan: "Extended range 2D", Rugged: "IP68 / 2.0 m drop" },
@@ -118,7 +118,7 @@ const GYUTRON_PRODUCTS = {
         heroImage: "product-hero-barcode-scanners-matrix.png",
         intro: "Industrielle Handheld-Barcode-Scanner für 1D-, 2D-, DPM-, Long-Range- und Wireless-Scan-Workflows.",
         panelMetric: "7 Modelle",
-        panelText: "Kabelgebundene, kabellose, Kühlketten-, Long-Range-, Tragbar-, Präsentations- und Tor-Scan-Optionen.",
+        panelText: "Kabelgebundene, kabellose, Kühlketten-, Long-Range-, Wearable-, Präsentations- und Tor-Scan-Optionen.",
         products: [
             {
                 name: "GY-S210",
@@ -131,7 +131,7 @@ const GYUTRON_PRODUCTS = {
             },
             {
                 name: "GY-S240W",
-                type: "Kabelloser Branchencanner",
+                type: "Kabelloser Industriescanner",
                 summary: "Cordless scanner with base station for pick-pack, shipping, and flexible workcells.",
                 kind: "scanner",
                 image: "product-images/gy-s240w.png",
@@ -852,7 +852,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         navLabel: "Kalibrierwerkzeuge",
         navGroup: "quality",
         heroImage: "product-hero-calibration-tools-matrix.png",
-        intro: "Kalibrier- und Verifizierungszubehör für Bildverarbeitung, Messtechnik, Codequalität und dokumentierte Messmittelpflege.",
+        intro: "Kalibrier- und Verifizierungszubehör für Machine Vision, Messtechnik, Codequalität und dokumentierte Messmittelpflege.",
         panelMetric: "3 Modelle",
         panelText: "Kalibriergitter, gauge block, and light-reference tools.",
         sectionIntro: "Calibration tools make inspection systems more repeatable by supporting setup verification, traceable checks, and documented maintenance routines.",
