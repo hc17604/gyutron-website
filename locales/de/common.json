@@ -1,10 +1,49 @@
 {
   "_meta": {
     "locale": "de-DE",
-    "status": "planned",
-    "localization": "pending professional adaptation"
+    "status": "draft",
+    "localization": "German homepage sample, pending native technical review"
   },
-  "__fallbackLocale": "en",
-  "__sourceNamespace": "common",
-  "__todo": "Mirror keys from locales/en/common.json before launch."
+  "brand": {
+    "name": "GYUTRON",
+    "officialStore": "Offizieller GYUTRON Store"
+  },
+  "actions": {
+    "learnMore": "Mehr erfahren",
+    "exploreProducts": "Produkte entdecken",
+    "viewSolutions": "Lösungen ansehen",
+    "contactSales": "Vertrieb kontaktieren",
+    "requestQuote": "Angebot anfordern",
+    "contactEngineer": "Ingenieur kontaktieren",
+    "buyNow": "Jetzt kaufen",
+    "addToCart": "In den Warenkorb",
+    "viewDetails": "Details ansehen",
+    "submit": "Absenden",
+    "send": "Senden",
+    "back": "Zurück",
+    "continue": "Weiter"
+  },
+  "forms": {
+    "name": "Name",
+    "company": "Unternehmen",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "country": "Land / Region",
+    "message": "Nachricht",
+    "application": "Anwendung",
+    "quantity": "Menge",
+    "timeline": "Projektzeitplan"
+  },
+  "search": {
+    "placeholder": "Produkte, SKUs, Kategorien suchen",
+    "noResults": "Keine passenden Produkte gefunden",
+    "suggestions": "Suchvorschläge"
+  },
+  "commerce": {
+    "account": "Konto",
+    "cart": "Warenkorb",
+    "checkout": "Zur Kasse",
+    "subtotal": "Zwischensumme",
+    "emptyCart": "Ihr Warenkorb ist leer"
+  }
 }

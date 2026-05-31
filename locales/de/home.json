@@ -1,10 +1,36 @@
 {
   "_meta": {
     "locale": "de-DE",
-    "status": "planned",
-    "localization": "pending professional adaptation"
+    "status": "draft",
+    "localization": "German homepage sample, pending native technical review"
   },
-  "__fallbackLocale": "en",
-  "__sourceNamespace": "home",
-  "__todo": "Mirror keys from locales/en/home.json before launch."
+  "hero": {
+    "slides": {
+      "vision": {
+        "eyebrow": "Automatisierte Bildprüfung",
+        "title": "Industrielle Bildverarbeitungssysteme",
+        "summary": "Qualitätsentscheidungen direkt in der Linie mit Smart-Kameras, Beleuchtung, Codeprüfung, Maßkontrolle und Roboterführung als integrierte Prüfebene."
+      },
+      "mobile": {
+        "eyebrow": "Robuste Datenerfassung",
+        "title": "Robuste Datenerfassung",
+        "summary": "Android-PDAs, RFID-Handhelds, Barcode-Scanner und Feldzubehör für Wareneingang, Inventur, Versand, Asset Tracking und Serviceprozesse."
+      },
+      "automation": {
+        "eyebrow": "GYUTRON Industrial Intelligence",
+        "title": "Vernetzte Fabrikhardware",
+        "summary": "Sensoren, Prüfgeräte, Vision-Hardware, Roboterarbeitszellen und Edge-Control-Geräte für eine disziplinierte Fabrikausführung."
+      }
+    }
+  },
+  "sections": {
+    "products": {
+      "title": "Industrieprodukte",
+      "summary": "Hardware, die sieht, erfasst, scannt, misst und handelt."
+    },
+    "solutions": {
+      "title": "Industrielle Lösungen",
+      "summary": "Industrial Intelligence für die Orte, an denen Arbeit tatsächlich stattfindet."
+    }
+  }
 }

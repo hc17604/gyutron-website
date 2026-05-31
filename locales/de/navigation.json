@@ -1,10 +1,36 @@
 {
   "_meta": {
     "locale": "de-DE",
-    "status": "planned",
-    "localization": "pending professional adaptation"
+    "status": "draft",
+    "localization": "German homepage sample, pending native technical review"
   },
-  "__fallbackLocale": "en",
-  "__sourceNamespace": "navigation",
-  "__todo": "Mirror keys from locales/en/navigation.json before launch."
+  "topStrip": {
+    "officialStore": "Offizieller Store",
+    "supportCenter": "Support Center",
+    "languageSwitch": "Sprache und Region"
+  },
+  "mainSite": {
+    "products": "Produkte",
+    "solutions": "Lösungen",
+    "industries": "Branchen",
+    "customers": "Kunden",
+    "company": "Unternehmen",
+    "resources": "Ressourcen",
+    "contactSales": "Vertrieb kontaktieren"
+  },
+  "store": {
+    "products": "Produkte",
+    "requestQuote": "Angebot anfordern",
+    "brandSite": "Markenwebsite",
+    "account": "Konto",
+    "cart": "Warenkorb",
+    "menu": "Produktkatalog"
+  },
+  "footer": {
+    "officialStore": "Offizieller Store",
+    "products": "Produkte",
+    "solutions": "Lösungen",
+    "company": "Unternehmen",
+    "support": "Support"
+  }
 }

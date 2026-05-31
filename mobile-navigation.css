@@ -189,10 +189,14 @@ body.mobile-nav-open .mobile-nav-panel {
         display: none;
     }
 
-    .language-icon-mobile {
+    .language-switch-mobile {
         display: inline-flex;
         grid-column: 2;
         justify-self: end;
+    }
+
+    .language-icon-mobile {
+        display: inline-flex;
     }
 
     .mobile-menu-toggle {
@@ -223,6 +227,11 @@ body.mobile-nav-open .mobile-nav-panel {
 
     .site-header .brand-logo {
         max-width: min(190px, calc(100vw - 174px));
+    }
+
+    .language-switch-mobile {
+        grid-column: 2;
+        justify-self: end;
     }
 
     .language-icon-mobile {

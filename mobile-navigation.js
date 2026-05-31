@@ -113,7 +113,7 @@
         }
 
         const contact = header.querySelector(".button-primary");
-        const mobileLanguage = header.querySelector(".language-icon-mobile");
+        const mobileLanguage = header.querySelector(".language-switch-mobile") || header.querySelector(".language-icon-mobile");
         const menuData = readDesktopNavigation();
         if (contact) {
             const contactLabel = normalizeText(contact.querySelector(".cta-label-full")?.textContent || contact.textContent);

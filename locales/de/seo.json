@@ -1,10 +1,27 @@
 {
   "_meta": {
     "locale": "de-DE",
-    "status": "planned",
-    "localization": "pending professional adaptation"
+    "status": "draft",
+    "localization": "German homepage sample, pending native technical review"
   },
-  "__fallbackLocale": "en",
-  "__sourceNamespace": "seo",
-  "__todo": "Mirror keys from locales/en/seo.json before launch."
+  "mainSite": {
+    "home": {
+      "title": "GYUTRON | Industrielle Bildverarbeitung, Sensorik, Datenerfassung und Automatisierungshardware",
+      "description": "GYUTRON bietet Industriekameras, robuste Datenerfassungsgeräte, Sensoren, Prüfgeräte und Automatisierungslösungen für moderne Fertigung, Logistik und Feldeinsätze."
+    },
+    "contactSales": {
+      "title": "Vertrieb kontaktieren | GYUTRON",
+      "description": "Kontaktieren Sie GYUTRON für Produktauswahl, Angebote, Engineering-Unterstützung und Beratung zu industriellen Automatisierungsprojekten."
+    }
+  },
+  "store": {
+    "home": {
+      "title": "Offizieller GYUTRON Store | Industrielle Automatisierungsprodukte",
+      "description": "Kaufen Sie GYUTRON Industriekameras, Sensoren, Datenerfassungsgeräte, Zubehör und Automatisierungshardware oder fordern Sie ein Engineering-Angebot an."
+    },
+    "catalog": {
+      "title": "Produktkatalog | Offizieller GYUTRON Store",
+      "description": "Durchsuchen Sie GYUTRON Produktfamilien für Machine Vision, Sensorik, Datenerfassung, Prüfung und Automatisierungsbeschaffung."
+    }
+  }
 }
