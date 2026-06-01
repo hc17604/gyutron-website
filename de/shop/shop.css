@@ -637,6 +637,16 @@ p {
     margin-top: 0;
 }
 
+/* Long compound words (esp. German, e.g. "Industrieautomatisierungsprodukte")
+ * must wrap/hyphenate instead of overflowing their column. min-width:0 lets a
+ * heading shrink inside a flex/grid track; hyphens:auto uses the page lang. */
+h1, h2, h3, h4, .catalog-title, .hero h1 {
+    overflow-wrap: break-word;
+    word-break: normal;
+    hyphens: auto;
+    min-width: 0;
+}
+
 h1 {
     font-size: 62px;
     letter-spacing: 0;
