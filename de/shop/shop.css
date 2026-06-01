@@ -2294,7 +2294,10 @@ h1 {
     }
 }
 
-/* Store language switcher (injected by tools/generate_localized_site.py) */
+/* Store language switcher — matched to the main-site (gyutron.com) language
+ * menu: soft fade-in (opacity + transform), square industrial corners, hover
+ * text-color shift, and a ::before bridge so the menu doesn't flicker when the
+ * pointer travels from the globe to the menu. */
 .store-language-switch {
     position: relative;
     display: inline-flex;
@@ -2309,41 +2312,64 @@ h1 {
     align-items: center;
     justify-content: center;
     padding: 8px;
+    transition: color 160ms ease, transform 160ms ease;
+}
+.store-language-switch .store-language:hover {
+    color: var(--purple);
+    transform: translateY(-1px);
 }
 .store-language-switch .store-language-menu {
     position: absolute;
     top: calc(100% + 8px);
+    right: -12px;
+    min-width: 172px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(229, 221, 236, 0.95);
+    box-shadow: 0 18px 42px rgba(18, 5, 31, 0.16);
+    padding: 8px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 160ms ease, transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 140;
+}
+.store-language-menu::before {
+    content: "";
+    position: absolute;
+    left: 0;
     right: 0;
-    min-width: 160px;
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    padding: 6px;
-    display: none;
-    z-index: 80;
+    top: -10px;
+    height: 10px;
 }
 .store-language-switch:hover .store-language-menu,
 .store-language-switch:focus-within .store-language-menu {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
 }
 .store-language-menu a {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 16px;
-    padding: 9px 12px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink);
+    padding: 10px 11px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text);
     white-space: nowrap;
     text-decoration: none;
+    transition: background 160ms ease, color 160ms ease;
 }
 .store-language-menu a:hover,
 .store-language-menu a[aria-current="page"] {
     background: var(--purple-soft);
+    color: var(--purple-700);
 }
 .store-language-menu a span {
     color: var(--muted);
-    font-weight: 700;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
