@@ -504,6 +504,11 @@ function __LOCALIZE_SUMMARY__(product, category) {
             "Model names, options, and specifications are structured for GYUTRON's portfolio and use common industrial device classes as benchmarks.",
             "モデル名、オプション、仕様はGYUTRONのポートフォリオに合わせて整理され、一般的な産業用デバイス分類を基準にしています。"
         )
+    # NOTE: this blind pass DOES corrupt identifiers (navItems -> navArtikel via
+    # "Items"->"Artikel"), but the rename is consistent so the code still runs.
+    # Switching to translate_js() drops translations keyed as whole `…${…}…`
+    # template strings (pagination "Seite X von Y", spec fallbacks), so the proper
+    # fix is the Batch 6 t()-table migration, not a blind->translate_js swap here.
     js = apply_replacements(js, settings)
     if folder == "de":
         js = js.replace("<th>Model</th>", "<th>Modell</th>")
