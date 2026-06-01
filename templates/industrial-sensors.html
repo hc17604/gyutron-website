@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">{{locale.basetag}}
+    <script>
+        if (location.hostname === "shop.gyutron.com" && !location.pathname.startsWith("/shop/")) {
+            location.replace("/shop/index.html" + location.search + location.hash);
+        }
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:seo.industrial-sensors.title}}</title>
+    <meta name="description" content="{{t:seo.industrial-sensors.desc}}">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+    <link rel="stylesheet" href="mobile-navigation.css">
+{{locale.mainfonts}}</head>
+<body data-category="industrial-sensors">
+{{include:main-header}}
+
+    <main>
+        <section class="product-hero"><div class="container"><div class="product-hero-grid" data-product-hero></div></div></section>
+        <nav class="category-nav"><div class="container" data-category-nav></div></nav>
+        <section class="section"><div class="container"><div class="section-head"><div><span class="eyebrow">{{t:main.258}}</span><h2 data-section-title></h2></div><p data-section-intro></p></div><div class="product-grid" data-product-grid></div><div class="pagination" data-pagination hidden></div></div></section>
+        <section class="compare-band"><div class="container"><span class="eyebrow">{{t:main.259}}</span><h2>{{t:main.260}}</h2><div class="compare-scroll"><table class="compare-table" data-compare-table></table></div></div></section>
+        <section class="cta-band"><div class="container"><div class="cta-inner"><div><h2>{{t:main.261}}</h2><p>{{t:main.262}}</p></div><a class="button button-primary" href="{{locale.path}}contact-sales.html">{{t:main.256}} <i class="fa-solid fa-arrow-right"></i></a></div></div></section>
+    </main>
+{{include:main-footer}}
+    <script src="{{locale.path}}product-data.js"></script>
+    <script src="{{locale.path}}product-catalog.js"></script>
+    <script src="mobile-navigation.js"></script>
+</body>
+</html>
+
+
