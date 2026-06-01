@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:checkout.seo.title}}</title>
+    <meta name="description" content="{{t:checkout.seo.desc}}">
+    <meta property="og:title" content="{{t:checkout.seo.title}}">
+    <meta property="og:description" content="{{t:checkout.seo.desc}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow" data-i18n="checkout.eyebrow">Checkout</span>
+                        <h1 style="color:var(--ink);font-size:48px;" data-i18n="checkout.title">Confirm purchasing details.</h1>
+                    </div>
+                    <p data-i18n="checkout.intro">Submit your purchase request and our team will confirm availability, shipping terms, payment method, and final quotation before processing the order.</p>
+                </div>
+                <div class="checkout-layout">
+                    <form class="form" data-demo-form>
+                        <div class="notice" data-i18n="checkout.notice">After you submit this request, a GYUTRON representative will contact you to confirm stock, lead time, shipping, and payment before any charge is made.</div>
+                        <div class="form-grid">
+                            <div class="field"><label data-i18n="form.firstName">First Name</label><input required name="firstName" autocomplete="given-name"></div>
+                            <div class="field"><label data-i18n="form.lastName">Last Name</label><input required name="lastName" autocomplete="family-name"></div>
+                            <div class="field"><label data-i18n="form.workEmail">Work Email</label><input required type="email" name="email" autocomplete="email"></div>
+                            <div class="field"><label data-i18n="form.phone">Phone / WhatsApp</label><input name="phone" autocomplete="tel"></div>
+                            <div class="field"><label data-i18n="form.company">Company</label><input name="company" autocomplete="organization"></div>
+                            <div class="field"><label data-i18n="form.country">Country / Region</label><input name="country" autocomplete="country-name"></div>
+                            <div class="field field-wide"><label data-i18n="form.shipAddress">Shipping Address</label><input name="address" autocomplete="street-address"></div>
+                            <div class="field"><label data-i18n="form.preferredPayment">Preferred Payment</label><select name="payment"><option data-i18n="pay.card">Credit card / online payment</option><option data-i18n="pay.paypal">PayPal</option><option data-i18n="pay.wire">Wire transfer</option><option data-i18n="pay.proforma">Proforma invoice</option></select></div>
+                            <div class="field"><label data-i18n="form.orderType">Order Type</label><select name="orderType"><option data-i18n="order.sample">Sample purchase</option><option data-i18n="order.smallBatch">Small-batch order</option><option data-i18n="order.accessories">Accessories order</option><option data-i18n="order.quoteFirst">Quote required before payment</option></select></div>
+                            <div class="field field-wide"><label data-i18n="form.procurementNotes">Procurement Notes</label><textarea name="notes" data-i18n-attr="placeholder=ph.procurementNotes" placeholder="Lead time, certification, tax ID, shipping account, customization, or application notes."></textarea></div>
+                        </div>
+                        <button class="button button-primary" type="submit" data-i18n="checkout.submit">Submit Checkout Request</button>
+                    </form>
+                    <aside class="summary-card" data-checkout-summary></aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

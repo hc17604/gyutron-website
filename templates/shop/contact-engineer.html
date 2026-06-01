@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:ceng.seo.title}}</title>
+    <meta name="description" content="{{t:ceng.copy}}">
+    <meta property="og:title" content="{{t:ceng.seo.title}}">
+    <meta property="og:description" content="{{t:ceng.copy}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow" data-i18n="ceng.eyebrow">Contact Engineer</span>
+                        <h1 style="color:var(--ink);font-size:48px;" data-i18n="ceng.title">Confirm the right industrial product before ordering.</h1>
+                    </div>
+                    <p data-i18n="ceng.copy">For machine vision, sensors, RFID, scanners, or integration questions, send your environment and workflow details.</p>
+                </div>
+                <form class="form" data-demo-form>
+                    <div class="form-grid">
+                        <div class="field"><label data-i18n="form.productSku">Product SKU</label><input name="sku" data-prefill-sku data-i18n-attr="placeholder=ph.optional" placeholder="Optional"></div>
+                        <div class="field"><label data-i18n="form.appArea">Application Area</label><select name="application"><option data-i18n="app.mv">Machine vision inspection</option><option data-i18n="app.warehouse">Warehouse / RFID</option><option data-i18n="app.barcode">Barcode scanning</option><option data-i18n="app.sensing">Industrial sensing</option><option data-i18n="app.robot">Robot / automation cell</option><option data-i18n="app.other">Other</option></select></div>
+                        <div class="field"><label data-i18n="form.workEmail">Work Email</label><input required type="email" name="email"></div>
+                        <div class="field"><label data-i18n="form.company">Company</label><input name="company"></div>
+                        <div class="field field-wide"><label data-i18n="form.techQuestion">Technical Question</label><textarea required name="question" data-i18n-attr="placeholder=ph.techQuestion" placeholder="Part size, speed, distance, code type, lighting, interface, environment, or existing equipment."></textarea></div>
+                    </div>
+                    <button class="button button-primary" type="submit" data-i18n="ceng.submit">Send to Engineer</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

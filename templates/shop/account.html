@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:account.seo.title}}</title>
+    <meta name="description" content="{{t:account.seo.desc}}">
+    <meta property="og:title" content="{{t:account.seo.title}}">
+    <meta property="og:description" content="{{t:account.seo.desc}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section account-section">
+            <div class="container">
+                <div class="account-layout">
+                    <div class="account-copy">
+                        <span class="eyebrow" data-i18n="account.eyebrow">Store Account</span>
+                        <h1 data-i18n="account.title">Create a purchasing account.</h1>
+                        <p data-i18n="account.copy">Use one account to prepare sample orders, request quotes, keep company purchasing details ready, and coordinate engineering support before industrial products ship.</p>
+                        <div class="account-benefits">
+                            <div><i class="fa-solid fa-file-invoice"></i><span data-i18n="account.b1">Quote and order history</span></div>
+                            <div><i class="fa-solid fa-building"></i><span data-i18n="account.b2">Company purchasing profile</span></div>
+                            <div><i class="fa-solid fa-headset"></i><span data-i18n="account.b3">Engineering support context</span></div>
+                        </div>
+                    </div>
+                    <form class="form account-card" data-demo-form>
+                        <div class="form-grid">
+                            <div class="field"><label data-i18n="form.fullName">Full Name</label><input required name="name" autocomplete="name"></div>
+                            <div class="field"><label data-i18n="form.workEmail">Work Email</label><input required type="email" name="email" autocomplete="email"></div>
+                            <div class="field"><label data-i18n="form.company">Company</label><input required name="company" autocomplete="organization"></div>
+                            <div class="field"><label data-i18n="form.phone">Phone / WhatsApp</label><input name="phone" autocomplete="tel"></div>
+                            <div class="field"><label data-i18n="form.password">Password</label><input required type="password" name="password" autocomplete="new-password"></div>
+                            <div class="field"><label data-i18n="form.primaryInterest">Primary Interest</label><select name="interest"><option data-i18n="interest.mv">Machine vision products</option><option data-i18n="interest.barcode">Barcode and RFID devices</option><option data-i18n="interest.sensors">Industrial sensors</option><option data-i18n="interest.accessories">Accessories and spare parts</option><option data-i18n="interest.project">Configured automation project</option></select></div>
+                            <div class="field field-wide"><label data-i18n="form.purchasingNotes">Purchasing Notes</label><textarea name="notes" data-i18n-attr="placeholder=ph.purchasingNotes" placeholder="Optional: target product, quantity range, country, certification, or lead-time needs."></textarea></div>
+                        </div>
+                        <button class="button button-primary" type="submit" data-i18n="account.submit">Create Account</button>
+                        <p class="notice" data-i18n="account.notice">This registration form is a front-end prototype until the commerce account system is connected.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

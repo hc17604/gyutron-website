@@ -1,19 +1,22 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>アカウント登録 | GYUTRON 公式ストア</title>
     <meta name="description" content="B2B調達、見積依頼、注文履歴、エンジニアリング支援のためのGYUTRON公式ストアアカウントを作成します。">
+    <meta property="og:title" content="アカウント登録 | GYUTRON 公式ストア">
+    <meta property="og:description" content="B2B調達、見積依頼、注文履歴、エンジニアリング支援のためのGYUTRON公式ストアアカウントを作成します。">
+    <meta property="og:locale" content="ja_JP">
+    <link rel="canonical" href="https://shop.gyutron.com/ja/shop/account.html">
+    <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/account.html">
+    <link rel="alternate" hreflang="de" href="https://shop.gyutron.com/de/shop/account.html">
+    <link rel="alternate" hreflang="ja" href="https://shop.gyutron.com/ja/shop/account.html">
+    <link rel="alternate" hreflang="x-default" href="https://shop.gyutron.com/shop/account.html">
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="/ja/shop/shop.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style id="gyutron-ja-typography">
       body, button, input, select, textarea {
@@ -23,11 +26,13 @@
       h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
       p, li, span, a, label, td, th { font-weight: 400; }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/ja/shop/shop.css">
 </head>
 <body>
     <div class="top-strip">
         <div class="container">
-            <span>GYUTRON 公式 産業用調達窓口</span>
+            <span data-i18n="shop.topstrip.entrance">GYUTRON 公式 産業用調達窓口</span>
             <div class="top-links">
                 <a href="mailto:info@gyutron.com">info@gyutron.com</a>
                 <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
@@ -38,94 +43,104 @@
         <div class="container">
             <a class="brand" href="/ja/shop/index.html">
                 <img src="/gyutron-logo-purple.png" alt="GYUTRON">
-                <span>公式ストア</span>
+                <span data-i18n="shop.brand.tagline">公式ストア</span>
             </a>
-            <nav class="nav" aria-label="ストアナビゲーション">
+            <nav class="nav" data-i18n-attr="aria-label=nav.storeNavigation" aria-label="ストアナビゲーション">
                 <div class="nav-links">
-                    <a href="/ja/shop/products.html">製品</a>
-                    <a href="/ja/shop/request-quote.html">見積依頼</a>
-                    <a href="https://www.gyutron.com/">ブランドサイト</a>
+                    <a href="/ja/shop/products.html" data-i18n="nav.products">製品</a>
+                    <a href="/ja/shop/request-quote.html" data-i18n="nav.requestQuote">見積依頼</a>
+                    <a href="https://www.gyutron.com/" data-i18n="nav.brandSite">ブランドサイト</a>
                 </div>
                 <form class="store-search" action="/ja/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" placeholder="製品を検索" aria-label="製品を検索">
-                    <button type="submit" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="製品を検索" aria-label="製品を検索">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="検索"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
             </nav>
-            <div class="header-actions" aria-label="ストア操作">
-                <button class="store-menu-toggle" type="button" aria-expanded="false" aria-label="ストアメニューを開く"><i class="fa-solid fa-bars"></i><span>メニュー</span></button>
+            <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="ストア操作">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="ストアメニューを開く"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">メニュー</span></button>
                 <div class="store-language-switch">
-                    <button class="language-icon store-language" type="button" aria-label="言語と地域を選択" aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>
-                    <div class="store-language-menu" aria-label="言語オプション">
+                    <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="言語と地域を選択"><i class="fa-solid fa-globe"></i></button>
+                    <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="言語オプション">
                         <a href="/shop/account.html">English <span>EN</span></a>
                         <a href="/de/shop/account.html">Deutsch <span>DE</span></a>
                         <a href="/ja/shop/account.html" aria-current="page">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/ja/shop/account.html" aria-label="アカウントを作成"><i class="fa-regular fa-user"></i><span>アカウント</span></a>
-                <a class="icon-action cart-link" href="/ja/shop/cart.html" aria-label="カート"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label">カート</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/ja/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="アカウント作成"><i class="fa-regular fa-user"></i><span data-i18n="account.label">アカウント</span></a>
+                <a class="icon-action cart-link" href="/ja/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="カート"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">カート</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
+
     <main>
         <section class="section account-section">
             <div class="container">
                 <div class="account-layout">
                     <div class="account-copy">
-                        <span class="eyebrow">ストアアカウント</span>
-                        <h1>調達用アカウントを作成。</h1>
-                        <p>1つのアカウントで、サンプル注文の準備、見積依頼、会社の調達情報の保持、産業製品出荷前のエンジニアリング支援の調整ができます。</p>
+                        <span class="eyebrow" data-i18n="account.eyebrow">ストアアカウント</span>
+                        <h1 data-i18n="account.title">調達用アカウントを作成。</h1>
+                        <p data-i18n="account.copy">1つのアカウントで、サンプル注文の準備、見積依頼、会社の調達情報の保持、産業製品出荷前のエンジニアリング支援の調整ができます。</p>
                         <div class="account-benefits">
-                            <div><i class="fa-solid fa-file-invoice"></i><span>見積・注文履歴</span></div>
-                            <div><i class="fa-solid fa-building"></i><span>会社の調達プロフィール</span></div>
-                            <div><i class="fa-solid fa-headset"></i><span>エンジニアリング支援の背景情報</span></div>
+                            <div><i class="fa-solid fa-file-invoice"></i><span data-i18n="account.b1">見積・注文履歴</span></div>
+                            <div><i class="fa-solid fa-building"></i><span data-i18n="account.b2">会社の調達プロフィール</span></div>
+                            <div><i class="fa-solid fa-headset"></i><span data-i18n="account.b3">エンジニアリング支援の背景情報</span></div>
                         </div>
                     </div>
                     <form class="form account-card" data-demo-form>
                         <div class="form-grid">
-                            <div class="field">
-                                <label>氏名</label>
-                                <input required name="name" autocomplete="name">
-                            </div>
-                            <div class="field">
-                                <label>勤務先メール</label>
-                                <input required type="email" name="email" autocomplete="email">
-                            </div>
-                            <div class="field">
-                                <label>会社名</label>
-                                <input required name="company" autocomplete="organization">
-                            </div>
-                            <div class="field">
-                                <label>電話 / WhatsApp</label>
-                                <input name="phone" autocomplete="tel">
-                            </div>
-                            <div class="field">
-                                <label>パスワード</label>
-                                <input required type="password" name="password" autocomplete="new-password">
-                            </div>
-                            <div class="field">
-                                <label>主な関心分野</label>
-                                <select name="interest">
-                                    <option>マシンビジョン製品</option>
-                                    <option>バーコード・RFID機器</option>
-                                    <option>産業用センサー</option>
-                                    <option>アクセサリ・交換部品</option>
-                                    <option>構成済み自動化案件</option>
-                                </select>
-                            </div>
-                            <div class="field field-wide">
-                                <label>調達メモ</label>
-                                <textarea name="notes" placeholder="任意: 対象製品、数量範囲、国、認証、納期のご要望など。"></textarea>
-                            </div>
+                            <div class="field"><label data-i18n="form.fullName">氏名</label><input required name="name" autocomplete="name"></div>
+                            <div class="field"><label data-i18n="form.workEmail">勤務先メール</label><input required type="email" name="email" autocomplete="email"></div>
+                            <div class="field"><label data-i18n="form.company">会社名</label><input required name="company" autocomplete="organization"></div>
+                            <div class="field"><label data-i18n="form.phone">電話 / WhatsApp</label><input name="phone" autocomplete="tel"></div>
+                            <div class="field"><label data-i18n="form.password">パスワード</label><input required type="password" name="password" autocomplete="new-password"></div>
+                            <div class="field"><label data-i18n="form.primaryInterest">主な関心分野</label><select name="interest"><option data-i18n="interest.mv">マシンビジョン製品</option><option data-i18n="interest.barcode">バーコード・RFID機器</option><option data-i18n="interest.sensors">産業用センサー</option><option data-i18n="interest.accessories">アクセサリ・交換部品</option><option data-i18n="interest.project">構成済み自動化案件</option></select></div>
+                            <div class="field field-wide"><label data-i18n="form.purchasingNotes">調達メモ</label><textarea name="notes" data-i18n-attr="placeholder=ph.purchasingNotes" placeholder="任意: 対象製品、数量範囲、国、認証、納期のご要望など。"></textarea></div>
                         </div>
-                        <button class="button button-primary" type="submit">アカウントを作成</button>
-                        <p class="notice">この登録フォームは、コマースアカウントシステムが接続されるまではフロントエンドのプロトタイプです。</p>
+                        <button class="button button-primary" type="submit" data-i18n="account.submit">アカウントを作成</button>
+                        <p class="notice" data-i18n="account.notice">この登録フォームは、コマースアカウントシステムが接続されるまではフロントエンドのプロトタイプです。</p>
                     </form>
                 </div>
             </div>
         </section>
     </main>
-    <footer class="footer"><div class="container"><div class="footer-bottom"><span>&copy; 2026 GYUTRON.</span><span>公式ストア: shop.gyutron.com</span></div></div></footer>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 data-i18n="footer.brand.title">GYUTRON 公式ストア</h3>
+                    <p data-i18n="footer.brand.body">GYUTRON 産業オートメーション機器およびアクセサリの公式調達窓口。</p>
+                    <a href="https://www.gyutron.com/" data-i18n="footer.brand.link">ブランドサイト: www.gyutron.com</a>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.col.products">製品</h4>
+                    <a href="/ja/shop/products.html?category=Industrial%20Cameras" data-i18n="footer.cat.cameras">産業用カメラ</a>
+                    <a href="/ja/shop/products.html?category=Vision%20Lighting" data-i18n="footer.cat.lighting">画像処理用照明</a>
+                    <a href="/ja/shop/products.html?category=Sensors" data-i18n="footer.cat.sensors">センサー</a>
+                    <a href="/ja/shop/products.html?category=Rugged%20PDA" data-i18n="footer.cat.pda">堅牢型PDA</a>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.col.purchasing">調達</h4>
+                    <a href="/ja/shop/cart.html" data-i18n="cart.view">カート</a>
+                    <a href="/ja/shop/checkout.html" data-i18n="footer.checkout">ご購入手続き</a>
+                    <a href="/ja/shop/request-quote.html" data-i18n="cta.requestQuote">見積を依頼</a>
+                    <a href="/ja/shop/contact-engineer.html" data-i18n="cta.contactEngineer">技術担当に相談</a>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.col.support">サポート</h4>
+                    <a href="/ja/shop/shipping-policy.html" data-i18n="footer.shipping">配送ポリシー</a>
+                    <a href="/ja/shop/return-refund-policy.html" data-i18n="footer.returnRefund">返品・返金</a>
+                    <a href="/ja/shop/warranty-policy.html" data-i18n="footer.warranty">保証ポリシー</a>
+                    <a href="/ja/shop/terms-of-service.html" data-i18n="footer.terms">利用規約</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span data-i18n="footer.copyright">© 2026 GYUTRON. 無断転載を禁じます。</span>
+                <span data-i18n="footer.officialStore">公式ストア: shop.gyutron.com</span>
+            </div>
+        </div>
+    </footer>
     <script src="/ja/shop/shop.js"></script>
 </body>
 </html>

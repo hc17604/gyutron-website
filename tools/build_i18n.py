@@ -62,7 +62,18 @@ JA_FONTS = (
 
 LANG_DIRECTIVE = re.compile(r"\{\{locale\.(lang|og|base|fonts)\}\}")
 CANONICAL_DIRECTIVE = re.compile(r"\{\{locale\.canonical:([^}]+)\}\}")
-LANGSWITCH_DIRECTIVE = re.compile(r"\{\{locale\.langswitch:([^}]+)\}\}")
+LANGSWITCH_DIRECTIVE = re.compile(r"\{\{locale\.langswitch(?::([^}]+))?\}\}")
+ALTERNATES_DIRECTIVE = re.compile(r"\{\{locale\.alternates\}\}")
+
+
+def alternates_block(page_path: str, active: str) -> str:
+    """canonical + hreflang(en/de/ja/x-default) for the CURRENT page, so the
+    shared <head> partial needs no per-page parameters."""
+    lines = [f'<link rel="canonical" href="{SHOP_HOST}{CONFIG[active]["base"]}{page_path}">']
+    for code, conf in CONFIG.items():
+        lines.append(f'    <link rel="alternate" hreflang="{conf["lang"]}" href="{SHOP_HOST}{conf["base"]}{page_path}">')
+    lines.append(f'    <link rel="alternate" hreflang="x-default" href="{SHOP_HOST}{page_path}">')
+    return "\n".join(lines)
 
 
 def shop_language_switch(active: str, page: str) -> str:
@@ -82,18 +93,34 @@ def shop_language_switch(active: str, page: str) -> str:
     return "\n".join(lines)
 
 
-def apply_locale_directives(text: str, loc_code: str) -> str:
+def apply_locale_directives(text: str, loc_code: str, rel: str = "") -> str:
     conf = CONFIG[loc_code]
+    page_file = Path(rel).name if rel else "index.html"
+    page_path = "/" + rel if rel else ""
     text = LANG_DIRECTIVE.sub(lambda m: {"lang": conf["lang"], "og": conf["og"],
                                           "base": conf["base"],
                                           "fonts": JA_FONTS if loc_code == "ja" else ""}[m.group(1)], text)
     text = CANONICAL_DIRECTIVE.sub(lambda m: f'{SHOP_HOST}{conf["base"]}{m.group(1)}', text)
-    text = LANGSWITCH_DIRECTIVE.sub(lambda m: shop_language_switch(loc_code, m.group(1)), text)
+    text = ALTERNATES_DIRECTIVE.sub(lambda m: alternates_block(page_path, loc_code), text)
+    text = LANGSWITCH_DIRECTIVE.sub(lambda m: shop_language_switch(loc_code, m.group(1) or page_file), text)
     return text
 
 DATA_I18N = re.compile(r'<([a-zA-Z0-9]+)([^>]*?)\sdata-i18n="([^"]+)"([^>]*)>(.*?)</\1>', re.DOTALL)
 DATA_ATTR = re.compile(r'data-i18n-attr="([^"]+)"')
 MUSTACHE = re.compile(r"\{\{t:([^}]+)\}\}")
+INCLUDE = re.compile(r"\{\{include:([^}]+)\}\}")
+PARTIALS = TEMPLATES / "_partials"
+
+
+def resolve_includes(text: str, _depth: int = 0) -> str:
+    """Inline {{include:name}} from templates/_partials/<name>.html (one shared
+    header/footer authored once, used by every page). Recursive, with a guard."""
+    if _depth > 5:
+        return text
+    def repl(m: re.Match[str]) -> str:
+        part = (PARTIALS / f"{m.group(1).strip()}.html").read_text(encoding="utf-8")
+        return resolve_includes(part, _depth + 1)
+    return INCLUDE.sub(repl, text)
 
 
 def load_locale(loc: str) -> dict[str, str]:
@@ -113,8 +140,9 @@ def referenced_keys(text: str) -> set[str]:
     return keys
 
 
-def render(text: str, loc_code: str, loc: dict[str, str], strict_report: list[str], where: str) -> str:
-    text = apply_locale_directives(text, loc_code)
+def render(text: str, loc_code: str, loc: dict[str, str], strict_report: list[str], where: str, rel: str = "") -> str:
+    text = resolve_includes(text)
+    text = apply_locale_directives(text, loc_code, rel)
 
     def need(key: str) -> str:
         if key not in loc:
@@ -166,7 +194,8 @@ def render(text: str, loc_code: str, loc: dict[str, str], strict_report: list[st
 def iter_templates() -> list[Path]:
     if not TEMPLATES.exists():
         return []
-    return [p for p in TEMPLATES.rglob("*") if p.is_file()]
+    return [p for p in TEMPLATES.rglob("*")
+            if p.is_file() and "_partials" not in p.relative_to(TEMPLATES).parts]
 
 
 def build(check_only: bool) -> int:
@@ -181,7 +210,8 @@ def build(check_only: bool) -> int:
     # like lang.selector are counted).
     all_keys: set[str] = set()
     for t in tpls:
-        all_keys |= referenced_keys(apply_locale_directives(t.read_text(encoding="utf-8"), "en"))
+        expanded = apply_locale_directives(resolve_includes(t.read_text(encoding="utf-8")), "en")
+        all_keys |= referenced_keys(expanded)
     for loc, data in locales.items():
         missing = sorted(all_keys - set(data))
         for k in missing:
@@ -201,7 +231,7 @@ def build(check_only: bool) -> int:
         data = locales[loc]
         for t in tpls:
             rel = t.relative_to(TEMPLATES)
-            rendered = render(t.read_text(encoding="utf-8"), loc, data, report, f"{loc}/{rel}")
+            rendered = render(t.read_text(encoding="utf-8"), loc, data, report, f"{loc}/{rel}", rel.as_posix())
             out = (ROOT / conf["dir"] / rel) if conf["dir"] else (ROOT / rel)
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(rendered, encoding="utf-8", newline="")

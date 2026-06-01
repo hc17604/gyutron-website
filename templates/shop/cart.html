@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:cart.seo.title}}</title>
+    <meta name="description" content="{{t:cart.copy}}">
+    <meta property="og:title" content="{{t:cart.seo.title}}">
+    <meta property="og:description" content="{{t:cart.copy}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section section-soft">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow" data-i18n="cart.eyebrow">Cart</span>
+                        <h1 style="color:var(--ink);font-size:48px;" data-i18n="cart.title">Your purchasing cart.</h1>
+                    </div>
+                    <p data-i18n="cart.copy">Shipping, duties, payment terms, and lead time are confirmed during checkout review for industrial orders.</p>
+                </div>
+                <div class="cart-layout">
+                    <div class="cart-list" data-cart-list></div>
+                    <aside class="summary-card" data-cart-summary></aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

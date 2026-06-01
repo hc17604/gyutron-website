@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:quote.seo.title}}</title>
+    <meta name="description" content="{{t:quote.copy}}">
+    <meta property="og:title" content="{{t:quote.seo.title}}">
+    <meta property="og:description" content="{{t:quote.copy}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section section-soft">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow" data-i18n="quote.eyebrow">Request a Quote</span>
+                        <h1 style="color:var(--ink);font-size:48px;" data-i18n="quote.title">Get pricing, lead time, and procurement terms.</h1>
+                    </div>
+                    <p data-i18n="quote.copy">Use this for volume purchases, uncertain model selection, compliance documents, accessories, and shipping review.</p>
+                </div>
+                <form class="form" data-demo-form>
+                    <div class="form-grid">
+                        <div class="field"><label data-i18n="form.productSku">Product SKU</label><input name="sku" data-prefill-sku data-i18n-attr="placeholder=ph.optional" placeholder="Optional"></div>
+                        <div class="field"><label data-i18n="form.estQuantity">Estimated Quantity</label><input name="quantity" placeholder="10 / 50 / 100"></div>
+                        <div class="field"><label data-i18n="form.workEmail">Work Email</label><input required type="email" name="email"></div>
+                        <div class="field"><label data-i18n="form.company">Company</label><input name="company"></div>
+                        <div class="field"><label data-i18n="form.country">Country / Region</label><input name="country"></div>
+                        <div class="field"><label data-i18n="form.buyingTimeline">Buying Timeline</label><select name="timeline"><option data-i18n="timeline.asap">As soon as possible</option><option data-i18n="timeline.30days">Within 30 days</option><option data-i18n="timeline.quarter">This quarter</option><option data-i18n="timeline.planning">Planning stage</option></select></div>
+                        <div class="field field-wide"><label data-i18n="form.appRequirements">Application / Requirements</label><textarea required name="requirements" data-i18n-attr="placeholder=ph.appRequirements" placeholder="Application, interface, environment, certifications, packaging, lead time, or target budget."></textarea></div>
+                    </div>
+                    <button class="button button-primary" type="submit" data-i18n="quote.submit">Submit Quote Request</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

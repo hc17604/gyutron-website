@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:pm.seo.title}}</title>
+    <meta name="description" content="{{t:pm.title}}">
+    <meta property="og:title" content="{{t:pm.seo.title}}">
+    <meta property="og:description" content="{{t:pm.title}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <span class="eyebrow" data-i18n="pm.eyebrow">Payment Methods</span>
+                <h1 style="color:var(--ink);font-size:48px;" data-i18n="pm.title">Designed for online payment and B2B procurement terms.</h1>
+                <div class="policy-grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-top:28px;">
+                    <article class="policy-card"><h3 data-i18n="pm.c1.title">Credit Card</h3><p data-i18n="pm.c1.body">Recommended after ecommerce platform integration.</p></article>
+                    <article class="policy-card"><h3 data-i18n="pm.c2.title">PayPal</h3><p data-i18n="pm.c2.body">Useful for samples, small accessories, and international buyers.</p></article>
+                    <article class="policy-card"><h3 data-i18n="pm.c3.title">Wire Transfer</h3><p data-i18n="pm.c3.body">Suitable for B2B orders and proforma invoice workflows.</p></article>
+                    <article class="policy-card"><h3 data-i18n="pm.c4.title">Quote First</h3><p data-i18n="pm.c4.body">Used when shipping, lead time, or configuration must be confirmed before payment.</p></article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

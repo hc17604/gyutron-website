@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:war.seo.title}}</title>
+    <meta name="description" content="{{t:war.title}}">
+    <meta property="og:title" content="{{t:war.seo.title}}">
+    <meta property="og:description" content="{{t:war.title}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <span class="eyebrow" data-i18n="war.eyebrow">Warranty Policy</span>
+                <h1 style="color:var(--ink);font-size:48px;" data-i18n="war.title">Warranty coverage is confirmed by product line.</h1>
+                <div class="policy-grid" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px;">
+                    <article class="policy-card"><h3 data-i18n="war.c1.title">Coverage</h3><p data-i18n="war.c1.body">Standard warranty terms depend on product type, configuration, and purchase agreement.</p></article>
+                    <article class="policy-card"><h3 data-i18n="war.c2.title">Exclusions</h3><p data-i18n="war.c2.body">Misuse, unauthorized repair, improper installation, and environmental damage may be excluded.</p></article>
+                    <article class="policy-card"><h3 data-i18n="war.c3.title">Service Process</h3><p data-i18n="war.c3.body">Contact support with order details, serial number, fault description, and application environment.</p></article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

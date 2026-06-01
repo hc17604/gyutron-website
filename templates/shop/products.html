@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:products.seo.title}}</title>
+    <meta name="description" content="{{t:products.seo.desc}}">
+    <meta property="og:title" content="{{t:products.seo.title}}">
+    <meta property="og:description" content="{{t:products.seo.desc}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section section-soft">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow" data-i18n="products.eyebrow">Product Catalog</span>
+                        <h1 class="catalog-title" data-i18n="products.title">Shop industrial automation hardware.</h1>
+                    </div>
+                    <p class="catalog-copy" data-i18n="products.copy">Filter focused B2B categories. Use Buy Now for simple orders, or request a quote for configuration, documentation, stock, and lead-time confirmation.</p>
+                </div>
+                <div class="store-layout">
+                    <aside class="filter-panel">
+                        <h3 data-i18n="products.filtersTitle">Categories</h3>
+                        <div class="filter-list" data-filters></div>
+                    </aside>
+                    <div class="product-grid" data-products></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

@@ -1,21 +1,30 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produktdetails | Offizieller GYUTRON Store</title>
     <meta name="description" content="Produktdetailseite des offiziellen GYUTRON Stores mit Sofortkauf, Angebotsanfrage und Kontakt zum Ingenieur.">
+    <meta property="og:title" content="Produktdetails | Offizieller GYUTRON Store">
+    <meta property="og:description" content="Produktdetailseite des offiziellen GYUTRON Stores mit Sofortkauf, Angebotsanfrage und Kontakt zum Ingenieur.">
+    <meta property="og:locale" content="de_DE">
+    <link rel="canonical" href="https://shop.gyutron.com/de/shop/product.html">
+    <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/product.html">
+    <link rel="alternate" hreflang="de" href="https://shop.gyutron.com/de/shop/product.html">
+    <link rel="alternate" hreflang="ja" href="https://shop.gyutron.com/ja/shop/product.html">
+    <link rel="alternate" hreflang="x-default" href="https://shop.gyutron.com/shop/product.html">
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/de/shop/shop.css">
 </head>
 <body>
     <div class="top-strip">
         <div class="container">
-            <span>Offizieller industrieller Einkaufszugang von GYUTRON</span>
+            <span data-i18n="shop.topstrip.entrance">Offizieller industrieller Einkaufszugang von GYUTRON</span>
             <div class="top-links">
                 <a href="mailto:info@gyutron.com">info@gyutron.com</a>
                 <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
@@ -26,37 +35,78 @@
         <div class="container">
             <a class="brand" href="/de/shop/index.html">
                 <img src="/gyutron-logo-purple.png" alt="GYUTRON">
-                <span>Offizieller Store</span>
+                <span data-i18n="shop.brand.tagline">Offizieller Store</span>
             </a>
-            <nav class="nav" aria-label="Store-Navigation">
+            <nav class="nav" data-i18n-attr="aria-label=nav.storeNavigation" aria-label="Store-Navigation">
                 <div class="nav-links">
-                    <a href="/de/shop/products.html">Produkte</a>
-                    <a href="/de/shop/request-quote.html">Angebot anfordern</a>
-                    <a href="https://www.gyutron.com/">Markenwebsite</a>
+                    <a href="/de/shop/products.html" data-i18n="nav.products">Produkte</a>
+                    <a href="/de/shop/request-quote.html" data-i18n="nav.requestQuote">Angebot anfordern</a>
+                    <a href="https://www.gyutron.com/" data-i18n="nav.brandSite">Markenwebsite</a>
                 </div>
                 <form class="store-search" action="/de/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" placeholder="Produkte suchen" aria-label="Produkte suchen">
-                    <button type="submit" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Suchen"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
             </nav>
-            <div class="header-actions" aria-label="Store-Aktionen">
-                <button class="store-menu-toggle" type="button" aria-expanded="false" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span>Menü</span></button>
+            <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store-Aktionen">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menü</span></button>
                 <div class="store-language-switch">
-                    <button class="language-icon store-language" type="button" aria-label="Sprache und Region auswählen" aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>
-                    <div class="store-language-menu" aria-label="Sprachoptionen">
+                    <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Sprache und Region auswählen"><i class="fa-solid fa-globe"></i></button>
+                    <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Sprachoptionen">
                         <a href="/shop/product.html">English <span>EN</span></a>
                         <a href="/de/shop/product.html" aria-current="page">Deutsch <span>DE</span></a>
                         <a href="/ja/shop/product.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/de/shop/account.html" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span>Konto</span></a>
-                <a class="icon-action cart-link" href="/de/shop/cart.html" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Konto</span></a>
+                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
-    <main><section class="section product-detail-section"><div class="container" data-product-detail></div></section></main>
-    <footer class="footer"><div class="container"><div class="footer-grid"><div><h3>Offizieller GYUTRON Store</h3><p>Offizieller Einkaufszugang für GYUTRON Industrieautomatisierungs-Hardware.</p></div><div><h4>Actions</h4><a href="/de/shop/products.html">Produkte</a><a href="/de/shop/cart.html">Warenkorb</a><a href="/de/shop/checkout.html">Zur Kasse</a></div><div><h4>B2B Support</h4><a href="/de/shop/request-quote.html">Angebot anfordern</a><a href="/de/shop/contact-engineer.html">Technischen Ansprechpartner kontaktieren</a></div><div><h4>Richtlinien</h4><a href="/de/shop/shipping-policy.html">Versand</a><a href="/de/shop/warranty-policy.html">Garantie</a><a href="/de/shop/terms-of-service.html">Terms</a></div></div><div class="footer-bottom"><span>&copy; 2026 GYUTRON.</span><span>Offizieller Store: shop.gyutron.com</span></div></div></footer>
+
+    <main>
+        <section class="section product-detail-section">
+            <div class="container" data-product-detail></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 data-i18n="footer.brand.title">Offizieller GYUTRON Store</h3>
+                    <p data-i18n="footer.brand.body">Offizieller Einkaufszugang für GYUTRON Industrieautomatisierungs-Hardware und -Zubehör.</p>
+                    <a href="https://www.gyutron.com/" data-i18n="footer.brand.link">Markenwebsite: www.gyutron.com</a>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.col.products">Produkte</h4>
+                    <a href="/de/shop/products.html?category=Industrial%20Cameras" data-i18n="footer.cat.cameras">Industriekameras</a>
+                    <a href="/de/shop/products.html?category=Vision%20Lighting" data-i18n="footer.cat.lighting">Vision-Beleuchtung</a>
+                    <a href="/de/shop/products.html?category=Sensors" data-i18n="footer.cat.sensors">Sensoren</a>
+                    <a href="/de/shop/products.html?category=Rugged%20PDA" data-i18n="footer.cat.pda">Robuste PDA-Terminals</a>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.col.purchasing">Einkauf</h4>
+                    <a href="/de/shop/cart.html" data-i18n="cart.view">Warenkorb</a>
+                    <a href="/de/shop/checkout.html" data-i18n="footer.checkout">Zur Kasse</a>
+                    <a href="/de/shop/request-quote.html" data-i18n="cta.requestQuote">Angebot anfordern</a>
+                    <a href="/de/shop/contact-engineer.html" data-i18n="cta.contactEngineer">Technischen Ansprechpartner kontaktieren</a>
+                </div>
+                <div>
+                    <h4 data-i18n="footer.col.support">Support</h4>
+                    <a href="/de/shop/shipping-policy.html" data-i18n="footer.shipping">Versandrichtlinie</a>
+                    <a href="/de/shop/return-refund-policy.html" data-i18n="footer.returnRefund">Rückgabe und Erstattung</a>
+                    <a href="/de/shop/warranty-policy.html" data-i18n="footer.warranty">Garantierichtlinie</a>
+                    <a href="/de/shop/terms-of-service.html" data-i18n="footer.terms">Nutzungsbedingungen</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span data-i18n="footer.copyright">© 2026 GYUTRON. Alle Rechte vorbehalten.</span>
+                <span data-i18n="footer.officialStore">Offizieller Store: shop.gyutron.com</span>
+            </div>
+        </div>
+    </footer>
     <script src="/de/shop/shop.js"></script>
 </body>
 </html>

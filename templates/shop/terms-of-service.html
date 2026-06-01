@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:tos.seo.title}}</title>
+    <meta name="description" content="{{t:tos.title}}">
+    <meta property="og:title" content="{{t:tos.seo.title}}">
+    <meta property="og:description" content="{{t:tos.title}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <span class="eyebrow" data-i18n="tos.eyebrow">Terms of Service</span>
+                <h1 style="color:var(--ink);font-size:48px;" data-i18n="tos.title">Industrial purchases may require review before fulfillment.</h1>
+                <div class="policy-grid" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px;">
+                    <article class="policy-card"><h3 data-i18n="tos.c1.title">Order Acceptance</h3><p data-i18n="tos.c1.body">Orders may require stock, export, configuration, or certification review before acceptance.</p></article>
+                    <article class="policy-card"><h3 data-i18n="tos.c2.title">Product Information</h3><p data-i18n="tos.c2.body">Specifications, prices, and lead times can change before final confirmation or proforma invoice.</p></article>
+                    <article class="policy-card"><h3 data-i18n="tos.c3.title">Business Use</h3><p data-i18n="tos.c3.body">The store is intended for industrial and B2B procurement, not unrelated consumer purchases.</p></article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

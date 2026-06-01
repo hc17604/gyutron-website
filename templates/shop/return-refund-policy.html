@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:rr.seo.title}}</title>
+    <meta name="description" content="{{t:rr.title}}">
+    <meta property="og:title" content="{{t:rr.seo.title}}">
+    <meta property="og:description" content="{{t:rr.title}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <span class="eyebrow" data-i18n="rr.eyebrow">Return & Refund</span>
+                <h1 style="color:var(--ink);font-size:48px;" data-i18n="rr.title">Returns are reviewed against industrial order conditions.</h1>
+                <div class="policy-grid" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px;">
+                    <article class="policy-card"><h3 data-i18n="rr.c1.title">Eligibility</h3><p data-i18n="rr.c1.body">Standard unopened items may be reviewed for return. Customized, configured, or used industrial products may be excluded.</p></article>
+                    <article class="policy-card"><h3 data-i18n="rr.c2.title">RMA Review</h3><p data-i18n="rr.c2.body">Contact support before returning any item. Unauthorized returns may be rejected.</p></article>
+                    <article class="policy-card"><h3 data-i18n="rr.c3.title">Refund Timing</h3><p data-i18n="rr.c3.body">Approved refunds are processed after inspection and according to the original payment method or invoice terms.</p></article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

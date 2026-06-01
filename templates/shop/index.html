@@ -8,55 +8,11 @@
     <meta property="og:title" content="{{t:shop.seo.title}}">
     <meta property="og:description" content="{{t:shop.seo.desc}}">
     <meta property="og:locale" content="{{locale.og}}">
-    <link rel="canonical" href="{{locale.canonical:/shop/index.html}}">
-    <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/index.html">
-    <link rel="alternate" hreflang="de" href="https://shop.gyutron.com/de/shop/index.html">
-    <link rel="alternate" hreflang="ja" href="https://shop.gyutron.com/ja/shop/index.html">
-    <link rel="alternate" hreflang="x-default" href="https://shop.gyutron.com/shop/index.html">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
-    {{locale.fonts}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="{{locale.base}}/shop/shop.css">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
 </head>
 <body>
-    <div class="top-strip">
-        <div class="container">
-            <span data-i18n="shop.topstrip.entrance">Official GYUTRON industrial purchasing entrance</span>
-            <div class="top-links">
-                <a href="mailto:info@gyutron.com">info@gyutron.com</a>
-                <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
-            </div>
-        </div>
-    </div>
-    <header class="site-header">
-        <div class="container">
-            <a class="brand" href="{{locale.base}}/shop/index.html">
-                <img src="/gyutron-logo-purple.png" alt="GYUTRON">
-                <span data-i18n="shop.brand.tagline">Official Store</span>
-            </a>
-            <nav class="nav" data-i18n-attr="aria-label=nav.storeNavigation">
-                <div class="nav-links">
-                    <a href="{{locale.base}}/shop/products.html" data-i18n="nav.products">Products</a>
-                    <a href="{{locale.base}}/shop/request-quote.html" data-i18n="nav.requestQuote">Request Quote</a>
-                    <a href="https://www.gyutron.com/" data-i18n="nav.brandSite">Brand Site</a>
-                </div>
-                <form class="store-search" action="{{locale.base}}/shop/products.html" method="get" role="search">
-                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Search products" aria-label="Search products">
-                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
-                </form>
-            </nav>
-            <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions">
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menu</span></button>
-                {{locale.langswitch:index.html}}
-                <a class="icon-action account-link" href="{{locale.base}}/shop/account.html" data-i18n-attr="aria-label=account.create"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Account</span></a>
-                <a class="icon-action cart-link" href="{{locale.base}}/shop/cart.html" data-i18n-attr="aria-label=cart.view"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
-            </div>
-        </div>
-    </header>
+{{include:shop-header}}
 
     <main>
         <section class="hero">
@@ -139,42 +95,7 @@
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3 data-i18n="footer.brand.title">GYUTRON Official Store</h3>
-                    <p data-i18n="footer.brand.body">Official purchasing entrance for GYUTRON industrial automation hardware and accessories.</p>
-                    <a href="https://www.gyutron.com/" data-i18n="footer.brand.link">Brand website: www.gyutron.com</a>
-                </div>
-                <div>
-                    <h4 data-i18n="footer.col.products">Products</h4>
-                    <a href="{{locale.base}}/shop/products.html?category=Industrial%20Cameras" data-i18n="footer.cat.cameras">Industrial Cameras</a>
-                    <a href="{{locale.base}}/shop/products.html?category=Vision%20Lighting" data-i18n="footer.cat.lighting">Vision Lighting</a>
-                    <a href="{{locale.base}}/shop/products.html?category=Sensors" data-i18n="footer.cat.sensors">Sensors</a>
-                    <a href="{{locale.base}}/shop/products.html?category=Rugged%20PDA" data-i18n="footer.cat.pda">Rugged PDA</a>
-                </div>
-                <div>
-                    <h4 data-i18n="footer.col.purchasing">Purchasing</h4>
-                    <a href="{{locale.base}}/shop/cart.html" data-i18n="cart.view">Cart</a>
-                    <a href="{{locale.base}}/shop/checkout.html" data-i18n="footer.checkout">Checkout</a>
-                    <a href="{{locale.base}}/shop/request-quote.html" data-i18n="cta.requestQuote">Request a Quote</a>
-                    <a href="{{locale.base}}/shop/contact-engineer.html" data-i18n="cta.contactEngineer">Contact Engineer</a>
-                </div>
-                <div>
-                    <h4 data-i18n="footer.col.support">Support</h4>
-                    <a href="{{locale.base}}/shop/shipping-policy.html" data-i18n="footer.shipping">Shipping Policy</a>
-                    <a href="{{locale.base}}/shop/return-refund-policy.html" data-i18n="footer.returnRefund">Return & Refund</a>
-                    <a href="{{locale.base}}/shop/warranty-policy.html" data-i18n="footer.warranty">Warranty Policy</a>
-                    <a href="{{locale.base}}/shop/terms-of-service.html" data-i18n="footer.terms">Terms of Service</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span data-i18n="footer.copyright">© 2026 GYUTRON. All rights reserved.</span>
-                <span data-i18n="footer.officialStore">Official Store: shop.gyutron.com</span>
-            </div>
-        </div>
-    </footer>
+{{include:shop-footer}}
     <script src="{{locale.base}}/shop/shop.js"></script>
 </body>
 </html>

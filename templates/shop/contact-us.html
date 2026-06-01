@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:cus.seo.title}}</title>
+    <meta name="description" content="{{t:cus.copy}}">
+    <meta property="og:title" content="{{t:cus.seo.title}}">
+    <meta property="og:description" content="{{t:cus.copy}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    {{locale.alternates}}
+{{include:shop-head-tail}}
+</head>
+<body>
+{{include:shop-header}}
+
+    <main>
+        <section class="section section-soft">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow" data-i18n="cus.eyebrow">Contact Us</span>
+                        <h1 style="color:var(--ink);font-size:48px;" data-i18n="cus.title">Purchasing, quotes, and support.</h1>
+                    </div>
+                    <p data-i18n="cus.copy">Email info@gyutron.com or use WhatsApp +852 69509801 for order, quote, and product questions.</p>
+                </div>
+                <form class="form" data-demo-form>
+                    <div class="form-grid">
+                        <div class="field"><label data-i18n="form.name">Name</label><input required name="name"></div>
+                        <div class="field"><label data-i18n="form.workEmail">Work Email</label><input required type="email" name="email"></div>
+                        <div class="field"><label data-i18n="form.company">Company</label><input name="company"></div>
+                        <div class="field"><label data-i18n="form.topic">Topic</label><select name="topic"><option data-i18n="topic.order">Order question</option><option data-i18n="topic.quote">Quote request</option><option data-i18n="topic.support">Technical support</option><option data-i18n="topic.warranty">Warranty</option></select></div>
+                        <div class="field field-wide"><label data-i18n="form.message">Message</label><textarea required name="message"></textarea></div>
+                    </div>
+                    <button class="button button-primary" type="submit" data-i18n="cus.submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+{{include:shop-footer}}
+    <script src="{{locale.base}}/shop/shop.js"></script>
+</body>
+</html>

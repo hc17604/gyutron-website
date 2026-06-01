@@ -1,0 +1,35 @@
+    <div class="top-strip">
+        <div class="container">
+            <span data-i18n="shop.topstrip.entrance">Official GYUTRON industrial purchasing entrance</span>
+            <div class="top-links">
+                <a href="mailto:info@gyutron.com">info@gyutron.com</a>
+                <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
+            </div>
+        </div>
+    </div>
+    <header class="site-header">
+        <div class="container">
+            <a class="brand" href="{{locale.base}}/shop/index.html">
+                <img src="/gyutron-logo-purple.png" alt="GYUTRON">
+                <span data-i18n="shop.brand.tagline">Official Store</span>
+            </a>
+            <nav class="nav" data-i18n-attr="aria-label=nav.storeNavigation">
+                <div class="nav-links">
+                    <a href="{{locale.base}}/shop/products.html" data-i18n="nav.products">Products</a>
+                    <a href="{{locale.base}}/shop/request-quote.html" data-i18n="nav.requestQuote">Request Quote</a>
+                    <a href="https://www.gyutron.com/" data-i18n="nav.brandSite">Brand Site</a>
+                </div>
+                <form class="store-search" action="{{locale.base}}/shop/products.html" method="get" role="search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Search products" aria-label="Search products">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </nav>
+            <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menu</span></button>
+                {{locale.langswitch}}
+                <a class="icon-action account-link" href="{{locale.base}}/shop/account.html" data-i18n-attr="aria-label=account.create"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Account</span></a>
+                <a class="icon-action cart-link" href="{{locale.base}}/shop/cart.html" data-i18n-attr="aria-label=cart.view"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
+            </div>
+        </div>
+    </header>
