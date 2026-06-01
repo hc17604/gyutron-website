@@ -32,7 +32,14 @@
         font-weight: 700;
         color: var(--ink, #17121f);
       }
-      .nav a, .nav-links a, .nav-trigger { letter-spacing: 0.01em; }
+      /* JA nav: bigger than the Latin-tuned 12px, no uppercase, tight tracking. */
+      .nav, .nav-links, .nav a, .nav-links a, .nav-trigger {
+        font-size: 15px;
+        text-transform: none;
+        letter-spacing: 0.01em;
+      }
+      .store-language-menu a { font-size: 14px; text-transform: none; }
+      .store-language-menu a span { font-size: 12px; }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/ja/shop/shop.css">

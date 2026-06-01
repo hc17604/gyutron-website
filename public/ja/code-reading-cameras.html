@@ -40,7 +40,17 @@
         font-weight: 700;
         color: var(--ink, #17121f);
       }
-      .nav a, .nav-links a, .nav-trigger { letter-spacing: 0.01em; }
+      /* Japanese is visually smaller than Latin at the same px and the
+         Latin-tuned 12px uppercase nav reads too small. Enlarge JA nav,
+         drop the no-op uppercase, and tighten the wide tracking that hurts
+         CJK. EN/DE pages are unaffected (this block is ja-only). */
+      .nav, .nav-links, .nav a, .nav-links a, .nav-trigger {
+        font-size: 15px;
+        text-transform: none;
+        letter-spacing: 0.01em;
+      }
+      .store-language-menu a { font-size: 14px; text-transform: none; }
+      .store-language-menu a span { font-size: 12px; }
     </style>
 </head>
 <body data-category="code-reading-cameras">

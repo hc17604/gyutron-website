@@ -187,7 +187,17 @@ JA_FONT_BLOCK = (
     '\n        font-weight: 700;'
     '\n        color: var(--ink, #17121f);'
     '\n      }'
-    '\n      .nav a, .nav-links a, .nav-trigger { letter-spacing: 0.01em; }'
+    '\n      /* Japanese is visually smaller than Latin at the same px and the'
+    '\n         Latin-tuned 12px uppercase nav reads too small. Enlarge JA nav,'
+    '\n         drop the no-op uppercase, and tighten the wide tracking that hurts'
+    '\n         CJK. EN/DE pages are unaffected (this block is ja-only). */'
+    '\n      .nav, .nav-links, .nav a, .nav-links a, .nav-trigger {'
+    '\n        font-size: 15px;'
+    '\n        text-transform: none;'
+    '\n        letter-spacing: 0.01em;'
+    '\n      }'
+    '\n      .store-language-menu a { font-size: 14px; text-transform: none; }'
+    '\n      .store-language-menu a span { font-size: 12px; }'
     '\n    </style>\n'
 )
 

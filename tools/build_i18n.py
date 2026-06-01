@@ -64,7 +64,14 @@ JA_FONTS = (
     '        font-weight: 700;\n'
     '        color: var(--ink, #17121f);\n'
     '      }\n'
-    '      .nav a, .nav-links a, .nav-trigger { letter-spacing: 0.01em; }\n'
+    '      /* JA nav: bigger than the Latin-tuned 12px, no uppercase, tight tracking. */\n'
+    '      .nav, .nav-links, .nav a, .nav-links a, .nav-trigger {\n'
+    '        font-size: 15px;\n'
+    '        text-transform: none;\n'
+    '        letter-spacing: 0.01em;\n'
+    '      }\n'
+    '      .store-language-menu a { font-size: 14px; text-transform: none; }\n'
+    '      .store-language-menu a span { font-size: 12px; }\n'
     '    </style>'
 )
 
