@@ -140,7 +140,7 @@
         image: "/product-images/gy-ldome120.png",
         summary: "Diffuse white dome light for reflective parts, curved surfaces, and label inspection.",
         tags: ["Diffuse", "Weiße LED", "24 VDC"],
-        specs: { Typ: "Dome", Diameter: "120 mm", Color: "White", Use: "Reflective surfaces" }
+        specs: { Type: "Dome", Diameter: "120 mm", Color: "White", Use: "Reflective surfaces" }
     },
     {
         sku: "GY-PS60",
@@ -151,7 +151,7 @@
         image: "/product-images/gy-ps60.png",
         summary: "Lichttaster for cartons, trays, fixtures, and product presence detection.",
         tags: ["Photoelectric", "IP67", "Fast response"],
-        specs: { Typ: "Diffuse / retroreflective", Range: "60 cm class", Output: "PNP/NPN", Rating: "IP67" }
+        specs: { Type: "Diffuse / retroreflective", Range: "60 cm class", Output: "PNP/NPN", Rating: "IP67" }
     },
     {
         sku: "GY-S300-DPM",
@@ -194,7 +194,7 @@ function money(value) {
     return `$${Number(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
-function getWarenkorb() {
+function getCart() {
     try {
         return JSON.parse(localStorage.getItem(CART_KEY)) || [];
     } catch {
@@ -202,33 +202,33 @@ function getWarenkorb() {
     }
 }
 
-function saveWarenkorb(cart) {
+function saveCart(cart) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    updateWarenkorbCount();
+    updateCartCount();
 }
 
-function getWarenkorbArtikel() {
-    return getWarenkorb()
+function getCartItems() {
+    return getCart()
         .map((item) => ({ ...item, product: SHOP_PRODUCTS.find((product) => product.sku === item.sku) }))
         .filter((item) => item.product);
 }
 
-function addToWarenkorb(sku, qty = 1) {
+function addToCart(sku, qty = 1) {
     const product = SHOP_PRODUCTS.find((item) => item.sku === sku);
     if (!product) return;
-    const cart = getWarenkorb();
+    const cart = getCart();
     const existing = cart.find((item) => item.sku === sku);
     if (existing) {
         existing.qty += qty;
     } else {
         cart.push({ sku, qty });
     }
-    saveWarenkorb(cart);
+    saveCart(cart);
     showToast(`${product.name} added to cart`);
 }
 
-function updateWarenkorbCount() {
-    const count = getWarenkorb().reduce((sum, item) => sum + item.qty, 0);
+function updateCartCount() {
+    const count = getCart().reduce((sum, item) => sum + item.qty, 0);
     document.querySelectorAll("[data-cart-count]").forEach((node) => {
         node.textContent = count;
     });
@@ -297,7 +297,7 @@ function renderSpotlight() {
     target.innerHTML = SHOP_PRODUCTS.slice(0, 16).map(spotlightCard).join("");
 }
 
-function renderKategorien() {
+function renderCategories() {
     const target = document.querySelector("[data-categories]");
     if (!target) return;
     target.innerHTML = CATEGORY_META.map((category) => `
@@ -311,7 +311,7 @@ function renderKategorien() {
     `).join("");
 }
 
-function renderProdukte() {
+function renderProducts() {
     const grid = document.querySelector("[data-products]");
     const filters = document.querySelector("[data-filters]");
     if (!grid || !filters) return;
@@ -430,7 +430,7 @@ function initSearchSuggestions() {
                         <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy">
                         <span>
                             <strong>${escapeHtml(product.name)}</strong>
-                            <em>${escapeHtml(getSearchPath(product) || "Industrieprodukte")}</em>
+                            <em>${escapeHtml(getSearchPath(product) || "Industrial products")}</em>
                             <small>${escapeHtml(product.sku)}</small>
                         </span>
                     </a>
@@ -473,7 +473,7 @@ function initSearchSuggestions() {
     });
 }
 
-function initStoreMobileMenü() {
+function initStoreMobileMenu() {
     const toggle = document.querySelector(".store-menu-toggle");
     if (!toggle || document.querySelector(".store-mobile-panel")) return;
 
@@ -498,27 +498,27 @@ function initStoreMobileMenü() {
     `;
     document.body.appendChild(panel);
 
-    const closeMenü = () => {
+    const closeMenu = () => {
         document.body.classList.remove("store-mobile-menu-open");
         toggle.setAttribute("aria-expanded", "false");
     };
-    const openMenü = () => {
+    const openMenu = () => {
         document.body.classList.add("store-mobile-menu-open");
         toggle.setAttribute("aria-expanded", "true");
     };
 
     toggle.addEventListener("click", () => {
         if (document.body.classList.contains("store-mobile-menu-open")) {
-            closeMenü();
+            closeMenu();
         } else {
-            openMenü();
+            openMenu();
         }
     });
     panel.addEventListener("click", (event) => {
-        if (event.target.closest("a")) closeMenü();
+        if (event.target.closest("a")) closeMenu();
     });
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeMenü();
+        if (event.key === "Escape") closeMenu();
     });
 }
 
@@ -556,11 +556,11 @@ function renderProductDetail() {
     `;
 }
 
-function renderWarenkorb() {
+function renderCart() {
     const list = document.querySelector("[data-cart-list]");
     const summary = document.querySelector("[data-cart-summary]");
     if (!list || !summary) return;
-    const items = getWarenkorbArtikel();
+    const items = getCartItems();
     if (!items.length) {
         list.innerHTML = '<div class="empty-state">Ihr Warenkorb ist leer. Fügen Sie Musterartikel oder Zubehör aus dem offiziellen Store hinzu.</div>';
     } else {
@@ -578,7 +578,7 @@ function renderWarenkorb() {
 }
 
 function renderSummary(target) {
-    const items = getWarenkorbArtikel();
+    const items = getCartItems();
     const subtotal = items.reduce((sum, item) => sum + item.product.price * item.qty, 0);
     target.innerHTML = `
         <h3>Bestellübersicht</h3>
@@ -592,39 +592,39 @@ function renderSummary(target) {
     `;
 }
 
-function renderZur KasseSummary() {
+function renderCheckoutSummary() {
     const target = document.querySelector("[data-checkout-summary]");
     if (target) renderSummary(target);
 }
 
-function handleWarenkorbEvents() {
+function handleCartEvents() {
     document.addEventListener("click", (event) => {
         const add = event.target.closest("[data-add-cart]");
         if (add) {
-            addToWarenkorb(add.dataset.addWarenkorb, 1);
+            addToCart(add.dataset.addCart, 1);
         }
 
         const detailAdd = event.target.closest("[data-detail-add]");
         if (detailAdd) {
             const qty = Math.max(1, Number(document.querySelector("#qty")?.value || 1));
-            addToWarenkorb(detailAdd.dataset.detailAdd, qty);
+            addToCart(detailAdd.dataset.detailAdd, qty);
         }
 
         const remove = event.target.closest("[data-remove]");
         if (remove) {
-            saveWarenkorb(getWarenkorb().filter((item) => item.sku !== remove.dataset.remove));
-            renderWarenkorb();
+            saveCart(getCart().filter((item) => item.sku !== remove.dataset.remove));
+            renderCart();
         }
     });
 
     document.addEventListener("change", (event) => {
         const qty = event.target.closest("[data-cart-qty]");
         if (!qty) return;
-        const cart = getWarenkorb();
+        const cart = getCart();
         const row = cart.find((item) => item.sku === qty.dataset.cartQty);
         if (row) row.qty = Math.max(1, Number(qty.value || 1));
-        saveWarenkorb(cart);
-        renderWarenkorb();
+        saveCart(cart);
+        renderCart();
     });
 }
 
@@ -651,15 +651,15 @@ function handleForms() {
 }
 
 renderSpotlight();
-renderKategorien();
-renderProdukte();
+renderCategories();
+renderProducts();
 renderProductDetail();
-renderWarenkorb();
-renderZur KasseSummary();
+renderCart();
+renderCheckoutSummary();
 hydrateSearch();
 initSearchSuggestions();
-initStoreMobileMenü();
-handleWarenkorbEvents();
+initStoreMobileMenu();
+handleCartEvents();
 handleForms();
 prefillSku();
-updateWarenkorbCount();
+updateCartCount();

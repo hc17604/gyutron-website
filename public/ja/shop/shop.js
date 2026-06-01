@@ -140,7 +140,7 @@
         image: "/product-images/gy-ldome120.png",
         summary: "Diffuse white dome light for reflective parts, curved surfaces, and label inspection.",
         tags: ["Diffuse", "白色LED", "24 VDC"],
-        specs: { タイプ: "Dome", Diameter: "120 mm", Color: "White", Use: "Reflective surfaces" }
+        specs: { Type: "Dome", Diameter: "120 mm", Color: "White", Use: "Reflective surfaces" }
     },
     {
         sku: "GY-PS60",
@@ -151,7 +151,7 @@
         image: "/product-images/gy-ps60.png",
         summary: "光電センサー for cartons, trays, fixtures, and product presence detection.",
         tags: ["Photoelectric", "IP67", "Fast response"],
-        specs: { タイプ: "Diffuse / retroreflective", Range: "60 cm class", Output: "PNP/NPN", Rating: "IP67" }
+        specs: { Type: "Diffuse / retroreflective", Range: "60 cm class", Output: "PNP/NPN", Rating: "IP67" }
     },
     {
         sku: "GY-S300-DPM",
@@ -194,7 +194,7 @@ function money(value) {
     return `$${Number(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
-function getカート() {
+function getCart() {
     try {
         return JSON.parse(localStorage.getItem(CART_KEY)) || [];
     } catch {
@@ -202,33 +202,33 @@ function getカート() {
     }
 }
 
-function saveカート(cart) {
+function saveCart(cart) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
-    updateカートCount();
+    updateCartCount();
 }
 
-function getカート点数() {
-    return getカート()
+function getCartItems() {
+    return getCart()
         .map((item) => ({ ...item, product: SHOP_PRODUCTS.find((product) => product.sku === item.sku) }))
         .filter((item) => item.product);
 }
 
-function addToカート(sku, qty = 1) {
+function addToCart(sku, qty = 1) {
     const product = SHOP_PRODUCTS.find((item) => item.sku === sku);
     if (!product) return;
-    const cart = getカート();
+    const cart = getCart();
     const existing = cart.find((item) => item.sku === sku);
     if (existing) {
         existing.qty += qty;
     } else {
         cart.push({ sku, qty });
     }
-    saveカート(cart);
+    saveCart(cart);
     showToast(`${product.name} added to cart`);
 }
 
-function updateカートCount() {
-    const count = getカート().reduce((sum, item) => sum + item.qty, 0);
+function updateCartCount() {
+    const count = getCart().reduce((sum, item) => sum + item.qty, 0);
     document.querySelectorAll("[data-cart-count]").forEach((node) => {
         node.textContent = count;
     });
@@ -238,7 +238,7 @@ function showToast(message) {
     let toast = document.querySelector(".toast");
     if (!toast) {
         toast = document.createElement("div");
-        toast.classお名前 = "toast";
+        toast.className = "toast";
         document.body.appendChild(toast);
     }
     toast.textContent = message;
@@ -297,7 +297,7 @@ function renderSpotlight() {
     target.innerHTML = SHOP_PRODUCTS.slice(0, 16).map(spotlightCard).join("");
 }
 
-function renderカテゴリ() {
+function renderCategories() {
     const target = document.querySelector("[data-categories]");
     if (!target) return;
     target.innerHTML = CATEGORY_META.map((category) => `
@@ -311,7 +311,7 @@ function renderカテゴリ() {
     `).join("");
 }
 
-function render製品() {
+function renderProducts() {
     const grid = document.querySelector("[data-products]");
     const filters = document.querySelector("[data-filters]");
     if (!grid || !filters) return;
@@ -396,7 +396,7 @@ function initSearchSuggestions() {
         if (!input || form.querySelector(".search-suggestions")) return;
 
         const panel = document.createElement("div");
-        panel.classお名前 = "search-suggestions";
+        panel.className = "search-suggestions";
         panel.setAttribute("role", "listbox");
         panel.hidden = true;
         form.appendChild(panel);
@@ -430,7 +430,7 @@ function initSearchSuggestions() {
                         <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy">
                         <span>
                             <strong>${escapeHtml(product.name)}</strong>
-                            <em>${escapeHtml(getSearchPath(product) || "産業用製品")}</em>
+                            <em>${escapeHtml(getSearchPath(product) || "Industrial products")}</em>
                             <small>${escapeHtml(product.sku)}</small>
                         </span>
                     </a>
@@ -473,12 +473,12 @@ function initSearchSuggestions() {
     });
 }
 
-function initストアMobileメニュー() {
+function initStoreMobileMenu() {
     const toggle = document.querySelector(".store-menu-toggle");
     if (!toggle || document.querySelector(".store-mobile-panel")) return;
 
     const panel = document.createElement("aside");
-    panel.classお名前 = "store-mobile-panel";
+    panel.className = "store-mobile-panel";
     panel.setAttribute("aria-label", "ストアメニュー");
     panel.innerHTML = `
         <div class="store-mobile-section">ストア</div>
@@ -498,27 +498,27 @@ function initストアMobileメニュー() {
     `;
     document.body.appendChild(panel);
 
-    const closeメニュー = () => {
+    const closeMenu = () => {
         document.body.classList.remove("store-mobile-menu-open");
         toggle.setAttribute("aria-expanded", "false");
     };
-    const openメニュー = () => {
+    const openMenu = () => {
         document.body.classList.add("store-mobile-menu-open");
         toggle.setAttribute("aria-expanded", "true");
     };
 
     toggle.addEventListener("click", () => {
         if (document.body.classList.contains("store-mobile-menu-open")) {
-            closeメニュー();
+            closeMenu();
         } else {
-            openメニュー();
+            openMenu();
         }
     });
     panel.addEventListener("click", (event) => {
-        if (event.target.closest("a")) closeメニュー();
+        if (event.target.closest("a")) closeMenu();
     });
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeメニュー();
+        if (event.key === "Escape") closeMenu();
     });
 }
 
@@ -556,11 +556,11 @@ function renderProductDetail() {
     `;
 }
 
-function renderカート() {
+function renderCart() {
     const list = document.querySelector("[data-cart-list]");
     const summary = document.querySelector("[data-cart-summary]");
     if (!list || !summary) return;
-    const items = getカート点数();
+    const items = getCartItems();
     if (!items.length) {
         list.innerHTML = '<div class="empty-state">カートは空です。公式ストアからサンプル品やアクセサリを追加してください。</div>';
     } else {
@@ -578,7 +578,7 @@ function renderカート() {
 }
 
 function renderSummary(target) {
-    const items = getカート点数();
+    const items = getCartItems();
     const subtotal = items.reduce((sum, item) => sum + item.product.price * item.qty, 0);
     target.innerHTML = `
         <h3>注文サマリー</h3>
@@ -592,39 +592,39 @@ function renderSummary(target) {
     `;
 }
 
-function renderご購入手続きSummary() {
+function renderCheckoutSummary() {
     const target = document.querySelector("[data-checkout-summary]");
     if (target) renderSummary(target);
 }
 
-function handleカートEvents() {
+function handleCartEvents() {
     document.addEventListener("click", (event) => {
         const add = event.target.closest("[data-add-cart]");
         if (add) {
-            addToカート(add.dataset.addカート, 1);
+            addToCart(add.dataset.addCart, 1);
         }
 
         const detailAdd = event.target.closest("[data-detail-add]");
         if (detailAdd) {
             const qty = Math.max(1, Number(document.querySelector("#qty")?.value || 1));
-            addToカート(detailAdd.dataset.detailAdd, qty);
+            addToCart(detailAdd.dataset.detailAdd, qty);
         }
 
         const remove = event.target.closest("[data-remove]");
         if (remove) {
-            saveカート(getカート().filter((item) => item.sku !== remove.dataset.remove));
-            renderカート();
+            saveCart(getCart().filter((item) => item.sku !== remove.dataset.remove));
+            renderCart();
         }
     });
 
     document.addEventListener("change", (event) => {
         const qty = event.target.closest("[data-cart-qty]");
         if (!qty) return;
-        const cart = getカート();
+        const cart = getCart();
         const row = cart.find((item) => item.sku === qty.dataset.cartQty);
         if (row) row.qty = Math.max(1, Number(qty.value || 1));
-        saveカート(cart);
-        renderカート();
+        saveCart(cart);
+        renderCart();
     });
 }
 
@@ -651,15 +651,15 @@ function handleForms() {
 }
 
 renderSpotlight();
-renderカテゴリ();
-render製品();
+renderCategories();
+renderProducts();
 renderProductDetail();
-renderカート();
-renderご購入手続きSummary();
+renderCart();
+renderCheckoutSummary();
 hydrateSearch();
 initSearchSuggestions();
-initストアMobileメニュー();
-handleカートEvents();
+initStoreMobileMenu();
+handleCartEvents();
 handleForms();
 prefillSku();
-updateカートCount();
+updateCartCount();

@@ -177,9 +177,9 @@ function renderCategoryPage(categoryKey) {
         <article class="product-card">
             <div class="product-art">${createProductArt(product)}</div>
             <div class="product-body">
-                <div class="product-kicker">${localizeProductTyp(product)}</div>
+                <div class="product-kicker">${__LOCALIZE_TYPE__(product)}</div>
                 <h3>${product.name}</h3>
-                <p>${localizeProductSummary(product, category)}</p>
+                <p>${__LOCALIZE_SUMMARY__(product, category)}</p>
                 <dl class="spec-list">
                     ${Object.entries(product.specs).map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("")}
                 </dl>
@@ -220,7 +220,7 @@ function renderCategoryPage(categoryKey) {
             ${category.products.map((product) => {
                 const capability = product.specs.Scan || product.specs.RFID || product.specs.Device || product.specs.Codes || product.specs.Detection || product.specs.Measurement || product.specs.Sensor || product.specs.Range || product.specs.Parameter || "Industrielle Datenerfassung";
                 const rugged = product.specs.Rugged || product.specs.Temp || product.specs.Lead || product.specs.Housing || product.specs.Rating || product.specs.Output || product.specs.Data || "Projektabhängig";
-                return `<tr><td>${product.name}</td><td>${localizeProductTyp(product)}</td><td>${capability}</td><td>${rugged}</td></tr>`;
+                return `<tr><td>${product.name}</td><td>${__LOCALIZE_TYPE__(product)}</td><td>${capability}</td><td>${rugged}</td></tr>`;
             }).join("")}
         </tbody>
     `;

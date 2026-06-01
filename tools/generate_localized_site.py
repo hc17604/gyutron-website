@@ -299,6 +299,95 @@ def apply_replacements(text: str, settings: dict[str, object]) -> str:
     return _apply_phrase_map(text, settings["replacements"])
 
 
+# Chars after which a "/" begins a regex literal rather than division.
+_REGEX_PREFIX = set("(,=:[!&|?{;}+-*%<>~^") | {""}
+
+
+def translate_js(js: str, mapping: dict[str, str]) -> str:
+    """Translate ONLY the human-readable text inside JS string/template literals.
+
+    Running the plain phrase map over JavaScript corrupts code: e.g. the key
+    "Checkout" -> "Zur Kasse" rewrote the identifier `renderCheckoutSummary`
+    into `renderZur KasseSummary`, a syntax error that took the whole German
+    store offline. This walks the source and applies the phrase map only inside
+    "..."/'...' strings and the text portions of `...` template literals — never
+    to identifiers, keywords, comments, regex literals, or ${...} expressions.
+    """
+    if not mapping:
+        return js
+    out: list[str] = []
+    i, n = 0, len(js)
+    prev = ""  # last significant (non-space) code char, for regex detection
+    while i < n:
+        c = js[i]
+        two = js[i:i + 2]
+        if two == "//":                                   # line comment
+            j = js.find("\n", i)
+            j = n if j == -1 else j
+            out.append(js[i:j]); i = j; continue
+        if two == "/*":                                   # block comment
+            j = js.find("*/", i + 2)
+            j = n if j == -1 else j + 2
+            out.append(js[i:j]); i = j; continue
+        if c in ('"', "'"):                               # quoted string
+            j, buf = i + 1, []
+            while j < n:
+                if js[j] == "\\":
+                    buf.append(js[j:j + 2]); j += 2; continue
+                if js[j] == c:
+                    break
+                buf.append(js[j]); j += 1
+            out.append(c + _apply_phrase_map("".join(buf), mapping) + (c if j < n else ""))
+            i = j + 1; prev = c; continue
+        if c == "`":                                      # template literal
+            out.append("`"); j = i + 1
+            while j < n:
+                if js[j] == "\\":
+                    out.append(js[j:j + 2]); j += 2; continue
+                if js[j] == "`":
+                    break
+                if js[j:j + 2] == "${":                    # expression: copy verbatim
+                    depth, k = 0, j
+                    while k < n:
+                        if js[k] == "{":
+                            depth += 1
+                        elif js[k] == "}":
+                            depth -= 1
+                            if depth == 0:
+                                k += 1; break
+                        k += 1
+                    out.append(js[j:k]); j = k; continue
+                start = j
+                while j < n and js[j] not in ("`", "\\") and js[j:j + 2] != "${":
+                    j += 1
+                out.append(_apply_phrase_map(js[start:j], mapping))
+            out.append("`" if j < n else ""); i = j + 1; prev = "`"; continue
+        if c == "/" and prev in _REGEX_PREFIX:            # regex literal
+            j, in_class = i + 1, False
+            while j < n:
+                ch = js[j]
+                if ch == "\\":
+                    j += 2; continue
+                if ch == "[":
+                    in_class = True
+                elif ch == "]":
+                    in_class = False
+                elif ch == "\n":
+                    break
+                elif ch == "/" and not in_class:
+                    break
+                j += 1
+            k = j + 1
+            while k < n and js[k].isalpha():
+                k += 1
+            out.append(js[i:k]); i = k; prev = "/"; continue
+        out.append(c)
+        if not c.isspace():
+            prev = c
+        i += 1
+    return "".join(out)
+
+
 def localized_catalog_js(folder: str, settings: dict[str, object]) -> str:
     js = (ROOT / "product-catalog.js").read_text(encoding="utf-8")
     if folder == "de":
@@ -373,8 +462,8 @@ function localizeProductSummary(product, category) {
     js = js.replace('href="${key}.html"', f'href="{folder}/${{key}}.html"')
     js = js.replace('href="contact-sales.html"', f'href="{folder}/contact-sales.html"')
     js = js.replace('href="request-specification.html"', f'href="{folder}/request-specification.html"')
-    js = js.replace('${product.type}', '${localizeProductType(product)}')
-    js = js.replace('${product.summary}', '${localizeProductSummary(product, category)}')
+    js = js.replace('${product.type}', '${__LOCALIZE_TYPE__(product)}')
+    js = js.replace('${product.summary}', '${__LOCALIZE_SUMMARY__(product, category)}')
     if folder == "de":
         js = js.replace('`${category.title} products`', '`${category.title} Produkte`')
         js = js.replace(
@@ -397,7 +486,7 @@ function localizeProductSummary(product, category) {
 
 def localized_product_data(settings: dict[str, object]) -> str:
     data = (ROOT / "product-data.js").read_text(encoding="utf-8")
-    return apply_replacements(data, settings)
+    return translate_js(data, settings["replacements"])
 
 
 def sync_public_file(path: Path) -> None:
@@ -460,7 +549,7 @@ def localized_shop_js(locale: str) -> str:
     js = (ROOT / SHOP_DIR / "shop.js").read_text(encoding="utf-8")
     if locale != "en":
         js = js.replace(f"/{SHOP_DIR}/", f"/{locale}/{SHOP_DIR}/")
-        js = apply_replacements(js, {"__locale_code": locale, "replacements": load_strings(locale)})
+        js = translate_js(js, load_strings(locale))
     return js
 
 

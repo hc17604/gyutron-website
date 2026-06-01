@@ -201,7 +201,7 @@ const GYUTRON_PRODUCTS = {
                 summary: "Recommended baseline for warehouse teams that need Android-PDA, 2D scan engine, dock, spare battery, and MDM profile.",
                 kind: "config",
                 image: "product-images/gy-conf-scan.png",
-                specs: { Device: "A50 / A55 class", Scan: "Standard 2D", Zubehör: "Dock + boot", Lead: "Sample in 7-10 days" },
+                specs: { Device: "A50 / A55 class", Scan: "Standard 2D", Accessories: "Dock + boot", Lead: "Sample in 7-10 days" },
                 tags: ["Lager", "Inventur", "Starterkit"]
             },
             {
@@ -210,7 +210,7 @@ const GYUTRON_PRODUCTS = {
                 summary: "UHF reader bundle for bulk stock count, asset tagging, retail stock rooms, and warehouse receiving.",
                 kind: "config",
                 image: "product-images/gy-conf-rfid.png",
-                specs: { Device: "R60 / R70 class", RFID: "8-12 m option", Zubehör: "Grip + charger", Lead: "Sample in 10-14 days" },
+                specs: { Device: "R60 / R70 class", RFID: "8-12 m option", Accessories: "Grip + charger", Lead: "Sample in 10-14 days" },
                 tags: ["UHF", "Asset Tracking", "Massenerfassung"]
             },
             {
@@ -667,10 +667,10 @@ const GYUTRON_PRODUCTS = {
     }
 };
 
-function getProdukteByName(names) {
-    const allProdukte = Object.values(GYUTRON_PRODUCTS).flatMap((category) => category.products || []);
+function getProductsByName(names) {
+    const allProducts = Object.values(GYUTRON_PRODUCTS).flatMap((category) => category.products || []);
     return names.map((name) => {
-        const product = allProdukte.find((item) => item.name === name);
+        const product = allProducts.find((item) => item.name === name);
         if (!product) {
             throw new Error(`Missing product: ${name}`);
         }
@@ -696,7 +696,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "4 Modelle",
         panelText: "Photoelectric, inductive, fiber, and safety sensing for clear detection jobs.",
         sectionIntro: "This page keeps detection products together instead of mixing them with measurement or condition-monitoring devices.",
-        products: getProdukteByName(["GY-PX18", "GY-PR12", "GY-FB200", "GY-SAFE24"])
+        products: getProductsByName(["GY-PX18", "GY-PR12", "GY-FB200", "GY-SAFE24"])
     },
     "laser-measurement": {
         eyebrow: "Sensing & I/O",
@@ -708,7 +708,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "2 models",
         panelText: "Laser displacement and ultrasonic distance sensing, without unrelated IO or fiber-amplifier products.",
         sectionIntro: "This category now uses a broader distance-and-position framing and only includes products that genuinely measure position or distance.",
-        products: getProdukteByName(["GY-LD40", "GY-UL80"])
+        products: getProductsByName(["GY-LD40", "GY-UL80"])
     },
     "environmental-sensing": {
         eyebrow: "Sensing & I/O",
@@ -720,7 +720,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "3 Modelle",
         panelText: "Environmental monitoring, pneumatic pressure checks, and distributed IO diagnostics.",
         sectionIntro: "Process and condition products belong together because buyers use them to monitor machine health, cabinet conditions, pneumatic performance, and connected sensor status.",
-        products: getProdukteByName(["GY-PS60", "GY-ENV32", "GY-NET8"])
+        products: getProductsByName(["GY-PS60", "GY-ENV32", "GY-NET8"])
     },
     "area-scan-cameras": {
         eyebrow: "Machine-Vision-Systeme",
@@ -732,7 +732,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "9 models",
         panelText: "Compact, color, mono, AI, high-resolution, high-speed, and telecentric imaging options.",
         sectionIntro: "Area-scan products capture a full image frame, with supporting optics kept in the same imaging chain. This lineup separates sensor class, speed, resolution, AI capability, and inspection role so buyers can shortlist models more realistically.",
-        products: getProdukteByName(["GY-V120", "GY-V160 Compact", "GY-V240 Color", "GY-V280 AI", "GY-V320 Mono", "GY-V380 Pro", "GY-V500 HR", "GY-V640 HS", "GY-OPT25"])
+        products: getProductsByName(["GY-V120", "GY-V160 Compact", "GY-V240 Color", "GY-V280 AI", "GY-V320 Mono", "GY-V380 Pro", "GY-V500 HR", "GY-V640 HS", "GY-OPT25"])
     },
     "smart-vision-sensors": {
         eyebrow: "Machine-Vision-Systeme",
@@ -744,7 +744,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "9 models",
         panelText: "Vision controllers, 3D sensors, line-scan acquisition, timing I/O, frame-grabber, strobe control, and robot guidance modules.",
         sectionIntro: "This lineup supports more complete machine vision cells: acquisition, processing, 3D profiling, timing I/O, illumination triggering, frame capture, and robot-guidance integration.",
-        products: getProdukteByName(["GY-VC8", "GY-V3D90", "GY-V3D150", "GY-VL2048", "GY-VX12", "GY-VIO16", "GY-LC4", "GY-VFG4", "GY-VRG200"])
+        products: getProductsByName(["GY-VC8", "GY-V3D90", "GY-V3D150", "GY-VL2048", "GY-VX12", "GY-VIO16", "GY-LC4", "GY-VFG4", "GY-VRG200"])
     },
     "code-reading-cameras": {
         eyebrow: "Machine-Vision-Systeme",
@@ -756,7 +756,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "8 models",
         panelText: "Compact readers, DPM readers, high-speed conveyor readers, handheld DPM, inline verification, and tunnel capture.",
         sectionIntro: "Rückverfolgbarkeit buyers think in terms of read rate, DPM capability, field of view, verification standards, and record output, so this category now covers both fixed readers and grading workflows.",
-        products: getProdukteByName(["GY-CR120", "GY-CR390", "GY-CR520 DPM", "GY-CR720 Fördertechnik", "GY-S300 DPM", "GY-CV100", "GY-CV220 Inline", "GY-RT800"])
+        products: getProductsByName(["GY-CR120", "GY-CR390", "GY-CR520 DPM", "GY-CR720 Fördertechnik", "GY-S300 DPM", "GY-CV100", "GY-CV220 Inline", "GY-RT800"])
     },
     "vision-lighting": {
         eyebrow: "Machine-Vision-Systeme",
@@ -768,7 +768,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "5 Modelle",
         panelText: "Ring, bar, dome, backlight, and line-light illumination products.",
         sectionIntro: "Vision lighting products determine image stability, defect contrast, and measurement repeatability. This category now keeps only illumination hardware, while controllers and optics live with the broader vision system categories.",
-        products: getProdukteByName(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LL300"])
+        products: getProductsByName(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LL300"])
     },
     "dimensional-gauges": {
         eyebrow: "Qualität & Test Instruments",
@@ -780,7 +780,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelMetric: "2 models",
         panelText: "Contact gauge and optical measurement station options.",
         sectionIntro: "Maßprüfung gauges are kept to dedicated metrology instruments, while distance sensors and 3D profile cameras remain in their own automation categories.",
-        products: getProdukteByName(["GY-MG50", "GY-VM200"])
+        products: getProductsByName(["GY-MG50", "GY-VM200"])
     },
     "surface-inspection": {
         eyebrow: "Qualität & Test Instruments",
@@ -793,7 +793,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelText: "Rauheit, gloss, and coating-thickness tools without borrowing camera-system products.",
         sectionIntro: "Surface inspection now contains only dedicated surface-quality instruments, so line-scan cameras and AI cameras stay in machine vision.",
         products: [
-            ...getProdukteByName(["GY-SF30"]),
+            ...getProductsByName(["GY-SF30"]),
             {
                 name: "GY-GL20",
                 type: "Industrial gloss meter",
@@ -825,7 +825,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         panelText: "Electrical safety, loop-signal, and thermal diagnostic tools.",
         sectionIntro: "Portable testers are selected for maintenance teams and quality engineers who need quick checks away from fixed stations. Process sensors and environmental monitors stay in Sensing & I/O.",
         products: [
-            ...getProdukteByName(["GY-ET75"]),
+            ...getProductsByName(["GY-ET75"]),
             {
                 name: "GY-LT40",
                 type: "Loop signal tester",
