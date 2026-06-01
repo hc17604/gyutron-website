@@ -125,6 +125,9 @@ PATH_DIRECTIVE = re.compile(r"\{\{locale\.path\}\}")
 BASETAG_DIRECTIVE = re.compile(r"\{\{locale\.basetag\}\}")
 MAINLANGSWITCH_DIRECTIVE = re.compile(r"\{\{locale\.mainlangswitch\.(mobile|desktop)(?::([^}]+))?\}\}")
 MAINFONTS_DIRECTIVE = re.compile(r"\{\{locale\.mainfonts\}\}")
+# Same-page #anchor links: en keeps the bare "#frag"; de/ja resolve to
+# "<dir>/index.html#frag" (matches the legacy localize_links rule for "#...").
+INDEXBASE_DIRECTIVE = re.compile(r"\{\{locale\.indexbase\}\}")
 
 
 def alternates_block(page_path: str, active: str, host: str = SHOP_HOST) -> str:
@@ -199,6 +202,7 @@ def apply_locale_directives(text: str, loc_code: str, rel: str = "") -> str:
     text = PATH_DIRECTIVE.sub(lambda m: f'{conf["dir"]}/' if conf["dir"] else "", text)
     text = BASETAG_DIRECTIVE.sub(lambda m: '\n    <base href="../">' if conf["dir"] else "", text)
     text = MAINFONTS_DIRECTIVE.sub(lambda m: JA_FONT_BLOCK_MAIN if loc_code == "ja" else "", text)
+    text = INDEXBASE_DIRECTIVE.sub(lambda m: f'{conf["dir"]}/index.html' if conf["dir"] else "", text)
     text = MAINLANGSWITCH_DIRECTIVE.sub(
         lambda m: main_language_switch(loc_code, m.group(2) or page_file, m.group(1)), text)
     text = CANONICAL_DIRECTIVE.sub(lambda m: f'{host}{conf["base"]}{m.group(1)}', text)

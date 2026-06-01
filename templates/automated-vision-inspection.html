@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="{{locale.lang}}">
+<head>
+    <meta charset="UTF-8">{{locale.basetag}}
+    <script>
+        if (location.hostname === "shop.gyutron.com" && !location.pathname.startsWith("/shop/")) {
+            location.replace("/shop/index.html" + location.search + location.hash);
+        }
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{t:seo.automated-vision-inspection.title}}</title>
+    <meta name="description" content="{{t:seo.automated-vision-inspection.desc}}">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="product-page.css">
+    <link rel="stylesheet" href="mobile-navigation.css">
+    <link rel="stylesheet" href="solution-page.css">
+{{locale.mainfonts}}</head>
+<body>
+{{include:main-header}}
+
+    <main>
+        <section class="solution-hero">
+            <div class="container">
+                <div class="solution-hero-grid">
+                    <div>
+                        <span class="eyebrow">{{t:main.269}}</span>
+                        <h1>{{t:main.055}}</h1>
+                        <p>{{t:main.270}}</p>
+                    </div>
+                    <aside class="solution-panel">
+                        <span>{{t:main.271}}</span>
+                        <strong>Vision + Data</strong>
+                        <p>{{t:main.272}}</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <nav class="solution-tabs" aria-label="Solution page sections">
+            <div class="container">
+                <a href="{{locale.indexbase}}#capabilities">{{t:main.273}}</a>
+                <a href="{{locale.indexbase}}#architecture">{{t:main.274}}</a>
+                <a href="{{locale.indexbase}}#workflow">{{t:main.275}}</a>
+                <a href="{{locale.indexbase}}#deployment">{{t:main.276}}</a>
+            </div>
+        </nav>
+
+        <section class="solution-section" id="capabilities">
+            <div class="container">
+                <div class="solution-head">
+                    <div>
+                        <span class="eyebrow">{{t:main.277}}</span>
+                        <h2>{{t:main.278}}</h2>
+                    </div>
+                    <p>{{t:main.279}}</p>
+                </div>
+                <div class="capability-grid">
+                    <article class="capability-card">
+                        <i class="fa-solid fa-camera-retro"></i>
+                        <h3>{{t:main.057}}</h3>
+                        <p>{{t:main.280}}</p>
+                    </article>
+                    <article class="capability-card">
+                        <i class="fa-solid fa-barcode"></i>
+                        <h3>{{t:main.030}}</h3>
+                        <p>{{t:main.281}}</p>
+                    </article>
+                    <article class="capability-card">
+                        <i class="fa-solid fa-ruler-combined"></i>
+                        <h3>{{t:main.061}}</h3>
+                        <p>{{t:main.282}}</p>
+                    </article>
+                    <article class="capability-card">
+                        <i class="fa-solid fa-robot"></i>
+                        <h3>{{t:main.063}}</h3>
+                        <p>{{t:main.283}}</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution-section dark" id="architecture">
+            <div class="container">
+                <div class="solution-head">
+                    <div>
+                        <span class="eyebrow">{{t:main.284}}</span>
+                        <h2>{{t:main.285}}</h2>
+                    </div>
+                    <p>{{t:main.286}}</p>
+                </div>
+                <div class="architecture-grid">
+                    <div class="architecture-visual" aria-label="{{t:main.287}}"></div>
+                    <div class="capability-grid">
+                        <article class="architecture-card">
+                            <h3>{{t:main.288}}</h3>
+                            <p>{{t:main.289}}</p>
+                        </article>
+                        <article class="architecture-card">
+                            <h3>{{t:main.290}}</h3>
+                            <p>{{t:main.291}}</p>
+                        </article>
+                        <article class="architecture-card">
+                            <h3>{{t:main.292}}</h3>
+                            <p>{{t:main.293}}</p>
+                        </article>
+                        <article class="architecture-card">
+                            <h3>{{t:main.294}}</h3>
+                            <p>{{t:main.295}}</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution-section alt" id="workflow">
+            <div class="container">
+                <div class="solution-head">
+                    <div>
+                        <span class="eyebrow">{{t:main.296}}</span>
+                        <h2>{{t:main.297}}</h2>
+                    </div>
+                    <p>{{t:main.298}}</p>
+                </div>
+                <div class="workflow-grid">
+                    <article class="workflow-step">
+                        <i class="fa-solid fa-list-check"></i>
+                        <h3>{{t:main.299}}</h3>
+                        <p>{{t:main.300}}</p>
+                    </article>
+                    <article class="workflow-step">
+                        <i class="fa-solid fa-sitemap"></i>
+                        <h3>Map Hardware Stack</h3>
+                        <p>{{t:main.301}}</p>
+                    </article>
+                    <article class="workflow-step">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h3>{{t:main.302}}</h3>
+                        <p>{{t:main.303}}</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution-cta" id="deployment">
+            <div class="container">
+                <div class="solution-cta-inner">
+                    <div>
+                        <h2>{{t:main.304}}</h2>
+                        <p>{{t:main.305}}</p>
+                    </div>
+                    <a class="button button-primary" href="{{locale.path}}contact-sales.html">{{t:main.256}} <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+{{include:main-footer}}
+    <script>
+        {{t:main.306}}
+    </script>
+    <script src="mobile-navigation.js"></script>
+</body>
+</html>
+
+
+
+

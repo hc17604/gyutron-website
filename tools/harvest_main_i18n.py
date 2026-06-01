@@ -33,6 +33,9 @@ TAG = re.compile(r"(<[^>]+>)")
 # the directive (main_language_switch) emits the rest with absolute indentation.
 MOBILE_SWITCH = re.compile(r'<div class="language-switch language-switch-mobile">.*?</div>\s*</div>', re.S)
 DESKTOP_SWITCH = re.compile(r'<div class="language-switch language-switch-desktop">.*?</div>\s*</div>', re.S)
+# Human-readable attributes the legacy blind phrase map translated (same set the
+# audit checks). Keyed only when the de/ja value differs from en.
+TRANS_ATTR = re.compile(r'(\s)(alt|aria-label|title|placeholder)="([^"]*)"')
 
 # Harvested NEW keys (merged into the existing locale files, which keep shop keys).
 NEW = {"en": {}, "de": {}, "ja": {}}
@@ -67,14 +70,43 @@ def record(key: str, en: str, de: str, ja: str) -> None:
     NEW["ja"][key] = ja
 
 
+def _key_for(en: str, de: str, ja: str) -> str:
+    """Existing key for this (en,de,ja) triple, or mint a new main.NNN."""
+    key = KEYMAP.get((en, de, ja))
+    if key is None:
+        COUNTER[0] += 1
+        key = f"main.{COUNTER[0]:03d}"
+        KEYMAP[(en, de, ja)] = key
+        record(key, en, de, ja)
+    return key
+
+
 def key_body(en_body: str, de_body: str, ja_body: str) -> str:
+    """Key translatable TEXT nodes plus human-readable ATTRIBUTES
+    (alt/aria-label/title/placeholder) whose de or ja value differs from en.
+    Switch blocks must already be directive-ized before this runs, so the
+    switcher's own localized aria labels aren't keyed into orphans."""
     et, dt, jt = TAG.split(en_body), TAG.split(de_body), TAG.split(ja_body)
     if not (len(et) == len(dt) == len(jt)):
         raise SystemExit(f"tag-count mismatch: en={len(et)} de={len(dt)} ja={len(jt)}")
     out: list[str] = []
     for idx, seg in enumerate(et):
-        if idx % 2 == 1:            # a tag — handled later (links/switch directives)
-            out.append(seg)
+        if idx % 2 == 1:            # a tag — key translatable attribute values
+            de_tag, ja_tag = dt[idx], jt[idx]
+
+            def repl_attr(m: "re.Match[str]") -> str:
+                ws, name, en_val = m.group(1), m.group(2), m.group(3)
+                if not en_val.strip():
+                    return m.group(0)
+                dm = re.search(rf'\b{name}="([^"]*)"', de_tag)
+                jm = re.search(rf'\b{name}="([^"]*)"', ja_tag)
+                de_val = dm.group(1) if dm else en_val
+                ja_val = jm.group(1) if jm else en_val
+                if de_val == en_val and ja_val == en_val:
+                    return m.group(0)
+                return f'{ws}{name}="{{{{t:{_key_for(en_val, de_val, ja_val)}}}}}"'
+
+            out.append(TRANS_ATTR.sub(repl_attr, seg))
             continue
         core = seg.strip()
         if not core:
@@ -86,14 +118,7 @@ def key_body(en_body: str, de_body: str, ja_body: str) -> str:
             continue
         lead = seg[: len(seg) - len(seg.lstrip())]
         trail = seg[len(seg.rstrip()):]
-        triple = (core, d.strip(), j.strip())
-        key = KEYMAP.get(triple)
-        if key is None:
-            COUNTER[0] += 1
-            key = f"main.{COUNTER[0]:03d}"
-            KEYMAP[triple] = key
-            record(key, *triple)
-        out.append(f"{lead}{{{{t:{key}}}}}{trail}")
+        out.append(f"{lead}{{{{t:{_key_for(core, d.strip(), j.strip())}}}}}{trail}")
     return "".join(out)
 
 
@@ -107,8 +132,11 @@ def add_link_directives(s: str) -> str:
         href = m.group(1)
         if href.startswith(("http:", "https:", "mailto:", "tel:", "/", "de/", "ja/")):
             return m.group(0)
+        if href == "#":
+            raise SystemExit("bare '#' href not handled (legacy maps it to <dir>/index.html)")
         if href.startswith("#"):
-            raise SystemExit(f"bare-anchor href not handled (needs explicit {{locale.path}}): {href}")
+            # same-page anchor: en keeps "#frag", de/ja -> "<dir>/index.html#frag"
+            return f'href="{{{{locale.indexbase}}}}{href}"'
         if ".html" not in href:
             return m.group(0)
         return f'href="{{{{locale.path}}}}{href}"'
@@ -166,12 +194,19 @@ def templatize(page: str) -> str:
                   f'<meta name="description" content="{{{{t:seo.{stem}.desc}}}}">', 1)
     h = h.replace("</head>", "{{locale.mainfonts}}</head>", 1)
 
-    # ---- body: key text, replace switches with directives, prefix links ----
-    b = key_body(en_body, de_body, ja_body)
-    b, n_mob = MOBILE_SWITCH.subn("{{locale.mainlangswitch.mobile}}", b, count=1)
-    b, n_desk = DESKTOP_SWITCH.subn("{{locale.mainlangswitch.desktop}}", b, count=1)
-    if (n_mob, n_desk) != (1, 1):
-        raise SystemExit(f"language-switch blocks not found exactly once: mobile={n_mob} desktop={n_desk}")
+    # ---- body: directive-ize switches FIRST in all three locales (so the
+    # switcher's localized aria isn't keyed), then key text + attributes ----
+    def strip_switches(body: str) -> "tuple[str, tuple[int, int]]":
+        body, nm = MOBILE_SWITCH.subn("{{locale.mainlangswitch.mobile}}", body, count=1)
+        body, nd = DESKTOP_SWITCH.subn("{{locale.mainlangswitch.desktop}}", body, count=1)
+        return body, (nm, nd)
+
+    en_b, counts = strip_switches(en_body)
+    de_b, _ = strip_switches(de_body)
+    ja_b, _ = strip_switches(ja_body)
+    if counts != (1, 1):
+        raise SystemExit(f"language-switch blocks not found exactly once: {counts}")
+    b = key_body(en_b, de_b, ja_b)
     b = add_link_directives(b)
     # Extract the shared chrome (top-strip+header, footer) into partials so all
     # product pages reuse one copy. The <main> stays inline (its formatting varies
@@ -181,8 +216,31 @@ def templatize(page: str) -> str:
     return h + b
 
 
+def preload_keymap() -> None:
+    """Seed KEYMAP/COUNTER from already-harvested keys so shared chrome reuses the
+    SAME key ids on every page (partials stay byte-stable regardless of how a
+    page's unique <main> shifts the counter) and new main.* keys continue past the
+    current max. Idempotent across runs and across different page sets."""
+    try:
+        en = json.loads((I18N / "en.json").read_text(encoding="utf-8"))
+        de = json.loads((I18N / "de.json").read_text(encoding="utf-8"))
+        ja = json.loads((I18N / "ja.json").read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return
+    mx = 0
+    for k, v in en.items():
+        if k.startswith("main."):
+            KEYMAP[(v, de.get(k, ""), ja.get(k, ""))] = k
+            try:
+                mx = max(mx, int(k.split(".", 1)[1]))
+            except (IndexError, ValueError):
+                pass
+    COUNTER[0] = mx
+
+
 def main() -> None:
     pages = sys.argv[1:] or ["barcode-scanners.html"]
+    preload_keymap()
     for page in pages:
         tmpl = templatize(page)
         out = TEMPLATES / page
@@ -195,8 +253,9 @@ def main() -> None:
         data.update(NEW[loc])
         path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n",
                         encoding="utf-8", newline="")
-    print(f"harvested {len(NEW['en'])} new keys across en/de/ja "
-          f"({COUNTER[0]} shared main.* + {len(NEW['en']) - COUNTER[0]} seo.*)")
+    new_main = sum(1 for k in NEW["en"] if k.startswith("main."))
+    new_seo = sum(1 for k in NEW["en"] if k.startswith("seo."))
+    print(f"harvested {len(NEW['en'])} new keys ({new_main} new main.* + {new_seo} seo.*); max main id = {COUNTER[0]}")
 
 
 if __name__ == "__main__":
