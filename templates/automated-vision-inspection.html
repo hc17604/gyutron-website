@@ -160,7 +160,48 @@
     </main>
 {{include:main-footer}}
     <script>
-        {{t:main.306}}
+        (() => {
+            const navItems = Array.from(document.querySelectorAll(".nav-item"));
+            const closeDelay = 520;
+            const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
+            const closeItem = (item) => {
+                window.clearTimeout(item.closeTimer);
+                item.closeTimer = window.setTimeout(() => {
+                    item.classList.remove("is-open");
+                    item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+                }, closeDelay);
+            };
+            const setActiveGroup = (groups, activeGroup) => groups.forEach((group) => group.classList.toggle("is-open", group === activeGroup));
+            const openItem = (item, groups) => {
+                navItems.forEach((otherItem) => {
+                    if (otherItem !== item) {
+                        window.clearTimeout(otherItem.closeTimer);
+                        otherItem.classList.remove("is-open");
+                        otherItem.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+                    }
+                });
+                window.clearTimeout(item.closeTimer);
+                item.classList.add("is-open");
+                if (groups.length && !groups.some((group) => group.classList.contains("is-open"))) setActiveGroup(groups, groups[0]);
+            };
+            navItems.forEach((item) => {
+                const menu = item.querySelector(".mega-menu");
+                if (!menu) return;
+                const groups = Array.from(item.querySelectorAll(".mega-link-group"));
+                const trigger = item.querySelector(".nav-trigger");
+                trigger?.addEventListener("click", (event) => {
+                    if (isTouchNavigation() && !item.classList.contains("is-open")) { event.preventDefault(); openItem(item, groups); }
+                });
+                item.addEventListener("pointerenter", () => openItem(item, groups));
+                item.addEventListener("pointerleave", () => closeItem(item));
+                menu.addEventListener("pointerenter", () => openItem(item, groups));
+                menu.addEventListener("pointerleave", () => closeItem(item));
+                groups.forEach((group) => {
+                    group.addEventListener("pointerenter", () => { openItem(item, groups); setActiveGroup(groups, group); });
+                    group.addEventListener("focusin", () => { openItem(item, groups); setActiveGroup(groups, group); });
+                });
+            });
+        })();
     </script>
     <script src="mobile-navigation.js"></script>
 </body>
