@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from './Footer.astro';
+import { t, localizeUrl, type Locale } from '../i18n';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const path = '/automated-vision-inspection.html';
+---
+<Layout
+  locale={locale}
+  path={path}
+  title={t(locale, 'seo.automated-vision-inspection.title')}
+  description={t(locale, 'seo.automated-vision-inspection.desc')}
+  pageCss={["/product-page.css", "/solution-page.css", "/mobile-navigation.css"]}
+>
+  <main>
+    <section class="solution-hero">
+      <div class="container">
+        <div class="solution-hero-grid">
+          <div>
+            <span class="eyebrow">{t(locale, "main.269")}</span>
+            <h1>{t(locale, "main.055")}</h1>
+            <p>{t(locale, "main.270")}</p>
+          </div>
+          <aside class="solution-panel">
+            <span>{t(locale, "main.271")}</span>
+            <strong>{t(locale, "main.408")}</strong>
+            <p>{t(locale, "main.272")}</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <nav class="solution-tabs" aria-label="Solution page sections">
+      <div class="container">
+        <a href="#capabilities">{t(locale, "main.273")}</a>
+        <a href="#architecture">{t(locale, "main.274")}</a>
+        <a href="#workflow">{t(locale, "main.275")}</a>
+        <a href="#deployment">{t(locale, "main.276")}</a>
+      </div>
+    </nav>
+
+    <section class="solution-section" id="capabilities">
+      <div class="container">
+        <div class="solution-head">
+          <div>
+            <span class="eyebrow">{t(locale, "main.277")}</span>
+            <h2>{t(locale, "main.278")}</h2>
+          </div>
+          <p>{t(locale, "main.279")}</p>
+        </div>
+        <div class="capability-grid">
+          <article class="capability-card">
+            <i class="fa-solid fa-camera-retro"></i>
+            <h3>{t(locale, "main.057")}</h3>
+            <p>{t(locale, "main.280")}</p>
+          </article>
+          <article class="capability-card">
+            <i class="fa-solid fa-barcode"></i>
+            <h3>{t(locale, "main.030")}</h3>
+            <p>{t(locale, "main.281")}</p>
+          </article>
+          <article class="capability-card">
+            <i class="fa-solid fa-ruler-combined"></i>
+            <h3>{t(locale, "main.061")}</h3>
+            <p>{t(locale, "main.282")}</p>
+          </article>
+          <article class="capability-card">
+            <i class="fa-solid fa-robot"></i>
+            <h3>{t(locale, "main.063")}</h3>
+            <p>{t(locale, "main.283")}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="solution-section dark" id="architecture">
+      <div class="container">
+        <div class="solution-head">
+          <div>
+            <span class="eyebrow">{t(locale, "main.284")}</span>
+            <h2>{t(locale, "main.285")}</h2>
+          </div>
+          <p>{t(locale, "main.286")}</p>
+        </div>
+        <div class="architecture-grid">
+          <div class="architecture-visual" aria-label={t(locale, "main.287")}></div>
+          <div class="capability-grid">
+            <article class="architecture-card">
+              <h3>{t(locale, "main.288")}</h3>
+              <p>{t(locale, "main.289")}</p>
+            </article>
+            <article class="architecture-card">
+              <h3>{t(locale, "main.290")}</h3>
+              <p>{t(locale, "main.291")}</p>
+            </article>
+            <article class="architecture-card">
+              <h3>{t(locale, "main.292")}</h3>
+              <p>{t(locale, "main.293")}</p>
+            </article>
+            <article class="architecture-card">
+              <h3>{t(locale, "main.294")}</h3>
+              <p>{t(locale, "main.295")}</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="solution-section alt" id="workflow">
+      <div class="container">
+        <div class="solution-head">
+          <div>
+            <span class="eyebrow">{t(locale, "main.296")}</span>
+            <h2>{t(locale, "main.297")}</h2>
+          </div>
+          <p>{t(locale, "main.298")}</p>
+        </div>
+        <div class="workflow-grid">
+          <article class="workflow-step">
+            <i class="fa-solid fa-list-check"></i>
+            <h3>{t(locale, "main.299")}</h3>
+            <p>{t(locale, "main.300")}</p>
+          </article>
+          <article class="workflow-step">
+            <i class="fa-solid fa-sitemap"></i>
+            <h3>{t(locale, "main.409")}</h3>
+            <p>{t(locale, "main.301")}</p>
+          </article>
+          <article class="workflow-step">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>{t(locale, "main.302")}</h3>
+            <p>{t(locale, "main.303")}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="solution-cta" id="deployment">
+      <div class="container">
+        <div class="solution-cta-inner">
+          <div>
+            <h2>{t(locale, "main.304")}</h2>
+            <p>{t(locale, "main.305")}</p>
+          </div>
+          <a class="button button-primary" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "main.256")} <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer slot="footer" locale={locale} />
+  <script is:inline>
+    (() => {
+      const navItems = Array.from(document.querySelectorAll(".nav-item"));
+      const closeDelay = 520;
+      const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
+      const closeItem = (item) => {
+        window.clearTimeout(item.closeTimer);
+        item.closeTimer = window.setTimeout(() => {
+          item.classList.remove("is-open");
+          item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+        }, closeDelay);
+      };
+      const setActiveGroup = (groups, activeGroup) => groups.forEach((group) => group.classList.toggle("is-open", group === activeGroup));
+      const openItem = (item, groups) => {
+        navItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            window.clearTimeout(otherItem.closeTimer);
+            otherItem.classList.remove("is-open");
+            otherItem.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          }
+        });
+        window.clearTimeout(item.closeTimer);
+        item.classList.add("is-open");
+        if (groups.length && !groups.some((group) => group.classList.contains("is-open"))) setActiveGroup(groups, groups[0]);
+      };
+      navItems.forEach((item) => {
+        const menu = item.querySelector(".mega-menu");
+        if (!menu) return;
+        const groups = Array.from(item.querySelectorAll(".mega-link-group"));
+        const trigger = item.querySelector(".nav-trigger");
+        trigger?.addEventListener("click", (event) => {
+          if (isTouchNavigation() && !item.classList.contains("is-open")) { event.preventDefault(); openItem(item, groups); }
+        });
+        item.addEventListener("pointerenter", () => openItem(item, groups));
+        item.addEventListener("pointerleave", () => closeItem(item));
+        menu.addEventListener("pointerenter", () => openItem(item, groups));
+        menu.addEventListener("pointerleave", () => closeItem(item));
+        groups.forEach((group) => {
+          group.addEventListener("pointerenter", () => { openItem(item, groups); setActiveGroup(groups, group); });
+          group.addEventListener("focusin", () => { openItem(item, groups); setActiveGroup(groups, group); });
+        });
+      });
+    })();
+  </script>
+</Layout>

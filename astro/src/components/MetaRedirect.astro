@@ -1,0 +1,26 @@
+---
+import { localizeUrl, htmlLang, type Locale } from '../i18n';
+interface Props {
+  locale: Locale;
+  target: string; // canonical target path (no locale prefix), e.g. '/area-scan-cameras.html'
+  title: string;
+}
+const { locale, target, title } = Astro.props;
+const url = localizeUrl(locale, target);
+const SITE = 'https://www.gyutron.com';
+---
+<!doctype html>
+<html lang={htmlLang[locale]}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content={`0; url=${url}`} />
+    <link rel="canonical" href={`${SITE}${url}`} />
+    <meta name="robots" content="noindex, follow" />
+    <title>{title}</title>
+    <script is:inline define:vars={{ url }}>location.replace(url);</script>
+  </head>
+  <body>
+    <a href={url}>{url}</a>
+  </body>
+</html>

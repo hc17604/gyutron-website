@@ -1,12 +1,17 @@
 ---
 import ProductPage from '../../components/ProductPage.astro';
+import MetaRedirect from '../../components/MetaRedirect.astro';
+import { t } from '../../i18n';
 import { GYUTRON_PRODUCTS } from '../../data/products.en.js';
 
 export function getStaticPaths() {
   return Object.keys(GYUTRON_PRODUCTS)
-    .filter((k) => (GYUTRON_PRODUCTS as any)[k].products?.length && !(GYUTRON_PRODUCTS as any)[k].redirectTo)
+    .filter((k) => (GYUTRON_PRODUCTS as any)[k].products?.length || (GYUTRON_PRODUCTS as any)[k].redirectTo)
     .map((category) => ({ params: { category } }));
 }
 const { category } = Astro.params;
+const redirectTo: string | undefined = (GYUTRON_PRODUCTS as any)[category!].redirectTo;
 ---
-<ProductPage locale="de" category={category!} />
+{redirectTo
+  ? <MetaRedirect locale="de" target={`/${redirectTo}.html`} title={t('de', `seo.${category}.title`)} />
+  : <ProductPage locale="de" category={category!} />}

@@ -7,10 +7,12 @@ interface Props {
   path: string; // canonical page path (no locale prefix), e.g. '/barcode-scanners.html'
   title: string;
   description: string;
+  ogTitle?: string; // defaults to title when a page ships a distinct social title
+  ogDescription?: string; // defaults to description
   bodyClass?: string;
   pageCss?: string[];
 }
-const { locale, path, title, description, bodyClass, pageCss = [] } = Astro.props;
+const { locale, path, title, description, ogTitle, ogDescription, bodyClass, pageCss = [] } = Astro.props;
 const SITE = 'https://www.gyutron.com';
 const canonical = `${SITE}${localizeUrl(locale, path)}`;
 ---
@@ -32,8 +34,8 @@ const canonical = `${SITE}${localizeUrl(locale, path)}`;
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={ogLocale[locale]} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={ogTitle ?? title} />
+    <meta property="og:description" content={ogDescription ?? description} />
     <meta property="og:site_name" content="GYUTRON" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
