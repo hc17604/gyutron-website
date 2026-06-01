@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from './Footer.astro';
+import { t, localizeUrl, type Locale } from '../i18n';
+import * as enData from '../data/products.en.js';
+import * as deData from '../data/products.de.js';
+import * as jaData from '../data/products.ja.js';
+
+interface Props { locale: Locale; category: string; }
+const { locale, category } = Astro.props;
+
+const data: any = ({ en: enData, de: deData, ja: jaData } as const)[locale];
+const PRODUCTS: any = data.GYUTRON_PRODUCTS;
+const GROUPS: any = data.CATEGORY_GROUPS;
+const cat: any = PRODUCTS[category];
+const path = `/${category}.html`;
+const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];
+---
+<Layout
+  locale={locale}
+  path={path}
+  title={t(locale, `seo.${category}.title`)}
+  description={t(locale, `seo.${category}.desc`)}
+  bodyClass={`product-page cat-${category}`}
+  pageCss={["/product-page.css", "/mobile-navigation.css"]}
+>
+  <main>
+    <section class="product-hero"><div class="container"><div class="product-hero-grid">
+      <div>
+        <span class="eyebrow">{cat.eyebrow}</span>
+        <h1>{cat.title}</h1>
+        <p>{cat.intro}</p>
+      </div>
+      <aside class="hero-panel">
+        <span>Portfolio</span>
+        <strong>{cat.panelMetric}</strong>
+        <p>{cat.panelText}</p>
+      </aside>
+    </div></div></section>
+
+    <nav class="category-nav"><div class="container">
+      {navOrder.map((key) => (
+        <a class={key === category ? 'is-active' : ''} href={localizeUrl(locale, `/${key}.html`)}>{PRODUCTS[key]?.navLabel}</a>
+      ))}
+    </div></nav>
+
+    <section class="section"><div class="container">
+      <div class="section-head">
+        <div><span class="eyebrow">{t(locale, 'main.258')}</span><h2>{cat.sectionTitle}</h2></div>
+        <p>{cat.sectionIntro}</p>
+      </div>
+      <div class="product-grid">
+        {cat.products.map((product: any) => (
+          <article class="product-card">
+            <div class="product-art">{product.image && <img src={`/${product.image}`} alt={product.name} loading="lazy" />}</div>
+            <div class="product-body">
+              <div class="product-kicker">{product.type}</div>
+              <h3>{product.name}</h3>
+              <p>{product.summary}</p>
+              <dl class="spec-list">
+                {Object.entries(product.specs).map(([label, value]) => (<div><dt>{label}</dt><dd>{value}</dd></div>))}
+              </dl>
+              <div class="product-tags">{product.tags.map((tag: string) => (<span>{tag}</span>))}</div>
+              <div class="product-actions">
+                <a href={localizeUrl(locale, '/contact-sales.html')}>{t(locale, 'main.256')}</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div></section>
+
+    <section class="cta-band"><div class="container"><div class="cta-inner">
+      <div><h2>{t(locale, 'main.261')}</h2><p>{t(locale, 'main.262')}</p></div>
+      <a class="button button-primary" href={localizeUrl(locale, '/contact-sales.html')}>{t(locale, 'main.256')} <i class="fa-solid fa-arrow-right"></i></a>
+    </div></div></section>
+  </main>
+  <Footer slot="footer" locale={locale} />
+</Layout>

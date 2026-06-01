@@ -1,0 +1,18 @@
+---
+import { locales, localizeUrl, localeLabel, localeShort, langAria, type Locale } from '../i18n';
+interface Props {
+  variant: 'mobile' | 'desktop';
+  locale: Locale;
+  path: string; // canonical page path, e.g. '/barcode-scanners.html'
+}
+const { variant, locale, path } = Astro.props;
+const aria = langAria[locale];
+---
+<div class={`language-switch language-switch-${variant}`}>
+  <button class={`language-icon language-icon-${variant}`} type="button" aria-label={aria.selector} aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>
+  <div class="language-menu" aria-label={aria.options}>
+    {locales.map((l) => (
+      <a href={localizeUrl(l, path)} aria-current={l === locale ? 'page' : undefined}>{localeLabel[l]} <span>{localeShort[l]}</span></a>
+    ))}
+  </div>
+</div>

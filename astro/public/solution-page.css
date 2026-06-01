@@ -1,0 +1,344 @@
+.solution-hero {
+    background:
+        linear-gradient(90deg, rgba(4, 5, 8, 0.96) 0%, rgba(18, 5, 31, 0.86) 45%, rgba(18, 5, 31, 0.34) 100%),
+        url("product-vision-cell.png") center / cover;
+    color: var(--white);
+    padding: 92px 0 70px;
+}
+
+:root {
+    --motion-fast: 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    --motion: 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    --motion-slow: 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.solution-hero-grid {
+    align-items: end;
+    display: grid;
+    gap: 48px;
+    grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.62fr);
+}
+
+.solution-hero h1 {
+    color: var(--white);
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 900;
+    letter-spacing: 0;
+    line-height: 0.98;
+    margin: 18px 0 22px;
+    max-width: 760px;
+}
+
+.solution-hero p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 18px;
+    max-width: 690px;
+}
+
+.solution-panel {
+    background: rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 8px;
+    padding: 24px;
+    transition: background var(--motion), border-color var(--motion), box-shadow var(--motion), transform var(--motion);
+}
+
+.solution-panel span {
+    color: rgba(255, 255, 255, 0.66);
+    display: block;
+    font-size: 12px;
+    font-weight: 850;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.solution-panel strong {
+    color: var(--white);
+    display: block;
+    font-size: 34px;
+    line-height: 1;
+    margin: 12px 0;
+}
+
+.solution-panel p {
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 14px;
+}
+
+.solution-tabs {
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 116px;
+    z-index: 30;
+}
+
+.solution-tabs .container {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 12px 0;
+}
+
+.solution-tabs a {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    color: var(--text);
+    flex: 0 0 auto;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 9px 13px;
+    transition: background var(--motion-fast), border-color var(--motion-fast), box-shadow var(--motion), color var(--motion-fast), transform var(--motion);
+}
+
+.solution-tabs a:hover {
+    background: var(--violet-soft);
+    border-color: rgba(111, 45, 189, 0.32);
+    box-shadow: 0 10px 24px rgba(31, 11, 53, 0.08);
+    color: var(--purple-700);
+    transform: translateY(-1px);
+}
+
+.solution-section {
+    padding: 72px 0;
+}
+
+.solution-section.alt {
+    background: var(--white);
+    border-block: 1px solid var(--line);
+}
+
+.solution-section.dark {
+    background: var(--purple-950);
+    color: var(--white);
+}
+
+.solution-section.dark h2,
+.solution-section.dark h3 {
+    color: var(--white);
+}
+
+.solution-head {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.56fr);
+    margin-bottom: 34px;
+}
+
+.solution-head h2 {
+    color: var(--ink);
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 900;
+    line-height: 1.04;
+    margin-top: 14px;
+}
+
+.solution-head p {
+    color: var(--muted);
+    font-size: 16px;
+}
+
+.solution-section.dark .solution-head p {
+    color: rgba(255, 255, 255, 0.70);
+}
+
+.capability-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.capability-card,
+.architecture-card,
+.workflow-step {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 22px;
+    transition: background var(--motion), border-color var(--motion), box-shadow var(--motion), transform var(--motion);
+}
+
+.capability-card i,
+.workflow-step i {
+    color: var(--purple-600);
+    font-size: 22px;
+    margin-bottom: 20px;
+    transition: color var(--motion-fast), transform var(--motion);
+}
+
+.capability-card h3,
+.architecture-card h3,
+.workflow-step h3 {
+    color: var(--ink);
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.18;
+    margin-bottom: 10px;
+}
+
+.capability-card p,
+.architecture-card p,
+.workflow-step p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.architecture-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.72fr);
+}
+
+.architecture-visual {
+    background:
+        linear-gradient(180deg, rgba(18, 5, 31, 0.05), rgba(18, 5, 31, 0.20)),
+        url("product-smart-camera-detail.png") center / cover;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    min-height: 420px;
+    overflow: hidden;
+    transition: filter var(--motion), transform var(--motion-slow);
+}
+
+.solution-section.dark .architecture-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.solution-section.dark .architecture-card p {
+    color: rgba(255, 255, 255, 0.70);
+}
+
+.workflow-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.solution-cta {
+    background: var(--white);
+    padding: 72px 0;
+}
+
+.solution-cta-inner {
+    align-items: center;
+    background: var(--purple-950);
+    border-radius: 8px;
+    color: var(--white);
+    display: grid;
+    gap: 28px;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    padding: 34px;
+    transition: box-shadow var(--motion), transform var(--motion);
+}
+
+.solution-panel:hover,
+.capability-card:hover,
+.architecture-card:hover,
+.workflow-step:hover {
+    border-color: rgba(111, 45, 189, 0.34);
+    box-shadow: 0 22px 48px rgba(31, 11, 53, 0.14);
+    transform: translateY(-4px);
+}
+
+.solution-panel:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.34);
+}
+
+.capability-card:hover i,
+.workflow-step:hover i {
+    color: var(--signal);
+    transform: translateY(-2px) scale(1.06);
+}
+
+.architecture-visual:hover {
+    filter: saturate(1.08) contrast(1.04);
+    transform: scale(1.012);
+}
+
+.solution-cta-inner:hover {
+    box-shadow: 0 24px 58px rgba(31, 11, 53, 0.20);
+    transform: translateY(-3px);
+}
+
+.solution-cta h2 {
+    color: var(--white);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 900;
+    line-height: 1.05;
+}
+
+.solution-cta p {
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .solution-hero-grid,
+    .solution-head,
+    .architecture-grid,
+    .solution-cta-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .solution-hero h1,
+    .solution-hero p,
+    .solution-panel {
+        max-width: min(320px, calc(100vw - 56px));
+        min-width: 0;
+        overflow-wrap: break-word;
+    }
+
+    .capability-grid,
+    .workflow-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .solution-tabs {
+        top: 82px;
+    }
+}
+
+@media (max-width: 640px) {
+    .solution-hero {
+        padding: 62px 0 48px;
+    }
+
+    .solution-hero h1,
+    .solution-hero p,
+    .solution-panel {
+        max-width: min(320px, calc(100vw - 56px));
+        min-width: 0;
+        overflow-wrap: break-word;
+    }
+
+    .solution-hero-grid {
+        max-width: calc(100vw - 28px);
+        min-width: 0;
+    }
+
+    .solution-hero h1 {
+        font-size: 38px;
+    }
+
+    .capability-grid,
+    .workflow-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .architecture-visual {
+        min-height: 260px;
+    }
+}

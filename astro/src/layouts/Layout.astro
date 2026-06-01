@@ -1,0 +1,63 @@
+---
+import { htmlLang, ogLocale, localizeUrl, locales, type Locale } from '../i18n';
+import Header from '../components/Header.astro';
+
+interface Props {
+  locale: Locale;
+  path: string; // canonical page path (no locale prefix), e.g. '/barcode-scanners.html'
+  title: string;
+  description: string;
+  bodyClass?: string;
+  pageCss?: string[];
+}
+const { locale, path, title, description, bodyClass, pageCss = [] } = Astro.props;
+const SITE = 'https://www.gyutron.com';
+const canonical = `${SITE}${localizeUrl(locale, path)}`;
+---
+<!doctype html>
+<html lang={htmlLang[locale]}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {locales.map((l) => (
+      <link rel="alternate" hreflang={htmlLang[l]} href={`${SITE}${localizeUrl(l, path)}`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`${SITE}${path}`} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale[locale]} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="GYUTRON" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    {pageCss.map((href) => <link rel="stylesheet" href={href} />)}
+    {locale === 'ja' && (
+      <>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <style is:global>{`
+          body, button, input, select, textarea { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+          body { line-height: 1.7; }
+          h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
+          p, li, label, td { font-weight: 400; }
+          .nav a, .nav-links a, .nav-trigger, .nav-item > a, .top-strip, .brand span { font-weight: 700; color: var(--ink, #17121f); }
+          .nav, .nav-links, .nav a, .nav-links a, .nav-trigger { font-size: 15px; text-transform: none; letter-spacing: 0.01em; }
+        `}</style>
+      </>
+    )}
+  </head>
+  <body class={bodyClass}>
+    <Header locale={locale} path={path} />
+    <slot />
+    <slot name="footer" />
+    <script src="/mobile-navigation.js" is:inline></script>
+  </body>
+</html>
