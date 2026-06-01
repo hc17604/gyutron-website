@@ -528,6 +528,20 @@ def shop_language_menu(locale: str, current_page: str) -> str:
     return "\n".join(lines)
 
 
+def _inject_shop_i18n(html: str, locale: str) -> str:
+    """Load shop-i18n.js and set the locale flag BEFORE shop.js runs, so product/
+    category/UI copy is localized from structured data (shop-i18n.js) instead of
+    blind string replacement. Works for every locale incl. en (en = no-op)."""
+    base = "" if locale == "en" else f"/{locale}"
+    snippet = (
+        f'<script>window.GYUTRON_SHOP_LOCALE="{locale}";</script>\n'
+        f'    <script src="{base}/{SHOP_DIR}/shop-i18n.js"></script>\n    '
+    )
+    # Insert right before the main shop.js include.
+    return html.replace(f'<script src="{base}/{SHOP_DIR}/shop.js">',
+                        snippet + f'<script src="{base}/{SHOP_DIR}/shop.js">', 1)
+
+
 def localize_shop_html(source: str, locale: str, filename: str) -> str:
     html = source
     html = re.sub(r'<html lang="[^"]+">', f'<html lang="{locale}">', html, count=1)
@@ -542,14 +556,27 @@ def localize_shop_html(source: str, locale: str, filename: str) -> str:
         html = apply_replacements(html, {"__locale_code": locale, "replacements": load_strings(locale)})
     html = html.replace(placeholder, shop_language_menu(locale, filename))
     html = _finalize_head(html, locale)
+    html = _inject_shop_i18n(html, locale)
     return html
 
 
 def localized_shop_js(locale: str) -> str:
+    # shop.js is now locale-neutral: it reads window.GYUTRON_SHOP_LOCALE +
+    # shop-i18n.js at runtime. We only rewrite the absolute /shop/ asset paths
+    # for the locale subdirectory; the CODE is never translated (that was the
+    # cause of the old `renderZur KasseSummary` breakage).
     js = (ROOT / SHOP_DIR / "shop.js").read_text(encoding="utf-8")
     if locale != "en":
         js = js.replace(f"/{SHOP_DIR}/", f"/{locale}/{SHOP_DIR}/")
-        js = translate_js(js, load_strings(locale))
+    return js
+
+
+def localized_shop_i18n_js(locale: str) -> str:
+    """shop-i18n.js with its internal /shop/ asset paths rewritten per locale
+    (the data file has no translatable code, only the dictionaries)."""
+    js = (ROOT / SHOP_DIR / "shop-i18n.js").read_text(encoding="utf-8")
+    if locale != "en":
+        js = js.replace(f"/{SHOP_DIR}/", f"/{locale}/{SHOP_DIR}/")
     return js
 
 
@@ -577,6 +604,9 @@ def generate_shop() -> None:
         js_out = shop_out / "shop.js"
         js_out.write_text(localized_shop_js(folder), encoding="utf-8", newline="")
         sync_public_file(js_out)
+        i18n_out = shop_out / "shop-i18n.js"
+        i18n_out.write_text(localized_shop_i18n_js(folder), encoding="utf-8", newline="")
+        sync_public_file(i18n_out)
         css_src = ROOT / SHOP_DIR / "shop.css"
         if css_src.exists():
             css_out = shop_out / "shop.css"
@@ -592,7 +622,7 @@ def generate_shop() -> None:
             continue
         src.write_text(localize_shop_html(src.read_text(encoding="utf-8"), "en", page), encoding="utf-8", newline="")
         sync_public_file(src)
-    for asset in ("shop.js", "shop.css"):
+    for asset in ("shop.js", "shop-i18n.js", "shop.css"):
         asset_path = ROOT / SHOP_DIR / asset
         if asset_path.exists():
             sync_public_file(asset_path)

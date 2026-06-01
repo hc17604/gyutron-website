@@ -1,0 +1,166 @@
+/* GYUTRON store product/category localization data.
+ *
+ * Structured per-locale translations for the shop catalog. Keyed by SKU
+ * (products) and canonical English category name (categories). shop.js applies
+ * these through localizeProduct()/localizeCategory() so product copy is
+ * translated as whole fields — never partial string replacement. Locked terms
+ * (GYUTRON, SKU, model numbers, units, RFID/NFC/PDA/DPM/PCIe/GigE/IP67, etc.)
+ * stay literal by design.
+ *
+ * EN is the source and lives in shop.js itself; this file supplies de + ja.
+ * To add a locale: add a top-level block with the same SKU/category keys.
+ */
+window.GYUTRON_SHOP_I18N = {
+  de: {
+    ui: {
+      "Buy Now": "Jetzt kaufen",
+      "Quote": "Angebot",
+      "View": "Ansehen",
+      "Contact Engineer": "Techn. Ansprechpartner",
+      "All Products": "Alle Produkte",
+      "Test Equipment": "Prüf- und Messgeräte",
+      "Suggested products": "Vorgeschlagene Produkte",
+      "Industrial products": "Industrieprodukte",
+      "No products matched this search. Try another keyword or request a quote.": "Keine Produkte für diese Suche gefunden. Versuchen Sie ein anderes Stichwort oder fordern Sie ein Angebot an.",
+      "Your cart is empty. Add sample items or accessories from the official store.": "Ihr Warenkorb ist leer. Fügen Sie Musterartikel oder Zubehör aus dem offiziellen Store hinzu.",
+      "Order Summary": "Bestellübersicht",
+      "Items": "Artikel",
+      "Estimated subtotal": "Geschätzte Zwischensumme",
+      "Shipping": "Versand",
+      "Quoted": "Auf Anfrage",
+      "Total before shipping": "Summe vor Versand",
+      "Proceed to Checkout": "Weiter zur Kasse",
+      "Request a Quote": "Angebot anfordern",
+      "added to cart": "in den Warenkorb gelegt",
+      "Quantity": "Menge",
+      "Store": "Store",
+      "GYUTRON Official Store": "Offizieller GYUTRON Store",
+      "searchAll": "Alle Ergebnisse für „%s“ anzeigen",
+      "detail.notice": "Industriebestellungen können vor dem Versand eine Parameterbestätigung, Zertifizierungsprüfung, Bestandsvalidierung oder Lieferzeitprüfung erfordern.",
+      "summary.notice": "Endgültiger Versand, Zölle, Lieferzeit und Zertifizierungsdokumente werden vor der Zahlungsabwicklung bestätigt."
+    },
+    leadTime: {
+      "In stock": "Auf Lager",
+      "Ships in 3-6 days": "Versand in 3–6 Tagen",
+      "Ships in 5-8 days": "Versand in 5–8 Tagen",
+      "Ships in 7-10 days": "Versand in 7–10 Tagen",
+      "Ships in 7-12 days": "Versand in 7–12 Tagen",
+      "Quote lead time": "Lieferzeit auf Anfrage"
+    },
+    category: {
+      "Industrial Cameras": "Industriekameras",
+      "Vision Lighting": "Vision-Beleuchtung",
+      "Sensors": "Sensoren",
+      "Barcode Scanners": "Barcodescanner",
+      "Rugged PDA": "Robuste PDA-Terminals",
+      "Lenses": "Objektive",
+      "Acquisition Cards": "Acquisition-Karten",
+      "Robot Accessories": "Roboterzubehör",
+      "Test Equipment": "Prüf- und Messgeräte"
+    },
+    categoryText: {
+      "Industrial Cameras": "Smart- und Flächenkameras für Prüfung, Führung und Codeverifikation.",
+      "Vision Lighting": "Weißlicht-Balken-, Ring-, Dome- und Durchlichtbeleuchtung für stabile Bildaufnahme.",
+      "Sensors": "Anwesenheits-, Abstands-, Umwelt- und Prozesssensorik für Fabrikausrüstung.",
+      "Barcode Scanners": "Mobile und stationäre Barcode-Lesung für Lager- und Produktionsrückverfolgbarkeit.",
+      "Rugged PDA": "Android-PDA und RFID-Handhelds für die industrielle mobile Datenerfassung.",
+      "Lenses": "C-Mount-Optik und Prüfzubehör für Machine-Vision-Systeme.",
+      "Acquisition Cards": "Frame-Grabber und synchronisierte Erfassungshardware für Prüf-PCs.",
+      "Robot Accessories": "Greifer, Halterungen und Zellenzubehör für Industrieautomatisierungsprojekte."
+    },
+    products: {
+      "GY-CV220-INLINE": { name: "GY-CV220 Inline-Vision-Kamera", summary: "Kompakte Smart-Kamera für Inline-Prüfung, Codeverifikation und Anwesenheitskontrollen." },
+      "GY-LB220": { name: "GY-LB220 Machine-Vision-Balkenleuchte", summary: "Weißlicht-Industrie-Balkenleuchte für stabile Bildaufnahme an Prüfstationen." },
+      "GY-PR12": { name: "GY-PR12 Induktiver Näherungssensor", summary: "M12-Induktivsensor für Metallerkennung, Vorrichtungspräsenz und Maschinenverriegelung." },
+      "GY-S240W": { name: "GY-S240W Kabelloser Barcodescanner", summary: "Schnurloser 1D/2D-Scanner mit Ladestation für Lager, Versand und Produktionsplätze." },
+      "GY-A55-PRO": { name: "GY-A55 Pro Robustes PDA-Terminal", summary: "Android-Handheld für Barcode, NFC, Inventur und mobile Datenerfassung." },
+      "GY-R70-LONGRANGE": { name: "GY-R70 LongRange RFID-Handheld", summary: "UHF-RFID-Handheld mit hoher Leistung für Lagergänge, Assets, Paletten und WIP-Tracking." },
+      "GY-OPT25": { name: "GY-OPT25 C-Mount-Objektiv", summary: "Verzeichnungsarmes C-Mount-Objektiv für Machine-Vision-Kameras und Prüfvorrichtungen." },
+      "GY-FB200": { name: "GY-FB200 Frame Grabber", summary: "PCIe-Erfassungskarte für Mehrkamera-Bildaufnahme und synchronisierte Prüfaufbauten." },
+      "GY-MG50": { name: "GY-MG50 Roboter-Greifer-Set", summary: "Kompaktes Greifer-Set für kleine Roboterzellen, Pick-and-Place und Prüfhandling." },
+      "GY-CAL-GRID": { name: "GY-CAL Gitter-Kalibrierplatte", summary: "Kalibriertarget für Vision-Setup, Messprüfung und Kameraausrichtung." },
+      "GY-V240-COLOR": { name: "GY-V240 Farb-Flächenkamera", summary: "Farb-Flächenkamera für Prüfzellen, Roboterführung und Messstationen." },
+      "GY-V3D150": { name: "GY-V3D150 3D-Profilkamera", summary: "3D-Profilkamera für Höhenprüfung, Oberflächeninspektion und Maßkontrolle." },
+      "GY-LDOME120": { name: "GY-LDOME120 Dome-Leuchte", summary: "Diffuse Weißlicht-Dome-Leuchte für reflektierende Teile, gewölbte Flächen und Etikettenprüfung." },
+      "GY-PS60": { name: "GY-PS60 Lichtschranke", summary: "Lichtschranke für Kartons, Trays, Vorrichtungen und Produktanwesenheitserkennung." },
+      "GY-S300-DPM": { name: "GY-S300 DPM-Barcodescanner", summary: "DPM-fähiger Scanner für geätzte, gedruckte und kontrastarme Produktionscodes." },
+      "GY-A80-ULTRA": { name: "GY-A80 Ultra Robustes PDA-Terminal", summary: "Hochleistungs-Android-PDA für scanintensive Lager- und Feldeinsätze." }
+    }
+  },
+  ja: {
+    ui: {
+      "Buy Now": "今すぐ購入",
+      "Quote": "見積",
+      "View": "詳細",
+      "Contact Engineer": "技術担当に相談",
+      "All Products": "すべての製品",
+      "Test Equipment": "試験・測定機器",
+      "Suggested products": "おすすめ製品",
+      "Industrial products": "産業用製品",
+      "No products matched this search. Try another keyword or request a quote.": "この検索に一致する製品はありません。別のキーワードでお試しいただくか、見積をご依頼ください。",
+      "Your cart is empty. Add sample items or accessories from the official store.": "カートは空です。公式ストアからサンプル品やアクセサリを追加してください。",
+      "Order Summary": "注文サマリー",
+      "Items": "点数",
+      "Estimated subtotal": "小計(概算)",
+      "Shipping": "配送",
+      "Quoted": "見積対応",
+      "Total before shipping": "送料を除く合計",
+      "Proceed to Checkout": "購入手続きへ進む",
+      "Request a Quote": "見積を依頼",
+      "added to cart": "をカートに追加しました",
+      "Quantity": "数量",
+      "Store": "ストア",
+      "GYUTRON Official Store": "GYUTRON 公式ストア",
+      "searchAll": "「%s」のすべての結果を表示",
+      "detail.notice": "産業向け注文では、出荷前にパラメータ確認、認証チェック、在庫確認、納期確認が必要な場合があります。",
+      "summary.notice": "最終的な送料、関税、納期、認証文書は決済処理の前に確定します。"
+    },
+    leadTime: {
+      "In stock": "在庫あり",
+      "Ships in 3-6 days": "3〜6営業日で出荷",
+      "Ships in 5-8 days": "5〜8営業日で出荷",
+      "Ships in 7-10 days": "7〜10営業日で出荷",
+      "Ships in 7-12 days": "7〜12営業日で出荷",
+      "Quote lead time": "納期はお見積り"
+    },
+    category: {
+      "Industrial Cameras": "産業用カメラ",
+      "Vision Lighting": "画像処理用照明",
+      "Sensors": "センサー",
+      "Barcode Scanners": "バーコードスキャナー",
+      "Rugged PDA": "堅牢型PDA",
+      "Lenses": "レンズ",
+      "Acquisition Cards": "画像取得ボード",
+      "Robot Accessories": "ロボットアクセサリ",
+      "Test Equipment": "試験・測定機器"
+    },
+    categoryText: {
+      "Industrial Cameras": "検査、ガイダンス、コード検証のためのスマートカメラ・エリアスキャンカメラ。",
+      "Vision Lighting": "安定した画像取得のための白色バー・リング・ドーム・バックライト照明。",
+      "Sensors": "工場設備向けの有無・距離・環境・プロセスセンシング。",
+      "Barcode Scanners": "倉庫・生産のトレーサビリティ向けのハンディおよび固定式バーコード読み取り。",
+      "Rugged PDA": "産業用モバイルデータ収集のためのAndroid PDA・RFIDハンドヘルド。",
+      "Lenses": "マシンビジョンシステム向けのCマウント光学部品・検査アクセサリ。",
+      "Acquisition Cards": "検査用PC向けのフレームグラバーと同期取得ハードウェア。",
+      "Robot Accessories": "産業オートメーション案件向けのグリッパー、マウント、セルアクセサリ。"
+    },
+    products: {
+      "GY-CV220-INLINE": { name: "GY-CV220 インライン ビジョンカメラ", summary: "インライン検査、コード検証、有無確認に対応するコンパクトなスマートカメラ。" },
+      "GY-LB220": { name: "GY-LB220 マシンビジョン バーライト", summary: "検査ステーションでの安定した画像取得に対応する白色産業用バーライト。" },
+      "GY-PR12": { name: "GY-PR12 誘導形近接センサー", summary: "金属検出、治具の有無、機械インターロックに対応するM12誘導形センサー。" },
+      "GY-S240W": { name: "GY-S240W ワイヤレスバーコードスキャナー", summary: "倉庫、出荷、生産現場に対応するクレードル付きコードレス1D/2Dスキャナー。" },
+      "GY-A55-PRO": { name: "GY-A55 Pro 堅牢型PDA", summary: "バーコード、NFC、棚卸、現場データ収集に対応するAndroidハンドヘルド端末。" },
+      "GY-R70-LONGRANGE": { name: "GY-R70 LongRange RFIDハンドヘルド", summary: "倉庫通路、資産、パレット、仕掛品追跡に対応する高出力UHF RFIDハンドヘルド。" },
+      "GY-OPT25": { name: "GY-OPT25 Cマウントレンズ", summary: "マシンビジョンカメラと検査治具に対応する低歪Cマウントレンズ。" },
+      "GY-FB200": { name: "GY-FB200 フレームグラバー", summary: "マルチカメラ画像取得と同期検査構成に対応するPCIe取得ボード。" },
+      "GY-MG50": { name: "GY-MG50 ロボットグリッパーキット", summary: "小型ロボットセル、ピックアンドプレース、検査ハンドリングに対応するコンパクトなグリッパーキット。" },
+      "GY-CAL-GRID": { name: "GY-CAL グリッド校正プレート", summary: "ビジョン設定、測定確認、カメラ位置合わせに対応する校正ターゲット。" },
+      "GY-V240-COLOR": { name: "GY-V240 カラーエリアスキャンカメラ", summary: "検査セル、ロボットガイダンス、測定ステーションに対応するカラーエリアスキャンカメラ。" },
+      "GY-V3D150": { name: "GY-V3D150 3Dプロファイルカメラ", summary: "高さ確認、表面検査、寸法検証に対応する3Dプロファイルカメラ。" },
+      "GY-LDOME120": { name: "GY-LDOME120 ドームライト", summary: "反射部品、曲面、ラベル検査に対応する拡散白色ドームライト。" },
+      "GY-PS60": { name: "GY-PS60 光電センサー", summary: "カートン、トレイ、治具、製品有無検出に対応する光電センサー。" },
+      "GY-S300-DPM": { name: "GY-S300 DPMバーコードスキャナー", summary: "刻印、印刷、低コントラストの生産コードに対応するDPM対応スキャナー。" },
+      "GY-A80-ULTRA": { name: "GY-A80 Ultra 堅牢型PDA", summary: "スキャン頻度の高い倉庫・現場業務に対応する高性能Android PDA。" }
+    }
+  }
+};

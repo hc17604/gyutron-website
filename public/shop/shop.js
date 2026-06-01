@@ -190,6 +190,49 @@ const CATEGORY_META = [
 
 const CART_KEY = "gyutronShopCart";
 
+// Locale-aware product/category copy. GYUTRON_SHOP_LOCALE is set to "de"/"ja"
+// by the build (replacing __SHOP_LOCALE__); on the English source it stays "en"
+// and no translation is applied. Translations come from shop-i18n.js and are
+// applied to whole fields (name/summary/category/leadTime/category text), so
+// product copy is never partially replaced.
+const SHOP_LOCALE = (typeof window !== "undefined" && window.GYUTRON_SHOP_LOCALE) || "en";
+
+(function localizeCatalog() {
+    const data = (typeof window !== "undefined" && window.GYUTRON_SHOP_I18N) || {};
+    const L = data[SHOP_LOCALE];
+    if (!L) return; // English source, or data not loaded
+    SHOP_PRODUCTS.forEach((p) => {
+        const t = L.products && L.products[p.sku];
+        if (t) {
+            if (t.name) p.name = t.name;
+            if (t.summary) p.summary = t.summary;
+        }
+        if (L.category && L.category[p.category]) p.categoryLabel = L.category[p.category];
+        if (L.leadTime && L.leadTime[p.leadTime]) p.leadTime = L.leadTime[p.leadTime];
+    });
+    CATEGORY_META.forEach((c) => {
+        if (L.category && L.category[c.name]) c.label = L.category[c.name];
+        if (L.categoryText && L.categoryText[c.name]) c.text = L.categoryText[c.name];
+    });
+})();
+
+// Display label for a category (translated if available, else canonical name).
+// The canonical English name is kept as the filter/category key so product
+// filtering and ?category= URLs keep working across locales.
+function catLabel(name) {
+    const data = (typeof window !== "undefined" && window.GYUTRON_SHOP_I18N) || {};
+    const L = data[SHOP_LOCALE];
+    return (L && L.category && L.category[name]) || name;
+}
+
+// UI string lookup: returns the locale value for an English UI string, or the
+// English itself on the source locale / when no translation exists.
+function t(s) {
+    const data = (typeof window !== "undefined" && window.GYUTRON_SHOP_I18N) || {};
+    const L = data[SHOP_LOCALE];
+    return (L && L.ui && L.ui[s]) || s;
+}
+
 function money(value) {
     return `$${Number(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
@@ -224,7 +267,7 @@ function addToCart(sku, qty = 1) {
         cart.push({ sku, qty });
     }
     saveCart(cart);
-    showToast(`${product.name} added to cart`);
+    showToast(`${product.name} ${t("added to cart")}`);
 }
 
 function updateCartCount() {
@@ -264,9 +307,9 @@ function productCard(product) {
                     <span class="lead-time">${product.leadTime}</span>
                 </div>
                 <div class="card-actions">
-                    <button class="button button-primary" data-add-cart="${product.sku}">Buy Now</button>
-                    <a class="button button-outline" href="/shop/request-quote.html?sku=${product.sku}">Quote</a>
-                    <a class="button button-soft" href="/shop/contact-engineer.html?sku=${product.sku}">Contact Engineer</a>
+                    <button class="button button-primary" data-add-cart="${product.sku}">${t("Buy Now")}</button>
+                    <a class="button button-outline" href="/shop/request-quote.html?sku=${product.sku}">${t("Quote")}</a>
+                    <a class="button button-soft" href="/shop/contact-engineer.html?sku=${product.sku}">${t("Contact Engineer")}</a>
                 </div>
             </div>
         </article>
@@ -280,11 +323,11 @@ function spotlightCard(product) {
                 <img src="${product.image}" alt="${product.name}" loading="lazy">
             </a>
             <div class="spotlight-body">
-                <span class="spotlight-category">${product.category}</span>
+                <span class="spotlight-category">${catLabel(product.category)}</span>
                 <h3>${product.name}</h3>
                 <div class="spotlight-actions">
-                    <a href="/shop/product.html?sku=${product.sku}">View</a>
-                    <a href="/shop/request-quote.html?sku=${product.sku}">Quote</a>
+                    <a href="/shop/product.html?sku=${product.sku}">${t("View")}</a>
+                    <a href="/shop/request-quote.html?sku=${product.sku}">${t("Quote")}</a>
                 </div>
             </div>
         </article>
@@ -302,9 +345,9 @@ function renderCategories() {
     if (!target) return;
     target.innerHTML = CATEGORY_META.map((category) => `
         <a class="category-card" href="/shop/products.html?category=${encodeURIComponent(category.name)}">
-            <img src="${category.image}" alt="${category.name}" loading="lazy">
+            <img src="${category.image}" alt="${catLabel(category.name)}" loading="lazy">
             <div>
-                <h3>${category.name}</h3>
+                <h3>${catLabel(category.name)}</h3>
                 <p>${category.text}</p>
             </div>
         </a>
@@ -323,7 +366,7 @@ function renderProducts() {
 
     const draw = () => {
         filters.innerHTML = categories.map((category) => `
-            <button class="filter-button ${category === active ? "is-active" : ""}" data-category="${category}">${category}</button>
+            <button class="filter-button ${category === active ? "is-active" : ""}" data-category="${category}">${catLabel(category) !== category ? catLabel(category) : t(category)}</button>
         `).join("");
         const visible = (active === "All Products" ? SHOP_PRODUCTS : SHOP_PRODUCTS.filter((product) => product.category === active))
             .filter((product) => {
@@ -335,7 +378,7 @@ function renderProducts() {
             });
         grid.innerHTML = visible.length
             ? visible.map(productCard).join("")
-            : '<div class="empty-state">No products matched this search. Try another keyword or request a quote.</div>';
+            : `<div class="empty-state">${t("No products matched this search. Try another keyword or request a quote.")}</div>`;
     };
 
     filters.addEventListener("click", (event) => {
@@ -424,18 +467,18 @@ function initSearchSuggestions() {
                 return;
             }
             panel.innerHTML = `
-                <div class="search-suggestion-title">Suggested products</div>
+                <div class="search-suggestion-title">${t("Suggested products")}</div>
                 ${matches.map((product) => `
                     <a class="search-suggestion" role="option" href="/shop/product.html?sku=${encodeURIComponent(product.sku)}">
                         <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy">
                         <span>
                             <strong>${escapeHtml(product.name)}</strong>
-                            <em>${escapeHtml(getSearchPath(product) || "Industrial products")}</em>
+                            <em>${escapeHtml(getSearchPath(product) || t("Industrial products"))}</em>
                             <small>${escapeHtml(product.sku)}</small>
                         </span>
                     </a>
                 `).join("")}
-                <a class="search-suggestion-all" href="/shop/products.html?q=${encodeURIComponent(query)}">Search all results for "${escapeHtml(query)}"</a>
+                <a class="search-suggestion-all" href="/shop/products.html?q=${encodeURIComponent(query)}">${t("searchAll").replace("%s", escapeHtml(query))}</a>
             `;
             panel.hidden = false;
             form.classList.add("has-suggestions");
@@ -527,13 +570,13 @@ function renderProductDetail() {
     if (!target) return;
     const sku = new URLSearchParams(location.search).get("sku") || SHOP_PRODUCTS[0].sku;
     const product = SHOP_PRODUCTS.find((item) => item.sku === sku) || SHOP_PRODUCTS[0];
-    document.title = `${product.name} | GYUTRON Official Store`;
+    document.title = `${product.name} | ${t("GYUTRON Official Store")}`;
     target.innerHTML = `
-        <div class="breadcrumb"><a href="/shop/index.html">Store</a><span>/</span><a href="/shop/products.html?category=${encodeURIComponent(product.category)}">${product.category}</a><span>/</span><span>${product.name}</span></div>
+        <div class="breadcrumb"><a href="/shop/index.html">${t("Store")}</a><span>/</span><a href="/shop/products.html?category=${encodeURIComponent(product.category)}">${catLabel(product.category)}</a><span>/</span><span>${product.name}</span></div>
         <div class="product-detail">
             <div class="detail-media"><img src="${product.image}" alt="${product.name}"></div>
             <div class="detail-info">
-                <span class="eyebrow">${product.category}</span>
+                <span class="eyebrow">${catLabel(product.category)}</span>
                 <h1>${product.name}</h1>
                 <p>${product.summary}</p>
                 <div class="tag-row">${product.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
@@ -542,15 +585,15 @@ function renderProductDetail() {
                     ${Object.entries(product.specs).map(([key, value]) => `<div class="spec-row"><span>${key}</span><span>${value}</span></div>`).join("")}
                 </div>
                 <div class="qty-row">
-                    <label for="qty">Quantity</label>
+                    <label for="qty">${t("Quantity")}</label>
                     <input id="qty" type="number" min="1" value="1">
                 </div>
                 <div class="detail-actions">
-                    <button class="button button-primary" data-detail-add="${product.sku}">Buy Now</button>
-                    <a class="button button-outline" href="/shop/request-quote.html?sku=${product.sku}">Request a Quote</a>
-                    <a class="button button-soft" href="/shop/contact-engineer.html?sku=${product.sku}">Contact Engineer</a>
+                    <button class="button button-primary" data-detail-add="${product.sku}">${t("Buy Now")}</button>
+                    <a class="button button-outline" href="/shop/request-quote.html?sku=${product.sku}">${t("Request a Quote")}</a>
+                    <a class="button button-soft" href="/shop/contact-engineer.html?sku=${product.sku}">${t("Contact Engineer")}</a>
                 </div>
-                <p class="notice" style="margin-top:18px;">Industrial orders may require parameter confirmation, certification checks, stock validation, or lead-time review before shipment.</p>
+                <p class="notice" style="margin-top:18px;">${t("detail.notice")}</p>
             </div>
         </div>
     `;
@@ -562,7 +605,7 @@ function renderCart() {
     if (!list || !summary) return;
     const items = getCartItems();
     if (!items.length) {
-        list.innerHTML = '<div class="empty-state">Your cart is empty. Add sample items or accessories from the official store.</div>';
+        list.innerHTML = `<div class="empty-state">${t("Your cart is empty. Add sample items or accessories from the official store.")}</div>`;
     } else {
         list.innerHTML = items.map(({ product, qty }) => `
             <div class="cart-item" data-cart-row="${product.sku}">
@@ -581,14 +624,14 @@ function renderSummary(target) {
     const items = getCartItems();
     const subtotal = items.reduce((sum, item) => sum + item.product.price * item.qty, 0);
     target.innerHTML = `
-        <h3>Order Summary</h3>
-        <div class="summary-line"><span>Items</span><strong>${items.reduce((sum, item) => sum + item.qty, 0)}</strong></div>
-        <div class="summary-line"><span>Estimated subtotal</span><strong>${money(subtotal)}</strong></div>
-        <div class="summary-line"><span>Shipping</span><strong>Quoted</strong></div>
-        <div class="summary-total"><span>Total before shipping</span><br>${money(subtotal)}</div>
-        <p class="notice">Final shipping, duties, lead time, and certification documents are confirmed before payment capture.</p>
-        <a class="button button-primary" style="width:100%;" href="/shop/checkout.html">Proceed to Checkout</a>
-        <a class="button button-outline" style="width:100%; margin-top:10px;" href="/shop/request-quote.html">Request a Quote</a>
+        <h3>${t("Order Summary")}</h3>
+        <div class="summary-line"><span>${t("Items")}</span><strong>${items.reduce((sum, item) => sum + item.qty, 0)}</strong></div>
+        <div class="summary-line"><span>${t("Estimated subtotal")}</span><strong>${money(subtotal)}</strong></div>
+        <div class="summary-line"><span>${t("Shipping")}</span><strong>${t("Quoted")}</strong></div>
+        <div class="summary-total"><span>${t("Total before shipping")}</span><br>${money(subtotal)}</div>
+        <p class="notice">${t("summary.notice")}</p>
+        <a class="button button-primary" style="width:100%;" href="/shop/checkout.html">${t("Proceed to Checkout")}</a>
+        <a class="button button-outline" style="width:100%; margin-top:10px;" href="/shop/request-quote.html">${t("Request a Quote")}</a>
     `;
 }
 

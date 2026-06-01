@@ -2,7 +2,7 @@
     {
         sku: "GY-CV220-INLINE",
         name: "GY-CV220 Inline Vision Camera",
-        category: "産業用カメラ",
+        category: "Industrial Cameras",
         price: 489,
         leadTime: "Ships in 5-8 days",
         image: "/product-images/gy-cv220-inline.png",
@@ -12,19 +12,19 @@
     },
     {
         sku: "GY-LB220",
-        name: "GY-LB220 マシンビジョン Bar Light",
-        category: "画像処理用照明",
+        name: "GY-LB220 Machine Vision Bar Light",
+        category: "Vision Lighting",
         price: 129,
         leadTime: "Ships in 3-6 days",
         image: "/product-images/gy-lb220.png",
         summary: "White-light industrial bar light for stable image capture on inspection stations.",
-        tags: ["白色LED", "24 VDC", "Strobe ready"],
+        tags: ["White LED", "24 VDC", "Strobe ready"],
         specs: { Length: "220 mm", Color: "White", Power: "24 VDC", Mount: "T-slot bracket" }
     },
     {
         sku: "GY-PR12",
         name: "GY-PR12 Inductive Proximity Sensor",
-        category: "センサー",
+        category: "Sensors",
         price: 42,
         leadTime: "In stock",
         image: "/product-images/gy-pr12.png",
@@ -35,18 +35,18 @@
     {
         sku: "GY-S240W",
         name: "GY-S240W Wireless Barcode Scanner",
-        category: "バーコードスキャナー",
+        category: "Barcode Scanners",
         price: 168,
         leadTime: "Ships in 3-6 days",
         image: "/product-images/gy-s240w.png",
         summary: "Cordless 1D/2D scanner with cradle for warehouse, shipping, and production benches.",
-        tags: ["1D/2D", "Bluetooth", "充電クレードル"],
+        tags: ["1D/2D", "Bluetooth", "Cradle"],
         specs: { Scan: "1D/2D area imager", Link: "2.4G / Bluetooth", Range: "Up to 80 m", Rugged: "IP54 / 1.5 m" }
     },
     {
         sku: "GY-A55-PRO",
-        name: "GY-A55 Pro 堅牢型PDA",
-        category: "堅牢型PDA",
+        name: "GY-A55 Pro Rugged PDA",
+        category: "Rugged PDA",
         price: 429,
         leadTime: "Ships in 7-10 days",
         image: "/product-images/gy-a55-pro.png",
@@ -57,29 +57,29 @@
     {
         sku: "GY-R70-LONGRANGE",
         name: "GY-R70 LongRange RFID Handheld",
-        category: "堅牢型PDA",
+        category: "Rugged PDA",
         price: 899,
         leadTime: "Quote lead time",
         image: "/product-images/gy-r70-longrange.png",
         summary: "High-power UHF RFID handheld for warehouse aisles, assets, pallets, and WIP tracking.",
-        tags: ["UHF RFID", "Android", "長距離"],
+        tags: ["UHF RFID", "Android", "Long range"],
         specs: { OS: "Android 14", RFID: "UHF up to 12 m", Scan: "2D + DPM option", Rugged: "IP67 / 1.8 m" }
     },
     {
         sku: "GY-OPT25",
         name: "GY-OPT25 C-Mount Lens",
-        category: "レンズ",
+        category: "Lenses",
         price: 96,
         leadTime: "In stock",
         image: "/product-images/gy-opt25.png",
         summary: "Low-distortion C-mount lens for machine vision cameras and inspection fixtures.",
-        tags: ["25 mm", "C-mount", "低歪み"],
+        tags: ["25 mm", "C-mount", "Low distortion"],
         specs: { Focal: "25 mm", Mount: "C-mount", Format: "2/3 in", Iris: "Manual" }
     },
     {
         sku: "GY-FB200",
         name: "GY-FB200 Frame Grabber",
-        category: "画像取得ボード",
+        category: "Acquisition Cards",
         price: 359,
         leadTime: "Ships in 5-8 days",
         image: "/product-images/gy-fb200.png",
@@ -90,40 +90,40 @@
     {
         sku: "GY-MG50",
         name: "GY-MG50 Robot Gripper Kit",
-        category: "ロボットアクセサリ",
+        category: "Robot Accessories",
         price: 245,
         leadTime: "Ships in 7-12 days",
         image: "/product-images/gy-mg50.png",
         summary: "Compact gripper kit for small robot cells, pick-and-place, and inspection handling.",
-        tags: ["Robot EOAT", "24 VDC", "治具対応"],
+        tags: ["Robot EOAT", "24 VDC", "Fixture ready"],
         specs: { Stroke: "50 mm", Payload: "Light parts", Control: "24 VDC I/O", Mount: "Adapter plate" }
     },
     {
         sku: "GY-CAL-GRID",
         name: "GY-CAL Grid Calibration Plate",
-        category: "試験・測定機器",
+        category: "Test Equipment",
         price: 78,
         leadTime: "In stock",
         image: "/product-images/gy-cal-grid.png",
         summary: "Calibration target for vision setup, measurement checks, and camera alignment routines.",
-        tags: ["Calibration", "画像処理設定", "Glass plate"],
+        tags: ["Calibration", "Vision setup", "Glass plate"],
         specs: { Pattern: "Grid", Size: "120 x 120 mm", Material: "Glass", Use: "Camera calibration" }
     },
     {
         sku: "GY-V240-COLOR",
         name: "GY-V240 Color Area Scan Camera",
-        category: "産業用カメラ",
+        category: "Industrial Cameras",
         price: 536,
         leadTime: "Quote lead time",
         image: "/product-images/gy-v240-color.png",
         summary: "Color area-scan camera for inspection cells, robot guidance, and measurement stations.",
         tags: ["Color CMOS", "GigE", "Trigger I/O"],
-        specs: { Sensor: "2.4 MP color", Interface: "GigE Vision", Shutter: "グローバルシャッター", Use: "Inspection cells" }
+        specs: { Sensor: "2.4 MP color", Interface: "GigE Vision", Shutter: "Global shutter", Use: "Inspection cells" }
     },
     {
         sku: "GY-V3D150",
         name: "GY-V3D150 3D Profiling Camera",
-        category: "産業用カメラ",
+        category: "Industrial Cameras",
         price: 1280,
         leadTime: "Quote lead time",
         image: "/product-images/gy-v3d150.png",
@@ -134,40 +134,40 @@
     {
         sku: "GY-LDOME120",
         name: "GY-LDOME120 Dome Light",
-        category: "画像処理用照明",
+        category: "Vision Lighting",
         price: 188,
         leadTime: "Ships in 5-8 days",
         image: "/product-images/gy-ldome120.png",
         summary: "Diffuse white dome light for reflective parts, curved surfaces, and label inspection.",
-        tags: ["Diffuse", "白色LED", "24 VDC"],
+        tags: ["Diffuse", "White LED", "24 VDC"],
         specs: { Type: "Dome", Diameter: "120 mm", Color: "White", Use: "Reflective surfaces" }
     },
     {
         sku: "GY-PS60",
         name: "GY-PS60 Photoelectric Sensor",
-        category: "センサー",
+        category: "Sensors",
         price: 58,
         leadTime: "In stock",
         image: "/product-images/gy-ps60.png",
-        summary: "光電センサー for cartons, trays, fixtures, and product presence detection.",
+        summary: "Photoelectric sensor for cartons, trays, fixtures, and product presence detection.",
         tags: ["Photoelectric", "IP67", "Fast response"],
         specs: { Type: "Diffuse / retroreflective", Range: "60 cm class", Output: "PNP/NPN", Rating: "IP67" }
     },
     {
         sku: "GY-S300-DPM",
         name: "GY-S300 DPM Barcode Scanner",
-        category: "バーコードスキャナー",
+        category: "Barcode Scanners",
         price: 328,
         leadTime: "Ships in 5-8 days",
         image: "/product-images/gy-s300-dpm.png",
         summary: "DPM-ready scanner for etched, printed, and low-contrast production codes.",
         tags: ["DPM", "1D/2D", "Factory floor"],
-        specs: { Scan: "1D/2D + DPM", Lighting: "Integrated", Interface: "USB / RS232", Use: "トレーサビリティ" }
+        specs: { Scan: "1D/2D + DPM", Lighting: "Integrated", Interface: "USB / RS232", Use: "Traceability" }
     },
     {
         sku: "GY-A80-ULTRA",
-        name: "GY-A80 Ultra 堅牢型PDA",
-        category: "堅牢型PDA",
+        name: "GY-A80 Ultra Rugged PDA",
+        category: "Rugged PDA",
         price: 612,
         leadTime: "Quote lead time",
         image: "/product-images/gy-a80-ultra.png",
@@ -178,17 +178,60 @@
 ];
 
 const CATEGORY_META = [
-    { name: "産業用カメラ", image: "/product-hero-area-scan-cameras-matrix.png", text: "検査、ガイダンス、コード検証のためのスマートカメラ・エリアスキャンカメラ。" },
-    { name: "画像処理用照明", image: "/product-hero-vision-lighting-matrix.png", text: "安定した画像取得のための白色バー・リング・ドーム・バックライト照明。" },
-    { name: "センサー", image: "/product-hero-industrial-sensors-matrix.png", text: "工場設備向けの有無・距離・環境・プロセスセンシング。" },
-    { name: "バーコードスキャナー", image: "/product-hero-barcode-scanners-matrix.png", text: "倉庫・生産のトレーサビリティ向けのハンディおよび固定式バーコード読み取り。" },
-    { name: "堅牢型PDA", image: "/product-hero-android-pda-matrix.png", text: "産業用モバイルデータ収集のためのAndroid PDA・RFIDハンドヘルド。" },
-    { name: "レンズ", image: "/product-images/gy-opt25.png", text: "マシンビジョンシステム向けのCマウント光学部品・検査アクセサリ。" },
-    { name: "画像取得ボード", image: "/product-images/gy-fb200.png", text: "検査用PC向けのフレームグラバーと同期取得ハードウェア。" },
-    { name: "ロボットアクセサリ", image: "/product-images/gy-mg50.png", text: "産業オートメーション案件向けのグリッパー、マウント、セルアクセサリ。" }
+    { name: "Industrial Cameras", image: "/product-hero-area-scan-cameras-matrix.png", text: "Smart and area-scan cameras for inspection, guidance, and code verification." },
+    { name: "Vision Lighting", image: "/product-hero-vision-lighting-matrix.png", text: "White-light bar, ring, dome, and back lights for stable image capture." },
+    { name: "Sensors", image: "/product-hero-industrial-sensors-matrix.png", text: "Presence, distance, environmental, and process sensing for factory equipment." },
+    { name: "Barcode Scanners", image: "/product-hero-barcode-scanners-matrix.png", text: "Handheld and fixed barcode reading for warehouse and production traceability." },
+    { name: "Rugged PDA", image: "/product-hero-android-pda-matrix.png", text: "Android PDA and RFID handhelds for industrial mobile data capture." },
+    { name: "Lenses", image: "/product-images/gy-opt25.png", text: "C-mount optics and inspection accessories for machine vision systems." },
+    { name: "Acquisition Cards", image: "/product-images/gy-fb200.png", text: "Frame grabbers and synchronized capture hardware for inspection PCs." },
+    { name: "Robot Accessories", image: "/product-images/gy-mg50.png", text: "Grippers, mounts, and cell accessories for industrial automation projects." }
 ];
 
-const CART_KEY = "gyutronShopカート";
+const CART_KEY = "gyutronShopCart";
+
+// Locale-aware product/category copy. GYUTRON_SHOP_LOCALE is set to "de"/"ja"
+// by the build (replacing __SHOP_LOCALE__); on the English source it stays "en"
+// and no translation is applied. Translations come from shop-i18n.js and are
+// applied to whole fields (name/summary/category/leadTime/category text), so
+// product copy is never partially replaced.
+const SHOP_LOCALE = (typeof window !== "undefined" && window.GYUTRON_SHOP_LOCALE) || "en";
+
+(function localizeCatalog() {
+    const data = (typeof window !== "undefined" && window.GYUTRON_SHOP_I18N) || {};
+    const L = data[SHOP_LOCALE];
+    if (!L) return; // English source, or data not loaded
+    SHOP_PRODUCTS.forEach((p) => {
+        const t = L.products && L.products[p.sku];
+        if (t) {
+            if (t.name) p.name = t.name;
+            if (t.summary) p.summary = t.summary;
+        }
+        if (L.category && L.category[p.category]) p.categoryLabel = L.category[p.category];
+        if (L.leadTime && L.leadTime[p.leadTime]) p.leadTime = L.leadTime[p.leadTime];
+    });
+    CATEGORY_META.forEach((c) => {
+        if (L.category && L.category[c.name]) c.label = L.category[c.name];
+        if (L.categoryText && L.categoryText[c.name]) c.text = L.categoryText[c.name];
+    });
+})();
+
+// Display label for a category (translated if available, else canonical name).
+// The canonical English name is kept as the filter/category key so product
+// filtering and ?category= URLs keep working across locales.
+function catLabel(name) {
+    const data = (typeof window !== "undefined" && window.GYUTRON_SHOP_I18N) || {};
+    const L = data[SHOP_LOCALE];
+    return (L && L.category && L.category[name]) || name;
+}
+
+// UI string lookup: returns the locale value for an English UI string, or the
+// English itself on the source locale / when no translation exists.
+function t(s) {
+    const data = (typeof window !== "undefined" && window.GYUTRON_SHOP_I18N) || {};
+    const L = data[SHOP_LOCALE];
+    return (L && L.ui && L.ui[s]) || s;
+}
 
 function money(value) {
     return `$${Number(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -224,7 +267,7 @@ function addToCart(sku, qty = 1) {
         cart.push({ sku, qty });
     }
     saveCart(cart);
-    showToast(`${product.name} added to cart`);
+    showToast(`${product.name} ${t("added to cart")}`);
 }
 
 function updateCartCount() {
@@ -264,9 +307,9 @@ function productCard(product) {
                     <span class="lead-time">${product.leadTime}</span>
                 </div>
                 <div class="card-actions">
-                    <button class="button button-primary" data-add-cart="${product.sku}">今すぐ購入</button>
-                    <a class="button button-outline" href="/ja/shop/request-quote.html?sku=${product.sku}">見積</a>
-                    <a class="button button-soft" href="/ja/shop/contact-engineer.html?sku=${product.sku}">技術担当に相談</a>
+                    <button class="button button-primary" data-add-cart="${product.sku}">${t("Buy Now")}</button>
+                    <a class="button button-outline" href="/ja/shop/request-quote.html?sku=${product.sku}">${t("Quote")}</a>
+                    <a class="button button-soft" href="/ja/shop/contact-engineer.html?sku=${product.sku}">${t("Contact Engineer")}</a>
                 </div>
             </div>
         </article>
@@ -280,11 +323,11 @@ function spotlightCard(product) {
                 <img src="${product.image}" alt="${product.name}" loading="lazy">
             </a>
             <div class="spotlight-body">
-                <span class="spotlight-category">${product.category}</span>
+                <span class="spotlight-category">${catLabel(product.category)}</span>
                 <h3>${product.name}</h3>
                 <div class="spotlight-actions">
-                    <a href="/ja/shop/product.html?sku=${product.sku}">詳細</a>
-                    <a href="/ja/shop/request-quote.html?sku=${product.sku}">見積</a>
+                    <a href="/ja/shop/product.html?sku=${product.sku}">${t("View")}</a>
+                    <a href="/ja/shop/request-quote.html?sku=${product.sku}">${t("Quote")}</a>
                 </div>
             </div>
         </article>
@@ -302,9 +345,9 @@ function renderCategories() {
     if (!target) return;
     target.innerHTML = CATEGORY_META.map((category) => `
         <a class="category-card" href="/ja/shop/products.html?category=${encodeURIComponent(category.name)}">
-            <img src="${category.image}" alt="${category.name}" loading="lazy">
+            <img src="${category.image}" alt="${catLabel(category.name)}" loading="lazy">
             <div>
-                <h3>${category.name}</h3>
+                <h3>${catLabel(category.name)}</h3>
                 <p>${category.text}</p>
             </div>
         </a>
@@ -317,15 +360,15 @@ function renderProducts() {
     if (!grid || !filters) return;
 
     const params = new URLSearchParams(location.search);
-    let active = params.get("category") || "すべての製品";
+    let active = params.get("category") || "All Products";
     const query = (params.get("q") || "").trim().toLowerCase();
-    const categories = ["すべての製品", ...CATEGORY_META.map((item) => item.name), "試験・測定機器"];
+    const categories = ["All Products", ...CATEGORY_META.map((item) => item.name), "Test Equipment"];
 
     const draw = () => {
         filters.innerHTML = categories.map((category) => `
-            <button class="filter-button ${category === active ? "is-active" : ""}" data-category="${category}">${category}</button>
+            <button class="filter-button ${category === active ? "is-active" : ""}" data-category="${category}">${catLabel(category) !== category ? catLabel(category) : t(category)}</button>
         `).join("");
-        const visible = (active === "すべての製品" ? SHOP_PRODUCTS : SHOP_PRODUCTS.filter((product) => product.category === active))
+        const visible = (active === "All Products" ? SHOP_PRODUCTS : SHOP_PRODUCTS.filter((product) => product.category === active))
             .filter((product) => {
                 if (!query) return true;
                 return [product.sku, product.name, product.category, product.summary, ...product.tags]
@@ -335,14 +378,14 @@ function renderProducts() {
             });
         grid.innerHTML = visible.length
             ? visible.map(productCard).join("")
-            : '<div class="empty-state">この検索に一致する製品はありません。別のキーワードでお試しいただくか、見積をご依頼ください。</div>';
+            : `<div class="empty-state">${t("No products matched this search. Try another keyword or request a quote.")}</div>`;
     };
 
     filters.addEventListener("click", (event) => {
         const button = event.target.closest("[data-category]");
         if (!button) return;
         active = button.dataset.category;
-        history.replaceState(null, "", active === "すべての製品" ? "/ja/shop/products.html" : `/ja/shop/products.html?category=${encodeURIComponent(active)}`);
+        history.replaceState(null, "", active === "All Products" ? "/ja/shop/products.html" : `/ja/shop/products.html?category=${encodeURIComponent(active)}`);
         draw();
     });
 
@@ -424,18 +467,18 @@ function initSearchSuggestions() {
                 return;
             }
             panel.innerHTML = `
-                <div class="search-suggestion-title">おすすめ製品</div>
+                <div class="search-suggestion-title">${t("Suggested products")}</div>
                 ${matches.map((product) => `
                     <a class="search-suggestion" role="option" href="/ja/shop/product.html?sku=${encodeURIComponent(product.sku)}">
                         <img src="${product.image}" alt="${escapeHtml(product.name)}" loading="lazy">
                         <span>
                             <strong>${escapeHtml(product.name)}</strong>
-                            <em>${escapeHtml(getSearchPath(product) || "Industrial products")}</em>
+                            <em>${escapeHtml(getSearchPath(product) || t("Industrial products"))}</em>
                             <small>${escapeHtml(product.sku)}</small>
                         </span>
                     </a>
                 `).join("")}
-                <a class="search-suggestion-all" href="/ja/shop/products.html?q=${encodeURIComponent(query)}">Search all results for "${escapeHtml(query)}"</a>
+                <a class="search-suggestion-all" href="/ja/shop/products.html?q=${encodeURIComponent(query)}">${t("searchAll").replace("%s", escapeHtml(query))}</a>
             `;
             panel.hidden = false;
             form.classList.add("has-suggestions");
@@ -479,22 +522,22 @@ function initStoreMobileMenu() {
 
     const panel = document.createElement("aside");
     panel.className = "store-mobile-panel";
-    panel.setAttribute("aria-label", "ストアメニュー");
+    panel.setAttribute("aria-label", "Store menu");
     panel.innerHTML = `
-        <div class="store-mobile-section">ストア</div>
-        <a href="/ja/shop/products.html">製品 <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/request-quote.html">見積依頼 <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/contact-engineer.html">技術担当に相談 <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/account.html">アカウント登録 <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/cart.html">カート <i class="fa-solid fa-chevron-right"></i></a>
-        <div class="store-mobile-section">製品カテゴリ</div>
+        <div class="store-mobile-section">Store</div>
+        <a href="/ja/shop/products.html">Products <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/ja/shop/request-quote.html">Request Quote <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/ja/shop/contact-engineer.html">Contact Engineer <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/ja/shop/account.html">Account Registration <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/ja/shop/cart.html">Cart <i class="fa-solid fa-chevron-right"></i></a>
+        <div class="store-mobile-section">Product Categories</div>
         ${CATEGORY_META.map((category) => `<a href="/ja/shop/products.html?category=${encodeURIComponent(category.name)}">${category.name} <i class="fa-solid fa-chevron-right"></i></a>`).join("")}
-        <div class="store-mobile-section">会社名 & ポリシー</div>
-        <a href="https://www.gyutron.com/">ブランドサイト <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/about-us.html">会社概要 <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/contact-us.html">お問い合わせ <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/shipping-policy.html">配送ポリシー <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/warranty-policy.html">保証ポリシー <i class="fa-solid fa-chevron-right"></i></a>
+        <div class="store-mobile-section">Company & Policies</div>
+        <a href="https://www.gyutron.com/">Brand Site <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/ja/shop/about-us.html">About Us <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/ja/shop/contact-us.html">Contact Us <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/ja/shop/shipping-policy.html">Shipping Policy <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="/ja/shop/warranty-policy.html">Warranty Policy <i class="fa-solid fa-chevron-right"></i></a>
     `;
     document.body.appendChild(panel);
 
@@ -527,13 +570,13 @@ function renderProductDetail() {
     if (!target) return;
     const sku = new URLSearchParams(location.search).get("sku") || SHOP_PRODUCTS[0].sku;
     const product = SHOP_PRODUCTS.find((item) => item.sku === sku) || SHOP_PRODUCTS[0];
-    document.title = `${product.name} | GYUTRON 公式ストア`;
+    document.title = `${product.name} | ${t("GYUTRON Official Store")}`;
     target.innerHTML = `
-        <div class="breadcrumb"><a href="/ja/shop/index.html">ストア</a><span>/</span><a href="/ja/shop/products.html?category=${encodeURIComponent(product.category)}">${product.category}</a><span>/</span><span>${product.name}</span></div>
+        <div class="breadcrumb"><a href="/ja/shop/index.html">${t("Store")}</a><span>/</span><a href="/ja/shop/products.html?category=${encodeURIComponent(product.category)}">${catLabel(product.category)}</a><span>/</span><span>${product.name}</span></div>
         <div class="product-detail">
             <div class="detail-media"><img src="${product.image}" alt="${product.name}"></div>
             <div class="detail-info">
-                <span class="eyebrow">${product.category}</span>
+                <span class="eyebrow">${catLabel(product.category)}</span>
                 <h1>${product.name}</h1>
                 <p>${product.summary}</p>
                 <div class="tag-row">${product.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
@@ -542,15 +585,15 @@ function renderProductDetail() {
                     ${Object.entries(product.specs).map(([key, value]) => `<div class="spec-row"><span>${key}</span><span>${value}</span></div>`).join("")}
                 </div>
                 <div class="qty-row">
-                    <label for="qty">数量</label>
+                    <label for="qty">${t("Quantity")}</label>
                     <input id="qty" type="number" min="1" value="1">
                 </div>
                 <div class="detail-actions">
-                    <button class="button button-primary" data-detail-add="${product.sku}">今すぐ購入</button>
-                    <a class="button button-outline" href="/ja/shop/request-quote.html?sku=${product.sku}">見積を依頼</a>
-                    <a class="button button-soft" href="/ja/shop/contact-engineer.html?sku=${product.sku}">技術担当に相談</a>
+                    <button class="button button-primary" data-detail-add="${product.sku}">${t("Buy Now")}</button>
+                    <a class="button button-outline" href="/ja/shop/request-quote.html?sku=${product.sku}">${t("Request a Quote")}</a>
+                    <a class="button button-soft" href="/ja/shop/contact-engineer.html?sku=${product.sku}">${t("Contact Engineer")}</a>
                 </div>
-                <p class="notice" style="margin-top:18px;">産業向け注文では、出荷前にパラメータ確認、認証チェック、在庫確認、納期確認が必要な場合があります。</p>
+                <p class="notice" style="margin-top:18px;">${t("detail.notice")}</p>
             </div>
         </div>
     `;
@@ -562,13 +605,13 @@ function renderCart() {
     if (!list || !summary) return;
     const items = getCartItems();
     if (!items.length) {
-        list.innerHTML = '<div class="empty-state">カートは空です。公式ストアからサンプル品やアクセサリを追加してください。</div>';
+        list.innerHTML = `<div class="empty-state">${t("Your cart is empty. Add sample items or accessories from the official store.")}</div>`;
     } else {
         list.innerHTML = items.map(({ product, qty }) => `
             <div class="cart-item" data-cart-row="${product.sku}">
                 <img src="${product.image}" alt="${product.name}">
                 <div><h3>${product.name}</h3><p>${product.sku}</p></div>
-                <input type="number" min="1" value="${qty}" data-cart-qty="${product.sku}" aria-label="数量 for ${product.name}">
+                <input type="number" min="1" value="${qty}" data-cart-qty="${product.sku}" aria-label="Quantity for ${product.name}">
                 <strong class="line-total">${money(product.price * qty)}</strong>
                 <button class="icon-button" data-remove="${product.sku}" aria-label="Remove ${product.name}"><i class="fa-solid fa-xmark"></i></button>
             </div>
@@ -581,14 +624,14 @@ function renderSummary(target) {
     const items = getCartItems();
     const subtotal = items.reduce((sum, item) => sum + item.product.price * item.qty, 0);
     target.innerHTML = `
-        <h3>注文サマリー</h3>
-        <div class="summary-line"><span>点数</span><strong>${items.reduce((sum, item) => sum + item.qty, 0)}</strong></div>
-        <div class="summary-line"><span>小計(概算)</span><strong>${money(subtotal)}</strong></div>
-        <div class="summary-line"><span>配送</span><strong>見積対応</strong></div>
-        <div class="summary-total"><span>送料を除く合計</span><br>${money(subtotal)}</div>
-        <p class="notice">最終的な送料、関税、納期、認証文書は決済処理の前に確定します。</p>
-        <a class="button button-primary" style="width:100%;" href="/ja/shop/checkout.html">購入手続きへ進む</a>
-        <a class="button button-outline" style="width:100%; margin-top:10px;" href="/ja/shop/request-quote.html">見積を依頼</a>
+        <h3>${t("Order Summary")}</h3>
+        <div class="summary-line"><span>${t("Items")}</span><strong>${items.reduce((sum, item) => sum + item.qty, 0)}</strong></div>
+        <div class="summary-line"><span>${t("Estimated subtotal")}</span><strong>${money(subtotal)}</strong></div>
+        <div class="summary-line"><span>${t("Shipping")}</span><strong>${t("Quoted")}</strong></div>
+        <div class="summary-total"><span>${t("Total before shipping")}</span><br>${money(subtotal)}</div>
+        <p class="notice">${t("summary.notice")}</p>
+        <a class="button button-primary" style="width:100%;" href="/ja/shop/checkout.html">${t("Proceed to Checkout")}</a>
+        <a class="button button-outline" style="width:100%; margin-top:10px;" href="/ja/shop/request-quote.html">${t("Request a Quote")}</a>
     `;
 }
 
@@ -641,8 +684,8 @@ function handleForms() {
         form.addEventListener("submit", (event) => {
             event.preventDefault();
             const message = form.classList.contains("account-card")
-                ? "アカウント依頼をローカルに保存しました。公開前にアカウント登録をコマースプラットフォームに接続してください。"
-                : "依頼をローカルに保存しました。公開前にこのフォームをコマースプラットフォームまたはCRMに接続してください。";
+                ? "Account request saved locally. Connect account registration to the commerce platform before launch."
+                : "Request saved locally. Connect this form to the commerce platform or CRM before launch.";
             showToast(message);
             form.reset();
             prefillSku();
