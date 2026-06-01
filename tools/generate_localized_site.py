@@ -651,6 +651,8 @@ def generate_shop() -> None:
 
 def main() -> None:
     for page in PAGE_FILES:
+        if _template_owned(page):
+            continue  # owned by build_i18n.py (new key pipeline)
         path = ROOT / page
         if not path.exists():
             continue
@@ -666,6 +668,8 @@ def main() -> None:
         locale_dir = ROOT / folder
         locale_dir.mkdir(exist_ok=True)
         for page in PAGE_FILES:
+            if _template_owned(page):
+                continue  # owned by build_i18n.py (new key pipeline)
             source_path = ROOT / page
             if not source_path.exists():
                 continue

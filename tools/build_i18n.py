@@ -45,6 +45,7 @@ CONFIG = {
 }
 
 SHOP_HOST = "https://shop.gyutron.com"
+WWW_HOST = "https://www.gyutron.com"
 
 # Professional Japanese font stack (Noto Sans JP + system fallback, 1.7 line
 # height, sensible weights). Injected only on ja pages via {{locale.fonts}}.
@@ -79,15 +80,21 @@ LANG_DIRECTIVE = re.compile(r"\{\{locale\.(lang|og|base|fonts)\}\}")
 CANONICAL_DIRECTIVE = re.compile(r"\{\{locale\.canonical:([^}]+)\}\}")
 LANGSWITCH_DIRECTIVE = re.compile(r"\{\{locale\.langswitch(?::([^}]+))?\}\}")
 ALTERNATES_DIRECTIVE = re.compile(r"\{\{locale\.alternates\}\}")
+# Main-site directives (relative paths + <base href="../">, www host, mega-menu
+# language switch). These regexes never match shop templates, so they are no-ops
+# there — the shop render path stays byte-identical.
+PATH_DIRECTIVE = re.compile(r"\{\{locale\.path\}\}")
+BASETAG_DIRECTIVE = re.compile(r"\{\{locale\.basetag\}\}")
+MAINLANGSWITCH_DIRECTIVE = re.compile(r"\{\{locale\.mainlangswitch\.(mobile|desktop)(?::([^}]+))?\}\}")
 
 
-def alternates_block(page_path: str, active: str) -> str:
+def alternates_block(page_path: str, active: str, host: str = SHOP_HOST) -> str:
     """canonical + hreflang(en/de/ja/x-default) for the CURRENT page, so the
     shared <head> partial needs no per-page parameters."""
-    lines = [f'<link rel="canonical" href="{SHOP_HOST}{CONFIG[active]["base"]}{page_path}">']
+    lines = [f'<link rel="canonical" href="{host}{CONFIG[active]["base"]}{page_path}">']
     for code, conf in CONFIG.items():
-        lines.append(f'    <link rel="alternate" hreflang="{conf["lang"]}" href="{SHOP_HOST}{conf["base"]}{page_path}">')
-    lines.append(f'    <link rel="alternate" hreflang="x-default" href="{SHOP_HOST}{page_path}">')
+        lines.append(f'    <link rel="alternate" hreflang="{conf["lang"]}" href="{host}{conf["base"]}{page_path}">')
+    lines.append(f'    <link rel="alternate" hreflang="x-default" href="{host}{page_path}">')
     return "\n".join(lines)
 
 
@@ -108,15 +115,54 @@ def shop_language_switch(active: str, page: str) -> str:
     return "\n".join(lines)
 
 
+# Main-site language switcher. aria labels are localized per the ACTIVE locale,
+# matching the legacy generator's LANGUAGE_ARIA so output stays byte-identical.
+MAIN_LANGUAGE_ARIA = {
+    "en": ("Language and region selector", "Language options"),
+    "de": ("Sprache und Region auswählen", "Sprachoptionen"),
+    "ja": ("言語と地域を選択", "言語オプション"),
+}
+
+
+def main_language_switch(active: str, page: str, variant: str) -> str:
+    """Main-site language switcher (mobile/desktop). Hrefs are locale-invariant
+    (en bare, de/ja dir-prefixed; resolved via <base href="../"> on de/ja pages);
+    only aria-current moves to the active locale. The first line carries no indent
+    — the template supplies it (same convention as shop_language_switch)."""
+    mobile = variant == "mobile"
+    base = 12 if mobile else 16
+    cls = "language-switch-mobile" if mobile else "language-switch-desktop"
+    icon_cls = "language-icon-mobile" if mobile else "language-icon-desktop"
+    aria_label, menu_label = MAIN_LANGUAGE_ARIA.get(active, MAIN_LANGUAGE_ARIA["en"])
+    i = " " * base
+    lines = [
+        f'<div class="language-switch {cls}">',
+        f'{i}    <button class="language-icon {icon_cls}" type="button" aria-label="{aria_label}" aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>',
+        f'{i}    <div class="language-menu" aria-label="{menu_label}">',
+    ]
+    for prefix, label, short, code in (("", "English", "EN", "en"), ("de/", "Deutsch", "DE", "de"), ("ja/", "日本語", "JA", "ja")):
+        cur = ' aria-current="page"' if code == active else ""
+        lines.append(f'{i}        <a href="{prefix}{page}"{cur}>{label} <span>{short}</span></a>')
+    lines += [f'{i}    </div>', f'{i}</div>']
+    return "\n".join(lines)
+
+
 def apply_locale_directives(text: str, loc_code: str, rel: str = "") -> str:
     conf = CONFIG[loc_code]
     page_file = Path(rel).name if rel else "index.html"
     page_path = "/" + rel if rel else ""
+    is_shop = bool(Path(rel).parts) and Path(rel).parts[0] == "shop"
+    host = SHOP_HOST if is_shop else WWW_HOST
     text = LANG_DIRECTIVE.sub(lambda m: {"lang": conf["lang"], "og": conf["og"],
                                           "base": conf["base"],
                                           "fonts": JA_FONTS if loc_code == "ja" else ""}[m.group(1)], text)
-    text = CANONICAL_DIRECTIVE.sub(lambda m: f'{SHOP_HOST}{conf["base"]}{m.group(1)}', text)
-    text = ALTERNATES_DIRECTIVE.sub(lambda m: alternates_block(page_path, loc_code), text)
+    # Main-site directives (no-ops on shop templates, which never use them).
+    text = PATH_DIRECTIVE.sub(lambda m: f'{conf["dir"]}/' if conf["dir"] else "", text)
+    text = BASETAG_DIRECTIVE.sub(lambda m: '\n    <base href="../">' if conf["dir"] else "", text)
+    text = MAINLANGSWITCH_DIRECTIVE.sub(
+        lambda m: main_language_switch(loc_code, m.group(2) or page_file, m.group(1)), text)
+    text = CANONICAL_DIRECTIVE.sub(lambda m: f'{host}{conf["base"]}{m.group(1)}', text)
+    text = ALTERNATES_DIRECTIVE.sub(lambda m: alternates_block(page_path, loc_code, host), text)
     text = LANGSWITCH_DIRECTIVE.sub(lambda m: shop_language_switch(loc_code, m.group(1) or page_file), text)
     return text
 
