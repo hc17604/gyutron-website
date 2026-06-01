@@ -938,6 +938,18 @@ h1 {
     grid-template-columns: 1fr 1fr;
 }
 
+/* In-card action buttons hold longer labels in German/Japanese (ANSEHEN /
+ * ANGEBOT, 詳細 / 見積) than the English "View / Quote" they were sized for.
+ * Tighten font-size, side padding and tracking so labels never crowd or
+ * overflow the button; min-width:0 lets a grid-cell button shrink. */
+.card-actions .button {
+    font-size: 12px;
+    padding: 0 10px;
+    gap: 6px;
+    letter-spacing: 0.01em;
+    min-width: 0;
+}
+
 .card-actions .button:first-child {
     grid-column: 1 / -1;
 }
@@ -1662,6 +1674,9 @@ h1 {
         font-size: 11px;
         min-height: 36px;
         padding: 8px 6px;
+        letter-spacing: 0.01em;
+        gap: 5px;
+        min-width: 0;
     }
 
     .card-actions .button:first-child {
@@ -2270,6 +2285,9 @@ h1 {
         font-size: 10px;
         min-height: 34px;
         padding: 8px 6px;
+        letter-spacing: 0.01em;
+        gap: 5px;
+        min-width: 0;
     }
 
     .card-actions .button:first-child {
