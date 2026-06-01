@@ -1097,67 +1097,43 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 800;
     gap: 8px;
     margin-bottom: 26px;
 }
 
-.breadcrumb a {
-    color: var(--muted);
-    transition: color 160ms ease;
-}
-
-.breadcrumb a:hover {
-    color: var(--purple);
-}
-
 .product-detail {
     display: grid;
-    gap: 48px;
+    gap: 42px;
     grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
 }
 
-/* Media panel: soft rounded card with a subtle gradient + shadow, and the image
- * gently floated. Reads premium rather than a flat grey box. */
 .detail-media {
     align-items: center;
-    background: radial-gradient(120% 120% at 50% 18%, #ffffff 0%, var(--soft) 70%, #efe9f7 100%);
+    background: var(--soft);
     border: 1px solid var(--line);
-    border-radius: 18px;
-    box-shadow: 0 20px 48px rgba(31, 11, 53, 0.10);
     display: flex;
     min-height: 520px;
     justify-content: center;
-    padding: 44px;
-    position: sticky;
-    top: 132px;
+    padding: 36px;
 }
 
 .detail-media img {
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
-    filter: drop-shadow(0 24px 30px rgba(31, 11, 53, 0.18));
-}
-
-.detail-info .eyebrow {
-    color: var(--purple);
 }
 
 .detail-info h1 {
     color: var(--ink);
-    font-size: 44px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    line-height: 1.08;
-    margin: 8px 0 14px;
+    font-size: 46px;
+    line-height: 1.05;
+    margin-bottom: 14px;
 }
 
 .detail-info p {
-    color: var(--text);
-    font-size: 16px;
-    line-height: 1.66;
-    max-width: 52ch;
+    color: var(--muted);
+    line-height: 1.62;
 }
 
 .tag-row {
@@ -1169,53 +1145,20 @@ h1 {
 
 .tag {
     background: var(--purple-soft);
-    border-radius: 999px;
     color: var(--purple-700);
     font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.01em;
-    padding: 6px 13px;
-}
-
-/* Price block: clear hierarchy — big price, lead time as a calm pill. */
-.price-row {
-    align-items: baseline;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin: 20px 0 4px;
-}
-
-.detail-info .price {
-    color: var(--ink);
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-}
-
-.detail-info .lead-time {
-    background: rgba(31, 122, 88, 0.10);
-    border-radius: 999px;
-    color: var(--green, #1f7a58);
-    font-size: 13px;
-    font-weight: 700;
-    padding: 5px 12px;
+    font-weight: 900;
+    padding: 7px 10px;
 }
 
 .spec-table {
     border: 1px solid var(--line);
-    border-radius: 14px;
-    margin: 26px 0;
-    overflow: hidden;
+    margin: 22px 0;
 }
 
 .spec-row {
     display: grid;
-    grid-template-columns: 168px 1fr;
-}
-
-.spec-row:nth-child(even) {
-    background: #fcfbfe;
+    grid-template-columns: 150px 1fr;
 }
 
 .spec-row + .spec-row {
@@ -1223,69 +1166,33 @@ h1 {
 }
 
 .spec-row span {
-    padding: 13px 16px;
-    line-height: 1.5;
+    padding: 12px 14px;
 }
 
 .spec-row span:first-child {
     background: var(--soft);
     color: var(--ink);
-    font-weight: 700;
-}
-
-.spec-row span:last-child {
-    color: var(--text);
+    font-weight: 900;
 }
 
 .qty-row {
     align-items: center;
     display: flex;
     gap: 12px;
-    margin: 22px 0;
-}
-
-.qty-row label {
-    color: var(--ink);
-    font-weight: 700;
+    margin: 18px 0 22px;
 }
 
 .qty-row input {
     border: 1px solid var(--line);
-    border-radius: 10px;
-    height: 48px;
-    padding: 0 14px;
-    width: 88px;
-    transition: border-color 160ms ease, box-shadow 160ms ease;
-}
-
-.qty-row input:focus {
-    border-color: var(--purple);
-    box-shadow: 0 0 0 3px var(--purple-soft);
-    outline: none;
+    height: 46px;
+    padding: 0 12px;
+    width: 86px;
 }
 
 .detail-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 4px;
-}
-
-.detail-actions .button {
-    border-radius: 10px;
-}
-
-/* Reassurance note as a soft info card rather than loose text. */
-.detail-info .notice {
-    background: #fbf7ff;
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--purple);
-    border-radius: 10px;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.6;
-    margin-top: 20px;
-    padding: 12px 16px;
 }
 
 .cart-layout,
@@ -1585,11 +1492,6 @@ h1 {
     .checkout-layout,
     .account-layout {
         grid-template-columns: 1fr;
-    }
-
-    .detail-media {
-        position: static;
-        min-height: 360px;
     }
 
     .hero {
@@ -2172,8 +2074,6 @@ h1 {
         min-height: 0;
         height: 248px;
         padding: 18px;
-        position: static;
-        border-radius: 14px;
     }
 
     .detail-media img {
