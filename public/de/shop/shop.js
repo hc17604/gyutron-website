@@ -209,6 +209,19 @@ const SHOP_LOCALE = (typeof window !== "undefined" && window.GYUTRON_SHOP_LOCALE
         }
         if (L.category && L.category[p.category]) p.categoryLabel = L.category[p.category];
         if (L.leadTime && L.leadTime[p.leadTime]) p.leadTime = L.leadTime[p.leadTime];
+        // Spec table: translate descriptive keys (Body->本体) and descriptive
+        // values (M12 stainless->M12 ステンレス). Locked terms (IP67, M12,
+        // PNP/NPN, GigE, ...) are simply absent from the tables, so they pass
+        // through verbatim. Rebuild specs preserving key order.
+        if (p.specs && (L.specKey || L.specVal)) {
+            const out = {};
+            for (const [k, v] of Object.entries(p.specs)) {
+                const nk = (L.specKey && L.specKey[k]) || k;
+                const nv = (L.specVal && L.specVal[v]) || v;
+                out[nk] = nv;
+            }
+            p.specs = out;
+        }
     });
     CATEGORY_META.forEach((c) => {
         if (L.category && L.category[c.name]) c.label = L.category[c.name];
