@@ -3,3 +3,8 @@ node_modules/
 dist/
 .astro/
 .DS_Store
+# copied static media (duplicates of repo-root assets; relocated at cutover)
+public/*.png
+public/*.jpg
+public/*.jpeg
+public/*.webp

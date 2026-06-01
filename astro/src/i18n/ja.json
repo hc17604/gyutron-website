@@ -734,5 +734,11 @@
   "main.459": "社会",
   "main.460": "ガバナンス",
   "main.461": "ライフサイクルの説明責任",
-  "main.462": "認証"
+  "main.462": "認証",
+  "pp.compare.model": "モデル",
+  "pp.compare.type": "タイプ",
+  "pp.compare.capability": "主な機能",
+  "pp.compare.rugged": "堅牢性",
+  "pp.compare.fbCapability": "産業用データ収集",
+  "pp.compare.fbRugged": "プロジェクト依存"
 }

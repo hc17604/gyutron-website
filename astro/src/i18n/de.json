@@ -734,5 +734,11 @@
   "main.459": "Soziales",
   "main.460": "Unternehmensführung",
   "main.461": "Lifecycle-Verantwortung",
-  "main.462": "Zertifizierungen"
+  "main.462": "Zertifizierungen",
+  "pp.compare.model": "Modell",
+  "pp.compare.type": "Typ",
+  "pp.compare.capability": "Kernfunktion",
+  "pp.compare.rugged": "Robustheitsklasse",
+  "pp.compare.fbCapability": "Industrielle Datenerfassung",
+  "pp.compare.fbRugged": "Projektabhängig"
 }

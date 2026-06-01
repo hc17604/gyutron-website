@@ -734,5 +734,11 @@
   "main.459": "Social",
   "main.460": "Governance",
   "main.461": "Lifecycle accountability",
-  "main.462": "Certifications"
+  "main.462": "Certifications",
+  "pp.compare.model": "Model",
+  "pp.compare.type": "Type",
+  "pp.compare.capability": "Core capability",
+  "pp.compare.rugged": "Rugged rating",
+  "pp.compare.fbCapability": "Industrial data capture",
+  "pp.compare.fbRugged": "Project-based"
 }

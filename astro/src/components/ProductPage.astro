@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from './Footer.astro';
 import { t, localizeUrl, type Locale } from '../i18n';
+import { productSummary } from '../lib/productText';
 import * as enData from '../data/products.en.js';
 import * as deData from '../data/products.de.js';
 import * as jaData from '../data/products.ja.js';
@@ -56,11 +57,11 @@ const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];
             <div class="product-body">
               <div class="product-kicker">{product.type}</div>
               <h3>{product.name}</h3>
-              <p>{product.summary}</p>
+              <p>{productSummary(locale, product, cat)}</p>
               <dl class="spec-list">
                 {Object.entries(product.specs).map(([label, value]) => (<div><dt>{label}</dt><dd>{value}</dd></div>))}
               </dl>
-              <div class="product-tags">{product.tags.map((tag: string) => (<span>{tag}</span>))}</div>
+              <div class="product-tags">{(product.tags || []).map((tag: string) => (<span>{tag}</span>))}</div>
               <div class="product-actions">
                 <a href={localizeUrl(locale, '/contact-sales.html')}>{t(locale, 'main.256')}</a>
               </div>
@@ -68,6 +69,27 @@ const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];
           </article>
         ))}
       </div>
+    </div></section>
+
+    <section class="compare-band"><div class="container">
+      <span class="eyebrow">{t(locale, 'main.259')}</span>
+      <h2>{t(locale, 'main.260')}</h2>
+      <div class="compare-scroll"><table class="compare-table">
+        <thead><tr>
+          <th>{t(locale, 'pp.compare.model')}</th>
+          <th>{t(locale, 'pp.compare.type')}</th>
+          <th>{t(locale, 'pp.compare.capability')}</th>
+          <th>{t(locale, 'pp.compare.rugged')}</th>
+        </tr></thead>
+        <tbody>
+          {cat.products.map((p: any) => {
+            const s = p.specs || {};
+            const capability = s.Scan || s.RFID || s.Device || s.Codes || s.Detection || s.Measurement || s.Sensor || s.Range || s.Parameter || t(locale, 'pp.compare.fbCapability');
+            const rugged = s.Rugged || s.Temp || s.Lead || s.Housing || s.Rating || s.Output || s.Data || t(locale, 'pp.compare.fbRugged');
+            return (<tr><td>{p.name}</td><td>{p.type}</td><td>{capability}</td><td>{rugged}</td></tr>);
+          })}
+        </tbody>
+      </table></div>
     </div></section>
 
     <section class="cta-band"><div class="container"><div class="cta-inner">
