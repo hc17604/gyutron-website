@@ -49,14 +49,22 @@ SHOP_HOST = "https://shop.gyutron.com"
 # Professional Japanese font stack (Noto Sans JP + system fallback, 1.7 line
 # height, sensible weights). Injected only on ja pages via {{locale.fonts}}.
 JA_FONTS = (
-    '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">\n'
+    '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">\n'
     '    <style id="gyutron-ja-typography">\n'
     '      body, button, input, select, textarea {\n'
     '        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;\n'
+    '        -webkit-font-smoothing: antialiased;\n'
+    '        text-rendering: optimizeLegibility;\n'
     '      }\n'
     '      body { line-height: 1.7; }\n'
     '      h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }\n'
-    '      p, li, span, a, label, td, th { font-weight: 400; }\n'
+    '      p, li, label, td { font-weight: 400; }\n'
+    '      .nav a, .nav-links a, .nav-trigger, .nav-item > a,\n'
+    '      .store-language-menu a, .top-strip, .brand span {\n'
+    '        font-weight: 700;\n'
+    '        color: var(--ink, #17121f);\n'
+    '      }\n'
+    '      .nav a, .nav-links a, .nav-trigger { letter-spacing: 0.01em; }\n'
     '    </style>'
 )
 
