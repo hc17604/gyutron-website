@@ -1,12 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { t, localizeUrl, type Locale } from '../i18n';
-import '../styles/global.css';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/';
 ---
-<Layout locale={locale} path={path} title={t(locale, 'seo.index.title')} description={t(locale, 'seo.index.desc')} bodyClass="home">
+<Layout locale={locale} path={path} title={t(locale, 'seo.index.title')} description={t(locale, 'seo.index.desc')} bodyClass="home" pageCss={["/global.css", "/mobile-navigation.css"]}>
 <main>
         <section class="hero" data-hero-carousel>
             <div class="hero-carousel">
