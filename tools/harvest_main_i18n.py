@@ -26,6 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 I18N = ROOT / "locales" / "i18n"
 TEMPLATES = ROOT / "templates"
+PARTIALS = TEMPLATES / "_partials"
 
 TAG = re.compile(r"(<[^>]+>)")
 # Language-switch blocks -> directives. The leading indent stays in the template;
@@ -115,6 +116,23 @@ def add_link_directives(s: str) -> str:
     return re.sub(r'href="([^"]+)"', repl, s)
 
 
+def use_partial(body: str, start: str, end: str, name: str) -> str:
+    """Slice [start..end] out of the keyed body into templates/_partials/<name>.html
+    and replace it with {{include:<name>}}. The first page to need it writes the
+    partial; later pages assert their (directive-ized, page-agnostic) chrome matches
+    byte-for-byte — proving the chrome is genuinely shared across product pages."""
+    i = body.index(start)
+    j = body.index(end, i) + len(end)
+    block = body[i:j]
+    path = PARTIALS / f"{name}.html"
+    if path.exists():
+        if path.read_text(encoding="utf-8") != block:
+            raise SystemExit(f"chrome differs from _partials/{name}.html on this page — not shareable as-is")
+    else:
+        path.write_text(block, encoding="utf-8", newline="")
+    return body[:i] + f"{{{{include:{name}}}}}" + body[j:]
+
+
 def grab(pat: str, text: str, group: int = 1) -> str:
     m = re.search(pat, text, re.S)
     if not m:
@@ -155,6 +173,11 @@ def templatize(page: str) -> str:
     if (n_mob, n_desk) != (1, 1):
         raise SystemExit(f"language-switch blocks not found exactly once: mobile={n_mob} desktop={n_desk}")
     b = add_link_directives(b)
+    # Extract the shared chrome (top-strip+header, footer) into partials so all
+    # product pages reuse one copy. The <main> stays inline (its formatting varies
+    # per page). Header/footer are byte-identical across pages after directive-izing.
+    b = use_partial(b, '    <div class="top-strip">', '    </header>', "main-header")
+    b = use_partial(b, '    <footer ', '</footer>', "main-footer")
     return h + b
 
 
