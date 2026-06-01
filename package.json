@@ -4,11 +4,12 @@
   "version": "1.0.0",
   "scripts": {
     "deploy": "wrangler deploy --config wrangler.toml --assets ./public/",
-    "i18n:build": "python tools/generate_localized_site.py",
-    "i18n:check": "python tools/i18n_validate.py",
-    "i18n:check:strict": "python tools/i18n_validate.py --strict",
+    "i18n:build": "python tools/generate_localized_site.py && python tools/build_i18n.py",
     "i18n:audit": "python tools/i18n_audit.py de ja",
-    "i18n:sync": "python tools/generate_localized_site.py && python tools/i18n_audit.py de ja"
+    "i18n:gate": "python tools/i18n_gate.py",
+    "i18n:sync": "python tools/generate_localized_site.py && python tools/build_i18n.py && python tools/i18n_gate.py",
+    "i18n:check": "python tools/i18n_validate.py",
+    "i18n:check:strict": "python tools/i18n_validate.py --strict"
   },
   "devDependencies": {
     "wrangler": "4.93.1"

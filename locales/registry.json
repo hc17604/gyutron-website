@@ -1,0 +1,42 @@
+{
+  "_doc": "SINGLE SOURCE OF TRUTH for locales. To add a language, add ONE block here, drop in the matching locales/i18n/<code>.json + shop-i18n currency/tag/spec entries, then run `npm run i18n:gate`. Both build pipelines and the gate read this file — no scattered code edits. See docs/ADD-A-LANGUAGE.md.",
+  "source": "en",
+  "locales": [
+    {
+      "code": "en",
+      "dir": "",
+      "htmlLang": "en",
+      "ogLocale": "en_US",
+      "label": "English",
+      "short": "EN",
+      "switchAria": "Language and region selector",
+      "menuAria": "Language options",
+      "cjkFont": false,
+      "currency": { "code": "USD", "rate": 1, "symbol": "$", "intlLocale": "en-US", "decimals": 2, "symbolAfter": false }
+    },
+    {
+      "code": "de",
+      "dir": "de",
+      "htmlLang": "de",
+      "ogLocale": "de_DE",
+      "label": "Deutsch",
+      "short": "DE",
+      "switchAria": "Sprache und Region auswählen",
+      "menuAria": "Sprachoptionen",
+      "cjkFont": false,
+      "currency": { "code": "EUR", "rate": 0.92, "symbol": "€", "intlLocale": "de-DE", "decimals": 2, "symbolAfter": true }
+    },
+    {
+      "code": "ja",
+      "dir": "ja",
+      "htmlLang": "ja",
+      "ogLocale": "ja_JP",
+      "label": "日本語",
+      "short": "JA",
+      "switchAria": "言語と地域を選択",
+      "menuAria": "言語オプション",
+      "cjkFont": true,
+      "currency": { "code": "JPY", "rate": 157, "symbol": "¥", "intlLocale": "ja-JP", "decimals": 0, "symbolAfter": false }
+    }
+  ]
+}
