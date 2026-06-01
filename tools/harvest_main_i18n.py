@@ -27,6 +27,11 @@ ROOT = Path(__file__).resolve().parents[1]
 I18N = ROOT / "locales" / "i18n"
 TEMPLATES = ROOT / "templates"
 PARTIALS = TEMPLATES / "_partials"
+# Manual de/ja for strings the legacy never translated (en==de==ja in the pages).
+# Applied in key_body so the new pipeline emits proper translations, not residual EN.
+RESID = {k: v for k, v in
+         json.loads((ROOT / "tools" / "residual_translations.json").read_text(encoding="utf-8")).items()
+         if not k.startswith("_")}
 
 TAG = re.compile(r"(<[^>]+>)")
 # Language-switch blocks -> directives. The leading indent stays in the template;
@@ -117,8 +122,13 @@ def key_body(en_body: str, de_body: str, ja_body: str) -> str:
             out.append(seg)
             continue
         d, j = dt[idx], jt[idx]
-        if d == seg and j == seg:    # identical across locales -> not translatable
-            out.append(seg)
+        if d == seg and j == seg:    # legacy left it untranslated (en==de==ja)
+            if core in RESID:        # apply manual residual-English translation
+                lead = seg[: len(seg) - len(seg.lstrip())]
+                trail = seg[len(seg.rstrip()):]
+                out.append(f"{lead}{{{{t:{_key_for(core, RESID[core]['de'], RESID[core]['ja'])}}}}}{trail}")
+            else:
+                out.append(seg)
             continue
         lead = seg[: len(seg) - len(seg.lstrip())]
         trail = seg[len(seg.rstrip()):]
