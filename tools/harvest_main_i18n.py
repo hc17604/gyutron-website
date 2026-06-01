@@ -36,6 +36,10 @@ DESKTOP_SWITCH = re.compile(r'<div class="language-switch language-switch-deskto
 # Human-readable attributes the legacy blind phrase map translated (same set the
 # audit checks). Keyed only when the de/ja value differs from en.
 TRANS_ATTR = re.compile(r'(\s)(alt|aria-label|title|placeholder)="([^"]*)"')
+# Inline <script>/<style> are CODE, never content. The legacy blind phrase map
+# translated them (corrupting identifiers, e.g. navItems -> navArtikel); here they
+# are protected as atomic blocks so de/ja carry the EN code verbatim.
+CODE_BLOCK = re.compile(r"<(script|style)\b[^>]*>.*?</\1>", re.S)
 
 # Harvested NEW keys (merged into the existing locale files, which keep shop keys).
 NEW = {"en": {}, "de": {}, "ja": {}}
@@ -145,17 +149,21 @@ def add_link_directives(s: str) -> str:
 
 
 def use_partial(body: str, start: str, end: str, name: str) -> str:
-    """Slice [start..end] out of the keyed body into templates/_partials/<name>.html
-    and replace it with {{include:<name>}}. The first page to need it writes the
-    partial; later pages assert their (directive-ized, page-agnostic) chrome matches
-    byte-for-byte — proving the chrome is genuinely shared across product pages."""
-    i = body.index(start)
-    j = body.index(end, i) + len(end)
+    """Slice [start..end] into templates/_partials/<name>.html and replace it with
+    {{include:<name>}}. First page to need it writes the partial; later pages whose
+    (directive-ized) chrome matches reuse it. A page whose region is absent or
+    differs (e.g. contact-sales' richer footer) keeps it INLINE instead."""
+    try:
+        i = body.index(start)
+        j = body.index(end, i) + len(end)
+    except ValueError:
+        return body  # region not present in this page's shape -> leave inline
     block = body[i:j]
     path = PARTIALS / f"{name}.html"
     if path.exists():
         if path.read_text(encoding="utf-8") != block:
-            raise SystemExit(f"chrome differs from _partials/{name}.html on this page — not shareable as-is")
+            print(f"  note: this page's {name} differs from the shared partial — keeping it inline")
+            return body
     else:
         path.write_text(block, encoding="utf-8", newline="")
     return body[:i] + f"{{{{include:{name}}}}}" + body[j:]
@@ -166,6 +174,30 @@ def grab(pat: str, text: str, group: int = 1) -> str:
     if not m:
         raise SystemExit(f"pattern not found: {pat!r}")
     return m.group(group)
+
+
+def protect_code3(en_body: str, de_body: str, ja_body: str):
+    """Replace each inline <script>/<style> block with an aligned placeholder in all
+    three locales; return (en2, de2, ja2, en_blocks). Restoring en_blocks later makes
+    de/ja carry the EN code verbatim — code is never translated/corrupted."""
+    en_blocks: list[str] = []
+
+    def repl_en(m: "re.Match[str]") -> str:
+        en_blocks.append(m.group(0))
+        return f"\x00CODE{len(en_blocks) - 1}\x00"
+
+    ctr = [0]
+
+    def repl_other(m: "re.Match[str]") -> str:
+        i = ctr[0]
+        ctr[0] += 1
+        return f"\x00CODE{i}\x00"
+
+    en2 = CODE_BLOCK.sub(repl_en, en_body)
+    de2 = CODE_BLOCK.sub(repl_other, de_body)
+    ctr[0] = 0
+    ja2 = CODE_BLOCK.sub(repl_other, ja_body)
+    return en2, de2, ja2, en_blocks
 
 
 def templatize(page: str) -> str:
@@ -193,26 +225,45 @@ def templatize(page: str) -> str:
     h = h.replace(f'<meta name="description" content="{en_desc}">',
                   f'<meta name="description" content="{{{{t:seo.{stem}.desc}}}}">', 1)
     h = h.replace("</head>", "{{locale.mainfonts}}</head>", 1)
+    # Open Graph title/description: key only when the legacy actually translated
+    # them (canonical / og:url stay literal — legacy left them on the en domain).
+    for prop, suffix in (("og:title", "ogtitle"), ("og:description", "ogdesc")):
+        m_en = re.search(rf'<meta property="{prop}" content="([^"]*)">', en_head)
+        if not m_en:
+            continue
+        ev = m_en.group(1)
+        m_de = re.search(rf'<meta property="{prop}" content="([^"]*)">', de)
+        m_ja = re.search(rf'<meta property="{prop}" content="([^"]*)">', ja)
+        dv = m_de.group(1) if m_de else ev
+        jv = m_ja.group(1) if m_ja else ev
+        if dv == ev and jv == ev:
+            continue
+        record(f"seo.{stem}.{suffix}", ev, dv, jv)
+        h = h.replace(f'<meta property="{prop}" content="{ev}">',
+                      f'<meta property="{prop}" content="{{{{t:seo.{stem}.{suffix}}}}}">', 1)
 
-    # ---- body: directive-ize switches FIRST in all three locales (so the
-    # switcher's localized aria isn't keyed), then key text + attributes ----
+    # ---- body: protect inline code, directive-ize switches, then key text+attrs ----
+    en_body2, de_body2, ja_body2, code_blocks = protect_code3(en_body, de_body, ja_body)
+
     def strip_switches(body: str) -> "tuple[str, tuple[int, int]]":
         body, nm = MOBILE_SWITCH.subn("{{locale.mainlangswitch.mobile}}", body, count=1)
         body, nd = DESKTOP_SWITCH.subn("{{locale.mainlangswitch.desktop}}", body, count=1)
         return body, (nm, nd)
 
-    en_b, counts = strip_switches(en_body)
-    de_b, _ = strip_switches(de_body)
-    ja_b, _ = strip_switches(ja_body)
+    en_b, counts = strip_switches(en_body2)
+    de_b, _ = strip_switches(de_body2)
+    ja_b, _ = strip_switches(ja_body2)
     if counts != (1, 1):
         raise SystemExit(f"language-switch blocks not found exactly once: {counts}")
     b = key_body(en_b, de_b, ja_b)
     b = add_link_directives(b)
-    # Extract the shared chrome (top-strip+header, footer) into partials so all
-    # product pages reuse one copy. The <main> stays inline (its formatting varies
-    # per page). Header/footer are byte-identical across pages after directive-izing.
+    # Shared chrome -> partials; a page with a unique footer (contact-sales) keeps
+    # it inline. <main> is always inline.
     b = use_partial(b, '    <div class="top-strip">', '    </header>', "main-header")
     b = use_partial(b, '    <footer ', '</footer>', "main-footer")
+    # restore EN inline code so de/ja carry English code (fixes navItems->navArtikel)
+    for idx, blk in enumerate(code_blocks):
+        b = b.replace(f"\x00CODE{idx}\x00", blk)
     return h + b
 
 

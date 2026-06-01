@@ -1585,7 +1585,7 @@
     </footer>
     <script>
         (() => {
-            const navArtikel = Array.from(document.querySelectorAll(".nav-item"));
+            const navItems = Array.from(document.querySelectorAll(".nav-item"));
             const closeDelay = 520;
             const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
 
@@ -1602,7 +1602,7 @@
             };
 
             const openItem = (item, groups) => {
-                navArtikel.forEach((otherItem) => {
+                navItems.forEach((otherItem) => {
                     if (otherItem !== item) {
                         window.clearTimeout(otherItem.closeTimer);
                         otherItem.classList.remove("is-open");
@@ -1618,7 +1618,7 @@
                 }
             };
 
-            navArtikel.forEach((item) => {
+            navItems.forEach((item) => {
                 const menu = item.querySelector(".mega-menu");
                 if (!menu) {
                     return;
@@ -1681,7 +1681,7 @@
 
             document.addEventListener("keydown", (event) => {
                 if (event.key === "Escape") {
-                    navArtikel.forEach((item) => {
+                    navItems.forEach((item) => {
                         window.clearTimeout(item.closeTimer);
                         item.classList.remove("is-open");
                         item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));

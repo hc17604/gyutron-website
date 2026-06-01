@@ -1503,7 +1503,7 @@
                     <div class="field-grid">
                         <label>
                             Full name
-                            <input type="text" name="fullお名前" autocomplete="name" required>
+                            <input type="text" name="fullName" autocomplete="name" required>
                         </label>
                         <label>
                             会社名
@@ -1618,7 +1618,7 @@
     </footer>
     <script>
         (() => {
-            const nav点数 = Array.from(document.querySelectorAll(".nav-item"));
+            const navItems = Array.from(document.querySelectorAll(".nav-item"));
             const closeDelay = 520;
             const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
 
@@ -1635,7 +1635,7 @@
             };
 
             const openItem = (item, groups) => {
-                nav点数.forEach((otherItem) => {
+                navItems.forEach((otherItem) => {
                     if (otherItem !== item) {
                         window.clearTimeout(otherItem.closeTimer);
                         otherItem.classList.remove("is-open");
@@ -1651,7 +1651,7 @@
                 }
             };
 
-            nav点数.forEach((item) => {
+            navItems.forEach((item) => {
                 const menu = item.querySelector(".mega-menu");
                 if (!menu) {
                     return;
@@ -1714,7 +1714,7 @@
 
             document.addEventListener("keydown", (event) => {
                 if (event.key === "Escape") {
-                    nav点数.forEach((item) => {
+                    navItems.forEach((item) => {
                         window.clearTimeout(item.closeTimer);
                         item.classList.remove("is-open");
                         item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
@@ -1728,7 +1728,7 @@
 
         function setSalesStatus(message, type) {
             salesStatus.textContent = message;
-            salesStatus.classお名前 = `form-status is-visible ${type ? `is-${type}` : ""}`;
+            salesStatus.className = `form-status is-visible ${type ? `is-${type}` : ""}`;
         }
 
         salesForm?.addEventListener("submit", async (event) => {
