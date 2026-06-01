@@ -6,7 +6,7 @@ export default defineConfig({
   site: 'https://www.gyutron.com',
   output: 'static',
   build: {
-    format: 'file', // emit page.html (not page/index.html) to match existing URLs
+    format: 'preserve', // emit page.html (not page/index.html) to match existing URLs
   },
   i18n: {
     defaultLocale: 'en',
