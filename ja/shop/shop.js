@@ -222,6 +222,11 @@ const SHOP_LOCALE = (typeof window !== "undefined" && window.GYUTRON_SHOP_LOCALE
             }
             p.specs = out;
         }
+        // Tags: translate descriptive ones (2D inspection->2D検査); locked terms
+        // (GigE, IP67, M12, ...) are absent from the table so they stay verbatim.
+        if (Array.isArray(p.tags) && L.tag) {
+            p.tags = p.tags.map((tg) => L.tag[tg] || tg);
+        }
     });
     CATEGORY_META.forEach((c) => {
         if (L.category && L.category[c.name]) c.label = L.category[c.name];
@@ -246,8 +251,24 @@ function t(s) {
     return (L && L.ui && L.ui[s]) || s;
 }
 
+// Currency display. Base prices are USD. Each locale may define a `currency`
+// block in shop-i18n.js { code, rate, symbol, locale, decimals, symbolAfter }
+// to convert at a FIXED rate and format per local convention. No block (or en)
+// => US dollars. Rates are approximate and editable in one place (shop-i18n.js).
+function currencyConf() {
+    const data = (typeof window !== "undefined" && window.GYUTRON_SHOP_I18N) || {};
+    return (data[SHOP_LOCALE] && data[SHOP_LOCALE].currency) || null;
+}
+
 function money(value) {
-    return `$${Number(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    const c = currencyConf();
+    if (!c) {
+        return `$${Number(value).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+    const converted = Number(value) * c.rate;
+    const dec = c.decimals == null ? 2 : c.decimals;
+    const num = converted.toLocaleString(c.locale || "en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    return c.symbolAfter ? `${num} ${c.symbol}` : `${c.symbol}${num}`;
 }
 
 function getCart() {

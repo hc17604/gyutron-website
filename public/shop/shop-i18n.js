@@ -12,6 +12,21 @@
  */
 window.GYUTRON_SHOP_I18N = {
   de: {
+    currency: { code: "EUR", rate: 0.92, symbol: "€", locale: "de-DE", decimals: 2, symbolAfter: true },
+    tag: {
+      "2D inspection": "2D-Prüfung", "Industrial I/O": "Industrielles I/O",
+      "White LED": "Weiße LED", "Strobe ready": "Strobe-fähig",
+      "Cradle": "Ladestation", "Long range": "Große Reichweite",
+      "Low distortion": "Verzeichnungsarm", "Trigger sync": "Trigger-Sync",
+      "Vision systems": "Vision-Systeme", "Fixture ready": "Vorrichtungsbereit",
+      "Calibration": "Kalibrierung", "Vision setup": "Vision-Setup",
+      "Glass plate": "Glasplatte", "Trigger I/O": "Trigger-I/O",
+      "3D profile": "3D-Profil", "Laser line": "Laserlinie",
+      "Inspection": "Prüfung", "Diffuse": "Diffus",
+      "Photoelectric": "Lichtschranke", "Fast response": "Schnelle Reaktion",
+      "Factory floor": "Produktionsumgebung", "Rugged": "Robust",
+      "5G option": "5G-Option"
+    },
     ui: {
       "Buy Now": "Jetzt kaufen",
       "Quote": "Angebot",
@@ -123,6 +138,21 @@ window.GYUTRON_SHOP_I18N = {
     }
   },
   ja: {
+    currency: { code: "JPY", rate: 157, symbol: "¥", locale: "ja-JP", decimals: 0, symbolAfter: false },
+    tag: {
+      "2D inspection": "2D検査", "Industrial I/O": "産業用I/O",
+      "White LED": "白色LED", "Strobe ready": "ストロボ対応",
+      "Cradle": "クレードル", "Long range": "長距離",
+      "Low distortion": "低歪み", "Trigger sync": "トリガー同期",
+      "Vision systems": "ビジョンシステム", "Fixture ready": "治具対応",
+      "Calibration": "校正", "Vision setup": "ビジョン設定",
+      "Glass plate": "ガラスプレート", "Trigger I/O": "トリガーI/O",
+      "3D profile": "3Dプロファイル", "Laser line": "レーザーライン",
+      "Inspection": "検査", "Diffuse": "拡散",
+      "Photoelectric": "光電式", "Fast response": "高速応答",
+      "Factory floor": "製造現場", "Rugged": "堅牢",
+      "5G option": "5Gオプション"
+    },
     ui: {
       "Buy Now": "今すぐ購入",
       "Quote": "見積",
