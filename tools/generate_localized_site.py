@@ -553,12 +553,21 @@ def localized_shop_js(locale: str) -> str:
     return js
 
 
+def _template_owned(rel_path: str) -> bool:
+    """A page that now has a template under templates/ is owned by the new
+    build_i18n.py pipeline; the legacy generator must not touch it (otherwise the
+    two would fight over the same output file). Lets us migrate page-by-page."""
+    return (ROOT / "templates" / rel_path).exists()
+
+
 def generate_shop() -> None:
     # Localized stores first (read from the pristine English source on disk).
     for folder in LOCALES:
         shop_out = ROOT / folder / SHOP_DIR
         shop_out.mkdir(parents=True, exist_ok=True)
         for page in SHOP_PAGE_FILES:
+            if _template_owned(f"{SHOP_DIR}/{page}"):
+                continue  # owned by build_i18n.py
             src = ROOT / SHOP_DIR / page
             if not src.exists():
                 continue
@@ -576,6 +585,8 @@ def generate_shop() -> None:
 
     # English source last: inject the language switch in place + mirror to public.
     for page in SHOP_PAGE_FILES:
+        if _template_owned(f"{SHOP_DIR}/{page}"):
+            continue  # owned by build_i18n.py
         src = ROOT / SHOP_DIR / page
         if not src.exists():
             continue

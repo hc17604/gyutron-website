@@ -1,21 +1,30 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offizieller GYUTRON Store | Industrieautomatisierungsprodukte</title>
-    <meta name="description" content="Kaufen Sie GYUTRON Industriekameras, Sensoren, Barcode-Scanner, robuste PDA-Terminals, Beleuchtung, Objektive und Zubehör für die Industrieautomation.">
+    <meta name="description" content="Kaufen Sie GYUTRON Industriekameras, Sensoren, Barcodescanner, robuste PDA-Terminals, Beleuchtung, Objektive und Zubehör für die Industrieautomation.">
+    <meta property="og:title" content="Offizieller GYUTRON Store | Industrieautomatisierungsprodukte">
+    <meta property="og:description" content="Kaufen Sie GYUTRON Industriekameras, Sensoren, Barcodescanner, robuste PDA-Terminals, Beleuchtung, Objektive und Zubehör für die Industrieautomation.">
+    <meta property="og:locale" content="de_DE">
+    <link rel="canonical" href="https://shop.gyutron.com/de/shop/index.html">
+    <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/index.html">
+    <link rel="alternate" hreflang="de" href="https://shop.gyutron.com/de/shop/index.html">
+    <link rel="alternate" hreflang="ja" href="https://shop.gyutron.com/ja/shop/index.html">
+    <link rel="alternate" hreflang="x-default" href="https://shop.gyutron.com/shop/index.html">
     <link rel="icon" href="/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/de/shop/shop.css">
 </head>
 <body>
     <div class="top-strip">
         <div class="container">
-            <span>Offizieller industrieller Einkaufszugang von GYUTRON</span>
+            <span data-i18n="shop.topstrip.entrance">Offizieller industrieller Einkaufszugang von GYUTRON</span>
             <div class="top-links">
                 <a href="mailto:info@gyutron.com">info@gyutron.com</a>
                 <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
@@ -26,32 +35,32 @@
         <div class="container">
             <a class="brand" href="/de/shop/index.html">
                 <img src="/gyutron-logo-purple.png" alt="GYUTRON">
-                <span>Offizieller Store</span>
+                <span data-i18n="shop.brand.tagline">Offizieller Store</span>
             </a>
-            <nav class="nav" aria-label="Store-Navigation">
+            <nav class="nav" data-i18n-attr="aria-label=nav.storeNavigation" aria-label="Store-Navigation">
                 <div class="nav-links">
-                    <a href="/de/shop/products.html">Produkte</a>
-                    <a href="/de/shop/request-quote.html">Angebot anfordern</a>
-                    <a href="https://www.gyutron.com/">Markenwebsite</a>
+                    <a href="/de/shop/products.html" data-i18n="nav.products">Produkte</a>
+                    <a href="/de/shop/request-quote.html" data-i18n="nav.requestQuote">Angebot anfordern</a>
+                    <a href="https://www.gyutron.com/" data-i18n="nav.brandSite">Markenwebsite</a>
                 </div>
                 <form class="store-search" action="/de/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" placeholder="Produkte suchen" aria-label="Produkte suchen">
-                    <button type="submit" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Suchen"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
             </nav>
-            <div class="header-actions" aria-label="Store-Aktionen">
-                <button class="store-menu-toggle" type="button" aria-expanded="false" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span>Menü</span></button>
+            <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store-Aktionen">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menü</span></button>
                 <div class="store-language-switch">
-                    <button class="language-icon store-language" type="button" aria-label="Sprache und Region auswählen" aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>
-                    <div class="store-language-menu" aria-label="Sprachoptionen">
+                    <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Sprache und Region auswählen"><i class="fa-solid fa-globe"></i></button>
+                    <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Sprachoptionen">
                         <a href="/shop/index.html">English <span>EN</span></a>
                         <a href="/de/shop/index.html" aria-current="page">Deutsch <span>DE</span></a>
                         <a href="/ja/shop/index.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/de/shop/account.html" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span>Konto</span></a>
-                <a class="icon-action cart-link" href="/de/shop/cart.html" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Konto</span></a>
+                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
@@ -61,23 +70,23 @@
             <div class="container">
                 <div class="hero-grid">
                     <div>
-                        <span class="eyebrow">Offizieller GYUTRON Store</span>
-                        <h1>Industrieautomatisierungsprodukte – sofort kaufen oder anfragen.</h1>
-                        <p>Kaufen Sie Muster, Zubehör und eindeutige SKUs online. Für konfigurierte Systeme, Lieferzeit-Checks, Zertifizierungen oder kundenspezifische Projekte fordern Sie vor der Bestellung ein Angebot an.</p>
+                        <span class="eyebrow" data-i18n="hero.eyebrow">Offizieller GYUTRON Store</span>
+                        <h1 data-i18n="hero.title">Industrieautomatisierungsprodukte – sofort kaufen oder anfragen.</h1>
+                        <p data-i18n="hero.subtitle">Kaufen Sie Muster, Zubehör und eindeutige SKUs online. Für konfigurierte Systeme, Lieferzeit-Checks, Zertifizierungen oder kundenspezifische Projekte fordern Sie vor der Bestellung ein Angebot an.</p>
                         <div class="hero-actions">
-                            <a class="button button-primary" href="/de/shop/products.html">Produkte ansehen <i class="fa-solid fa-chevron-right"></i></a>
-                            <a class="button button-outline" href="/de/shop/request-quote.html">Angebot anfordern</a>
-                            <a class="button button-soft" href="/de/shop/contact-engineer.html">Technischen Ansprechpartner kontaktieren</a>
+                            <a class="button button-primary" href="/de/shop/products.html"><span data-i18n="cta.shopProducts">Produkte ansehen</span> <i class="fa-solid fa-chevron-right"></i></a>
+                            <a class="button button-outline" href="/de/shop/request-quote.html" data-i18n="cta.requestQuote">Angebot anfordern</a>
+                            <a class="button button-soft" href="/de/shop/contact-engineer.html" data-i18n="cta.contactEngineer">Technischen Ansprechpartner kontaktieren</a>
                         </div>
                     </div>
                     <div class="buy-panel">
-                        <h2>Für den B2B-Einkauf entwickelt</h2>
+                        <h2 data-i18n="hero.panel.title">Für den B2B-Einkauf entwickelt</h2>
                         <ul>
-                            <li><i class="fa-solid fa-check"></i><span>Jetzt kaufen für Muster, Zubehör und eindeutige SKUs.</span></li>
-                            <li><i class="fa-solid fa-check"></i><span>Angebot anfordern für Menge, Lieferzeit, Zertifizierung oder Individualisierung.</span></li>
-                            <li><i class="fa-solid fa-check"></i><span>Ingenieur kontaktieren für Parameterauswahl und Einführungsberatung.</span></li>
+                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b1">Jetzt kaufen für Muster, Zubehör und eindeutige SKUs.</span></li>
+                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b2">Angebot anfordern für Menge, Lieferzeit, Zertifizierung oder Individualisierung.</span></li>
+                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b3">Technischen Ansprechpartner kontaktieren für Parameterauswahl und Einführungsberatung.</span></li>
                         </ul>
-                        <a class="button button-dark" href="/de/shop/payment-methods.html" style="width:100%;">Zahlungs- und Beschaffungsinformationen</a>
+                        <a class="button button-dark" href="/de/shop/payment-methods.html" style="width:100%;" data-i18n="cta.paymentInfo">Zahlungs- und Beschaffungsinformationen</a>
                     </div>
                 </div>
             </div>
@@ -87,10 +96,10 @@
             <div class="container">
                 <div class="section-head">
                     <div>
-                        <span class="eyebrow">Im Fokus</span>
-                        <h2>Ausgewählte Industrieprodukte</h2>
+                        <span class="eyebrow" data-i18n="spotlight.eyebrow">Im Fokus</span>
+                        <h2 data-i18n="spotlight.title">Ausgewählte Industrieprodukte</h2>
                     </div>
-                    <p>Ein angebotsorientiertes B2B-Produktfenster für schnelles Stöbern, SKU-Vergleich und technisch begleitete Beschaffung.</p>
+                    <p data-i18n="spotlight.subtitle">Ein angebotsorientiertes B2B-Produktfenster für schnelles Stöbern, SKU-Vergleich und technisch begleitete Beschaffung.</p>
                 </div>
                 <div class="spotlight-grid" data-spotlight></div>
             </div>
@@ -100,10 +109,10 @@
             <div class="container">
                 <div class="section-head">
                     <div>
-                        <span class="eyebrow">Produktkategorien</span>
-                        <h2>Ausschließlich Industrieautomation</h2>
+                        <span class="eyebrow" data-i18n="cats.eyebrow">Produktkategorien</span>
+                        <h2 data-i18n="cats.title">Ausschließlich Industrieautomation</h2>
                     </div>
-                    <p>Der Store bleibt auf die Industriemarke GYUTRON fokussiert: Kameras, Beleuchtung, Sensoren, Scanner, PDA-Terminals, Optik, Karten, Roboterzubehör und Prüfausrüstung.</p>
+                    <p data-i18n="cats.subtitle">Der Store bleibt auf die Industriemarke GYUTRON fokussiert: Kameras, Beleuchtung, Sensoren, Scanner, PDA-Terminals, Optik, Karten, Roboterzubehör und Prüfausrüstung.</p>
                 </div>
                 <div class="category-grid" data-categories></div>
             </div>
@@ -114,23 +123,23 @@
                 <div class="trust-grid">
                     <article class="trust-card">
                         <i class="fa-solid fa-truck-fast"></i>
-                        <h3>Weltweiter Versand</h3>
-                        <p>Internationale Kurier- und Frachtoptionen werden je nach Zielland, Produkttyp und Bestellgröße bestätigt.</p>
+                        <h3 data-i18n="trust.shipping.title">Weltweiter Versand</h3>
+                        <p data-i18n="trust.shipping.body">Internationale Kurier- und Frachtoptionen werden je nach Zielland, Produkttyp und Bestellgröße bestätigt.</p>
                     </article>
                     <article class="trust-card">
                         <i class="fa-solid fa-shield-halved"></i>
-                        <h3>Garantie-Support</h3>
-                        <p>Die industrielle Garantieabdeckung ist je Produktlinie dokumentiert und wird vor dem Versand bestätigt.</p>
+                        <h3 data-i18n="trust.warranty.title">Garantie-Support</h3>
+                        <p data-i18n="trust.warranty.body">Die industrielle Garantieabdeckung ist je Produktlinie dokumentiert und wird vor dem Versand bestätigt.</p>
                     </article>
                     <article class="trust-card">
                         <i class="fa-solid fa-rotate-left"></i>
-                        <h3>Rückgabeprüfung</h3>
-                        <p>Rückgaben und Austausch richten sich nach Produktzustand, Konfiguration und Beschaffungsbedingungen.</p>
+                        <h3 data-i18n="trust.return.title">Rückgabeprüfung</h3>
+                        <p data-i18n="trust.return.body">Rückgaben und Austausch richten sich nach Produktzustand, Konfiguration und Beschaffungsbedingungen.</p>
                     </article>
                     <article class="trust-card">
                         <i class="fa-solid fa-file-circle-check"></i>
-                        <h3>Zertifizierte Dokumente</h3>
-                        <p>Datenblätter, Compliance-Dokumente und Angebotsunterlagen können für Einkaufsteams bereitgestellt werden.</p>
+                        <h3 data-i18n="trust.docs.title">Zertifizierte Dokumente</h3>
+                        <p data-i18n="trust.docs.body">Datenblätter, Compliance-Dokumente und Angebotsunterlagen können für Einkaufsteams bereitgestellt werden.</p>
                     </article>
                 </div>
             </div>
@@ -141,35 +150,35 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h3>Offizieller GYUTRON Store</h3>
-                    <p>Offizieller Einkaufszugang für GYUTRON Industrieautomatisierungs-Hardware und -Zubehör.</p>
-                    <a href="https://www.gyutron.com/">Markenwebsite: www.gyutron.com</a>
+                    <h3 data-i18n="footer.brand.title">Offizieller GYUTRON Store</h3>
+                    <p data-i18n="footer.brand.body">Offizieller Einkaufszugang für GYUTRON Industrieautomatisierungs-Hardware und -Zubehör.</p>
+                    <a href="https://www.gyutron.com/" data-i18n="footer.brand.link">Markenwebsite: www.gyutron.com</a>
                 </div>
                 <div>
-                    <h4>Produkte</h4>
-                    <a href="/de/shop/products.html?category=Industrial%20Cameras">Industriekameras</a>
-                    <a href="/de/shop/products.html?category=Vision%20Lighting">Vision-Beleuchtung</a>
-                    <a href="/de/shop/products.html?category=Sensoren">Sensoren</a>
-                    <a href="/de/shop/products.html?category=Rugged%20PDA">Robuste PDA-Terminals</a>
+                    <h4 data-i18n="footer.col.products">Produkte</h4>
+                    <a href="/de/shop/products.html?category=Industrial%20Cameras" data-i18n="footer.cat.cameras">Industriekameras</a>
+                    <a href="/de/shop/products.html?category=Vision%20Lighting" data-i18n="footer.cat.lighting">Vision-Beleuchtung</a>
+                    <a href="/de/shop/products.html?category=Sensors" data-i18n="footer.cat.sensors">Sensoren</a>
+                    <a href="/de/shop/products.html?category=Rugged%20PDA" data-i18n="footer.cat.pda">Robuste PDA-Terminals</a>
                 </div>
                 <div>
-                    <h4>Einkauf</h4>
-                    <a href="/de/shop/cart.html">Warenkorb</a>
-                    <a href="/de/shop/checkout.html">Zur Kasse</a>
-                    <a href="/de/shop/request-quote.html">Angebot anfordern</a>
-                    <a href="/de/shop/contact-engineer.html">Technischen Ansprechpartner kontaktieren</a>
+                    <h4 data-i18n="footer.col.purchasing">Einkauf</h4>
+                    <a href="/de/shop/cart.html" data-i18n="cart.view">Warenkorb</a>
+                    <a href="/de/shop/checkout.html" data-i18n="footer.checkout">Zur Kasse</a>
+                    <a href="/de/shop/request-quote.html" data-i18n="cta.requestQuote">Angebot anfordern</a>
+                    <a href="/de/shop/contact-engineer.html" data-i18n="cta.contactEngineer">Technischen Ansprechpartner kontaktieren</a>
                 </div>
                 <div>
-                    <h4>Support</h4>
-                    <a href="/de/shop/shipping-policy.html">Versandrichtlinie</a>
-                    <a href="/de/shop/return-refund-policy.html">Rückgabe und Erstattung</a>
-                    <a href="/de/shop/warranty-policy.html">Garantierichtlinie</a>
-                    <a href="/de/shop/terms-of-service.html">Nutzungsbedingungen</a>
+                    <h4 data-i18n="footer.col.support">Support</h4>
+                    <a href="/de/shop/shipping-policy.html" data-i18n="footer.shipping">Versandrichtlinie</a>
+                    <a href="/de/shop/return-refund-policy.html" data-i18n="footer.returnRefund">Rückgabe und Erstattung</a>
+                    <a href="/de/shop/warranty-policy.html" data-i18n="footer.warranty">Garantierichtlinie</a>
+                    <a href="/de/shop/terms-of-service.html" data-i18n="footer.terms">Nutzungsbedingungen</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>&copy; 2026 GYUTRON. Alle Rechte vorbehalten.</span>
-                <span>Offizieller Store: shop.gyutron.com</span>
+                <span data-i18n="footer.copyright">© 2026 GYUTRON. Alle Rechte vorbehalten.</span>
+                <span data-i18n="footer.officialStore">Offizieller Store: shop.gyutron.com</span>
             </div>
         </div>
     </footer>
