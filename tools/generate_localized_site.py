@@ -413,7 +413,7 @@ def localized_catalog_js(folder: str, settings: dict[str, object]) -> str:
     js = (ROOT / "product-catalog.js").read_text(encoding="utf-8")
     if folder == "de":
         helpers = r'''
-function localizeProductType(product) {
+function __LOCALIZE_TYPE__(product) {
     return product.type
         .replace("Compact", "Kompaktes")
         .replace("All-purpose", "Universelles")
@@ -438,14 +438,14 @@ function localizeProductType(product) {
         .replace("gauge", "Messgerät");
 }
 
-function localizeProductSummary(product, category) {
+function __LOCALIZE_SUMMARY__(product, category) {
     const tags = product.tags && product.tags.length ? ` Wichtige Optionen: ${product.tags.join(", ")}.` : "";
     return `Professionelle Modellvariante für ${category.title}. Ausgelegt für industrielle Beschaffung, Pilotierung und Systemintegration.${tags}`;
 }
 '''
     elif folder == "ja":
         helpers = r'''
-function localizeProductType(product) {
+function __LOCALIZE_TYPE__(product) {
     return product.type
         .replace("Compact", "コンパクト")
         .replace("All-purpose", "汎用")
@@ -470,7 +470,7 @@ function localizeProductType(product) {
         .replace("gauge", "ゲージ");
 }
 
-function localizeProductSummary(product, category) {
+function __LOCALIZE_SUMMARY__(product, category) {
     const tags = product.tags && product.tags.length ? ` 主なオプション: ${product.tags.join("、")}。` : "";
     return `${category.title}向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。${tags}`;
 }
@@ -483,6 +483,13 @@ function localizeProductSummary(product, category) {
     js = js.replace('href="${key}.html"', f'href="{folder}/${{key}}.html"')
     js = js.replace('href="contact-sales.html"', f'href="{folder}/contact-sales.html"')
     js = js.replace('href="request-specification.html"', f'href="{folder}/request-specification.html"')
+    # The type/summary helpers injected above AND these call sites deliberately use
+    # the __LOCALIZE_*__ names: apply_replacements() below is a blind phrase map over
+    # the whole file and WOULD corrupt a normal identifier — it turned
+    # localizeProductType -> localizeProductTyp via the "Type"->"Typ" key, which left
+    # __LOCALIZE_TYPE__ undefined and crashed (blank) every de/ja product page. The
+    # all-caps/underscore names match no phrase key, so definition and call survive
+    # intact. (Proper fix = the build_i18n.py t() migration; until then don't rename.)
     js = js.replace('${product.type}', '${__LOCALIZE_TYPE__(product)}')
     js = js.replace('${product.summary}', '${__LOCALIZE_SUMMARY__(product, category)}')
     if folder == "de":

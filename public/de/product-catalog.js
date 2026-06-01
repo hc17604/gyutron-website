@@ -1,7 +1,7 @@
 let activePage = 1;
 const PRODUCTS_PER_PAGE = 6;
 
-function localizeProductTyp(product) {
+function __LOCALIZE_TYPE__(product) {
     return product.type
         .replace("Compact", "Kompaktes")
         .replace("All-purpose", "Universelles")
@@ -26,7 +26,7 @@ function localizeProductTyp(product) {
         .replace("gauge", "Messgerät");
 }
 
-function localizeProductSummary(product, category) {
+function __LOCALIZE_SUMMARY__(product, category) {
     const tags = product.tags && product.tags.length ? ` Wichtige Optionen: ${product.tags.join(", ")}.` : "";
     return `Professionelle Modellvariante für ${category.title}. Ausgelegt für industrielle Beschaffung, Pilotierung und Systemintegration.${tags}`;
 }

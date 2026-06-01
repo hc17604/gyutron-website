@@ -1,7 +1,7 @@
 let activePage = 1;
 const PRODUCTS_PER_PAGE = 6;
 
-function localizeProductタイプ(product) {
+function __LOCALIZE_TYPE__(product) {
     return product.type
         .replace("Compact", "コンパクト")
         .replace("All-purpose", "汎用")
@@ -26,7 +26,7 @@ function localizeProductタイプ(product) {
         .replace("gauge", "ゲージ");
 }
 
-function localizeProductSummary(product, category) {
+function __LOCALIZE_SUMMARY__(product, category) {
     const tags = product.tags && product.tags.length ? ` 主なオプション: ${product.tags.join("、")}。` : "";
     return `${category.title}向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。${tags}`;
 }
