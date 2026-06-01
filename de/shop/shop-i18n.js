@@ -52,7 +52,18 @@ window.GYUTRON_SHOP_I18N = {
       "GYUTRON Official Store": "Offizieller GYUTRON Store",
       "searchAll": "Alle Ergebnisse für „%s“ anzeigen",
       "detail.notice": "Industriebestellungen können vor dem Versand eine Parameterbestätigung, Zertifizierungsprüfung, Bestandsvalidierung oder Lieferzeitprüfung erfordern.",
-      "summary.notice": "Endgültiger Versand, Zölle, Lieferzeit und Zertifizierungsdokumente werden vor der Zahlungsabwicklung bestätigt."
+      "summary.notice": "Endgültiger Versand, Zölle, Lieferzeit und Zertifizierungsdokumente werden vor der Zahlungsabwicklung bestätigt.",
+      "Store menu": "Store-Menü",
+      "Product Categories": "Produktkategorien",
+      "Company & Policies": "Unternehmen & Richtlinien",
+      "Account Registration": "Kontoregistrierung",
+      "About Us": "Über uns",
+      "Contact Us": "Kontakt",
+      "Shipping Policy": "Versandrichtlinie",
+      "Warranty Policy": "Garantierichtlinie",
+      "nav.products": "Produkte",
+      "nav.requestQuote": "Angebot anfordern",
+      "nav.brandSite": "Markenwebsite"
     },
     leadTime: {
       "In stock": "Auf Lager",
@@ -178,7 +189,18 @@ window.GYUTRON_SHOP_I18N = {
       "GYUTRON Official Store": "GYUTRON 公式ストア",
       "searchAll": "「%s」のすべての結果を表示",
       "detail.notice": "産業向け注文では、出荷前にパラメータ確認、認証チェック、在庫確認、納期確認が必要な場合があります。",
-      "summary.notice": "最終的な送料、関税、納期、認証文書は決済処理の前に確定します。"
+      "summary.notice": "最終的な送料、関税、納期、認証文書は決済処理の前に確定します。",
+      "Store menu": "ストアメニュー",
+      "Product Categories": "製品カテゴリ",
+      "Company & Policies": "会社・ポリシー",
+      "Account Registration": "アカウント登録",
+      "About Us": "会社概要",
+      "Contact Us": "お問い合わせ",
+      "Shipping Policy": "配送ポリシー",
+      "Warranty Policy": "保証ポリシー",
+      "nav.products": "製品",
+      "nav.requestQuote": "見積依頼",
+      "nav.brandSite": "ブランドサイト"
     },
     leadTime: {
       "In stock": "在庫あり",

@@ -556,22 +556,26 @@ function initStoreMobileMenu() {
 
     const panel = document.createElement("aside");
     panel.className = "store-mobile-panel";
-    panel.setAttribute("aria-label", "Store menu");
+    panel.setAttribute("aria-label", t("Store menu"));
+    const chev = '<i class="fa-solid fa-chevron-right"></i>';
+    // NOTE: keep the /ja/shop/ paths literal — the build rewrites them to
+    // /de/ja/shop/ , /ja/ja/shop/ per locale. Labels go through t() / catLabel() so
+    // the mobile menu is fully localized (was hardcoded English before).
     panel.innerHTML = `
-        <div class="store-mobile-section">Store</div>
-        <a href="/ja/shop/products.html">Products <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/request-quote.html">Request Quote <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/contact-engineer.html">Contact Engineer <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/account.html">Account Registration <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/cart.html">Cart <i class="fa-solid fa-chevron-right"></i></a>
-        <div class="store-mobile-section">Product Categories</div>
-        ${CATEGORY_META.map((category) => `<a href="/ja/shop/products.html?category=${encodeURIComponent(category.name)}">${category.name} <i class="fa-solid fa-chevron-right"></i></a>`).join("")}
-        <div class="store-mobile-section">Company & Policies</div>
-        <a href="https://www.gyutron.com/">Brand Site <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/about-us.html">About Us <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/contact-us.html">Contact Us <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/shipping-policy.html">Shipping Policy <i class="fa-solid fa-chevron-right"></i></a>
-        <a href="/ja/shop/warranty-policy.html">Warranty Policy <i class="fa-solid fa-chevron-right"></i></a>
+        <div class="store-mobile-section">${t("Store")}</div>
+        <a href="/ja/shop/products.html">${t("nav.products")} ${chev}</a>
+        <a href="/ja/shop/request-quote.html">${t("nav.requestQuote")} ${chev}</a>
+        <a href="/ja/shop/contact-engineer.html">${t("Contact Engineer")} ${chev}</a>
+        <a href="/ja/shop/account.html">${t("Account Registration")} ${chev}</a>
+        <a href="/ja/shop/cart.html">${t("Cart")} ${chev}</a>
+        <div class="store-mobile-section">${t("Product Categories")}</div>
+        ${CATEGORY_META.map((category) => `<a href="/ja/shop/products.html?category=${encodeURIComponent(category.name)}">${catLabel(category.name)} ${chev}</a>`).join("")}
+        <div class="store-mobile-section">${t("Company & Policies")}</div>
+        <a href="https://www.gyutron.com/">${t("nav.brandSite")} ${chev}</a>
+        <a href="/ja/shop/about-us.html">${t("About Us")} ${chev}</a>
+        <a href="/ja/shop/contact-us.html">${t("Contact Us")} ${chev}</a>
+        <a href="/ja/shop/shipping-policy.html">${t("Shipping Policy")} ${chev}</a>
+        <a href="/ja/shop/warranty-policy.html">${t("Warranty Policy")} ${chev}</a>
     `;
     document.body.appendChild(panel);
 

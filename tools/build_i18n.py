@@ -76,6 +76,44 @@ JA_FONTS = (
     '    </style>'
 )
 
+# Main-site Japanese font block — byte-identical to the legacy generator's
+# JA_FONT_BLOCK (it carries the 2 preconnect links + comments the shop block
+# omits), injected before </head> on ja main pages via {{locale.mainfonts}}.
+JA_FONT_BLOCK_MAIN = (
+    '\n    <link rel="preconnect" href="https://fonts.googleapis.com">'
+    '\n    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+    '\n    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">'
+    '\n    <style id="gyutron-ja-typography">'
+    '\n      body, button, input, select, textarea {'
+    '\n        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;'
+    '\n        -webkit-font-smoothing: antialiased;'
+    '\n        text-rendering: optimizeLegibility;'
+    '\n      }'
+    '\n      body { line-height: 1.7; }'
+    '\n      h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }'
+    '\n      /* Body copy at a readable regular weight, but DO NOT flatten links/'
+    '\n         spans globally — that washed out the nav. Let component weights win. */'
+    '\n      p, li, label, td { font-weight: 400; }'
+    '\n      /* Navigation must read bold and dark, not thin/pale in Japanese. */'
+    '\n      .nav a, .nav-links a, .nav-trigger, .nav-item > a,'
+    '\n      .store-language-menu a, .top-strip, .brand span {'
+    '\n        font-weight: 700;'
+    '\n        color: var(--ink, #17121f);'
+    '\n      }'
+    '\n      /* Japanese is visually smaller than Latin at the same px and the'
+    '\n         Latin-tuned 12px uppercase nav reads too small. Enlarge JA nav,'
+    '\n         drop the no-op uppercase, and tighten the wide tracking that hurts'
+    '\n         CJK. EN/DE pages are unaffected (this block is ja-only). */'
+    '\n      .nav, .nav-links, .nav a, .nav-links a, .nav-trigger {'
+    '\n        font-size: 15px;'
+    '\n        text-transform: none;'
+    '\n        letter-spacing: 0.01em;'
+    '\n      }'
+    '\n      .store-language-menu a { font-size: 14px; text-transform: none; }'
+    '\n      .store-language-menu a span { font-size: 12px; }'
+    '\n    </style>\n'
+)
+
 LANG_DIRECTIVE = re.compile(r"\{\{locale\.(lang|og|base|fonts)\}\}")
 CANONICAL_DIRECTIVE = re.compile(r"\{\{locale\.canonical:([^}]+)\}\}")
 LANGSWITCH_DIRECTIVE = re.compile(r"\{\{locale\.langswitch(?::([^}]+))?\}\}")
@@ -86,6 +124,7 @@ ALTERNATES_DIRECTIVE = re.compile(r"\{\{locale\.alternates\}\}")
 PATH_DIRECTIVE = re.compile(r"\{\{locale\.path\}\}")
 BASETAG_DIRECTIVE = re.compile(r"\{\{locale\.basetag\}\}")
 MAINLANGSWITCH_DIRECTIVE = re.compile(r"\{\{locale\.mainlangswitch\.(mobile|desktop)(?::([^}]+))?\}\}")
+MAINFONTS_DIRECTIVE = re.compile(r"\{\{locale\.mainfonts\}\}")
 
 
 def alternates_block(page_path: str, active: str, host: str = SHOP_HOST) -> str:
@@ -159,6 +198,7 @@ def apply_locale_directives(text: str, loc_code: str, rel: str = "") -> str:
     # Main-site directives (no-ops on shop templates, which never use them).
     text = PATH_DIRECTIVE.sub(lambda m: f'{conf["dir"]}/' if conf["dir"] else "", text)
     text = BASETAG_DIRECTIVE.sub(lambda m: '\n    <base href="../">' if conf["dir"] else "", text)
+    text = MAINFONTS_DIRECTIVE.sub(lambda m: JA_FONT_BLOCK_MAIN if loc_code == "ja" else "", text)
     text = MAINLANGSWITCH_DIRECTIVE.sub(
         lambda m: main_language_switch(loc_code, m.group(2) or page_file, m.group(1)), text)
     text = CANONICAL_DIRECTIVE.sub(lambda m: f'{host}{conf["base"]}{m.group(1)}', text)
