@@ -137,7 +137,8 @@ def add_link_directives(s: str) -> str:
         if href.startswith(("http:", "https:", "mailto:", "tel:", "/", "de/", "ja/")):
             return m.group(0)
         if href == "#":
-            raise SystemExit("bare '#' href not handled (legacy maps it to <dir>/index.html)")
+            # legacy: "#" -> "<dir>/index.html" (de/ja), stays "#" on en
+            return 'href="{{locale.indexhref}}"'
         if href.startswith("#"):
             # same-page anchor: en keeps "#frag", de/ja -> "<dir>/index.html#frag"
             return f'href="{{{{locale.indexbase}}}}{href}"'
@@ -225,22 +226,31 @@ def templatize(page: str) -> str:
     h = h.replace(f'<meta name="description" content="{en_desc}">',
                   f'<meta name="description" content="{{{{t:seo.{stem}.desc}}}}">', 1)
     h = h.replace("</head>", "{{locale.mainfonts}}</head>", 1)
-    # Open Graph title/description: key only when the legacy actually translated
-    # them (canonical / og:url stay literal — legacy left them on the en domain).
-    for prop, suffix in (("og:title", "ogtitle"), ("og:description", "ogdesc")):
-        m_en = re.search(rf'<meta property="{prop}" content="([^"]*)">', en_head)
+    # SEO meta: key any field the legacy translated (og:*, twitter:*, og:url).
+    # A field whose de/ja value equals en stays literal (e.g. contact-sales og:url);
+    # index.html's og:url DOES differ per locale, so it gets keyed.
+    for attr, prop, suffix in (("property", "og:title", "ogtitle"),
+                               ("property", "og:description", "ogdesc"),
+                               ("name", "twitter:title", "twtitle"),
+                               ("name", "twitter:description", "twdesc"),
+                               ("property", "og:url", "ogurl")):
+        pat = rf'<meta {attr}="{prop}" content="([^"]*)">'
+        m_en = re.search(pat, en_head)
         if not m_en:
             continue
         ev = m_en.group(1)
-        m_de = re.search(rf'<meta property="{prop}" content="([^"]*)">', de)
-        m_ja = re.search(rf'<meta property="{prop}" content="([^"]*)">', ja)
+        m_de = re.search(pat, de)
+        m_ja = re.search(pat, ja)
         dv = m_de.group(1) if m_de else ev
         jv = m_ja.group(1) if m_ja else ev
         if dv == ev and jv == ev:
             continue
         record(f"seo.{stem}.{suffix}", ev, dv, jv)
-        h = h.replace(f'<meta property="{prop}" content="{ev}">',
-                      f'<meta property="{prop}" content="{{{{t:seo.{stem}.{suffix}}}}}">', 1)
+        h = h.replace(f'<meta {attr}="{prop}" content="{ev}">',
+                      f'<meta {attr}="{prop}" content="{{{{t:seo.{stem}.{suffix}}}}}">', 1)
+    # og:locale -> per-locale directive; ja hreflang added on de/ja only (legacy).
+    h = re.sub(r'(<meta property="og:locale" content=")[^"]*(">)', r'\1{{locale.og}}\2', h, count=1)
+    h = re.sub(r'(<link rel="alternate" hreflang="de" href="[^"]*">)', r'\1{{locale.jahreflang}}', h, count=1)
 
     # ---- body: protect inline code, directive-ize switches, then key text+attrs ----
     en_body2, de_body2, ja_body2, code_blocks = protect_code3(en_body, de_body, ja_body)

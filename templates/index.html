@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="{{locale.lang}}">
 <head>
-    <meta charset="UTF-8">
-    <base href="../">
+    <meta charset="UTF-8">{{locale.basetag}}
     <script>
         if (location.hostname === "shop.gyutron.com" && !location.pathname.startsWith("/shop/")) {
             location.replace("/shop/index.html" + location.search + location.hash);
@@ -10,26 +9,25 @@
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GYUTRON | Industrielle Bildverarbeitung, Sensorik und Automatisierungshardware</title>
-    <meta name="description" content="GYUTRON bietet industrielle intelligente Hardware, Machine-Vision-Systeme, Sensoren, robuste PDA-Terminals, Prüfgeräte und vernetzte Automatisierungslösungen für moderne Fertigungs- und Logistikteams.">
+    <title>{{t:seo.index.title}}</title>
+    <meta name="description" content="{{t:seo.index.desc}}">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://gyutron.com/">
     <link rel="alternate" hreflang="en" href="https://www.gyutron.com/">
-    <link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/">
-    <link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/">
+    <link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/">{{locale.jahreflang}}
     <link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/">
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" href="favicon-32x32.png" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.gyutron.com/de/">
-    <meta property="og:locale" content="de_DE">
-    <meta property="og:title" content="GYUTRON | Industrielle Bildverarbeitung, Sensorik und Automatisierungshardware">
-    <meta property="og:description" content="Industrielle intelligente Hardware, Bildverarbeitung, Sensorik, robuste PDA-Terminals und vernetzte Automatisierungssysteme.">
+    <meta property="og:url" content="{{t:seo.index.ogurl}}">
+    <meta property="og:locale" content="{{locale.og}}">
+    <meta property="og:title" content="{{t:seo.index.ogtitle}}">
+    <meta property="og:description" content="{{t:seo.index.ogdesc}}">
     <meta property="og:site_name" content="GYUTRON">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GYUTRON | Industrial Intelligence, Bildverarbeitung & Automation">
-    <meta name="twitter:description" content="Industrielle intelligente Hardware für Fertigung, Logistik, Prüfung und vernetzte Betriebsabläufe.">
+    <meta name="twitter:title" content="{{t:seo.index.twtitle}}">
+    <meta name="twitter:description" content="{{t:seo.index.twdesc}}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -2210,312 +2208,305 @@
         }
     </style>
     <link rel="stylesheet" href="mobile-navigation.css">
-</head>
+{{locale.mainfonts}}</head>
 <body>
     <div class="top-strip">
         <div class="container">
-            <span><i class="fa-solid fa-location-crosshairs"></i> Robotik, Bildverarbeitung, Sensorik und robuste Computertechnik für Industrieteams</span>
+            <span><i class="fa-solid fa-location-crosshairs"></i> {{t:main.001}}</span>
             <div class="top-strip-links">
-                <a href="https://shop.gyutron.com">Offizieller Store</a>
-                <a href="de/index.html">Support-Center</a>
+                <a href="https://shop.gyutron.com">{{t:main.002}}</a>
+                <a href="{{locale.indexhref}}">{{t:main.003}}</a>
             </div>
         </div>
     </div>
 
     <header class="site-header">
         <div class="container">
-            <a class="brand" href="de/index.html" aria-label="GYUTRON home">
+            <a class="brand" href="{{locale.indexhref}}" aria-label="GYUTRON home">
                 <img class="brand-logo" src="gyutron-logo-purple.png" alt="GYUTRON">
             </a>
-            <div class="language-switch language-switch-mobile">
-                <button class="language-icon language-icon-mobile" type="button" aria-label="Sprache und Region auswählen" aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>
-                <div class="language-menu" aria-label="Sprachoptionen">
-                    <a href="index.html">English <span>EN</span></a>
-                    <a href="de/index.html" aria-current="page">Deutsch <span>DE</span></a>
-                    <a href="ja/index.html">日本語 <span>JA</span></a>
-                </div>
-            </div>
+            {{locale.mainlangswitch.mobile}}
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-trigger" href="de/index.html#products">Produkte <i class="fa-solid fa-chevron-down"></i></a>
+                    <a class="nav-trigger" href="{{locale.path}}index.html#products">{{t:main.004}} <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="mega-menu" style="--menu-overview-image: url('mega-industrial-products.png')">
-                        <a class="mega-feature mega-feature-products" href="de/index.html#products">
-                            <strong>Industrielles Produktportfolio</strong>
-                            <span>Robuste PDA-Terminals, Industriesensoren, Smart-Kameras, Prüfgeräte, Roboter-Arbeitszellen und Edge-Control-Hardware.</span>
+                        <a class="mega-feature mega-feature-products" href="{{locale.path}}index.html#products">
+                            <strong>{{t:main.005}}</strong>
+                            <span>{{t:main.006}}</span>
                         </a>
                         <div class="mega-links">
                             <div class="mega-section-label">Hardware</div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/android-pda.html"><span><strong>Robuste PDA-Terminals</strong><span>Barcode-, RFID-, NFC- und Felddatenerfassung für Industrieteams.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}android-pda.html"><span><strong>{{t:main.007}}</strong><span>{{t:main.008}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-intelligent-hardware.png')">
-                                    <a href="de/android-pda.html"><strong>Android-PDA</strong><span>Robuste Handheld-Terminals für Barcode, NFC, Inventur und mobile Datenerfassung im Feld.</span></a>
-                                    <a href="de/rfid-handhelds.html"><strong>RFID-Handhelds</strong><span>RFID-Lesung mit großer Reichweite für Lager, Asset Tracking und Produktionsrückverfolgbarkeit.</span></a>
-                                    <a href="de/barcode-scanners.html"><strong>Barcodescanner</strong><span>Schnelle 1D-/2D-Scanmodule für Wareneingang, Kommissionierung und Linienverifikation.</span></a>
-                                    <a href="de/request-specification.html"><strong>Spezifikation anfordern</strong><span>Beschreiben Sie Ihren Anwendungsfall und erhalten Sie passende Empfehlungen für Gerät, Zubehör und Integration.</span></a>
+                                    <a href="{{locale.path}}android-pda.html"><strong>{{t:main.009}}</strong><span>{{t:main.010}}</span></a>
+                                    <a href="{{locale.path}}rfid-handhelds.html"><strong>{{t:main.011}}</strong><span>{{t:main.012}}</span></a>
+                                    <a href="{{locale.path}}barcode-scanners.html"><strong>{{t:main.013}}</strong><span>{{t:main.014}}</span></a>
+                                    <a href="{{locale.path}}request-specification.html"><strong>{{t:main.015}}</strong><span>{{t:main.016}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/proximity-sensors.html"><span><strong>Sensorik &amp; I/O</strong><span>Anwesenheitserkennung, Distanzmessung, Prozessüberwachung, Sicherheit und IO-Link-Konnektivität.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}proximity-sensors.html"><span><strong>{{t:main.017}}</strong><span>{{t:main.018}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-hero-industrial-sensors-matrix.png')">
-                                    <a href="de/proximity-sensors.html"><strong>Anwesenheits- &amp; Objekterkennung</strong><span>Lichtschranken-, induktive, Faser-, Ultraschall- und Sicherheitssensorik für Erkennungsaufgaben in der Fertigung.</span></a>
-                                    <a href="de/laser-measurement.html"><strong>Abstand &amp; Position</strong><span>Laser-Wegsensoren und Ultraschall-Distanzsensoren für Spalt-, Füllstands- und Positionsprüfungen.</span></a>
-                                    <a href="de/environmental-sensing.html"><strong>Prozess &amp; Zustand</strong><span>Druck-, Temperatur-, Feuchte-, Vibrations- und I/O-Diagnostik für transparente Anlagenverfügbarkeit.</span></a>
+                                    <a href="{{locale.path}}proximity-sensors.html"><strong>{{t:main.019}}</strong><span>{{t:main.020}}</span></a>
+                                    <a href="{{locale.path}}laser-measurement.html"><strong>{{t:main.021}}</strong><span>{{t:main.022}}</span></a>
+                                    <a href="{{locale.path}}environmental-sensing.html"><strong>{{t:main.023}}</strong><span>{{t:main.024}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/area-scan-cameras.html"><span><strong>Machine-Vision-Systeme</strong><span>Smart-Kameras, Codeleser, 3D-Vision, Controller und Beleuchtungszubehör.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}area-scan-cameras.html"><span><strong>{{t:main.025}}</strong><span>{{t:main.026}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-smart-camera-detail.png')">
-                                    <a href="de/area-scan-cameras.html"><strong>Smart- &amp; Flächenkameras</strong><span>Vollbild-2D-Kameras für Montageprüfung, KI-Inspektion, Messtechnik und Führung.</span></a>
-                                    <a href="de/smart-vision-sensors.html"><strong>Controllers &amp; 3D Vision</strong><span>Vision-Controller, Line-Scan-Systeme und 3D-Profilkameras für größere Prüfzellen.</span></a>
-                                    <a href="de/code-reading-cameras.html"><strong>Codelesen &amp; Verifikation</strong><span>Stationäre Leser, DPM-Scanner und Verifier für Rückverfolgbarkeit und Codequalität.</span></a>
-                                    <a href="de/vision-lighting.html"><strong>Vision-Beleuchtung</strong><span>Weißlicht-Ring-, Balken- und Dome-Beleuchtung für stabile Machine-Vision-Bilder.</span></a>
+                                    <a href="{{locale.path}}area-scan-cameras.html"><strong>{{t:main.027}}</strong><span>{{t:main.028}}</span></a>
+                                    <a href="{{locale.path}}smart-vision-sensors.html"><strong>Controllers &amp; 3D Vision</strong><span>{{t:main.029}}</span></a>
+                                    <a href="{{locale.path}}code-reading-cameras.html"><strong>{{t:main.030}}</strong><span>{{t:main.031}}</span></a>
+                                    <a href="{{locale.path}}vision-lighting.html"><strong>{{t:main.032}}</strong><span>{{t:main.033}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/dimensional-gauges.html"><span><strong>Qualitäts- &amp; Prüfgeräte</strong><span>Messung, Oberflächenprüfung, Code-Bewertung, Kalibrierung und Wartungswerkzeuge.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}dimensional-gauges.html"><span><strong>{{t:main.034}}</strong><span>{{t:main.035}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-hero-inspection-instruments-matrix.png')">
-                                    <a href="de/dimensional-gauges.html"><strong>Maßprüfgeräte</strong><span>Messwerkzeuge für Geometrie, Ausrichtung und wiederholgenaue Produktionstoleranzen.</span></a>
-                                    <a href="de/surface-inspection.html"><strong>Oberflächenprüfung</strong><span>Sichtbare Fehler, Finish-Abweichungen, Kratzer und Materialunregelmäßigkeiten erkennen.</span></a>
-                                    <a href="de/portable-testers.html"><strong>Portable Tester</strong><span>Hand- und Tischgeräte für Instandhaltungsteams und Qualitätsingenieure.</span></a>
-                                    <a href="de/calibration-tools.html"><strong>Kalibrierwerkzeuge</strong><span>Unterstützt konsistente Messung, Einrichtungsprüfung und Lifecycle-Dokumentation.</span></a>
+                                    <a href="{{locale.path}}dimensional-gauges.html"><strong>{{t:main.036}}</strong><span>{{t:main.037}}</span></a>
+                                    <a href="{{locale.path}}surface-inspection.html"><strong>{{t:main.038}}</strong><span>{{t:main.039}}</span></a>
+                                    <a href="{{locale.path}}portable-testers.html"><strong>{{t:main.040}}</strong><span>{{t:main.041}}</span></a>
+                                    <a href="{{locale.path}}calibration-tools.html"><strong>{{t:main.042}}</strong><span>{{t:main.043}}</span></a>
                                 </div>
                             </div>
-                            <div class="mega-section-label">Weitere Produkte</div>
-                            <a href="de/index.html#products"><span><strong>Roboter-Arbeitszellen</strong><span>Kollaborative Roboterstationen für Beladen, Prüfen, Sortieren und Montieren.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="de/index.html#platform"><span><strong>Edge-Controller</strong><span>Industrielle Computertechnik für Geräteorchestrierung und Datenerfassung.</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href="de/index.html#products"><span><strong>Zubehör</strong><span>Dockingstationen, Kabel, Halterungen, Beleuchtung und Montagehardware.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <div class="mega-section-label">{{t:main.044}}</div>
+                            <a href="{{locale.path}}index.html#products"><span><strong>{{t:main.045}}</strong><span>{{t:main.046}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="{{locale.path}}index.html#platform"><span><strong>{{t:main.047}}</strong><span>{{t:main.048}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="{{locale.path}}index.html#products"><span><strong>{{t:main.049}}</strong><span>{{t:main.050}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-trigger" href="de/automated-vision-inspection.html">Lösungen <i class="fa-solid fa-chevron-down"></i></a>
+                    <a class="nav-trigger" href="{{locale.path}}automated-vision-inspection.html">{{t:main.051}} <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="mega-menu" style="--menu-overview-image: url('product-vision-cell.png')">
-                        <a class="mega-feature mega-feature-solutions" href="de/automated-vision-inspection.html">
-                            <strong>Integrierte industrielle Lösungen</strong>
-                            <span>Machine Vision, Embedded Control, Rückverfolgbarkeit und mobile Datenerfassung als Lösungen für konkrete Fabrikprozesse.</span>
+                        <a class="mega-feature mega-feature-solutions" href="{{locale.path}}automated-vision-inspection.html">
+                            <strong>{{t:main.052}}</strong>
+                            <span>{{t:main.053}}</span>
                         </a>
                         <div class="mega-links">
-                            <div class="mega-section-label">Lösungsplattformen</div>
+                            <div class="mega-section-label">{{t:main.054}}</div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/automated-vision-inspection.html"><span><strong>Automatisierte Bildprüfung</strong><span>Inline-Bildprüfung, Code-Verifikation, Maßprüfung und robotergestützte Endkontrolle.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}automated-vision-inspection.html"><span><strong>{{t:main.055}}</strong><span>{{t:main.056}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-hero-area-scan-cameras-matrix.png')">
-                                    <a href="de/automated-vision-inspection.html#capabilities"><strong>Optische 2D-/3D-Prüfung</strong><span>Smart-Kameras und 3D-Vision prüfen Teile, Baugruppen und sichtbare Fehler im Produktionstakt.</span></a>
-                                    <a href="de/automated-vision-inspection.html#capabilities"><strong>Codelesen &amp; Rückverfolgbarkeit</strong><span>Barcodes, DPM-Codes, Etiketten und Qualitätsnachweise auf Einheitenebene verifizieren.</span></a>
-                                    <a href="de/automated-vision-inspection.html#capabilities"><strong>Maßprüfung &amp; Surface Qualität</strong><span>Kritische Merkmale messen und Kratzer, Flecken, Risse oder Finish-Abweichungen erkennen.</span></a>
-                                    <a href="de/automated-vision-inspection.html#capabilities"><strong>Robotergestützte Endprüfung</strong><span>Roboterbewegung, Kameras, Beleuchtung und Sensoren für mehrseitige Endprüfungen kombinieren.</span></a>
+                                    <a href="{{locale.path}}automated-vision-inspection.html#capabilities"><strong>{{t:main.057}}</strong><span>{{t:main.058}}</span></a>
+                                    <a href="{{locale.path}}automated-vision-inspection.html#capabilities"><strong>{{t:main.059}}</strong><span>{{t:main.060}}</span></a>
+                                    <a href="{{locale.path}}automated-vision-inspection.html#capabilities"><strong>{{t:main.061}}</strong><span>{{t:main.062}}</span></a>
+                                    <a href="{{locale.path}}automated-vision-inspection.html#capabilities"><strong>{{t:main.063}}</strong><span>{{t:main.064}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#solutions"><span><strong>Elektronik- &amp; Halbleiterfertigung</strong><span>Prüf- und Rückverfolgbarkeitsunterstützung für kompakte Präzisionsfertigung mit hohem Durchsatz.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#solutions"><span><strong>{{t:main.065}}</strong><span>{{t:main.066}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-hero-code-reading-cameras-matrix.png')">
-                                    <a href="de/index.html#solutions"><strong>SMT-Linienprüfung</strong><span>Anwesenheit, Polarität, Lötflächen, Steckverbinder und Bauteilebene rund um Elektroniklinien prüfen.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Bauteil-Anwesenheitsprüfung</strong><span>Pins, Platten, Klemmen, Etiketten und Vorrichtungen vor nachgelagerten Prozessen verifizieren.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Verpackungs- &amp; Etikettenprüfung</strong><span>Etiketten, Siegel, Kartons, Serialisierung und Versandidentität validieren.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Prozessverriegelung</strong><span>Prüfergebnisse nutzen, um Produkte vor Fehlerweitergabe auszuschleusen, zu stoppen oder umzuleiten.</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.067}}</strong><span>{{t:main.068}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.069}}</strong><span>{{t:main.070}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.071}}</strong><span>{{t:main.072}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.073}}</strong><span>{{t:main.074}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#platform"><span><strong>Integrierte industrielle Embedded-Systeme</strong><span>I/O, Sensorik, Motion, Beleuchtung und Edge Control für die Automatisierungsinfrastruktur.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#platform"><span><strong>{{t:main.075}}</strong><span>{{t:main.076}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('cta-industrial-control.png')">
-                                    <a href="de/index.html#platform"><strong>Industrial I/O &amp; Sensor Networks</strong><span>Anwesenheitssensoren, Messgeräte, Sicherheitssignale und Prozessrückmeldungen verbinden.</span></a>
-                                    <a href="de/index.html#platform"><strong>Motion &amp; Robot Cell Control</strong><span>Handling, Prüfung, Sortierung und liniennahe Automatisierungszellen koordinieren.</span></a>
-                                    <a href="de/index.html#platform"><strong>Beleuchtungs- &amp; Trigger-Synchronisation</strong><span>Bildaufnahme mit Weißlichtbeleuchtung, Triggern und Timing-Steuerung stabilisieren.</span></a>
-                                    <a href="de/index.html#platform"><strong>Edge-Datenerfassung</strong><span>Maschinenereignisse, Prüfdaten, Scans und Anlagenstatus direkt an der Linie erfassen.</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>Industrial I/O &amp; Sensor Networks</strong><span>{{t:main.077}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>Motion &amp; Robot Cell Control</strong><span>{{t:main.078}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>{{t:main.079}}</strong><span>{{t:main.080}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>{{t:main.081}}</strong><span>{{t:main.082}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#platform"><span><strong>Fertigungsintelligenz &amp; Rückverfolgbarkeit</strong><span>Prüfereignisse, Gerätedaten und Scanprotokolle in operative Transparenz umwandeln.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#platform"><span><strong>{{t:main.083}}</strong><span>{{t:main.084}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-hero-request-specification-matrix.png')">
-                                    <a href="de/index.html#platform"><strong>MES-/WMS-Integration</strong><span>Prüfergebnisse, Scanereignisse und Anlagenprotokolle in Fabriksysteme übertragen.</span></a>
-                                    <a href="de/index.html#platform"><strong>Qualitätsnachweis-Protokollierung</strong><span>Bildnachweise, Ergebnisse, Zeitstempel und Teile-IDs für Prüfungen und Audits sichern.</span></a>
-                                    <a href="de/index.html#platform"><strong>Geräte- &amp; Flottenmanagement</strong><span>Konfiguration, Support und Updates über eingesetzte Hardware hinweg standardisieren.</span></a>
-                                    <a href="de/index.html#platform"><strong>Dashboard &amp; Reporting</strong><span>Produktionsdaten nutzen, um Engpässe, Yield-Verschiebungen und wiederkehrende Qualitätsrisiken zu erkennen.</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>{{t:main.085}}</strong><span>{{t:main.086}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>{{t:main.087}}</strong><span>{{t:main.088}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>{{t:main.089}}</strong><span>{{t:main.090}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>Dashboard &amp; Reporting</strong><span>{{t:main.091}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#solutions"><span><strong>Lager- &amp; Feldeinsätze</strong><span>Robuste mobile Datenerfassung für Inventur, RFID-Transparenz, Versand und Field Service.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#solutions"><span><strong>{{t:main.092}}</strong><span>{{t:main.093}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('product-hero-rfid-handhelds-matrix.png')">
-                                    <a href="de/index.html#solutions"><strong>Wareneingang &amp; Inventur</strong><span>Wareneingangsprüfungen, Zykluszählungen und Bestandsgenauigkeit digitalisieren.</span></a>
-                                    <a href="de/index.html#solutions"><strong>RFID Asset Visibility</strong><span>Paletten, Werkzeuge, Betriebsmittel und Produktionsanlagen mit robusten RFID-Geräten verfolgen.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Kommissionierung &amp; Versand</strong><span>Lagerteams mit Scanprüfungen, Aufgabenprotokollen und Versandvalidierung führen.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Datenerfassung im Field Service</strong><span>Serviceprotokolle, Standortnachweise, Teileverbrauch und Rücklaufprozesse im Feld erfassen.</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.094}}</strong><span>{{t:main.095}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>RFID Asset Visibility</strong><span>{{t:main.096}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.097}}</strong><span>{{t:main.098}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.099}}</strong><span>{{t:main.100}}</span></a>
                                 </div>
                             </div>
-                            <a href="de/index.html#resources"><span><strong>OEM-/ODM-Lösungsprogramme</strong><span>Hardware, Firmware, Zubehör, Branding und Workflow-Pakete für Partner anpassen.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <a href="{{locale.path}}index.html#resources"><span><strong>{{t:main.101}}</strong><span>{{t:main.102}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-trigger" href="de/index.html#solutions">Branchen <i class="fa-solid fa-chevron-down"></i></a>
+                    <a class="nav-trigger" href="{{locale.path}}index.html#solutions">{{t:main.103}} <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="mega-menu mega-compact" style="--menu-overview-image: url('nav-industries-overview.png?v=20260525-hd2')">
                         <div class="mega-links">
-                            <div class="mega-section-label">Branchen</div>
+                            <div class="mega-section-label">{{t:main.103}}</div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#solutions"><span><strong>Fertigung &amp; Montage</strong><span>Bildverarbeitung, Sensorik, Rückverfolgbarkeit und robuste Datenerfassung für Produktionslinien.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#solutions"><span><strong>{{t:main.104}}</strong><span>{{t:main.105}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-industry-automotive-ev.png?v=20260525-hd2')">
-                                    <a href="de/index.html#solutions"><strong>Automotive &amp; EV</strong><span>Prüfabläufe für Batterie, Antriebsstrang, Karosserie und Endmontage.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Maschinenbau &amp; Metallteile</strong><span>Maßprüfungen, Oberflächenprüfung, Teile-ID und Linienverifikation.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Verpackung &amp; Konsumgüter</strong><span>Etiketten-, Siegel-, Füllstands-, Code-, Karton- und End-of-Line-Prüfungen.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Allgemeine Fabrikautomation</strong><span>Sensoren, Controller, Handheld-Terminals und Prüfzellen für gemischte Fertigung.</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>Automotive &amp; EV</strong><span>{{t:main.106}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.107}}</strong><span>{{t:main.108}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.109}}</strong><span>{{t:main.110}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.111}}</strong><span>{{t:main.112}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#solutions"><span><strong>Elektronik &amp; Halbleiter</strong><span>Prüfung und Identifikation für hochdichte Präzisionsfertigung.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#solutions"><span><strong>{{t:main.113}}</strong><span>{{t:main.114}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-industry-electronics-smt.png?v=20260525-hd2')">
-                                    <a href="de/index.html#solutions"><strong>PCB &amp; SMT Production</strong><span>Bauteilanwesenheit, Polarität, Lötbereiche, Steckverbinder und Traceability auf Leiterplattenebene.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Halbleiter-Packaging</strong><span>Saubere, präzise Sichtprüfungen für Wafer, Packages, Trays und Mikrostrukturen.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Steckverbinder- &amp; Kabelbaugruppen</strong><span>Pin-, Klemmen-, Crimp-, Gehäuse- und Codeverifikation.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Reinraum-Rückverfolgbarkeit</strong><span>Robuste Identifikation, kontrollierte Datenerfassung und Qualitätsaufzeichnungen.</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>PCB &amp; SMT Production</strong><span>{{t:main.115}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.116}}</strong><span>{{t:main.117}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.118}}</strong><span>{{t:main.119}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.120}}</strong><span>{{t:main.121}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#solutions"><span><strong>Logistik &amp; Feldeinsätze</strong><span>Mobile Computing-, RFID-, Barcode- und Transparenz-Tools für verteiltes Arbeiten.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#solutions"><span><strong>{{t:main.122}}</strong><span>{{t:main.123}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-industry-logistics-rfid.png?v=20260525-hd2')">
-                                    <a href="de/index.html#solutions"><strong>Lager &amp; Distribution</strong><span>Wareneingang, Kommissionierung, Zykluszählung, Versand und Standortgenauigkeit.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Transport &amp; Kurierdienste</strong><span>Paketübergabe, Liefernachweis, Cross-Dock-Scanning und Routentransparenz.</span></a>
-                                    <a href="de/index.html#solutions"><strong>RFID Asset Visibility</strong><span>Paletten, Werkzeuge, Umlaufbestände, Behälter und Mehrwegträger verfolgen.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Versorger &amp; Field Service</strong><span>Robuste Datenerfassung für Inspektion, Wartung, Reparatur und Standortprotokolle.</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.124}}</strong><span>{{t:main.125}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.126}}</strong><span>{{t:main.127}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>RFID Asset Visibility</strong><span>{{t:main.128}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.129}}</strong><span>{{t:main.130}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#solutions"><span><strong>Regulierte &amp; prozessbasierte Branchen</strong><span>Qualitätsnachweise, Prüfung, Codekontrolle und compliancefähige Workflows.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#solutions"><span><strong>{{t:main.131}}</strong><span>{{t:main.132}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-industry-food-beverage.png?v=20260525-hd2')">
-                                    <a href="de/index.html#solutions"><strong>Lebensmittel &amp; Getränke</strong><span>Schnelle Prüfung von Verpackung, Datumscode, Füllung, Siegel, Etikett und Karton.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Pharma &amp; Medizintechnik</strong><span>Saubere Produktionsprüfungen, Serialisierung, Gerätemontage und Etikettenverifikation.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Energie &amp; Rohstoffe</strong><span>Prüfung, Messung, Asset-Transparenz und Feldprotokolle für raue Umgebungen.</span></a>
-                                    <a href="de/index.html#solutions"><strong>Kühlkette &amp; Compliance</strong><span>Chargen, Temperatur, Barcodes und Prüfnachweise über alle Abläufe hinweg erfassen.</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.133}}</strong><span>{{t:main.134}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.135}}</strong><span>{{t:main.136}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.137}}</strong><span>{{t:main.138}}</span></a>
+                                    <a href="{{locale.path}}index.html#solutions"><strong>{{t:main.139}}</strong><span>{{t:main.140}}</span></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-trigger" href="de/index.html#resources">Kunden <i class="fa-solid fa-chevron-down"></i></a>
+                    <a class="nav-trigger" href="{{locale.path}}index.html#resources">{{t:main.141}} <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="mega-menu mega-compact" style="--menu-overview-image: url('nav-customers-overview.png?v=20260525-hd2')">
                         <div class="mega-links">
-                            <div class="mega-section-label">Kunden</div>
+                            <div class="mega-section-label">{{t:main.141}}</div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/contact-sales.html"><span><strong>Customer Success</strong><span>Den passenden Einführungspfad vom ersten Workflow-Review bis zur Skalierung planen.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}contact-sales.html"><span><strong>{{t:main.142}}</strong><span>{{t:main.143}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-customer-pilot-lab.png?v=20260525-hd2')">
-                                    <a href="de/contact-sales.html"><strong>Lösungsberatung</strong><span>Linienrestriktionen, Datenanforderungen, Geräte und Integrationsprioritäten erfassen.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Pilot &amp; Machbarkeitsnachweis</strong><span>Prüfung, Scanning und Rückverfolgbarkeit vor dem Rollout validieren.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Einführungsplanung</strong><span>Hardware, Zubehör, Bedienerworkflow und Abnahmekriterien koordinieren.</span></a>
-                                    <a href="de/index.html#resources"><strong>ROI- &amp; Prozessanalyse</strong><span>Durchsatz, Arbeitsaufwand, Fehlerreduktion und Betriebsrisiken abschätzen.</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.144}}</strong><span>{{t:main.145}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.146}}</strong><span>{{t:main.147}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.148}}</strong><span>{{t:main.149}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.150}}</strong><span>{{t:main.151}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/contact-sales.html"><span><strong>Services &amp; Lifecycle-Support</strong><span>Industrielle Hardware, Vision-Systeme und mobile Geräteflotten zuverlässig betreiben.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}contact-sales.html"><span><strong>{{t:main.152}}</strong><span>{{t:main.153}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-customer-lifecycle-support.png?v=20260525-hd2')">
-                                    <a href="de/contact-sales.html"><strong>Technischer Support</strong><span>Unterstützung bei Einrichtung, Zubehör, Konfiguration und Deployment-Fragen.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Präventive Wartung</strong><span>Verfügbarkeit mit Prüfplänen, Ersatzteilen und Servicebereitschaft absichern.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Reparatur &amp; RMA</strong><span>Reparatur, Austausch, Garantieprüfung und Serviceunterlagen koordinieren.</span></a>
-                                    <a href="de/index.html#products"><strong>Ersatzteile &amp; Zubehör</strong><span>Dockingstationen, Akkus, Kabel, Halterungen, Beleuchtung, Befestigungen und Field-Kits.</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.154}}</strong><span>{{t:main.155}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.156}}</strong><span>{{t:main.157}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.158}}</strong><span>{{t:main.159}}</span></a>
+                                    <a href="{{locale.path}}index.html#products"><strong>{{t:main.160}}</strong><span>{{t:main.161}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#resources"><span><strong>Training &amp; Enablement</strong><span>Bediener, Ingenieure, Integratoren und Partner für den Einsatz von GYUTRON-Systemen befähigen.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#resources"><span><strong>{{t:main.162}}</strong><span>{{t:main.163}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-customer-training.png?v=20260525-hd2')">
-                                    <a href="de/index.html#resources"><strong>Bedienerschulung</strong><span>Praxisnaher Geräteeinsatz, Scan-Workflows, Prüfschritte und Pflegeabläufe.</span></a>
-                                    <a href="de/index.html#resources"><strong>Engineering-Schulung</strong><span>Konfiguration, Fehlersuche, Integration und Datenerfassung in der Praxis.</span></a>
-                                    <a href="de/index.html#resources"><strong>Partnerzertifizierung</strong><span>Integratoren und Vertriebspartner zur Spezifikation, Einführung und Betreuung von Lösungen befähigen.</span></a>
-                                    <a href="de/index.html#resources"><strong>Dokumentationsbibliothek</strong><span>Handbücher, Leitfäden, Checklisten und technische Hinweise für Einführungsteams.</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.164}}</strong><span>{{t:main.165}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.166}}</strong><span>{{t:main.167}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.168}}</strong><span>{{t:main.169}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.170}}</strong><span>{{t:main.171}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/contact-sales.html"><span><strong>Partnerprogramme</strong><span>Zusammenarbeit mit GYUTRON als Integrator, OEM, Vertriebskanal oder Lösungspartner.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}contact-sales.html"><span><strong>{{t:main.172}}</strong><span>{{t:main.173}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-customer-integration.png?v=20260525-hd2')">
-                                    <a href="de/contact-sales.html"><strong>Systemintegratoren</strong><span>Prüf-, Sensor-, Scan- und Datenerfassungssysteme für Kundenstandorte aufbauen.</span></a>
-                                    <a href="de/contact-sales.html"><strong>OEM / Maschinenbauer</strong><span>Vision, Codelesen, Sensorik und robuste Schnittstellen in Maschinen integrieren.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Channel-Partner</strong><span>Lokale Spezifikation, Beschaffung, Schulung und Supportabdeckung bereitstellen.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Individualisierungsprogramme</strong><span>Branding, Firmware, Zubehör, Verpackung und workflowspezifische Kits koordinieren.</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.174}}</strong><span>{{t:main.175}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.176}}</strong><span>{{t:main.177}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.178}}</strong><span>{{t:main.179}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.180}}</strong><span>{{t:main.181}}</span></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-trigger" href="de/index.html#contact">Unternehmen <i class="fa-solid fa-chevron-down"></i></a>
+                    <a class="nav-trigger" href="{{locale.path}}index.html#contact">{{t:main.182}} <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="mega-menu mega-compact" style="--menu-overview-image: url('nav-company-overview.png?v=20260525-hd2')">
                         <div class="mega-links">
-                            <div class="mega-section-label">Unternehmen</div>
+                            <div class="mega-section-label">{{t:main.182}}</div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#contact"><span><strong>Über GYUTRON</strong><span>Industrial-Intelligence-Hardware für Fertigung, Logistik und Feldeinsätze.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#contact"><span><strong>{{t:main.183}}</strong><span>{{t:main.184}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-company-engineering-lab.png?v=20260525-hd2')">
-                                    <a href="de/index.html#contact"><strong>Wer wir sind</strong><span>GYUTRON entwickelt robuste intelligente Hardware für anspruchsvolle Industriearbeit.</span></a>
-                                    <a href="de/index.html#platform"><strong>Engineering-Philosophie</strong><span>Praxisnahe Systeme, die Sensorik, Vision, Mobilität und Edge Control verbinden.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Kontakt &amp; Standorte</strong><span>Kontakt für Projekt-, Produkt-, Partner- und Supportanfragen.</span></a>
-                                    <a href="de/index.html#resources"><strong>Globale Lieferung &amp; Service</strong><span>Strukturierte Planung für Beschaffung, Konfiguration, Lieferung und Lifecycle-Support.</span></a>
+                                    <a href="{{locale.path}}index.html#contact"><strong>{{t:main.185}}</strong><span>{{t:main.186}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>{{t:main.187}}</strong><span>{{t:main.188}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.189}}</strong><span>{{t:main.190}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.191}}</strong><span>{{t:main.192}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#platform"><span><strong>Innovation &amp; Engineering</strong><span>Vision-Labore, Embedded-Systeme, robustes Design und industrielle Integrationskompetenz.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#platform"><span><strong>{{t:main.193}}</strong><span>{{t:main.194}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-company-quality-bench.png?v=20260525-hd2')">
-                                    <a href="de/index.html#platform"><strong>F&amp;E-Kompetenz</strong><span>Industrielle Hardware-, Sensorik- und Machine-Vision-Konzepte prototypisieren und verfeinern.</span></a>
-                                    <a href="de/index.html#products"><strong>Industriedesign</strong><span>Robuste Gehäuse, Montage, Zubehör, Stromversorgung und Bedienerergonomie.</span></a>
-                                    <a href="de/index.html#platform"><strong>Embedded Software</strong><span>Gerätelogik, Datenerfassung, Konnektivität, Workflow und Edge-Integration.</span></a>
-                                    <a href="de/automated-vision-inspection.html"><strong>Vision Lab</strong><span>Beleuchtung, Optik, Kameraauswahl, Fehlerstudien und Prüfbarkeit.</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>{{t:main.195}}</strong><span>{{t:main.196}}</span></a>
+                                    <a href="{{locale.path}}index.html#products"><strong>{{t:main.197}}</strong><span>{{t:main.198}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>{{t:main.199}}</strong><span>{{t:main.200}}</span></a>
+                                    <a href="{{locale.path}}automated-vision-inspection.html"><strong>{{t:main.201}}</strong><span>{{t:main.202}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#resources"><span><strong>Qualität &amp; Verantwortung</strong><span>Zuverlässigkeit, Compliance-Bereitschaft, sichere Datenflüsse und verantwortungsvolle Automatisierung.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#resources"><span><strong>{{t:main.203}}</strong><span>{{t:main.204}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-company-supply-chain.png?v=20260525-hd2')">
-                                    <a href="de/index.html#resources"><strong>Qualitätsmanagement</strong><span>Dokumentierte Kontrollen für Prüfung, Konfiguration, Lieferung und Service.</span></a>
-                                    <a href="de/index.html#products"><strong>Zuverlässigkeitsprüfung</strong><span>Geräte für industrielle Vibration, Handling, Stromversorgung und Umweltanforderungen validieren.</span></a>
-                                    <a href="de/index.html#platform"><strong>Cybersecurity &amp; Daten</strong><span>Kontrollierte Gerätebereitstellung und verantwortungsvolle Betriebsdatenerfassung unterstützen.</span></a>
-                                    <a href="de/index.html#resources"><strong>Verantwortungsvolle Automatisierung</strong><span>Automatisierung auf Sicherheit, Produktivität, Wartbarkeit und Bedienernutzen ausrichten.</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.205}}</strong><span>{{t:main.206}}</span></a>
+                                    <a href="{{locale.path}}index.html#products"><strong>{{t:main.207}}</strong><span>{{t:main.208}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>{{t:main.209}}</strong><span>{{t:main.210}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.211}}</strong><span>{{t:main.212}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#resources"><span><strong>News, Events &amp; Karriere</strong><span>Aktuelles, Partnerankündigungen, Eventteilnahmen und Karrieremöglichkeiten.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#resources"><span><strong>{{t:main.213}}</strong><span>{{t:main.214}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('office-team-discussion.jpeg')">
-                                    <a href="de/index.html#resources"><strong>Newsroom</strong><span>Produktnotizen, Unternehmensupdates, Lösungsreleases und Marktankündigungen.</span></a>
-                                    <a href="de/index.html#resources"><strong>Events</strong><span>Messen, Demos, Webinare und regionale technische Sessions.</span></a>
-                                    <a href="de/index.html#contact"><strong>Careers</strong><span>Teams verstärken, die Industrial Intelligence, Vision und robuste Automatisierungssysteme entwickeln.</span></a>
-                                    <a href="de/index.html#resources"><strong>Partnerankündigungen</strong><span>Neuigkeiten zu Vertriebskanal, OEM, Integration und Lösungs-Ökosystem.</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>Newsroom</strong><span>{{t:main.215}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>Events</strong><span>{{t:main.216}}</span></a>
+                                    <a href="{{locale.path}}index.html#contact"><strong>Careers</strong><span>{{t:main.217}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.218}}</strong><span>{{t:main.219}}</span></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-trigger" href="de/index.html#resources">Ressourcen <i class="fa-solid fa-chevron-down"></i></a>
+                    <a class="nav-trigger" href="{{locale.path}}index.html#resources">{{t:main.220}} <i class="fa-solid fa-chevron-down"></i></a>
                     <div class="mega-menu mega-compact" style="--menu-overview-image: url('nav-resources-overview.png?v=20260525-hd2')">
                         <div class="mega-links">
-                            <div class="mega-section-label">Ressourcen</div>
+                            <div class="mega-section-label">{{t:main.220}}</div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#resources"><span><strong>Knowledge Center</strong><span>Ideen, Anwendungsbeispiele und Umsetzungshinweise für industrielle Automatisierung.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#resources"><span><strong>{{t:main.221}}</strong><span>{{t:main.222}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('nav-resources-technical-library.png?v=20260525-hd2')">
-                                    <a href="de/index.html#resources"><strong>Application Notes</strong><span>Praxisleitfäden für Sensorik, Prüfung, Rückverfolgbarkeit und mobile Workflows.</span></a>
-                                    <a href="de/index.html#resources"><strong>Whitepaper &amp; eBooks</strong><span>Planungsunterlagen für Automatisierung, Datenerfassung und Qualitätssysteme.</span></a>
-                                    <a href="de/index.html#resources"><strong>Webinars</strong><span>On-Demand- und Live-Sessions für Ingenieure, Bediener und Betriebsleiter.</span></a>
-                                    <a href="de/index.html#resources"><strong>Videos</strong><span>Prüfzellen, Scan-Workflows und robuste Hardware im Einsatz sehen.</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.223}}</strong><span>{{t:main.224}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.225}}</strong><span>{{t:main.226}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>Webinars</strong><span>{{t:main.227}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>Videos</strong><span>{{t:main.228}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/index.html#platform"><span><strong>Technische Dokumentation</strong><span>Dokumentation für Produkte, Integration, Konfiguration und Entwicklung.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}index.html#platform"><span><strong>{{t:main.229}}</strong><span>{{t:main.230}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('governance-documentation.png')">
-                                    <a href="de/index.html#resources"><strong>Produkthandbücher</strong><span>Informationen zu Einrichtung, Betrieb, Wartung und Zubehör.</span></a>
-                                    <a href="de/index.html#platform"><strong>SDK / API Docs</strong><span>Integrationshinweise für Datenaustausch, Gerätekonfiguration und Softwareschnittstellen.</span></a>
-                                    <a href="de/index.html#platform"><strong>Integrationsleitfäden</strong><span>Geräte mit MES-, WMS-, PLC-, Edge- und Cloud-Umgebungen verbinden.</span></a>
-                                    <a href="de/index.html#resources"><strong>CAD &amp; Drawings</strong><span>Referenzmaterial für Montage, Vorrichtungen, Halterungen und Maschinenintegration.</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.231}}</strong><span>{{t:main.232}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>SDK / API Docs</strong><span>{{t:main.233}}</span></a>
+                                    <a href="{{locale.path}}index.html#platform"><strong>{{t:main.234}}</strong><span>{{t:main.235}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>CAD &amp; Drawings</strong><span>{{t:main.236}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/contact-sales.html"><span><strong>Beschaffungstools</strong><span>Spezifikation mit Auswahl-, Bewertungs- und Compliance-Unterstützung verkürzen.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}contact-sales.html"><span><strong>{{t:main.237}}</strong><span>{{t:main.238}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('contact-sales-hero.png')">
-                                    <a href="de/index.html#products"><strong>Produktauswahl-Leitfaden</strong><span>Robuste Terminals, Sensoren, Vision-Systeme und Prüfgeräte vergleichen.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Spezifikationsanfrage</strong><span>Anwendungsdetails senden und empfohlene Hardware- und Integrationsoptionen erhalten.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Musterbewertung</strong><span>Piloten, Mustergeräte, Proof-of-Concept-Tests und Abnahmekriterien besprechen.</span></a>
-                                    <a href="de/index.html#resources"><strong>Compliance-Dokumente</strong><span>Datenblätter, Erklärungen, Prüfprotokolle und Lieferdokumentation sammeln.</span></a>
+                                    <a href="{{locale.path}}index.html#products"><strong>{{t:main.239}}</strong><span>{{t:main.240}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.241}}</strong><span>{{t:main.242}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.243}}</strong><span>{{t:main.244}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.245}}</strong><span>{{t:main.246}}</span></a>
                                 </div>
                             </div>
                             <div class="mega-link-group">
-                                <a class="mega-link" href="de/contact-sales.html"><span><strong>Support-Ressourcen</strong><span>Kunden beim Konfigurieren, Aktualisieren, Reparieren und Dokumentieren von Geräten unterstützen.</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="mega-link" href="{{locale.path}}contact-sales.html"><span><strong>{{t:main.247}}</strong><span>{{t:main.248}}</span></span><i class="fa-solid fa-chevron-right"></i></a>
                                 <div class="submenu" style="--submenu-image: url('business-operations-meeting.jpeg')">
-                                    <a href="de/contact-sales.html"><strong>FAQ</strong><span>Häufige Fragen zu Hardware, Zubehör, Kompatibilität und Deployment.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Serviceformulare</strong><span>Support-, Reparatur-, Austausch- und Projekt-Follow-up-Anfragen einreichen.</span></a>
-                                    <a href="de/index.html#resources"><strong>Firmware &amp; Utilities</strong><span>Deployment-Utilities, Konfigurationstools und Update-Hinweise.</span></a>
-                                    <a href="de/contact-sales.html"><strong>Support kontaktieren</strong><span>GYUTRON für technischen, kommerziellen und Lifecycle-Support kontaktieren.</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>FAQ</strong><span>{{t:main.249}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.250}}</strong><span>{{t:main.251}}</span></a>
+                                    <a href="{{locale.path}}index.html#resources"><strong>{{t:main.252}}</strong><span>{{t:main.253}}</span></a>
+                                    <a href="{{locale.path}}contact-sales.html"><strong>{{t:main.254}}</strong><span>{{t:main.255}}</span></a>
                                 </div>
                             </div>
                         </div>
@@ -2523,15 +2514,8 @@
                 </li>
             </ul>
             <div class="header-actions">
-                <div class="language-switch language-switch-desktop">
-                    <button class="language-icon language-icon-desktop" type="button" aria-label="Sprache und Region auswählen" aria-haspopup="true"><i class="fa-solid fa-globe"></i></button>
-                    <div class="language-menu" aria-label="Sprachoptionen">
-                        <a href="index.html">English <span>EN</span></a>
-                        <a href="de/index.html" aria-current="page">Deutsch <span>DE</span></a>
-                        <a href="ja/index.html">日本語 <span>JA</span></a>
-                    </div>
-                </div>
-                <a class="button button-primary" href="de/contact-sales.html"><span class="cta-label-full">Vertrieb kontaktieren</span><span class="cta-label-short">Kontakt</span> <i class="fa-solid fa-arrow-right"></i></a>
+                {{locale.mainlangswitch.desktop}}
+                <a class="button button-primary" href="{{locale.path}}contact-sales.html"><span class="cta-label-full">{{t:main.256}}</span><span class="cta-label-short">{{t:main.257}}</span> <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </header>
@@ -2543,22 +2527,22 @@
                     <div class="container hero-stage">
                         <div class="hero-copy-block">
                             <div class="hero-bars" aria-hidden="true"><span></span><span></span><span></span></div>
-                            <span class="eyebrow">Automatisierte Bildprüfung</span>
-                            <h1>Industrielle Bildverarbeitungssysteme</h1>
-                            <p class="hero-copy">Qualitätsentscheidungen direkt in der Linie mit Smart-Kameras, Beleuchtung, Codeprüfung, Maßkontrolle und Roboterführung als integrierte Prüfebene.</p>
+                            <span class="eyebrow">{{t:main.055}}</span>
+                            <h1>{{t:main.336}}</h1>
+                            <p class="hero-copy">{{t:main.337}}</p>
                             <div class="hero-actions">
-                                <a class="button button-light" href="de/automated-vision-inspection.html">Mehr erfahren <i class="fa-solid fa-chevron-right"></i></a>
-                                <a class="button button-outline" href="de/area-scan-cameras.html">Kameras ansehen</a>
+                                <a class="button button-light" href="{{locale.path}}automated-vision-inspection.html">{{t:main.338}} <i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="button button-outline" href="{{locale.path}}area-scan-cameras.html">{{t:main.339}}</a>
                             </div>
                             <div class="hero-feature-row" aria-label="Vision system highlights">
                                 <span><i class="fa-solid fa-wave-square"></i> 2D / 3D</span>
                                 <span><i class="fa-solid fa-barcode"></i> Code Verify</span>
-                                <span><i class="fa-solid fa-robot"></i> Roboterbereit</span>
+                                <span><i class="fa-solid fa-robot"></i> {{t:main.340}}</span>
                             </div>
                         </div>
                         <div class="hero-product" aria-hidden="true">
                             <img src="product-vision-cell.png" alt="">
-                            <div class="hero-product-card"><strong>Vision Cell</strong><span>Prüfung, Rückverfolgbarkeit und Ausschlusslogik</span></div>
+                            <div class="hero-product-card"><strong>Vision Cell</strong><span>{{t:main.341}}</span></div>
                         </div>
                     </div>
                 </article>
@@ -2567,12 +2551,12 @@
                     <div class="container hero-stage">
                         <div class="hero-copy-block">
                             <div class="hero-bars" aria-hidden="true"><span></span><span></span><span></span></div>
-                            <span class="eyebrow">Robuste Datenerfassung</span>
-                            <h1>Robuste Datenerfassung</h1>
-                            <p class="hero-copy">Android-PDAs, RFID-Handhelds, Barcode-Scanner und Feldzubehör für Wareneingang, Inventur, Versand, Asset Tracking und Serviceprozesse.</p>
+                            <span class="eyebrow">{{t:main.342}}</span>
+                            <h1>{{t:main.342}}</h1>
+                            <p class="hero-copy">{{t:main.343}}</p>
                             <div class="hero-actions">
-                                <a class="button button-light" href="de/android-pda.html">Mehr erfahren <i class="fa-solid fa-chevron-right"></i></a>
-                                <a class="button button-outline" href="de/rfid-handhelds.html">RFID-Handhelds</a>
+                                <a class="button button-light" href="{{locale.path}}android-pda.html">{{t:main.338}} <i class="fa-solid fa-chevron-right"></i></a>
+                                <a class="button button-outline" href="{{locale.path}}rfid-handhelds.html">{{t:main.011}}</a>
                             </div>
                             <div class="hero-feature-row" aria-label="Data capture highlights">
                                 <span><i class="fa-solid fa-barcode"></i> Barcode</span>
@@ -2582,7 +2566,7 @@
                         </div>
                         <div class="hero-product" aria-hidden="true">
                             <img src="product-intelligent-hardware.png" alt="">
-                            <div class="hero-product-card"><strong>Rugged Edge</strong><span>Arbeitsereignisse dort erfassen, wo Teams sich bewegen</span></div>
+                            <div class="hero-product-card"><strong>Rugged Edge</strong><span>{{t:main.344}}</span></div>
                         </div>
                     </div>
                 </article>
@@ -2592,11 +2576,11 @@
                         <div class="hero-copy-block">
                             <div class="hero-bars" aria-hidden="true"><span></span><span></span><span></span></div>
                                 <span class="eyebrow">GYUTRON Industrial Intelligence</span>
-                                <h1>Vernetzte Fabrikhardware</h1>
-                                <p class="hero-copy">Sensoren, Prüfgeräte, Vision-Hardware, Roboter-Arbeitszellen und Edge-Control-Geräte – zusammengeführt für eine disziplinierte Fabrikausführung.</p>
+                                <h1>{{t:main.345}}</h1>
+                                <p class="hero-copy">{{t:main.346}}</p>
                                 <div class="hero-actions">
-                                    <a class="button button-light" href="de/index.html#products">Produkte ansehen <i class="fa-solid fa-chevron-right"></i></a>
-                                    <a class="button button-outline" href="de/index.html#solutions">Lösungen ansehen</a>
+                                    <a class="button button-light" href="{{locale.indexbase}}#products">{{t:main.347}} <i class="fa-solid fa-chevron-right"></i></a>
+                                    <a class="button button-outline" href="{{locale.indexbase}}#solutions">{{t:main.348}}</a>
                                 </div>
                             <div class="hero-feature-row" aria-label="Industrial workflow highlights">
                                 <span><i class="fa-solid fa-industry"></i> Manufacturing</span>
@@ -2606,7 +2590,7 @@
                         </div>
                         <div class="hero-product" aria-hidden="true">
                             <img src="hero-industrial-automation.png" alt="">
-                            <div class="hero-product-card"><strong>Automation Layer</strong><span>Bildverarbeitung, Sensorik, Steuerung und Datenerfassung</span></div>
+                            <div class="hero-product-card"><strong>Automation Layer</strong><span>{{t:main.349}}</span></div>
                         </div>
                     </div>
                 </article>
@@ -2624,10 +2608,10 @@
             <div class="container">
                 <div class="section-head">
                     <div>
-                        <span class="eyebrow">Produkte</span>
-                        <h2>Hardware, die sieht, erfasst, scannt, misst und handelt.</h2>
+                        <span class="eyebrow">{{t:main.004}}</span>
+                        <h2>{{t:main.350}}</h2>
                     </div>
-                    <p>Vom Handheld-Terminal bis zu Smart-Kameras und Prüfmodulen führt GYUTRON die zentralen Hardwarebausteine industrieller Intelligenz in einem praxisnahen Portfolio zusammen.</p>
+                    <p>{{t:main.351}}</p>
                 </div>
 
                 <div class="product-showcase">
@@ -2638,38 +2622,38 @@
                         <div class="product-body">
                             <span class="badge"><i class="fa-solid fa-robot"></i> Flagship automation</span>
                             <h3>GT-R600 Robot Vision Workcell</h3>
-                            <p>Eine kompakte Roboter-Prüfstation, die kollaborative Bewegung, Smart-Kameras, Sensoren und Edge Control für wiederholbare Aufgaben an der Produktionslinie vereint.</p>
+                            <p>{{t:main.352}}</p>
                             <ul class="spec-list">
-                                <li><i class="fa-solid fa-gauge-high"></i> Bildgeführte Bewegung für Prüfung, Sortierung und Beladung</li>
-                                <li><i class="fa-solid fa-plug-circle-bolt"></i> Sensor, Greifer, Förderband und PLC-fähiges I/O</li>
-                                <li><i class="fa-solid fa-shield-halved"></i> Ausgelegt für Produktionszyklen und wiederholbare Qualitätskontrolle</li>
+                                <li><i class="fa-solid fa-gauge-high"></i> {{t:main.353}}</li>
+                                <li><i class="fa-solid fa-plug-circle-bolt"></i> {{t:main.354}}</li>
+                                <li><i class="fa-solid fa-shield-halved"></i> {{t:main.355}}</li>
                             </ul>
-                            <a class="link-arrow" href="de/index.html">Mehr über Roboter-Arbeitszellen <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="link-arrow" href="{{locale.indexhref}}">{{t:main.356}} <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
                     <div class="compact-stack">
                         <article class="compact-product">
                             <div class="compact-image">
-                                <img src="product-smart-camera-detail.png" alt="GYUTRON Machine-Vision-Kamera und Prüfbeleuchtung (Detail)">
+                                <img src="product-smart-camera-detail.png" alt="{{t:main.357}}">
                             </div>
                             <div class="product-body">
                                 <span class="badge"><i class="fa-solid fa-eye"></i> Machine vision</span>
                                 <h3>GT-V200 Smart Camera Platform</h3>
-                                <p>Industrielle Bildverarbeitung für Fehlererkennung, Codelesen, Teileanwesenheit, Roboterführung und Rückverfolgbarkeitsanalyse.</p>
-                                <a class="link-arrow" href="de/index.html">View smart cameras <i class="fa-solid fa-arrow-right"></i></a>
+                                <p>{{t:main.358}}</p>
+                                <a class="link-arrow" href="{{locale.indexhref}}">View smart cameras <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </article>
 
                         <article class="compact-product">
                             <div class="compact-image">
-                                <img src="product-intelligent-hardware.png" alt="GYUTRON robuste PDA-Sensoren und Edge-Hardware">
+                                <img src="product-intelligent-hardware.png" alt="{{t:main.359}}">
                             </div>
                             <div class="product-body">
                                 <span class="badge"><i class="fa-solid fa-mobile-screen-button"></i> Rugged data capture</span>
                                 <h3>GT-P50 Industrial PDA Terminal</h3>
-                                <p>Robustes Handheld-Terminal mit Barcode, RFID, NFC, Android und Device-Management-Optionen für Lager- und Feldteams.</p>
-                                <a class="link-arrow" href="de/index.html">View rugged PDAs <i class="fa-solid fa-arrow-right"></i></a>
+                                <p>{{t:main.360}}</p>
+                                <a class="link-arrow" href="{{locale.indexhref}}">View rugged PDAs <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </article>
                     </div>
@@ -2690,11 +2674,11 @@
                     </div>
                     <div class="proof-item">
                         <strong>ISO</strong>
-                        <span>Qualität-managed production</span>
+                        <span>{{t:main.361}}</span>
                     </div>
                     <div class="proof-item">
                         <strong>30d</strong>
-                        <span>Rückgabe- und Austauschfrist</span>
+                        <span>{{t:main.362}}</span>
                     </div>
                 </div>
             </div>
@@ -2704,41 +2688,41 @@
             <div class="container">
                 <div class="section-head">
                     <div>
-                        <span class="eyebrow">Lösungen</span>
-                        <h2>Industrial Intelligence für die Orte, an denen Arbeit tatsächlich stattfindet.</h2>
+                        <span class="eyebrow">{{t:main.051}}</span>
+                        <h2>{{t:main.363}}</h2>
                     </div>
-                    <p>GYUTRON bündelt Bildverarbeitung, Sensorik, Embedded Control, Rückverfolgbarkeit und robuste mobile Datenerfassung rund um hochwertige Industrieprozesse, damit Teams schneller vom Pilot in die Produktion kommen.</p>
+                    <p>{{t:main.364}}</p>
                 </div>
                 <div class="solutions-grid">
                     <article class="solution-card">
                         <div class="solution-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                         <h3>Automated vision inspection</h3>
-                        <p>Smart-Kameras, Beleuchtung, Sensoren, Codeverifikation und Roboterführung kombinieren, um Teile, Etiketten, Oberflächen und Verpackungen ohne Linienverlangsamung zu prüfen.</p>
+                        <p>{{t:main.365}}</p>
                     </article>
                     <article class="solution-card">
                         <div class="solution-icon"><i class="fa-solid fa-microchip"></i></div>
-                        <h3>Elektronik- und Halbleiterfertigung</h3>
-                        <p>Präzisionsfertigung mit Bauteil-Anwesenheitsprüfung, Etikettenvalidierung, Verpackungsprüfung und Prozessverriegelung unterstützen.</p>
+                        <h3>{{t:main.366}}</h3>
+                        <p>{{t:main.367}}</p>
                     </article>
                     <article class="solution-card">
                         <div class="solution-icon"><i class="fa-solid fa-industry"></i></div>
                         <h3>Integrated industrial embedded systems</h3>
-                        <p>Industrielles I/O, Sensornetzwerke, Motion Control, Weißlicht-Vision-Trigger und Edge-Datenerfassung rund um Automatisierungszellen verbinden.</p>
+                        <p>{{t:main.368}}</p>
                     </article>
                     <article class="solution-card">
                         <div class="solution-icon"><i class="fa-solid fa-network-wired"></i></div>
-                        <h3>Fertigungsintelligenz und Rückverfolgbarkeit</h3>
-                        <p>Prüfergebnisse, Scandaten, Anlagenereignisse und Qualitätsnachweise in operative Systeme und Produktions-Dashboards überführen.</p>
+                        <h3>{{t:main.369}}</h3>
+                        <p>{{t:main.370}}</p>
                     </article>
                     <article class="solution-card">
                         <div class="solution-icon"><i class="fa-solid fa-warehouse"></i></div>
-                        <h3>Lager- und Feldeinsätze</h3>
-                        <p>Robuste PDAs und RFID-Workflows verbinden Wareneingang, Inventur, Kommissionierung, Versand, Asset-Transparenz und Field-Service-Daten.</p>
+                        <h3>{{t:main.371}}</h3>
+                        <p>{{t:main.372}}</p>
                     </article>
                     <article class="solution-card">
                         <div class="solution-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                         <h3>OEM / ODM solution programs</h3>
-                        <p>Hardware, Firmware, Zubehör, Branding und Workflow-Pakete für Integratoren, Vertriebskanäle und Industriepartner anpassen.</p>
+                        <p>{{t:main.373}}</p>
                     </article>
                 </div>
             </div>
@@ -2759,39 +2743,39 @@
                                 <span>8.6 ms</span>
                             </div>
                             <div class="status-line">
-                                <span>Inventur scans</span>
+                                <span>{{t:main.374}}</span>
                                 <span>12,840/day</span>
                             </div>
                         </div>
                     </div>
                     <div class="platform-copy">
                         <span class="eyebrow">Platform</span>
-                        <h2>Gerätedaten werden zu operativer Intelligenz.</h2>
-                        <p>Jeder Einsatz wird nützlicher, wenn Geräte Kontext teilen. GYUTRON hilft Teams, Roboterstatus, Vision-Ergebnisse, Sensortrigger, Prüfdaten und Handheld-Scandaten zu praktischer Produktionstransparenz zu verbinden.</p>
+                        <h2>{{t:main.375}}</h2>
+                        <p>{{t:main.376}}</p>
                         <ul class="capability-list">
                             <li>
                                 <i class="fa-solid fa-network-wired"></i>
                                 <div>
-                                    <strong>Integrationsfähige Architektur</strong>
-                                    <span>Standardschnittstellen für MES, WMS, ERP, PLCs und individuelle Dashboards.</span>
+                                    <strong>{{t:main.377}}</strong>
+                                    <span>{{t:main.378}}</span>
                                 </div>
                             </li>
                             <li>
                                 <i class="fa-solid fa-screwdriver-wrench"></i>
                                 <div>
-                                    <strong>OEM- und ODM-Programme</strong>
-                                    <span>Branding, Firmware, Zubehör und workflowspezifische Konfiguration für Vertriebspartner.</span>
+                                    <strong>{{t:main.379}}</strong>
+                                    <span>{{t:main.380}}</span>
                                 </div>
                             </li>
                             <li>
                                 <i class="fa-solid fa-headset"></i>
                                 <div>
                                     <strong>Lifecycle support</strong>
-                                    <span>Pre-Sales-Engineering, Pilotplanung, technische Dokumentation und After-Sales-Service.</span>
+                                    <span>{{t:main.381}}</span>
                                 </div>
                             </li>
                         </ul>
-                        <a class="button button-primary" href="de/contact-sales.html">Plan a deployment <i class="fa-solid fa-arrow-right"></i></a>
+                        <a class="button button-primary" href="{{locale.path}}contact-sales.html">Plan a deployment <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -2802,9 +2786,9 @@
                 <div class="section-head">
                     <div>
                         <span class="eyebrow">ESG</span>
-                        <h2>Verantwortungsvolle Automatisierung für sicherere und schlankere Abläufe.</h2>
+                        <h2>{{t:main.382}}</h2>
                     </div>
-                    <p>GYUTRON gestaltet industrielle Intelligenz rund um messbaren operativen Nutzen: sicherere Arbeit, weniger Ausschuss, längere Hardware-Lebensdauer und transparenten Support für Kunden und Partner.</p>
+                    <p>{{t:main.383}}</p>
                 </div>
                 <div class="resources-grid">
                     <article class="resource-card esg-card">
@@ -2813,28 +2797,28 @@
                         </div>
                         <div class="resource-body">
                             <div class="resource-kicker">Environment</div>
-                            <h3>Effizienz vor Expansion</h3>
-                            <p>Intelligente Sensorik-, Prüf- und Scan-Workflows helfen, Ausschuss zu reduzieren, unnötige Nacharbeit zu vermeiden und energiebewusste Produktionsentscheidungen zu verbessern.</p>
+                            <h3>{{t:main.384}}</h3>
+                            <p>{{t:main.385}}</p>
                         </div>
                     </article>
                     <article class="resource-card esg-card">
                         <div class="resource-image">
-                            <img src="office-team-discussion.jpeg" alt="Fachkräfte im Büro besprechen ihre Arbeit an einem Besprechungstisch" data-source="https://www.pexels.com/photo/4344116/">
+                            <img src="office-team-discussion.jpeg" alt="{{t:main.386}}" data-source="https://www.pexels.com/photo/4344116/">
                         </div>
                         <div class="resource-body">
                             <div class="resource-kicker">Social</div>
-                            <h3>Sicherere Arbeit mit besseren Werkzeugen</h3>
-                            <p>Robuste PDAs, Sensoren, Machine Vision und Roboter-Arbeitszellen helfen Teams, wiederkehrende Prüfungen und gefährliche Aufgaben in kontrollierte Abläufe zu überführen.</p>
+                            <h3>{{t:main.387}}</h3>
+                            <p>{{t:main.388}}</p>
                         </div>
                     </article>
                     <article class="resource-card esg-card">
                         <div class="resource-image">
-                            <img src="governance-documentation.png" alt="GYUTRON Industriedokumentation, Prüfgerät und Serviceunterlagen">
+                            <img src="governance-documentation.png" alt="{{t:main.389}}">
                         </div>
                         <div class="resource-body">
                             <div class="resource-kicker">Governance</div>
                             <h3>Lifecycle accountability</h3>
-                            <p>Produktdokumentation, wartbares Zubehör, Konfigurationsaufzeichnungen und Partnersupport machen Installationen langfristig leichter wartbar.</p>
+                            <p>{{t:main.390}}</p>
                         </div>
                     </article>
                 </div>
@@ -2845,8 +2829,8 @@
             <div class="container">
                 <div class="cta-inner">
                     <div>
-                        <h2>Bauen Sie die nächste Ebene industrieller Intelligenz auf.</h2>
-                        <p>Teilen Sie Ihren Produktionsprozess, Ihre Sensorikanforderung, Ihr Prüfziel oder Ihren Datenerfassungs-Workflow. GYUTRON unterstützt bei der Auswahl des passenden Hardware-Stacks und Pilotplans.</p>
+                        <h2>{{t:main.391}}</h2>
+                        <p>{{t:main.392}}</p>
                     </div>
                     <div class="contact-actions" aria-label="GYUTRON contact channels">
                         <a class="contact-link" href="mailto:info@gyutron.com">
@@ -2872,34 +2856,34 @@
             <div class="footer-grid">
                 <div>
                     <h3 class="footer-brand-name">GYUTRON</h3>
-                    <p>GYUTRON liefert industrielle intelligente Hardware für globale B2B-Teams – spezialisiert auf Smart-Kameras, Sensoren, robuste PDA-Terminals, Prüfgeräte, Roboter-Arbeitszellen und vernetzte Automatisierungssysteme.</p>
+                    <p>{{t:main.331}}</p>
                 </div>
                 <div>
-                    <h4>Produkte</h4>
-                    <a href="de/android-pda.html">Robuste PDA-Terminals terminals</a>
-                    <a href="de/proximity-sensors.html">Industriesensoren</a>
-                    <a href="de/area-scan-cameras.html">Smart-Kameras</a>
-                    <a href="de/dimensional-gauges.html">Inspection instruments</a>
+                    <h4>{{t:main.004}}</h4>
+                    <a href="{{locale.path}}android-pda.html">{{t:main.332}}</a>
+                    <a href="{{locale.path}}proximity-sensors.html">{{t:main.333}}</a>
+                    <a href="{{locale.path}}area-scan-cameras.html">{{t:main.334}}</a>
+                    <a href="{{locale.path}}dimensional-gauges.html">Inspection instruments</a>
                 </div>
                 <div>
-                    <h4>Lösungen</h4>
-                    <a href="de/automated-vision-inspection.html">Automatisierte Bildprüfung</a>
-                    <a href="de/index.html#solutions">Elektronikfertigung</a>
-                    <a href="de/index.html#platform">Fertigungsintelligenz</a>
+                    <h4>{{t:main.051}}</h4>
+                    <a href="{{locale.path}}automated-vision-inspection.html">{{t:main.055}}</a>
+                    <a href="{{locale.indexbase}}#solutions">{{t:main.264}}</a>
+                    <a href="{{locale.indexbase}}#platform">{{t:main.265}}</a>
                 </div>
                 <div>
-                    <h4>Unternehmen</h4>
-                    <a href="de/index.html">Über GYUTRON</a>
-                    <a href="de/index.html">Certifications</a>
-                    <a href="de/index.html">Downloads</a>
+                    <h4>{{t:main.182}}</h4>
+                    <a href="{{locale.indexhref}}">{{t:main.183}}</a>
+                    <a href="{{locale.indexhref}}">Certifications</a>
+                    <a href="{{locale.indexhref}}">Downloads</a>
                     <a href="mailto:info@gyutron.com">info@gyutron.com</a>
                     <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
-                    <a href="https://shop.gyutron.com">Offizieller Store: shop.gyutron.com</a>
+                    <a href="https://shop.gyutron.com">{{t:main.335}}</a>
                     <a href="https://www.linkedin.com/company/gyutron/" target="_blank" rel="noopener">LinkedIn</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <span>&copy; 2026 GYUTRON. Alle Rechte vorbehalten.</span>
+                <span>{{t:main.267}}</span>
                 <div class="socials" aria-label="Social media placeholders">
                     <span aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></span>
                     <span aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></span>

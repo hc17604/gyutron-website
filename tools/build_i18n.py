@@ -128,6 +128,11 @@ MAINFONTS_DIRECTIVE = re.compile(r"\{\{locale\.mainfonts\}\}")
 # Same-page #anchor links: en keeps the bare "#frag"; de/ja resolve to
 # "<dir>/index.html#frag" (matches the legacy localize_links rule for "#...").
 INDEXBASE_DIRECTIVE = re.compile(r"\{\{locale\.indexbase\}\}")
+# index.html homepage quirks, reproduced byte-for-byte from the legacy generator:
+#   indexhref  : bare href="#"  -> "#" (en) / "<dir>/index.html" (de/ja)
+#   jahreflang : ja <link alternate> present only on de/ja pages (legacy _finalize_head)
+INDEXHREF_DIRECTIVE = re.compile(r"\{\{locale\.indexhref\}\}")
+JAHREFLANG_DIRECTIVE = re.compile(r"\{\{locale\.jahreflang\}\}")
 
 
 def alternates_block(page_path: str, active: str, host: str = SHOP_HOST) -> str:
@@ -203,6 +208,9 @@ def apply_locale_directives(text: str, loc_code: str, rel: str = "") -> str:
     text = BASETAG_DIRECTIVE.sub(lambda m: '\n    <base href="../">' if conf["dir"] else "", text)
     text = MAINFONTS_DIRECTIVE.sub(lambda m: JA_FONT_BLOCK_MAIN if loc_code == "ja" else "", text)
     text = INDEXBASE_DIRECTIVE.sub(lambda m: f'{conf["dir"]}/index.html' if conf["dir"] else "", text)
+    text = INDEXHREF_DIRECTIVE.sub(lambda m: f'{conf["dir"]}/index.html' if conf["dir"] else "#", text)
+    text = JAHREFLANG_DIRECTIVE.sub(
+        lambda m: '\n    <link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/">' if conf["dir"] else "", text)
     text = MAINLANGSWITCH_DIRECTIVE.sub(
         lambda m: main_language_switch(loc_code, m.group(2) or page_file, m.group(1)), text)
     text = CANONICAL_DIRECTIVE.sub(lambda m: f'{host}{conf["base"]}{m.group(1)}', text)
