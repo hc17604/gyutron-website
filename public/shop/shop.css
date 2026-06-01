@@ -607,7 +607,7 @@ textarea {
 .hero {
     background:
         linear-gradient(90deg, rgba(18, 5, 31, 0.94), rgba(18, 5, 31, 0.68)),
-        url("../hero-industrial-automation.png") center 45% / cover;
+        url("/hero-industrial-automation.png") center 45% / cover;
     color: var(--white);
     min-height: 430px;
     padding: 48px 0 42px;
