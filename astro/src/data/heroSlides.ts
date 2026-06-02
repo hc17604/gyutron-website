@@ -19,6 +19,8 @@ export interface HeroSlide {
   cta2Href?: string;
   industries?: HeroIndustry[];
   products?: string[];
+  productScales?: number[];
+  categoryKeys?: string[];
   productCat?: string;
   productName?: string;
   productImg?: string;
@@ -53,12 +55,13 @@ export const HERO_SLIDES: HeroSlide[] = [
     bg: '/cta-industrial-control.png',
     kickerKey: 'main.004',
     titleKey: 'hero.s2.title',
-    subKey: 'main.363',
+    subKey: 'hero.s2.sub',
     ctaKey: 'main.347',
     ctaHref: '#products',
+    categoryKeys: ['hero.s2.cat1', 'hero.s2.cat2', 'hero.s2.cat3', 'hero.s2.cat4'],
     products: [
       '/product-cutouts/generated/gy-a90-touch.png',
-      '/product-cutouts/generated/gy-r90-falcon.png',
+      '/product-cutouts/generated/gy-a92k-keytouch.png',
       '/product-cutouts/generated/gy-s900-xr.png',
       '/product-cutouts/generated/gy-cr900-matrix.png',
       '/product-cutouts/generated/gy-v900-pro.png',
@@ -70,6 +73,7 @@ export const HERO_SLIDES: HeroSlide[] = [
       '/product-cutouts/generated/gy-vm900.png',
       '/product-cutouts/generated/gy-net90.png',
     ],
+    productScales: [1.08, 1.1, 1.02, 0.86, 0.86, 1.04, 1.08, 1.08, 1.08, 1.05, 0.9, 0.9],
   },
   {
     id: 's3',

@@ -5,7 +5,7 @@ const GYUTRON_PRODUCTS = {
         navLabel: "Android PDA",
         heroImage: "product-hero-android-pda-matrix.png",
         intro: "Rugged Android handhelds for warehouse, manufacturing, field service, and line-side data capture.",
-        panelMetric: "7 models",
+        panelMetric: "8 models",
         panelText: "Touch, keypad, scan handle, cold chain, and long-life battery options.",
         products: [
             {
@@ -43,6 +43,15 @@ const GYUTRON_PRODUCTS = {
                 image: "product-images/gy-a62k.png",
                 specs: { OS: "Android 13", Display: "4.0 in touch", Scan: "1D/2D angled", Rugged: "IP65 / 1.8 m drop" },
                 tags: ["29 keys", "Scan handle", "5200 mAh"]
+            },
+            {
+                name: "GY-A92K KeyTouch",
+                type: "Keypad mobile data terminal",
+                summary: "Rugged Android PDA with touchscreen and physical keys for glove-friendly scanning, picking, and line-side data capture.",
+                kind: "keypad",
+                image: "product-cutouts/generated/gy-a92k-keytouch.png",
+                specs: { OS: "Android 14", Display: "4.7 in touch", Scan: "Angled 2D imager", Rugged: "IP67 / 1.8 m drop" },
+                tags: ["Numeric keypad", "Glove use", "5800 mAh"]
             },
             {
                 name: "GY-A70 Cold",

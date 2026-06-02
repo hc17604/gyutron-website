@@ -89,13 +89,18 @@ const slides = HERO_SLIDES.map((s) => {
                 <span class="hsl-kicker" data-layer style={ls(SEQ.kicker)}>{t(locale, s.kickerKey)}</span>
                 <h1 class="hsl-title" data-layer style={ls(SEQ.title)}>{t(locale, s.titleKey)}</h1>
                 <p class="hsl-sub" data-layer style={ls(SEQ.sub)}>{t(locale, s.subKey)}</p>
+                {(s.categoryKeys || []).length > 0 && (
+                  <ul class="hsl-category-list" data-layer style={ls(SEQ.tags)}>
+                    {s.categoryKeys.map((key: string) => (<li>{t(locale, key)}</li>))}
+                  </ul>
+                )}
                 <div class="hsl-ctarow" data-layer style={ls(SEQ.cta)}>
                   <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
               </div>
               <div class="hsl-pgrid" aria-hidden="true">
                 {(s.products || []).map((src: string, k: number) => (
-                  <div class="hsl-pcell" data-layer style={li(1380, k, 85, 760, 16)}>
+                  <div class="hsl-pcell" data-layer style={`${li(1380, k, 85, 760, 16)};--ps:${(s.productScales || [])[k] || 1}`}>
                     <img src={src} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
                   </div>
                 ))}
