@@ -145,7 +145,7 @@ const slides = HERO_SLIDES.map((s) => {
 
   <script is:inline>
     (function () {
-      var CONFIG = { hold: 3300, autoplay: true, pauseOnHover: false, loop: true };
+      var CONFIG = { hold: 3300, autoplay: true, pauseOnHover: false, pauseOnFocus: false, loop: true };
       var root = document.querySelector('.hsl');
       if (!root) return;
       var slides = Array.prototype.slice.call(root.querySelectorAll('.hsl-slide'));
@@ -180,7 +180,9 @@ const slides = HERO_SLIDES.map((s) => {
       }
 
       dots.forEach(function (d, i) { d.addEventListener('click', function () { show(i); }); });
-      root.addEventListener('focusin', pause); root.addEventListener('focusout', resume);
+      if (CONFIG.pauseOnFocus) {
+        root.addEventListener('focusin', pause); root.addEventListener('focusout', resume);
+      }
       if (CONFIG.pauseOnHover) {
         root.addEventListener('pointerenter', pause); root.addEventListener('pointerleave', resume);
       }

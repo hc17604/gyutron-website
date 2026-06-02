@@ -1,6 +1,6 @@
 # GYUTRON gyutron.com — Engineering Handoff (single source of truth)
 
-> Consolidated handoff for the agent/engineer taking over. **This supersedes the older, partly-stale rules in `AGENTS.md` where they conflict** (see §10). Last updated 2026-06-02. Current live HEAD: **ff60466**.
+> Consolidated handoff for the agent/engineer taking over. **This supersedes the older, partly-stale rules in `AGENTS.md` where they conflict** (see §10). Last updated 2026-06-02. Current live HEAD: use `git rev-parse origin/main` after `git fetch`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
 
 ---
