@@ -2,7 +2,7 @@
  * hero-slider.css — PPT 分层 Hero(工业风,硬边,暗色)· 三屏三版式
  *   显隐:.is-active + opacity/visibility 过渡(交叉淡出)
  *   入场:@keyframes hslIn(参数走 --fx/--fy/--fs/--delay/--dur)
- *   版式:.hsl-slide--solutions(行业拼贴) / --matrix(产品矩阵) / --product(单品)
+ *   版式:.hsl-slide--solutions(能力总览+行业拼贴) / --grid(产品全家福抠图网格) / --product(单品抠图)
  *   强调色:--accent(各 slide 内联,统一品牌紫 --purple-500)
  * ========================================================================== */
 .hsl {
@@ -22,7 +22,6 @@
 }
 .hsl-slide.is-active { opacity: 1; visibility: visible; z-index: 2; transition: opacity 750ms ease, visibility 0s; }
 
-/* 图层:默认隐藏,激活屏按各自 delay 错峰入场 */
 .hsl-slide [data-layer] { opacity: 0; }
 .hsl-slide.is-active [data-layer] {
   animation: hslIn var(--dur, 700ms) cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms) both;
@@ -39,7 +38,7 @@
 .hsl-overlay {
   position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(90deg, rgba(3,4,8,0.94) 0%, rgba(5,6,12,0.88) 42%, rgba(5,6,12,0.62) 76%, rgba(5,6,12,0.82) 100%),
+    linear-gradient(90deg, rgba(3,4,8,0.94) 0%, rgba(5,6,12,0.88) 42%, rgba(5,6,12,0.66) 76%, rgba(5,6,12,0.84) 100%),
     linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.55) 100%);
 }
 
@@ -53,11 +52,11 @@
 }
 .hsl-inner > * { min-width: 0; }
 
-/* ---- 共用文案排版 ---- */
+/* ---- 共用文案 ---- */
 .hsl-kicker { display: inline-block; color: var(--accent, #8a63d2); font-size: 13px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
-.hsl-title { margin: 14px 0 16px; font-size: clamp(36px, 4.2vw, 60px); font-weight: 900; line-height: 1.04; letter-spacing: -0.01em; max-width: 17ch; text-shadow: 0 12px 34px rgba(0,0,0,0.42); }
+.hsl-title { margin: 14px 0 16px; font-size: clamp(36px, 4.2vw, 60px); font-weight: 900; line-height: 1.04; letter-spacing: -0.01em; max-width: 18ch; text-shadow: 0 12px 34px rgba(0,0,0,0.42); }
 html[lang="de"] .hsl-title { font-size: clamp(32px, 3.6vw, 52px); hyphens: auto; }
-.hsl-sub { margin: 0; color: rgba(255,255,255,0.84); font-size: clamp(16px, 1.5vw, 19px); line-height: 1.6; max-width: 46ch; }
+.hsl-sub { margin: 0; color: rgba(255,255,255,0.84); font-size: clamp(16px, 1.5vw, 19px); line-height: 1.6; max-width: 48ch; }
 
 .hsl-ctarow { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .hsl-cta {
@@ -72,73 +71,56 @@ html[lang="de"] .hsl-title { font-size: clamp(32px, 3.6vw, 52px); hyphens: auto;
 .hsl-cta--ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
 
 /* ===========================================================================
- * 版式 A — solutions(左文案 + 右行业应用照片 2×2 拼贴)
+ * 版式 A — solutions(左能力文案 + 右行业应用照片 2×2 拼贴)
  * ========================================================================= */
-.hsl-slide--solutions .hsl-inner { grid-template-columns: minmax(400px, 0.92fr) minmax(420px, 1.08fr); }
-
-.hsl-collage {
-  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
-  gap: 14px; height: 100%; max-height: 460px; align-self: center;
-}
-.hsl-col {
-  position: relative; margin: 0; overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 18px 40px rgba(0,0,0,0.5);
-}
+.hsl-slide--solutions .hsl-inner { grid-template-columns: minmax(400px, 0.96fr) minmax(420px, 1.04fr); }
+.hsl-collage { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 14px; height: 100%; max-height: 460px; align-self: center; }
+.hsl-col { position: relative; margin: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 18px 40px rgba(0,0,0,0.5); }
 .hsl-col--0 { transform: translateY(-12px); }
 .hsl-col--3 { transform: translateY(12px); }
 .hsl-col img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.hsl-col figcaption {
-  position: absolute; left: 0; bottom: 10px;
-  padding: 5px 11px; font-size: 11px; font-weight: 800; letter-spacing: 0.06em;
-  text-transform: uppercase; color: #fff; background: rgba(9,8,14,0.82);
-  border-left: 3px solid var(--accent, #8a63d2);
-}
+.hsl-col figcaption { position: absolute; left: 0; bottom: 10px; padding: 5px 11px; font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: rgba(9,8,14,0.82); border-left: 3px solid var(--accent, #8a63d2); }
 
 /* ===========================================================================
- * 版式 B — matrix(居中标题 + 四大产品族矩阵图)
+ * 版式 B — grid(左文案 + 右产品抠图全家福网格,FARSET 风)
  * ========================================================================= */
-.hsl-slide--matrix .hsl-inner { grid-template-columns: 1fr; justify-items: center; }
-.hsl-matrix { display: flex; flex-direction: column; align-items: center; gap: clamp(16px, 2.6vh, 30px); width: 100%; max-width: 1040px; }
-.hsl-mhead { text-align: center; }
-.hsl-title--center { margin: 10px auto 12px; text-align: center; max-width: 22ch; }
-.hsl-slide--matrix .hsl-title { font-size: clamp(28px, 3.2vw, 46px); }
-.hsl-sub--center { margin: 0 auto; text-align: center; max-width: 62ch; }
-
-.hsl-families { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; width: 100%; }
-.hsl-fam {
-  margin: 0; display: flex; flex-direction: column; gap: 10px; padding: 16px 14px;
-  background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.12);
+.hsl-slide--grid .hsl-inner { grid-template-columns: minmax(320px, 0.78fr) minmax(460px, 1.22fr); }
+/* 网格屏:背景更暗更均匀,让繁杂底图后退、深色产品抠图凸显 */
+.hsl-slide--grid .hsl-overlay {
+  background:
+    linear-gradient(90deg, rgba(4,5,10,0.95) 0%, rgba(6,7,14,0.9) 36%, rgba(6,7,14,0.86) 100%),
+    radial-gradient(130% 100% at 50% 50%, rgba(0,0,0,0) 45%, rgba(0,0,0,0.45) 100%);
 }
-.hsl-fam__img { height: 116px; display: flex; align-items: center; justify-content: center; }
-.hsl-fam__img img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 12px 22px rgba(0,0,0,0.5)); }
-.hsl-fam__name { font-size: 12.5px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: #fff; text-align: center; line-height: 1.25; }
-.hsl-fam__name::before { content: ''; display: block; width: 22px; height: 3px; margin: 0 auto 9px; background: var(--accent, #8a63d2); }
-.hsl-ctarow--center { justify-content: center; margin-top: 4px; }
-
-/* ===========================================================================
- * 版式 C — product(左单品大图 + 右型号/规格/标签)
- * ========================================================================= */
-.hsl-slide--product .hsl-inner { grid-template-columns: minmax(360px, 1fr) minmax(380px, 1fr); }
-.hsl-prod-visual {
-  align-self: center; justify-self: center; width: 100%; max-width: 440px;
+.hsl-pgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px 10px; align-self: center; width: 100%; }
+.hsl-pcell {
   display: flex; align-items: center; justify-content: center;
-  background: #fff; padding: clamp(24px, 3vw, 44px);
-  box-shadow: 0 28px 64px rgba(0,0,0,0.55); border-top: 3px solid var(--accent, #8a63d2);
+  height: clamp(94px, 12.5vh, 152px); padding: 6px;
+  background: radial-gradient(ellipse 80% 70% at 50% 56%, rgba(255,255,255,0.09), rgba(255,255,255,0) 72%);
 }
-/* 单品图为白底产品图:用白卡片 + multiply 让白底无缝融入,深色机身仍可见 */
-.hsl-prod-img { width: 100%; max-height: 380px; object-fit: contain; mix-blend-mode: multiply; }
-.hsl-copy--product { align-self: center; }
+.hsl-pcell img {
+  max-width: 100%; max-height: 100%; object-fit: contain;
+  filter: drop-shadow(0 0 1px rgba(255,255,255,0.22)) drop-shadow(0 14px 20px rgba(0,0,0,0.6));
+  transition: transform 0.22s ease;
+}
+.hsl-pcell:hover img { transform: translateY(-5px) scale(1.05); }
 
+/* ===========================================================================
+ * 版式 C — product(左单品抠图大图,透明浮于深色 + 柔光衬底 + 阴影)
+ * ========================================================================= */
+.hsl-slide--product .hsl-inner { grid-template-columns: minmax(360px, 1.05fr) minmax(340px, 0.95fr); }
+.hsl-prod-visual { position: relative; align-self: center; justify-self: center; display: flex; align-items: center; justify-content: center; min-height: 460px; width: 100%; }
+.hsl-prod-visual::before {
+  content: ''; position: absolute; z-index: -1; width: 82%; height: 80%; left: 9%; top: 10%;
+  background: radial-gradient(closest-side, rgba(138,99,210,0.40), rgba(138,99,210,0.12) 52%, transparent 74%);
+  filter: blur(6px);
+}
+.hsl-prod-img { max-width: 100%; max-height: 580px; object-fit: contain; filter: drop-shadow(0 30px 52px rgba(0,0,0,0.6)); }
+.hsl-copy--product { align-self: center; }
 .hsl-specs { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 11px; }
 .hsl-specs li { position: relative; padding-left: 22px; color: rgba(255,255,255,0.88); font-size: 15px; font-weight: 600; line-height: 1.35; }
 .hsl-specs li::before { content: ''; position: absolute; left: 0; top: 7px; width: 9px; height: 9px; background: var(--accent, #8a63d2); }
-
 .hsl-ptags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-.hsl-ptags span {
-  display: inline-flex; align-items: center; min-height: 28px; padding: 0 11px;
-  border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.8);
-  font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-}
+.hsl-ptags span { display: inline-flex; align-items: center; min-height: 28px; padding: 0 11px; border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
 
 /* ---- 方块页码 ---- */
 .hsl-dots { position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 6; display: flex; gap: 10px; }
@@ -151,25 +133,28 @@ html[lang="de"] .hsl-title { font-size: clamp(32px, 3.6vw, 52px); hyphens: auto;
  * 响应式
  * ========================================================================= */
 @media (max-width: 1080px) {
-  .hsl-slide--solutions .hsl-inner,
-  .hsl-slide--product .hsl-inner { grid-template-columns: minmax(320px, 1fr) minmax(300px, 1fr); }
+  .hsl-slide--solutions .hsl-inner { grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr); }
+  .hsl-slide--grid .hsl-inner { grid-template-columns: minmax(280px, 0.8fr) minmax(360px, 1.2fr); }
+  .hsl-slide--product .hsl-inner { grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr); }
 }
 @media (max-width: 860px) {
-  .hsl { height: auto; min-height: 82vh; }
+  .hsl { height: auto; min-height: 84vh; }
   .hsl-inner { padding: 34px 0 56px; }
   .hsl-slide--solutions .hsl-inner,
+  .hsl-slide--grid .hsl-inner,
   .hsl-slide--product .hsl-inner { grid-template-columns: 1fr; gap: 22px; }
   .hsl-collage { max-height: 300px; order: 2; }
-  .hsl-prod-visual { order: -1; max-width: 320px; margin: 0 auto; }
-  .hsl-families { grid-template-columns: repeat(2, 1fr); }
+  .hsl-pgrid { grid-template-columns: repeat(3, 1fr); }
+  .hsl-prod-visual { min-height: 300px; order: -1; }
+  .hsl-prod-img { max-height: 360px; }
 }
 @media (max-width: 520px) {
-  .hsl-collage { max-height: 260px; gap: 10px; }
+  .hsl-collage { max-height: 256px; gap: 10px; }
   .hsl-col--0, .hsl-col--3 { transform: none; }
   .hsl-col figcaption { font-size: 10px; padding: 4px 8px; }
-  .hsl-fam__img { height: 84px; }
-  .hsl-fam__name { font-size: 11px; }
-  .hsl-prod-img { max-height: 280px; }
+  .hsl-pgrid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .hsl-pcell { height: 84px; }
+  .hsl-prod-img { max-height: 300px; }
   .hsl-specs li { font-size: 14px; }
   .hsl-cta { width: 100%; justify-content: center; }
 }

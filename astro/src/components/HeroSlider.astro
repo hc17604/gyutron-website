@@ -1,12 +1,13 @@
 ---
 /*
- * HeroSlider.astro — PPT 分层 Hero,三屏三版式(solutions / matrix / product)
+ * HeroSlider.astro — PPT 分层 Hero,三屏三版式(solutions / grid / product)
  * ----------------------------------------------------------------------------
  * 显隐:.is-active + CSS opacity/visibility 过渡(整屏交叉淡出)。
  * 入场:每个 [data-layer] 用 @keyframes hslIn,参数走内联 --fx/--fy/--fs/--delay/--dur。
  * 切页:JS 等 data-entrance + HOLD 后切下一屏;圆点点击、聚焦暂停(hover 不暂停)、循环。
  * 数据:结构/图片在 src/data/heroSlides.ts;'product' 屏按 locale 读 products.{locale}.js。
- * 节奏:下方 SEQ(文字层)/ li()(列表项错峰)/ 脚本 CONFIG。
+ *   s1 solutions:左能力文案 + 右行业照片拼贴;s2 grid:左文案 + 右产品抠图网格;
+ *   s3 product:左单品抠图大图(透明) + 右型号/规格/标签。
  */
 import { t, localizeUrl, type Locale } from '../i18n';
 import { HERO_SLIDES } from '../data/heroSlides';
@@ -17,7 +18,6 @@ interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const PRODUCTS: any = ({ en: P_EN, de: P_DE, ja: P_JA } as any)[locale] || P_EN;
 
-// 文字层入场节奏(from 位移/缩放、delay、dur,单位 ms)
 const SEQ = {
   bg:      { x: 0, y: 0,  s: 1.06, delay: 0,    dur: 1500 },
   overlay: { x: 0, y: 0,  s: 1,    delay: 140,  dur: 780 },
@@ -30,23 +30,17 @@ const SEQ = {
 };
 type F = { x: number; y: number; s: number; delay: number; dur: number };
 const ls = (f: F) => `--fx:${f.x}px;--fy:${f.y}px;--fs:${f.s};--delay:${f.delay}ms;--dur:${f.dur}ms`;
-// 列表项错峰(从下方淡入)
 const li = (base: number, i: number, step: number, dur: number, fy = 18) => `--fx:0px;--fy:${fy}px;--fs:1;--delay:${base + i * step}ms;--dur:${dur}ms`;
 const href = (h?: string) => (h && h.startsWith('#') ? h : localizeUrl(locale, h || '#'));
-const entrance = 3300; // 入场总时长(覆盖所有错峰),供 JS 计算切页时机
+const entrance = 3300;
 
-// 预解析每屏派生数据('product' 按 locale 取产品数据)
 const slides = HERO_SLIDES.map((s) => {
   if (s.layout === 'product') {
     const cat: any = PRODUCTS[s.productCat as string] || {};
     const m: any = (cat.products || []).find((p: any) => p.name === s.productName) || (cat.products || [])[0] || {};
     return { ...s, _eyebrow: cat.eyebrow || '', _title: s.productName || cat.title || '', _sub: m.summary || cat.intro || '', _specs: Object.values(m.specs || {}), _tags: m.tags || [], _dot: s.productName || '' };
   }
-  if (s.layout === 'matrix') {
-    const fams = (s.families || []).map((f) => ({ img: f.img, name: (PRODUCTS[f.cat] || {}).eyebrow || f.cat }));
-    return { ...s, _fams: fams, _dot: s.titleKey ? t(locale, s.titleKey) : '' };
-  }
-  return { ...s, _dot: s.titleKey ? t(locale, s.titleKey) : '' };
+  return { ...s, _dot: s.titleKey ? t(locale, s.titleKey) : s.id };
 }) as any[];
 ---
 <section class="hsl" data-entrance={entrance} aria-label="GYUTRON featured solutions" aria-roledescription="carousel">
@@ -79,31 +73,30 @@ const slides = HERO_SLIDES.map((s) => {
             </Fragment>
           )}
 
-          {s.layout === 'matrix' && (
-            <div class="hsl-matrix">
-              <div class="hsl-mhead">
+          {s.layout === 'grid' && (
+            <Fragment>
+              <div class="hsl-copy">
                 <span class="hsl-kicker" data-layer style={ls(SEQ.kicker)}>{t(locale, s.kickerKey)}</span>
-                <h1 class="hsl-title hsl-title--center" data-layer style={ls(SEQ.title)}>{t(locale, s.titleKey)}</h1>
-                <p class="hsl-sub hsl-sub--center" data-layer style={ls(SEQ.sub)}>{t(locale, s.subKey)}</p>
+                <h1 class="hsl-title" data-layer style={ls(SEQ.title)}>{t(locale, s.titleKey)}</h1>
+                <p class="hsl-sub" data-layer style={ls(SEQ.sub)}>{t(locale, s.subKey)}</p>
+                <div class="hsl-ctarow" data-layer style={ls(SEQ.cta)}>
+                  <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
               </div>
-              <div class="hsl-families">
-                {(s._fams || []).map((f: any, k: number) => (
-                  <figure class="hsl-fam" data-layer style={li(1450, k, 160, 820, 24)}>
-                    <div class="hsl-fam__img"><img src={f.img} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></div>
-                    <figcaption class="hsl-fam__name">{f.name}</figcaption>
-                  </figure>
+              <div class="hsl-pgrid" aria-hidden="true">
+                {(s.products || []).map((src: string, k: number) => (
+                  <div class="hsl-pcell" data-layer style={li(1380, k, 85, 760, 16)}>
+                    <img src={src} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+                  </div>
                 ))}
               </div>
-              <div class="hsl-ctarow hsl-ctarow--center" data-layer style={ls(SEQ.card)}>
-                <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
-              </div>
-            </div>
+            </Fragment>
           )}
 
           {s.layout === 'product' && (
             <Fragment>
               <div class="hsl-prod-visual" aria-hidden="true">
-                <img class="hsl-prod-img" src={s.productImg} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" data-layer style="--fx:-40px;--fy:0px;--fs:0.96;--delay:1500ms;--dur:1100ms" />
+                <img class="hsl-prod-img" src={s.productImg} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" data-layer style="--fx:-44px;--fy:0px;--fs:0.94;--delay:1500ms;--dur:1150ms" />
               </div>
               <div class="hsl-copy hsl-copy--product">
                 <span class="hsl-kicker" data-layer style={ls(SEQ.kicker)}>{s._eyebrow}</span>
@@ -150,7 +143,7 @@ const slides = HERO_SLIDES.map((s) => {
         i = (i + slides.length) % slides.length;
         slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); s.setAttribute('aria-hidden', String(k !== i)); });
         dots.forEach(function (d, k) { d.classList.toggle('is-active', k === i); d.setAttribute('aria-selected', String(k === i)); });
-        void slides[i].offsetWidth;   // 强制重排,确保再次显示该屏时 CSS 入场动画重播
+        void slides[i].offsetWidth;
         current = i;
         schedule(cycle);
       }
@@ -170,12 +163,10 @@ const slides = HERO_SLIDES.map((s) => {
       }
 
       dots.forEach(function (d, i) { d.addEventListener('click', function () { show(i); }); });
-      // 无障碍:键盘聚焦进卡时暂停(鼠标悬停不再暂停 —— 产品要求 hover 继续轮播)
       root.addEventListener('focusin', pause); root.addEventListener('focusout', resume);
       if (CONFIG.pauseOnHover) {
         root.addEventListener('pointerenter', pause); root.addEventListener('pointerleave', resume);
       }
-      // 启动:重置首屏 is-active 以触发入场动画
       slides[0].classList.remove('is-active'); void slides[0].offsetWidth;
       show(0);
     })();
