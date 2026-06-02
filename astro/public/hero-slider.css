@@ -1,6 +1,7 @@
 /* ============================================================================
  * hero-slider.css — PPT 分层 Hero(工业风,硬边,暗色)
- *   动画由 JS(Web Animations API)驱动;此处只管布局/视觉 + 初始态 + 响应式。
+ *   幻灯片显隐:.is-active + opacity/visibility 过渡(交叉淡出)
+ *   图层入场:@keyframes hslIn(参数走 --fx/--fy/--fs/--delay/--dur)
  * ========================================================================== */
 .hsl {
   position: relative;
@@ -12,16 +13,26 @@
 }
 .hsl-track { position: absolute; inset: 0; }
 
-.hsl-slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
-.hsl-slide.is-active { opacity: 1; pointer-events: auto; z-index: 2; }
+.hsl-slide {
+  position: absolute; inset: 0;
+  opacity: 0; visibility: hidden;
+  transition: opacity 600ms ease, visibility 0s linear 600ms;
+}
+.hsl-slide.is-active { opacity: 1; visibility: visible; z-index: 2; transition: opacity 600ms ease, visibility 0s; }
 
-/* 防止 JS 接管前图层闪现(仅动画模式) */
-.hsl.is-anim [data-layer] { opacity: 0; }
+/* 图层:默认隐藏,激活屏按各自 delay 错峰入场 */
+.hsl-slide [data-layer] { opacity: 0; }
+.hsl-slide.is-active [data-layer] {
+  animation: hslIn var(--dur, 700ms) cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms) both;
+}
+@keyframes hslIn {
+  from { opacity: 0; transform: translate3d(var(--fx, 0px), var(--fy, 0px), 0) scale(var(--fs, 1)); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
 
 .hsl-bg {
   position: absolute; inset: 0; z-index: -2;
   background-position: center; background-size: cover; background-repeat: no-repeat;
-  transform-origin: center;
 }
 .hsl-overlay {
   position: absolute; inset: 0; z-index: -1;
@@ -85,32 +96,20 @@ html[lang="de"] .hsl-title { font-size: clamp(34px, 3.8vw, 56px); hyphens: auto;
 .hsl-card strong { display: block; font-size: 13px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
 .hsl-card span { display: block; margin-top: 5px; font-size: 12px; font-weight: 700; color: rgba(21,18,31,0.66); }
 
-/* ---- 圆点(方块)+ 箭头 ---- */
+/* ---- 方块页码 ---- */
 .hsl-dots { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 6; display: flex; gap: 10px; }
 .hsl-dot { width: 14px; height: 14px; padding: 0; border: 0; background: rgba(255,255,255,0.32); cursor: pointer; transition: background 0.25s ease; }
 .hsl-dot:hover { background: rgba(255,255,255,0.6); }
 .hsl-dot.is-active { background: #fff; }
 .hsl-dot:focus-visible { outline: 2px solid var(--accent, #18b6c9); outline-offset: 3px; }
 
-.hsl-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%); z-index: 6;
-  width: 46px; height: 46px; display: inline-flex; align-items: center; justify-content: center;
-  border: 1px solid rgba(255,255,255,0.22); background: rgba(8,8,14,0.4); color: #fff; cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-.hsl-arrow:hover { background: rgba(8,8,14,0.7); border-color: rgba(255,255,255,0.5); }
-.hsl-arrow--prev { left: clamp(10px, 2vw, 28px); }
-.hsl-arrow--next { right: clamp(10px, 2vw, 28px); }
-.hsl-arrow:focus-visible { outline: 2px solid var(--accent, #18b6c9); outline-offset: 2px; }
-
 /* ---- 响应式 ---- */
 @media (max-width: 1100px) {
   .hsl-inner { grid-template-columns: minmax(340px, 0.9fr) minmax(320px, 1.1fr); }
-  .hsl-arrow { display: none; }
 }
 @media (max-width: 820px) {
   .hsl { height: auto; min-height: 78vh; }
-  .hsl-inner { grid-template-columns: 1fr; gap: 18px; padding: 36px 0 56px; align-content: center; }
+  .hsl-inner { grid-template-columns: 1fr; gap: 18px; padding: 36px 0 56px; }
   .hsl-visual { min-height: 230px; order: 2; }
   .hsl-img--main { width: 74%; right: 0; }
   .hsl-img--acc1 { width: 38%; top: 0; }
@@ -118,11 +117,12 @@ html[lang="de"] .hsl-title { font-size: clamp(34px, 3.8vw, 56px); hyphens: auto;
 }
 @media (max-width: 520px) {
   .hsl-title { font-size: clamp(30px, 9vw, 40px); }
-  .hsl-visual { display: none; }            /* 移动端聚焦文案,精简图片簇 */
+  .hsl-visual { display: none; }
   .hsl-cta { width: 100%; justify-content: center; }
 }
 
 /* ---- 减弱动效 ---- */
 @media (prefers-reduced-motion: reduce) {
-  .hsl.is-anim [data-layer] { opacity: 1; }
+  .hsl-slide { transition: none; }
+  .hsl-slide [data-layer] { opacity: 1; animation: none; transform: none; }
 }
