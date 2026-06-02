@@ -105,9 +105,11 @@ const slides = HERO_SLIDES.map((s) => {
 
           {s.layout === 'product' && (
             <Fragment>
-              <div class="hsl-prod-visual" aria-hidden="true">
-                <img class="hsl-prod-img" src={s.productImg} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" data-layer style={ls(PSEQ.img)} />
-              </div>
+              {s.productImg && (
+                <div class="hsl-prod-visual" aria-hidden="true">
+                  <img class="hsl-prod-img" src={s.productImg} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" data-layer style={ls(PSEQ.img)} />
+                </div>
+              )}
               <div class="hsl-copy hsl-copy--product">
                 <span class="hsl-kicker" data-layer style={ls(PSEQ.kicker)}>{s._eyebrow}</span>
                 <h1 class="hsl-title" data-layer style={ls(PSEQ.title)}>{s._title}</h1>

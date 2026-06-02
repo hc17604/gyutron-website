@@ -5,7 +5,7 @@ const GYUTRON_PRODUCTS = {
         navLabel: "Android PDA",
         heroImage: "product-hero-android-pda-matrix.png",
         intro: "倉庫、製造、フィールドサービス、ラインサイドのデータ収集に対応する堅牢なAndroidハンドヘルド。",
-        panelMetric: "6モデル",
+        panelMetric: "7???",
         panelText: "タッチ、キーパッド、スキャングリップ、コールドチェーン、長時間バッテリーの選択肢。",
         products: [
             {
@@ -62,6 +62,16 @@ const GYUTRON_PRODUCTS = {
                 specs: { OS: "Android 14", Display: "6.2 in FHD", Scan: "Extended range 2D", Rugged: "IP68 / 2.0 m drop" },
                 tags: ["5G option", "GNSS", "7200 mAh"]
             }
+        ,
+            {
+                name: "GY-A90 Touch",
+                type: "?????????????",
+                summary: "???????????????????????????????????????Android PDA?",
+                kind: "pda",
+                image: "product-cutouts/generated/gy-a90-touch.png",
+                specs: { OS: "Android 14", Display: "6.1 in FHD touch", Scan: "Integrated 2D imager", Rugged: "IP68 / 1.8 m drop" },
+                tags: ["Touch only", "Wi-Fi 6E", "6200 mAh"]
+            }
         ]
     },
     "rfid-handhelds": {
@@ -70,7 +80,7 @@ const GYUTRON_PRODUCTS = {
         navLabel: "RFIDハンドヘルド",
         heroImage: "product-hero-rfid-handhelds-matrix.png",
         intro: "在庫管理、資産追跡、入荷物流、ストックルーム、製造トレーサビリティ向けのAndroid UHF RFID端末。",
-        panelMetric: "4モデル",
+        panelMetric: "5???",
         panelText: "内蔵型、長距離、5G、エルゴノミックRFIDの選択肢。",
         products: [
             {
@@ -109,6 +119,16 @@ const GYUTRON_PRODUCTS = {
                 specs: { OS: "Android 14", RFID: "UHF up to 10 m", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["5G", "Dual-band GNSS", "7000 mAh"]
             }
+        ,
+            {
+                name: "GY-R90 Falcon",
+                type: "???UHF RFID????",
+                summary: "????????????????????????????????RFID???????",
+                kind: "rfid",
+                image: "product-cutouts/generated/gy-r90-falcon.png",
+                specs: { OS: "Android 14", RFID: "UHF up to 15 m", Scan: "2D + RFID", Rugged: "IP67 / 1.8 m drop" },
+                tags: ["33 dBm", "Circular antenna", "8200 mAh"]
+            }
         ]
     },
     "barcode-scanners": {
@@ -117,7 +137,7 @@ const GYUTRON_PRODUCTS = {
         navLabel: "バーコードスキャナー",
         heroImage: "product-hero-barcode-scanners-matrix.png",
         intro: "1D、2D、DPM、長距離、ワイヤレスのスキャン業務に対応する産業用ハンドヘルドバーコードスキャナー。",
-        panelMetric: "7モデル",
+        panelMetric: "8???",
         panelText: "有線、無線、コールドチェーン、長距離、ウェアラブル、プレゼンテーション、ドックドア向けスキャンの選択肢。",
         products: [
             {
@@ -182,6 +202,16 @@ const GYUTRON_PRODUCTS = {
                 image: "product-images/gy-s680-dock.png",
                 specs: { Scan: "Wide-angle 2D", Link: "Ethernet / USB", Trigger: "Photoeye input", Rugged: "IP65 metal housing" },
                 tags: ["ドックドア", "コンベヤ", "Ethernet"]
+            }
+        ,
+            {
+                name: "GY-S900 XR",
+                type: "??????????????",
+                summary: "???????????????????????????????????????????",
+                kind: "scanner",
+                image: "product-cutouts/generated/gy-s900-xr.png",
+                specs: { Scan: "1D/2D near-far", Range: "Up to 18 m", Link: "Bluetooth / USB-C", Rugged: "IP65 / 2.0 m drop" },
+                tags: ["Long range", "Laser aimer", "Warehouse"]
             }
         ]
     },
@@ -314,6 +344,46 @@ const GYUTRON_PRODUCTS = {
                 image: "product-images/gy-net8.png",
                 specs: { Ports: "8 x M12 IO-Link", Network: "EtherNet/IP / PROFINET", Power: "24 VDC", Housing: "IP67" },
                 tags: ["IO-Link", "診断", "IP67 hub"]
+            }
+        ,
+            {
+                name: "GY-PX90",
+                type: "????????",
+                summary: "??????????????????????????????????",
+                kind: "sensor",
+                image: "product-cutouts/generated/gy-px90.png",
+                specs: { Detection: "Diffuse / retroreflective", Range: "30 mm to 3 m", Output: "PNP / NPN", Housing: "IP67 compact" },
+                tags: ["Presence", "M12", "Fast setup"]
+            }
+        ,
+            {
+                name: "GY-LD90",
+                type: "??????????",
+                summary: "???????????????????????????????????????????????",
+                kind: "sensor",
+                image: "product-cutouts/generated/gy-ld90.png",
+                specs: { Measurement: "90 mm class", Resolution: "5 um", Output: "IO-Link / analog", Housing: "IP67 metal" },
+                tags: ["Laser", "Position", "IO-Link"]
+            }
+        ,
+            {
+                name: "GY-SAFE90",
+                type: "????????????",
+                summary: "?????????????????????????????????????",
+                kind: "safety",
+                image: "product-cutouts/generated/gy-safe90.png",
+                specs: { Resolution: "14 / 30 mm", Height: "300 to 1500 mm", Safety: "Type 4 / PL e", Housing: "IP65 aluminum" },
+                tags: ["Machine safety", "Slim body", "Type 4"]
+            }
+        ,
+            {
+                name: "GY-NET90",
+                type: "IP67????I/O?????",
+                summary: "????????????????????????????????I/O?????",
+                kind: "io",
+                image: "product-cutouts/generated/gy-net90.png",
+                specs: { Ports: "8 x M12 IO-Link", Network: "PROFINET / EtherNet/IP", Power: "24 VDC", Housing: "IP67 metal" },
+                tags: ["Remote I/O", "IO-Link", "IP67"]
             }
         ]
     },
@@ -606,6 +676,36 @@ const GYUTRON_PRODUCTS = {
                 specs: { Optics: "25 mm class telecentric", Sensor: "Up to 2/3 inch", Distortion: "<0.08%", Mount: "C-mount" },
                 tags: ["Telecentric", "Metrology", "低歪み"]
             }
+        ,
+            {
+                name: "GY-V900 Pro",
+                type: "??????????????",
+                summary: "AI?????????????????????????????????",
+                kind: "vision",
+                image: "product-cutouts/generated/gy-v900-pro.png",
+                specs: { Sensor: "9 MP global shutter", AI: "On-device inference", Interface: "GigE + I/O", Rating: "IP67 metal" },
+                tags: ["AI vision", "9 MP", "GigE"]
+            }
+        ,
+            {
+                name: "GY-V3D900",
+                type: "???3D???????",
+                summary: "???????????????????????????????????????????????????",
+                kind: "vision",
+                image: "product-cutouts/generated/gy-v3d900.png",
+                specs: { Profile: "3D stereo / depth", Range: "900 mm class", Interface: "GigE Vision", Rating: "IP65 metal" },
+                tags: ["3D vision", "Depth", "Robot cells"]
+            }
+        ,
+            {
+                name: "GY-CR900 Matrix",
+                type: "?????????????",
+                summary: "????????QR?Data Matrix?DPM?????????????????????????",
+                kind: "reader",
+                image: "product-cutouts/generated/gy-cr900-matrix.png",
+                specs: { Codes: "1D / 2D / DPM", Lens: "Autofocus option", Interface: "Ethernet / RS-232", Rating: "IP67 metal" },
+                tags: ["DPM", "Traceability", "Ethernet"]
+            }
         ]
     },
     "inspection-instruments": {
@@ -663,6 +763,26 @@ const GYUTRON_PRODUCTS = {
                 specs: { Voltage: "600 V CAT III", Inputs: "V / ohm / mA", Display: "Backlit LCD", Data: "Bluetooth option" },
                 tags: ["Maintenance", "Cabinet checks", "Portable"]
             }
+        ,
+            {
+                name: "GY-MG90",
+                type: "?????????",
+                summary: "???QA????????????????????????????????????",
+                kind: "instrument",
+                image: "product-cutouts/generated/gy-mg90.png",
+                specs: { Range: "90 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
+                tags: ["Metrology", "Height", "Fixture QA"]
+            }
+        ,
+            {
+                name: "GY-VM900",
+                type: "?????",
+                summary: "????????????????????????????????",
+                kind: "instrument",
+                image: "product-cutouts/generated/gy-vm900.png",
+                specs: { Stage: "260 x 160 mm", Camera: "9 MP", Lighting: "Coaxial / ring", Output: "CSV / report" },
+                tags: ["Optical metrology", "Benchtop", "QA report"]
+            }
         ]
     }
 };
@@ -693,10 +813,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "sensors",
         heroImage: "product-hero-proximity-sensors-matrix.png",
         intro: "部品有無、治具、コンベア、安全エリア向けの光電、近接、ファイバー、超音波、安全センサー。",
-        panelMetric: "4モデル",
+        panelMetric: "6???",
         panelText: "Photoelectric, inductive, fiber, and safety sensing for clear detection jobs.",
         sectionIntro: "This page keeps detection products together instead of mixing them with measurement or condition-monitoring devices.",
-        products: getProductsByName(["GY-PX18", "GY-PR12", "GY-FB200", "GY-SAFE24"])
+        products: getProductsByName(["GY-PX18", "GY-PR12", "GY-FB200", "GY-SAFE24", "GY-PX90", "GY-SAFE90"])
     },
     "laser-measurement": {
         eyebrow: "Sensing & I/O",
@@ -705,10 +825,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "sensors",
         heroImage: "product-hero-laser-measurement-matrix.png",
         intro: "位置確認、ギャップ確認、レベル検知、機械フィードバック向けの非接触レーザー・超音波距離製品。",
-        panelMetric: "2 models",
+        panelMetric: "3???",
         panelText: "Laser displacement and ultrasonic distance sensing, without unrelated IO or fiber-amplifier products.",
         sectionIntro: "This category now uses a broader distance-and-position framing and only includes products that genuinely measure position or distance.",
-        products: getProductsByName(["GY-LD40", "GY-UL80"])
+        products: getProductsByName(["GY-LD40", "GY-UL80", "GY-LD90"])
     },
     "environmental-sensing": {
         eyebrow: "Sensing & I/O",
@@ -717,10 +837,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "sensors",
         heroImage: "product-hero-environmental-sensing-matrix.png",
         intro: "稼働状況の可視化とプロセス安定化に向けた圧力、温度、湿度、振動、センサーネットワーク製品。",
-        panelMetric: "3モデル",
+        panelMetric: "4???",
         panelText: "Environmental monitoring, pneumatic pressure checks, and distributed IO diagnostics.",
         sectionIntro: "Process and condition products belong together because buyers use them to monitor machine health, cabinet conditions, pneumatic performance, and connected sensor status.",
-        products: getProductsByName(["GY-PS60", "GY-ENV32", "GY-NET8"])
+        products: getProductsByName(["GY-PS60", "GY-ENV32", "GY-NET8", "GY-NET90"])
     },
     "area-scan-cameras": {
         eyebrow: "マシンビジョンシステム",
@@ -729,10 +849,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "vision",
         heroImage: "product-hero-area-scan-cameras-matrix.png",
         intro: "フルフレーム検査、組立確認、計測、ガイダンス、AI支援検査に対応する2Dスマートカメラ。",
-        panelMetric: "9 models",
+        panelMetric: "10???",
         panelText: "Compact, color, mono, AI, high-resolution, high-speed, and telecentric imaging options.",
         sectionIntro: "Area-scan products capture a full image frame, with supporting optics kept in the same imaging chain. This lineup separates sensor class, speed, resolution, AI capability, and inspection role so buyers can shortlist models more realistically.",
-        products: getProductsByName(["GY-V120", "GY-V160 Compact", "GY-V240 Color", "GY-V280 AI", "GY-V320 Mono", "GY-V380 Pro", "GY-V500 HR", "GY-V640 HS", "GY-OPT25"])
+        products: getProductsByName(["GY-V120", "GY-V160 Compact", "GY-V240 Color", "GY-V280 AI", "GY-V320 Mono", "GY-V380 Pro", "GY-V500 HR", "GY-V640 HS", "GY-OPT25", "GY-V900 Pro"])
     },
     "smart-vision-sensors": {
         eyebrow: "マシンビジョンシステム",
@@ -741,10 +861,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "vision",
         heroImage: "product-hero-smart-vision-sensors-matrix.png",
         intro: "大型検査セルや複雑な用途向けのビジョンコントローラー、3Dプロファイルカメラ、ラインスキャンシステム。",
-        panelMetric: "9 models",
+        panelMetric: "10???",
         panelText: "Vision controllers, 3D sensors, line-scan acquisition, timing I/O, frame-grabber, strobe control, and robot guidance modules.",
         sectionIntro: "This lineup supports more complete machine vision cells: acquisition, processing, 3D profiling, timing I/O, illumination triggering, frame capture, and robot-guidance integration.",
-        products: getProductsByName(["GY-VC8", "GY-V3D90", "GY-V3D150", "GY-VL2048", "GY-VX12", "GY-VIO16", "GY-LC4", "GY-VFG4", "GY-VRG200"])
+        products: getProductsByName(["GY-VC8", "GY-V3D90", "GY-V3D150", "GY-VL2048", "GY-VX12", "GY-VIO16", "GY-LC4", "GY-VFG4", "GY-VRG200", "GY-V3D900"])
     },
     "code-reading-cameras": {
         eyebrow: "マシンビジョンシステム",
@@ -753,10 +873,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "vision",
         heroImage: "product-hero-code-reading-cameras-matrix.png",
         intro: "バーコード、QR、Data Matrix、DPM、規制対応トレーサビリティ向けの固定式・ハンドヘルド画像リーダー。",
-        panelMetric: "8 models",
+        panelMetric: "9???",
         panelText: "Compact readers, DPM readers, high-speed conveyor readers, handheld DPM, inline verification, and tunnel capture.",
         sectionIntro: "トレーサビリティ buyers think in terms of read rate, DPM capability, field of view, verification standards, and record output, so this category now covers both fixed readers and grading workflows.",
-        products: getProductsByName(["GY-CR120", "GY-CR390", "GY-CR520 DPM", "GY-CR720 コンベヤ", "GY-S300 DPM", "GY-CV100", "GY-CV220 Inline", "GY-RT800"])
+        products: getProductsByName(["GY-CR120", "GY-CR390", "GY-CR520 DPM", "GY-CR720 コンベヤ", "GY-S300 DPM", "GY-CV100", "GY-CV220 Inline", "GY-RT800", "GY-CR900 Matrix"])
     },
     "vision-lighting": {
         eyebrow: "マシンビジョンシステム",
@@ -777,10 +897,10 @@ Object.assign(GYUTRON_PRODUCTS, {
         navGroup: "quality",
         heroImage: "product-hero-dimensional-gauges-matrix.png",
         intro: "形状、位置合わせ、高さ、ギャップ、プロファイル、生産公差確認のための計測ツール。",
-        panelMetric: "2 models",
+        panelMetric: "4???",
         panelText: "Contact gauge and optical measurement station options.",
         sectionIntro: "寸法測定 gauges are kept to dedicated metrology instruments, while distance sensors and 3D profile cameras remain in their own automation categories.",
-        products: getProductsByName(["GY-MG50", "GY-VM200"])
+        products: getProductsByName(["GY-MG50", "GY-VM200", "GY-MG90", "GY-VM900"])
     },
     "surface-inspection": {
         eyebrow: "品質 & Test Instruments",
