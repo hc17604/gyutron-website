@@ -5,6 +5,7 @@
 > - **All 21 pages are localized en/de/ja via Astro** (the "de is a homepage-only sample" rule below is stale).
 > - **Deploy** = `cd astro && npx astro build` → copy changed `astro/dist/*` into `public/` → commit `astro/`+`public/` → push (Cloudflare auto-serves `public/`).
 > - **shop.gyutron.com is out of scope** — never touch `public/shop`, `public/de/shop`, `public/ja/shop`.
+> - **Write de/ja TEXT as UTF-8.** Never write Japanese/German via a Python process without `PYTHONUTF8=1` (`PYTHONIOENCODING=utf-8`) — it silently turns the characters into `?` (mojibake). Edit `astro/src/i18n/{de,ja}.json` and `astro/src/data/products.{de,ja}.js` directly as UTF-8; after ANY de/ja data change, run `grep -nP '\?{4,}' astro/src/data/products.ja.js` (and de) — it MUST be empty.
 >
 > The rules below about navigation structure, brand/logo, responsive breakpoints, store/shop conventions, product-catalog consistency, micro-interactions, and Cloudflare routing are STILL VALID.
 

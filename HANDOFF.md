@@ -11,6 +11,7 @@
 3. **Deploy = build Astro → copy changed output into `public/` → commit → push.** Cloudflare serves the committed `public/`. See §3.
 4. **shop.gyutron.com is OUT OF SCOPE.** Never touch `public/shop`, `public/de/shop`, `public/ja/shop`, or shop i18n keys.
 5. **`t(locale,key)` THROWS on a missing key** (intentional build gate). Any new visible text needs **en + de + ja** or the build fails.
+6. **Write de/ja TEXT as UTF-8.** Never write Japanese/German via a Python process without `PYTHONUTF8=1` / `PYTHONIOENCODING=utf-8` — it silently corrupts the characters to `?` (mojibake). *(This exact bug hit the new 900-series products' Japanese `type`/`summary` in `products.ja.js`.)* Edit the json/data files directly as UTF-8; after any de/ja data edit, `grep -nP '\?{4,}'` the file — it must be empty.
 
 ---
 
