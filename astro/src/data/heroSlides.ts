@@ -32,7 +32,7 @@ export interface HeroSlide {
 export const HERO_SLIDES: HeroSlide[] = [
   {
     id: 's1',
-    accent: '#18b6c9',
+    accent: 'var(--purple-500)',
     bg: '/hero-industrial-automation.png',
     kickerKey: 'main.055', titleKey: 'main.336', subKey: 'main.337',
     ctaKey: 'main.338', ctaHref: '/automated-vision-inspection.html',
@@ -44,13 +44,13 @@ export const HERO_SLIDES: HeroSlide[] = [
     ],
     cardKey: 'main.422', cardSubKey: 'main.341',
     visuals: [
-      { src: '/product-vision-cell.png', pos: 'main', dir: 'right', delay: 1.7, dur: 0.9 },
-      { src: '/product-smart-camera-detail.png', pos: 'acc1', dir: 'up', delay: 2.05, dur: 0.8 },
+      { src: '/product-vision-cell.png', pos: 'main', dir: 'right', delay: 1.85, dur: 1.05 },
+      { src: '/product-smart-camera-detail.png', pos: 'acc1', dir: 'up', delay: 2.25, dur: 1.0 },
     ],
   },
   {
     id: 's2',
-    accent: '#2d7ff9',
+    accent: 'var(--purple-500)',
     bg: '/mega-industrial-products.png',
     kickerKey: 'main.342', titleKey: 'main.342', subKey: 'main.343',
     ctaKey: 'main.338', ctaHref: '/android-pda.html',
@@ -62,13 +62,13 @@ export const HERO_SLIDES: HeroSlide[] = [
     ],
     cardKey: 'main.425', cardSubKey: 'main.344',
     visuals: [
-      { src: '/product-intelligent-hardware.png', pos: 'main', dir: 'right', delay: 1.7, dur: 0.9 },
-      { src: '/product-hero-rfid-handhelds-matrix.png', pos: 'acc1', dir: 'up', delay: 2.05, dur: 0.8 },
+      { src: '/product-intelligent-hardware.png', pos: 'main', dir: 'right', delay: 1.85, dur: 1.05 },
+      { src: '/product-hero-rfid-handhelds-matrix.png', pos: 'acc1', dir: 'up', delay: 2.25, dur: 1.0 },
     ],
   },
   {
     id: 's3',
-    accent: '#16a34a',
+    accent: 'var(--purple-500)',
     bg: '/cta-industrial-control.png',
     kickerKey: 'main.426', titleKey: 'main.345', subKey: 'main.346',
     ctaKey: 'main.347', ctaHref: '#products',
@@ -80,8 +80,8 @@ export const HERO_SLIDES: HeroSlide[] = [
     ],
     cardKey: 'main.430', cardSubKey: 'main.349',
     visuals: [
-      { src: '/hero-industrial-automation.png', pos: 'main', dir: 'right', delay: 1.7, dur: 0.9 },
-      { src: '/product-vision-cell.png', pos: 'acc1', dir: 'scale', delay: 2.05, dur: 0.8 },
+      { src: '/hero-industrial-automation.png', pos: 'main', dir: 'right', delay: 1.85, dur: 1.05 },
+      { src: '/product-vision-cell.png', pos: 'acc1', dir: 'scale', delay: 2.25, dur: 1.0 },
     ],
   },
 ];

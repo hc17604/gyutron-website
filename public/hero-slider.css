@@ -2,6 +2,7 @@
  * hero-slider.css — PPT 分层 Hero(工业风,硬边,暗色)
  *   幻灯片显隐:.is-active + opacity/visibility 过渡(交叉淡出)
  *   图层入场:@keyframes hslIn(参数走 --fx/--fy/--fs/--delay/--dur)
+ *   强调色:--accent(由各 slide 内联设置,统一为品牌紫 --purple-500)
  * ========================================================================== */
 .hsl {
   position: relative;
@@ -16,9 +17,9 @@
 .hsl-slide {
   position: absolute; inset: 0;
   opacity: 0; visibility: hidden;
-  transition: opacity 600ms ease, visibility 0s linear 600ms;
+  transition: opacity 750ms ease, visibility 0s linear 750ms;
 }
-.hsl-slide.is-active { opacity: 1; visibility: visible; z-index: 2; transition: opacity 600ms ease, visibility 0s; }
+.hsl-slide.is-active { opacity: 1; visibility: visible; z-index: 2; transition: opacity 750ms ease, visibility 0s; }
 
 /* 图层:默认隐藏,激活屏按各自 delay 错峰入场 */
 .hsl-slide [data-layer] { opacity: 0; }
@@ -51,14 +52,9 @@
 }
 .hsl-inner > * { min-width: 0; }
 
-/* ---- 左侧文案 ---- */
-.hsl-bars { display: grid; gap: 7px; width: 34px; margin-bottom: 18px; }
-.hsl-bars span { display: block; height: 7px; }
-.hsl-bars span:nth-child(1) { width: 34px; background: #2d7ff9; }
-.hsl-bars span:nth-child(2) { width: 26px; background: #16a34a; }
-.hsl-bars span:nth-child(3) { width: 30px; background: #e11d2a; }
-
-.hsl-kicker { display: inline-block; color: var(--accent, #18b6c9); font-size: 13px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
+/* ---- 左侧文案(文案块上移,贴近上半部) ---- */
+.hsl-copy { align-self: start; padding-top: clamp(48px, 9vh, 112px); }
+.hsl-kicker { display: inline-block; color: var(--accent, #8a63d2); font-size: 13px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
 .hsl-title { margin: 14px 0 16px; font-size: clamp(38px, 4.4vw, 64px); font-weight: 900; line-height: 1.03; letter-spacing: -0.01em; max-width: 16ch; text-shadow: 0 12px 34px rgba(0,0,0,0.42); }
 html[lang="de"] .hsl-title { font-size: clamp(34px, 3.8vw, 56px); hyphens: auto; }
 .hsl-sub { margin: 0; color: rgba(255,255,255,0.84); font-size: clamp(16px, 1.5vw, 19px); line-height: 1.6; max-width: 46ch; }
@@ -81,7 +77,7 @@ html[lang="de"] .hsl-title { font-size: clamp(34px, 3.8vw, 56px); hyphens: auto;
   min-height: 32px; padding: 0 12px; border: 1px solid rgba(255,255,255,0.2);
   color: rgba(255,255,255,0.78); font-size: 12px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
 }
-.hsl-tags i { color: var(--accent, #18b6c9); }
+.hsl-tags i { color: var(--accent, #8a63d2); }
 
 /* ---- 右侧图片簇 ---- */
 .hsl-visual { position: relative; height: 100%; min-height: 440px; }
@@ -91,7 +87,7 @@ html[lang="de"] .hsl-title { font-size: clamp(34px, 3.8vw, 56px); hyphens: auto;
 .hsl-card {
   position: absolute; left: 0; bottom: 6%; z-index: 4;
   background: rgba(255,255,255,0.9); color: #15121f; padding: 13px 16px; min-width: 196px;
-  box-shadow: 0 22px 46px rgba(0,0,0,0.3); border-left: 3px solid var(--accent, #18b6c9);
+  box-shadow: 0 22px 46px rgba(0,0,0,0.3); border-left: 3px solid var(--accent, #8a63d2);
 }
 .hsl-card strong { display: block; font-size: 13px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
 .hsl-card span { display: block; margin-top: 5px; font-size: 12px; font-weight: 700; color: rgba(21,18,31,0.66); }
@@ -101,7 +97,7 @@ html[lang="de"] .hsl-title { font-size: clamp(34px, 3.8vw, 56px); hyphens: auto;
 .hsl-dot { width: 14px; height: 14px; padding: 0; border: 0; background: rgba(255,255,255,0.32); cursor: pointer; transition: background 0.25s ease; }
 .hsl-dot:hover { background: rgba(255,255,255,0.6); }
 .hsl-dot.is-active { background: #fff; }
-.hsl-dot:focus-visible { outline: 2px solid var(--accent, #18b6c9); outline-offset: 3px; }
+.hsl-dot:focus-visible { outline: 2px solid var(--accent, #8a63d2); outline-offset: 3px; }
 
 /* ---- 响应式 ---- */
 @media (max-width: 1100px) {
@@ -110,6 +106,7 @@ html[lang="de"] .hsl-title { font-size: clamp(34px, 3.8vw, 56px); hyphens: auto;
 @media (max-width: 820px) {
   .hsl { height: auto; min-height: 78vh; }
   .hsl-inner { grid-template-columns: 1fr; gap: 18px; padding: 36px 0 56px; }
+  .hsl-copy { align-self: auto; padding-top: 0; }
   .hsl-visual { min-height: 230px; order: 2; }
   .hsl-img--main { width: 74%; right: 0; }
   .hsl-img--acc1 { width: 38%; top: 0; }

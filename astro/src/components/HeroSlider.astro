@@ -5,7 +5,7 @@
  * 显隐:幻灯片靠 .is-active 类 + CSS 过渡(整屏交叉淡出);图层入场用 CSS @keyframes
  *   (hslIn,参数走每个图层的内联 CSS 变量 --fx/--fy/--fs/--delay/--dur)。
  * 切页:JS 等"入场总时长 + 停留(HOLD)"后切下一屏(时长由各图层 delay+dur 推导,
- *   与动画同步,不是盲目 setInterval);圆点点击、悬停暂停、循环、reduced-motion。
+ *   与动画同步,不是盲目 setInterval);圆点点击、聚焦暂停、循环、reduced-motion。
  * 文案 t(locale,key);结构/图片/动画参数在 src/data/heroSlides.ts。可调:下方 SEQ / 脚本 CONFIG。
  */
 import { t, localizeUrl, type Locale } from '../i18n';
@@ -13,17 +13,16 @@ import { HERO_SLIDES } from '../data/heroSlides';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 
-// 文字层入场节奏(from 位移/缩放、delay、dur,单位 ms)
+// 文字层入场节奏(from 位移/缩放、delay、dur,单位 ms)。整体放慢一档,入场不那么急。
 const SEQ = {
-  bg:      { x: 0,   y: 0,  s: 1.06, delay: 0,    dur: 1200 },
-  overlay: { x: 0,   y: 0,  s: 1,    delay: 120,  dur: 700 },
-  bars:    { x: -16, y: 0,  s: 1,    delay: 320,  dur: 600 },
-  kicker:  { x: 0,   y: 20, s: 1,    delay: 440,  dur: 620 },
-  title:   { x: 0,   y: 32, s: 1,    delay: 660,  dur: 780 },
-  sub:     { x: 0,   y: 24, s: 1,    delay: 1000, dur: 700 },
-  cta:     { x: 0,   y: 18, s: 1,    delay: 1300, dur: 640 },
-  tags:    { x: 0,   y: 16, s: 1,    delay: 1560, dur: 600 },
-  card:    { x: 0,   y: 20, s: 0.96, delay: 2150, dur: 720 },
+  bg:      { x: 0,   y: 0,  s: 1.06, delay: 0,    dur: 1500 },
+  overlay: { x: 0,   y: 0,  s: 1,    delay: 140,  dur: 780 },
+  kicker:  { x: 0,   y: 20, s: 1,    delay: 460,  dur: 740 },
+  title:   { x: 0,   y: 32, s: 1,    delay: 700,  dur: 880 },
+  sub:     { x: 0,   y: 24, s: 1,    delay: 1080, dur: 820 },
+  cta:     { x: 0,   y: 18, s: 1,    delay: 1440, dur: 740 },
+  tags:    { x: 0,   y: 16, s: 1,    delay: 1700, dur: 700 },
+  card:    { x: 0,   y: 20, s: 0.96, delay: 2300, dur: 840 },
 };
 type F = { x: number; y: number; s: number; delay: number; dur: number };
 const ls = (f: F) => `--fx:${f.x}px;--fy:${f.y}px;--fs:${f.s};--delay:${f.delay}ms;--dur:${f.dur}ms`;
@@ -47,7 +46,6 @@ for (const s of HERO_SLIDES) for (const v of s.visuals) entrance = Math.max(entr
         <div class="hsl-overlay" data-layer style={ls(SEQ.overlay)}></div>
         <div class="hsl-inner">
           <div class="hsl-copy">
-            <div class="hsl-bars" data-layer style={ls(SEQ.bars)} aria-hidden="true"><span></span><span></span><span></span></div>
             <span class="hsl-kicker" data-layer style={ls(SEQ.kicker)}>{t(locale, s.kickerKey)}</span>
             <h1 class="hsl-title" data-layer style={ls(SEQ.title)}>{t(locale, s.titleKey)}</h1>
             <p class="hsl-sub" data-layer style={ls(SEQ.sub)}>{t(locale, s.subKey)}</p>
@@ -83,7 +81,7 @@ for (const s of HERO_SLIDES) for (const v of s.visuals) entrance = Math.max(entr
 
   <script is:inline>
     (function () {
-      var CONFIG = { hold: 2600, autoplay: true, pauseOnHover: true, loop: true };
+      var CONFIG = { hold: 3300, autoplay: true, pauseOnHover: false, loop: true };
       var root = document.querySelector('.hsl');
       if (!root) return;
       var slides = Array.prototype.slice.call(root.querySelectorAll('.hsl-slide'));
@@ -118,9 +116,10 @@ for (const s of HERO_SLIDES) for (const v of s.visuals) entrance = Math.max(entr
       }
 
       dots.forEach(function (d, i) { d.addEventListener('click', function () { show(i); }); });
+      // 无障碍:键盘聚焦进卡时暂停(鼠标悬停不再暂停 —— 产品要求 hover 继续轮播)
+      root.addEventListener('focusin', pause); root.addEventListener('focusout', resume);
       if (CONFIG.pauseOnHover) {
         root.addEventListener('pointerenter', pause); root.addEventListener('pointerleave', resume);
-        root.addEventListener('focusin', pause); root.addEventListener('focusout', resume);
       }
       // 启动:重置首屏 is-active 以触发入场动画
       slides[0].classList.remove('is-active'); void slides[0].offsetWidth;
