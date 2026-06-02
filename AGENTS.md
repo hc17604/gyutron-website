@@ -1,3 +1,13 @@
+> ## ⚠️ READ `HANDOFF.md` FIRST — it is the current source of truth and SUPERSEDES rules below where they conflict.
+> The main site was migrated to **Astro** (everything in the `astro/` subdir). Most importantly:
+> - **DO NOT run `npm run i18n:build` / `npm run i18n:sync` / `tools/generate_localized_site.py`** (see lines further down) — the legacy generator regenerates legacy pages into `public/` and **CLOBBERS the Astro site**. de/ja are built by Astro now.
+> - The **homepage hero** is now **3 distinct Astro layouts with NO colored bars** (the "colored bars / old carousel" rule below is stale). Hero files: `astro/src/components/HeroSlider.astro`, `astro/src/data/heroSlides.ts`, `astro/public/hero-slider.css`.
+> - **All 21 pages are localized en/de/ja via Astro** (the "de is a homepage-only sample" rule below is stale).
+> - **Deploy** = `cd astro && npx astro build` → copy changed `astro/dist/*` into `public/` → commit `astro/`+`public/` → push (Cloudflare auto-serves `public/`).
+> - **shop.gyutron.com is out of scope** — never touch `public/shop`, `public/de/shop`, `public/ja/shop`.
+>
+> The rules below about navigation structure, brand/logo, responsive breakpoints, store/shop conventions, product-catalog consistency, micro-interactions, and Cloudflare routing are STILL VALID.
+
 # GYUTRON Website Rules
 
 - Every website change must consider desktop, iPad/tablet, and iPhone/mobile display behavior before completion.
