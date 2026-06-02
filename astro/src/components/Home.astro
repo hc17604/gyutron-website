@@ -2,94 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import { t, localizeUrl, type Locale } from '../i18n';
 import TabCarousel from './TabCarousel.astro';
+import HeroSlider from './HeroSlider.astro';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/';
 ---
-<Layout locale={locale} path={path} title={t(locale, 'seo.index.title')} description={t(locale, 'seo.index.desc')} bodyClass="home" pageCss={["/global.css", "/home-sections.css", "/mobile-navigation.css"]}>
+<Layout locale={locale} path={path} title={t(locale, 'seo.index.title')} description={t(locale, 'seo.index.desc')} bodyClass="home" pageCss={["/global.css", "/hero-slider.css", "/home-sections.css", "/mobile-navigation.css"]}>
 <main>
-        <section class="hero" data-hero-carousel>
-            <div class="hero-carousel">
-                <article class="hero-slide is-active" style="--hero-bg: url('/product-vision-cell.png'); --hero-accent: #00d2be;" data-hero-slide>
-                    <div class="container hero-stage">
-                        <div class="hero-copy-block">
-                            <div class="hero-bars" aria-hidden="true"><span></span><span></span><span></span></div>
-                            <span class="eyebrow">{t(locale, "main.055")}</span>
-                            <h1>{t(locale, "main.336")}</h1>
-                            <p class="hero-copy">{t(locale, "main.337")}</p>
-                            <div class="hero-actions">
-                                <a class="button button-light" href={localizeUrl(locale, "/automated-vision-inspection.html")}>{t(locale, "main.338")} <i class="fa-solid fa-chevron-right"></i></a>
-                                <a class="button button-outline" href={localizeUrl(locale, "/area-scan-cameras.html")}>{t(locale, "main.339")}</a>
-                            </div>
-                            <div class="hero-feature-row" aria-label="Vision system highlights">
-                                <span><i class="fa-solid fa-wave-square"></i> 2D / 3D</span>
-                                <span><i class="fa-solid fa-barcode"></i> {t(locale, "main.421")}</span>
-                                <span><i class="fa-solid fa-robot"></i> {t(locale, "main.340")}</span>
-                            </div>
-                        </div>
-                        <div class="hero-product" aria-hidden="true">
-                            <img src="/product-vision-cell.png" alt="">
-                            <div class="hero-product-card"><strong>{t(locale, "main.422")}</strong><span>{t(locale, "main.341")}</span></div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="hero-slide" style="--hero-bg: url('/product-intelligent-hardware.png'); --hero-accent: #18b6c9;" data-hero-slide>
-                    <div class="container hero-stage">
-                        <div class="hero-copy-block">
-                            <div class="hero-bars" aria-hidden="true"><span></span><span></span><span></span></div>
-                            <span class="eyebrow">{t(locale, "main.342")}</span>
-                            <h1>{t(locale, "main.342")}</h1>
-                            <p class="hero-copy">{t(locale, "main.343")}</p>
-                            <div class="hero-actions">
-                                <a class="button button-light" href={localizeUrl(locale, "/android-pda.html")}>{t(locale, "main.338")} <i class="fa-solid fa-chevron-right"></i></a>
-                                <a class="button button-outline" href={localizeUrl(locale, "/rfid-handhelds.html")}>{t(locale, "main.011")}</a>
-                            </div>
-                            <div class="hero-feature-row" aria-label="Data capture highlights">
-                                <span><i class="fa-solid fa-barcode"></i> {t(locale, "main.423")}</span>
-                                <span><i class="fa-solid fa-wifi"></i> RFID / NFC</span>
-                                <span><i class="fa-brands fa-android"></i> {t(locale, "main.424")}</span>
-                            </div>
-                        </div>
-                        <div class="hero-product" aria-hidden="true">
-                            <img src="/product-intelligent-hardware.png" alt="">
-                            <div class="hero-product-card"><strong>{t(locale, "main.425")}</strong><span>{t(locale, "main.344")}</span></div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="hero-slide" style="--hero-bg: url('/hero-industrial-automation.png'); --hero-accent: #29b6f6;" data-hero-slide>
-                    <div class="container hero-stage">
-                        <div class="hero-copy-block">
-                            <div class="hero-bars" aria-hidden="true"><span></span><span></span><span></span></div>
-                                <span class="eyebrow">{t(locale, "main.426")}</span>
-                                <h1>{t(locale, "main.345")}</h1>
-                                <p class="hero-copy">{t(locale, "main.346")}</p>
-                                <div class="hero-actions">
-                                    <a class="button button-light" href="#products">{t(locale, "main.347")} <i class="fa-solid fa-chevron-right"></i></a>
-                                    <a class="button button-outline" href="#solutions">{t(locale, "main.348")}</a>
-                                </div>
-                            <div class="hero-feature-row" aria-label="Industrial workflow highlights">
-                                <span><i class="fa-solid fa-industry"></i> {t(locale, "main.427")}</span>
-                                <span><i class="fa-solid fa-microchip"></i> {t(locale, "main.428")}</span>
-                                <span><i class="fa-solid fa-circle-nodes"></i> {t(locale, "main.429")}</span>
-                            </div>
-                        </div>
-                        <div class="hero-product" aria-hidden="true">
-                            <img src="/hero-industrial-automation.png" alt="">
-                            <div class="hero-product-card"><strong>{t(locale, "main.430")}</strong><span>{t(locale, "main.349")}</span></div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="hero-controls" aria-label="Hero slides" role="tablist">
-                <div class="hero-dots">
-                    <button class="hero-dot is-active" type="button" data-hero-tab="0" role="tab" aria-label={t(locale, "main.432")}></button>
-                    <button class="hero-dot" type="button" data-hero-tab="1" role="tab" aria-label={t(locale, "main.434")}></button>
-                    <button class="hero-dot" type="button" data-hero-tab="2" role="tab" aria-label={t(locale, "main.436")}></button>
-                </div>
-            </div>
-        </section>
+        <HeroSlider locale={locale} />
 
         <section class="section section-alt" id="products">
             <div class="container">

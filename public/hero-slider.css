@@ -1,0 +1,128 @@
+/* ============================================================================
+ * hero-slider.css — PPT 分层 Hero(工业风,硬边,暗色)
+ *   动画由 JS(Web Animations API)驱动;此处只管布局/视觉 + 初始态 + 响应式。
+ * ========================================================================== */
+.hsl {
+  position: relative;
+  height: clamp(560px, 86vh, 820px);
+  background: #07070b;
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hsl-track { position: absolute; inset: 0; }
+
+.hsl-slide { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.hsl-slide.is-active { opacity: 1; pointer-events: auto; z-index: 2; }
+
+/* 防止 JS 接管前图层闪现(仅动画模式) */
+.hsl.is-anim [data-layer] { opacity: 0; }
+
+.hsl-bg {
+  position: absolute; inset: 0; z-index: -2;
+  background-position: center; background-size: cover; background-repeat: no-repeat;
+  transform-origin: center;
+}
+.hsl-overlay {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(3,4,8,0.95) 0%, rgba(5,6,12,0.9) 40%, rgba(5,6,12,0.66) 74%, rgba(5,6,12,0.85) 100%),
+    linear-gradient(180deg, rgba(0,0,0,0) 64%, rgba(0,0,0,0.55) 100%);
+}
+
+.hsl-inner {
+  position: relative; z-index: 3; height: 100%;
+  width: min(1180px, calc(100% - clamp(32px, 6vw, 96px)));
+  margin: 0 auto;
+  display: grid; grid-template-columns: minmax(440px, 0.84fr) minmax(420px, 1.16fr);
+  gap: clamp(24px, 4vw, 56px); align-items: center; align-content: center;
+  padding: 40px 0 64px;
+}
+.hsl-inner > * { min-width: 0; }
+
+/* ---- 左侧文案 ---- */
+.hsl-bars { display: grid; gap: 7px; width: 34px; margin-bottom: 18px; }
+.hsl-bars span { display: block; height: 7px; }
+.hsl-bars span:nth-child(1) { width: 34px; background: #2d7ff9; }
+.hsl-bars span:nth-child(2) { width: 26px; background: #16a34a; }
+.hsl-bars span:nth-child(3) { width: 30px; background: #e11d2a; }
+
+.hsl-kicker { display: inline-block; color: var(--accent, #18b6c9); font-size: 13px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; }
+.hsl-title { margin: 14px 0 16px; font-size: clamp(38px, 4.4vw, 64px); font-weight: 900; line-height: 1.03; letter-spacing: -0.01em; max-width: 16ch; text-shadow: 0 12px 34px rgba(0,0,0,0.42); }
+html[lang="de"] .hsl-title { font-size: clamp(34px, 3.8vw, 56px); hyphens: auto; }
+.hsl-sub { margin: 0; color: rgba(255,255,255,0.84); font-size: clamp(16px, 1.5vw, 19px); line-height: 1.6; max-width: 46ch; }
+
+.hsl-ctarow { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.hsl-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 50px; padding: 0 24px; border: 2px solid #fff;
+  background: #fff; color: #0c0c12; font-size: 14px; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.hsl-cta:hover { background: transparent; color: #fff; }
+.hsl-cta--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
+.hsl-cta--ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+.hsl-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.hsl-tags span {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 32px; padding: 0 12px; border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.78); font-size: 12px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.hsl-tags i { color: var(--accent, #18b6c9); }
+
+/* ---- 右侧图片簇 ---- */
+.hsl-visual { position: relative; height: 100%; min-height: 440px; }
+.hsl-img { position: absolute; display: block; object-fit: contain; filter: drop-shadow(0 30px 50px rgba(0,0,0,0.55)); }
+.hsl-img--main { width: 86%; right: 0; top: 11%; max-height: 78%; }
+.hsl-img--acc1 { width: 40%; top: 2%; right: 4%; max-height: 38%; border: 1px solid rgba(255,255,255,0.14); filter: drop-shadow(0 18px 36px rgba(0,0,0,0.5)); }
+.hsl-card {
+  position: absolute; left: 0; bottom: 6%; z-index: 4;
+  background: rgba(255,255,255,0.9); color: #15121f; padding: 13px 16px; min-width: 196px;
+  box-shadow: 0 22px 46px rgba(0,0,0,0.3); border-left: 3px solid var(--accent, #18b6c9);
+}
+.hsl-card strong { display: block; font-size: 13px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
+.hsl-card span { display: block; margin-top: 5px; font-size: 12px; font-weight: 700; color: rgba(21,18,31,0.66); }
+
+/* ---- 圆点(方块)+ 箭头 ---- */
+.hsl-dots { position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 6; display: flex; gap: 10px; }
+.hsl-dot { width: 14px; height: 14px; padding: 0; border: 0; background: rgba(255,255,255,0.32); cursor: pointer; transition: background 0.25s ease; }
+.hsl-dot:hover { background: rgba(255,255,255,0.6); }
+.hsl-dot.is-active { background: #fff; }
+.hsl-dot:focus-visible { outline: 2px solid var(--accent, #18b6c9); outline-offset: 3px; }
+
+.hsl-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 6;
+  width: 46px; height: 46px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,255,255,0.22); background: rgba(8,8,14,0.4); color: #fff; cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.hsl-arrow:hover { background: rgba(8,8,14,0.7); border-color: rgba(255,255,255,0.5); }
+.hsl-arrow--prev { left: clamp(10px, 2vw, 28px); }
+.hsl-arrow--next { right: clamp(10px, 2vw, 28px); }
+.hsl-arrow:focus-visible { outline: 2px solid var(--accent, #18b6c9); outline-offset: 2px; }
+
+/* ---- 响应式 ---- */
+@media (max-width: 1100px) {
+  .hsl-inner { grid-template-columns: minmax(340px, 0.9fr) minmax(320px, 1.1fr); }
+  .hsl-arrow { display: none; }
+}
+@media (max-width: 820px) {
+  .hsl { height: auto; min-height: 78vh; }
+  .hsl-inner { grid-template-columns: 1fr; gap: 18px; padding: 36px 0 56px; align-content: center; }
+  .hsl-visual { min-height: 230px; order: 2; }
+  .hsl-img--main { width: 74%; right: 0; }
+  .hsl-img--acc1 { width: 38%; top: 0; }
+  .hsl-card { min-width: 0; font-size: 12px; }
+}
+@media (max-width: 520px) {
+  .hsl-title { font-size: clamp(30px, 9vw, 40px); }
+  .hsl-visual { display: none; }            /* 移动端聚焦文案,精简图片簇 */
+  .hsl-cta { width: 100%; justify-content: center; }
+}
+
+/* ---- 减弱动效 ---- */
+@media (prefers-reduced-motion: reduce) {
+  .hsl.is-anim [data-layer] { opacity: 1; }
+}
