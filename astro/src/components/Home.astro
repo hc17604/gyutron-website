@@ -82,11 +82,11 @@ const path = '/';
                     </div>
                 </article>
             </div>
-            <div class="hero-controls" aria-label="Hero slides">
-                <div class="hero-control-grid">
-                    <button class="hero-tab is-active" type="button" data-hero-tab="0"><strong>{t(locale, "main.431")}</strong><span>{t(locale, "main.432")}</span></button>
-                    <button class="hero-tab" type="button" data-hero-tab="1"><strong>{t(locale, "main.433")}</strong><span>{t(locale, "main.434")}</span></button>
-                    <button class="hero-tab" type="button" data-hero-tab="2"><strong>{t(locale, "main.435")}</strong><span>{t(locale, "main.436")}</span></button>
+            <div class="hero-controls" aria-label="Hero slides" role="tablist">
+                <div class="hero-dots">
+                    <button class="hero-dot is-active" type="button" data-hero-tab="0" role="tab" aria-label={t(locale, "main.432")}></button>
+                    <button class="hero-dot" type="button" data-hero-tab="1" role="tab" aria-label={t(locale, "main.434")}></button>
+                    <button class="hero-dot" type="button" data-hero-tab="2" role="tab" aria-label={t(locale, "main.436")}></button>
                 </div>
             </div>
         </section>

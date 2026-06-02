@@ -27,6 +27,17 @@
 
 .hero-feature-row span { border-radius: 0; }
 
+/* 3-square page indicator (thinklucid-style), centered bottom */
+.hero-dots { display: flex; gap: 10px; justify-content: center; }
+.hero-dot {
+  width: 14px; height: 14px; padding: 0; border: 0; border-radius: 0;
+  background: rgba(255, 255, 255, 0.32); cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.hero-dot:hover { background: rgba(255, 255, 255, 0.6); }
+.hero-dot.is-active { background: #fff; }
+.hero-dot:focus-visible { outline: 2px solid var(--hero-accent, #18b6c9); outline-offset: 3px; }
+
 /* ===== 区块 B:标签切换轮播(行业)— 工业硬边 ===== */
 .tc-head { max-width: 760px; margin: 0 0 clamp(28px, 4vw, 46px); }
 .tc-head .tc-heading { margin: 0; }
