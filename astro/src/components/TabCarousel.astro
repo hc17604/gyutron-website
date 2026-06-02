@@ -1,0 +1,107 @@
+---
+/*
+ * TabCarousel.astro — 区块 B:标签切换轮播(crossfade + 自动轮播 + 键盘可达)
+ * 文案走 t(locale, key)(build 时渲染);切换/轮播在 <script is:inline> 客户端运行。
+ * 标签配置在下方 tabs[](图片);文案在 i18n 的 home.tc.* 。
+ */
+import { t, localizeUrl, type Locale } from '../i18n';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+
+const tabs = [
+  { key: 'auto',      image: '/nav-industry-automotive-ev.png?v=20260525-hd2' },
+  { key: 'elec',      image: '/nav-industry-electronics-smt.png?v=20260525-hd2' },
+  { key: 'logistics', image: '/nav-industry-logistics-rfid.png?v=20260525-hd2' },
+  { key: 'pharma',    image: '/nav-industry-pharma-medical.png?v=20260525-hd2' },
+];
+const ctaHref = localizeUrl(locale, '/contact-sales.html');
+---
+<section class="section section-alt tc-root" aria-labelledby="tc-heading">
+  <div class="container">
+    <div class="tc-head">
+      <h2 class="tc-heading" id="tc-heading">{t(locale, 'home.tc.heading')}</h2>
+      <p class="tc-sub">{t(locale, 'home.tc.sub')}</p>
+    </div>
+    <div class="tc">
+      <div class="tc-tabs" role="tablist" aria-orientation="vertical">
+        {tabs.map((tab, i) => (
+          <button
+            class={`tc-tab${i === 0 ? ' is-active' : ''}`}
+            type="button" role="tab"
+            id={`tc-tab-${tab.key}`} aria-controls={`tc-pan-${tab.key}`}
+            aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1}
+          >
+            <span class="tc-tab__label">{t(locale, `home.tc.${tab.key}.label`)}</span>
+          </button>
+        ))}
+      </div>
+      <div class="tc-panels">
+        {tabs.map((tab, i) => (
+          <div
+            class={`tc-panel${i === 0 ? ' is-active' : ''}`}
+            role="tabpanel" id={`tc-pan-${tab.key}`} aria-labelledby={`tc-tab-${tab.key}`}
+            aria-hidden={i === 0 ? 'false' : 'true'} tabindex="0"
+          >
+            <div class="tc-panel__media">
+              <img class="tc-panel__img" src={tab.image} alt={t(locale, `home.tc.${tab.key}.label`)} loading="lazy" decoding="async" />
+            </div>
+            <div class="tc-panel__body">
+              <h3 class="tc-panel__title">{t(locale, `home.tc.${tab.key}.title`)}</h3>
+              <ul class="tc-panel__points">
+                <li>{t(locale, `home.tc.${tab.key}.p1`)}</li>
+                <li>{t(locale, `home.tc.${tab.key}.p2`)}</li>
+                <li>{t(locale, `home.tc.${tab.key}.p3`)}</li>
+              </ul>
+              <a class="tc-panel__cta" href={ctaHref}>{t(locale, 'home.tc.cta')} <span class="tc-panel__cta-arrow" aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+  <script is:inline>
+    (function () {
+      var root = document.currentScript.closest('.tc-root');
+      if (!root) return;
+      var tablist = root.querySelector('.tc-tabs');
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('.tc-tab'));
+      var panels = Array.prototype.slice.call(root.querySelectorAll('.tc-panel'));
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var active = 0, timer = null, stopped = false;
+
+      function setActive(i, focus) {
+        active = (i + tabs.length) % tabs.length;
+        tabs.forEach(function (t, idx) {
+          var on = idx === active;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          t.classList.toggle('is-active', on);
+        });
+        panels.forEach(function (p, idx) {
+          var on = idx === active;
+          p.classList.toggle('is-active', on);
+          p.setAttribute('aria-hidden', on ? 'false' : 'true');
+        });
+        if (focus) tabs[active].focus();
+      }
+      function stop() { stopped = true; if (timer) { clearInterval(timer); timer = null; } }
+      function start() { if (reduce || stopped || timer) return; timer = window.setInterval(function () { setActive(active + 1); }, 5000); }
+
+      tablist.addEventListener('click', function (e) {
+        var b = e.target.closest('.tc-tab'); if (!b) return;
+        stop(); setActive(tabs.indexOf(b), false);
+      });
+      tablist.addEventListener('keydown', function (e) {
+        var n = null, k = e.key;
+        if (k === 'ArrowRight' || k === 'ArrowDown') n = active + 1;
+        else if (k === 'ArrowLeft' || k === 'ArrowUp') n = active - 1;
+        else if (k === 'Home') n = 0;
+        else if (k === 'End') n = tabs.length - 1;
+        if (n === null) return;
+        e.preventDefault(); stop(); setActive(n, true);
+      });
+      root.addEventListener('pointerdown', stop);
+      start();
+    })();
+  </script>
+</section>

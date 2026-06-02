@@ -1,0 +1,104 @@
+/* ============================================================================
+ * home-sections.css — 首页两个新动效板块(区块A 浮动卡片 / 区块B 标签轮播)
+ *   外层间距/宽度复用站内 .section / .container;此处只管板块内部。
+ *   动画仅用 transform/opacity;含断点 + prefers-reduced-motion。
+ * ========================================================================== */
+
+/* ---- 区块 A:浮动卡片 ---- */
+.fc-head { max-width: 720px; margin: 0 auto clamp(36px, 5vw, 60px); text-align: center; }
+.fc-head .fc-heading { margin: 0; }
+.fc-sub { margin: 16px 0 0; color: #6f687a; font-size: clamp(15px, 1.4vw, 18px); line-height: 1.6; }
+
+.fc-stage { position: relative; max-width: 940px; margin: 0 auto; }
+.fc-base { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 24px 60px rgba(31, 11, 53, 0.16); }
+.fc-cards { position: absolute; inset: 0; pointer-events: none; }
+
+.fc-card {
+  position: absolute; left: var(--x); top: var(--y); pointer-events: auto;
+  opacity: 0; transform: translateY(22px) scale(0.96);
+  transition: opacity 600ms ease, transform 600ms ease;
+  transition-delay: var(--enter-delay, 0ms);
+  will-change: opacity, transform;
+}
+.fc-root.is-in .fc-card { opacity: 1; transform: translateY(0) scale(1); }
+
+.fc-card__inner {
+  display: inline-flex; align-items: center; gap: 11px;
+  padding: 11px 15px; min-width: 138px;
+  background: #fff; border: 1px solid #e6e0ee; border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(31, 11, 53, 0.16);
+  animation: fc-float var(--float-dur, 6800ms) ease-in-out infinite;
+  animation-delay: var(--float-phase, 0ms);
+  animation-play-state: paused;
+}
+.fc-root.is-floating .fc-card__inner { animation-play-state: running; }
+@keyframes fc-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(calc(var(--float-amp, 12px) * -1)); }
+}
+.fc-card__icon { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex: 0 0 auto; border-radius: 9px; background: #efe8ff; color: #6f2dbd; font-size: 15px; }
+.fc-card__text { display: flex; flex-direction: column; line-height: 1.25; }
+.fc-card__title { font-size: 14px; font-weight: 800; color: #17121f; }
+.fc-card__desc { font-size: 12px; color: #6f687a; }
+
+/* ---- 区块 B:标签轮播 ---- */
+.tc-head { max-width: 760px; margin: 0 0 clamp(28px, 4vw, 46px); }
+.tc-head .tc-heading { margin: 0; }
+.tc-sub { margin: 14px 0 0; color: #6f687a; font-size: clamp(15px, 1.4vw, 18px); line-height: 1.6; }
+
+.tc { display: grid; grid-template-columns: 280px 1fr; gap: clamp(20px, 4vw, 44px); align-items: start; }
+
+.tc-tabs { display: flex; flex-direction: column; gap: 6px; }
+.tc-tab {
+  font: inherit; text-align: left; cursor: pointer;
+  border: 0; border-left: 3px solid transparent; background: transparent;
+  padding: 14px 16px; border-radius: 8px; color: #6f687a;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.tc-tab__label { font-size: 16px; font-weight: 700; }
+.tc-tab:hover { background: #efe8ff; color: #17121f; }
+.tc-tab.is-active { background: #fff; color: #17121f; border-left-color: #6f2dbd; box-shadow: 0 8px 22px rgba(31, 11, 53, 0.08); }
+.tc-tab:focus-visible { outline: 2px solid #6f2dbd; outline-offset: 2px; }
+
+.tc-panels { position: relative; --cf: 500ms; }
+.tc-panel {
+  position: absolute; inset: 0; opacity: 0; transform: translateY(14px); pointer-events: none;
+  transition: opacity var(--cf) ease, transform var(--cf) ease;
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(18px, 3vw, 36px); align-items: center;
+}
+.tc-panel.is-active { position: relative; opacity: 1; transform: none; pointer-events: auto; }
+.tc-panel__img { width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 20px 50px rgba(31, 11, 53, 0.16); }
+.tc-panel__title { margin: 0; color: #17121f; }
+.tc-panel__points { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 10px; }
+.tc-panel__points li { position: relative; padding-left: 26px; color: #6f687a; font-size: 16px; line-height: 1.5; }
+.tc-panel__points li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: #6f2dbd; font-weight: 900; }
+.tc-panel__cta { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; color: #4b177f; font-weight: 800; text-decoration: none; font-size: 15px; }
+.tc-panel__cta:hover { color: #6f2dbd; }
+.tc-panel__cta-arrow { transition: transform .2s ease; }
+.tc-panel__cta:hover .tc-panel__cta-arrow { transform: translateX(4px); }
+
+/* ---- 响应式 ---- */
+@media (max-width: 1024px) { .tc { grid-template-columns: 240px 1fr; } }
+@media (max-width: 860px) {
+  .tc { grid-template-columns: 1fr; }
+  .tc-tabs { flex-direction: row; overflow-x: auto; gap: 4px; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+  .tc-tab { border-left: 0; border-bottom: 3px solid transparent; border-radius: 8px 8px 0 0; white-space: nowrap; flex: 0 0 auto; }
+  .tc-tab.is-active { border-left: 0; border-bottom-color: #6f2dbd; }
+  .tc-panel { grid-template-columns: 1fr; }
+  .tc-panel__media { order: -1; }
+}
+@media (max-width: 640px) {
+  .fc-card--desk { display: none; }
+  .fc-card__inner { min-width: 0; padding: 9px 12px; }
+  .fc-card__desc { display: none; }
+}
+
+/* ---- 减弱动效偏好 ---- */
+@media (prefers-reduced-motion: reduce) {
+  .fc-card { transform: none; transition: opacity .4s ease; }
+  .fc-root.is-in .fc-card { transform: none; }
+  .fc-card__inner { animation: none; }
+  .tc-panel { transform: none; transition: opacity .25s ease; }
+  .tc-panel.is-active { transform: none; }
+  .tc-panel__cta-arrow { transition: none; }
+}
