@@ -31,6 +31,16 @@ const SEQ = {
 type F = { x: number; y: number; s: number; delay: number; dur: number };
 const ls = (f: F) => `--fx:${f.x}px;--fy:${f.y}px;--fs:${f.s};--delay:${f.delay}ms;--dur:${f.dur}ms`;
 const li = (base: number, i: number, step: number, dur: number, fy = 18) => `--fx:0px;--fy:${fy}px;--fs:1;--delay:${base + i * step}ms;--dur:${dur}ms`;
+// 产品屏(s3):用户要求"先产品后文字" —— 产品图最早入场(250ms),文字随后错峰
+const PSEQ = {
+  img:    { x: -44, y: 0,  s: 0.94, delay: 250,  dur: 1050 },
+  kicker: { x: 0,   y: 20, s: 1,    delay: 1150, dur: 600 },
+  title:  { x: 0,   y: 30, s: 1,    delay: 1320, dur: 680 },
+  sub:    { x: 0,   y: 22, s: 1,    delay: 1560, dur: 640 },
+  specs:  { x: 0,   y: 16, s: 1,    delay: 1790, dur: 600 },
+  tags:   { x: 0,   y: 14, s: 1,    delay: 1970, dur: 560 },
+  cta:    { x: 0,   y: 18, s: 1,    delay: 2140, dur: 620 },
+};
 const href = (h?: string) => (h && h.startsWith('#') ? h : localizeUrl(locale, h || '#'));
 const entrance = 3300;
 
@@ -96,19 +106,19 @@ const slides = HERO_SLIDES.map((s) => {
           {s.layout === 'product' && (
             <Fragment>
               <div class="hsl-prod-visual" aria-hidden="true">
-                <img class="hsl-prod-img" src={s.productImg} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" data-layer style="--fx:-44px;--fy:0px;--fs:0.94;--delay:1500ms;--dur:1150ms" />
+                <img class="hsl-prod-img" src={s.productImg} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" data-layer style={ls(PSEQ.img)} />
               </div>
               <div class="hsl-copy hsl-copy--product">
-                <span class="hsl-kicker" data-layer style={ls(SEQ.kicker)}>{s._eyebrow}</span>
-                <h1 class="hsl-title" data-layer style={ls(SEQ.title)}>{s._title}</h1>
-                <p class="hsl-sub" data-layer style={ls(SEQ.sub)}>{s._sub}</p>
-                <ul class="hsl-specs" data-layer style={ls(SEQ.tags)}>
+                <span class="hsl-kicker" data-layer style={ls(PSEQ.kicker)}>{s._eyebrow}</span>
+                <h1 class="hsl-title" data-layer style={ls(PSEQ.title)}>{s._title}</h1>
+                <p class="hsl-sub" data-layer style={ls(PSEQ.sub)}>{s._sub}</p>
+                <ul class="hsl-specs" data-layer style={ls(PSEQ.specs)}>
                   {(s._specs || []).map((v: any) => (<li>{v}</li>))}
                 </ul>
-                <div class="hsl-ptags" data-layer style={li(1950, 0, 0, 700, 14)}>
+                <div class="hsl-ptags" data-layer style={ls(PSEQ.tags)}>
                   {(s._tags || []).map((tg: any) => (<span>{tg}</span>))}
                 </div>
-                <div class="hsl-ctarow" data-layer style={ls(SEQ.card)}>
+                <div class="hsl-ctarow" data-layer style={ls(PSEQ.cta)}>
                   <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
               </div>
