@@ -14,6 +14,7 @@ import { HERO_SLIDES } from '../data/heroSlides';
 import { GYUTRON_PRODUCTS as P_EN } from '../data/products.en.js';
 import { GYUTRON_PRODUCTS as P_DE } from '../data/products.de.js';
 import { GYUTRON_PRODUCTS as P_JA } from '../data/products.ja.js';
+import { specVal, tagText } from '../lib/productI18n';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const PRODUCTS: any = ({ en: P_EN, de: P_DE, ja: P_JA } as any)[locale] || P_EN;
@@ -48,7 +49,7 @@ const slides = HERO_SLIDES.map((s) => {
   if (s.layout === 'product') {
     const cat: any = PRODUCTS[s.productCat as string] || {};
     const m: any = (cat.products || []).find((p: any) => p.name === s.productName) || (cat.products || [])[0] || {};
-    return { ...s, _eyebrow: cat.eyebrow || '', _title: s.productName || cat.title || '', _sub: m.summary || cat.intro || '', _specs: Object.values(m.specs || {}), _tags: m.tags || [], _dot: s.productName || '' };
+    return { ...s, _eyebrow: cat.eyebrow || '', _title: s.productName || cat.title || '', _sub: m.summary || cat.intro || '', _specs: Object.values(m.specs || {}).map((v: any) => specVal(locale, v)), _tags: (m.tags || []).map((tg: any) => tagText(locale, tg)), _dot: s.productName || '' };
   }
   return { ...s, _dot: s.titleKey ? t(locale, s.titleKey) : s.id };
 }) as any[];

@@ -75,7 +75,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-A90 Touch",
                 type: "タッチスクリーン式モバイルデータ端末",
-                summary: "キーパッドレスの堅牢Android PDA。倉庫・製造・現場でのスキャン主体のデータ収集ワークフロー向け。",
+                summary: "倉庫・製造・現場でのスキャン中心の業務に最適な、キーパッド非搭載の堅牢Android PDA。",
                 kind: "pda",
                 image: "product-cutouts/generated/gy-a90-touch.png",
                 specs: { OS: "Android 14", Display: "6.1 in FHD touch", Scan: "Integrated 2D imager", Rugged: "IP68 / 1.8 m drop" },
@@ -132,7 +132,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-R90 Falcon",
                 type: "長距離UHF RFIDリーダー",
-                summary: "棚卸し一括読取、ドックドア確認、資産追跡、パレット単位の読取に対応する高出力RFIDハンドヘルド。",
+                summary: "一括棚卸・ドックドア照合・資産追跡・パレット単位読取に対応する高出力UHF RFIDハンドヘルド。",
                 kind: "rfid",
                 image: "product-cutouts/generated/gy-r90-falcon.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 15 m", Scan: "2D + RFID", Rugged: "IP67 / 1.8 m drop" },
@@ -216,7 +216,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-S900 XR",
                 type: "長距離スキャンガン",
-                summary: "棚ラベル、フォークリフト周りの作業、倉庫での遠距離読取に対応する産業用バーコードスキャナー。",
+                summary: "棚ラベル・フォークリフト併用作業・倉庫の遠距離読取に対応する産業用バーコードスキャナー。",
                 kind: "scanner",
                 image: "product-cutouts/generated/gy-s900-xr.png",
                 specs: { Scan: "1D/2D near-far", Range: "Up to 18 m", Link: "Bluetooth / USB-C", Rugged: "IP65 / 2.0 m drop" },
@@ -358,7 +358,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-PX90",
                 type: "コンパクト光電センサー",
-                summary: "コンベア、治具、部品検出、コンパクト機械設計向けの高速応答在荷センサー。",
+                summary: "コンベア・治具・部品検出やコンパクト機構向けの高速応答型 在荷検出センサー。",
                 kind: "sensor",
                 image: "product-cutouts/generated/gy-px90.png",
                 specs: { Detection: "Diffuse / retroreflective", Range: "30 mm to 3 m", Output: "PNP / NPN", Housing: "IP67 compact" },
@@ -368,7 +368,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-LD90",
                 type: "レーザー変位センサー",
-                summary: "インライン検査、位置合わせ、レベル測定、機械フィードバック向けの非接触位置・ギャップセンサー。",
+                summary: "インライン検査・位置合わせ・レベル・機械フィードバック向けの非接触 位置/ギャップセンサー。",
                 kind: "sensor",
                 image: "product-cutouts/generated/gy-ld90.png",
                 specs: { Measurement: "90 mm class", Resolution: "5 um", Output: "IO-Link / analog", Housing: "IP67 metal" },
@@ -378,7 +378,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-SAFE90",
                 type: "セーフティライトカーテン(ペア)",
-                summary: "ワークセル、治具、機械開口部、作業者保護向けのスリムな防護エリア用ライトカーテン。",
+                summary: "ワークセル・治具・機械開口部・作業者保護向けのスリムな防護用ライトカーテン。",
                 kind: "safety",
                 image: "product-cutouts/generated/gy-safe90.png",
                 specs: { Resolution: "14 / 30 mm", Height: "300 to 1500 mm", Safety: "Type 4 / PL e", Housing: "IP65 aluminum" },
@@ -388,7 +388,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-NET90",
                 type: "IP67リモートI/Oモジュール",
-                summary: "センサー、アクチュエータ、ワークセル、キャビネット不要の機械配線向けの堅牢な分散I/Oブロック。",
+                summary: "センサー・アクチュエータ・ワークセル・盤レス配線に対応する堅牢な分散I/Oブロック。",
                 kind: "io",
                 image: "product-cutouts/generated/gy-net90.png",
                 specs: { Ports: "8 x M12 IO-Link", Network: "PROFINET / EtherNet/IP", Power: "24 VDC", Housing: "IP67 metal" },
@@ -689,7 +689,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-V900 Pro",
                 type: "スマートエリアスキャンカメラ",
-                summary: "AI支援検査、組立検証、位置決め、品質ゲート向けの堅牢スマートカメラ。",
+                summary: "AI支援検査・組立検証・位置決め・品質ゲート向けの堅牢スマートカメラ。",
                 kind: "vision",
                 image: "product-cutouts/generated/gy-v900-pro.png",
                 specs: { Sensor: "9 MP global shutter", AI: "On-device inference", Interface: "GigE + I/O", Rating: "IP67 metal" },
@@ -699,7 +699,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-V3D900",
                 type: "産業用3Dビジョンカメラ",
-                summary: "ロボットガイダンス、プロファイル検査、バラ積みハンドリング、寸法検査向けのステレオ深度ビジョンモジュール。",
+                summary: "ロボットガイダンス・プロファイル検査・バラ積み取り出し・寸法検査向けのステレオ深度ビジョンモジュール。",
                 kind: "vision",
                 image: "product-cutouts/generated/gy-v3d900.png",
                 specs: { Profile: "3D stereo / depth", Range: "900 mm class", Interface: "GigE Vision", Rating: "IP65 metal" },
@@ -709,7 +709,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-CR900 Matrix",
                 type: "固定式産業用コードリーダー",
-                summary: "高速バーコード、QR、Data Matrix、DPMのトレーサビリティステーション向けの画像式リーダー。",
+                summary: "高速バーコード・QR・Data Matrix・DPMのトレーサビリティ工程向け画像式リーダー。",
                 kind: "reader",
                 image: "product-cutouts/generated/gy-cr900-matrix.png",
                 specs: { Codes: "1D / 2D / DPM", Lens: "Autofocus option", Interface: "Ethernet / RS-232", Rating: "IP67 metal" },
@@ -776,7 +776,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-MG90",
                 type: "デジタル寸法ゲージ",
-                summary: "生産およびQAステーションでの高さ、ギャップ、ストローク、治具測定向けの精密ゲージ。",
+                summary: "生産・QA工程での高さ・ギャップ・ストローク・治具測定に適した精密ゲージ。",
                 kind: "instrument",
                 image: "product-cutouts/generated/gy-mg90.png",
                 specs: { Range: "90 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
@@ -786,7 +786,7 @@ const GYUTRON_PRODUCTS = {
             {
                 name: "GY-VM900",
                 type: "画像測定器",
-                summary: "部品形状、エッジ検査、生産レポート向けの卓上型光学測定システム。",
+                summary: "部品形状・エッジ検査・生産レポート向けの卓上型 光学測定システム。",
                 kind: "instrument",
                 image: "product-cutouts/generated/gy-vm900.png",
                 specs: { Stage: "260 x 160 mm", Camera: "9 MP", Lighting: "Coaxial / ring", Output: "CSV / report" },

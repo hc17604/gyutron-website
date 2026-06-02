@@ -691,6 +691,8 @@ a {
     gap: 12px;
     grid-template-columns: 96px 1fr;
 }
+/* 德语字段标签较长(Schnittstelle/Geschwindigkeit…),给标签列多留空间 */
+html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
 
 .spec-list dt {
     color: var(--muted);

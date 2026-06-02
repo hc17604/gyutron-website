@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Footer from './Footer.astro';
 import { t, localizeUrl, type Locale } from '../i18n';
 import { productSummary } from '../lib/productText';
+import { specLabel, specVal, tagText } from '../lib/productI18n';
 import * as enData from '../data/products.en.js';
 import * as deData from '../data/products.de.js';
 import * as jaData from '../data/products.ja.js';
@@ -59,9 +60,9 @@ const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];
               <h3>{product.name}</h3>
               <p>{productSummary(locale, product, cat)}</p>
               <dl class="spec-list">
-                {Object.entries(product.specs).map(([label, value]) => (<div><dt>{label}</dt><dd>{value}</dd></div>))}
+                {Object.entries(product.specs).map(([label, value]) => (<div><dt>{specLabel(locale, label)}</dt><dd>{specVal(locale, value as string)}</dd></div>))}
               </dl>
-              <div class="product-tags">{(product.tags || []).map((tag: string) => (<span>{tag}</span>))}</div>
+              <div class="product-tags">{(product.tags || []).map((tag: string) => (<span>{tagText(locale, tag)}</span>))}</div>
               <div class="product-actions">
                 <a href={localizeUrl(locale, '/contact-sales.html')}>{t(locale, 'main.256')}</a>
               </div>
@@ -86,7 +87,7 @@ const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];
             const s = p.specs || {};
             const capability = s.Scan || s.RFID || s.Device || s.Codes || s.Detection || s.Measurement || s.Sensor || s.Range || s.Parameter || t(locale, 'pp.compare.fbCapability');
             const rugged = s.Rugged || s.Temp || s.Lead || s.Housing || s.Rating || s.Output || s.Data || t(locale, 'pp.compare.fbRugged');
-            return (<tr><td>{p.name}</td><td>{p.type}</td><td>{capability}</td><td>{rugged}</td></tr>);
+            return (<tr><td>{p.name}</td><td>{p.type}</td><td>{specVal(locale, capability)}</td><td>{specVal(locale, rugged)}</td></tr>);
           })}
         </tbody>
       </table></div>
