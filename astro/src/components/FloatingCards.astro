@@ -1,51 +1,41 @@
 ---
 /*
- * FloatingCards.astro — 区块 A:卡片浮动堆叠(滚动错峰淡入 → 持续浮动 + 鼠标视差)
- * 文案走 t(locale, key)(build 时渲染);动画在 <script is:inline> 客户端运行。
- * 卡片配置在下方 cards[](图标/位置/浮动参数);文案在 i18n 的 home.fc.* 。
+ * FloatingCards.astro — hero 右侧浮动卡片层(悬浮在 hero 背景上)
+ * 无标题/无底图:由 hero 提供大标题与背景图;此组件只渲染会动的能力卡片。
+ * 文案走 t(locale, key)(build 时);动画在 <script is:inline>。
+ * 卡片配置见下方 cards[](图标/位置/浮动参数);文案在 i18n 的 home.fc.* 。
  */
 import { t, type Locale } from '../i18n';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 
 const cards = [
-  { key: 'cameras',  icon: 'fa-camera-retro',    x: '2%',  y: '16%', amp: 12, dur: 6000, phase: 0,    mobile: true },
-  { key: 'sensors',  icon: 'fa-wave-square',     x: '70%', y: '6%',  amp: 10, dur: 7000, phase: 900,  mobile: true },
-  { key: 'capture',  icon: 'fa-barcode',         x: '78%', y: '46%', amp: 14, dur: 6500, phase: 1800, mobile: false },
-  { key: 'lighting', icon: 'fa-lightbulb',       x: '4%',  y: '60%', amp: 11, dur: 7500, phase: 600,  mobile: true },
-  { key: 'edge',     icon: 'fa-microchip',       x: '40%', y: '78%', amp: 9,  dur: 8000, phase: 2400, mobile: true },
-  { key: 'data',     icon: 'fa-database',        x: '56%', y: '60%', amp: 13, dur: 6800, phase: 1500, mobile: false },
+  { key: 'cameras',  icon: 'fa-camera-retro', x: '2%',  y: '4%',  amp: 12, dur: 6000, phase: 0,    mobile: true },
+  { key: 'sensors',  icon: 'fa-wave-square',  x: '55%', y: '0%',  amp: 10, dur: 7000, phase: 900,  mobile: true },
+  { key: 'capture',  icon: 'fa-barcode',      x: '60%', y: '40%', amp: 14, dur: 6500, phase: 1800, mobile: false },
+  { key: 'lighting', icon: 'fa-lightbulb',    x: '0%',  y: '48%', amp: 11, dur: 7500, phase: 600,  mobile: false },
+  { key: 'edge',     icon: 'fa-microchip',    x: '24%', y: '76%', amp: 9,  dur: 8000, phase: 2400, mobile: true },
+  { key: 'data',     icon: 'fa-database',     x: '60%', y: '78%', amp: 13, dur: 6800, phase: 1500, mobile: true },
 ];
-const baseImage = '/hero-industrial-automation.png';
 ---
-<section class="section fc-root" aria-labelledby="fc-heading">
-  <div class="container">
-    <div class="fc-head">
-      <h2 class="fc-heading" id="fc-heading">{t(locale, 'home.fc.heading')}</h2>
-      <p class="fc-sub">{t(locale, 'home.fc.sub')}</p>
-    </div>
-    <div class="fc-stage">
-      <img class="fc-base" src={baseImage} alt="" loading="lazy" decoding="async" />
-      <div class="fc-cards">
-        {cards.map((c, i) => (
-          <div class={`fc-card${c.mobile === false ? ' fc-card--desk' : ''}`} style={`--x:${c.x};--y:${c.y};--enter-delay:${i * 110}ms`}>
-            <div class="fc-card__inner" style={`--float-amp:${c.amp}px;--float-dur:${c.dur}ms;--float-phase:-${c.phase}ms`}>
-              <span class="fc-card__icon" aria-hidden="true"><i class={`fa-solid ${c.icon}`}></i></span>
-              <span class="fc-card__text">
-                <strong class="fc-card__title">{t(locale, `home.fc.${c.key}.title`)}</strong>
-                <span class="fc-card__desc">{t(locale, `home.fc.${c.key}.desc`)}</span>
-              </span>
-            </div>
-          </div>
-        ))}
+<div class="fc-root fc-hero">
+  <div class="fc-cards">
+    {cards.map((c, i) => (
+      <div class={`fc-card${c.mobile === false ? ' fc-card--desk' : ''}`} style={`--x:${c.x};--y:${c.y};--enter-delay:${i * 110}ms`}>
+        <div class="fc-card__inner" style={`--float-amp:${c.amp}px;--float-dur:${c.dur}ms;--float-phase:-${c.phase}ms`}>
+          <span class="fc-card__icon" aria-hidden="true"><i class={`fa-solid ${c.icon}`}></i></span>
+          <span class="fc-card__text">
+            <strong class="fc-card__title">{t(locale, `home.fc.${c.key}.title`)}</strong>
+            <span class="fc-card__desc">{t(locale, `home.fc.${c.key}.desc`)}</span>
+          </span>
+        </div>
       </div>
-    </div>
+    ))}
   </div>
   <script is:inline>
     (function () {
       var root = document.currentScript.closest('.fc-root');
       if (!root) return;
-      var stage = root.querySelector('.fc-stage');
       var layer = root.querySelector('.fc-cards');
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var coarse = window.matchMedia('(hover: none), (pointer: coarse)').matches;
@@ -60,25 +50,26 @@ const baseImage = '/hero-industrial-automation.png';
       if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) { if (e.isIntersecting) { enter(); io.disconnect(); } });
-        }, { threshold: 0.2 });
-        io.observe(stage);
+        }, { threshold: 0.15 });
+        io.observe(root);
       } else { enter(); }
 
       if (!reduce && !coarse) {
         var raf = null, px = 0, py = 0, tx = 0, ty = 0;
-        function step() {
+        function stepf() {
           px += (tx - px) * 0.12; py += (ty - py) * 0.12;
           layer.style.transform = 'translate3d(' + px.toFixed(2) + 'px,' + py.toFixed(2) + 'px,0)';
-          raf = (Math.abs(tx - px) > 0.1 || Math.abs(ty - py) > 0.1) ? requestAnimationFrame(step) : null;
+          raf = (Math.abs(tx - px) > 0.1 || Math.abs(ty - py) > 0.1) ? requestAnimationFrame(stepf) : null;
         }
-        stage.addEventListener('mousemove', function (e) {
-          var r = stage.getBoundingClientRect();
-          tx = ((e.clientX - (r.left + r.width / 2)) / r.width) * 18;
-          ty = ((e.clientY - (r.top + r.height / 2)) / r.height) * 18;
-          if (!raf) raf = requestAnimationFrame(step);
+        var host = root.closest('.hero') || root;
+        host.addEventListener('mousemove', function (e) {
+          var r = host.getBoundingClientRect();
+          tx = ((e.clientX - (r.left + r.width / 2)) / r.width) * 16;
+          ty = ((e.clientY - (r.top + r.height / 2)) / r.height) * 16;
+          if (!raf) raf = requestAnimationFrame(stepf);
         });
-        stage.addEventListener('mouseleave', function () { tx = 0; ty = 0; if (!raf) raf = requestAnimationFrame(step); });
+        host.addEventListener('mouseleave', function () { tx = 0; ty = 0; if (!raf) raf = requestAnimationFrame(stepf); });
       }
     })();
   </script>
-</section>
+</div>

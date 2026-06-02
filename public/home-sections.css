@@ -4,13 +4,10 @@
  *   动画仅用 transform/opacity;含断点 + prefers-reduced-motion。
  * ========================================================================== */
 
-/* ---- 区块 A:浮动卡片 ---- */
-.fc-head { max-width: 720px; margin: 0 auto clamp(36px, 5vw, 60px); text-align: center; }
-.fc-head .fc-heading { margin: 0; }
-.fc-sub { margin: 16px 0 0; color: #6f687a; font-size: clamp(15px, 1.4vw, 18px); line-height: 1.6; }
-
-.fc-stage { position: relative; max-width: 940px; margin: 0 auto; }
-.fc-base { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 24px 60px rgba(31, 11, 53, 0.16); }
+/* ---- 区块 A:浮动卡片(用作 hero 右侧动效层,悬浮在 hero 背景上)---- */
+.hero-product--cards { position: relative; }   /* .hero-product 已是 position:relative + min-height:440px */
+.fc-hero { position: absolute; inset: 0; }
+.fc-hero .fc-cards { position: absolute; inset: 0; }
 .fc-cards { position: absolute; inset: 0; pointer-events: none; }
 
 .fc-card {
