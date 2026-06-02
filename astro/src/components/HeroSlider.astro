@@ -1,81 +1,135 @@
 ---
 /*
- * HeroSlider.astro — PPT 分层 Hero(工业风,纯 CSS @keyframes 入场 + 轻量 JS 编排)
+ * HeroSlider.astro — PPT 分层 Hero,三屏三版式(solutions / matrix / product)
  * ----------------------------------------------------------------------------
- * 显隐:幻灯片靠 .is-active 类 + CSS 过渡(整屏交叉淡出);图层入场用 CSS @keyframes
- *   (hslIn,参数走每个图层的内联 CSS 变量 --fx/--fy/--fs/--delay/--dur)。
- * 切页:JS 等"入场总时长 + 停留(HOLD)"后切下一屏(时长由各图层 delay+dur 推导,
- *   与动画同步,不是盲目 setInterval);圆点点击、聚焦暂停、循环、reduced-motion。
- * 文案 t(locale,key);结构/图片/动画参数在 src/data/heroSlides.ts。可调:下方 SEQ / 脚本 CONFIG。
+ * 显隐:.is-active + CSS opacity/visibility 过渡(整屏交叉淡出)。
+ * 入场:每个 [data-layer] 用 @keyframes hslIn,参数走内联 --fx/--fy/--fs/--delay/--dur。
+ * 切页:JS 等 data-entrance + HOLD 后切下一屏;圆点点击、聚焦暂停(hover 不暂停)、循环。
+ * 数据:结构/图片在 src/data/heroSlides.ts;'product' 屏按 locale 读 products.{locale}.js。
+ * 节奏:下方 SEQ(文字层)/ li()(列表项错峰)/ 脚本 CONFIG。
  */
 import { t, localizeUrl, type Locale } from '../i18n';
 import { HERO_SLIDES } from '../data/heroSlides';
+import { GYUTRON_PRODUCTS as P_EN } from '../data/products.en.js';
+import { GYUTRON_PRODUCTS as P_DE } from '../data/products.de.js';
+import { GYUTRON_PRODUCTS as P_JA } from '../data/products.ja.js';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
+const PRODUCTS: any = ({ en: P_EN, de: P_DE, ja: P_JA } as any)[locale] || P_EN;
 
-// 文字层入场节奏(from 位移/缩放、delay、dur,单位 ms)。整体放慢一档,入场不那么急。
+// 文字层入场节奏(from 位移/缩放、delay、dur,单位 ms)
 const SEQ = {
-  bg:      { x: 0,   y: 0,  s: 1.06, delay: 0,    dur: 1500 },
-  overlay: { x: 0,   y: 0,  s: 1,    delay: 140,  dur: 780 },
-  kicker:  { x: 0,   y: 20, s: 1,    delay: 460,  dur: 740 },
-  title:   { x: 0,   y: 32, s: 1,    delay: 700,  dur: 880 },
-  sub:     { x: 0,   y: 24, s: 1,    delay: 1080, dur: 820 },
-  cta:     { x: 0,   y: 18, s: 1,    delay: 1440, dur: 740 },
-  tags:    { x: 0,   y: 16, s: 1,    delay: 1700, dur: 700 },
-  card:    { x: 0,   y: 20, s: 0.96, delay: 2300, dur: 840 },
+  bg:      { x: 0, y: 0,  s: 1.06, delay: 0,    dur: 1500 },
+  overlay: { x: 0, y: 0,  s: 1,    delay: 140,  dur: 780 },
+  kicker:  { x: 0, y: 20, s: 1,    delay: 460,  dur: 740 },
+  title:   { x: 0, y: 32, s: 1,    delay: 700,  dur: 880 },
+  sub:     { x: 0, y: 24, s: 1,    delay: 1080, dur: 820 },
+  cta:     { x: 0, y: 18, s: 1,    delay: 1440, dur: 740 },
+  tags:    { x: 0, y: 16, s: 1,    delay: 1700, dur: 700 },
+  card:    { x: 0, y: 20, s: 0.96, delay: 2050, dur: 800 },
 };
 type F = { x: number; y: number; s: number; delay: number; dur: number };
 const ls = (f: F) => `--fx:${f.x}px;--fy:${f.y}px;--fs:${f.s};--delay:${f.delay}ms;--dur:${f.dur}ms`;
-const visF = (dir: string, delay: number, dur: number): F => ({
-  x: dir === 'right' ? 48 : dir === 'left' ? -48 : 0,
-  y: dir === 'up' ? 40 : dir === 'down' ? -40 : 0,
-  s: dir === 'scale' ? 0.9 : 1,
-  delay: Math.round(delay * 1000), dur: Math.round(dur * 1000),
-});
-const href = (h: string) => (h.startsWith('#') ? h : localizeUrl(locale, h));
-// 入场总时长(最迟结束的图层),供 JS 计算切页时机
-let entrance = 0;
-for (const v of Object.values(SEQ)) entrance = Math.max(entrance, v.delay + v.dur);
-for (const s of HERO_SLIDES) for (const v of s.visuals) entrance = Math.max(entrance, Math.round(v.delay * 1000) + Math.round(v.dur * 1000));
+// 列表项错峰(从下方淡入)
+const li = (base: number, i: number, step: number, dur: number, fy = 18) => `--fx:0px;--fy:${fy}px;--fs:1;--delay:${base + i * step}ms;--dur:${dur}ms`;
+const href = (h?: string) => (h && h.startsWith('#') ? h : localizeUrl(locale, h || '#'));
+const entrance = 3300; // 入场总时长(覆盖所有错峰),供 JS 计算切页时机
+
+// 预解析每屏派生数据('product' 按 locale 取产品数据)
+const slides = HERO_SLIDES.map((s) => {
+  if (s.layout === 'product') {
+    const cat: any = PRODUCTS[s.productCat as string] || {};
+    const m: any = (cat.products || []).find((p: any) => p.name === s.productName) || (cat.products || [])[0] || {};
+    return { ...s, _eyebrow: cat.eyebrow || '', _title: s.productName || cat.title || '', _sub: m.summary || cat.intro || '', _specs: Object.values(m.specs || {}), _tags: m.tags || [], _dot: s.productName || '' };
+  }
+  if (s.layout === 'matrix') {
+    const fams = (s.families || []).map((f) => ({ img: f.img, name: (PRODUCTS[f.cat] || {}).eyebrow || f.cat }));
+    return { ...s, _fams: fams, _dot: s.titleKey ? t(locale, s.titleKey) : '' };
+  }
+  return { ...s, _dot: s.titleKey ? t(locale, s.titleKey) : '' };
+}) as any[];
 ---
 <section class="hsl" data-entrance={entrance} aria-label="GYUTRON featured solutions" aria-roledescription="carousel">
   <div class="hsl-track">
-    {HERO_SLIDES.map((s, i) => (
-      <article class={`hsl-slide${i === 0 ? ' is-active' : ''}`} style={`--accent:${s.accent}`} aria-hidden={i !== 0 ? 'true' : 'false'} aria-roledescription="slide">
+    {slides.map((s, i) => (
+      <article class={`hsl-slide hsl-slide--${s.layout}${i === 0 ? ' is-active' : ''}`} style={`--accent:${s.accent}`} aria-hidden={i !== 0 ? 'true' : 'false'} aria-roledescription="slide">
         <div class="hsl-bg" data-layer style={`background-image:url('${s.bg}');${ls(SEQ.bg)}`}></div>
         <div class="hsl-overlay" data-layer style={ls(SEQ.overlay)}></div>
         <div class="hsl-inner">
-          <div class="hsl-copy">
-            <span class="hsl-kicker" data-layer style={ls(SEQ.kicker)}>{t(locale, s.kickerKey)}</span>
-            <h1 class="hsl-title" data-layer style={ls(SEQ.title)}>{t(locale, s.titleKey)}</h1>
-            <p class="hsl-sub" data-layer style={ls(SEQ.sub)}>{t(locale, s.subKey)}</p>
-            <div class="hsl-ctarow" data-layer style={ls(SEQ.cta)}>
-              <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
-              {s.cta2Key && <a class="hsl-cta hsl-cta--ghost" href={href(s.cta2Href!)}>{t(locale, s.cta2Key)}</a>}
-            </div>
-            <div class="hsl-tags" data-layer style={ls(SEQ.tags)} aria-hidden="true">
-              {s.tags.map((tag) => (<span><i class={tag.icon}></i> {tag.key ? t(locale, tag.key) : tag.text}</span>))}
-            </div>
-          </div>
-          <div class="hsl-visual" aria-hidden="true">
-            {s.visuals.map((v) => (
-              <img class={`hsl-img hsl-img--${v.pos}`} src={v.src} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async"
-                   data-layer style={ls(visF(v.dir, v.delay, v.dur))} />
-            ))}
-            {s.cardKey && (
-              <div class="hsl-card" data-layer style={ls(SEQ.card)}>
-                <strong>{t(locale, s.cardKey)}</strong><span>{t(locale, s.cardSubKey!)}</span>
+
+          {s.layout === 'solutions' && (
+            <Fragment>
+              <div class="hsl-copy">
+                <span class="hsl-kicker" data-layer style={ls(SEQ.kicker)}>{t(locale, s.kickerKey)}</span>
+                <h1 class="hsl-title" data-layer style={ls(SEQ.title)}>{t(locale, s.titleKey)}</h1>
+                <p class="hsl-sub" data-layer style={ls(SEQ.sub)}>{t(locale, s.subKey)}</p>
+                <div class="hsl-ctarow" data-layer style={ls(SEQ.cta)}>
+                  <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
+                  {s.cta2Key && <a class="hsl-cta hsl-cta--ghost" href={href(s.cta2Href)}>{t(locale, s.cta2Key)}</a>}
+                </div>
               </div>
-            )}
-          </div>
+              <div class="hsl-collage" aria-hidden="true">
+                {(s.industries || []).map((ind: any, k: number) => (
+                  <figure class={`hsl-col hsl-col--${k}`} data-layer style={li(1500, k, 190, 900, 22)}>
+                    <img src={ind.img} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" />
+                    <figcaption>{t(locale, ind.labelKey)}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </Fragment>
+          )}
+
+          {s.layout === 'matrix' && (
+            <div class="hsl-matrix">
+              <div class="hsl-mhead">
+                <span class="hsl-kicker" data-layer style={ls(SEQ.kicker)}>{t(locale, s.kickerKey)}</span>
+                <h1 class="hsl-title hsl-title--center" data-layer style={ls(SEQ.title)}>{t(locale, s.titleKey)}</h1>
+                <p class="hsl-sub hsl-sub--center" data-layer style={ls(SEQ.sub)}>{t(locale, s.subKey)}</p>
+              </div>
+              <div class="hsl-families">
+                {(s._fams || []).map((f: any, k: number) => (
+                  <figure class="hsl-fam" data-layer style={li(1450, k, 160, 820, 24)}>
+                    <div class="hsl-fam__img"><img src={f.img} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" /></div>
+                    <figcaption class="hsl-fam__name">{f.name}</figcaption>
+                  </figure>
+                ))}
+              </div>
+              <div class="hsl-ctarow hsl-ctarow--center" data-layer style={ls(SEQ.card)}>
+                <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          )}
+
+          {s.layout === 'product' && (
+            <Fragment>
+              <div class="hsl-prod-visual" aria-hidden="true">
+                <img class="hsl-prod-img" src={s.productImg} alt="" loading={i === 0 ? 'eager' : 'lazy'} decoding="async" data-layer style="--fx:-40px;--fy:0px;--fs:0.96;--delay:1500ms;--dur:1100ms" />
+              </div>
+              <div class="hsl-copy hsl-copy--product">
+                <span class="hsl-kicker" data-layer style={ls(SEQ.kicker)}>{s._eyebrow}</span>
+                <h1 class="hsl-title" data-layer style={ls(SEQ.title)}>{s._title}</h1>
+                <p class="hsl-sub" data-layer style={ls(SEQ.sub)}>{s._sub}</p>
+                <ul class="hsl-specs" data-layer style={ls(SEQ.tags)}>
+                  {(s._specs || []).map((v: any) => (<li>{v}</li>))}
+                </ul>
+                <div class="hsl-ptags" data-layer style={li(1950, 0, 0, 700, 14)}>
+                  {(s._tags || []).map((tg: any) => (<span>{tg}</span>))}
+                </div>
+                <div class="hsl-ctarow" data-layer style={ls(SEQ.card)}>
+                  <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </Fragment>
+          )}
+
         </div>
       </article>
     ))}
   </div>
 
   <div class="hsl-dots" role="tablist" aria-label="Slides">
-    {HERO_SLIDES.map((s, i) => (
-      <button class={`hsl-dot${i === 0 ? ' is-active' : ''}`} type="button" role="tab" data-dot={i} aria-selected={i === 0 ? 'true' : 'false'} aria-label={t(locale, s.titleKey)}></button>
+    {slides.map((s, i) => (
+      <button class={`hsl-dot${i === 0 ? ' is-active' : ''}`} type="button" role="tab" data-dot={i} aria-selected={i === 0 ? 'true' : 'false'} aria-label={s._dot || s.id}></button>
     ))}
   </div>
 
@@ -88,7 +142,7 @@ for (const s of HERO_SLIDES) for (const v of s.visuals) entrance = Math.max(entr
       var dots = Array.prototype.slice.call(root.querySelectorAll('.hsl-dot'));
       if (!slides.length) return;
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var entrance = parseInt(root.getAttribute('data-entrance'), 10) || 2900;
+      var entrance = parseInt(root.getAttribute('data-entrance'), 10) || 3300;
       var cycle = entrance + CONFIG.hold;
       var current = 0, timer = null, paused = false, remain = cycle, startTs = 0;
 
