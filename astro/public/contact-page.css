@@ -1072,3 +1072,12 @@
                 width: 100%;
             }
         }
+
+
+/* ===== nav mega-menu: kill tab-switch flicker + beautify scrollbar (user request 2026-06-03) ===== */
+.mega-menu, .submenu { transition: none !important; }
+.mega-links { scrollbar-width: thin; scrollbar-color: rgba(75, 46, 131, 0.42) transparent; }
+.mega-links::-webkit-scrollbar { width: 8px; }
+.mega-links::-webkit-scrollbar-track { background: transparent; margin: 8px 0; }
+.mega-links::-webkit-scrollbar-thumb { background: rgba(75, 46, 131, 0.40); border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
+.mega-links::-webkit-scrollbar-thumb:hover { background: rgba(75, 46, 131, 0.62); background-clip: padding-box; }
