@@ -1742,33 +1742,7 @@
             padding-top: 24px;
         }
 
-        .socials {
-            display: flex;
-            gap: 10px;
-        }
-
-        .socials span {
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            border-radius: 6px;
-            color: rgba(255, 255, 255, 0.72);
-            display: flex;
-            height: 34px;
-            justify-content: center;
-            width: 34px;
-        }
-
-        .socials span:hover {
-            border-color: rgba(117, 59, 189, 0.76);
-            color: var(--white);
-        }
-
-        .socials svg {
-            display: block;
-            fill: currentColor;
-            height: 14px;
-            width: 14px;
-        }
+        /* .socials styling centralized in nav-chrome.css (shared across all pages) */
 
         @media (prefers-reduced-motion: reduce) {
             *,

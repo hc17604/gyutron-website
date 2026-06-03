@@ -70,3 +70,31 @@
 .mega-scrollbar.is-visible:active .mega-scrollbar-thumb {
   background: rgba(75, 46, 131, 0.46);
 }
+
+/* Footer social icons — shared across ALL pages + locales (plain glyphs, no box, wide gap). */
+.socials {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.socials span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: color 160ms ease, transform 160ms ease;
+}
+.socials span:hover {
+  color: #fff;
+  transform: translateY(-1px);
+}
+.socials i,
+.socials svg {
+  display: block;
+  font-size: 19px;
+  width: 19px;
+  height: 19px;
+  fill: currentColor;
+}

@@ -862,28 +862,7 @@
             padding-top: 22px;
         }
 
-        .socials {
-            display: flex;
-            gap: 12px;
-        }
-
-        .socials span {
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            border-radius: 8px;
-            color: rgba(255, 255, 255, 0.78);
-            display: inline-flex;
-            height: 42px;
-            justify-content: center;
-            width: 42px;
-        }
-
-        .socials svg {
-            display: block;
-            fill: currentColor;
-            height: 14px;
-            width: 14px;
-        }
+        /* .socials styling centralized in nav-chrome.css (shared across all pages) */
 
         @media (min-width: 1181px) and (max-width: 1380px) {
             body {
