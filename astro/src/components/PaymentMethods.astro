@@ -1,0 +1,44 @@
+---
+// Reusable footer "accepted payment methods" row.
+// Each brand is an independent SVG in /images/payment/ (swappable per brand —
+// no baked-in single strip image). Used by the homepage + contact-sales footers.
+const methods = [
+  { src: '/images/payment/visa.svg', label: 'Visa' },
+  { src: '/images/payment/mastercard.svg', label: 'Mastercard' },
+  { src: '/images/payment/amex.svg', label: 'American Express' },
+  { src: '/images/payment/unionpay.svg', label: 'UnionPay' },
+  { src: '/images/payment/paypal.svg', label: 'PayPal' },
+];
+---
+<div class="footer-pay" aria-label="Accepted payment methods">
+  {methods.map((m) => (
+    <img
+      class="footer-pay__card"
+      src={m.src}
+      alt={m.label}
+      width="37"
+      height="24"
+      loading="lazy"
+      decoding="async"
+    />
+  ))}
+</div>
+
+<style>
+  .footer-pay {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .footer-pay__card {
+    display: block;
+    height: 24px;
+    width: auto;
+    border-radius: 3px;
+    /* faint light ring so dark-background brands (e.g. Mastercard) stay
+       delineated on the near-black footer; barely visible on light cards */
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+  }
+</style>

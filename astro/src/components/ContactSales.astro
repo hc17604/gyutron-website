@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { t, localizeUrl, type Locale } from '../i18n';
+import PaymentMethods from './PaymentMethods.astro';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/contact-sales.html';
@@ -154,7 +155,7 @@ const path = '/contact-sales.html';
           <a href="mailto:info@gyutron.com">info@gyutron.com</a>
           <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
           <a href="https://shop.gyutron.com">{t(locale, "main.335")}</a>
-          <a href="https://www.linkedin.com/company/gyutron/" target="_blank" rel="noopener">LinkedIn</a>
+          <PaymentMethods />
         </div>
       </div>
       <div class="footer-bottom">
