@@ -184,19 +184,19 @@
       "categoryTitle": "Android PDA",
       "type": "Compact Android PDA",
       "kind": "pda",
-      "currentImage": "product-images/gy-a50.png",
+      "currentImage": "product-library/transparent/gy-a50.png",
       "targetTransparentImage": "product-library/transparent/gy-a50.png",
       "workspaceTransparentImage": "astro/public/product-library/transparent/gy-a50.png",
       "deployedTransparentImage": "public/product-library/transparent/gy-a50.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a50-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-a50/",
-      "status": "candidate-direction-template",
+      "status": "wired-live",
       "qa": {
         "transparentCorners": true,
         "greenFringeOpaquePixels": 0,
         "purpleHarmonized": true,
-        "direction": "candidate",
-        "notes": "New touchscreen PDA candidate generated from the user-approved XYZ direction-angle reference. Not wired to the live site; use as the direction template only after user approval. Previous direction-mismatched render remains archived."
+        "direction": "wired",
+        "notes": "New touchscreen PDA generated from the user-approved XYZ direction-angle reference and wired to GY-A50 in en/de/ja product data. Previous direction-mismatched render remains archived."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "rugged-mobile-computers",

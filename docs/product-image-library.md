@@ -37,7 +37,7 @@ Product count: **84**
 
 | Model | Category | Type | Current image | Target transparent image | Status |
 |---|---|---|---|---|---|
-| GY-A50 | android-pda | Compact Android PDA | `product-images/gy-a50.png` | `product-library/transparent/gy-a50.png` | candidate-direction-template |
+| GY-A50 | android-pda | Compact Android PDA | `product-library/transparent/gy-a50.png` | `product-library/transparent/gy-a50.png` | wired-live |
 | GY-A55 Pro | android-pda | All-purpose PDA | `product-images/gy-a55-pro.png` | `product-library/transparent/gy-a55-pro.png` | rejected-direction-inconsistent |
 | GY-A60 Max | android-pda | Large-screen PDA | `product-images/gy-a60-max.png` | `product-library/transparent/gy-a60-max.png` | rejected-direction-inconsistent |
 | GY-A62K | android-pda | Keypad PDA | `product-images/gy-a62k.png` | `product-library/transparent/gy-a62k.png` | needs-regeneration |

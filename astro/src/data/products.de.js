@@ -13,7 +13,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Kompaktes Android-PDA",
                 summary: "Handliches 5-Zoll-Terminal für Wareneingang, Kommissionierung, Bestandszählung und Linienfreigabe.",
                 kind: "pda",
-                image: "product-images/gy-a50.png",
+                image: "product-library/transparent/gy-a50.png",
                 specs: { OS: "Android 14", Display: "5.0 in HD", Scan: "1D/2D imager", Rugged: "IP67 / 1.6 m drop" },
                 tags: ["Wi-Fi 6", "NFC", "4500 mAh"]
             },

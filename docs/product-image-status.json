@@ -1,16 +1,17 @@
 {
   "gy-a50": {
-    "status": "candidate-direction-template",
+    "status": "wired-live",
     "generatedAt": "2026-06-03",
     "candidateAsset": "asset-workbench/product-images/candidates/gy-a50-touch-direction-template-transparent.png",
     "candidatePreview": "asset-workbench/product-images/candidates/gy-a50-touch-direction-template-preview-dark.png",
+    "liveAsset": "astro/public/product-library/transparent/gy-a50.png",
     "archivedRejectedAsset": "asset-workbench/product-images/rejected/gy-a50-transparent-rejected-direction.png",
     "qa": {
       "transparentCorners": true,
       "greenFringeOpaquePixels": 0,
       "purpleHarmonized": true,
-      "direction": "candidate",
-      "notes": "New touchscreen PDA candidate generated from the user-approved XYZ direction-angle reference. Not wired to the live site; use as the direction template only after user approval. Previous direction-mismatched render remains archived."
+      "direction": "wired",
+      "notes": "New touchscreen PDA generated from the user-approved XYZ direction-angle reference and wired to GY-A50 in en/de/ja product data. Previous direction-mismatched render remains archived."
     }
   },
   "gy-a55-pro": {
