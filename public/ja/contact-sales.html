@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON 営業へのお問い合わせ | 産業オートメーションのご相談</title><meta name="description" content="産業用インテリジェントハードウェア、マシンビジョン、堅牢PDA端末、センサー、検査機器、自動化導入支援については、GYUTRON営業にお問い合わせください。"><link rel="canonical" href="https://www.gyutron.com/ja/contact-sales.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/contact-sales.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/contact-sales.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/contact-sales.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/contact-sales.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/contact-sales.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON営業へ問い合わせ"><meta property="og:description" content="産業自動化の要件を共有いただければ、GYUTRONが適切なハードウェア構成と導入計画をご提案します。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/contact-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
+<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON 営業へのお問い合わせ | 産業オートメーションのご相談</title><meta name="description" content="産業用インテリジェントハードウェア、マシンビジョン、堅牢PDA端末、センサー、検査機器、自動化導入支援については、GYUTRON営業にお問い合わせください。"><link rel="canonical" href="https://www.gyutron.com/ja/contact-sales.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/contact-sales.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/contact-sales.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/contact-sales.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/contact-sales.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/contact-sales.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON営業へ問い合わせ"><meta property="og:description" content="産業自動化の要件を共有いただければ、GYUTRONが適切なハードウェア構成と導入計画をご提案します。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/contact-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="stylesheet" href="/nav-chrome.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
           body, button, input, select, textarea { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
           body { line-height: 1.7; }
           h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
@@ -9,21 +9,113 @@
       (() => {
         const links = Array.from(document.querySelectorAll(".mega-links"));
         links.forEach((panel) => {
+          const menu = panel.closest(".mega-menu");
+          if (!menu || menu.querySelector(".mega-scrollbar")) return;
+
+          const bar = document.createElement("div");
+          const thumb = document.createElement("span");
+          bar.className = "mega-scrollbar";
+          thumb.className = "mega-scrollbar-thumb";
+          bar.setAttribute("aria-hidden", "true");
+          bar.appendChild(thumb);
+          menu.appendChild(bar);
+
           let hideTimer = 0;
+          let frame = 0;
+          let dragging = false;
+          let startY = 0;
+          let startScrollTop = 0;
           const canScroll = () => panel.scrollHeight > panel.clientHeight + 2;
-          const showScrollbar = () => {
-            if (!canScroll()) return;
-            panel.classList.add("is-scrolling");
-            window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 720);
+
+          const updateScrollbar = () => {
+            frame = 0;
+            const needed = canScroll();
+            bar.classList.toggle("is-needed", needed);
+            if (!needed) {
+              bar.classList.remove("is-visible");
+              return;
+            }
+
+            const inset = 10;
+            const trackHeight = Math.max(48, panel.clientHeight - inset * 2);
+            const thumbHeight = Math.max(42, Math.round(trackHeight * (panel.clientHeight / panel.scrollHeight)));
+            const maxScroll = panel.scrollHeight - panel.clientHeight;
+            const maxThumbTop = Math.max(0, trackHeight - thumbHeight);
+            const thumbTop = maxScroll > 0 ? Math.round((panel.scrollTop / maxScroll) * maxThumbTop) : 0;
+
+            bar.style.setProperty("--mega-scrollbar-left", `${panel.offsetLeft + panel.clientWidth - 11}px`);
+            bar.style.setProperty("--mega-scrollbar-top", `${panel.offsetTop + inset}px`);
+            bar.style.setProperty("--mega-scrollbar-height", `${trackHeight}px`);
+            thumb.style.height = `${thumbHeight}px`;
+            thumb.style.transform = `translate3d(0, ${thumbTop}px, 0)`;
           };
-          panel.addEventListener("scroll", showScrollbar, { passive: true });
-          panel.addEventListener("wheel", showScrollbar, { passive: true });
-          panel.addEventListener("touchmove", showScrollbar, { passive: true });
+
+          const requestUpdate = () => {
+            if (frame) return;
+            frame = window.requestAnimationFrame(updateScrollbar);
+          };
+
+          const revealScrollbar = () => {
+            requestUpdate();
+            if (!canScroll()) return;
+            bar.classList.add("is-visible");
+            window.clearTimeout(hideTimer);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 950);
+            }
+          };
+
+          const endDrag = (event) => {
+            if (!dragging) return;
+            dragging = false;
+            thumb.releasePointerCapture?.(event.pointerId);
+            window.clearTimeout(hideTimer);
+            hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 650);
+          };
+
+          panel.addEventListener("scroll", revealScrollbar, { passive: true });
+          panel.addEventListener("wheel", revealScrollbar, { passive: true });
+          panel.addEventListener("touchmove", revealScrollbar, { passive: true });
           panel.addEventListener("pointerleave", () => {
             window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 180);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 420);
+            }
           });
+          menu.addEventListener("mouseenter", requestUpdate, { passive: true });
+          window.addEventListener("resize", requestUpdate, { passive: true });
+
+          bar.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            const rect = bar.getBoundingClientRect();
+            const thumbHeight = thumb.offsetHeight || 42;
+            const targetTop = event.clientY - rect.top - thumbHeight / 2;
+            const scrollRatio = Math.max(0, Math.min(1, targetTop / Math.max(1, rect.height - thumbHeight)));
+            panel.scrollTop = scrollRatio * (panel.scrollHeight - panel.clientHeight);
+            revealScrollbar();
+          });
+
+          thumb.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            dragging = true;
+            startY = event.clientY;
+            startScrollTop = panel.scrollTop;
+            thumb.setPointerCapture?.(event.pointerId);
+            revealScrollbar();
+            event.preventDefault();
+          });
+          thumb.addEventListener("pointermove", (event) => {
+            if (!dragging) return;
+            const trackHeight = Math.max(48, panel.clientHeight - 20);
+            const thumbHeight = thumb.offsetHeight || 42;
+            const scrollRange = panel.scrollHeight - panel.clientHeight;
+            const dragRange = Math.max(1, trackHeight - thumbHeight);
+            panel.scrollTop = startScrollTop + ((event.clientY - startY) / dragRange) * scrollRange;
+          });
+          thumb.addEventListener("pointerup", endDrag);
+          thumb.addEventListener("pointercancel", endDrag);
+
+          requestUpdate();
         });
       })();
     </script>  <main> <section class="contact-hero"> <div class="container"> <span class="eyebrow">GYUTRON営業へのお問い合わせ</span> <h1>産業自動化プロジェクトについてGYUTRONにご相談ください。</h1> <p>関心のある製品、現場要件、導入時期、連携要件をお知らせください。生産、検査、物流、現場業務に適したハードウェア構成をご提案します。</p> </div> </section> <section class="container contact-layout" aria-label="お問い合わせフォームと連絡窓口"> <aside class="info-panel"> <div class="section-label">連絡先</div> <h2>営業チームへ問い合わせ</h2> <p>プロジェクト詳細はフォームから送信できます。製品仕様、パイロット計画、OEM/ODM、チャネル連携についても直接ご相談ください。</p> <div class="contact-methods"> <a class="contact-method" href="mailto:info@gyutron.com"> <i class="fa-solid fa-envelope"></i> <span><strong>メール</strong><span>info@gyutron.com</span></span> </a> <a class="contact-method" href="https://wa.me/85269509801"> <i class="fa-brands fa-whatsapp"></i> <span><strong>WhatsApp</strong><span>+852 69509801</span></span> </a> <a class="contact-method" href="https://www.linkedin.com/company/gyutron/" target="_blank" rel="noopener"> <i class="fa-brands fa-linkedin-in"></i> <span><strong>LinkedIn</strong><span>linkedin.com/company/gyutron</span></span> </a> </div> <p class="response-note">迅速な確認のため、製品カテゴリ、用途、予定数量、国・地域、インターフェースや認証要件をお知らせください。</p> </aside> <section class="form-panel"> <div class="section-label">必要な内容をお知らせください</div> <h2>営業サポートを依頼</h2> <p>GYUTRONへ直接ご依頼ください。営業担当が要件を確認し、メールまたはWhatsAppでご連絡します。</p> <form class="sales-form" id="salesInquiryForm"> <label class="hidden-field" aria-hidden="true"> ウェブサイト <input type="text" name="website" tabindex="-1" autocomplete="off"> </label> <div class="field-grid"> <label> 氏名 <input type="text" name="fullName" autocomplete="name" required> </label> <label> 会社名 <input type="text" name="company" autocomplete="organization" required> </label> </div> <div class="field-grid"> <label> 勤務先メールアドレス <input type="email" name="workEmail" autocomplete="email" required> </label> <label> 電話 / WhatsApp <input type="tel" name="phone" autocomplete="tel"> </label> </div> <div class="field-grid"> <label> 国 / 地域 <input type="text" name="country" autocomplete="country-name"> </label> <label> 関心のある製品 <select name="productInterest" required> <option value="">選択してください</option> <option>堅牢PDA端末</option> <option>センシング &amp; I/O</option> <option>マシンビジョンシステム</option> <option>品質・試験機器</option> <option>ロボットワークセル</option> <option>エッジコントローラ</option> <option>OEM / ODM 協業</option> </select> </label> </div> <label> プロジェクト詳細 <textarea name="projectDetails" placeholder="用途、現在の工程、必要機能、導入時期、数量、連携インターフェース、認証要件など。" required></textarea> </label> <div class="form-status" id="salesInquiryStatus" role="status" aria-live="polite"></div> <div class="form-footer"> <button class="button button-primary" type="submit">問い合わせを送信 <i class="fa-solid fa-arrow-right"></i></button> <p class="form-disclaimer">お問い合わせはGYUTRONウェブサイトのバックエンド経由で送信されます。フォームが利用できない場合は info@gyutron.com またはWhatsAppをご利用ください。</p> </div> </form> </section> </section> <section class="process"> <div class="container process-grid" aria-label="Sales process"> <article class="process-card"> <span>01 / 要件</span> <h3>作業セルを明確化</h3> <p>製品タイプ、検査対象、データ収集フロー、環境、連携制約を定義します。</p> </article> <article class="process-card"> <span>02 / 提案</span> <h3>ハードウェア構成を設計</h3> <p>堅牢PDA端末、センサー、スマートカメラ、検査機器、ロボットセル、エッジコントローラを最適に組み合わせます。</p> </article> <article class="process-card"> <span>03 / 導入</span> <h3>パイロットと拡大を計画</h3> <p>サンプル評価、パイロット構成、アクセサリ選定、ドキュメント、パートナー納入計画を支援します。</p> </article> </div> </section> </main>  <script>

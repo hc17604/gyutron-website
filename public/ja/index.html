@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON | 産業用画像処理・センサー・データ収集・自動化ハードウェア</title><meta name="description" content="GYUTRONは、現代の製造、物流、現場業務向けに産業用カメラ、堅牢なデータ収集端末、センサー、検査機器、自動化ソリューションを提供します。"><link rel="canonical" href="https://www.gyutron.com/ja/"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON | 産業用画像処理・センサー・データ収集・自動化ハードウェア"><meta property="og:description" content="GYUTRONは、現代の製造、物流、現場業務向けに産業用カメラ、堅牢なデータ収集端末、センサー、検査機器、自動化ソリューションを提供します。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/global.css"><link rel="stylesheet" href="/hero-slider.css"><link rel="stylesheet" href="/home-sections.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
+<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON | 産業用画像処理・センサー・データ収集・自動化ハードウェア</title><meta name="description" content="GYUTRONは、現代の製造、物流、現場業務向けに産業用カメラ、堅牢なデータ収集端末、センサー、検査機器、自動化ソリューションを提供します。"><link rel="canonical" href="https://www.gyutron.com/ja/"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON | 産業用画像処理・センサー・データ収集・自動化ハードウェア"><meta property="og:description" content="GYUTRONは、現代の製造、物流、現場業務向けに産業用カメラ、堅牢なデータ収集端末、センサー、検査機器、自動化ソリューションを提供します。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/global.css"><link rel="stylesheet" href="/hero-slider.css"><link rel="stylesheet" href="/home-sections.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="stylesheet" href="/nav-chrome.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
           body, button, input, select, textarea { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
           body { line-height: 1.7; }
           h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
@@ -9,21 +9,113 @@
       (() => {
         const links = Array.from(document.querySelectorAll(".mega-links"));
         links.forEach((panel) => {
+          const menu = panel.closest(".mega-menu");
+          if (!menu || menu.querySelector(".mega-scrollbar")) return;
+
+          const bar = document.createElement("div");
+          const thumb = document.createElement("span");
+          bar.className = "mega-scrollbar";
+          thumb.className = "mega-scrollbar-thumb";
+          bar.setAttribute("aria-hidden", "true");
+          bar.appendChild(thumb);
+          menu.appendChild(bar);
+
           let hideTimer = 0;
+          let frame = 0;
+          let dragging = false;
+          let startY = 0;
+          let startScrollTop = 0;
           const canScroll = () => panel.scrollHeight > panel.clientHeight + 2;
-          const showScrollbar = () => {
-            if (!canScroll()) return;
-            panel.classList.add("is-scrolling");
-            window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 720);
+
+          const updateScrollbar = () => {
+            frame = 0;
+            const needed = canScroll();
+            bar.classList.toggle("is-needed", needed);
+            if (!needed) {
+              bar.classList.remove("is-visible");
+              return;
+            }
+
+            const inset = 10;
+            const trackHeight = Math.max(48, panel.clientHeight - inset * 2);
+            const thumbHeight = Math.max(42, Math.round(trackHeight * (panel.clientHeight / panel.scrollHeight)));
+            const maxScroll = panel.scrollHeight - panel.clientHeight;
+            const maxThumbTop = Math.max(0, trackHeight - thumbHeight);
+            const thumbTop = maxScroll > 0 ? Math.round((panel.scrollTop / maxScroll) * maxThumbTop) : 0;
+
+            bar.style.setProperty("--mega-scrollbar-left", `${panel.offsetLeft + panel.clientWidth - 11}px`);
+            bar.style.setProperty("--mega-scrollbar-top", `${panel.offsetTop + inset}px`);
+            bar.style.setProperty("--mega-scrollbar-height", `${trackHeight}px`);
+            thumb.style.height = `${thumbHeight}px`;
+            thumb.style.transform = `translate3d(0, ${thumbTop}px, 0)`;
           };
-          panel.addEventListener("scroll", showScrollbar, { passive: true });
-          panel.addEventListener("wheel", showScrollbar, { passive: true });
-          panel.addEventListener("touchmove", showScrollbar, { passive: true });
+
+          const requestUpdate = () => {
+            if (frame) return;
+            frame = window.requestAnimationFrame(updateScrollbar);
+          };
+
+          const revealScrollbar = () => {
+            requestUpdate();
+            if (!canScroll()) return;
+            bar.classList.add("is-visible");
+            window.clearTimeout(hideTimer);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 950);
+            }
+          };
+
+          const endDrag = (event) => {
+            if (!dragging) return;
+            dragging = false;
+            thumb.releasePointerCapture?.(event.pointerId);
+            window.clearTimeout(hideTimer);
+            hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 650);
+          };
+
+          panel.addEventListener("scroll", revealScrollbar, { passive: true });
+          panel.addEventListener("wheel", revealScrollbar, { passive: true });
+          panel.addEventListener("touchmove", revealScrollbar, { passive: true });
           panel.addEventListener("pointerleave", () => {
             window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 180);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 420);
+            }
           });
+          menu.addEventListener("mouseenter", requestUpdate, { passive: true });
+          window.addEventListener("resize", requestUpdate, { passive: true });
+
+          bar.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            const rect = bar.getBoundingClientRect();
+            const thumbHeight = thumb.offsetHeight || 42;
+            const targetTop = event.clientY - rect.top - thumbHeight / 2;
+            const scrollRatio = Math.max(0, Math.min(1, targetTop / Math.max(1, rect.height - thumbHeight)));
+            panel.scrollTop = scrollRatio * (panel.scrollHeight - panel.clientHeight);
+            revealScrollbar();
+          });
+
+          thumb.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            dragging = true;
+            startY = event.clientY;
+            startScrollTop = panel.scrollTop;
+            thumb.setPointerCapture?.(event.pointerId);
+            revealScrollbar();
+            event.preventDefault();
+          });
+          thumb.addEventListener("pointermove", (event) => {
+            if (!dragging) return;
+            const trackHeight = Math.max(48, panel.clientHeight - 20);
+            const thumbHeight = thumb.offsetHeight || 42;
+            const scrollRange = panel.scrollHeight - panel.clientHeight;
+            const dragRange = Math.max(1, trackHeight - thumbHeight);
+            panel.scrollTop = startScrollTop + ((event.clientY - startY) / dragRange) * scrollRange;
+          });
+          thumb.addEventListener("pointerup", endDrag);
+          thumb.addEventListener("pointercancel", endDrag);
+
+          requestUpdate();
         });
       })();
     </script>  <main> <section class="hsl" data-entrance="3300" aria-label="GYUTRON featured solutions" aria-roledescription="carousel"> <div class="hsl-track"> <article class="hsl-slide hsl-slide--solutions is-active" style="--accent:var(--purple-500)" aria-hidden="false" aria-roledescription="slide"> <div class="hsl-bg" data-layer style="background-image:url('/hero-industrial-automation.png');--fx:0px;--fy:0px;--fs:1.06;--delay:0ms;--dur:1500ms"></div> <div class="hsl-overlay" data-layer style="--fx:0px;--fy:0px;--fs:1;--delay:140ms;--dur:780ms"></div> <div class="hsl-inner">  <div class="hsl-copy"> <span class="hsl-kicker" data-layer style="--fx:0px;--fy:20px;--fs:1;--delay:460ms;--dur:740ms">製造インテリジェンス</span> <h1 class="hsl-title" data-layer style="--fx:0px;--fy:32px;--fs:1;--delay:700ms;--dur:880ms">見る、検知する、読み取る、測る、動かすためのハードウェア。</h1> <p class="hsl-sub" data-layer style="--fx:0px;--fy:24px;--fs:1;--delay:1080ms;--dur:820ms">ハンドヘルド端末からスマートカメラ、検査モジュールまで、GYUTRONは産業インテリジェンスの中核となるハードウェアを一つの実用的なポートフォリオにまとめます。</p> <div class="hsl-ctarow" data-layer style="--fx:0px;--fy:18px;--fs:1;--delay:1440ms;--dur:740ms"> <a class="hsl-cta" href="#products">製品を見る <i class="fa-solid fa-arrow-right"></i></a> <a class="hsl-cta hsl-cta--ghost" href="/ja/contact-sales.html">チームに相談する</a> </div> </div> <div class="hsl-collage" aria-hidden="true"> <figure class="hsl-col hsl-col--0" data-layer style="--fx:0px;--fy:22px;--fs:1;--delay:1500ms;--dur:900ms"> <img src="/nav-industry-automotive-ev.png" alt="" loading="eager" decoding="async"> <figcaption>自動車・EV</figcaption> </figure><figure class="hsl-col hsl-col--1" data-layer style="--fx:0px;--fy:22px;--fs:1;--delay:1690ms;--dur:900ms"> <img src="/nav-industry-electronics-smt.png" alt="" loading="eager" decoding="async"> <figcaption>エレクトロニクス</figcaption> </figure><figure class="hsl-col hsl-col--2" data-layer style="--fx:0px;--fy:22px;--fs:1;--delay:1880ms;--dur:900ms"> <img src="/nav-industry-semiconductor.png" alt="" loading="eager" decoding="async"> <figcaption>半導体</figcaption> </figure><figure class="hsl-col hsl-col--3" data-layer style="--fx:0px;--fy:22px;--fs:1;--delay:2070ms;--dur:900ms"> <img src="/nav-industry-logistics-rfid.png" alt="" loading="eager" decoding="async"> <figcaption>物流</figcaption> </figure> </div>    </div> </article><article class="hsl-slide hsl-slide--grid" style="--accent:var(--purple-500)" aria-hidden="true" aria-roledescription="slide"> <div class="hsl-bg" data-layer style="background-image:url('/cta-industrial-control.png');--fx:0px;--fy:0px;--fs:1.06;--delay:0ms;--dur:1500ms"></div> <div class="hsl-overlay" data-layer style="--fx:0px;--fy:0px;--fs:1;--delay:140ms;--dur:780ms"></div> <div class="hsl-inner">   <div class="hsl-copy"> <span class="hsl-kicker" data-layer style="--fx:0px;--fy:20px;--fs:1;--delay:460ms;--dur:740ms">製品</span> <h1 class="hsl-title" data-layer style="--fx:0px;--fy:32px;--fs:1;--delay:700ms;--dur:880ms">ひとつの基盤で、あらゆる業務に。</h1> <p class="hsl-sub" data-layer style="--fx:0px;--fy:24px;--fs:1;--delay:1080ms;--dur:820ms">モバイルデータ収集からマシンビジョン、センシング、安全、I/O、計測まで、GYUTRONは接続された産業現場に必要な中核ハードウェアを幅広くカバーします。</p> <ul class="hsl-category-list" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:1700ms;--dur:700ms"> <li>堅牢PDA・RFID端末</li><li>バーコードスキャン・DPMトレーサビリティ</li><li>マシンビジョン・3D検査・コードリーディング</li><li>センサー・安全・I/O・測定機器</li> </ul> <div class="hsl-ctarow" data-layer style="--fx:0px;--fy:18px;--fs:1;--delay:1440ms;--dur:740ms"> <a class="hsl-cta" href="#products">製品を見る <i class="fa-solid fa-arrow-right"></i></a> </div> </div> <div class="hsl-pgrid" aria-hidden="true"> <div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:1380ms;--dur:760ms;--ps:1.06"> <img src="/product-cutouts/generated/gy-a90-touch.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:1465ms;--dur:760ms;--ps:1.08"> <img src="/product-cutouts/generated/gy-a92k-keytouch.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:1550ms;--dur:760ms;--ps:1"> <img src="/product-cutouts/generated/gy-s900-xr.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:1635ms;--dur:760ms;--ps:0.82"> <img src="/product-cutouts/generated/gy-cr900-matrix.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:1720ms;--dur:760ms;--ps:0.84"> <img src="/product-cutouts/generated/gy-v900-pro.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:1805ms;--dur:760ms;--ps:0.98"> <img src="/product-cutouts/generated/gy-v3d900.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:1890ms;--dur:760ms;--ps:0.86"> <img src="/product-cutouts/generated/gy-vm900.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:1975ms;--dur:760ms;--ps:0.86"> <img src="/product-cutouts/generated/gy-net90.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:2060ms;--dur:760ms;--ps:1.08"> <img src="/product-cutouts/generated/gy-px90.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:2145ms;--dur:760ms;--ps:1.08"> <img src="/product-cutouts/generated/gy-ld90.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:2230ms;--dur:760ms;--ps:1.08"> <img src="/product-cutouts/generated/gy-safe90.png" alt="" loading="lazy" decoding="async"> </div><div class="hsl-pcell" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:2315ms;--dur:760ms;--ps:1.02"> <img src="/product-cutouts/generated/gy-mg90.png" alt="" loading="lazy" decoding="async"> </div> </div>   </div> </article><article class="hsl-slide hsl-slide--product" style="--accent:var(--purple-500)" aria-hidden="true" aria-roledescription="slide"> <div class="hsl-bg" data-layer style="background-image:url('/mega-industrial-products.png');--fx:0px;--fy:0px;--fs:1.06;--delay:0ms;--dur:1500ms"></div> <div class="hsl-overlay" data-layer style="--fx:0px;--fy:0px;--fs:1;--delay:140ms;--dur:780ms"></div> <div class="hsl-inner">   <div class="hsl-prod-visual" aria-hidden="true"> <img class="hsl-prod-img" src="/product-cutouts/generated/gy-a90-touch.png" alt="" loading="lazy" decoding="async" data-layer style="--fx:-44px;--fy:0px;--fs:0.94;--delay:250ms;--dur:1050ms"> </div><div class="hsl-copy hsl-copy--product"> <span class="hsl-kicker" data-layer style="--fx:0px;--fy:20px;--fs:1;--delay:1150ms;--dur:600ms">堅牢PDA端末</span> <h1 class="hsl-title" data-layer style="--fx:0px;--fy:30px;--fs:1;--delay:1320ms;--dur:680ms">GY-A90 Touch</h1> <p class="hsl-sub" data-layer style="--fx:0px;--fy:22px;--fs:1;--delay:1560ms;--dur:640ms">倉庫・製造・現場でのスキャン中心の業務に最適な、キーパッド非搭載の堅牢Android PDA。</p> <ul class="hsl-specs" data-layer style="--fx:0px;--fy:16px;--fs:1;--delay:1790ms;--dur:600ms"> <li>Android 14</li><li>6.1インチ FHDタッチ</li><li>一体型2Dイメージャ</li><li>IP68 / 1.8 m drop</li> </ul> <div class="hsl-ptags" data-layer style="--fx:0px;--fy:14px;--fs:1;--delay:1970ms;--dur:560ms"> <span>タッチ専用</span><span>Wi-Fi 6E</span><span>6200 mAh</span> </div> <div class="hsl-ctarow" data-layer style="--fx:0px;--fy:18px;--fs:1;--delay:2140ms;--dur:620ms"> <a class="hsl-cta" href="/ja/android-pda.html">詳しく見る <i class="fa-solid fa-arrow-right"></i></a> </div> </div>  </div> </article> </div> <div class="hsl-dots" role="tablist" aria-label="Slides"> <button class="hsl-dot is-active" type="button" role="tab" data-dot="0" aria-selected="true" aria-label="見る、検知する、読み取る、測る、動かすためのハードウェア。"></button><button class="hsl-dot" type="button" role="tab" data-dot="1" aria-selected="false" aria-label="ひとつの基盤で、あらゆる業務に。"></button><button class="hsl-dot" type="button" role="tab" data-dot="2" aria-selected="false" aria-label="GY-A90 Touch"></button> </div> <script>

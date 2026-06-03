@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON 自動画像検査 | 産業向け品質ソリューション</title><meta name="description" content="GYUTRONの自動画像検査ソリューションは、スマートカメラ、センサー、照明、バーコード検証、エッジ制御、トレーサビリティを組み合わせ、現代の製造品質チームを支援します。"><link rel="canonical" href="https://www.gyutron.com/ja/automated-vision-inspection.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/automated-vision-inspection.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/automated-vision-inspection.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/automated-vision-inspection.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/automated-vision-inspection.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/automated-vision-inspection.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON 自動画像検査 | 産業向け品質ソリューション"><meta property="og:description" content="GYUTRONの自動画像検査ソリューションは、スマートカメラ、センサー、照明、バーコード検証、エッジ制御、トレーサビリティを組み合わせ、現代の製造品質チームを支援します。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/solution-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
+<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON 自動画像検査 | 産業向け品質ソリューション</title><meta name="description" content="GYUTRONの自動画像検査ソリューションは、スマートカメラ、センサー、照明、バーコード検証、エッジ制御、トレーサビリティを組み合わせ、現代の製造品質チームを支援します。"><link rel="canonical" href="https://www.gyutron.com/ja/automated-vision-inspection.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/automated-vision-inspection.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/automated-vision-inspection.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/automated-vision-inspection.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/automated-vision-inspection.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/automated-vision-inspection.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON 自動画像検査 | 産業向け品質ソリューション"><meta property="og:description" content="GYUTRONの自動画像検査ソリューションは、スマートカメラ、センサー、照明、バーコード検証、エッジ制御、トレーサビリティを組み合わせ、現代の製造品質チームを支援します。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/solution-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="stylesheet" href="/nav-chrome.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
           body, button, input, select, textarea { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
           body { line-height: 1.7; }
           h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
@@ -9,21 +9,113 @@
       (() => {
         const links = Array.from(document.querySelectorAll(".mega-links"));
         links.forEach((panel) => {
+          const menu = panel.closest(".mega-menu");
+          if (!menu || menu.querySelector(".mega-scrollbar")) return;
+
+          const bar = document.createElement("div");
+          const thumb = document.createElement("span");
+          bar.className = "mega-scrollbar";
+          thumb.className = "mega-scrollbar-thumb";
+          bar.setAttribute("aria-hidden", "true");
+          bar.appendChild(thumb);
+          menu.appendChild(bar);
+
           let hideTimer = 0;
+          let frame = 0;
+          let dragging = false;
+          let startY = 0;
+          let startScrollTop = 0;
           const canScroll = () => panel.scrollHeight > panel.clientHeight + 2;
-          const showScrollbar = () => {
-            if (!canScroll()) return;
-            panel.classList.add("is-scrolling");
-            window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 720);
+
+          const updateScrollbar = () => {
+            frame = 0;
+            const needed = canScroll();
+            bar.classList.toggle("is-needed", needed);
+            if (!needed) {
+              bar.classList.remove("is-visible");
+              return;
+            }
+
+            const inset = 10;
+            const trackHeight = Math.max(48, panel.clientHeight - inset * 2);
+            const thumbHeight = Math.max(42, Math.round(trackHeight * (panel.clientHeight / panel.scrollHeight)));
+            const maxScroll = panel.scrollHeight - panel.clientHeight;
+            const maxThumbTop = Math.max(0, trackHeight - thumbHeight);
+            const thumbTop = maxScroll > 0 ? Math.round((panel.scrollTop / maxScroll) * maxThumbTop) : 0;
+
+            bar.style.setProperty("--mega-scrollbar-left", `${panel.offsetLeft + panel.clientWidth - 11}px`);
+            bar.style.setProperty("--mega-scrollbar-top", `${panel.offsetTop + inset}px`);
+            bar.style.setProperty("--mega-scrollbar-height", `${trackHeight}px`);
+            thumb.style.height = `${thumbHeight}px`;
+            thumb.style.transform = `translate3d(0, ${thumbTop}px, 0)`;
           };
-          panel.addEventListener("scroll", showScrollbar, { passive: true });
-          panel.addEventListener("wheel", showScrollbar, { passive: true });
-          panel.addEventListener("touchmove", showScrollbar, { passive: true });
+
+          const requestUpdate = () => {
+            if (frame) return;
+            frame = window.requestAnimationFrame(updateScrollbar);
+          };
+
+          const revealScrollbar = () => {
+            requestUpdate();
+            if (!canScroll()) return;
+            bar.classList.add("is-visible");
+            window.clearTimeout(hideTimer);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 950);
+            }
+          };
+
+          const endDrag = (event) => {
+            if (!dragging) return;
+            dragging = false;
+            thumb.releasePointerCapture?.(event.pointerId);
+            window.clearTimeout(hideTimer);
+            hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 650);
+          };
+
+          panel.addEventListener("scroll", revealScrollbar, { passive: true });
+          panel.addEventListener("wheel", revealScrollbar, { passive: true });
+          panel.addEventListener("touchmove", revealScrollbar, { passive: true });
           panel.addEventListener("pointerleave", () => {
             window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 180);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 420);
+            }
           });
+          menu.addEventListener("mouseenter", requestUpdate, { passive: true });
+          window.addEventListener("resize", requestUpdate, { passive: true });
+
+          bar.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            const rect = bar.getBoundingClientRect();
+            const thumbHeight = thumb.offsetHeight || 42;
+            const targetTop = event.clientY - rect.top - thumbHeight / 2;
+            const scrollRatio = Math.max(0, Math.min(1, targetTop / Math.max(1, rect.height - thumbHeight)));
+            panel.scrollTop = scrollRatio * (panel.scrollHeight - panel.clientHeight);
+            revealScrollbar();
+          });
+
+          thumb.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            dragging = true;
+            startY = event.clientY;
+            startScrollTop = panel.scrollTop;
+            thumb.setPointerCapture?.(event.pointerId);
+            revealScrollbar();
+            event.preventDefault();
+          });
+          thumb.addEventListener("pointermove", (event) => {
+            if (!dragging) return;
+            const trackHeight = Math.max(48, panel.clientHeight - 20);
+            const thumbHeight = thumb.offsetHeight || 42;
+            const scrollRange = panel.scrollHeight - panel.clientHeight;
+            const dragRange = Math.max(1, trackHeight - thumbHeight);
+            panel.scrollTop = startScrollTop + ((event.clientY - startY) / dragRange) * scrollRange;
+          });
+          thumb.addEventListener("pointerup", endDrag);
+          thumb.addEventListener("pointercancel", endDrag);
+
+          requestUpdate();
         });
       })();
     </script>  <main> <section class="solution-hero"> <div class="container"> <div class="solution-hero-grid"> <div> <span class="eyebrow">ソリューション / 品質検査</span> <h1>自動画像検査</h1> <p>GYUTRONはスマートカメラ、白色ビジョン照明、産業用センサー、バーコード検証、エッジ制御、品質データのワークフローを統合し、工場が不良をより早く発見し後工程を守る検査システムを実現します。</p> </div> <aside class="solution-panel"> <span>主要ソリューション</span> <strong>ビジョン＋データ</strong> <p>生産ライン全体のインライン検査、組立確認、トレーサビリティ、再現性のある品質エビデンスに対応します。</p> </aside> </div> </div> </section> <nav class="solution-tabs" aria-label="Solution page sections"> <div class="container"> <a href="#capabilities">対応機能</a> <a href="#architecture">構成</a> <a href="#workflow">ワークフロー</a> <a href="#deployment">導入</a> </div> </nav> <section class="solution-section" id="capabilities"> <div class="container"> <div class="solution-head"> <div> <span class="eyebrow">検査範囲</span> <h2>外観確認から追跡可能な品質判断まで対応します。</h2> </div> <p>先進的な産業検査エコシステムに着想を得た本ソリューションは、GYUTRONを単なるハードウェア供給者ではなく、カメラ、センシング、コード読み取り、照明、コントローラ、品質記録を一つの運用システムとして設計する存在と位置づけます。</p> </div> <div class="capability-grid"> <article class="capability-card"> <i class="fa-solid fa-camera-retro"></i> <h3>2D/3D光学検査</h3> <p>部品欠品、向き違い、組立不良、表面異常、高さばらつき、外観欠陥を生産速度で検出します。</p> </article> <article class="capability-card"> <i class="fa-solid fa-barcode"></i> <h3>コード読み取り・検証</h3> <p>バーコードとDPMコードを読み取り、ラベルを検証し、スキャン記録をロットに紐づけ、検査エビデンスを個体ごとに保持します。</p> </article> <article class="capability-card"> <i class="fa-solid fa-ruler-combined"></i> <h3>寸法測定 &amp; 表面品質</h3> <p>校正済み画像取得、レーザー測定、検査機器により、再現性のある公差確認と外観評価を行います。</p> </article> <article class="capability-card"> <i class="fa-solid fa-robot"></i> <h3>ロボット最終検査</h3> <p>ロボット動作、固定ビジョン、ガイド付き検査ポイントを組み合わせ、最終組立、包装、多面的な製品確認に対応します。</p> </article> </div> </div> </section> <section class="solution-section dark" id="architecture"> <div class="container"> <div class="solution-head"> <div> <span class="eyebrow">システム構成</span> <h2>工場の意思決定につながる検査ハードウェア。</h2> </div> <p>本アーキテクチャは画像取得、センサートリガー、照明制御、エッジ解析、PLCハンドシェイク、品質データ収集を連携させ、検査結果が後工程に流れる前に不良を止められるようにします。</p> </div> <div class="architecture-grid"> <div class="architecture-visual" aria-label="GYUTRONスマートカメラと検査セルのイメージ"></div> <div class="capability-grid"> <article class="architecture-card"> <h3>取得</h3> <p>スマートカメラ、コードリーダー、センサー、安定した白色照明が検査ポイントで信頼性の高いデータを取得します。</p> </article> <article class="architecture-card"> <h3>解析</h3> <p>エッジコントローラとビジョンツールが有無、位置、寸法、コード品質、表面状態を評価します。</p> </article> <article class="architecture-card"> <h3>連動</h3> <p>PLC信号、I/Oモジュール、ロボットやコンベアのロジックが、検査結果に基づき製品の排除、停止、振り分け、流動を制御します。</p> </article> <article class="architecture-card"> <h3>記録</h3> <p>画像、結果、デバイスイベント、スキャンIDをMES、WMS、ダッシュボード、顧客向け品質レポート用に構造化できます。</p> </article> </div> </div> </div> </section> <section class="solution-section alt" id="workflow"> <div class="container"> <div class="solution-head"> <div> <span class="eyebrow">導入ワークフロー</span> <h2>パイロットステーションから再現性のあるライン展開までの実践的な道筋。</h2> </div> <p>GYUTRONのソリューションは生産現場の課題から出発し、機器選定、検査ロジック、データ連携、運用引き継ぎを管理された手順で整理します。</p> </div> <div class="workflow-grid"> <article class="workflow-step"> <i class="fa-solid fa-list-check"></i> <h3>品質ゲートを定義</h3> <p>不良の種類、ライン速度、サンプル部品、排除ロジック、トレーサビリティ記録、合否判定の責任を明確にします。</p> </article> <article class="workflow-step"> <i class="fa-solid fa-sitemap"></i> <h3>ハードウェア構成をマッピング</h3> <p>実機ステーションに合わせてカメラ、照明、センサー、スキャナー、エッジコントローラ、取付具、インターフェースを選定します。</p> </article> <article class="workflow-step"> <i class="fa-solid fa-chart-line"></i> <h3>検証と拡大</h3> <p>パイロット検証を実施し、しきい値を調整し、再現性を記録し、同じアーキテクチャを隣接ステーションに展開できるよう準備します。</p> </article> </div> </div> </section> <section class="solution-cta" id="deployment"> <div class="container"> <div class="solution-cta-inner"> <div> <h2>GYUTRONと検査ステーションを計画しましょう。</h2> <p>部品、不良例、必要なスループット、照明制約、PLC/MES要件、トレーサビリティ目標をお知らせください。GYUTRONチームが最適な検査構成とパイロットの進め方をご提案します。</p> </div> <a class="button button-primary" href="/ja/contact-sales.html">営業に問い合わせ <i class="fa-solid fa-arrow-right"></i></a> </div> </div> </section> </main>  <script>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON 有無・物体検出 | センシング &amp; I/O</title><meta name="description" content="物体検出、金属対象センシング、部品有無、安全関連の自動化、ネットワークセンサー診断に対応するGYUTRON近接センサー。"><link rel="canonical" href="https://www.gyutron.com/ja/proximity-sensors.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/proximity-sensors.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/proximity-sensors.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/proximity-sensors.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/proximity-sensors.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/proximity-sensors.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON 有無・物体検出 | センシング &#38; I/O"><meta property="og:description" content="物体検出、金属対象センシング、部品有無、安全関連の自動化、ネットワークセンサー診断に対応するGYUTRON近接センサー。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
+<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON 有無・物体検出 | センシング &amp; I/O</title><meta name="description" content="物体検出、金属対象センシング、部品有無、安全関連の自動化、ネットワークセンサー診断に対応するGYUTRON近接センサー。"><link rel="canonical" href="https://www.gyutron.com/ja/proximity-sensors.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/proximity-sensors.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/proximity-sensors.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/proximity-sensors.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/proximity-sensors.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/proximity-sensors.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON 有無・物体検出 | センシング &#38; I/O"><meta property="og:description" content="物体検出、金属対象センシング、部品有無、安全関連の自動化、ネットワークセンサー診断に対応するGYUTRON近接センサー。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="stylesheet" href="/nav-chrome.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
           body, button, input, select, textarea { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
           body { line-height: 1.7; }
           h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
@@ -9,21 +9,113 @@
       (() => {
         const links = Array.from(document.querySelectorAll(".mega-links"));
         links.forEach((panel) => {
+          const menu = panel.closest(".mega-menu");
+          if (!menu || menu.querySelector(".mega-scrollbar")) return;
+
+          const bar = document.createElement("div");
+          const thumb = document.createElement("span");
+          bar.className = "mega-scrollbar";
+          thumb.className = "mega-scrollbar-thumb";
+          bar.setAttribute("aria-hidden", "true");
+          bar.appendChild(thumb);
+          menu.appendChild(bar);
+
           let hideTimer = 0;
+          let frame = 0;
+          let dragging = false;
+          let startY = 0;
+          let startScrollTop = 0;
           const canScroll = () => panel.scrollHeight > panel.clientHeight + 2;
-          const showScrollbar = () => {
-            if (!canScroll()) return;
-            panel.classList.add("is-scrolling");
-            window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 720);
+
+          const updateScrollbar = () => {
+            frame = 0;
+            const needed = canScroll();
+            bar.classList.toggle("is-needed", needed);
+            if (!needed) {
+              bar.classList.remove("is-visible");
+              return;
+            }
+
+            const inset = 10;
+            const trackHeight = Math.max(48, panel.clientHeight - inset * 2);
+            const thumbHeight = Math.max(42, Math.round(trackHeight * (panel.clientHeight / panel.scrollHeight)));
+            const maxScroll = panel.scrollHeight - panel.clientHeight;
+            const maxThumbTop = Math.max(0, trackHeight - thumbHeight);
+            const thumbTop = maxScroll > 0 ? Math.round((panel.scrollTop / maxScroll) * maxThumbTop) : 0;
+
+            bar.style.setProperty("--mega-scrollbar-left", `${panel.offsetLeft + panel.clientWidth - 11}px`);
+            bar.style.setProperty("--mega-scrollbar-top", `${panel.offsetTop + inset}px`);
+            bar.style.setProperty("--mega-scrollbar-height", `${trackHeight}px`);
+            thumb.style.height = `${thumbHeight}px`;
+            thumb.style.transform = `translate3d(0, ${thumbTop}px, 0)`;
           };
-          panel.addEventListener("scroll", showScrollbar, { passive: true });
-          panel.addEventListener("wheel", showScrollbar, { passive: true });
-          panel.addEventListener("touchmove", showScrollbar, { passive: true });
+
+          const requestUpdate = () => {
+            if (frame) return;
+            frame = window.requestAnimationFrame(updateScrollbar);
+          };
+
+          const revealScrollbar = () => {
+            requestUpdate();
+            if (!canScroll()) return;
+            bar.classList.add("is-visible");
+            window.clearTimeout(hideTimer);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 950);
+            }
+          };
+
+          const endDrag = (event) => {
+            if (!dragging) return;
+            dragging = false;
+            thumb.releasePointerCapture?.(event.pointerId);
+            window.clearTimeout(hideTimer);
+            hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 650);
+          };
+
+          panel.addEventListener("scroll", revealScrollbar, { passive: true });
+          panel.addEventListener("wheel", revealScrollbar, { passive: true });
+          panel.addEventListener("touchmove", revealScrollbar, { passive: true });
           panel.addEventListener("pointerleave", () => {
             window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 180);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 420);
+            }
           });
+          menu.addEventListener("mouseenter", requestUpdate, { passive: true });
+          window.addEventListener("resize", requestUpdate, { passive: true });
+
+          bar.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            const rect = bar.getBoundingClientRect();
+            const thumbHeight = thumb.offsetHeight || 42;
+            const targetTop = event.clientY - rect.top - thumbHeight / 2;
+            const scrollRatio = Math.max(0, Math.min(1, targetTop / Math.max(1, rect.height - thumbHeight)));
+            panel.scrollTop = scrollRatio * (panel.scrollHeight - panel.clientHeight);
+            revealScrollbar();
+          });
+
+          thumb.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            dragging = true;
+            startY = event.clientY;
+            startScrollTop = panel.scrollTop;
+            thumb.setPointerCapture?.(event.pointerId);
+            revealScrollbar();
+            event.preventDefault();
+          });
+          thumb.addEventListener("pointermove", (event) => {
+            if (!dragging) return;
+            const trackHeight = Math.max(48, panel.clientHeight - 20);
+            const thumbHeight = thumb.offsetHeight || 42;
+            const scrollRange = panel.scrollHeight - panel.clientHeight;
+            const dragRange = Math.max(1, trackHeight - thumbHeight);
+            panel.scrollTop = startScrollTop + ((event.clientY - startY) / dragRange) * scrollRange;
+          });
+          thumb.addEventListener("pointerup", endDrag);
+          thumb.addEventListener("pointercancel", endDrag);
+
+          requestUpdate();
         });
       })();
     </script>  <main> <section class="product-hero"><div class="container"><div class="product-hero-grid"> <div> <span class="eyebrow">センシング &amp; I/O</span> <h1>在荷・物体検出</h1> <p>部品有無、治具、コンベア、安全エリア向けの光電、近接、ファイバー、超音波、安全センサー。</p> </div> <aside class="hero-panel"> <span>製品ラインアップ</span> <strong>6 モデル</strong> <p>明確な検出用途に向けた光電・近接(誘導)・ファイバー・安全センシング。</p> </aside> </div></div></section> <nav class="category-nav"><div class="container"> <a class="is-active" href="/ja/proximity-sensors.html">在荷・物体検出</a><a class href="/ja/laser-measurement.html">距離・位置</a><a class href="/ja/environmental-sensing.html">プロセス・状態</a> </div></nav> <section class="section"><div class="container"> <div class="section-head"> <div><span class="eyebrow">製品ライン</span><h2></h2></div> <p>このページは検出系の製品をまとめ、測定機器や状態監視機器とは分けて掲載しています。</p> </div> <div class="product-grid"> <article class="product-card"> <div class="product-art"><img src="/product-images/gy-px18.png" alt="GY-PX18" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">光電センサー</div> <h3>GY-PX18</h3> <p>在荷・物体検出向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 白色光、M12 cable、かんたん設定。</p> <dl class="spec-list"> <div><dt>検出</dt><dd>拡散反射/回帰反射</dd></div><div><dt>範囲</dt><dd>20 mm to 2.5 m</dd></div><div><dt>出力</dt><dd>PNP / NPN</dd></div><div><dt>ハウジング</dt><dd>IP67 compact</dd></div> </dl> <div class="product-tags"><span>白色光</span><span>M12 cable</span><span>かんたん設定</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-pr12.png" alt="GY-PR12" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">誘導形近接センサー</div> <h3>GY-PR12</h3> <p>在荷・物体検出向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 埋込取付、高い繰返し精度、工作機械。</p> <dl class="spec-list"> <div><dt>検出</dt><dd>鉄/非鉄</dd></div><div><dt>範囲</dt><dd>2 to 8 mm</dd></div><div><dt>出力</dt><dd>PNP / NPN</dd></div><div><dt>ハウジング</dt><dd>M12 stainless IP67</dd></div> </dl> <div class="product-tags"><span>埋込取付</span><span>高い繰返し精度</span><span>工作機械</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-fb200.png" alt="GY-FB200" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">ファイバアンプセンサー</div> <h3>GY-FB200</h3> <p>在荷・物体検出向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Fiber head、微小ワーク、ティーチボタン。</p> <dl class="spec-list"> <div><dt>チャンネル</dt><dd>シングル/デュアル</dd></div><div><dt>応答時間</dt><dd>80 us</dd></div><div><dt>出力</dt><dd>PNP / NPN</dd></div><div><dt>ディスプレイ</dt><dd>デュアルデジタル</dd></div> </dl> <div class="product-tags"><span>ファイバヘッド</span><span>微小ワーク</span><span>ティーチボタン</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-safe24.png" alt="GY-SAFE24" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">セーフティライトカーテン</div> <h3>GY-SAFE24</h3> <p>在荷・物体検出向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 機械安全、Muting option、位置合わせ支援。</p> <dl class="spec-list"> <div><dt>分解能</dt><dd>24 mm</dd></div><div><dt>高さ</dt><dd>300 to 1200 mm</dd></div><div><dt>安全規格</dt><dd>タイプ 4 / PL e</dd></div><div><dt>ハウジング</dt><dd>IP65 aluminum</dd></div> </dl> <div class="product-tags"><span>機械安全</span><span>ミューティング対応</span><span>位置合わせ支援</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-cutouts/generated/gy-px90.png" alt="GY-PX90" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">コンパクト光電センサー</div> <h3>GY-PX90</h3> <p>在荷・物体検出向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Presence、M12、Fast setup。</p> <dl class="spec-list"> <div><dt>検出</dt><dd>拡散反射/回帰反射</dd></div><div><dt>範囲</dt><dd>30 mm to 3 m</dd></div><div><dt>出力</dt><dd>PNP / NPN</dd></div><div><dt>ハウジング</dt><dd>IP67 compact</dd></div> </dl> <div class="product-tags"><span>在荷検出</span><span>M12</span><span>簡単設定</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-cutouts/generated/gy-safe90.png" alt="GY-SAFE90" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">セーフティライトカーテン(ペア)</div> <h3>GY-SAFE90</h3> <p>在荷・物体検出向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Machine safety、Slim body、Type 4。</p> <dl class="spec-list"> <div><dt>分解能</dt><dd>14 / 30 mm</dd></div><div><dt>高さ</dt><dd>300 to 1500 mm</dd></div><div><dt>安全規格</dt><dd>Type 4 / PL e</dd></div><div><dt>ハウジング</dt><dd>IP65 aluminum</dd></div> </dl> <div class="product-tags"><span>機械安全</span><span>スリム筐体</span><span>Type 4</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article> </div> </div></section> <section class="compare-band"><div class="container"> <span class="eyebrow">モデル比較</span> <h2>産業機器の購買・技術チーム向けに、候補機種をすばやく絞り込めます。</h2> <div class="compare-scroll"><table class="compare-table"> <thead><tr> <th>モデル</th> <th>タイプ</th> <th>主な機能</th> <th>堅牢性</th> </tr></thead> <tbody> <tr><td>GY-PX18</td><td>光電センサー</td><td>拡散反射/回帰反射</td><td>IP67 compact</td></tr><tr><td>GY-PR12</td><td>誘導形近接センサー</td><td>鉄/非鉄</td><td>M12 stainless IP67</td></tr><tr><td>GY-FB200</td><td>ファイバアンプセンサー</td><td>産業用データ収集</td><td>PNP / NPN</td></tr><tr><td>GY-SAFE24</td><td>セーフティライトカーテン</td><td>産業用データ収集</td><td>IP65 aluminum</td></tr><tr><td>GY-PX90</td><td>コンパクト光電センサー</td><td>拡散反射/回帰反射</td><td>IP67 compact</td></tr><tr><td>GY-SAFE90</td><td>セーフティライトカーテン(ペア)</td><td>産業用データ収集</td><td>IP65 aluminum</td></tr> </tbody> </table></div> </div></section> <section class="cta-band"><div class="container"><div class="cta-inner"> <div><h2>サンプル、見積、OEM仕様の相談が必要ですか？</h2><p>用途、使用環境、読み取り距離、ネットワーク要件、予定数量をお知らせください。GYUTRONが最適なハードウェア構成と評価導入の進め方をご提案します。</p></div> <a class="button button-primary" href="/ja/contact-sales.html">営業に問い合わせ <i class="fa-solid fa-arrow-right"></i></a> </div></div></section> </main>   <footer class="footer"><div class="container"><div class="footer-grid"><div><h3>GYUTRON</h3><p>モバイルデータ収集、RFID、マシンビジョン、センシング、連携自動化に対応する産業用インテリジェントハードウェア。</p></div><div><h4>製品</h4><a href="/ja/android-pda.html">Android PDA</a><a href="/ja/rfid-handhelds.html">RFIDハンドヘルド</a><a href="/ja/barcode-scanners.html">バーコードスキャナー</a><a href="/ja/request-specification.html">仕様相談</a><a href="/ja/proximity-sensors.html">センシング &amp; I/O</a><a href="/ja/area-scan-cameras.html">マシンビジョンシステム</a><a href="/ja/dimensional-gauges.html">品質・試験機器</a></div><div><h4>ソリューション</h4><a href="/ja/automated-vision-inspection.html">自動画像検査</a><a href="/ja/index.html#solutions">電子機器製造</a><a href="/ja/index.html#platform">製造インテリジェンス</a></div><div><h4>お問い合わせ</h4><a href="/ja/contact-sales.html">営業に問い合わせ</a><a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a></div></div><div class="footer-bottom"><span>© 2026 GYUTRON. 無断転載を禁じます。</span><span>自動化 / 画像処理 / イノベーション</span></div></div></footer> <script src="/mobile-navigation.js"></script> </body> </html>

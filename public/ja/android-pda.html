@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON Android PDA | 堅牢PDA端末</title><meta name="description" content="産業用スキャン、倉庫モビリティ、製造、物流、フィールドサービスに対応するGYUTRON Android PDA端末。"><link rel="canonical" href="https://www.gyutron.com/ja/android-pda.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/android-pda.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/android-pda.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/android-pda.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/android-pda.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/android-pda.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON Android PDA | 堅牢PDA端末"><meta property="og:description" content="産業用スキャン、倉庫モビリティ、製造、物流、フィールドサービスに対応するGYUTRON Android PDA端末。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
+<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON Android PDA | 堅牢PDA端末</title><meta name="description" content="産業用スキャン、倉庫モビリティ、製造、物流、フィールドサービスに対応するGYUTRON Android PDA端末。"><link rel="canonical" href="https://www.gyutron.com/ja/android-pda.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/android-pda.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/android-pda.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/android-pda.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/android-pda.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/android-pda.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON Android PDA | 堅牢PDA端末"><meta property="og:description" content="産業用スキャン、倉庫モビリティ、製造、物流、フィールドサービスに対応するGYUTRON Android PDA端末。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="stylesheet" href="/nav-chrome.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
           body, button, input, select, textarea { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
           body { line-height: 1.7; }
           h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
@@ -9,21 +9,113 @@
       (() => {
         const links = Array.from(document.querySelectorAll(".mega-links"));
         links.forEach((panel) => {
+          const menu = panel.closest(".mega-menu");
+          if (!menu || menu.querySelector(".mega-scrollbar")) return;
+
+          const bar = document.createElement("div");
+          const thumb = document.createElement("span");
+          bar.className = "mega-scrollbar";
+          thumb.className = "mega-scrollbar-thumb";
+          bar.setAttribute("aria-hidden", "true");
+          bar.appendChild(thumb);
+          menu.appendChild(bar);
+
           let hideTimer = 0;
+          let frame = 0;
+          let dragging = false;
+          let startY = 0;
+          let startScrollTop = 0;
           const canScroll = () => panel.scrollHeight > panel.clientHeight + 2;
-          const showScrollbar = () => {
-            if (!canScroll()) return;
-            panel.classList.add("is-scrolling");
-            window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 720);
+
+          const updateScrollbar = () => {
+            frame = 0;
+            const needed = canScroll();
+            bar.classList.toggle("is-needed", needed);
+            if (!needed) {
+              bar.classList.remove("is-visible");
+              return;
+            }
+
+            const inset = 10;
+            const trackHeight = Math.max(48, panel.clientHeight - inset * 2);
+            const thumbHeight = Math.max(42, Math.round(trackHeight * (panel.clientHeight / panel.scrollHeight)));
+            const maxScroll = panel.scrollHeight - panel.clientHeight;
+            const maxThumbTop = Math.max(0, trackHeight - thumbHeight);
+            const thumbTop = maxScroll > 0 ? Math.round((panel.scrollTop / maxScroll) * maxThumbTop) : 0;
+
+            bar.style.setProperty("--mega-scrollbar-left", `${panel.offsetLeft + panel.clientWidth - 11}px`);
+            bar.style.setProperty("--mega-scrollbar-top", `${panel.offsetTop + inset}px`);
+            bar.style.setProperty("--mega-scrollbar-height", `${trackHeight}px`);
+            thumb.style.height = `${thumbHeight}px`;
+            thumb.style.transform = `translate3d(0, ${thumbTop}px, 0)`;
           };
-          panel.addEventListener("scroll", showScrollbar, { passive: true });
-          panel.addEventListener("wheel", showScrollbar, { passive: true });
-          panel.addEventListener("touchmove", showScrollbar, { passive: true });
+
+          const requestUpdate = () => {
+            if (frame) return;
+            frame = window.requestAnimationFrame(updateScrollbar);
+          };
+
+          const revealScrollbar = () => {
+            requestUpdate();
+            if (!canScroll()) return;
+            bar.classList.add("is-visible");
+            window.clearTimeout(hideTimer);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 950);
+            }
+          };
+
+          const endDrag = (event) => {
+            if (!dragging) return;
+            dragging = false;
+            thumb.releasePointerCapture?.(event.pointerId);
+            window.clearTimeout(hideTimer);
+            hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 650);
+          };
+
+          panel.addEventListener("scroll", revealScrollbar, { passive: true });
+          panel.addEventListener("wheel", revealScrollbar, { passive: true });
+          panel.addEventListener("touchmove", revealScrollbar, { passive: true });
           panel.addEventListener("pointerleave", () => {
             window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 180);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 420);
+            }
           });
+          menu.addEventListener("mouseenter", requestUpdate, { passive: true });
+          window.addEventListener("resize", requestUpdate, { passive: true });
+
+          bar.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            const rect = bar.getBoundingClientRect();
+            const thumbHeight = thumb.offsetHeight || 42;
+            const targetTop = event.clientY - rect.top - thumbHeight / 2;
+            const scrollRatio = Math.max(0, Math.min(1, targetTop / Math.max(1, rect.height - thumbHeight)));
+            panel.scrollTop = scrollRatio * (panel.scrollHeight - panel.clientHeight);
+            revealScrollbar();
+          });
+
+          thumb.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            dragging = true;
+            startY = event.clientY;
+            startScrollTop = panel.scrollTop;
+            thumb.setPointerCapture?.(event.pointerId);
+            revealScrollbar();
+            event.preventDefault();
+          });
+          thumb.addEventListener("pointermove", (event) => {
+            if (!dragging) return;
+            const trackHeight = Math.max(48, panel.clientHeight - 20);
+            const thumbHeight = thumb.offsetHeight || 42;
+            const scrollRange = panel.scrollHeight - panel.clientHeight;
+            const dragRange = Math.max(1, trackHeight - thumbHeight);
+            panel.scrollTop = startScrollTop + ((event.clientY - startY) / dragRange) * scrollRange;
+          });
+          thumb.addEventListener("pointerup", endDrag);
+          thumb.addEventListener("pointercancel", endDrag);
+
+          requestUpdate();
         });
       })();
     </script>  <main> <section class="product-hero"><div class="container"><div class="product-hero-grid"> <div> <span class="eyebrow">堅牢PDA端末</span> <h1>Android PDA端末</h1> <p>倉庫、製造、フィールドサービス、ラインサイドのデータ収集に対応する堅牢なAndroidハンドヘルド。</p> </div> <aside class="hero-panel"> <span>製品ラインアップ</span> <strong>8モデル</strong> <p>タッチ、キーパッド、スキャングリップ、コールドチェーン、長時間バッテリーの選択肢。</p> </aside> </div></div></section> <nav class="category-nav"><div class="container"> <a class="is-active" href="/ja/android-pda.html">Android PDA</a><a class href="/ja/rfid-handhelds.html">RFIDハンドヘルド</a><a class href="/ja/barcode-scanners.html">バーコードスキャナー</a><a class href="/ja/request-specification.html">仕様相談</a> </div></nav> <section class="section"><div class="container"> <div class="section-head"> <div><span class="eyebrow">製品ライン</span><h2></h2></div> <p></p> </div> <div class="product-grid"> <article class="product-card"> <div class="product-art"><img src="/product-images/gy-a50.png" alt="GY-A50" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">コンパクトAndroid PDA</div> <h3>GY-A50</h3> <p>Android PDA端末向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Wi-Fi 6、NFC、4500 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>ディスプレイ</dt><dd>5.0インチ HD</dd></div><div><dt>スキャン</dt><dd>1D/2D イメージャ</dd></div><div><dt>堅牢性</dt><dd>IP67 / 1.6 m drop</dd></div> </dl> <div class="product-tags"><span>Wi-Fi 6</span><span>NFC</span><span>4500 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-a55-pro.png" alt="GY-A55 Pro" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">汎用PDA</div> <h3>GY-A55 Pro</h3> <p>Android PDA端末向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 4G LTE、13 MP camera、5000 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>ディスプレイ</dt><dd>5.5インチ HD+</dd></div><div><dt>スキャン</dt><dd>近/遠 2D</dd></div><div><dt>堅牢性</dt><dd>IP67 / 1.8 m drop</dd></div> </dl> <div class="product-tags"><span>4G LTE</span><span>13 MP カメラ</span><span>5000 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-a60-max.png" alt="GY-A60 Max" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">大画面PDA</div> <h3>GY-A60 Max</h3> <p>Android PDA端末向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 6 GB RAM、Wi-Fi 6E、5800 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>ディスプレイ</dt><dd>6.0インチ FHD</dd></div><div><dt>スキャン</dt><dd>高速2D</dd></div><div><dt>堅牢性</dt><dd>IP68 / 1.8 m drop</dd></div> </dl> <div class="product-tags"><span>6 GB RAM</span><span>Wi-Fi 6E</span><span>5800 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-a62k.png" alt="GY-A62K" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">キーパッドPDA</div> <h3>GY-A62K</h3> <p>Android PDA端末向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 29 keys、Scan handle、5200 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 13</dd></div><div><dt>ディスプレイ</dt><dd>4.0インチ タッチ</dd></div><div><dt>スキャン</dt><dd>1D/2D アングル</dd></div><div><dt>堅牢性</dt><dd>IP65 / 1.8 m drop</dd></div> </dl> <div class="product-tags"><span>29キー</span><span>スキャンハンドル</span><span>5200 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-cutouts/generated/gy-a92k-keytouch.png" alt="GY-A92K KeyTouch" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">キーパッド付きモバイルデータ端末</div> <h3>GY-A92K KeyTouch</h3> <p>Android PDA端末向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 数字キーパッド、手袋操作、5800 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>ディスプレイ</dt><dd>4.7インチ タッチ</dd></div><div><dt>スキャン</dt><dd>アングル付き2Dイメージャ</dd></div><div><dt>堅牢性</dt><dd>IP67 / 1.8 m drop</dd></div> </dl> <div class="product-tags"><span>数字キーパッド</span><span>手袋操作</span><span>5800 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-a70-cold.png" alt="GY-A70 Cold" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">コールドチェーンPDA</div> <h3>GY-A70 Cold</h3> <p>Android PDA端末向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Heated window、Hot swap、6500 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>ディスプレイ</dt><dd>5.7インチ グローブタッチ</dd></div><div><dt>スキャン</dt><dd>結露対応2D</dd></div><div><dt>堅牢性</dt><dd>IP67 / -25 C</dd></div> </dl> <div class="product-tags"><span>ヒーター付き窓</span><span>ホットスワップ</span><span>6500 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-a80-ultra.png" alt="GY-A80 Ultra" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">超堅牢PDA</div> <h3>GY-A80 Ultra</h3> <p>Android PDA端末向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 5G option、GNSS、7200 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>ディスプレイ</dt><dd>6.2インチ FHD</dd></div><div><dt>スキャン</dt><dd>ロングレンジ2D</dd></div><div><dt>堅牢性</dt><dd>IP68 / 2.0 m drop</dd></div> </dl> <div class="product-tags"><span>5G オプション</span><span>GNSS</span><span>7200 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-cutouts/generated/gy-a90-touch.png" alt="GY-A90 Touch" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">タッチスクリーン式モバイルデータ端末</div> <h3>GY-A90 Touch</h3> <p>Android PDA端末向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Touch only、Wi-Fi 6E、6200 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>ディスプレイ</dt><dd>6.1インチ FHDタッチ</dd></div><div><dt>スキャン</dt><dd>一体型2Dイメージャ</dd></div><div><dt>堅牢性</dt><dd>IP68 / 1.8 m drop</dd></div> </dl> <div class="product-tags"><span>タッチ専用</span><span>Wi-Fi 6E</span><span>6200 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article> </div> </div></section> <section class="compare-band"><div class="container"> <span class="eyebrow">モデル比較</span> <h2>産業機器の購買・技術チーム向けに、候補機種をすばやく絞り込めます。</h2> <div class="compare-scroll"><table class="compare-table"> <thead><tr> <th>モデル</th> <th>タイプ</th> <th>主な機能</th> <th>堅牢性</th> </tr></thead> <tbody> <tr><td>GY-A50</td><td>コンパクトAndroid PDA</td><td>1D/2D イメージャ</td><td>IP67 / 1.6 m drop</td></tr><tr><td>GY-A55 Pro</td><td>汎用PDA</td><td>近/遠 2D</td><td>IP67 / 1.8 m drop</td></tr><tr><td>GY-A60 Max</td><td>大画面PDA</td><td>高速2D</td><td>IP68 / 1.8 m drop</td></tr><tr><td>GY-A62K</td><td>キーパッドPDA</td><td>1D/2D アングル</td><td>IP65 / 1.8 m drop</td></tr><tr><td>GY-A92K KeyTouch</td><td>キーパッド付きモバイルデータ端末</td><td>アングル付き2Dイメージャ</td><td>IP67 / 1.8 m drop</td></tr><tr><td>GY-A70 Cold</td><td>コールドチェーンPDA</td><td>結露対応2D</td><td>IP67 / -25 C</td></tr><tr><td>GY-A80 Ultra</td><td>超堅牢PDA</td><td>ロングレンジ2D</td><td>IP68 / 2.0 m drop</td></tr><tr><td>GY-A90 Touch</td><td>タッチスクリーン式モバイルデータ端末</td><td>一体型2Dイメージャ</td><td>IP68 / 1.8 m drop</td></tr> </tbody> </table></div> </div></section> <section class="cta-band"><div class="container"><div class="cta-inner"> <div><h2>サンプル、見積、OEM仕様の相談が必要ですか？</h2><p>用途、使用環境、読み取り距離、ネットワーク要件、予定数量をお知らせください。GYUTRONが最適なハードウェア構成と評価導入の進め方をご提案します。</p></div> <a class="button button-primary" href="/ja/contact-sales.html">営業に問い合わせ <i class="fa-solid fa-arrow-right"></i></a> </div></div></section> </main>   <footer class="footer"><div class="container"><div class="footer-grid"><div><h3>GYUTRON</h3><p>モバイルデータ収集、RFID、マシンビジョン、センシング、連携自動化に対応する産業用インテリジェントハードウェア。</p></div><div><h4>製品</h4><a href="/ja/android-pda.html">Android PDA</a><a href="/ja/rfid-handhelds.html">RFIDハンドヘルド</a><a href="/ja/barcode-scanners.html">バーコードスキャナー</a><a href="/ja/request-specification.html">仕様相談</a><a href="/ja/proximity-sensors.html">センシング &amp; I/O</a><a href="/ja/area-scan-cameras.html">マシンビジョンシステム</a><a href="/ja/dimensional-gauges.html">品質・試験機器</a></div><div><h4>ソリューション</h4><a href="/ja/automated-vision-inspection.html">自動画像検査</a><a href="/ja/index.html#solutions">電子機器製造</a><a href="/ja/index.html#platform">製造インテリジェンス</a></div><div><h4>お問い合わせ</h4><a href="/ja/contact-sales.html">営業に問い合わせ</a><a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a></div></div><div class="footer-bottom"><span>© 2026 GYUTRON. 無断転載を禁じます。</span><span>自動化 / 画像処理 / イノベーション</span></div></div></footer> <script src="/mobile-navigation.js"></script> </body> </html>

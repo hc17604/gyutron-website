@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON コード読み取り・検証 | マシンビジョン</title><meta name="description" content="バーコード、QR、Data Matrix、DPM、トレーサビリティ業務に対応するGYUTRONコード読み取りカメラと検証機。"><link rel="canonical" href="https://www.gyutron.com/ja/code-reading-cameras.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/code-reading-cameras.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/code-reading-cameras.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/code-reading-cameras.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/code-reading-cameras.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/code-reading-cameras.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON コード読み取り・検証 | マシンビジョン"><meta property="og:description" content="バーコード、QR、Data Matrix、DPM、トレーサビリティ業務に対応するGYUTRONコード読み取りカメラと検証機。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
+<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON コード読み取り・検証 | マシンビジョン</title><meta name="description" content="バーコード、QR、Data Matrix、DPM、トレーサビリティ業務に対応するGYUTRONコード読み取りカメラと検証機。"><link rel="canonical" href="https://www.gyutron.com/ja/code-reading-cameras.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/code-reading-cameras.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/code-reading-cameras.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/code-reading-cameras.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/code-reading-cameras.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/code-reading-cameras.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON コード読み取り・検証 | マシンビジョン"><meta property="og:description" content="バーコード、QR、Data Matrix、DPM、トレーサビリティ業務に対応するGYUTRONコード読み取りカメラと検証機。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="stylesheet" href="/nav-chrome.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
           body, button, input, select, textarea { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
           body { line-height: 1.7; }
           h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
@@ -9,21 +9,113 @@
       (() => {
         const links = Array.from(document.querySelectorAll(".mega-links"));
         links.forEach((panel) => {
+          const menu = panel.closest(".mega-menu");
+          if (!menu || menu.querySelector(".mega-scrollbar")) return;
+
+          const bar = document.createElement("div");
+          const thumb = document.createElement("span");
+          bar.className = "mega-scrollbar";
+          thumb.className = "mega-scrollbar-thumb";
+          bar.setAttribute("aria-hidden", "true");
+          bar.appendChild(thumb);
+          menu.appendChild(bar);
+
           let hideTimer = 0;
+          let frame = 0;
+          let dragging = false;
+          let startY = 0;
+          let startScrollTop = 0;
           const canScroll = () => panel.scrollHeight > panel.clientHeight + 2;
-          const showScrollbar = () => {
-            if (!canScroll()) return;
-            panel.classList.add("is-scrolling");
-            window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 720);
+
+          const updateScrollbar = () => {
+            frame = 0;
+            const needed = canScroll();
+            bar.classList.toggle("is-needed", needed);
+            if (!needed) {
+              bar.classList.remove("is-visible");
+              return;
+            }
+
+            const inset = 10;
+            const trackHeight = Math.max(48, panel.clientHeight - inset * 2);
+            const thumbHeight = Math.max(42, Math.round(trackHeight * (panel.clientHeight / panel.scrollHeight)));
+            const maxScroll = panel.scrollHeight - panel.clientHeight;
+            const maxThumbTop = Math.max(0, trackHeight - thumbHeight);
+            const thumbTop = maxScroll > 0 ? Math.round((panel.scrollTop / maxScroll) * maxThumbTop) : 0;
+
+            bar.style.setProperty("--mega-scrollbar-left", `${panel.offsetLeft + panel.clientWidth - 11}px`);
+            bar.style.setProperty("--mega-scrollbar-top", `${panel.offsetTop + inset}px`);
+            bar.style.setProperty("--mega-scrollbar-height", `${trackHeight}px`);
+            thumb.style.height = `${thumbHeight}px`;
+            thumb.style.transform = `translate3d(0, ${thumbTop}px, 0)`;
           };
-          panel.addEventListener("scroll", showScrollbar, { passive: true });
-          panel.addEventListener("wheel", showScrollbar, { passive: true });
-          panel.addEventListener("touchmove", showScrollbar, { passive: true });
+
+          const requestUpdate = () => {
+            if (frame) return;
+            frame = window.requestAnimationFrame(updateScrollbar);
+          };
+
+          const revealScrollbar = () => {
+            requestUpdate();
+            if (!canScroll()) return;
+            bar.classList.add("is-visible");
+            window.clearTimeout(hideTimer);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 950);
+            }
+          };
+
+          const endDrag = (event) => {
+            if (!dragging) return;
+            dragging = false;
+            thumb.releasePointerCapture?.(event.pointerId);
+            window.clearTimeout(hideTimer);
+            hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 650);
+          };
+
+          panel.addEventListener("scroll", revealScrollbar, { passive: true });
+          panel.addEventListener("wheel", revealScrollbar, { passive: true });
+          panel.addEventListener("touchmove", revealScrollbar, { passive: true });
           panel.addEventListener("pointerleave", () => {
             window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 180);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 420);
+            }
           });
+          menu.addEventListener("mouseenter", requestUpdate, { passive: true });
+          window.addEventListener("resize", requestUpdate, { passive: true });
+
+          bar.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            const rect = bar.getBoundingClientRect();
+            const thumbHeight = thumb.offsetHeight || 42;
+            const targetTop = event.clientY - rect.top - thumbHeight / 2;
+            const scrollRatio = Math.max(0, Math.min(1, targetTop / Math.max(1, rect.height - thumbHeight)));
+            panel.scrollTop = scrollRatio * (panel.scrollHeight - panel.clientHeight);
+            revealScrollbar();
+          });
+
+          thumb.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            dragging = true;
+            startY = event.clientY;
+            startScrollTop = panel.scrollTop;
+            thumb.setPointerCapture?.(event.pointerId);
+            revealScrollbar();
+            event.preventDefault();
+          });
+          thumb.addEventListener("pointermove", (event) => {
+            if (!dragging) return;
+            const trackHeight = Math.max(48, panel.clientHeight - 20);
+            const thumbHeight = thumb.offsetHeight || 42;
+            const scrollRange = panel.scrollHeight - panel.clientHeight;
+            const dragRange = Math.max(1, trackHeight - thumbHeight);
+            panel.scrollTop = startScrollTop + ((event.clientY - startY) / dragRange) * scrollRange;
+          });
+          thumb.addEventListener("pointerup", endDrag);
+          thumb.addEventListener("pointercancel", endDrag);
+
+          requestUpdate();
         });
       })();
     </script>  <main> <section class="product-hero"><div class="container"><div class="product-hero-grid"> <div> <span class="eyebrow">マシンビジョンシステム</span> <h1>コード読取・検証</h1> <p>バーコード、QR、Data Matrix、DPM、規制対応トレーサビリティ向けの固定式・ハンドヘルド画像リーダー。</p> </div> <aside class="hero-panel"> <span>製品ラインアップ</span> <strong>9 モデル</strong> <p>コンパクトリーダー、DPMリーダー、高速コンベアリーダー、ハンディDPM、インライン検証、トンネル読取。</p> </aside> </div></div></section> <nav class="category-nav"><div class="container"> <a class href="/ja/area-scan-cameras.html">スマート・エリアスキャンカメラ</a><a class href="/ja/smart-vision-sensors.html">コントローラ・3Dビジョン</a><a class="is-active" href="/ja/code-reading-cameras.html">コード読取・検証</a><a class href="/ja/vision-lighting.html">画像処理用照明</a> </div></nav> <section class="section"><div class="container"> <div class="section-head"> <div><span class="eyebrow">製品ライン</span><h2></h2></div> <p>トレーサビリティの導入では、読取率・DPM対応・視野・検証規格・記録出力が重視されます。そのため本カテゴリは固定式リーダーと等級判定ワークフローの両方を扱います。</p> </div> <div class="product-grid"> <article class="product-card"> <div class="product-art"><img src="/product-images/gy-cr120.png" alt="GY-CR120" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">コンパクト固定式コードリーダー</div> <h3>GY-CR120</h3> <p>コード読取・検証向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Compact reader、トレーサビリティ、白色LED。</p> <dl class="spec-list"> <div><dt>コード</dt><dd>1D / 2D</dd></div><div><dt>センサー</dt><dd>1.2 MP global shutter</dd></div><div><dt>照明</dt><dd>白色LED</dd></div><div><dt>保護等級</dt><dd>IP65</dd></div> </dl> <div class="product-tags"><span>コンパクトリーダー</span><span>トレーサビリティ</span><span>白色LED</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-cr390.png" alt="GY-CR390" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">固定式コードリーダーカメラ</div> <h3>GY-CR390</h3> <p>コード読取・検証向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: DPM、トレーサビリティ、高読取率。</p> <dl class="spec-list"> <div><dt>コード</dt><dd>1D / 2D / DPM</dd></div><div><dt>レンズ</dt><dd>液体レンズ対応</dd></div><div><dt>インターフェース</dt><dd>Ethernet / RS-232</dd></div><div><dt>保護等級</dt><dd>IP65</dd></div> </dl> <div class="product-tags"><span>DPM</span><span>トレーサビリティ</span><span>高読取率</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-cr520-dpm.png" alt="GY-CR520 DPM" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">DPM固定式コードリーダー</div> <h3>GY-CR520 DPM</h3> <p>コード読取・検証向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: DPM、低コントラスト、Manufacturing。</p> <dl class="spec-list"> <div><dt>コード</dt><dd>DPM / QR / Data Matrix</dd></div><div><dt>照明</dt><dd>白色+偏光</dd></div><div><dt>レンズ</dt><dd>オートフォーカス対応</dd></div><div><dt>保護等級</dt><dd>IP67</dd></div> </dl> <div class="product-tags"><span>DPM</span><span>低コントラスト</span><span>製造</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-cr720-conveyor.png" alt="GY-CR720 Conveyor" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">高速コードリーダー</div> <h3>GY-CR720 Conveyor</h3> <p>コード読取・検証向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: コンベヤ、High speed、広視野。</p> <dl class="spec-list"> <div><dt>コード</dt><dd>1D / 2D</dd></div><div><dt>速度</dt><dd>最大5 m/s</dd></div><div><dt>視野</dt><dd>広角光学系</dd></div><div><dt>ネットワーク</dt><dd>Ethernet / RS-232</dd></div> </dl> <div class="product-tags"><span>コンベヤ</span><span>高速</span><span>広視野</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-s300-dpm.png" alt="GY-S300 DPM" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">DPMコードスキャナー</div> <h3>GY-S300 DPM</h3> <p>コード読取・検証向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: DPM、AI decode、Manufacturing。</p> <dl class="spec-list"> <div><dt>スキャン</dt><dd>DPM / 1D / 2D</dd></div><div><dt>照明</dt><dd>白色+偏光</dd></div><div><dt>コード</dt><dd>金属・樹脂・ラベル</dd></div><div><dt>堅牢性</dt><dd>IP65 / 1.8 m drop</dd></div> </dl> <div class="product-tags"><span>DPM</span><span>AIデコード</span><span>製造</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-cv100.png" alt="GY-CV100" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">バーコード検証機</div> <h3>GY-CV100</h3> <p>コード読取・検証向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: コード品質、トレーサビリティ、レポート。</p> <dl class="spec-list"> <div><dt>規格</dt><dd>ISO / IEC grading</dd></div><div><dt>コード</dt><dd>1D / 2D / DPM</dd></div><div><dt>光源</dt><dd>白色校正済み</dd></div><div><dt>レポート</dt><dd>PDF / CSV</dd></div> </dl> <div class="product-tags"><span>コード品質</span><span>トレーサビリティ</span><span>レポート</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-cv220-inline.png" alt="GY-CV220 Inline" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">インラインバーコード検証機</div> <h3>GY-CV220 Inline</h3> <p>コード読取・検証向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: コードグレーディング、インライン品質保証、監査証跡。</p> <dl class="spec-list"> <div><dt>規格</dt><dd>ISO / IEC grading</dd></div><div><dt>コード</dt><dd>1D / 2D / DPM</dd></div><div><dt>光源</dt><dd>校正白色</dd></div><div><dt>出力</dt><dd>PDF / CSV / API</dd></div> </dl> <div class="product-tags"><span>コードグレーディング</span><span>インライン品質保証</span><span>監査証跡</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-rt800.png" alt="GY-RT800" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">マルチカメラリーダーモジュール</div> <h3>GY-RT800</h3> <p>コード読取・検証向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: トンネル読取、Logistics、Multi-side。</p> <dl class="spec-list"> <div><dt>リーダー数</dt><dd>4 synchronized imagers</dd></div><div><dt>視野</dt><dd>多面キャプチャ</dd></div><div><dt>トリガ</dt><dd>光電センサー/エンコーダ</dd></div><div><dt>ネットワーク</dt><dd>Ethernet / API</dd></div> </dl> <div class="product-tags"><span>トンネル読取</span><span>物流</span><span>多面</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-cutouts/generated/gy-cr900-matrix.png" alt="GY-CR900 Matrix" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">固定式産業用コードリーダー</div> <h3>GY-CR900 Matrix</h3> <p>コード読取・検証向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: DPM、Traceability、Ethernet。</p> <dl class="spec-list"> <div><dt>コード</dt><dd>1D / 2D / DPM</dd></div><div><dt>レンズ</dt><dd>オートフォーカス対応</dd></div><div><dt>インターフェース</dt><dd>Ethernet / RS-232</dd></div><div><dt>保護等級</dt><dd>IP67 metal</dd></div> </dl> <div class="product-tags"><span>DPM</span><span>トレーサビリティ</span><span>Ethernet</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article> </div> </div></section> <section class="compare-band"><div class="container"> <span class="eyebrow">モデル比較</span> <h2>産業機器の購買・技術チーム向けに、候補機種をすばやく絞り込めます。</h2> <div class="compare-scroll"><table class="compare-table"> <thead><tr> <th>モデル</th> <th>タイプ</th> <th>主な機能</th> <th>堅牢性</th> </tr></thead> <tbody> <tr><td>GY-CR120</td><td>コンパクト固定式コードリーダー</td><td>1D / 2D</td><td>IP65</td></tr><tr><td>GY-CR390</td><td>固定式コードリーダーカメラ</td><td>1D / 2D / DPM</td><td>IP65</td></tr><tr><td>GY-CR520 DPM</td><td>DPM固定式コードリーダー</td><td>DPM / QR / Data Matrix</td><td>IP67</td></tr><tr><td>GY-CR720 Conveyor</td><td>高速コードリーダー</td><td>1D / 2D</td><td>プロジェクト依存</td></tr><tr><td>GY-S300 DPM</td><td>DPMコードスキャナー</td><td>DPM / 1D / 2D</td><td>IP65 / 1.8 m drop</td></tr><tr><td>GY-CV100</td><td>バーコード検証機</td><td>1D / 2D / DPM</td><td>プロジェクト依存</td></tr><tr><td>GY-CV220 Inline</td><td>インラインバーコード検証機</td><td>1D / 2D / DPM</td><td>PDF / CSV / API</td></tr><tr><td>GY-RT800</td><td>マルチカメラリーダーモジュール</td><td>産業用データ収集</td><td>プロジェクト依存</td></tr><tr><td>GY-CR900 Matrix</td><td>固定式産業用コードリーダー</td><td>1D / 2D / DPM</td><td>IP67 metal</td></tr> </tbody> </table></div> </div></section> <section class="cta-band"><div class="container"><div class="cta-inner"> <div><h2>サンプル、見積、OEM仕様の相談が必要ですか？</h2><p>用途、使用環境、読み取り距離、ネットワーク要件、予定数量をお知らせください。GYUTRONが最適なハードウェア構成と評価導入の進め方をご提案します。</p></div> <a class="button button-primary" href="/ja/contact-sales.html">営業に問い合わせ <i class="fa-solid fa-arrow-right"></i></a> </div></div></section> </main>   <footer class="footer"><div class="container"><div class="footer-grid"><div><h3>GYUTRON</h3><p>モバイルデータ収集、RFID、マシンビジョン、センシング、連携自動化に対応する産業用インテリジェントハードウェア。</p></div><div><h4>製品</h4><a href="/ja/android-pda.html">Android PDA</a><a href="/ja/rfid-handhelds.html">RFIDハンドヘルド</a><a href="/ja/barcode-scanners.html">バーコードスキャナー</a><a href="/ja/request-specification.html">仕様相談</a><a href="/ja/proximity-sensors.html">センシング &amp; I/O</a><a href="/ja/area-scan-cameras.html">マシンビジョンシステム</a><a href="/ja/dimensional-gauges.html">品質・試験機器</a></div><div><h4>ソリューション</h4><a href="/ja/automated-vision-inspection.html">自動画像検査</a><a href="/ja/index.html#solutions">電子機器製造</a><a href="/ja/index.html#platform">製造インテリジェンス</a></div><div><h4>お問い合わせ</h4><a href="/ja/contact-sales.html">営業に問い合わせ</a><a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a></div></div><div class="footer-bottom"><span>© 2026 GYUTRON. 無断転載を禁じます。</span><span>自動化 / 画像処理 / イノベーション</span></div></div></footer> <script src="/mobile-navigation.js"></script> </body> </html>

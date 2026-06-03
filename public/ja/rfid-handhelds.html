@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON RFIDハンドヘルド | 堅牢PDA端末</title><meta name="description" content="在庫、物流、資産追跡、産業トレーサビリティに対応するGYUTRON Android UHF RFIDハンドヘルド。"><link rel="canonical" href="https://www.gyutron.com/ja/rfid-handhelds.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/rfid-handhelds.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/rfid-handhelds.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/rfid-handhelds.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/rfid-handhelds.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/rfid-handhelds.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON RFIDハンドヘルド | 堅牢PDA端末"><meta property="og:description" content="在庫、物流、資産追跡、産業トレーサビリティに対応するGYUTRON Android UHF RFIDハンドヘルド。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
+<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON RFIDハンドヘルド | 堅牢PDA端末</title><meta name="description" content="在庫、物流、資産追跡、産業トレーサビリティに対応するGYUTRON Android UHF RFIDハンドヘルド。"><link rel="canonical" href="https://www.gyutron.com/ja/rfid-handhelds.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/rfid-handhelds.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/rfid-handhelds.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/rfid-handhelds.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/rfid-handhelds.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/rfid-handhelds.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON RFIDハンドヘルド | 堅牢PDA端末"><meta property="og:description" content="在庫、物流、資産追跡、産業トレーサビリティに対応するGYUTRON Android UHF RFIDハンドヘルド。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="stylesheet" href="/nav-chrome.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
           body, button, input, select, textarea { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
           body { line-height: 1.7; }
           h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
@@ -9,21 +9,113 @@
       (() => {
         const links = Array.from(document.querySelectorAll(".mega-links"));
         links.forEach((panel) => {
+          const menu = panel.closest(".mega-menu");
+          if (!menu || menu.querySelector(".mega-scrollbar")) return;
+
+          const bar = document.createElement("div");
+          const thumb = document.createElement("span");
+          bar.className = "mega-scrollbar";
+          thumb.className = "mega-scrollbar-thumb";
+          bar.setAttribute("aria-hidden", "true");
+          bar.appendChild(thumb);
+          menu.appendChild(bar);
+
           let hideTimer = 0;
+          let frame = 0;
+          let dragging = false;
+          let startY = 0;
+          let startScrollTop = 0;
           const canScroll = () => panel.scrollHeight > panel.clientHeight + 2;
-          const showScrollbar = () => {
-            if (!canScroll()) return;
-            panel.classList.add("is-scrolling");
-            window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 720);
+
+          const updateScrollbar = () => {
+            frame = 0;
+            const needed = canScroll();
+            bar.classList.toggle("is-needed", needed);
+            if (!needed) {
+              bar.classList.remove("is-visible");
+              return;
+            }
+
+            const inset = 10;
+            const trackHeight = Math.max(48, panel.clientHeight - inset * 2);
+            const thumbHeight = Math.max(42, Math.round(trackHeight * (panel.clientHeight / panel.scrollHeight)));
+            const maxScroll = panel.scrollHeight - panel.clientHeight;
+            const maxThumbTop = Math.max(0, trackHeight - thumbHeight);
+            const thumbTop = maxScroll > 0 ? Math.round((panel.scrollTop / maxScroll) * maxThumbTop) : 0;
+
+            bar.style.setProperty("--mega-scrollbar-left", `${panel.offsetLeft + panel.clientWidth - 11}px`);
+            bar.style.setProperty("--mega-scrollbar-top", `${panel.offsetTop + inset}px`);
+            bar.style.setProperty("--mega-scrollbar-height", `${trackHeight}px`);
+            thumb.style.height = `${thumbHeight}px`;
+            thumb.style.transform = `translate3d(0, ${thumbTop}px, 0)`;
           };
-          panel.addEventListener("scroll", showScrollbar, { passive: true });
-          panel.addEventListener("wheel", showScrollbar, { passive: true });
-          panel.addEventListener("touchmove", showScrollbar, { passive: true });
+
+          const requestUpdate = () => {
+            if (frame) return;
+            frame = window.requestAnimationFrame(updateScrollbar);
+          };
+
+          const revealScrollbar = () => {
+            requestUpdate();
+            if (!canScroll()) return;
+            bar.classList.add("is-visible");
+            window.clearTimeout(hideTimer);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 950);
+            }
+          };
+
+          const endDrag = (event) => {
+            if (!dragging) return;
+            dragging = false;
+            thumb.releasePointerCapture?.(event.pointerId);
+            window.clearTimeout(hideTimer);
+            hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 650);
+          };
+
+          panel.addEventListener("scroll", revealScrollbar, { passive: true });
+          panel.addEventListener("wheel", revealScrollbar, { passive: true });
+          panel.addEventListener("touchmove", revealScrollbar, { passive: true });
           panel.addEventListener("pointerleave", () => {
             window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 180);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 420);
+            }
           });
+          menu.addEventListener("mouseenter", requestUpdate, { passive: true });
+          window.addEventListener("resize", requestUpdate, { passive: true });
+
+          bar.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            const rect = bar.getBoundingClientRect();
+            const thumbHeight = thumb.offsetHeight || 42;
+            const targetTop = event.clientY - rect.top - thumbHeight / 2;
+            const scrollRatio = Math.max(0, Math.min(1, targetTop / Math.max(1, rect.height - thumbHeight)));
+            panel.scrollTop = scrollRatio * (panel.scrollHeight - panel.clientHeight);
+            revealScrollbar();
+          });
+
+          thumb.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            dragging = true;
+            startY = event.clientY;
+            startScrollTop = panel.scrollTop;
+            thumb.setPointerCapture?.(event.pointerId);
+            revealScrollbar();
+            event.preventDefault();
+          });
+          thumb.addEventListener("pointermove", (event) => {
+            if (!dragging) return;
+            const trackHeight = Math.max(48, panel.clientHeight - 20);
+            const thumbHeight = thumb.offsetHeight || 42;
+            const scrollRange = panel.scrollHeight - panel.clientHeight;
+            const dragRange = Math.max(1, trackHeight - thumbHeight);
+            panel.scrollTop = startScrollTop + ((event.clientY - startY) / dragRange) * scrollRange;
+          });
+          thumb.addEventListener("pointerup", endDrag);
+          thumb.addEventListener("pointercancel", endDrag);
+
+          requestUpdate();
         });
       })();
     </script>  <main> <section class="product-hero"><div class="container"><div class="product-hero-grid"> <div> <span class="eyebrow">堅牢PDA端末</span> <h1>RFIDハンドヘルド</h1> <p>在庫管理、資産追跡、入荷物流、ストックルーム、製造トレーサビリティ向けのAndroid UHF RFID端末。</p> </div> <aside class="hero-panel"> <span>製品ラインアップ</span> <strong>5 モデル</strong> <p>内蔵型、長距離、5G、エルゴノミックRFIDの選択肢。</p> </aside> </div></div></section> <nav class="category-nav"><div class="container"> <a class href="/ja/android-pda.html">Android PDA</a><a class="is-active" href="/ja/rfid-handhelds.html">RFIDハンドヘルド</a><a class href="/ja/barcode-scanners.html">バーコードスキャナー</a><a class href="/ja/request-specification.html">仕様相談</a> </div></nav> <section class="section"><div class="container"> <div class="section-head"> <div><span class="eyebrow">製品ライン</span><h2></h2></div> <p></p> </div> <div class="product-grid"> <article class="product-card"> <div class="product-art"><img src="/product-images/gy-r52-compact.png" alt="GY-R52 Compact" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">UHF内蔵PDA</div> <h3>GY-R52 Compact</h3> <p>RFIDハンドヘルド向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 内蔵アンテナ、NFC、4500 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>RFID</dt><dd>UHF 最大4 m</dd></div><div><dt>スキャン</dt><dd>1D/2D オプション</dd></div><div><dt>堅牢性</dt><dd>IP65 / 1.5 m drop</dd></div> </dl> <div class="product-tags"><span>内蔵アンテナ</span><span>NFC</span><span>4500 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-r60-grip.png" alt="GY-R60 Grip" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">エルゴノミックRFIDリーダー</div> <h3>GY-R60 Grip</h3> <p>RFIDハンドヘルド向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 円偏波アンテナ、Wi-Fi 6、6000 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 13</dd></div><div><dt>RFID</dt><dd>UHF 最大8 m</dd></div><div><dt>スキャン</dt><dd>2D イメージャ</dd></div><div><dt>堅牢性</dt><dd>IP65 / 1.6 m drop</dd></div> </dl> <div class="product-tags"><span>円偏波アンテナ</span><span>Wi-Fi 6</span><span>6000 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-r70-longrange.png" alt="GY-R70 LongRange" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">長距離RFIDリーダー</div> <h3>GY-R70 LongRange</h3> <p>RFIDハンドヘルド向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 33 dBm output、5.5 in display、7800 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>RFID</dt><dd>UHF 最大12 m</dd></div><div><dt>スキャン</dt><dd>2D + DPM オプション</dd></div><div><dt>堅牢性</dt><dd>IP67 / 1.8 m drop</dd></div> </dl> <div class="product-tags"><span>33 dBm 出力</span><span>5.5インチ ディスプレイ</span><span>7800 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-r86-5g.png" alt="GY-R86 5G" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">5G RFID端末</div> <h3>GY-R86 5G</h3> <p>RFIDハンドヘルド向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 5G、Dual-band GNSS、7000 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>RFID</dt><dd>UHF 最大10 m</dd></div><div><dt>スキャン</dt><dd>近/遠 2D</dd></div><div><dt>堅牢性</dt><dd>IP67 / 1.8 m drop</dd></div> </dl> <div class="product-tags"><span>5G</span><span>デュアルバンドGNSS</span><span>7000 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-cutouts/generated/gy-r90-falcon.png" alt="GY-R90 Falcon" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">長距離UHF RFIDリーダー</div> <h3>GY-R90 Falcon</h3> <p>RFIDハンドヘルド向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 33 dBm、Circular antenna、8200 mAh。</p> <dl class="spec-list"> <div><dt>OS</dt><dd>Android 14</dd></div><div><dt>RFID</dt><dd>UHF 最大15 m</dd></div><div><dt>スキャン</dt><dd>2D + RFID</dd></div><div><dt>堅牢性</dt><dd>IP67 / 1.8 m drop</dd></div> </dl> <div class="product-tags"><span>33 dBm</span><span>円偏波アンテナ</span><span>8200 mAh</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article> </div> </div></section> <section class="compare-band"><div class="container"> <span class="eyebrow">モデル比較</span> <h2>産業機器の購買・技術チーム向けに、候補機種をすばやく絞り込めます。</h2> <div class="compare-scroll"><table class="compare-table"> <thead><tr> <th>モデル</th> <th>タイプ</th> <th>主な機能</th> <th>堅牢性</th> </tr></thead> <tbody> <tr><td>GY-R52 Compact</td><td>UHF内蔵PDA</td><td>1D/2D オプション</td><td>IP65 / 1.5 m drop</td></tr><tr><td>GY-R60 Grip</td><td>エルゴノミックRFIDリーダー</td><td>2D イメージャ</td><td>IP65 / 1.6 m drop</td></tr><tr><td>GY-R70 LongRange</td><td>長距離RFIDリーダー</td><td>2D + DPM オプション</td><td>IP67 / 1.8 m drop</td></tr><tr><td>GY-R86 5G</td><td>5G RFID端末</td><td>近/遠 2D</td><td>IP67 / 1.8 m drop</td></tr><tr><td>GY-R90 Falcon</td><td>長距離UHF RFIDリーダー</td><td>2D + RFID</td><td>IP67 / 1.8 m drop</td></tr> </tbody> </table></div> </div></section> <section class="cta-band"><div class="container"><div class="cta-inner"> <div><h2>サンプル、見積、OEM仕様の相談が必要ですか？</h2><p>用途、使用環境、読み取り距離、ネットワーク要件、予定数量をお知らせください。GYUTRONが最適なハードウェア構成と評価導入の進め方をご提案します。</p></div> <a class="button button-primary" href="/ja/contact-sales.html">営業に問い合わせ <i class="fa-solid fa-arrow-right"></i></a> </div></div></section> </main>   <footer class="footer"><div class="container"><div class="footer-grid"><div><h3>GYUTRON</h3><p>モバイルデータ収集、RFID、マシンビジョン、センシング、連携自動化に対応する産業用インテリジェントハードウェア。</p></div><div><h4>製品</h4><a href="/ja/android-pda.html">Android PDA</a><a href="/ja/rfid-handhelds.html">RFIDハンドヘルド</a><a href="/ja/barcode-scanners.html">バーコードスキャナー</a><a href="/ja/request-specification.html">仕様相談</a><a href="/ja/proximity-sensors.html">センシング &amp; I/O</a><a href="/ja/area-scan-cameras.html">マシンビジョンシステム</a><a href="/ja/dimensional-gauges.html">品質・試験機器</a></div><div><h4>ソリューション</h4><a href="/ja/automated-vision-inspection.html">自動画像検査</a><a href="/ja/index.html#solutions">電子機器製造</a><a href="/ja/index.html#platform">製造インテリジェンス</a></div><div><h4>お問い合わせ</h4><a href="/ja/contact-sales.html">営業に問い合わせ</a><a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a></div></div><div class="footer-bottom"><span>© 2026 GYUTRON. 無断転載を禁じます。</span><span>自動化 / 画像処理 / イノベーション</span></div></div></footer> <script src="/mobile-navigation.js"></script> </body> </html>

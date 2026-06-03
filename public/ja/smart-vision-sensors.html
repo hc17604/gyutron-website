@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON コントローラ・3Dビジョン | マシンビジョン</title><meta name="description" content="組込みAI検査、OCR、ライン上の合否判定、ガイド付き設定に対応するGYUTRONスマートビジョンセンサー。"><link rel="canonical" href="https://www.gyutron.com/ja/smart-vision-sensors.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/smart-vision-sensors.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/smart-vision-sensors.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/smart-vision-sensors.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/smart-vision-sensors.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/smart-vision-sensors.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON コントローラ・3Dビジョン | マシンビジョン"><meta property="og:description" content="組込みAI検査、OCR、ライン上の合否判定、ガイド付き設定に対応するGYUTRONスマートビジョンセンサー。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
+<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>GYUTRON コントローラ・3Dビジョン | マシンビジョン</title><meta name="description" content="組込みAI検査、OCR、ライン上の合否判定、ガイド付き設定に対応するGYUTRONスマートビジョンセンサー。"><link rel="canonical" href="https://www.gyutron.com/ja/smart-vision-sensors.html"><link rel="alternate" hreflang="en" href="https://www.gyutron.com/smart-vision-sensors.html"><link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/smart-vision-sensors.html"><link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/smart-vision-sensors.html"><link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/smart-vision-sensors.html"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" href="/favicon-32x32.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.gyutron.com/ja/smart-vision-sensors.html"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="GYUTRON コントローラ・3Dビジョン | マシンビジョン"><meta property="og:description" content="組込みAI検査、OCR、ライン上の合否判定、ガイド付き設定に対応するGYUTRONスマートビジョンセンサー。"><meta property="og:site_name" content="GYUTRON"><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/product-page.css"><link rel="stylesheet" href="/mobile-navigation.css"><link rel="stylesheet" href="/nav-chrome.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style is:global>{`
           body, button, input, select, textarea { font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
           body { line-height: 1.7; }
           h1, h2, h3, h4 { font-weight: 700; line-height: 1.45; }
@@ -9,21 +9,113 @@
       (() => {
         const links = Array.from(document.querySelectorAll(".mega-links"));
         links.forEach((panel) => {
+          const menu = panel.closest(".mega-menu");
+          if (!menu || menu.querySelector(".mega-scrollbar")) return;
+
+          const bar = document.createElement("div");
+          const thumb = document.createElement("span");
+          bar.className = "mega-scrollbar";
+          thumb.className = "mega-scrollbar-thumb";
+          bar.setAttribute("aria-hidden", "true");
+          bar.appendChild(thumb);
+          menu.appendChild(bar);
+
           let hideTimer = 0;
+          let frame = 0;
+          let dragging = false;
+          let startY = 0;
+          let startScrollTop = 0;
           const canScroll = () => panel.scrollHeight > panel.clientHeight + 2;
-          const showScrollbar = () => {
-            if (!canScroll()) return;
-            panel.classList.add("is-scrolling");
-            window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 720);
+
+          const updateScrollbar = () => {
+            frame = 0;
+            const needed = canScroll();
+            bar.classList.toggle("is-needed", needed);
+            if (!needed) {
+              bar.classList.remove("is-visible");
+              return;
+            }
+
+            const inset = 10;
+            const trackHeight = Math.max(48, panel.clientHeight - inset * 2);
+            const thumbHeight = Math.max(42, Math.round(trackHeight * (panel.clientHeight / panel.scrollHeight)));
+            const maxScroll = panel.scrollHeight - panel.clientHeight;
+            const maxThumbTop = Math.max(0, trackHeight - thumbHeight);
+            const thumbTop = maxScroll > 0 ? Math.round((panel.scrollTop / maxScroll) * maxThumbTop) : 0;
+
+            bar.style.setProperty("--mega-scrollbar-left", `${panel.offsetLeft + panel.clientWidth - 11}px`);
+            bar.style.setProperty("--mega-scrollbar-top", `${panel.offsetTop + inset}px`);
+            bar.style.setProperty("--mega-scrollbar-height", `${trackHeight}px`);
+            thumb.style.height = `${thumbHeight}px`;
+            thumb.style.transform = `translate3d(0, ${thumbTop}px, 0)`;
           };
-          panel.addEventListener("scroll", showScrollbar, { passive: true });
-          panel.addEventListener("wheel", showScrollbar, { passive: true });
-          panel.addEventListener("touchmove", showScrollbar, { passive: true });
+
+          const requestUpdate = () => {
+            if (frame) return;
+            frame = window.requestAnimationFrame(updateScrollbar);
+          };
+
+          const revealScrollbar = () => {
+            requestUpdate();
+            if (!canScroll()) return;
+            bar.classList.add("is-visible");
+            window.clearTimeout(hideTimer);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 950);
+            }
+          };
+
+          const endDrag = (event) => {
+            if (!dragging) return;
+            dragging = false;
+            thumb.releasePointerCapture?.(event.pointerId);
+            window.clearTimeout(hideTimer);
+            hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 650);
+          };
+
+          panel.addEventListener("scroll", revealScrollbar, { passive: true });
+          panel.addEventListener("wheel", revealScrollbar, { passive: true });
+          panel.addEventListener("touchmove", revealScrollbar, { passive: true });
           panel.addEventListener("pointerleave", () => {
             window.clearTimeout(hideTimer);
-            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 180);
+            if (!dragging) {
+              hideTimer = window.setTimeout(() => bar.classList.remove("is-visible"), 420);
+            }
           });
+          menu.addEventListener("mouseenter", requestUpdate, { passive: true });
+          window.addEventListener("resize", requestUpdate, { passive: true });
+
+          bar.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            const rect = bar.getBoundingClientRect();
+            const thumbHeight = thumb.offsetHeight || 42;
+            const targetTop = event.clientY - rect.top - thumbHeight / 2;
+            const scrollRatio = Math.max(0, Math.min(1, targetTop / Math.max(1, rect.height - thumbHeight)));
+            panel.scrollTop = scrollRatio * (panel.scrollHeight - panel.clientHeight);
+            revealScrollbar();
+          });
+
+          thumb.addEventListener("pointerdown", (event) => {
+            if (!canScroll()) return;
+            dragging = true;
+            startY = event.clientY;
+            startScrollTop = panel.scrollTop;
+            thumb.setPointerCapture?.(event.pointerId);
+            revealScrollbar();
+            event.preventDefault();
+          });
+          thumb.addEventListener("pointermove", (event) => {
+            if (!dragging) return;
+            const trackHeight = Math.max(48, panel.clientHeight - 20);
+            const thumbHeight = thumb.offsetHeight || 42;
+            const scrollRange = panel.scrollHeight - panel.clientHeight;
+            const dragRange = Math.max(1, trackHeight - thumbHeight);
+            panel.scrollTop = startScrollTop + ((event.clientY - startY) / dragRange) * scrollRange;
+          });
+          thumb.addEventListener("pointerup", endDrag);
+          thumb.addEventListener("pointercancel", endDrag);
+
+          requestUpdate();
         });
       })();
     </script>  <main> <section class="product-hero"><div class="container"><div class="product-hero-grid"> <div> <span class="eyebrow">マシンビジョンシステム</span> <h1>ビジョンコントローラ・3Dシステム</h1> <p>大型検査セルや複雑な用途向けのビジョンコントローラー、3Dプロファイルカメラ、ラインスキャンシステム。</p> </div> <aside class="hero-panel"> <span>製品ラインアップ</span> <strong>10 モデル</strong> <p>ビジョンコントローラ、3Dセンサー、ラインスキャン取込、タイミングI/O、フレームグラバー、ストロボ制御、ロボットガイダンスモジュール。</p> </aside> </div></div></section> <nav class="category-nav"><div class="container"> <a class href="/ja/area-scan-cameras.html">スマート・エリアスキャンカメラ</a><a class="is-active" href="/ja/smart-vision-sensors.html">コントローラ・3Dビジョン</a><a class href="/ja/code-reading-cameras.html">コード読取・検証</a><a class href="/ja/vision-lighting.html">画像処理用照明</a> </div></nav> <section class="section"><div class="container"> <div class="section-head"> <div><span class="eyebrow">製品ライン</span><h2></h2></div> <p>本ラインアップは、画像取込・処理・3Dプロファイリング・タイミングI/O・照明トリガ・フレーム取込・ロボットガイダンス連携まで、より完成度の高いマシンビジョンセルを支えます。</p> </div> <div class="product-grid"> <article class="product-card"> <div class="product-art"><img src="/product-images/gy-vc8.png" alt="GY-VC8" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">ビジョンコントローラ</div> <h3>GY-VC8</h3> <p>ビジョンコントローラ・3Dシステム向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Multi-camera、Recipes、Edge AI。</p> <dl class="spec-list"> <div><dt>カメラ</dt><dd>最大8台</dd></div><div><dt>CPU</dt><dd>産業用AIモジュール</dd></div><div><dt>ネットワーク</dt><dd>PROFINET / EtherNet/IP</dd></div><div><dt>ストレージ</dt><dd>512 GB option</dd></div> </dl> <div class="product-tags"><span>マルチカメラ</span><span>レシピ</span><span>エッジAI</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-v3d90.png" alt="GY-V3D90" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">3Dプロファイルカメラ</div> <h3>GY-V3D90</h3> <p>ビジョンコントローラ・3Dシステム向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 3D profile、高さ確認、Robot guidance。</p> <dl class="spec-list"> <div><dt>プロファイル</dt><dd>3D laser triangulation</dd></div><div><dt>範囲</dt><dd>90 mm class</dd></div><div><dt>インターフェース</dt><dd>GigE Vision</dd></div><div><dt>保護等級</dt><dd>IP65</dd></div> </dl> <div class="product-tags"><span>3Dプロファイル</span><span>高さ確認</span><span>ロボットガイダンス</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-v3d150.png" alt="GY-V3D150" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">広範囲3Dプロファイルセンサー</div> <h3>GY-V3D150</h3> <p>ビジョンコントローラ・3Dシステム向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 3D profile、広範囲、ロボットセル。</p> <dl class="spec-list"> <div><dt>プロファイル</dt><dd>Blue laser triangulation</dd></div><div><dt>範囲</dt><dd>150 mm class</dd></div><div><dt>ポイント数</dt><dd>2048 profile points</dd></div><div><dt>保護等級</dt><dd>IP65</dd></div> </dl> <div class="product-tags"><span>3Dプロファイル</span><span>広範囲</span><span>ロボットセル</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-vl2048.png" alt="GY-VL2048" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">ラインスキャンスマートカメラ</div> <h3>GY-VL2048</h3> <p>ビジョンコントローラ・3Dシステム向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Line scan、Web inspection、Encoder。</p> <dl class="spec-list"> <div><dt>センサー</dt><dd>2048 px line</dd></div><div><dt>速度</dt><dd>45 kHz</dd></div><div><dt>インターフェース</dt><dd>GigE / encoder</dd></div><div><dt>保護等級</dt><dd>産業用金属筐体</dd></div> </dl> <div class="product-tags"><span>ラインスキャン</span><span>ウェブ検査</span><span>エンコーダ</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-vx12.png" alt="GY-VX12" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">AIビジョンプロセッサ</div> <h3>GY-VX12</h3> <p>ビジョンコントローラ・3Dシステム向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: AI processor、ラックマウント、Multi-camera。</p> <dl class="spec-list"> <div><dt>カメラ</dt><dd>最大12ストリーム</dd></div><div><dt>AI</dt><dd>産業用推論エンジン</dd></div><div><dt>ネットワーク</dt><dd>2.5GigE / PROFINET</dd></div><div><dt>ストレージ</dt><dd>2 TB option</dd></div> </dl> <div class="product-tags"><span>AIプロセッサ</span><span>ラックマウント</span><span>マルチカメラ</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-vio16.png" alt="GY-VIO16" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">ビジョンI/O拡張モジュール</div> <h3>GY-VIO16</h3> <p>ビジョンコントローラ・3Dシステム向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Trigger I/O、Encoder sync、セル配線。</p> <dl class="spec-list"> <div><dt>I/O</dt><dd>16 digital inputs / outputs</dd></div><div><dt>タイミング</dt><dd>10 us trigger path</dd></div><div><dt>ネットワーク</dt><dd>EtherCAT / Ethernet</dd></div><div><dt>保護等級</dt><dd>IP67</dd></div> </dl> <div class="product-tags"><span>トリガI/O</span><span>エンコーダ同期</span><span>セル配線</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-lc4.png" alt="GY-LC4" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">4チャンネルストロボコントローラ</div> <h3>GY-LC4</h3> <p>ビジョンコントローラ・3Dシステム向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: ストロボ制御、Recipes、複数照明。</p> <dl class="spec-list"> <div><dt>チャンネル</dt><dd>4 independent outputs</dd></div><div><dt>タイミング</dt><dd>1 us trigger resolution</dd></div><div><dt>電源</dt><dd>24 VDC</dd></div><div><dt>インターフェース</dt><dd>Ethernet / RS-485</dd></div> </dl> <div class="product-tags"><span>ストロボ制御</span><span>レシピ</span><span>複数照明</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-vfg4.png" alt="GY-VFG4" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">産業用フレームグラバー</div> <h3>GY-VFG4</h3> <p>ビジョンコントローラ・3Dシステム向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Frame grabber、Line scan、高帯域。</p> <dl class="spec-list"> <div><dt>チャンネル</dt><dd>4 camera inputs</dd></div><div><dt>バス</dt><dd>PCIe x8</dd></div><div><dt>スループット</dt><dd>最大6.4 GB/s</dd></div><div><dt>SDK</dt><dd>C / Python / .NET</dd></div> </dl> <div class="product-tags"><span>フレームグラバー</span><span>ラインスキャン</span><span>高帯域</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-images/gy-vrg200.png" alt="GY-VRG200" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">ロボットガイダンス3Dモジュール</div> <h3>GY-VRG200</h3> <p>ビジョンコントローラ・3Dシステム向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: Robot guidance、3D locate、Flexible cells。</p> <dl class="spec-list"> <div><dt>モード</dt><dd>3D + 2D acquisition</dd></div><div><dt>範囲</dt><dd>200 mm working class</dd></div><div><dt>インターフェース</dt><dd>GigE Vision + I/O</dd></div><div><dt>保護等級</dt><dd>IP65</dd></div> </dl> <div class="product-tags"><span>ロボットガイダンス</span><span>3D位置決め</span><span>フレキシブルセル</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article><article class="product-card"> <div class="product-art"><img src="/product-cutouts/generated/gy-v3d900.png" alt="GY-V3D900" loading="lazy"></div> <div class="product-body"> <div class="product-kicker">産業用3Dビジョンカメラ</div> <h3>GY-V3D900</h3> <p>ビジョンコントローラ・3Dシステム向けの業務用モデルです。産業用途での調達、評価、システム統合を前提に構成されています。 主なオプション: 3D vision、Depth、Robot cells。</p> <dl class="spec-list"> <div><dt>プロファイル</dt><dd>3Dステレオ/深度</dd></div><div><dt>範囲</dt><dd>900 mm class</dd></div><div><dt>インターフェース</dt><dd>GigE Vision</dd></div><div><dt>保護等級</dt><dd>IP65 metal</dd></div> </dl> <div class="product-tags"><span>3Dビジョン</span><span>深度</span><span>ロボットセル</span></div> <div class="product-actions"> <a href="/ja/contact-sales.html">営業に問い合わせ</a> </div> </div> </article> </div> </div></section> <section class="compare-band"><div class="container"> <span class="eyebrow">モデル比較</span> <h2>産業機器の購買・技術チーム向けに、候補機種をすばやく絞り込めます。</h2> <div class="compare-scroll"><table class="compare-table"> <thead><tr> <th>モデル</th> <th>タイプ</th> <th>主な機能</th> <th>堅牢性</th> </tr></thead> <tbody> <tr><td>GY-VC8</td><td>ビジョンコントローラ</td><td>産業用データ収集</td><td>プロジェクト依存</td></tr><tr><td>GY-V3D90</td><td>3Dプロファイルカメラ</td><td>90 mm class</td><td>IP65</td></tr><tr><td>GY-V3D150</td><td>広範囲3Dプロファイルセンサー</td><td>150 mm class</td><td>IP65</td></tr><tr><td>GY-VL2048</td><td>ラインスキャンスマートカメラ</td><td>2048 px line</td><td>産業用金属筐体</td></tr><tr><td>GY-VX12</td><td>AIビジョンプロセッサ</td><td>産業用データ収集</td><td>プロジェクト依存</td></tr><tr><td>GY-VIO16</td><td>ビジョンI/O拡張モジュール</td><td>産業用データ収集</td><td>IP67</td></tr><tr><td>GY-LC4</td><td>4チャンネルストロボコントローラ</td><td>産業用データ収集</td><td>プロジェクト依存</td></tr><tr><td>GY-VFG4</td><td>産業用フレームグラバー</td><td>産業用データ収集</td><td>プロジェクト依存</td></tr><tr><td>GY-VRG200</td><td>ロボットガイダンス3Dモジュール</td><td>200 mm working class</td><td>IP65</td></tr><tr><td>GY-V3D900</td><td>産業用3Dビジョンカメラ</td><td>900 mm class</td><td>IP65 metal</td></tr> </tbody> </table></div> </div></section> <section class="cta-band"><div class="container"><div class="cta-inner"> <div><h2>サンプル、見積、OEM仕様の相談が必要ですか？</h2><p>用途、使用環境、読み取り距離、ネットワーク要件、予定数量をお知らせください。GYUTRONが最適なハードウェア構成と評価導入の進め方をご提案します。</p></div> <a class="button button-primary" href="/ja/contact-sales.html">営業に問い合わせ <i class="fa-solid fa-arrow-right"></i></a> </div></div></section> </main>   <footer class="footer"><div class="container"><div class="footer-grid"><div><h3>GYUTRON</h3><p>モバイルデータ収集、RFID、マシンビジョン、センシング、連携自動化に対応する産業用インテリジェントハードウェア。</p></div><div><h4>製品</h4><a href="/ja/android-pda.html">Android PDA</a><a href="/ja/rfid-handhelds.html">RFIDハンドヘルド</a><a href="/ja/barcode-scanners.html">バーコードスキャナー</a><a href="/ja/request-specification.html">仕様相談</a><a href="/ja/proximity-sensors.html">センシング &amp; I/O</a><a href="/ja/area-scan-cameras.html">マシンビジョンシステム</a><a href="/ja/dimensional-gauges.html">品質・試験機器</a></div><div><h4>ソリューション</h4><a href="/ja/automated-vision-inspection.html">自動画像検査</a><a href="/ja/index.html#solutions">電子機器製造</a><a href="/ja/index.html#platform">製造インテリジェンス</a></div><div><h4>お問い合わせ</h4><a href="/ja/contact-sales.html">営業に問い合わせ</a><a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a></div></div><div class="footer-bottom"><span>© 2026 GYUTRON. 無断転載を禁じます。</span><span>自動化 / 画像処理 / イノベーション</span></div></div></footer> <script src="/mobile-navigation.js"></script> </body> </html>
