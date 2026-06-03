@@ -61,19 +61,19 @@ Product count: **84**
 | GY-CONF-Scan | request-specification | Scan-only PDA package | `product-library/transparent/gy-conf-scan.png` | `product-library/transparent/gy-conf-scan.png` | wired-live |
 | GY-CONF-RFID | request-specification | RFID inventory package | `product-library/transparent/gy-conf-rfid.png` | `product-library/transparent/gy-conf-rfid.png` | wired-live |
 | GY-CONF-DPM | request-specification | Manufacturing DPM package | `product-library/transparent/gy-conf-dpm.png` | `product-library/transparent/gy-conf-dpm.png` | wired-live |
-| GY-PX18 | proximity-sensors | Photoelectric sensor | `product-images/gy-px18.png` | `product-library/transparent/gy-px18.png` | needs-regeneration |
-| GY-PR12 | proximity-sensors | Inductive proximity sensor | `product-images/gy-pr12.png` | `product-library/transparent/gy-pr12.png` | needs-regeneration |
-| GY-FB200 | proximity-sensors | Fiber amplifier sensor | `product-images/gy-fb200.png` | `product-library/transparent/gy-fb200.png` | needs-regeneration |
-| GY-SAFE24 | proximity-sensors | Safety light curtain | `product-images/gy-safe24.png` | `product-library/transparent/gy-safe24.png` | needs-regeneration |
-| GY-PX90 | proximity-sensors | Compact photoelectric sensor | `product-cutouts/generated/gy-px90.png` | `product-library/transparent/gy-px90.png` | needs-regeneration |
-| GY-SAFE90 | proximity-sensors | Safety light curtain pair | `product-cutouts/generated/gy-safe90.png` | `product-library/transparent/gy-safe90.png` | needs-regeneration |
-| GY-LD40 | laser-measurement | Laser displacement sensor | `product-images/gy-ld40.png` | `product-library/transparent/gy-ld40.png` | needs-regeneration |
-| GY-UL80 | laser-measurement | Ultrasonic distance sensor | `product-images/gy-ul80.png` | `product-library/transparent/gy-ul80.png` | needs-regeneration |
-| GY-LD90 | laser-measurement | Laser displacement sensor | `product-cutouts/generated/gy-ld90.png` | `product-library/transparent/gy-ld90.png` | needs-regeneration |
-| GY-PS60 | environmental-sensing | Digital pressure sensor | `product-images/gy-ps60.png` | `product-library/transparent/gy-ps60.png` | needs-regeneration |
-| GY-ENV32 | environmental-sensing | Environmental sensor | `product-images/gy-env32.png` | `product-library/transparent/gy-env32.png` | needs-regeneration |
-| GY-NET8 | environmental-sensing | Sensor network hub | `product-images/gy-net8.png` | `product-library/transparent/gy-net8.png` | needs-regeneration |
-| GY-NET90 | environmental-sensing | IP67 remote I/O module | `product-cutouts/generated/gy-net90.png` | `product-library/transparent/gy-net90.png` | needs-regeneration |
+| GY-PX18 | proximity-sensors | Photoelectric sensor | `product-library/transparent/gy-px18.png` | `product-library/transparent/gy-px18.png` | wired-live |
+| GY-PR12 | proximity-sensors | Inductive proximity sensor | `product-library/transparent/gy-pr12.png` | `product-library/transparent/gy-pr12.png` | wired-live |
+| GY-FB200 | proximity-sensors | Fiber amplifier sensor | `product-library/transparent/gy-fb200.png` | `product-library/transparent/gy-fb200.png` | wired-live |
+| GY-SAFE24 | proximity-sensors | Safety light curtain | `product-library/transparent/gy-safe24.png` | `product-library/transparent/gy-safe24.png` | wired-live |
+| GY-PX90 | proximity-sensors | Compact photoelectric sensor | `product-library/transparent/gy-px90.png` | `product-library/transparent/gy-px90.png` | wired-live |
+| GY-SAFE90 | proximity-sensors | Safety light curtain pair | `product-library/transparent/gy-safe90.png` | `product-library/transparent/gy-safe90.png` | wired-live |
+| GY-LD40 | laser-measurement | Laser displacement sensor | `product-library/transparent/gy-ld40.png` | `product-library/transparent/gy-ld40.png` | wired-live |
+| GY-UL80 | laser-measurement | Ultrasonic distance sensor | `product-library/transparent/gy-ul80.png` | `product-library/transparent/gy-ul80.png` | wired-live |
+| GY-LD90 | laser-measurement | Laser displacement sensor | `product-library/transparent/gy-ld90.png` | `product-library/transparent/gy-ld90.png` | wired-live |
+| GY-PS60 | environmental-sensing | Digital pressure sensor | `product-library/transparent/gy-ps60.png` | `product-library/transparent/gy-ps60.png` | wired-live |
+| GY-ENV32 | environmental-sensing | Environmental sensor | `product-library/transparent/gy-env32.png` | `product-library/transparent/gy-env32.png` | wired-live |
+| GY-NET8 | environmental-sensing | Sensor network hub | `product-library/transparent/gy-net8.png` | `product-library/transparent/gy-net8.png` | wired-live |
+| GY-NET90 | environmental-sensing | IP67 remote I/O module | `product-library/transparent/gy-net90.png` | `product-library/transparent/gy-net90.png` | wired-live |
 | GY-V120 | area-scan-cameras | Compact smart camera | `product-images/gy-v120.png` | `product-library/transparent/gy-v120.png` | needs-regeneration |
 | GY-V160 Compact | area-scan-cameras | Compact area scan camera | `product-images/gy-v160-compact.png` | `product-library/transparent/gy-v160-compact.png` | needs-regeneration |
 | GY-V240 Color | area-scan-cameras | Color inspection camera | `product-images/gy-v240-color.png` | `product-library/transparent/gy-v240-color.png` | needs-regeneration |

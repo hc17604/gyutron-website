@@ -278,7 +278,7 @@ const GYUTRON_PRODUCTS = {
                 type: "光電センサー",
                 summary: "コンベア検出、部品在荷、一般的な機械自動化チェック向けのコンパクト光電センサー。",
                 kind: "sensor",
-                image: "product-images/gy-px18.png",
+                image: "product-library/transparent/gy-px18.png",
                 specs: { Detection: "Diffuse / retroreflective", Range: "20 mm to 2.5 m", Output: "PNP / NPN", Housing: "IP67 compact" },
                 tags: ["白色光", "M12 cable", "かんたん設定"]
             },
@@ -287,7 +287,7 @@ const GYUTRON_PRODUCTS = {
                 type: "誘導形近接センサー",
                 summary: "治具、インデックステーブル、シリンダー、工具、過酷な機械位置での金属検出。",
                 kind: "sensor",
-                image: "product-images/gy-pr12.png",
+                image: "product-library/transparent/gy-pr12.png",
                 specs: { Detection: "Ferrous / non-ferrous", Range: "2 to 8 mm", Output: "PNP / NPN", Housing: "M12 stainless IP67" },
                 tags: ["埋込取付", "高い繰返し精度", "工作機械"]
             },
@@ -296,7 +296,7 @@ const GYUTRON_PRODUCTS = {
                 type: "レーザー変位センサー",
                 summary: "位置チェック、ギャップ検査、在荷確認向けの非接触距離・高さ測定。",
                 kind: "sensor",
-                image: "product-images/gy-ld40.png",
+                image: "product-library/transparent/gy-ld40.png",
                 specs: { Measurement: "40 mm class", Resolution: "10 um", Output: "IO-Link / analog", Housing: "IP67 metal" },
                 tags: ["レーザー位置決め", "アナログ出力", "ギャップ確認"]
             },
@@ -305,7 +305,7 @@ const GYUTRON_PRODUCTS = {
                 type: "ファイバアンプセンサー",
                 summary: "狭小スペース、透明体、小部品、難しい取付条件に対応する柔軟なファイバセンシング。",
                 kind: "sensor",
-                image: "product-images/gy-fb200.png",
+                image: "product-library/transparent/gy-fb200.png",
                 specs: { Channels: "Single / dual", Response: "80 us", Output: "PNP / NPN", Display: "Dual digital" },
                 tags: ["Fiber head", "微小ワーク", "ティーチボタン"]
             },
@@ -314,7 +314,7 @@ const GYUTRON_PRODUCTS = {
                 type: "デジタル圧力センサー",
                 summary: "空圧ライン、真空吸着システム、リークチェック、プロセス機器向けのコンパクトな圧力監視。",
                 kind: "sensor",
-                image: "product-images/gy-ps60.png",
+                image: "product-library/transparent/gy-ps60.png",
                 specs: { Range: "-100 to 1000 kPa", Display: "3-color OLED", Output: "2 x switch + analog", Housing: "IP65" },
                 tags: ["Vacuum", "Pneumatics", "Panel mount"]
             },
@@ -323,7 +323,7 @@ const GYUTRON_PRODUCTS = {
                 type: "環境センサー",
                 summary: "設備の稼働率に影響する温度・湿度・振動・盤内環境を監視。",
                 kind: "sensor",
-                image: "product-images/gy-env32.png",
+                image: "product-library/transparent/gy-env32.png",
                 specs: { Inputs: "Temp / RH / vibration", Network: "RS-485 / IO-Link", Power: "12-24 VDC", Housing: "IP54" },
                 tags: ["制御盤状態", "状態データ", "Modbus"]
             },
@@ -332,7 +332,7 @@ const GYUTRON_PRODUCTS = {
                 type: "超音波距離センサー",
                 summary: "レベル、ループ制御、光学センサーが苦手な不定形ターゲット向けの非接触センシング。",
                 kind: "sensor",
-                image: "product-images/gy-ul80.png",
+                image: "product-library/transparent/gy-ul80.png",
                 specs: { Range: "80 to 1200 mm", Output: "Analog + switch", Beam: "Narrow cone", Housing: "IP67" },
                 tags: ["レベル", "透明体", "粉じん耐性"]
             },
@@ -341,7 +341,7 @@ const GYUTRON_PRODUCTS = {
                 type: "セーフティライトカーテン",
                 summary: "機械開口部、ロボットステーション、作業者アクセス箇所の防護センシング。",
                 kind: "sensor",
-                image: "product-images/gy-safe24.png",
+                image: "product-library/transparent/gy-safe24.png",
                 specs: { Resolution: "24 mm", Height: "300 to 1200 mm", Safety: "タイプ 4 / PL e", Housing: "IP65 aluminum" },
                 tags: ["機械安全", "Muting option", "位置合わせ支援"]
             },
@@ -350,7 +350,7 @@ const GYUTRON_PRODUCTS = {
                 type: "センサーネットワークハブ",
                 summary: "分散センサーを産業ネットワークに接続し、診断と配線を簡素化。",
                 kind: "sensor",
-                image: "product-images/gy-net8.png",
+                image: "product-library/transparent/gy-net8.png",
                 specs: { Ports: "8 x M12 IO-Link", Network: "EtherNet/IP / PROFINET", Power: "24 VDC", Housing: "IP67" },
                 tags: ["IO-Link", "診断", "IP67 hub"]
             }
@@ -360,7 +360,7 @@ const GYUTRON_PRODUCTS = {
                 type: "コンパクト光電センサー",
                 summary: "コンベア・治具・部品検出やコンパクト機構向けの高速応答型 在荷検出センサー。",
                 kind: "sensor",
-                image: "product-cutouts/generated/gy-px90.png",
+                image: "product-library/transparent/gy-px90.png",
                 specs: { Detection: "Diffuse / retroreflective", Range: "30 mm to 3 m", Output: "PNP / NPN", Housing: "IP67 compact" },
                 tags: ["Presence", "M12", "Fast setup"]
             }
@@ -370,7 +370,7 @@ const GYUTRON_PRODUCTS = {
                 type: "レーザー変位センサー",
                 summary: "インライン検査・位置合わせ・レベル・機械フィードバック向けの非接触 位置/ギャップセンサー。",
                 kind: "sensor",
-                image: "product-cutouts/generated/gy-ld90.png",
+                image: "product-library/transparent/gy-ld90.png",
                 specs: { Measurement: "90 mm class", Resolution: "5 um", Output: "IO-Link / analog", Housing: "IP67 metal" },
                 tags: ["Laser", "Position", "IO-Link"]
             }
@@ -380,7 +380,7 @@ const GYUTRON_PRODUCTS = {
                 type: "セーフティライトカーテン(ペア)",
                 summary: "ワークセル・治具・機械開口部・作業者保護向けのスリムな防護用ライトカーテン。",
                 kind: "safety",
-                image: "product-cutouts/generated/gy-safe90.png",
+                image: "product-library/transparent/gy-safe90.png",
                 specs: { Resolution: "14 / 30 mm", Height: "300 to 1500 mm", Safety: "Type 4 / PL e", Housing: "IP65 aluminum" },
                 tags: ["Machine safety", "Slim body", "Type 4"]
             }
@@ -390,7 +390,7 @@ const GYUTRON_PRODUCTS = {
                 type: "IP67リモートI/Oモジュール",
                 summary: "センサー・アクチュエータ・ワークセル・盤レス配線に対応する堅牢な分散I/Oブロック。",
                 kind: "io",
-                image: "product-cutouts/generated/gy-net90.png",
+                image: "product-library/transparent/gy-net90.png",
                 specs: { Ports: "8 x M12 IO-Link", Network: "PROFINET / EtherNet/IP", Power: "24 VDC", Housing: "IP67 metal" },
                 tags: ["Remote I/O", "IO-Link", "IP67"]
             }

@@ -278,7 +278,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Lichttaster",
                 summary: "Kompakter Lichttaster für Förderbanderkennung, Teilepräsenz und allgemeine Maschinenautomatisierung.",
                 kind: "sensor",
-                image: "product-images/gy-px18.png",
+                image: "product-library/transparent/gy-px18.png",
                 specs: { Detection: "Diffuse / retroreflective", Range: "20 mm to 2.5 m", Output: "PNP / NPN", Housing: "IP67 compact" },
                 tags: ["Weißlicht", "M12 cable", "Schnelle Einrichtung"]
             },
@@ -287,7 +287,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Induktiver Näherungssensor",
                 summary: "Metallerkennung für Vorrichtungen, Rundschalttische, Zylinder, Werkzeuge und raue Maschinenpositionen.",
                 kind: "sensor",
-                image: "product-images/gy-pr12.png",
+                image: "product-library/transparent/gy-pr12.png",
                 specs: { Detection: "Ferrous / non-ferrous", Range: "2 to 8 mm", Output: "PNP / NPN", Housing: "M12 stainless IP67" },
                 tags: ["Bündige Montage", "Hohe Wiederholgenauigkeit", "Werkzeugmaschinen"]
             },
@@ -296,7 +296,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Laser-Wegsensor",
                 summary: "Berührungslose Abstands- und Höhenmessung für Positionsprüfung, Spaltkontrolle und Anwesenheitserkennung.",
                 kind: "sensor",
-                image: "product-images/gy-ld40.png",
+                image: "product-library/transparent/gy-ld40.png",
                 specs: { Measurement: "40 mm class", Resolution: "10 um", Output: "IO-Link / analog", Housing: "IP67 metal" },
                 tags: ["Laserposition", "Analogausgang", "Spaltprüfung"]
             },
@@ -305,7 +305,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Faserverstärker-Sensor",
                 summary: "Flexible Faser-Sensorik für enge Räume, transparente Objekte, Kleinteile und schwierige Montagebedingungen.",
                 kind: "sensor",
-                image: "product-images/gy-fb200.png",
+                image: "product-library/transparent/gy-fb200.png",
                 specs: { Channels: "Single / dual", Response: "80 us", Output: "PNP / NPN", Display: "Dual digital" },
                 tags: ["Fiber head", "Kleine Zielobjekte", "Teach-Taste"]
             },
@@ -314,7 +314,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Digitaler Drucksensor",
                 summary: "Kompakte Drucküberwachung für Pneumatikleitungen, Vakuum-Greifsysteme, Lecksuche und Prozessanlagen.",
                 kind: "sensor",
-                image: "product-images/gy-ps60.png",
+                image: "product-library/transparent/gy-ps60.png",
                 specs: { Range: "-100 to 1000 kPa", Display: "3-color OLED", Output: "2 x switch + analog", Housing: "IP65" },
                 tags: ["Vacuum", "Pneumatics", "Panel mount"]
             },
@@ -323,7 +323,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Umgebungssensor",
                 summary: "Überwacht Temperatur, Feuchte, Vibration und Schaltschrankbedingungen, die die Anlagenverfügbarkeit beeinflussen.",
                 kind: "sensor",
-                image: "product-images/gy-env32.png",
+                image: "product-library/transparent/gy-env32.png",
                 specs: { Inputs: "Temp / RH / vibration", Network: "RS-485 / IO-Link", Power: "12-24 VDC", Housing: "IP54" },
                 tags: ["Schaltschrankzustand", "Zustandsdaten", "Modbus"]
             },
@@ -332,7 +332,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Ultraschall-Abstandssensor",
                 summary: "Berührungslose Erfassung für Füllstand, Regelkreise und unregelmäßige Ziele, an denen optische Sensoren scheitern.",
                 kind: "sensor",
-                image: "product-images/gy-ul80.png",
+                image: "product-library/transparent/gy-ul80.png",
                 specs: { Range: "80 to 1200 mm", Output: "Analog + switch", Beam: "Narrow cone", Housing: "IP67" },
                 tags: ["Füllstand", "Transparente Objekte", "Staubtolerant"]
             },
@@ -341,7 +341,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Sicherheitslichtvorhang",
                 summary: "Schutzsensorik für Maschinenöffnungen, Roboterstationen und Bedienerzugänge.",
                 kind: "sensor",
-                image: "product-images/gy-safe24.png",
+                image: "product-library/transparent/gy-safe24.png",
                 specs: { Resolution: "24 mm", Height: "300 to 1200 mm", Safety: "Typ 4 / PL e", Housing: "IP65 aluminum" },
                 tags: ["Maschinensicherheit", "Muting option", "Ausrichthilfe"]
             },
@@ -350,7 +350,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Sensor-Netzwerk-Hub",
                 summary: "Verbindet verteilte Sensoren mit Industrienetzwerken und vereinfacht Diagnose und Verdrahtung.",
                 kind: "sensor",
-                image: "product-images/gy-net8.png",
+                image: "product-library/transparent/gy-net8.png",
                 specs: { Ports: "8 x M12 IO-Link", Network: "EtherNet/IP / PROFINET", Power: "24 VDC", Housing: "IP67" },
                 tags: ["IO-Link", "Diagnose", "IP67 hub"]
             }
@@ -360,7 +360,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Kompakter Lichttaster",
                 summary: "Schneller Praesenzsensor fuer Foerderer, Vorrichtungen, Teileerkennung und kompakte Maschinen.",
                 kind: "sensor",
-                image: "product-cutouts/generated/gy-px90.png",
+                image: "product-library/transparent/gy-px90.png",
                 specs: { Detection: "Diffuse / retroreflective", Range: "30 mm to 3 m", Output: "PNP / NPN", Housing: "IP67 compact" },
                 tags: ["Presence", "M12", "Fast setup"]
             }
@@ -370,7 +370,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Laser-Wegsensor",
                 summary: "Beruehrungsloser Positions- und Spaltsensor fuer Inline-Pruefung, Ausrichtung, Niveau und Maschinenfeedback.",
                 kind: "sensor",
-                image: "product-cutouts/generated/gy-ld90.png",
+                image: "product-library/transparent/gy-ld90.png",
                 specs: { Measurement: "90 mm class", Resolution: "5 um", Output: "IO-Link / analog", Housing: "IP67 metal" },
                 tags: ["Laser", "Position", "IO-Link"]
             }
@@ -380,7 +380,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Sicherheits-Lichtvorhang-Paar",
                 summary: "Schlanker Lichtvorhang fuer Arbeitszellen, Vorrichtungen, Maschinenoeffnungen und Bedienerschutz.",
                 kind: "safety",
-                image: "product-cutouts/generated/gy-safe90.png",
+                image: "product-library/transparent/gy-safe90.png",
                 specs: { Resolution: "14 / 30 mm", Height: "300 to 1500 mm", Safety: "Type 4 / PL e", Housing: "IP65 aluminum" },
                 tags: ["Machine safety", "Slim body", "Type 4"]
             }
@@ -390,7 +390,7 @@ const GYUTRON_PRODUCTS = {
                 type: "IP67-Remote-I/O-Modul",
                 summary: "Robuster verteilter I/O-Block fuer Sensoren, Aktoren, Arbeitszellen und schaltschrankarme Verdrahtung.",
                 kind: "io",
-                image: "product-cutouts/generated/gy-net90.png",
+                image: "product-library/transparent/gy-net90.png",
                 specs: { Ports: "8 x M12 IO-Link", Network: "PROFINET / EtherNet/IP", Power: "24 VDC", Housing: "IP67 metal" },
                 tags: ["Remote I/O", "IO-Link", "IP67"]
             }

@@ -313,5 +313,174 @@
       "direction": "wired",
       "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
     }
+  },
+  "gy-px18": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-px18.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-px18-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-px18-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-pr12": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-pr12.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-pr12-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-pr12-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-fb200": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-fb200.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-fb200-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-fb200-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-safe24": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-safe24.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-safe24-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-safe24-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-px90": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-px90.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-px90-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-px90-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-safe90": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-safe90.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-safe90-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-safe90-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-ld40": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-ld40.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ld40-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ld40-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-ul80": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-ul80.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ul80-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ul80-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-ld90": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-ld90.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ld90-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ld90-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-ps60": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-ps60.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ps60-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ps60-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-env32": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-env32.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-env32-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-env32-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-net8": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-net8.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-net8-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-net8-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
+  },
+  "gy-net90": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-net90.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-net90-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-net90-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+    }
   }
 }
