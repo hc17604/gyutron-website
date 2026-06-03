@@ -5,60 +5,110 @@ import SupportPage from '../../components/SupportPage.astro';
   locale="en"
   path="/support/faq.html"
   title="FAQ | GYUTRON Support"
-  description="Frequently asked questions about GYUTRON industrial hardware — products, interfaces, customization, samples, lead times, certifications, integration support, shipping and warranty."
+  description="Frequently asked questions about GYUTRON industrial hardware — products and compatibility, samples and quotations, shipping and lead time, warranty and after-sales, and documentation and integration for B2B customers and system integrators."
   eyebrow="Help & Support"
   heading="Frequently Asked Questions"
   crumb="FAQ"
-  intro="Answers to the questions we hear most often from manufacturers, system integrators and B2B buyers."
+  intro="Answers to the questions we hear most often from manufacturers, system integrators and B2B buyers — grouped by topic."
+  heroImage="/product-vision-cell.png"
 >
+  <h2>Products &amp; Compatibility</h2>
   <div class="support-faq">
     <details>
-      <summary>What products does GYUTRON offer?</summary>
-      <p>GYUTRON supplies industrial intelligent hardware: machine-vision and code-reading cameras, smart vision sensors, proximity and environmental sensors, rugged Android PDAs and RFID handhelds, barcode scanners, dimensional gauges and measurement instruments, plus related automation components — for global manufacturers and system integrators.</p>
+      <summary>What products does GYUTRON provide?</summary>
+      <p>GYUTRON supplies industrial intelligent hardware: machine-vision and code-reading cameras, smart vision sensors, proximity and environmental sensors, rugged Android PDAs and RFID handhelds, barcode scanners, dimensional gauges and measurement instruments, plus related automation components — for manufacturers and system integrators worldwide.</p>
     </details>
     <details>
-      <summary>Do you offer OEM / ODM and customization?</summary>
-      <p>Yes. For qualified volume programs we support custom configurations, firmware, housings, connectors and private labeling. Share your specification and target quantity with our sales engineering team to scope a solution.</p>
+      <summary>Can GYUTRON help match products to my application?</summary>
+      <p>Yes. Share your application, operating environment, target throughput and interface requirements with our sales-engineering team and we will recommend a suitable configuration rather than just a part number.</p>
     </details>
     <details>
-      <summary>Which interfaces and protocols are supported?</summary>
-      <p>Depending on the product line: GigE Vision, USB3, RS-232/485, IO-Link and digital I/O for vision and sensing devices; Android-based rugged handhelds with Wi-Fi, cellular and Bluetooth. Devices integrate via standard SDKs and common industrial protocols. Exact interfaces are listed on each product datasheet.</p>
+      <summary>Do you support OEM or ODM projects?</summary>
+      <p>Yes. For qualified volume programs we support custom configurations, firmware, housings, connectors and private labeling. Share your specification and target quantity to scope a solution.</p>
     </details>
     <details>
-      <summary>Can I request a sample or evaluation unit?</summary>
+      <summary>Are your products suitable for industrial environments?</summary>
+      <p>Our hardware is designed for industrial use, with IP-rated housings on applicable models and ratings stated per product. Confirm the specific environmental and ingress rating for your conditions on the product datasheet or with our team.</p>
+    </details>
+  </div>
+
+  <h2>Samples &amp; Quotation</h2>
+  <div class="support-faq">
+    <details>
+      <summary>Can I request samples or evaluation units?</summary>
       <p>Evaluation units are available for qualified projects. Tell us about your application, interface and expected volume through <a href="/contact-sales.html">Contact Sales</a> and we will advise on availability.</p>
     </details>
     <details>
-      <summary>What are typical lead times?</summary>
-      <p>In-stock items ship promptly; configured or made-to-order items depend on the options and quantity. Confirmed lead times are provided with each quotation.</p>
+      <summary>How do I request a quotation?</summary>
+      <p>Send the product model(s), quantity and target date through <a href="/contact-sales.html">Contact Sales</a> and our team will prepare a quotation.</p>
     </details>
     <details>
-      <summary>Do you provide SDKs, drivers and integration support?</summary>
-      <p>Yes. We provide the SDKs and drivers required for integration and offer application-engineering assistance to help you bring a device into your platform or line.</p>
+      <summary>What information should I provide for a quote?</summary>
+      <p>Product model or application description, quantity, required interface/configuration, target delivery date and destination country/region. The more detail you provide, the more accurate the quotation.</p>
     </details>
     <details>
-      <summary>What certifications do your products carry?</summary>
-      <p>Depending on the model, products may carry CE, FCC and RoHS, and use IP-rated housings (for example IP65 / IP67) for industrial environments. Specific certifications and ratings are stated on each product datasheet.</p>
+      <summary>Is there a minimum order quantity?</summary>
+      <p>Minimums depend on the product line and configuration and are confirmed in the applicable quotation. We work with both pilot/evaluation volumes and series production.</p>
     </details>
-    <details>
-      <summary>How do I get a quotation?</summary>
-      <p>Send the product model(s), quantity and target date through <a href="/contact-sales.html">Contact Sales</a>, and our team will prepare a quotation.</p>
-    </details>
+  </div>
+
+  <h2>Shipping &amp; Lead Time</h2>
+  <div class="support-faq">
     <details>
       <summary>Do you ship internationally?</summary>
-      <p>Yes — we ship worldwide from Hong Kong and Shenzhen. See <a href="/support/shipping-delivery.html">Shipping &amp; Delivery</a> for incoterms, customs and lead-time details.</p>
+      <p>Yes — we ship worldwide. Shipments are arranged from Hong Kong, Shenzhen or supplier warehouses depending on product availability and project requirements. See <a href="/support/shipping-delivery.html">Shipping &amp; Delivery</a>.</p>
     </details>
     <details>
-      <summary>What warranty do you provide?</summary>
-      <p>GYUTRON hardware carries a limited warranty against defects in materials and workmanship. See the <a href="/support/warranty.html">Warranty</a> page for coverage, exclusions and the RMA process.</p>
+      <summary>What is the typical lead time?</summary>
+      <p>In-stock items are dispatched promptly; configured or made-to-order items depend on options and quantity. Confirmed lead times are provided with each quotation.</p>
     </details>
     <details>
-      <summary>Where do I get datasheets, firmware and manuals?</summary>
-      <p>Contact your sales engineer or <a href="mailto:info@gyutron.com">info@gyutron.com</a> for documentation, firmware and manuals. A self-service Downloads area is being expanded.</p>
+      <summary>Which Incoterms do you support?</summary>
+      <p>International shipments are arranged under agreed Incoterms such as EXW, FOB or DAP, confirmed on the order. For larger orders we can coordinate with your nominated freight forwarder.</p>
     </details>
     <details>
-      <summary>Do you offer after-sales service and repair?</summary>
-      <p>Yes. After-sales service and repair are handled through our RMA process — start by <a href="/support.html">contacting support</a> with the product model, serial number and a description of the issue.</p>
+      <summary>Can you arrange partial shipments?</summary>
+      <p>Yes. For multi-line orders we can ship available items first rather than holding the entire order for one line, as agreed on the order.</p>
+    </details>
+  </div>
+
+  <h2>Warranty &amp; After-sales</h2>
+  <div class="support-faq">
+    <details>
+      <summary>What warranty does GYUTRON provide?</summary>
+      <p>GYUTRON hardware carries a limited warranty against defects in materials and workmanship. Coverage may vary by product category and project agreement; the applicable terms are confirmed in your quotation, order confirmation or written agreement. See the <a href="/support/warranty.html">Warranty</a> page.</p>
+    </details>
+    <details>
+      <summary>What is not covered under warranty?</summary>
+      <p>Typical exclusions include misuse, improper installation, operation outside published specifications, unauthorized modification or repair, accidental or liquid damage beyond the rated protection, and consumable or wear parts. See the <a href="/support/warranty.html">Warranty</a> page for details.</p>
+    </details>
+    <details>
+      <summary>How do I request after-sales support?</summary>
+      <p>Start by <a href="/support.html">contacting support</a> with the product model, serial number and a description of the issue. Eligible cases are handled through our RMA process.</p>
+    </details>
+    <details>
+      <summary>Do you provide repair or replacement service?</summary>
+      <p>Yes. In-warranty defects are repaired or replaced at GYUTRON's discretion; paid repair and service are available for out-of-warranty units.</p>
+    </details>
+  </div>
+
+  <h2>Documentation &amp; Integration</h2>
+  <div class="support-faq">
+    <details>
+      <summary>Can you provide datasheets and technical documents?</summary>
+      <p>Yes. Datasheets, manuals and technical documentation are available from your sales engineer or <a href="mailto:info@gyutron.com">info@gyutron.com</a>. A self-service Downloads area is being expanded.</p>
+    </details>
+    <details>
+      <summary>Do your products support SDKs or integration guides?</summary>
+      <p>Yes. We provide the SDKs, drivers and integration guidance required to bring a device into your platform, line or host application.</p>
+    </details>
+    <details>
+      <summary>Can GYUTRON support system integrators?</summary>
+      <p>Yes. We work with system integrators and machine builders and can support specification, sample evaluation and integration for project-based deployments.</p>
+    </details>
+    <details>
+      <summary>Can you help evaluate a machine-vision or automation project?</summary>
+      <p>Yes. Our application engineers can help assess feasibility, recommend hardware and define an integration approach for vision-inspection, identification and automation projects.</p>
     </details>
   </div>
 </SupportPage>

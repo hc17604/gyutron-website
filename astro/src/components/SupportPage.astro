@@ -12,8 +12,12 @@ interface Props {
   intro?: string;       // hero sub-paragraph
   crumb: string;        // breadcrumb leaf label
   updated?: string;     // optional "Last updated ..." line
+  heroImage?: string;   // optional industrial background image (absolute path, e.g. "/product-vision-cell.png")
 }
-const { locale, path, title, description, eyebrow = 'Help & Support', heading, intro, crumb, updated } = Astro.props;
+const { locale, path, title, description, eyebrow = 'Help & Support', heading, intro, crumb, updated, heroImage } = Astro.props;
+const heroStyle = heroImage
+  ? `background-image: linear-gradient(118deg, rgba(4,5,8,0.96) 0%, rgba(18,5,31,0.9) 50%, rgba(27,11,46,0.84) 100%), url('${heroImage}'); background-size: cover; background-position: center;`
+  : undefined;
 ---
 <Layout
   locale={locale}
@@ -23,7 +27,7 @@ const { locale, path, title, description, eyebrow = 'Help & Support', heading, i
   pageCss={["/product-page.css", "/support-page.css", "/mobile-navigation.css"]}
 >
   <main class="support-page">
-    <section class="support-hero">
+    <section class="support-hero" style={heroStyle}>
       <div class="container">
         <nav class="support-crumbs" aria-label="Breadcrumb">
           <a href={localizeUrl(locale, "/index.html")}>Home</a> / <span>{crumb}</span>
