@@ -6,6 +6,7 @@
 > - **Deploy** = `cd astro && npx astro build` → copy changed `astro/dist/*` into `public/` → commit `astro/`+`public/` → push (Cloudflare auto-serves `public/`).
 > - **shop.gyutron.com is out of scope** — never touch `public/shop`, `public/de/shop`, `public/ja/shop`.
 > - **Write de/ja TEXT as UTF-8.** Never write Japanese/German via a Python process without `PYTHONUTF8=1` (`PYTHONIOENCODING=utf-8`) — it silently turns the characters into `?` (mojibake). Edit `astro/src/i18n/{de,ja}.json` and `astro/src/data/products.{de,ja}.js` directly as UTF-8; after ANY de/ja data change, run `grep -nP '\?{4,}' astro/src/data/products.ja.js` (and de) — it MUST be empty.
+> - **After ANY `products.*.js` change, run `python tools/i18n-audit.py`** (exit 0 = de+ja fully localized; it catches untranslated / partial-English / mojibake fields and renamed model names). **Translate `type`/`summary` + the category fields (eyebrow/title/navLabel/panelMetric/panelText/sectionIntro) to de+ja; NEVER translate a product model NAME** — keep it brand-invariant (e.g. `GY-CR720 Conveyor` in ALL locales, and the `getProductsByName([...])` refs must match exactly).
 >
 > The rules below about navigation structure, brand/logo, responsive breakpoints, store/shop conventions, product-catalog consistency, micro-interactions, and Cloudflare routing are STILL VALID.
 
