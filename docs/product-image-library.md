@@ -9,7 +9,7 @@ Product count: **84**
 - Every product gets one independent maintainable transparent PNG, not a baked product matrix.
 - Final production images must be PNG with alpha transparency and transparent corners.
 - Use device accent purple #4b2e83 for physical trims/buttons/rings/panels; #8a63d2 is UI-only.
-- Use consistent 3/4 technical product direction inside each visual family.
+- Use a consistent XYZ direction-angle template inside each visual family; do not over-constrain product proportions or local feature geometry.
 - No in-image text, no watermarks, no fake logos, no repeated generic products for different models.
 - If chroma key is used, keep source background flat #00ff00 with no shadows/gradients, then remove locally.
 
@@ -17,9 +17,9 @@ Product count: **84**
 
 | Category | Count | Visual family | Direction |
 |---|---:|---|---|
-| android-pda | 8 | rugged-mobile-computers | locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline |
-| rfid-handhelds | 5 | rfid-handheld-readers | locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible |
-| barcode-scanners | 8 | barcode-scanners | locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns |
+| android-pda | 8 | rugged-mobile-computers | locked PDA family XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; do not flip, randomly rotate, or change lean/camera-side angle |
+| rfid-handhelds | 5 | rfid-handheld-readers | locked handheld RFID XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; antenna/handle geometry may vary |
+| barcode-scanners | 8 | barcode-scanners | locked barcode-scanner XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across handheld scanner SKUs |
 | request-specification | 3 | configuration-kits | organized kit composition, 3/4 product view with accessories grouped cleanly |
 | proximity-sensors | 6 | presence-and-safety-sensors | 3/4 technical product view, connector and sensing face visible |
 | laser-measurement | 3 | distance-position-sensors | 3/4 front view, laser aperture or ultrasonic face visible |

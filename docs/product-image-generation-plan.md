@@ -7,7 +7,7 @@ Use `docs/product-image-library.json` as the source of truth. This plan defines 
 - Generate one independent image per model. Never create one baked matrix that contains multiple products.
 - Final production asset: PNG with alpha transparency, transparent corners, no background, no cast shadow, no contact shadow, no text, no watermark.
 - Physical device accents must use GYUTRON logo purple `#4b2e83`. Do not use blue-purple, pink-purple, neon purple, or UI purple `#8a63d2` on the product itself.
-- Keep product direction consistent inside each visual family. This is a hard QA gate: same camera position, same visible side, same receding top/bottom direction, same tilt family, same subject baseline, and comparable product scale. Do not batch-generate a product family until one approved direction template exists for that family.
+- Keep product direction consistent inside each visual family. This is a hard QA gate for the product/camera XYZ rotation angles only: the same family must not randomly rotate, flip, lean, or change camera-side angle between SKUs. Do not over-constrain front-face ratio, side thickness, top scanner shape, exact baseline, or product proportions; those may vary by model. Do not batch-generate a product family until one approved XYZ direction-angle template exists for that family.
 - Avoid fake details that imply unavailable products. If a model is shown on the website, it must look like a plausible sellable SKU in its category.
 - Keep all chroma-key source files under `asset-workbench/product-images/chroma/`; final reusable transparent files go under `astro/public/product-library/transparent/`.
 
@@ -30,12 +30,12 @@ Use these brands only as broad form-language references, never as direct copies:
 
 ## Direction Lock Rules
 
-For a product family, choose one approved direction template first, then keep it across every model in that family.
+For a product family, choose one approved XYZ direction-angle template first, then keep that 3D orientation across every model in that family.
 
-- **Rugged PDA / RFID / handheld scanners:** portrait product, upright vertical body, 3/4 front view, screen or scan face visible, the same side edge visible across all models, top edge receding in the same direction, no random rotation changes between SKUs.
-- **Machine vision cameras / fixed readers:** landscape cube/body, front lens or optical window visible, same right/left side visibility across the family, consistent lens-facing angle.
-- **Sensors / I/O modules:** connector/sensing face visible with the same 3/4 technical direction; do not alternate between front-left and front-right views inside one category.
-- **Lighting / instruments / metrology:** consistent front 3/4 bench/catalog view and consistent product baseline.
+- **Rugged PDA / RFID / handheld scanners:** lock the same X/Y/Z orientation angle as the approved reference for the family. A PDA, RFID handle, or scan gun can have different thickness, handle, antenna, keypad, screen size, and scanner-window geometry, but it must not flip sides or use a different 3D rotation angle.
+- **Machine vision cameras / fixed readers:** lock the same lens-facing X/Y/Z angle for the family. Body depth, lens size, heatsink, port layout, and mounting geometry can vary by model.
+- **Sensors / I/O modules:** lock the same technical catalog X/Y/Z angle for the family. Connector length, sensing face size, display/port layout, and housing shape can vary.
+- **Lighting / instruments / metrology:** lock the same bench/catalog X/Y/Z angle for the family. Product scale and base geometry can vary when the actual device type requires it.
 
 Rejected direction examples must be archived under `asset-workbench/product-images/rejected/` and marked in `docs/product-image-status.json`; do not leave rejected images in `astro/public/product-library/transparent/` or `public/product-library/transparent/`.
 
@@ -75,12 +75,12 @@ Primary request: Create a realistic industrial product render for <MODEL>, <TYPE
 Scene/backdrop: perfectly flat solid #00ff00 chroma-key background only, no floor, no shadow, no reflection.
 Subject: <PROMPT_SEED_FROM_LIBRARY>
 Style/medium: premium industrial hardware product render, plausible B2B automation device, not toy-like, not consumer electronics.
-Composition/framing: consistent centered 3/4 technical product view, generous padding, product fills most of the canvas without clipping.
+Composition/framing: consistent centered technical product view using the approved XYZ direction-angle template for this visual family; generous padding, product fills most of the canvas without clipping.
 Lighting/mood: clean studio lighting on the object only, crisp edges, no baked rim light.
 Color palette: matte black / graphite body, physical accents exactly GYUTRON logo purple #4b2e83.
 Materials/textures: rugged rubber, satin anodized metal, glass display or optical window where applicable, practical screws/ports/mounting geometry.
 Constraints: no text, no logo, no watermark, no background details, no cast shadow, no contact shadow, no #00ff00 anywhere on the product.
-Avoid: blue-purple, pink-purple, neon purple, UI purple #8a63d2 on device accents, inconsistent angle, switching visible side, switching top-edge receding direction, duplicate-looking products across different models.
+Avoid: blue-purple, pink-purple, neon purple, UI purple #8a63d2 on device accents, inconsistent XYZ rotation angle, flipped product orientation, random lean/camera-angle changes between models, duplicate-looking products across different models.
 ```
 
 ## QA Checklist
@@ -89,7 +89,7 @@ Avoid: blue-purple, pink-purple, neon purple, UI purple #8a63d2 on device accent
 - No green fringe remains after chroma removal.
 - The product accent color visually matches logo purple `#4b2e83`.
 - The product can sit on white, light gray, and near-black backgrounds without halo.
-- Product scale and direction match the rest of the same visual family.
-- Direction matches the approved family template exactly enough for a catalog grid: same visible side and same receding direction.
+- Product direction angle matches the rest of the same visual family.
+- Direction matches the approved family XYZ rotation-angle template closely enough for a catalog grid; do not reject solely because side thickness, screen/window details, handle shape, or exact product scale differ by model.
 - Design is plausible for its category and model specs.
 - The model is independently replaceable without regenerating a full matrix.

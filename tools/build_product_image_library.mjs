@@ -16,18 +16,18 @@ const BRAND = {
 const CATEGORY_VISUALS = {
   "android-pda": {
     family: "rugged-mobile-computers",
-    direction: "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
-    designNotes: "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs"
+    direction: "locked PDA family XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; do not flip, randomly rotate, or change lean/camera-side angle",
+    designNotes: "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; front-face ratio, side thickness, scanner shape, and baseline may vary by model, but the 3D orientation angle must stay consistent"
   },
   "rfid-handhelds": {
     family: "rfid-handheld-readers",
-    direction: "locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible",
-    designNotes: "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models"
+    direction: "locked handheld RFID XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; antenna/handle geometry may vary",
+    designNotes: "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not flip orientation or change 3D camera angle between models"
   },
   "barcode-scanners": {
     family: "barcode-scanners",
-    direction: "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
-    designNotes: "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent"
+    direction: "locked barcode-scanner XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across handheld scanner SKUs",
+    designNotes: "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; do not flip orientation or change 3D camera angle between models"
   },
   "request-specification": {
     family: "configuration-kits",
@@ -175,7 +175,7 @@ const library = {
     "Every product gets one independent maintainable transparent PNG, not a baked product matrix.",
     "Final production images must be PNG with alpha transparency and transparent corners.",
     "Use device accent purple #4b2e83 for physical trims/buttons/rings/panels; #8a63d2 is UI-only.",
-    "Use consistent 3/4 technical product direction inside each visual family.",
+    "Use a consistent XYZ direction-angle template inside each visual family; do not over-constrain product proportions or local feature geometry.",
     "No in-image text, no watermarks, no fake logos, no repeated generic products for different models.",
     "If chroma key is used, keep source background flat #00ff00 with no shadows/gradients, then remove locally."
   ],
