@@ -190,13 +190,13 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-a50.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a50-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-a50/",
-      "status": "rejected-direction-inconsistent",
+      "status": "candidate-direction-template",
       "qa": {
         "transparentCorners": true,
         "greenFringeOpaquePixels": 0,
         "purpleHarmonized": true,
-        "direction": "rejected",
-        "notes": "Rejected by user: direction must be consistent across the product line. Archived only; do not wire to site."
+        "direction": "candidate",
+        "notes": "New touchscreen PDA candidate generated from the user-approved XYZ direction-angle reference. Not wired to the live site; use as the direction template only after user approval. Previous direction-mismatched render remains archived."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "rugged-mobile-computers",
