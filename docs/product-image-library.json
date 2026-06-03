@@ -31,8 +31,8 @@
       "count": 8,
       "visual": {
         "family": "rugged-mobile-computers",
-        "direction": "3/4 front view, screen visible, top scan window visible, portrait orientation",
-        "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants"
+        "direction": "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
+        "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs"
       }
     },
     "rfid-handhelds": {
@@ -41,8 +41,8 @@
       "count": 5,
       "visual": {
         "family": "rfid-handheld-readers",
-        "direction": "3/4 front view, pistol grip or rear RFID antenna clearly visible",
-        "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module"
+        "direction": "locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible",
+        "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models"
       }
     },
     "barcode-scanners": {
@@ -51,8 +51,8 @@
       "count": 8,
       "visual": {
         "family": "barcode-scanners",
-        "direction": "3/4 front-left view, scan window and trigger visible",
-        "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms"
+        "direction": "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
+        "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent"
       }
     },
     "request-specification": {
@@ -190,10 +190,18 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-a50.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a50-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-a50/",
-      "status": "needs-regeneration",
+      "status": "rejected-direction-inconsistent",
+      "qa": {
+        "transparentCorners": true,
+        "greenFringeOpaquePixels": 0,
+        "purpleHarmonized": true,
+        "direction": "rejected",
+        "notes": "Rejected by user: direction must be consistent across the product line. Archived only; do not wire to site."
+      },
+      "generatedAt": "2026-06-03",
       "visualFamily": "rugged-mobile-computers",
-      "direction": "3/4 front view, screen visible, top scan window visible, portrait orientation",
-      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants",
+      "direction": "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
+      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; Display: 5.0 in HD; Scan: 1D/2D imager; Rugged: IP67 / 1.6 m drop",
       "tags": [
@@ -201,7 +209,7 @@
         "NFC",
         "4500 mAh"
       ],
-      "promptSeed": "Model GY-A50, Compact Android PDA. Industrial product render for Android PDA. 3/4 front view, screen visible, top scan window visible, portrait orientation Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-A50, Compact Android PDA. Industrial product render for Android PDA. locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-A55 Pro",
@@ -216,10 +224,17 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-a55-pro.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a55-pro-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-a55-pro/",
-      "status": "needs-regeneration",
+      "status": "rejected-direction-inconsistent",
+      "qa": {
+        "transparentCorners": true,
+        "purpleHarmonized": true,
+        "direction": "rejected",
+        "notes": "Rejected by user: direction differs from other PDA renders. Archived only; do not wire to site."
+      },
+      "generatedAt": "2026-06-03",
       "visualFamily": "rugged-mobile-computers",
-      "direction": "3/4 front view, screen visible, top scan window visible, portrait orientation",
-      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants",
+      "direction": "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
+      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; Display: 5.5 in HD+; Scan: Near/far 2D; Rugged: IP67 / 1.8 m drop",
       "tags": [
@@ -227,7 +242,7 @@
         "13 MP camera",
         "5000 mAh"
       ],
-      "promptSeed": "Model GY-A55 Pro, All-purpose PDA. Industrial product render for Android PDA. 3/4 front view, screen visible, top scan window visible, portrait orientation Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-A55 Pro, All-purpose PDA. Industrial product render for Android PDA. locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-A60 Max",
@@ -242,10 +257,17 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-a60-max.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a60-max-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-a60-max/",
-      "status": "needs-regeneration",
+      "status": "rejected-direction-inconsistent",
+      "qa": {
+        "transparentCorners": true,
+        "purpleHarmonized": true,
+        "direction": "rejected",
+        "notes": "Rejected by user: direction differs from other PDA renders. Archived only; do not wire to site."
+      },
+      "generatedAt": "2026-06-03",
       "visualFamily": "rugged-mobile-computers",
-      "direction": "3/4 front view, screen visible, top scan window visible, portrait orientation",
-      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants",
+      "direction": "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
+      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; Display: 6.0 in FHD; Scan: High-speed 2D; Rugged: IP68 / 1.8 m drop",
       "tags": [
@@ -253,7 +275,7 @@
         "Wi-Fi 6E",
         "5800 mAh"
       ],
-      "promptSeed": "Model GY-A60 Max, Large-screen PDA. Industrial product render for Android PDA. 3/4 front view, screen visible, top scan window visible, portrait orientation Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-A60 Max, Large-screen PDA. Industrial product render for Android PDA. locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-A62K",
@@ -269,9 +291,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a62k-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-a62k/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "rugged-mobile-computers",
-      "direction": "3/4 front view, screen visible, top scan window visible, portrait orientation",
-      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants",
+      "direction": "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
+      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 13; Display: 4.0 in touch; Scan: 1D/2D angled; Rugged: IP65 / 1.8 m drop",
       "tags": [
@@ -279,7 +303,7 @@
         "Scan handle",
         "5200 mAh"
       ],
-      "promptSeed": "Model GY-A62K, Keypad PDA. Industrial product render for Android PDA. 3/4 front view, screen visible, top scan window visible, portrait orientation Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-A62K, Keypad PDA. Industrial product render for Android PDA. locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-A92K KeyTouch",
@@ -295,9 +319,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a92k-keytouch-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-a92k-keytouch/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "rugged-mobile-computers",
-      "direction": "3/4 front view, screen visible, top scan window visible, portrait orientation",
-      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants",
+      "direction": "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
+      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; Display: 4.7 in touch; Scan: Angled 2D imager; Rugged: IP67 / 1.8 m drop",
       "tags": [
@@ -305,7 +331,7 @@
         "Glove use",
         "5800 mAh"
       ],
-      "promptSeed": "Model GY-A92K KeyTouch, Keypad mobile data terminal. Industrial product render for Android PDA. 3/4 front view, screen visible, top scan window visible, portrait orientation Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-A92K KeyTouch, Keypad mobile data terminal. Industrial product render for Android PDA. locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-A70 Cold",
@@ -321,9 +347,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a70-cold-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-a70-cold/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "rugged-mobile-computers",
-      "direction": "3/4 front view, screen visible, top scan window visible, portrait orientation",
-      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants",
+      "direction": "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
+      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; Display: 5.7 in glove touch; Scan: Condensation-ready 2D; Rugged: IP67 / -25 C",
       "tags": [
@@ -331,7 +359,7 @@
         "Hot swap",
         "6500 mAh"
       ],
-      "promptSeed": "Model GY-A70 Cold, Cold-chain PDA. Industrial product render for Android PDA. 3/4 front view, screen visible, top scan window visible, portrait orientation Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-A70 Cold, Cold-chain PDA. Industrial product render for Android PDA. locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-A80 Ultra",
@@ -347,9 +375,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a80-ultra-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-a80-ultra/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "rugged-mobile-computers",
-      "direction": "3/4 front view, screen visible, top scan window visible, portrait orientation",
-      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants",
+      "direction": "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
+      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; Display: 6.2 in FHD; Scan: Extended range 2D; Rugged: IP68 / 2.0 m drop",
       "tags": [
@@ -357,7 +387,7 @@
         "GNSS",
         "7200 mAh"
       ],
-      "promptSeed": "Model GY-A80 Ultra, Ultra-rugged PDA. Industrial product render for Android PDA. 3/4 front view, screen visible, top scan window visible, portrait orientation Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-A80 Ultra, Ultra-rugged PDA. Industrial product render for Android PDA. locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-A90 Touch",
@@ -373,9 +403,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a90-touch-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-a90-touch/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "rugged-mobile-computers",
-      "direction": "3/4 front view, screen visible, top scan window visible, portrait orientation",
-      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants",
+      "direction": "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
+      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; Display: 6.1 in FHD touch; Scan: Integrated 2D imager; Rugged: IP68 / 1.8 m drop",
       "tags": [
@@ -383,7 +415,7 @@
         "Wi-Fi 6E",
         "6200 mAh"
       ],
-      "promptSeed": "Model GY-A90 Touch, Touchscreen mobile data terminal. Industrial product render for Android PDA. 3/4 front view, screen visible, top scan window visible, portrait orientation Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-A90 Touch, Touchscreen mobile data terminal. Industrial product render for Android PDA. locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-R52 Compact",
@@ -399,9 +431,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-r52-compact-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-r52-compact/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "rfid-handheld-readers",
-      "direction": "3/4 front view, pistol grip or rear RFID antenna clearly visible",
-      "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module",
+      "direction": "locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible",
+      "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; RFID: UHF up to 4 m; Scan: 1D/2D optional; Rugged: IP65 / 1.5 m drop",
       "tags": [
@@ -409,7 +443,7 @@
         "NFC",
         "4500 mAh"
       ],
-      "promptSeed": "Model GY-R52 Compact, Built-in UHF PDA. Industrial product render for RFID Handhelds. 3/4 front view, pistol grip or rear RFID antenna clearly visible long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-R52 Compact, Built-in UHF PDA. Industrial product render for RFID Handhelds. locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-R60 Grip",
@@ -425,9 +459,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-r60-grip-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-r60-grip/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "rfid-handheld-readers",
-      "direction": "3/4 front view, pistol grip or rear RFID antenna clearly visible",
-      "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module",
+      "direction": "locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible",
+      "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 13; RFID: UHF up to 8 m; Scan: 2D imager; Rugged: IP65 / 1.6 m drop",
       "tags": [
@@ -435,7 +471,7 @@
         "Wi-Fi 6",
         "6000 mAh"
       ],
-      "promptSeed": "Model GY-R60 Grip, Ergonomic RFID reader. Industrial product render for RFID Handhelds. 3/4 front view, pistol grip or rear RFID antenna clearly visible long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-R60 Grip, Ergonomic RFID reader. Industrial product render for RFID Handhelds. locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-R70 LongRange",
@@ -451,9 +487,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-r70-longrange-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-r70-longrange/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "rfid-handheld-readers",
-      "direction": "3/4 front view, pistol grip or rear RFID antenna clearly visible",
-      "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module",
+      "direction": "locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible",
+      "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; RFID: UHF up to 12 m; Scan: 2D + DPM option; Rugged: IP67 / 1.8 m drop",
       "tags": [
@@ -461,7 +499,7 @@
         "5.5 in display",
         "7800 mAh"
       ],
-      "promptSeed": "Model GY-R70 LongRange, Long-range RFID reader. Industrial product render for RFID Handhelds. 3/4 front view, pistol grip or rear RFID antenna clearly visible long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-R70 LongRange, Long-range RFID reader. Industrial product render for RFID Handhelds. locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-R86 5G",
@@ -477,9 +515,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-r86-5g-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-r86-5g/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "rfid-handheld-readers",
-      "direction": "3/4 front view, pistol grip or rear RFID antenna clearly visible",
-      "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module",
+      "direction": "locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible",
+      "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; RFID: UHF up to 10 m; Scan: Near/far 2D; Rugged: IP67 / 1.8 m drop",
       "tags": [
@@ -487,7 +527,7 @@
         "Dual-band GNSS",
         "7000 mAh"
       ],
-      "promptSeed": "Model GY-R86 5G, 5G RFID terminal. Industrial product render for RFID Handhelds. 3/4 front view, pistol grip or rear RFID antenna clearly visible long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-R86 5G, 5G RFID terminal. Industrial product render for RFID Handhelds. locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-R90 Falcon",
@@ -503,9 +543,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-r90-falcon-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-r90-falcon/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "rfid-handheld-readers",
-      "direction": "3/4 front view, pistol grip or rear RFID antenna clearly visible",
-      "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module",
+      "direction": "locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible",
+      "designNotes": "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models",
       "brandAccent": "#4b2e83",
       "specsSummary": "OS: Android 14; RFID: UHF up to 15 m; Scan: 2D + RFID; Rugged: IP67 / 1.8 m drop",
       "tags": [
@@ -513,7 +555,7 @@
         "Circular antenna",
         "8200 mAh"
       ],
-      "promptSeed": "Model GY-R90 Falcon, Long-range UHF RFID reader. Industrial product render for RFID Handhelds. 3/4 front view, pistol grip or rear RFID antenna clearly visible long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-R90 Falcon, Long-range UHF RFID reader. Industrial product render for RFID Handhelds. locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-S210",
@@ -529,9 +571,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-s210-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-s210/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "barcode-scanners",
-      "direction": "3/4 front-left view, scan window and trigger visible",
-      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms",
+      "direction": "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
+      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent",
       "brandAccent": "#4b2e83",
       "specsSummary": "Scan: 1D/2D area imager; Link: USB-C / RS232; Motion: Up to 4 m/s; Rugged: IP54 / 1.5 m drop",
       "tags": [
@@ -539,7 +583,7 @@
         "White LED",
         "Fast decode"
       ],
-      "promptSeed": "Model GY-S210, Universal wired scanner. Industrial product render for Barcode Scanners. 3/4 front-left view, scan window and trigger visible ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-S210, Universal wired scanner. Industrial product render for Barcode Scanners. locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-S240W",
@@ -555,9 +599,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-s240w-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-s240w/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "barcode-scanners",
-      "direction": "3/4 front-left view, scan window and trigger visible",
-      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms",
+      "direction": "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
+      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent",
       "brandAccent": "#4b2e83",
       "specsSummary": "Scan: 1D/2D area imager; Link: 2.4G / Bluetooth; Range: Up to 80 m open field; Rugged: IP54 / 1.5 m drop",
       "tags": [
@@ -565,7 +611,7 @@
         "Cradle",
         "2200 mAh"
       ],
-      "promptSeed": "Model GY-S240W, Wireless industrial scanner. Industrial product render for Barcode Scanners. 3/4 front-left view, scan window and trigger visible ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-S240W, Wireless industrial scanner. Industrial product render for Barcode Scanners. locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-S330 Cold",
@@ -581,9 +627,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-s330-cold-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-s330-cold/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "barcode-scanners",
-      "direction": "3/4 front-left view, scan window and trigger visible",
-      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms",
+      "direction": "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
+      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent",
       "brandAccent": "#4b2e83",
       "specsSummary": "Scan: 1D/2D; Link: Bluetooth 5.2; Temp: -30 C to 50 C; Rugged: IP65 / 1.8 m drop",
       "tags": [
@@ -591,7 +639,7 @@
         "Glove grip",
         "3200 mAh"
       ],
-      "promptSeed": "Model GY-S330 Cold, Cold-chain scanner. Industrial product render for Barcode Scanners. 3/4 front-left view, scan window and trigger visible ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-S330 Cold, Cold-chain scanner. Industrial product render for Barcode Scanners. locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-S360 XR",
@@ -607,9 +655,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-s360-xr-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-s360-xr/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "barcode-scanners",
-      "direction": "3/4 front-left view, scan window and trigger visible",
-      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms",
+      "direction": "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
+      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent",
       "brandAccent": "#4b2e83",
       "specsSummary": "Scan: Near/far 1D/2D; Range: 10 cm to 15 m; Link: Bluetooth / USB; Rugged: IP65 / 2.0 m drop",
       "tags": [
@@ -617,7 +667,7 @@
         "Laser aimer",
         "Warehouse"
       ],
-      "promptSeed": "Model GY-S360 XR, Extended-range scanner. Industrial product render for Barcode Scanners. 3/4 front-left view, scan window and trigger visible ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-S360 XR, Extended-range scanner. Industrial product render for Barcode Scanners. locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-S410 Base",
@@ -633,9 +683,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-s410-base-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-s410-base/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "barcode-scanners",
-      "direction": "3/4 front-left view, scan window and trigger visible",
-      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms",
+      "direction": "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
+      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent",
       "brandAccent": "#4b2e83",
       "specsSummary": "Scan: 2D presentation; Mount: Desktop / fixture; Link: USB / Ethernet option; Rugged: Sealed front window",
       "tags": [
@@ -643,7 +695,7 @@
         "Fixture-ready",
         "White light"
       ],
-      "promptSeed": "Model GY-S410 Base, Hands-free scan station. Industrial product render for Barcode Scanners. 3/4 front-left view, scan window and trigger visible ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-S410 Base, Hands-free scan station. Industrial product render for Barcode Scanners. locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-S520 Wear",
@@ -659,9 +711,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-s520-wear-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-s520-wear/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "barcode-scanners",
-      "direction": "3/4 front-left view, scan window and trigger visible",
-      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms",
+      "direction": "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
+      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent",
       "brandAccent": "#4b2e83",
       "specsSummary": "Scan: 1D/2D short range; Link: Bluetooth 5.2; Battery: Hot-swap 900 mAh; Rugged: IP54 / 1.5 m drop",
       "tags": [
@@ -669,7 +723,7 @@
         "Hands-free",
         "Warehouse"
       ],
-      "promptSeed": "Model GY-S520 Wear, Wearable ring scanner. Industrial product render for Barcode Scanners. 3/4 front-left view, scan window and trigger visible ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-S520 Wear, Wearable ring scanner. Industrial product render for Barcode Scanners. locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-S680 Dock",
@@ -685,9 +739,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-s680-dock-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-s680-dock/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "barcode-scanners",
-      "direction": "3/4 front-left view, scan window and trigger visible",
-      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms",
+      "direction": "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
+      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent",
       "brandAccent": "#4b2e83",
       "specsSummary": "Scan: Wide-angle 2D; Link: Ethernet / USB; Trigger: Photoeye input; Rugged: IP65 metal housing",
       "tags": [
@@ -695,7 +751,7 @@
         "Conveyor",
         "Ethernet"
       ],
-      "promptSeed": "Model GY-S680 Dock, Industrial dock-door scanner. Industrial product render for Barcode Scanners. 3/4 front-left view, scan window and trigger visible ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-S680 Dock, Industrial dock-door scanner. Industrial product render for Barcode Scanners. locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-S900 XR",
@@ -711,9 +767,11 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-s900-xr-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-s900-xr/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "barcode-scanners",
-      "direction": "3/4 front-left view, scan window and trigger visible",
-      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms",
+      "direction": "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
+      "designNotes": "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent",
       "brandAccent": "#4b2e83",
       "specsSummary": "Scan: 1D/2D near-far; Range: Up to 18 m; Link: Bluetooth / USB-C; Rugged: IP65 / 2.0 m drop",
       "tags": [
@@ -721,7 +779,7 @@
         "Laser aimer",
         "Warehouse"
       ],
-      "promptSeed": "Model GY-S900 XR, Extended-range scan gun. Industrial product render for Barcode Scanners. 3/4 front-left view, scan window and trigger visible ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-S900 XR, Extended-range scan gun. Industrial product render for Barcode Scanners. locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-CONF-Scan",
@@ -737,6 +795,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-conf-scan-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-conf-scan/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "configuration-kits",
       "direction": "organized kit composition, 3/4 product view with accessories grouped cleanly",
       "designNotes": "sample/procurement kit visual with PDA/scanner, dock, charger, and optional RFID/DPM accessories",
@@ -763,6 +823,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-conf-rfid-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-conf-rfid/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "configuration-kits",
       "direction": "organized kit composition, 3/4 product view with accessories grouped cleanly",
       "designNotes": "sample/procurement kit visual with PDA/scanner, dock, charger, and optional RFID/DPM accessories",
@@ -789,6 +851,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-conf-dpm-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-conf-dpm/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "configuration-kits",
       "direction": "organized kit composition, 3/4 product view with accessories grouped cleanly",
       "designNotes": "sample/procurement kit visual with PDA/scanner, dock, charger, and optional RFID/DPM accessories",
@@ -815,6 +879,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-px18-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-px18/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "presence-and-safety-sensors",
       "direction": "3/4 technical product view, connector and sensing face visible",
       "designNotes": "SICK/Omron-style compact sensor housings, M12 connectors, aluminum or stainless bodies, safety curtains as paired bars",
@@ -841,6 +907,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-pr12-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-pr12/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "presence-and-safety-sensors",
       "direction": "3/4 technical product view, connector and sensing face visible",
       "designNotes": "SICK/Omron-style compact sensor housings, M12 connectors, aluminum or stainless bodies, safety curtains as paired bars",
@@ -867,6 +935,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-fb200-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-fb200/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "presence-and-safety-sensors",
       "direction": "3/4 technical product view, connector and sensing face visible",
       "designNotes": "SICK/Omron-style compact sensor housings, M12 connectors, aluminum or stainless bodies, safety curtains as paired bars",
@@ -893,6 +963,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-safe24-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-safe24/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "presence-and-safety-sensors",
       "direction": "3/4 technical product view, connector and sensing face visible",
       "designNotes": "SICK/Omron-style compact sensor housings, M12 connectors, aluminum or stainless bodies, safety curtains as paired bars",
@@ -919,6 +991,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-px90-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-px90/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "presence-and-safety-sensors",
       "direction": "3/4 technical product view, connector and sensing face visible",
       "designNotes": "SICK/Omron-style compact sensor housings, M12 connectors, aluminum or stainless bodies, safety curtains as paired bars",
@@ -945,6 +1019,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-safe90-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-safe90/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "presence-and-safety-sensors",
       "direction": "3/4 technical product view, connector and sensing face visible",
       "designNotes": "SICK/Omron-style compact sensor housings, M12 connectors, aluminum or stainless bodies, safety curtains as paired bars",
@@ -971,6 +1047,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-ld40-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-ld40/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "distance-position-sensors",
       "direction": "3/4 front view, laser aperture or ultrasonic face visible",
       "designNotes": "compact laser displacement and ultrasonic blocks with industrial mounting points and cable/connector detail",
@@ -997,6 +1075,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-ul80-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-ul80/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "distance-position-sensors",
       "direction": "3/4 front view, laser aperture or ultrasonic face visible",
       "designNotes": "compact laser displacement and ultrasonic blocks with industrial mounting points and cable/connector detail",
@@ -1023,6 +1103,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-ld90-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-ld90/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "distance-position-sensors",
       "direction": "3/4 front view, laser aperture or ultrasonic face visible",
       "designNotes": "compact laser displacement and ultrasonic blocks with industrial mounting points and cable/connector detail",
@@ -1049,6 +1131,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-ps60-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-ps60/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "process-condition-modules",
       "direction": "3/4 front view, display/ports visible where applicable",
       "designNotes": "digital pressure sensors, condition modules, and IP67 network hubs with readable industrial form logic",
@@ -1075,6 +1159,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-env32-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-env32/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "process-condition-modules",
       "direction": "3/4 front view, display/ports visible where applicable",
       "designNotes": "digital pressure sensors, condition modules, and IP67 network hubs with readable industrial form logic",
@@ -1101,6 +1187,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-net8-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-net8/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "process-condition-modules",
       "direction": "3/4 front view, display/ports visible where applicable",
       "designNotes": "digital pressure sensors, condition modules, and IP67 network hubs with readable industrial form logic",
@@ -1127,6 +1215,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-net90-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-net90/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "process-condition-modules",
       "direction": "3/4 front view, display/ports visible where applicable",
       "designNotes": "digital pressure sensors, condition modules, and IP67 network hubs with readable industrial form logic",
@@ -1153,6 +1243,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v120-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v120/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "industrial-vision-cameras",
       "direction": "3/4 front view, lens mount/sensor face visible, landscape camera body",
       "designNotes": "Cognex/Basler/Keyence-inspired machine vision cameras: metal cube bodies, C-mount lenses, heat fins, trigger/I/O ports",
@@ -1179,6 +1271,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v160-compact-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v160-compact/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "industrial-vision-cameras",
       "direction": "3/4 front view, lens mount/sensor face visible, landscape camera body",
       "designNotes": "Cognex/Basler/Keyence-inspired machine vision cameras: metal cube bodies, C-mount lenses, heat fins, trigger/I/O ports",
@@ -1205,6 +1299,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v240-color-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v240-color/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "industrial-vision-cameras",
       "direction": "3/4 front view, lens mount/sensor face visible, landscape camera body",
       "designNotes": "Cognex/Basler/Keyence-inspired machine vision cameras: metal cube bodies, C-mount lenses, heat fins, trigger/I/O ports",
@@ -1231,6 +1327,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v280-ai-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v280-ai/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "industrial-vision-cameras",
       "direction": "3/4 front view, lens mount/sensor face visible, landscape camera body",
       "designNotes": "Cognex/Basler/Keyence-inspired machine vision cameras: metal cube bodies, C-mount lenses, heat fins, trigger/I/O ports",
@@ -1257,6 +1355,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v320-mono-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v320-mono/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "industrial-vision-cameras",
       "direction": "3/4 front view, lens mount/sensor face visible, landscape camera body",
       "designNotes": "Cognex/Basler/Keyence-inspired machine vision cameras: metal cube bodies, C-mount lenses, heat fins, trigger/I/O ports",
@@ -1283,6 +1383,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v380-pro-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v380-pro/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "industrial-vision-cameras",
       "direction": "3/4 front view, lens mount/sensor face visible, landscape camera body",
       "designNotes": "Cognex/Basler/Keyence-inspired machine vision cameras: metal cube bodies, C-mount lenses, heat fins, trigger/I/O ports",
@@ -1309,6 +1411,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v500-hr-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v500-hr/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "industrial-vision-cameras",
       "direction": "3/4 front view, lens mount/sensor face visible, landscape camera body",
       "designNotes": "Cognex/Basler/Keyence-inspired machine vision cameras: metal cube bodies, C-mount lenses, heat fins, trigger/I/O ports",
@@ -1335,6 +1439,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v640-hs-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v640-hs/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "industrial-vision-cameras",
       "direction": "3/4 front view, lens mount/sensor face visible, landscape camera body",
       "designNotes": "Cognex/Basler/Keyence-inspired machine vision cameras: metal cube bodies, C-mount lenses, heat fins, trigger/I/O ports",
@@ -1361,6 +1467,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-opt25-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-opt25/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "industrial-vision-cameras",
       "direction": "3/4 front view, lens mount/sensor face visible, landscape camera body",
       "designNotes": "Cognex/Basler/Keyence-inspired machine vision cameras: metal cube bodies, C-mount lenses, heat fins, trigger/I/O ports",
@@ -1387,6 +1495,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v900-pro-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v900-pro/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "industrial-vision-cameras",
       "direction": "3/4 front view, lens mount/sensor face visible, landscape camera body",
       "designNotes": "Cognex/Basler/Keyence-inspired machine vision cameras: metal cube bodies, C-mount lenses, heat fins, trigger/I/O ports",
@@ -1413,6 +1523,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-vc8-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-vc8/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-controllers-3d-systems",
       "direction": "3/4 front view, optical window or controller ports visible",
       "designNotes": "smart cameras, 3D profile modules, edge controllers, frame grabbers, and I/O modules with consistent black industrial casing",
@@ -1439,6 +1551,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v3d90-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v3d90/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-controllers-3d-systems",
       "direction": "3/4 front view, optical window or controller ports visible",
       "designNotes": "smart cameras, 3D profile modules, edge controllers, frame grabbers, and I/O modules with consistent black industrial casing",
@@ -1465,6 +1579,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v3d150-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v3d150/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-controllers-3d-systems",
       "direction": "3/4 front view, optical window or controller ports visible",
       "designNotes": "smart cameras, 3D profile modules, edge controllers, frame grabbers, and I/O modules with consistent black industrial casing",
@@ -1491,6 +1607,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-vl2048-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-vl2048/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-controllers-3d-systems",
       "direction": "3/4 front view, optical window or controller ports visible",
       "designNotes": "smart cameras, 3D profile modules, edge controllers, frame grabbers, and I/O modules with consistent black industrial casing",
@@ -1517,6 +1635,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-vx12-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-vx12/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-controllers-3d-systems",
       "direction": "3/4 front view, optical window or controller ports visible",
       "designNotes": "smart cameras, 3D profile modules, edge controllers, frame grabbers, and I/O modules with consistent black industrial casing",
@@ -1543,6 +1663,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-vio16-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-vio16/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-controllers-3d-systems",
       "direction": "3/4 front view, optical window or controller ports visible",
       "designNotes": "smart cameras, 3D profile modules, edge controllers, frame grabbers, and I/O modules with consistent black industrial casing",
@@ -1569,6 +1691,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-lc4-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-lc4/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-controllers-3d-systems",
       "direction": "3/4 front view, optical window or controller ports visible",
       "designNotes": "smart cameras, 3D profile modules, edge controllers, frame grabbers, and I/O modules with consistent black industrial casing",
@@ -1595,6 +1719,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-vfg4-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-vfg4/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-controllers-3d-systems",
       "direction": "3/4 front view, optical window or controller ports visible",
       "designNotes": "smart cameras, 3D profile modules, edge controllers, frame grabbers, and I/O modules with consistent black industrial casing",
@@ -1621,6 +1747,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-vrg200-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-vrg200/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-controllers-3d-systems",
       "direction": "3/4 front view, optical window or controller ports visible",
       "designNotes": "smart cameras, 3D profile modules, edge controllers, frame grabbers, and I/O modules with consistent black industrial casing",
@@ -1647,6 +1775,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v3d900-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v3d900/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-controllers-3d-systems",
       "direction": "3/4 front view, optical window or controller ports visible",
       "designNotes": "smart cameras, 3D profile modules, edge controllers, frame grabbers, and I/O modules with consistent black industrial casing",
@@ -1673,6 +1803,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr120-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr120/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "fixed-code-readers-verifiers",
       "direction": "3/4 front view, lens/light window visible; conveyor modules can be wider",
       "designNotes": "Cognex/Zebra fixed reader cues: front optics, integrated illumination, rugged metal housings, clear mounting geometry",
@@ -1699,6 +1831,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr390-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr390/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "fixed-code-readers-verifiers",
       "direction": "3/4 front view, lens/light window visible; conveyor modules can be wider",
       "designNotes": "Cognex/Zebra fixed reader cues: front optics, integrated illumination, rugged metal housings, clear mounting geometry",
@@ -1725,6 +1859,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr520-dpm-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr520-dpm/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "fixed-code-readers-verifiers",
       "direction": "3/4 front view, lens/light window visible; conveyor modules can be wider",
       "designNotes": "Cognex/Zebra fixed reader cues: front optics, integrated illumination, rugged metal housings, clear mounting geometry",
@@ -1751,6 +1887,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr720-conveyor-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr720-conveyor/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "fixed-code-readers-verifiers",
       "direction": "3/4 front view, lens/light window visible; conveyor modules can be wider",
       "designNotes": "Cognex/Zebra fixed reader cues: front optics, integrated illumination, rugged metal housings, clear mounting geometry",
@@ -1777,6 +1915,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-s300-dpm-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-s300-dpm/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "fixed-code-readers-verifiers",
       "direction": "3/4 front view, lens/light window visible; conveyor modules can be wider",
       "designNotes": "Cognex/Zebra fixed reader cues: front optics, integrated illumination, rugged metal housings, clear mounting geometry",
@@ -1803,6 +1943,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cv100-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cv100/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "fixed-code-readers-verifiers",
       "direction": "3/4 front view, lens/light window visible; conveyor modules can be wider",
       "designNotes": "Cognex/Zebra fixed reader cues: front optics, integrated illumination, rugged metal housings, clear mounting geometry",
@@ -1829,6 +1971,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cv220-inline-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cv220-inline/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "fixed-code-readers-verifiers",
       "direction": "3/4 front view, lens/light window visible; conveyor modules can be wider",
       "designNotes": "Cognex/Zebra fixed reader cues: front optics, integrated illumination, rugged metal housings, clear mounting geometry",
@@ -1855,6 +1999,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-rt800-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-rt800/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "fixed-code-readers-verifiers",
       "direction": "3/4 front view, lens/light window visible; conveyor modules can be wider",
       "designNotes": "Cognex/Zebra fixed reader cues: front optics, integrated illumination, rugged metal housings, clear mounting geometry",
@@ -1881,6 +2027,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr900-matrix-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr900-matrix/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "fixed-code-readers-verifiers",
       "direction": "3/4 front view, lens/light window visible; conveyor modules can be wider",
       "designNotes": "Cognex/Zebra fixed reader cues: front optics, integrated illumination, rugged metal housings, clear mounting geometry",
@@ -1907,6 +2055,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-lr70-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-lr70/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-lighting",
       "direction": "front 3/4 view, illuminated face geometry obvious",
       "designNotes": "ring lights, bar lights, dome lights, backlights, and line lights with finned aluminum housings",
@@ -1933,6 +2083,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-lb220-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-lb220/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-lighting",
       "direction": "front 3/4 view, illuminated face geometry obvious",
       "designNotes": "ring lights, bar lights, dome lights, backlights, and line lights with finned aluminum housings",
@@ -1959,6 +2111,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-ldome120-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-ldome120/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-lighting",
       "direction": "front 3/4 view, illuminated face geometry obvious",
       "designNotes": "ring lights, bar lights, dome lights, backlights, and line lights with finned aluminum housings",
@@ -1985,6 +2139,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-lbl150-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-lbl150/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-lighting",
       "direction": "front 3/4 view, illuminated face geometry obvious",
       "designNotes": "ring lights, bar lights, dome lights, backlights, and line lights with finned aluminum housings",
@@ -2011,6 +2167,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-ll300-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-ll300/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "vision-lighting",
       "direction": "front 3/4 view, illuminated face geometry obvious",
       "designNotes": "ring lights, bar lights, dome lights, backlights, and line lights with finned aluminum housings",
@@ -2037,6 +2195,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-mg50-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-mg50/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "dimensional-metrology",
       "direction": "3/4 benchtop/instrument view, measurement stage/probe/display visible",
       "designNotes": "metrology-grade gauges and vision measuring instruments; stable bases, precision stages, measurement probes",
@@ -2063,6 +2223,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-vm200-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-vm200/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "dimensional-metrology",
       "direction": "3/4 benchtop/instrument view, measurement stage/probe/display visible",
       "designNotes": "metrology-grade gauges and vision measuring instruments; stable bases, precision stages, measurement probes",
@@ -2089,6 +2251,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-mg90-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-mg90/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "dimensional-metrology",
       "direction": "3/4 benchtop/instrument view, measurement stage/probe/display visible",
       "designNotes": "metrology-grade gauges and vision measuring instruments; stable bases, precision stages, measurement probes",
@@ -2115,6 +2279,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-vm900-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-vm900/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "dimensional-metrology",
       "direction": "3/4 benchtop/instrument view, measurement stage/probe/display visible",
       "designNotes": "metrology-grade gauges and vision measuring instruments; stable bases, precision stages, measurement probes",
@@ -2141,6 +2307,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-sf30-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-sf30/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "surface-test-instruments",
       "direction": "3/4 handheld or bench view, sensor aperture/display visible",
       "designNotes": "finish testers, gloss meters, and coating gauges with practical handheld industrial proportions",
@@ -2167,6 +2335,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-gl20-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-gl20/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "surface-test-instruments",
       "direction": "3/4 handheld or bench view, sensor aperture/display visible",
       "designNotes": "finish testers, gloss meters, and coating gauges with practical handheld industrial proportions",
@@ -2193,6 +2363,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-ct45-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-ct45/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "surface-test-instruments",
       "direction": "3/4 handheld or bench view, sensor aperture/display visible",
       "designNotes": "finish testers, gloss meters, and coating gauges with practical handheld industrial proportions",
@@ -2219,6 +2391,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-et75-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-et75/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "portable-industrial-testers",
       "direction": "3/4 front view, display and controls visible",
       "designNotes": "electrical/loop/thermal testers with rugged handheld instrument bodies and restrained button layouts",
@@ -2245,6 +2419,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-lt40-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-lt40/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "portable-industrial-testers",
       "direction": "3/4 front view, display and controls visible",
       "designNotes": "electrical/loop/thermal testers with rugged handheld instrument bodies and restrained button layouts",
@@ -2271,6 +2447,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-th90-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-th90/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "portable-industrial-testers",
       "direction": "3/4 front view, display and controls visible",
       "designNotes": "electrical/loop/thermal testers with rugged handheld instrument bodies and restrained button layouts",
@@ -2297,6 +2475,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cal-grid-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cal-grid/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "calibration-reference-tools",
       "direction": "organized 3/4 product view, reference surface/pattern/case visible",
       "designNotes": "calibration targets, gauge blocks, and light-reference kits; clean precision accessory styling",
@@ -2323,6 +2503,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cal-block-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cal-block/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "calibration-reference-tools",
       "direction": "organized 3/4 product view, reference surface/pattern/case visible",
       "designNotes": "calibration targets, gauge blocks, and light-reference kits; clean precision accessory styling",
@@ -2349,6 +2531,8 @@
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cal-light-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cal-light/",
       "status": "needs-regeneration",
+      "qa": null,
+      "generatedAt": null,
       "visualFamily": "calibration-reference-tools",
       "direction": "organized 3/4 product view, reference surface/pattern/case visible",
       "designNotes": "calibration targets, gauge blocks, and light-reference kits; clean precision accessory styling",

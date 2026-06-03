@@ -1,0 +1,33 @@
+{
+  "gy-a50": {
+    "status": "rejected-direction-inconsistent",
+    "generatedAt": "2026-06-03",
+    "qa": {
+      "transparentCorners": true,
+      "greenFringeOpaquePixels": 0,
+      "purpleHarmonized": true,
+      "direction": "rejected",
+      "notes": "Rejected by user: direction must be consistent across the product line. Archived only; do not wire to site."
+    }
+  },
+  "gy-a55-pro": {
+    "status": "rejected-direction-inconsistent",
+    "generatedAt": "2026-06-03",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "rejected",
+      "notes": "Rejected by user: direction differs from other PDA renders. Archived only; do not wire to site."
+    }
+  },
+  "gy-a60-max": {
+    "status": "rejected-direction-inconsistent",
+    "generatedAt": "2026-06-03",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "rejected",
+      "notes": "Rejected by user: direction differs from other PDA renders. Archived only; do not wire to site."
+    }
+  }
+}

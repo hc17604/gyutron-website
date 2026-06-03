@@ -17,9 +17,9 @@ Product count: **84**
 
 | Category | Count | Visual family | Direction |
 |---|---:|---|---|
-| android-pda | 8 | rugged-mobile-computers | 3/4 front view, screen visible, top scan window visible, portrait orientation |
-| rfid-handhelds | 5 | rfid-handheld-readers | 3/4 front view, pistol grip or rear RFID antenna clearly visible |
-| barcode-scanners | 8 | barcode-scanners | 3/4 front-left view, scan window and trigger visible |
+| android-pda | 8 | rugged-mobile-computers | locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline |
+| rfid-handhelds | 5 | rfid-handheld-readers | locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible |
+| barcode-scanners | 8 | barcode-scanners | locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns |
 | request-specification | 3 | configuration-kits | organized kit composition, 3/4 product view with accessories grouped cleanly |
 | proximity-sensors | 6 | presence-and-safety-sensors | 3/4 technical product view, connector and sensing face visible |
 | laser-measurement | 3 | distance-position-sensors | 3/4 front view, laser aperture or ultrasonic face visible |
@@ -37,9 +37,9 @@ Product count: **84**
 
 | Model | Category | Type | Current image | Target transparent image | Status |
 |---|---|---|---|---|---|
-| GY-A50 | android-pda | Compact Android PDA | `product-images/gy-a50.png` | `product-library/transparent/gy-a50.png` | needs-regeneration |
-| GY-A55 Pro | android-pda | All-purpose PDA | `product-images/gy-a55-pro.png` | `product-library/transparent/gy-a55-pro.png` | needs-regeneration |
-| GY-A60 Max | android-pda | Large-screen PDA | `product-images/gy-a60-max.png` | `product-library/transparent/gy-a60-max.png` | needs-regeneration |
+| GY-A50 | android-pda | Compact Android PDA | `product-images/gy-a50.png` | `product-library/transparent/gy-a50.png` | rejected-direction-inconsistent |
+| GY-A55 Pro | android-pda | All-purpose PDA | `product-images/gy-a55-pro.png` | `product-library/transparent/gy-a55-pro.png` | rejected-direction-inconsistent |
+| GY-A60 Max | android-pda | Large-screen PDA | `product-images/gy-a60-max.png` | `product-library/transparent/gy-a60-max.png` | rejected-direction-inconsistent |
 | GY-A62K | android-pda | Keypad PDA | `product-images/gy-a62k.png` | `product-library/transparent/gy-a62k.png` | needs-regeneration |
 | GY-A92K KeyTouch | android-pda | Keypad mobile data terminal | `product-cutouts/generated/gy-a92k-keytouch.png` | `product-library/transparent/gy-a92k-keytouch.png` | needs-regeneration |
 | GY-A70 Cold | android-pda | Cold-chain PDA | `product-images/gy-a70-cold.png` | `product-library/transparent/gy-a70-cold.png` | needs-regeneration |

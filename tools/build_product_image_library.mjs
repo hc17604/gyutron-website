@@ -1,9 +1,10 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { GYUTRON_PRODUCTS } from "../astro/src/data/products.en.js";
 
 const OUT_DIR = new URL("../docs/", import.meta.url);
 const JSON_OUT = new URL("./product-image-library.json", OUT_DIR);
 const MD_OUT = new URL("./product-image-library.md", OUT_DIR);
+const STATUS_IN = new URL("./product-image-status.json", OUT_DIR);
 
 const BRAND = {
   deviceAccentPurple: "#4b2e83",
@@ -15,18 +16,18 @@ const BRAND = {
 const CATEGORY_VISUALS = {
   "android-pda": {
     family: "rugged-mobile-computers",
-    direction: "3/4 front view, screen visible, top scan window visible, portrait orientation",
-    designNotes: "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants"
+    direction: "locked portrait 3/4 front-right view: screen visible, right side edge visible, top scan window visible, top edge recedes to the right, upright vertical body, consistent baseline",
+    designNotes: "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; do not alternate front-left/front-right direction between SKUs"
   },
   "rfid-handhelds": {
     family: "rfid-handheld-readers",
-    direction: "3/4 front view, pistol grip or rear RFID antenna clearly visible",
-    designNotes: "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module"
+    direction: "locked portrait 3/4 front-right view, same visible side as PDA family, pistol grip or rear RFID antenna clearly visible",
+    designNotes: "long-range UHF handheld reader silhouette with balanced trigger grip and circular/flat antenna module; do not switch visible side between models"
   },
   "barcode-scanners": {
     family: "barcode-scanners",
-    direction: "3/4 front-left view, scan window and trigger visible",
-    designNotes: "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms"
+    direction: "locked 3/4 front-right view, scan window and trigger visible, handle angle consistent across handheld scan guns",
+    designNotes: "ultra-rugged handheld scanner and fixed/hands-free scanner variants; avoid consumer retail toy-like forms; keep visible side consistent"
   },
   "request-specification": {
     family: "configuration-kits",
@@ -103,6 +104,13 @@ function summarizeSpecs(specs = {}) {
 
 const products = [];
 const categories = {};
+let statusBySlug = {};
+
+try {
+  statusBySlug = JSON.parse(await readFile(STATUS_IN, "utf8"));
+} catch (error) {
+  if (error.code !== "ENOENT") throw error;
+}
 
 for (const [categoryKey, category] of Object.entries(GYUTRON_PRODUCTS)) {
   const categoryProducts = category.products || [];
@@ -122,6 +130,7 @@ for (const [categoryKey, category] of Object.entries(GYUTRON_PRODUCTS)) {
   for (const product of categoryProducts) {
     const slug = slugify(product.name);
     const visual = categories[categoryKey].visual;
+    const status = statusBySlug[slug] || {};
     products.push({
       model: product.name,
       slug,
@@ -135,7 +144,9 @@ for (const [categoryKey, category] of Object.entries(GYUTRON_PRODUCTS)) {
       deployedTransparentImage: `public/product-library/transparent/${slug}.png`,
       sourceChromaImage: `asset-workbench/product-images/chroma/${slug}-chroma.png`,
       archiveFolder: `asset-workbench/product-images/source/${slug}/`,
-      status: "needs-regeneration",
+      status: status.status || "needs-regeneration",
+      qa: status.qa || null,
+      generatedAt: status.generatedAt || null,
       visualFamily: visual.family,
       direction: visual.direction,
       designNotes: visual.designNotes,
