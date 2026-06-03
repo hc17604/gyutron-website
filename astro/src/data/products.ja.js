@@ -411,7 +411,7 @@ const GYUTRON_PRODUCTS = {
                 type: "コンパクトスマートカメラ",
                 summary: "在荷チェック、ラベル照合、向き判定、基本的な良否判定向けのエントリースマートカメラ。",
                 kind: "camera",
-                image: "product-images/gy-v120.png",
+                image: "product-library/transparent/gy-v120.png",
                 specs: { Sensor: "1.6 MP CMOS", Lens: "C-mount / fixed", Interface: "Ethernet + I/O", Rating: "IP67 housing" },
                 tags: ["2D inspection", "ティーチ設定", "白色光"]
             },
@@ -420,7 +420,7 @@ const GYUTRON_PRODUCTS = {
                 type: "コンパクトエリアスキャンカメラ",
                 summary: "狭い機械スペース、治具チェック、部品在荷、ラベル照合向けの小型産業用カメラ。",
                 kind: "camera",
-                image: "product-images/gy-v160-compact.png",
+                image: "product-library/transparent/gy-v160-compact.png",
                 specs: { Sensor: "1.6 MP global shutter", Lens: "C-mount", Interface: "GigE + trigger I/O", Rating: "IP65 metal" },
                 tags: ["コンパクト筐体", "グローバルシャッター", "治具組込対応"]
             },
@@ -429,7 +429,7 @@ const GYUTRON_PRODUCTS = {
                 type: "色検査 camera",
                 summary: "梱包、ラベル印字、組立の色チェック、混在製品の照合向けのカラーエリアカメラ。",
                 kind: "camera",
-                image: "product-images/gy-v240-color.png",
+                image: "product-library/transparent/gy-v240-color.png",
                 specs: { Sensor: "2.4 MP color CMOS", Lens: "C-mount / liquid lens option", Interface: "GigE Vision", Rating: "IP65" },
                 tags: ["色検査", "白色光", "ラベル検査"]
             },
@@ -438,7 +438,7 @@ const GYUTRON_PRODUCTS = {
                 type: "AIビジョンセンサー",
                 summary: "欠陥検出、分類、OCR、外観のばらつきに対応する組込みAI検査カメラ。",
                 kind: "camera",
-                image: "product-images/gy-v280-ai.png",
+                image: "product-library/transparent/gy-v280-ai.png",
                 specs: { Sensor: "2.8 MP global shutter", AI: "On-device inference", Interface: "GigE / discrete I/O", Rating: "IP67" },
                 tags: ["AI tools", "OCR", "欠陥"]
             },
@@ -447,7 +447,7 @@ const GYUTRON_PRODUCTS = {
                 type: "モノクロエリアスキャンカメラ",
                 summary: "計測、エッジ検出、位置合わせ、特徴検査向けの高コントラストモノクロカメラ。",
                 kind: "camera",
-                image: "product-images/gy-v320-mono.png",
+                image: "product-library/transparent/gy-v320-mono.png",
                 specs: { Sensor: "3.2 MP mono global shutter", Pixel: "3.45 um", Interface: "GigE / strobe I/O", Rating: "IP65" },
                 tags: ["モノクロセンサー", "エッジコントラスト", "Measurement"]
             },
@@ -456,7 +456,7 @@ const GYUTRON_PRODUCTS = {
                 type: "高速スマートカメラ",
                 summary: "組立検証、計測、ガイダンス、ライン側品質管理向けの高速組込みビジョンシステム。",
                 kind: "camera",
-                image: "product-images/gy-v380-pro.png",
+                image: "product-library/transparent/gy-v380-pro.png",
                 specs: { Sensor: "5 MP global shutter", Speed: "Up to 90 fps", Interface: "GigE / PROFINET", Rating: "IP67" },
                 tags: ["High speed", "PLC接続対応", "Metrology"]
             },
@@ -465,7 +465,7 @@ const GYUTRON_PRODUCTS = {
                 type: "高解像度エリアカメラ",
                 summary: "微小欠陥、微細印字、高密度ラベル、精密組立チェック向けの高解像度検査カメラ。",
                 kind: "camera",
-                image: "product-images/gy-v500-hr.png",
+                image: "product-library/transparent/gy-v500-hr.png",
                 specs: { Sensor: "5.0 MP global shutter", Speed: "Up to 72 fps", Interface: "GigE Vision / USB3 option", Rating: "IP65" },
                 tags: ["高解像度", "微細ディテール", "印字品質"]
             },
@@ -474,7 +474,7 @@ const GYUTRON_PRODUCTS = {
                 type: "高速エリアスキャンカメラ",
                 summary: "移動部品、コンベア検査、ピック照合、動きに敏感な撮像向けの高速エリアスキャンモデル。",
                 kind: "camera",
-                image: "product-images/gy-v640-hs.png",
+                image: "product-library/transparent/gy-v640-hs.png",
                 specs: { Sensor: "6.4 MP global shutter", Speed: "Up to 118 fps", Interface: "2.5GigE + encoder", Rating: "IP65" },
                 tags: ["High speed", "コンベヤ", "Encoder sync"]
             },
@@ -483,7 +483,7 @@ const GYUTRON_PRODUCTS = {
                 type: "3Dプロファイルカメラ",
                 summary: "高さ、体積、ギャップ、ビード、表面形状の測定向けの3Dレーザープロファイルカメラ。",
                 kind: "camera",
-                image: "product-images/gy-v3d90.png",
+                image: "product-library/transparent/gy-v3d90.png",
                 specs: { Profile: "3D laser triangulation", Range: "90 mm class", Interface: "GigE Vision", Rating: "IP65" },
                 tags: ["3D profile", "高さ確認", "Robot guidance"]
             },
@@ -492,7 +492,7 @@ const GYUTRON_PRODUCTS = {
                 type: "ラインスキャンスマートカメラ",
                 summary: "連続ウェブ、ラベル、フィルム、梱包、高速表面向けのラインスキャン検査カメラ。",
                 kind: "camera",
-                image: "product-images/gy-vl2048.png",
+                image: "product-library/transparent/gy-vl2048.png",
                 specs: { Sensor: "2048 px line", Speed: "45 kHz", Interface: "GigE / encoder", Rating: "Industrial metal" },
                 tags: ["Line scan", "Web inspection", "Encoder"]
             },
@@ -501,7 +501,7 @@ const GYUTRON_PRODUCTS = {
                 type: "固定式コードリーダーカメラ",
                 summary: "DPM、QR、バーコード、高処理量トレーサビリティステーション向けの産業用画像式コードリーダー。",
                 kind: "camera",
-                image: "product-images/gy-cr390.png",
+                image: "product-library/transparent/gy-cr390.png",
                 specs: { Codes: "1D / 2D / DPM", Lens: "Liquid lens option", Interface: "Ethernet / RS-232", Rating: "IP65" },
                 tags: ["DPM", "トレーサビリティ", "高読取率"]
             },
@@ -510,7 +510,7 @@ const GYUTRON_PRODUCTS = {
                 type: "ビジョンコントローラ",
                 summary: "マルチカメラ検査セル、画像保存、PLC連携、レシピ管理向けのコンパクトコントローラ。",
                 kind: "camera",
-                image: "product-images/gy-vc8.png",
+                image: "product-library/transparent/gy-vc8.png",
                 specs: { Cameras: "Up to 8 devices", CPU: "Industrial AI module", Network: "PROFINET / EtherNet/IP", Storage: "512 GB option" },
                 tags: ["Multi-camera", "Recipes", "Edge AI"]
             },
@@ -519,7 +519,7 @@ const GYUTRON_PRODUCTS = {
                 type: "広範囲3Dプロファイルセンサー",
                 summary: "ロボットガイダンス、ビード検査、トレイ位置検出、高さマップ検査向けの広視野3Dセンサー。",
                 kind: "camera",
-                image: "product-images/gy-v3d150.png",
+                image: "product-library/transparent/gy-v3d150.png",
                 specs: { Profile: "Blue laser triangulation", Range: "150 mm class", Points: "2048 profile points", Rating: "IP65" },
                 tags: ["3D profile", "広範囲", "ロボットセル"]
             },
@@ -528,7 +528,7 @@ const GYUTRON_PRODUCTS = {
                 type: "AIビジョンプロセッサ",
                 summary: "マルチカメラAI検査、画像アーカイブ、高処理量生産ライン向けのラック型処理ユニット。",
                 kind: "camera",
-                image: "product-images/gy-vx12.png",
+                image: "product-library/transparent/gy-vx12.png",
                 specs: { Cameras: "Up to 12 streams", AI: "Industrial inference engine", Network: "2.5GigE / PROFINET", Storage: "2 TB option" },
                 tags: ["AI processor", "ラックマウント", "Multi-camera"]
             },
@@ -537,7 +537,7 @@ const GYUTRON_PRODUCTS = {
                 type: "ビジョンI/O拡張モジュール",
                 summary: "照明トリガ、エンコーダ信号、排出ゲート、検査セル同期向けのフィールドI/Oモジュール。",
                 kind: "camera",
-                image: "product-images/gy-vio16.png",
+                image: "product-library/transparent/gy-vio16.png",
                 specs: { "I/O": "16 digital inputs / outputs", Timing: "10 us trigger path", Network: "EtherCAT / Ethernet", Rating: "IP67" },
                 tags: ["Trigger I/O", "Encoder sync", "セル配線"]
             },
@@ -546,7 +546,7 @@ const GYUTRON_PRODUCTS = {
                 type: "産業用フレームグラバー",
                 summary: "検査PCでの高帯域ラインスキャン・特殊カメラ取込向けのフレームグラバーモジュール。",
                 kind: "camera",
-                image: "product-images/gy-vfg4.png",
+                image: "product-library/transparent/gy-vfg4.png",
                 specs: { Channels: "4 camera inputs", Bus: "PCIe x8", Throughput: "Up to 6.4 GB/s", SDK: "C / Python / .NET" },
                 tags: ["Frame grabber", "Line scan", "高帯域"]
             },
@@ -555,7 +555,7 @@ const GYUTRON_PRODUCTS = {
                 type: "ロボットガイダンス3Dモジュール",
                 summary: "ピック位置検出、ロボット経路補正、ビン縁検出、治具レス投入向けのコンパクト3Dカメラモジュール。",
                 kind: "camera",
-                image: "product-images/gy-vrg200.png",
+                image: "product-library/transparent/gy-vrg200.png",
                 specs: { Mode: "3D + 2D acquisition", Range: "200 mm working class", Interface: "GigE Vision + I/O", Rating: "IP65" },
                 tags: ["Robot guidance", "3D locate", "Flexible cells"]
             },
@@ -564,7 +564,7 @@ const GYUTRON_PRODUCTS = {
                 type: "コンパクト固定式コードリーダー",
                 summary: "ラベルチェック、カートン追跡、部品トレーサビリティ、狭所取付向けの小型固定リーダー。",
                 kind: "camera",
-                image: "product-images/gy-cr120.png",
+                image: "product-library/transparent/gy-cr120.png",
                 specs: { Codes: "1D / 2D", Sensor: "1.2 MP global shutter", Illumination: "白色LED", Rating: "IP65" },
                 tags: ["Compact reader", "トレーサビリティ", "白色LED"]
             },
@@ -573,7 +573,7 @@ const GYUTRON_PRODUCTS = {
                 type: "DPM固定式コードリーダー",
                 summary: "金属・樹脂部品の刻印、レーザーマーク、ドットピン、低コントラストコード向けの高コントラストリーダー。",
                 kind: "camera",
-                image: "product-images/gy-cr520-dpm.png",
+                image: "product-library/transparent/gy-cr520-dpm.png",
                 specs: { Codes: "DPM / QR / Data Matrix", Lighting: "White + polarizer", Lens: "Autofocus option", Rating: "IP67" },
                 tags: ["DPM", "低コントラスト", "Manufacturing"]
             },
@@ -582,7 +582,7 @@ const GYUTRON_PRODUCTS = {
                 type: "高速コードリーダー",
                 summary: "コンベア、仕分け、荷物照合、高速トレーサビリティライン向けのリーダーモジュール。",
                 kind: "camera",
-                image: "product-images/gy-cr720-conveyor.png",
+                image: "product-library/transparent/gy-cr720-conveyor.png",
                 specs: { Codes: "1D / 2D", Speed: "Up to 5 m/s", Field: "Wide-angle optics", Network: "Ethernet / RS-232" },
                 tags: ["コンベヤ", "High speed", "広視野"]
             },
@@ -591,7 +591,7 @@ const GYUTRON_PRODUCTS = {
                 type: "DPMコードスキャナー",
                 summary: "刻印、ドットピン、低コントラスト、曲面の産業コードに最適化したスキャナー。",
                 kind: "scanner",
-                image: "product-images/gy-s300-dpm.png",
+                image: "product-library/transparent/gy-s300-dpm.png",
                 specs: { Scan: "DPM / 1D / 2D", Lighting: "White + polarizer", Codes: "Metal, plastic, labels", Rugged: "IP65 / 1.8 m drop" },
                 tags: ["DPM", "AI decode", "Manufacturing"]
             },
@@ -600,7 +600,7 @@ const GYUTRON_PRODUCTS = {
                 type: "インラインバーコード検証機",
                 summary: "印字品質、DPM検証、梱包コンプライアンス、監査記録向けのインライン等級判定ステーション。",
                 kind: "camera",
-                image: "product-images/gy-cv220-inline.png",
+                image: "product-library/transparent/gy-cv220-inline.png",
                 specs: { Standards: "ISO / IEC grading", Codes: "1D / 2D / DPM", Light: "Calibrated white", Output: "PDF / CSV / API" },
                 tags: ["コードグレーディング", "インライン品質保証", "監査証跡"]
             },
@@ -609,7 +609,7 @@ const GYUTRON_PRODUCTS = {
                 type: "マルチカメラリーダーモジュール",
                 summary: "物流ラインでの多面の荷物・トート・トレイのコード読取向けトンネル型リーダーモジュール。",
                 kind: "camera",
-                image: "product-images/gy-rt800.png",
+                image: "product-library/transparent/gy-rt800.png",
                 specs: { Readers: "4 synchronized imagers", Field: "Multi-side capture", Trigger: "Photoeye / encoder", Network: "Ethernet / API" },
                 tags: ["トンネル読取", "Logistics", "Multi-side"]
             },
@@ -618,7 +618,7 @@ const GYUTRON_PRODUCTS = {
                 type: "白色リングライト",
                 summary: "レンズ同軸の検査、ラベルチェック、特徴コントラスト、小物ステーション向けのコンパクトリングライト。",
                 kind: "camera",
-                image: "product-images/gy-lr70.png",
+                image: "product-library/transparent/gy-lr70.png",
                 specs: { Lighting: "白色LED", Diameter: "70 mm", Control: "Strobe / constant", Mount: "C-mount adapter" },
                 tags: ["リング照明", "白色LED", "レンズマウント"]
             },
@@ -627,7 +627,7 @@ const GYUTRON_PRODUCTS = {
                 type: "白色バーライト",
                 summary: "エッジ強調、コンベア検査、梱包チェック、制御された側射照明向けのリニアバーライト。",
                 kind: "camera",
-                image: "product-images/gy-lb220.png",
+                image: "product-library/transparent/gy-lb220.png",
                 specs: { Lighting: "白色LED", Length: "220 mm", Control: "PWM / strobe", Housing: "Finned aluminum" },
                 tags: ["バー照明", "サイド照明", "治具組込対応"]
             },
@@ -636,7 +636,7 @@ const GYUTRON_PRODUCTS = {
                 type: "ドームライト",
                 summary: "反射部品、曲面、低グレアのビジョン検査向けの拡散白色ドームライト。",
                 kind: "camera",
-                image: "product-images/gy-ldome120.png",
+                image: "product-library/transparent/gy-ldome120.png",
                 specs: { Lighting: "Diffuse white", Diameter: "120 mm", Opening: "Camera center port", Housing: "Aluminum dome" },
                 tags: ["Dome", "低グレア", "Reflective parts"]
             },
@@ -645,7 +645,7 @@ const GYUTRON_PRODUCTS = {
                 type: "白色バックライトパネル",
                 summary: "シルエット検査、穴検出、輪郭測定、透明部品チェック向けの拡散フレーム付きバックライト。",
                 kind: "camera",
-                image: "product-images/gy-lbl150.png",
+                image: "product-library/transparent/gy-lbl150.png",
                 specs: { Lighting: "Diffuse white", Area: "150 x 120 mm", Control: "Constant / strobe", Housing: "Finned aluminum frame" },
                 tags: ["バックライト", "シルエット", "Measurement"]
             },
@@ -663,7 +663,7 @@ const GYUTRON_PRODUCTS = {
                 type: "高出力ラインライト",
                 summary: "ラインスキャン検査、ウェブ材料、ラベル、フィルム、コンベアのエッジ強調向けの長尺リニアライト。",
                 kind: "camera",
-                image: "product-images/gy-ll300.png",
+                image: "product-library/transparent/gy-ll300.png",
                 specs: { Lighting: "白色LED line", Length: "300 mm", Control: "High-current strobe", Cooling: "Finned housing" },
                 tags: ["Line scan", "高出力", "Web inspection"]
             },
@@ -672,7 +672,7 @@ const GYUTRON_PRODUCTS = {
                 type: "4チャンネルストロボコントローラ",
                 summary: "同期ストロボ、輝度レシピ、エンコーダタイミング、マルチライトステーション向けの照明コントローラ。",
                 kind: "camera",
-                image: "product-images/gy-lc4.png",
+                image: "product-library/transparent/gy-lc4.png",
                 specs: { Channels: "4 independent outputs", Timing: "1 us trigger resolution", Power: "24 VDC", Interface: "Ethernet / RS-485" },
                 tags: ["ストロボ制御", "Recipes", "複数照明"]
             },
@@ -681,7 +681,7 @@ const GYUTRON_PRODUCTS = {
                 type: "テレセントリック光学モジュール",
                 summary: "寸法検査、低歪み撮像、再現性のある測定セットアップ向けのテレセントリックレンズモジュール。",
                 kind: "camera",
-                image: "product-images/gy-opt25.png",
+                image: "product-library/transparent/gy-opt25.png",
                 specs: { Optics: "25 mm class telecentric", Sensor: "Up to 2/3 inch", Distortion: "<0.08%", Mount: "C-mount" },
                 tags: ["Telecentric", "Metrology", "低歪み"]
             }
@@ -691,7 +691,7 @@ const GYUTRON_PRODUCTS = {
                 type: "スマートエリアスキャンカメラ",
                 summary: "AI支援検査・組立検証・位置決め・品質ゲート向けの堅牢スマートカメラ。",
                 kind: "vision",
-                image: "product-cutouts/generated/gy-v900-pro.png",
+                image: "product-library/transparent/gy-v900-pro.png",
                 specs: { Sensor: "9 MP global shutter", AI: "On-device inference", Interface: "GigE + I/O", Rating: "IP67 metal" },
                 tags: ["AI vision", "9 MP", "GigE"]
             }
@@ -701,7 +701,7 @@ const GYUTRON_PRODUCTS = {
                 type: "産業用3Dビジョンカメラ",
                 summary: "ロボットガイダンス・プロファイル検査・バラ積み取り出し・寸法検査向けのステレオ深度ビジョンモジュール。",
                 kind: "vision",
-                image: "product-cutouts/generated/gy-v3d900.png",
+                image: "product-library/transparent/gy-v3d900.png",
                 specs: { Profile: "3D stereo / depth", Range: "900 mm class", Interface: "GigE Vision", Rating: "IP65 metal" },
                 tags: ["3D vision", "Depth", "Robot cells"]
             }
@@ -711,7 +711,7 @@ const GYUTRON_PRODUCTS = {
                 type: "固定式産業用コードリーダー",
                 summary: "高速バーコード・QR・Data Matrix・DPMのトレーサビリティ工程向け画像式リーダー。",
                 kind: "reader",
-                image: "product-cutouts/generated/gy-cr900-matrix.png",
+                image: "product-library/transparent/gy-cr900-matrix.png",
                 specs: { Codes: "1D / 2D / DPM", Lens: "Autofocus option", Interface: "Ethernet / RS-232", Rating: "IP67 metal" },
                 tags: ["DPM", "Traceability", "Ethernet"]
             }
@@ -759,7 +759,7 @@ const GYUTRON_PRODUCTS = {
                 type: "バーコード検証機",
                 summary: "バーコード品質等級判定、印字検証、規制対応トレーサビリティ向けの検証機器。",
                 kind: "instrument",
-                image: "product-images/gy-cv100.png",
+                image: "product-library/transparent/gy-cv100.png",
                 specs: { Standards: "ISO / IEC grading", Codes: "1D / 2D / DPM", Light: "White calibrated", Report: "PDF / CSV" },
                 tags: ["コード品質", "トレーサビリティ", "レポート"]
             },

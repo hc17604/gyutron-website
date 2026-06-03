@@ -486,5 +486,447 @@
       "direction": "wired",
       "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
     }
+  },
+  "gy-v120": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v120.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v120-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v120-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v160-compact": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v160-compact.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v160-compact-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v160-compact-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v240-color": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v240-color.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v240-color-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v240-color-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v280-ai": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v280-ai.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v280-ai-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v280-ai-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v320-mono": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v320-mono.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v320-mono-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v320-mono-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v380-pro": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v380-pro.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v380-pro-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v380-pro-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v500-hr": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v500-hr.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v500-hr-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v500-hr-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v640-hs": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v640-hs.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v640-hs-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v640-hs-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-opt25": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-opt25.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-opt25-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-opt25-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v900-pro": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v900-pro.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v900-pro-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v900-pro-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-vc8": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-vc8.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-vc8-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-vc8-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v3d90": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v3d90.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v3d90-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v3d90-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v3d150": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v3d150.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v3d150-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v3d150-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-vl2048": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-vl2048.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-vl2048-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-vl2048-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-vx12": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-vx12.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-vx12-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-vx12-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-vio16": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-vio16.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-vio16-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-vio16-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-lc4": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-lc4.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-lc4-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-lc4-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-vfg4": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-vfg4.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-vfg4-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-vfg4-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-vrg200": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-vrg200.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-vrg200-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-vrg200-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-v3d900": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-v3d900.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-v3d900-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-v3d900-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-cr120": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-cr120.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cr120-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cr120-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-cr390": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-cr390.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cr390-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cr390-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-cr520-dpm": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-cr520-dpm.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cr520-dpm-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cr520-dpm-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-cr720-conveyor": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-cr720-conveyor.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cr720-conveyor-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cr720-conveyor-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-s300-dpm": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-s300-dpm.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-s300-dpm-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-s300-dpm-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-cv100": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-cv100.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cv100-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cv100-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-cv220-inline": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-cv220-inline.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cv220-inline-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cv220-inline-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-rt800": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-rt800.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-rt800-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-rt800-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-cr900-matrix": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-cr900-matrix.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cr900-matrix-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cr900-matrix-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-lr70": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-lr70.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-lr70-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-lr70-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-lb220": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-lb220.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-lb220-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-lb220-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-ldome120": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-ldome120.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ldome120-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ldome120-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-lbl150": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-lbl150.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-lbl150-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-lbl150-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
+  },
+  "gy-ll300": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-ll300.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ll300-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ll300-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+    }
   }
 }

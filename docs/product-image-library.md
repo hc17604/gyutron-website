@@ -74,40 +74,40 @@ Product count: **84**
 | GY-ENV32 | environmental-sensing | Environmental sensor | `product-library/transparent/gy-env32.png` | `product-library/transparent/gy-env32.png` | wired-live |
 | GY-NET8 | environmental-sensing | Sensor network hub | `product-library/transparent/gy-net8.png` | `product-library/transparent/gy-net8.png` | wired-live |
 | GY-NET90 | environmental-sensing | IP67 remote I/O module | `product-library/transparent/gy-net90.png` | `product-library/transparent/gy-net90.png` | wired-live |
-| GY-V120 | area-scan-cameras | Compact smart camera | `product-images/gy-v120.png` | `product-library/transparent/gy-v120.png` | needs-regeneration |
-| GY-V160 Compact | area-scan-cameras | Compact area scan camera | `product-images/gy-v160-compact.png` | `product-library/transparent/gy-v160-compact.png` | needs-regeneration |
-| GY-V240 Color | area-scan-cameras | Color inspection camera | `product-images/gy-v240-color.png` | `product-library/transparent/gy-v240-color.png` | needs-regeneration |
-| GY-V280 AI | area-scan-cameras | AI vision sensor | `product-images/gy-v280-ai.png` | `product-library/transparent/gy-v280-ai.png` | needs-regeneration |
-| GY-V320 Mono | area-scan-cameras | Monochrome area scan camera | `product-images/gy-v320-mono.png` | `product-library/transparent/gy-v320-mono.png` | needs-regeneration |
-| GY-V380 Pro | area-scan-cameras | High-speed smart camera | `product-images/gy-v380-pro.png` | `product-library/transparent/gy-v380-pro.png` | needs-regeneration |
-| GY-V500 HR | area-scan-cameras | High-resolution area camera | `product-images/gy-v500-hr.png` | `product-library/transparent/gy-v500-hr.png` | needs-regeneration |
-| GY-V640 HS | area-scan-cameras | High-speed area scan camera | `product-images/gy-v640-hs.png` | `product-library/transparent/gy-v640-hs.png` | needs-regeneration |
-| GY-OPT25 | area-scan-cameras | Telecentric optics module | `product-images/gy-opt25.png` | `product-library/transparent/gy-opt25.png` | needs-regeneration |
-| GY-V900 Pro | area-scan-cameras | Smart area-scan camera | `product-cutouts/generated/gy-v900-pro.png` | `product-library/transparent/gy-v900-pro.png` | needs-regeneration |
-| GY-VC8 | smart-vision-sensors | Vision controller | `product-images/gy-vc8.png` | `product-library/transparent/gy-vc8.png` | needs-regeneration |
-| GY-V3D90 | smart-vision-sensors | 3D profile camera | `product-images/gy-v3d90.png` | `product-library/transparent/gy-v3d90.png` | needs-regeneration |
-| GY-V3D150 | smart-vision-sensors | Wide-range 3D profile sensor | `product-images/gy-v3d150.png` | `product-library/transparent/gy-v3d150.png` | needs-regeneration |
-| GY-VL2048 | smart-vision-sensors | Line scan smart camera | `product-images/gy-vl2048.png` | `product-library/transparent/gy-vl2048.png` | needs-regeneration |
-| GY-VX12 | smart-vision-sensors | AI vision processor | `product-images/gy-vx12.png` | `product-library/transparent/gy-vx12.png` | needs-regeneration |
-| GY-VIO16 | smart-vision-sensors | Vision I/O expansion module | `product-images/gy-vio16.png` | `product-library/transparent/gy-vio16.png` | needs-regeneration |
-| GY-LC4 | smart-vision-sensors | Four-channel strobe controller | `product-images/gy-lc4.png` | `product-library/transparent/gy-lc4.png` | needs-regeneration |
-| GY-VFG4 | smart-vision-sensors | Industrial frame grabber | `product-images/gy-vfg4.png` | `product-library/transparent/gy-vfg4.png` | needs-regeneration |
-| GY-VRG200 | smart-vision-sensors | Robot guidance 3D module | `product-images/gy-vrg200.png` | `product-library/transparent/gy-vrg200.png` | needs-regeneration |
-| GY-V3D900 | smart-vision-sensors | Industrial 3D vision camera | `product-cutouts/generated/gy-v3d900.png` | `product-library/transparent/gy-v3d900.png` | needs-regeneration |
-| GY-CR120 | code-reading-cameras | Compact fixed code reader | `product-images/gy-cr120.png` | `product-library/transparent/gy-cr120.png` | needs-regeneration |
-| GY-CR390 | code-reading-cameras | Fixed code reader camera | `product-images/gy-cr390.png` | `product-library/transparent/gy-cr390.png` | needs-regeneration |
-| GY-CR520 DPM | code-reading-cameras | DPM fixed code reader | `product-images/gy-cr520-dpm.png` | `product-library/transparent/gy-cr520-dpm.png` | needs-regeneration |
-| GY-CR720 Conveyor | code-reading-cameras | High-speed code reader | `product-images/gy-cr720-conveyor.png` | `product-library/transparent/gy-cr720-conveyor.png` | needs-regeneration |
-| GY-S300 DPM | code-reading-cameras | DPM code scanner | `product-images/gy-s300-dpm.png` | `product-library/transparent/gy-s300-dpm.png` | needs-regeneration |
-| GY-CV100 | code-reading-cameras | Barcode verifier | `product-images/gy-cv100.png` | `product-library/transparent/gy-cv100.png` | needs-regeneration |
-| GY-CV220 Inline | code-reading-cameras | Inline barcode verifier | `product-images/gy-cv220-inline.png` | `product-library/transparent/gy-cv220-inline.png` | needs-regeneration |
-| GY-RT800 | code-reading-cameras | Multi-camera reader module | `product-images/gy-rt800.png` | `product-library/transparent/gy-rt800.png` | needs-regeneration |
-| GY-CR900 Matrix | code-reading-cameras | Fixed industrial code reader | `product-cutouts/generated/gy-cr900-matrix.png` | `product-library/transparent/gy-cr900-matrix.png` | needs-regeneration |
-| GY-LR70 | vision-lighting | White ring light | `product-images/gy-lr70.png` | `product-library/transparent/gy-lr70.png` | needs-regeneration |
-| GY-LB220 | vision-lighting | White bar light | `product-images/gy-lb220.png` | `product-library/transparent/gy-lb220.png` | needs-regeneration |
-| GY-LDome120 | vision-lighting | Dome light | `product-images/gy-ldome120.png` | `product-library/transparent/gy-ldome120.png` | needs-regeneration |
-| GY-LBL150 | vision-lighting | White backlight panel | `product-images/gy-lbl150.png` | `product-library/transparent/gy-lbl150.png` | needs-regeneration |
-| GY-LL300 | vision-lighting | High-output line light | `product-images/gy-ll300.png` | `product-library/transparent/gy-ll300.png` | needs-regeneration |
+| GY-V120 | area-scan-cameras | Compact smart camera | `product-library/transparent/gy-v120.png` | `product-library/transparent/gy-v120.png` | wired-live |
+| GY-V160 Compact | area-scan-cameras | Compact area scan camera | `product-library/transparent/gy-v160-compact.png` | `product-library/transparent/gy-v160-compact.png` | wired-live |
+| GY-V240 Color | area-scan-cameras | Color inspection camera | `product-library/transparent/gy-v240-color.png` | `product-library/transparent/gy-v240-color.png` | wired-live |
+| GY-V280 AI | area-scan-cameras | AI vision sensor | `product-library/transparent/gy-v280-ai.png` | `product-library/transparent/gy-v280-ai.png` | wired-live |
+| GY-V320 Mono | area-scan-cameras | Monochrome area scan camera | `product-library/transparent/gy-v320-mono.png` | `product-library/transparent/gy-v320-mono.png` | wired-live |
+| GY-V380 Pro | area-scan-cameras | High-speed smart camera | `product-library/transparent/gy-v380-pro.png` | `product-library/transparent/gy-v380-pro.png` | wired-live |
+| GY-V500 HR | area-scan-cameras | High-resolution area camera | `product-library/transparent/gy-v500-hr.png` | `product-library/transparent/gy-v500-hr.png` | wired-live |
+| GY-V640 HS | area-scan-cameras | High-speed area scan camera | `product-library/transparent/gy-v640-hs.png` | `product-library/transparent/gy-v640-hs.png` | wired-live |
+| GY-OPT25 | area-scan-cameras | Telecentric optics module | `product-library/transparent/gy-opt25.png` | `product-library/transparent/gy-opt25.png` | wired-live |
+| GY-V900 Pro | area-scan-cameras | Smart area-scan camera | `product-library/transparent/gy-v900-pro.png` | `product-library/transparent/gy-v900-pro.png` | wired-live |
+| GY-VC8 | smart-vision-sensors | Vision controller | `product-library/transparent/gy-vc8.png` | `product-library/transparent/gy-vc8.png` | wired-live |
+| GY-V3D90 | smart-vision-sensors | 3D profile camera | `product-library/transparent/gy-v3d90.png` | `product-library/transparent/gy-v3d90.png` | wired-live |
+| GY-V3D150 | smart-vision-sensors | Wide-range 3D profile sensor | `product-library/transparent/gy-v3d150.png` | `product-library/transparent/gy-v3d150.png` | wired-live |
+| GY-VL2048 | smart-vision-sensors | Line scan smart camera | `product-library/transparent/gy-vl2048.png` | `product-library/transparent/gy-vl2048.png` | wired-live |
+| GY-VX12 | smart-vision-sensors | AI vision processor | `product-library/transparent/gy-vx12.png` | `product-library/transparent/gy-vx12.png` | wired-live |
+| GY-VIO16 | smart-vision-sensors | Vision I/O expansion module | `product-library/transparent/gy-vio16.png` | `product-library/transparent/gy-vio16.png` | wired-live |
+| GY-LC4 | smart-vision-sensors | Four-channel strobe controller | `product-library/transparent/gy-lc4.png` | `product-library/transparent/gy-lc4.png` | wired-live |
+| GY-VFG4 | smart-vision-sensors | Industrial frame grabber | `product-library/transparent/gy-vfg4.png` | `product-library/transparent/gy-vfg4.png` | wired-live |
+| GY-VRG200 | smart-vision-sensors | Robot guidance 3D module | `product-library/transparent/gy-vrg200.png` | `product-library/transparent/gy-vrg200.png` | wired-live |
+| GY-V3D900 | smart-vision-sensors | Industrial 3D vision camera | `product-library/transparent/gy-v3d900.png` | `product-library/transparent/gy-v3d900.png` | wired-live |
+| GY-CR120 | code-reading-cameras | Compact fixed code reader | `product-library/transparent/gy-cr120.png` | `product-library/transparent/gy-cr120.png` | wired-live |
+| GY-CR390 | code-reading-cameras | Fixed code reader camera | `product-library/transparent/gy-cr390.png` | `product-library/transparent/gy-cr390.png` | wired-live |
+| GY-CR520 DPM | code-reading-cameras | DPM fixed code reader | `product-library/transparent/gy-cr520-dpm.png` | `product-library/transparent/gy-cr520-dpm.png` | wired-live |
+| GY-CR720 Conveyor | code-reading-cameras | High-speed code reader | `product-library/transparent/gy-cr720-conveyor.png` | `product-library/transparent/gy-cr720-conveyor.png` | wired-live |
+| GY-S300 DPM | code-reading-cameras | DPM code scanner | `product-library/transparent/gy-s300-dpm.png` | `product-library/transparent/gy-s300-dpm.png` | wired-live |
+| GY-CV100 | code-reading-cameras | Barcode verifier | `product-library/transparent/gy-cv100.png` | `product-library/transparent/gy-cv100.png` | wired-live |
+| GY-CV220 Inline | code-reading-cameras | Inline barcode verifier | `product-library/transparent/gy-cv220-inline.png` | `product-library/transparent/gy-cv220-inline.png` | wired-live |
+| GY-RT800 | code-reading-cameras | Multi-camera reader module | `product-library/transparent/gy-rt800.png` | `product-library/transparent/gy-rt800.png` | wired-live |
+| GY-CR900 Matrix | code-reading-cameras | Fixed industrial code reader | `product-library/transparent/gy-cr900-matrix.png` | `product-library/transparent/gy-cr900-matrix.png` | wired-live |
+| GY-LR70 | vision-lighting | White ring light | `product-library/transparent/gy-lr70.png` | `product-library/transparent/gy-lr70.png` | wired-live |
+| GY-LB220 | vision-lighting | White bar light | `product-library/transparent/gy-lb220.png` | `product-library/transparent/gy-lb220.png` | wired-live |
+| GY-LDome120 | vision-lighting | Dome light | `product-library/transparent/gy-ldome120.png` | `product-library/transparent/gy-ldome120.png` | wired-live |
+| GY-LBL150 | vision-lighting | White backlight panel | `product-library/transparent/gy-lbl150.png` | `product-library/transparent/gy-lbl150.png` | wired-live |
+| GY-LL300 | vision-lighting | High-output line light | `product-library/transparent/gy-ll300.png` | `product-library/transparent/gy-ll300.png` | wired-live |
 | GY-MG50 | dimensional-gauges | Digital measurement gauge | `product-images/gy-mg50.png` | `product-library/transparent/gy-mg50.png` | needs-regeneration |
 | GY-VM200 | dimensional-gauges | Vision measuring instrument | `product-images/gy-vm200.png` | `product-library/transparent/gy-vm200.png` | needs-regeneration |
 | GY-MG90 | dimensional-gauges | Digital dimensional gauge | `product-cutouts/generated/gy-mg90.png` | `product-library/transparent/gy-mg90.png` | needs-regeneration |

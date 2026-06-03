@@ -411,7 +411,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Kompakte Smart-Kamera",
                 summary: "Einstiegs-Smart-Kamera für Anwesenheitsprüfung, Etikettenkontrolle, Orientierung und einfache Gut/Schlecht-Prüfung.",
                 kind: "camera",
-                image: "product-images/gy-v120.png",
+                image: "product-library/transparent/gy-v120.png",
                 specs: { Sensor: "1.6 MP CMOS", Lens: "C-mount / fixed", Interface: "Ethernet + I/O", Rating: "IP67 housing" },
                 tags: ["2D inspection", "Teach-Einrichtung", "Weißlicht"]
             },
@@ -420,7 +420,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Kompakte Flächenkamera",
                 summary: "Industriekamera im Kleinformat für enge Maschinenräume, Vorrichtungsprüfung, Teilepräsenz und Etikettenkontrolle.",
                 kind: "camera",
-                image: "product-images/gy-v160-compact.png",
+                image: "product-library/transparent/gy-v160-compact.png",
                 specs: { Sensor: "1.6 MP global shutter", Lens: "C-mount", Interface: "GigE + trigger I/O", Rating: "IP65 metal" },
                 tags: ["Kompaktes Gehäuse", "Global Shutter", "Vorrichtungsfähig"]
             },
@@ -429,7 +429,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Farbprüfung camera",
                 summary: "Farb-Flächenkamera für Verpackung, Etikettendruck, Farbprüfung in der Montage und Verifizierung gemischter Produkte.",
                 kind: "camera",
-                image: "product-images/gy-v240-color.png",
+                image: "product-library/transparent/gy-v240-color.png",
                 specs: { Sensor: "2.4 MP color CMOS", Lens: "C-mount / liquid lens option", Interface: "GigE Vision", Rating: "IP65" },
                 tags: ["Farbprüfung", "Weißlicht", "Etikettenprüfung"]
             },
@@ -438,7 +438,7 @@ const GYUTRON_PRODUCTS = {
                 type: "KI-Vision-Sensor",
                 summary: "Eingebettete KI-Prüfkamera für Defekterkennung, Klassifizierung, OCR und variables Teileaussehen.",
                 kind: "camera",
-                image: "product-images/gy-v280-ai.png",
+                image: "product-library/transparent/gy-v280-ai.png",
                 specs: { Sensor: "2.8 MP global shutter", AI: "On-device inference", Interface: "GigE / discrete I/O", Rating: "IP67" },
                 tags: ["AI tools", "OCR", "Fehlerbilder"]
             },
@@ -447,7 +447,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Monochrome Flächenkamera",
                 summary: "Kontraststarke Monochromkamera für Messtechnik, Kantenerkennung, Ausrichtung und Merkmalsprüfung.",
                 kind: "camera",
-                image: "product-images/gy-v320-mono.png",
+                image: "product-library/transparent/gy-v320-mono.png",
                 specs: { Sensor: "3.2 MP mono global shutter", Pixel: "3.45 um", Interface: "GigE / strobe I/O", Rating: "IP65" },
                 tags: ["Monosensor", "Kantenkontrast", "Measurement"]
             },
@@ -456,7 +456,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Highspeed-Smart-Kamera",
                 summary: "Schnelles eingebettetes Vision-System für Montageprüfung, Messtechnik, Führung und linienseitige Qualitätskontrolle.",
                 kind: "camera",
-                image: "product-images/gy-v380-pro.png",
+                image: "product-library/transparent/gy-v380-pro.png",
                 specs: { Sensor: "5 MP global shutter", Speed: "Up to 90 fps", Interface: "GigE / PROFINET", Rating: "IP67" },
                 tags: ["High speed", "SPS-fähig", "Metrology"]
             },
@@ -465,7 +465,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Hochauflösende Flächenkamera",
                 summary: "Hochauflösende Prüfkamera für kleine Defekte, feinen Druck, dichte Etiketten und Präzisionsmontageprüfung.",
                 kind: "camera",
-                image: "product-images/gy-v500-hr.png",
+                image: "product-library/transparent/gy-v500-hr.png",
                 specs: { Sensor: "5.0 MP global shutter", Speed: "Up to 72 fps", Interface: "GigE Vision / USB3 option", Rating: "IP65" },
                 tags: ["Hohe Auflösung", "Feindetails", "Druckqualität"]
             },
@@ -474,7 +474,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Highspeed-Flächenkamera",
                 summary: "Schnelles Flächenkameramodell für bewegte Teile, Förderbandprüfung, Pick-Verifizierung und bewegungskritische Aufnahmen.",
                 kind: "camera",
-                image: "product-images/gy-v640-hs.png",
+                image: "product-library/transparent/gy-v640-hs.png",
                 specs: { Sensor: "6.4 MP global shutter", Speed: "Up to 118 fps", Interface: "2.5GigE + encoder", Rating: "IP65" },
                 tags: ["High speed", "Fördertechnik", "Encoder sync"]
             },
@@ -483,7 +483,7 @@ const GYUTRON_PRODUCTS = {
                 type: "3D-Profilkamera",
                 summary: "3D-Laserprofilkamera für die Messung von Höhe, Volumen, Spalt, Naht und Oberflächenmerkmalen.",
                 kind: "camera",
-                image: "product-images/gy-v3d90.png",
+                image: "product-library/transparent/gy-v3d90.png",
                 specs: { Profile: "3D laser triangulation", Range: "90 mm class", Interface: "GigE Vision", Rating: "IP65" },
                 tags: ["3D profile", "Höhenprüfung", "Robot guidance"]
             },
@@ -492,7 +492,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Zeilenscan-Smart-Kamera",
                 summary: "Zeilenscan-Prüfkamera für Endlosbahnen, Etiketten, Folien, Verpackung und schnelle Oberflächen.",
                 kind: "camera",
-                image: "product-images/gy-vl2048.png",
+                image: "product-library/transparent/gy-vl2048.png",
                 specs: { Sensor: "2048 px line", Speed: "45 kHz", Interface: "GigE / encoder", Rating: "Industrial metal" },
                 tags: ["Line scan", "Web inspection", "Encoder"]
             },
@@ -501,7 +501,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Stationäre Codeleser-Kamera",
                 summary: "Industrieller bildbasierter Codeleser für DPM, QR, Barcode und Hochdurchsatz-Rückverfolgungsstationen.",
                 kind: "camera",
-                image: "product-images/gy-cr390.png",
+                image: "product-library/transparent/gy-cr390.png",
                 specs: { Codes: "1D / 2D / DPM", Lens: "Liquid lens option", Interface: "Ethernet / RS-232", Rating: "IP65" },
                 tags: ["DPM", "Rückverfolgbarkeit", "Hohe Leserate"]
             },
@@ -510,7 +510,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Vision-Controller",
                 summary: "Kompakter Controller für Mehrkamera-Prüfzellen, Bildspeicherung, SPS-Austausch und Rezeptverwaltung.",
                 kind: "camera",
-                image: "product-images/gy-vc8.png",
+                image: "product-library/transparent/gy-vc8.png",
                 specs: { Cameras: "Up to 8 devices", CPU: "Industrial AI module", Network: "PROFINET / EtherNet/IP", Storage: "512 GB option" },
                 tags: ["Multi-camera", "Recipes", "Edge AI"]
             },
@@ -519,7 +519,7 @@ const GYUTRON_PRODUCTS = {
                 type: "3D-Profilsensor mit großem Bereich",
                 summary: "3D-Sensor mit größerem Sichtfeld für Roboterführung, Nahtprüfung, Tray-Lokalisierung und Höhenkarten-Prüfung.",
                 kind: "camera",
-                image: "product-images/gy-v3d150.png",
+                image: "product-library/transparent/gy-v3d150.png",
                 specs: { Profile: "Blue laser triangulation", Range: "150 mm class", Points: "2048 profile points", Rating: "IP65" },
                 tags: ["3D profile", "Großer Bereich", "Roboterzellen"]
             },
@@ -528,7 +528,7 @@ const GYUTRON_PRODUCTS = {
                 type: "KI-Vision-Prozessor",
                 summary: "Rack-Verarbeitungseinheit für Mehrkamera-KI-Prüfung, Bildarchivierung und Hochdurchsatz-Produktionslinien.",
                 kind: "camera",
-                image: "product-images/gy-vx12.png",
+                image: "product-library/transparent/gy-vx12.png",
                 specs: { Cameras: "Up to 12 streams", AI: "Industrial inference engine", Network: "2.5GigE / PROFINET", Storage: "2 TB option" },
                 tags: ["AI processor", "Rackmontage", "Multi-camera"]
             },
@@ -537,7 +537,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Vision-I/O-Erweiterungsmodul",
                 summary: "Feld-I/O-Modul für Beleuchtungstrigger, Encodersignale, Ausschleusungen und Synchronisation von Prüfzellen.",
                 kind: "camera",
-                image: "product-images/gy-vio16.png",
+                image: "product-library/transparent/gy-vio16.png",
                 specs: { "I/O": "16 digital inputs / outputs", Timing: "10 us trigger path", Network: "EtherCAT / Ethernet", Rating: "IP67" },
                 tags: ["Trigger I/O", "Encoder sync", "Zellenverdrahtung"]
             },
@@ -546,7 +546,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Industrieller Framegrabber",
                 summary: "Framegrabber-Modul für die Hochbandbreiten-Zeilenscan- und Spezialkamera-Erfassung in Prüf-PCs.",
                 kind: "camera",
-                image: "product-images/gy-vfg4.png",
+                image: "product-library/transparent/gy-vfg4.png",
                 specs: { Channels: "4 camera inputs", Bus: "PCIe x8", Throughput: "Up to 6.4 GB/s", SDK: "C / Python / .NET" },
                 tags: ["Frame grabber", "Line scan", "Hohe Bandbreite"]
             },
@@ -555,7 +555,7 @@ const GYUTRON_PRODUCTS = {
                 type: "3D-Roboterführungsmodul",
                 summary: "Kompaktes 3D-Kameramodul für Pick-Lokalisierung, Roboterbahnkorrektur, Behälterkantenerkennung und vorrichtungsfreies Beladen.",
                 kind: "camera",
-                image: "product-images/gy-vrg200.png",
+                image: "product-library/transparent/gy-vrg200.png",
                 specs: { Mode: "3D + 2D acquisition", Range: "200 mm working class", Interface: "GigE Vision + I/O", Rating: "IP65" },
                 tags: ["Robot guidance", "3D locate", "Flexible cells"]
             },
@@ -564,7 +564,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Kompakter stationärer Codeleser",
                 summary: "Kleiner stationärer Leser für Etikettenprüfung, Kartonverfolgung, Bauteil-Rückverfolgung und enge Maschinenmontage.",
                 kind: "camera",
-                image: "product-images/gy-cr120.png",
+                image: "product-library/transparent/gy-cr120.png",
                 specs: { Codes: "1D / 2D", Sensor: "1.2 MP global shutter", Illumination: "Weiße LED", Rating: "IP65" },
                 tags: ["Compact reader", "Rückverfolgbarkeit", "Weiße LED"]
             },
@@ -573,7 +573,7 @@ const GYUTRON_PRODUCTS = {
                 type: "DPM-Stationärcodeleser",
                 summary: "Kontraststarker Leser für geätzte, lasermarkierte, genadelte und kontrastarme Codes auf Metall- oder Kunststoffteilen.",
                 kind: "camera",
-                image: "product-images/gy-cr520-dpm.png",
+                image: "product-library/transparent/gy-cr520-dpm.png",
                 specs: { Codes: "DPM / QR / Data Matrix", Lighting: "White + polarizer", Lens: "Autofocus option", Rating: "IP67" },
                 tags: ["DPM", "Niedriger Kontrast", "Manufacturing"]
             },
@@ -582,7 +582,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Highspeed-Codeleser",
                 summary: "Lesemodul für Förderbänder, Sortierung, Paketverifizierung und schnelle Rückverfolgungslinien.",
                 kind: "camera",
-                image: "product-images/gy-cr720-conveyor.png",
+                image: "product-library/transparent/gy-cr720-conveyor.png",
                 specs: { Codes: "1D / 2D", Speed: "Up to 5 m/s", Field: "Wide-angle optics", Network: "Ethernet / RS-232" },
                 tags: ["Fördertechnik", "High speed", "Großes Sichtfeld"]
             },
@@ -591,7 +591,7 @@ const GYUTRON_PRODUCTS = {
                 type: "DPM-Code-Scanner",
                 summary: "Scanner, optimiert für geätzte, genadelte, kontrastarme und gekrümmte Industriecodes.",
                 kind: "scanner",
-                image: "product-images/gy-s300-dpm.png",
+                image: "product-library/transparent/gy-s300-dpm.png",
                 specs: { Scan: "DPM / 1D / 2D", Lighting: "White + polarizer", Codes: "Metal, plastic, labels", Rugged: "IP65 / 1.8 m drop" },
                 tags: ["DPM", "AI decode", "Manufacturing"]
             },
@@ -600,7 +600,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Inline-Barcode-Verifizierer",
                 summary: "Inline-Bewertungsstation für Druckqualität, DPM-Verifizierung, Verpackungskonformität und Audit-Aufzeichnungen.",
                 kind: "camera",
-                image: "product-images/gy-cv220-inline.png",
+                image: "product-library/transparent/gy-cv220-inline.png",
                 specs: { Standards: "ISO / IEC grading", Codes: "1D / 2D / DPM", Light: "Calibrated white", Output: "PDF / CSV / API" },
                 tags: ["Code-Bewertung", "Inline-QS", "Audit Trail"]
             },
@@ -609,7 +609,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Mehrkamera-Lesemodul",
                 summary: "Tunnelförmiges Lesemodul für die mehrseitige Code-Erfassung von Paketen, Behältern und Trays in Logistiklinien.",
                 kind: "camera",
-                image: "product-images/gy-rt800.png",
+                image: "product-library/transparent/gy-rt800.png",
                 specs: { Readers: "4 synchronized imagers", Field: "Multi-side capture", Trigger: "Photoeye / encoder", Network: "Ethernet / API" },
                 tags: ["Tunnellesung", "Logistics", "Multi-side"]
             },
@@ -618,7 +618,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Weiße Ringleuchte",
                 summary: "Kompakte Ringleuchte für objektivzentrierte Prüfung, Etikettenkontrolle, Merkmalskontrast und Kleinteilstationen.",
                 kind: "camera",
-                image: "product-images/gy-lr70.png",
+                image: "product-library/transparent/gy-lr70.png",
                 specs: { Lighting: "Weiße LED", Diameter: "70 mm", Control: "Strobe / constant", Mount: "C-mount adapter" },
                 tags: ["Ringlicht", "Weiße LED", "Objektivaufnahme"]
             },
@@ -627,7 +627,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Weiße Balkenleuchte",
                 summary: "Lineare Balkenleuchte für Kantenbetonung, Förderbandprüfung, Verpackungskontrolle und gezielte Seitenbeleuchtung.",
                 kind: "camera",
-                image: "product-images/gy-lb220.png",
+                image: "product-library/transparent/gy-lb220.png",
                 specs: { Lighting: "Weiße LED", Length: "220 mm", Control: "PWM / strobe", Housing: "Finned aluminum" },
                 tags: ["Balkenlicht", "Seitenlicht", "Vorrichtungsfähig"]
             },
@@ -636,7 +636,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Domleuchte",
                 summary: "Diffuse weiße Domleuchte für reflektierende Teile, gekrümmte Oberflächen und blendarme Bildprüfung.",
                 kind: "camera",
-                image: "product-images/gy-ldome120.png",
+                image: "product-library/transparent/gy-ldome120.png",
                 specs: { Lighting: "Diffuse white", Diameter: "120 mm", Opening: "Camera center port", Housing: "Aluminum dome" },
                 tags: ["Dome", "Geringe Blendung", "Reflective parts"]
             },
@@ -645,7 +645,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Weißes Durchlichtpanel",
                 summary: "Diffuses gerahmtes Durchlicht für Silhouettenprüfung, Locherkennung, Konturmessung und Prüfung transparenter Teile.",
                 kind: "camera",
-                image: "product-images/gy-lbl150.png",
+                image: "product-library/transparent/gy-lbl150.png",
                 specs: { Lighting: "Diffuse white", Area: "150 x 120 mm", Control: "Constant / strobe", Housing: "Finned aluminum frame" },
                 tags: ["Durchlicht", "Silhouette", "Measurement"]
             },
@@ -663,7 +663,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Linienleuchte mit hoher Leistung",
                 summary: "Lange Linienleuchte für Zeilenscan-Prüfung, Bahnmaterialien, Etiketten, Folien und Förderband-Kantenbetonung.",
                 kind: "camera",
-                image: "product-images/gy-ll300.png",
+                image: "product-library/transparent/gy-ll300.png",
                 specs: { Lighting: "Weiße LED line", Length: "300 mm", Control: "High-current strobe", Cooling: "Finned housing" },
                 tags: ["Line scan", "Hohe Leistung", "Web inspection"]
             },
@@ -672,7 +672,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Vierkanal-Blitzcontroller",
                 summary: "Beleuchtungscontroller für synchronisierte Blitze, Intensitätsrezepte, Encoder-Timing und Mehrlicht-Stationen.",
                 kind: "camera",
-                image: "product-images/gy-lc4.png",
+                image: "product-library/transparent/gy-lc4.png",
                 specs: { Channels: "4 independent outputs", Timing: "1 us trigger resolution", Power: "24 VDC", Interface: "Ethernet / RS-485" },
                 tags: ["Stroboskopsteuerung", "Recipes", "Mehrlicht"]
             },
@@ -681,7 +681,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Telezentrisches Optikmodul",
                 summary: "Telezentrisches Objektivmodul für Maßprüfung, verzeichnungsarme Bildgebung und wiederholbare Messaufbauten.",
                 kind: "camera",
-                image: "product-images/gy-opt25.png",
+                image: "product-library/transparent/gy-opt25.png",
                 specs: { Optics: "25 mm class telecentric", Sensor: "Up to 2/3 inch", Distortion: "<0.08%", Mount: "C-mount" },
                 tags: ["Telecentric", "Metrology", "Geringe Verzeichnung"]
             }
@@ -691,7 +691,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Smarte Area-Scan-Kamera",
                 summary: "Robuste Smart-Kamera fuer KI-gestuetzte Inspektion, Montagepruefung, Positionierung und Quality Gates.",
                 kind: "vision",
-                image: "product-cutouts/generated/gy-v900-pro.png",
+                image: "product-library/transparent/gy-v900-pro.png",
                 specs: { Sensor: "9 MP global shutter", AI: "On-device inference", Interface: "GigE + I/O", Rating: "IP67 metal" },
                 tags: ["AI vision", "9 MP", "GigE"]
             }
@@ -701,7 +701,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Industrielle 3D-Vision-Kamera",
                 summary: "Stereo-Depth-Vision-Modul fuer Roboterfuehrung, Profilpruefung, Bin Handling und Masskontrolle.",
                 kind: "vision",
-                image: "product-cutouts/generated/gy-v3d900.png",
+                image: "product-library/transparent/gy-v3d900.png",
                 specs: { Profile: "3D stereo / depth", Range: "900 mm class", Interface: "GigE Vision", Rating: "IP65 metal" },
                 tags: ["3D vision", "Depth", "Robot cells"]
             }
@@ -711,7 +711,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Fester industrieller Code-Leser",
                 summary: "Bildbasierter Leser fuer schnelle Barcode-, QR-, Data-Matrix- und DPM-Rueckverfolgbarkeit.",
                 kind: "reader",
-                image: "product-cutouts/generated/gy-cr900-matrix.png",
+                image: "product-library/transparent/gy-cr900-matrix.png",
                 specs: { Codes: "1D / 2D / DPM", Lens: "Autofocus option", Interface: "Ethernet / RS-232", Rating: "IP67 metal" },
                 tags: ["DPM", "Traceability", "Ethernet"]
             }
@@ -759,7 +759,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Barcode-Verifizierer",
                 summary: "Verifizierungsgerät für Barcode-Qualitätsbewertung, Druckvalidierung und regulierte Rückverfolgungsprozesse.",
                 kind: "instrument",
-                image: "product-images/gy-cv100.png",
+                image: "product-library/transparent/gy-cv100.png",
                 specs: { Standards: "ISO / IEC grading", Codes: "1D / 2D / DPM", Light: "White calibrated", Report: "PDF / CSV" },
                 tags: ["Codequalität", "Rückverfolgbarkeit", "Berichte"]
             },
