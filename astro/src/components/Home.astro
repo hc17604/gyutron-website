@@ -4,6 +4,7 @@ import { t, localizeUrl, type Locale } from '../i18n';
 import TabCarousel from './TabCarousel.astro';
 import HeroSlider from './HeroSlider.astro';
 import PaymentMethods from './PaymentMethods.astro';
+import CompanyAddresses from './CompanyAddresses.astro';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/';
@@ -420,6 +421,7 @@ const path = '/';
                 <div>
                     <h3 class="footer-brand-name">GYUTRON</h3>
                     <p>{t(locale, "main.331")}</p>
+                    <CompanyAddresses locale={locale} />
                 </div>
                 <div>
                     <h4>{t(locale, "main.004")}</h4>

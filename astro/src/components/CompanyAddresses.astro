@@ -1,0 +1,47 @@
+---
+// Reusable footer company-address block (below the company intro).
+// Text is localized via i18n keys (footer.*); offices listed here are the
+// single source — add an office by adding its two keys to en/de/ja.json.
+import { t, type Locale } from '../i18n';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const offices = [
+  { label: t(locale, 'footer.hqLabel'), addr: t(locale, 'footer.hqAddr') },
+  { label: t(locale, 'footer.rdLabel'), addr: t(locale, 'footer.rdAddr') },
+];
+---
+<address class="footer-addr">
+  {offices.map((o) => (
+    <div class="footer-addr__item">
+      <span class="footer-addr__label">{o.label}</span>
+      <span class="footer-addr__line">{o.addr}</span>
+    </div>
+  ))}
+</address>
+
+<style>
+  .footer-addr {
+    margin-top: 20px;
+    display: grid;
+    gap: 14px;
+    font-style: normal; /* reset <address> default italic */
+    max-width: 34ch;
+  }
+  .footer-addr__item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .footer-addr__label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--purple-500, #8a63d2);
+  }
+  .footer-addr__line {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.6);
+  }
+</style>
