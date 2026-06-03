@@ -22,7 +22,7 @@ const GYUTRON_PRODUCTS = {
                 type: "汎用PDA",
                 summary: "スキャン、カメラ記録、高速ローミングを必要とする物流チーム向けのバランス型ハンドヘルド。",
                 kind: "pda",
-                image: "product-images/gy-a55-pro.png",
+                image: "product-library/transparent/gy-a55-pro.png",
                 specs: { OS: "Android 14", Display: "5.5 in HD+", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["4G LTE", "13 MP camera", "5000 mAh"]
             },
@@ -31,7 +31,7 @@ const GYUTRON_PRODUCTS = {
                 type: "大画面PDA",
                 summary: "帳票、WMS画面、作業指示を扱うモバイル業務に適した6インチ堅牢端末。",
                 kind: "pda",
-                image: "product-images/gy-a60-max.png",
+                image: "product-library/transparent/gy-a60-max.png",
                 specs: { OS: "Android 14", Display: "6.0 in FHD", Scan: "High-speed 2D", Rugged: "IP68 / 1.8 m drop" },
                 tags: ["6 GB RAM", "Wi-Fi 6E", "5800 mAh"]
             },
@@ -40,7 +40,7 @@ const GYUTRON_PRODUCTS = {
                 type: "キーパッドPDA",
                 summary: "手袋操作、反復スキャン、高処理量の倉庫業務に適した物理キー搭載モデル。",
                 kind: "keypad",
-                image: "product-images/gy-a62k.png",
+                image: "product-library/transparent/gy-a62k.png",
                 specs: { OS: "Android 13", Display: "4.0 in touch", Scan: "1D/2D angled", Rugged: "IP65 / 1.8 m drop" },
                 tags: ["29 keys", "Scan handle", "5200 mAh"]
             },
@@ -49,7 +49,7 @@ const GYUTRON_PRODUCTS = {
                 type: "キーパッド付きモバイルデータ端末",
                 summary: "タッチ画面と物理キーを備えた堅牢Android PDA。手袋操作、ピッキング、ラインサイドのデータ収集に適しています。",
                 kind: "keypad",
-                image: "product-cutouts/generated/gy-a92k-keytouch.png",
+                image: "product-library/transparent/gy-a92k-keytouch.png",
                 specs: { OS: "Android 14", Display: "4.7 in touch", Scan: "Angled 2D imager", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["数字キーパッド", "手袋操作", "5800 mAh"]
             },
@@ -58,7 +58,7 @@ const GYUTRON_PRODUCTS = {
                 type: "コールドチェーンPDA",
                 summary: "冷凍倉庫、食品物流、医薬品保管、冬季屋外作業に対応する堅牢ハンドヘルド。",
                 kind: "pda",
-                image: "product-images/gy-a70-cold.png",
+                image: "product-library/transparent/gy-a70-cold.png",
                 specs: { OS: "Android 14", Display: "5.7 in glove touch", Scan: "Condensation-ready 2D", Rugged: "IP67 / -25 C" },
                 tags: ["Heated window", "Hot swap", "6500 mAh"]
             },
@@ -67,7 +67,7 @@ const GYUTRON_PRODUCTS = {
                 type: "超堅牢PDA",
                 summary: "インフラ、ヤード、保全チーム、長時間の産業現場運用に向けた上位フィールドコンピュータ。",
                 kind: "pda",
-                image: "product-images/gy-a80-ultra.png",
+                image: "product-library/transparent/gy-a80-ultra.png",
                 specs: { OS: "Android 14", Display: "6.2 in FHD", Scan: "Extended range 2D", Rugged: "IP68 / 2.0 m drop" },
                 tags: ["5G option", "GNSS", "7200 mAh"]
             }
@@ -77,7 +77,7 @@ const GYUTRON_PRODUCTS = {
                 type: "タッチスクリーン式モバイルデータ端末",
                 summary: "倉庫・製造・現場でのスキャン中心の業務に最適な、キーパッド非搭載の堅牢Android PDA。",
                 kind: "pda",
-                image: "product-cutouts/generated/gy-a90-touch.png",
+                image: "product-library/transparent/gy-a90-touch.png",
                 specs: { OS: "Android 14", Display: "6.1 in FHD touch", Scan: "Integrated 2D imager", Rugged: "IP68 / 1.8 m drop" },
                 tags: ["Touch only", "Wi-Fi 6E", "6200 mAh"]
             }
@@ -97,7 +97,7 @@ const GYUTRON_PRODUCTS = {
                 type: "UHF内蔵PDA",
                 summary: "店舗棚卸、軽量倉庫業務、資産確認に適したコンパクトRFID端末。",
                 kind: "rfid",
-                image: "product-images/gy-r52-compact.png",
+                image: "product-library/transparent/gy-r52-compact.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 4 m", Scan: "1D/2D optional", Rugged: "IP65 / 1.5 m drop" },
                 tags: ["内蔵アンテナ", "NFC", "4500 mAh"]
             },
@@ -106,7 +106,7 @@ const GYUTRON_PRODUCTS = {
                 type: "エルゴノミックRFIDリーダー",
                 summary: "日次棚卸、パレット確認、返品処理に適したバランス型ピストルグリップRFIDリーダー。",
                 kind: "rfid",
-                image: "product-images/gy-r60-grip.png",
+                image: "product-library/transparent/gy-r60-grip.png",
                 specs: { OS: "Android 13", RFID: "UHF up to 8 m", Scan: "2D imager", Rugged: "IP65 / 1.6 m drop" },
                 tags: ["円偏波アンテナ", "Wi-Fi 6", "6000 mAh"]
             },
@@ -115,7 +115,7 @@ const GYUTRON_PRODUCTS = {
                 type: "長距離RFIDリーダー",
                 summary: "倉庫通路、ドックドア、一括タグ収集に対応する高出力UHFハンドヘルド。",
                 kind: "rfid",
-                image: "product-images/gy-r70-longrange.png",
+                image: "product-library/transparent/gy-r70-longrange.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 12 m", Scan: "2D + DPM option", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["33 dBm output", "5.5 in display", "7800 mAh"]
             },
@@ -124,7 +124,7 @@ const GYUTRON_PRODUCTS = {
                 type: "5G RFID端末",
                 summary: "広域データ同期と安全なAndroidアプリ運用を必要とする現場資産管理チーム向けRFIDコンピュータ。",
                 kind: "rfid",
-                image: "product-images/gy-r86-5g.png",
+                image: "product-library/transparent/gy-r86-5g.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 10 m", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["5G", "Dual-band GNSS", "7000 mAh"]
             }
@@ -134,7 +134,7 @@ const GYUTRON_PRODUCTS = {
                 type: "長距離UHF RFIDリーダー",
                 summary: "一括棚卸・ドックドア照合・資産追跡・パレット単位読取に対応する高出力UHF RFIDハンドヘルド。",
                 kind: "rfid",
-                image: "product-cutouts/generated/gy-r90-falcon.png",
+                image: "product-library/transparent/gy-r90-falcon.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 15 m", Scan: "2D + RFID", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["33 dBm", "Circular antenna", "8200 mAh"]
             }
@@ -154,7 +154,7 @@ const GYUTRON_PRODUCTS = {
                 type: "汎用有線スキャナー",
                 summary: "入荷デスク、製造ベンチ、梱包ステーション向けの堅牢なエリアイメージングスキャナー。",
                 kind: "scanner",
-                image: "product-images/gy-s210.png",
+                image: "product-library/transparent/gy-s210.png",
                 specs: { Scan: "1D/2D area imager", Link: "USB-C / RS232", Motion: "Up to 4 m/s", Rugged: "IP54 / 1.5 m drop" },
                 tags: ["プレゼンテーションモード", "白色LED", "高速デコード"]
             },
@@ -163,7 +163,7 @@ const GYUTRON_PRODUCTS = {
                 type: "産業用ワイヤレススキャナー",
                 summary: "ピックパック、出荷、柔軟なワークセル向けのベースステーション付きコードレススキャナー。",
                 kind: "scanner",
-                image: "product-images/gy-s240w.png",
+                image: "product-library/transparent/gy-s240w.png",
                 specs: { Scan: "1D/2D area imager", Link: "2.4G / Bluetooth", Range: "Up to 80 m open field", Rugged: "IP54 / 1.5 m drop" },
                 tags: ["バッチメモリ", "充電クレードル", "2200 mAh"]
             },
@@ -172,7 +172,7 @@ const GYUTRON_PRODUCTS = {
                 type: "コールドチェーンスキャナー",
                 summary: "冷蔵倉庫、食品加工、低温入荷向けのワイヤレススキャナー。",
                 kind: "scanner",
-                image: "product-images/gy-s330-cold.png",
+                image: "product-library/transparent/gy-s330-cold.png",
                 specs: { Scan: "1D/2D", Link: "Bluetooth 5.2", Temp: "-30 C to 50 C", Rugged: "IP65 / 1.8 m drop" },
                 tags: ["結露対策", "手袋対応グリップ", "3200 mAh"]
             },
@@ -181,7 +181,7 @@ const GYUTRON_PRODUCTS = {
                 type: "長距離対応スキャナー",
                 summary: "棚ラベル、ドックドア、パレット位置、フォークリフト併用のスキャン作業向けの長距離モデル。",
                 kind: "scanner",
-                image: "product-images/gy-s360-xr.png",
+                image: "product-library/transparent/gy-s360-xr.png",
                 specs: { Scan: "Near/far 1D/2D", Range: "10 cm to 15 m", Link: "Bluetooth / USB", Rugged: "IP65 / 2.0 m drop" },
                 tags: ["長距離", "レーザー照準", "倉庫"]
             },
@@ -190,7 +190,7 @@ const GYUTRON_PRODUCTS = {
                 type: "ハンズフリースキャンステーション",
                 summary: "卓上での照合、キッティング、小物部品トレーサビリティ向けのデスクトップスキャンモジュール。",
                 kind: "scanner",
-                image: "product-images/gy-s410-base.png",
+                image: "product-library/transparent/gy-s410-base.png",
                 specs: { Scan: "2D presentation", Mount: "Desktop / fixture", Link: "USB / Ethernet option", Rugged: "Sealed front window" },
                 tags: ["自動トリガー", "治具組込対応", "白色光"]
             },
@@ -199,7 +199,7 @@ const GYUTRON_PRODUCTS = {
                 type: "ウェアラブルリングスキャナー",
                 summary: "ハンズフリーのピッキング、仕分け、補充作業向けの軽量ウェアラブルスキャナー。",
                 kind: "scanner",
-                image: "product-images/gy-s520-wear.png",
+                image: "product-library/transparent/gy-s520-wear.png",
                 specs: { Scan: "1D/2D short range", Link: "Bluetooth 5.2", Battery: "Hot-swap 900 mAh", Rugged: "IP54 / 1.5 m drop" },
                 tags: ["ウェアラブル", "ハンズフリー", "倉庫"]
             },
@@ -208,7 +208,7 @@ const GYUTRON_PRODUCTS = {
                 type: "産業用ドックドアスキャナー",
                 summary: "ドック照合、パレット通過チェック、自動コンベア読取向けの固定式スキャナー。",
                 kind: "scanner",
-                image: "product-images/gy-s680-dock.png",
+                image: "product-library/transparent/gy-s680-dock.png",
                 specs: { Scan: "Wide-angle 2D", Link: "Ethernet / USB", Trigger: "Photoeye input", Rugged: "IP65 metal housing" },
                 tags: ["ドックドア", "コンベヤ", "Ethernet"]
             }
@@ -218,7 +218,7 @@ const GYUTRON_PRODUCTS = {
                 type: "長距離スキャンガン",
                 summary: "棚ラベル・フォークリフト併用作業・倉庫の遠距離読取に対応する産業用バーコードスキャナー。",
                 kind: "scanner",
-                image: "product-cutouts/generated/gy-s900-xr.png",
+                image: "product-library/transparent/gy-s900-xr.png",
                 specs: { Scan: "1D/2D near-far", Range: "Up to 18 m", Link: "Bluetooth / USB-C", Rugged: "IP65 / 2.0 m drop" },
                 tags: ["Long range", "Laser aimer", "Warehouse"]
             }
@@ -239,7 +239,7 @@ const GYUTRON_PRODUCTS = {
                 type: "スキャン専用PDAパッケージ",
                 summary: "Android PDA、2Dスキャンエンジン、ドック、予備バッテリー、MDMプロファイルを必要とする倉庫チーム向けの推奨基本構成。",
                 kind: "config",
-                image: "product-images/gy-conf-scan.png",
+                image: "product-library/transparent/gy-conf-scan.png",
                 specs: { Device: "A50 / A55 class", Scan: "Standard 2D", Accessories: "Dock + boot", Lead: "Sample in 7-10 days" },
                 tags: ["倉庫", "棚卸", "スターターキット"]
             },
@@ -248,7 +248,7 @@ const GYUTRON_PRODUCTS = {
                 type: "RFID在庫管理パッケージ",
                 summary: "一括棚卸、資産タグ付け、店舗バックヤード、倉庫入荷向けのUHFリーダーバンドル。",
                 kind: "config",
-                image: "product-images/gy-conf-rfid.png",
+                image: "product-library/transparent/gy-conf-rfid.png",
                 specs: { Device: "R60 / R70 class", RFID: "8-12 m option", Accessories: "Grip + charger", Lead: "Sample in 10-14 days" },
                 tags: ["UHF", "資産追跡", "一括読取"]
             },
@@ -257,7 +257,7 @@ const GYUTRON_PRODUCTS = {
                 type: "製造DPMパッケージ",
                 summary: "刻印金属コード、トレーサビリティステーション、生産検証向けのDPMスキャナー＋PDA構成。",
                 kind: "config",
-                image: "product-images/gy-conf-dpm.png",
+                image: "product-library/transparent/gy-conf-dpm.png",
                 specs: { Device: "S300 / A60 class", Codes: "DPM + QR + DataMatrix", Lighting: "白色光", Lead: "Pilot in 2-3 weeks" },
                 tags: ["DPM", "トレーサビリティ", "品質"]
             }

@@ -22,7 +22,7 @@ const GYUTRON_PRODUCTS = {
                 type: "All-purpose PDA",
                 summary: "Balanced handheld computer for logistics teams that need scanning, camera capture, and fast roaming.",
                 kind: "pda",
-                image: "product-images/gy-a55-pro.png",
+                image: "product-library/transparent/gy-a55-pro.png",
                 specs: { OS: "Android 14", Display: "5.5 in HD+", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["4G LTE", "13 MP camera", "5000 mAh"]
             },
@@ -31,7 +31,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Large-screen PDA",
                 summary: "6-inch rugged terminal for mobile workflows with dense forms, WMS screens, and work instructions.",
                 kind: "pda",
-                image: "product-images/gy-a60-max.png",
+                image: "product-library/transparent/gy-a60-max.png",
                 specs: { OS: "Android 14", Display: "6.0 in FHD", Scan: "High-speed 2D", Rugged: "IP68 / 1.8 m drop" },
                 tags: ["6 GB RAM", "Wi-Fi 6E", "5800 mAh"]
             },
@@ -40,7 +40,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Keypad PDA",
                 summary: "Physical keypad model for glove use, repetitive scan tasks, and high-throughput warehouse teams.",
                 kind: "keypad",
-                image: "product-images/gy-a62k.png",
+                image: "product-library/transparent/gy-a62k.png",
                 specs: { OS: "Android 13", Display: "4.0 in touch", Scan: "1D/2D angled", Rugged: "IP65 / 1.8 m drop" },
                 tags: ["29 keys", "Scan handle", "5200 mAh"]
             },
@@ -49,7 +49,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Keypad mobile data terminal",
                 summary: "Rugged Android PDA with touchscreen and physical keys for glove-friendly scanning, picking, and line-side data capture.",
                 kind: "keypad",
-                image: "product-cutouts/generated/gy-a92k-keytouch.png",
+                image: "product-library/transparent/gy-a92k-keytouch.png",
                 specs: { OS: "Android 14", Display: "4.7 in touch", Scan: "Angled 2D imager", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["Numeric keypad", "Glove use", "5800 mAh"]
             },
@@ -58,7 +58,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Cold-chain PDA",
                 summary: "Rugged handheld for freezer aisles, food logistics, pharmaceutical storage, and outdoor winter work.",
                 kind: "pda",
-                image: "product-images/gy-a70-cold.png",
+                image: "product-library/transparent/gy-a70-cold.png",
                 specs: { OS: "Android 14", Display: "5.7 in glove touch", Scan: "Condensation-ready 2D", Rugged: "IP67 / -25 C" },
                 tags: ["Heated window", "Hot swap", "6500 mAh"]
             },
@@ -67,7 +67,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Ultra-rugged PDA",
                 summary: "High-end field computer for utilities, yards, maintenance teams, and long-shift industrial operations.",
                 kind: "pda",
-                image: "product-images/gy-a80-ultra.png",
+                image: "product-library/transparent/gy-a80-ultra.png",
                 specs: { OS: "Android 14", Display: "6.2 in FHD", Scan: "Extended range 2D", Rugged: "IP68 / 2.0 m drop" },
                 tags: ["5G option", "GNSS", "7200 mAh"]
             }
@@ -77,7 +77,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Touchscreen mobile data terminal",
                 summary: "Keypad-free rugged Android PDA for scan-driven warehouse, manufacturing, and field data capture workflows.",
                 kind: "pda",
-                image: "product-cutouts/generated/gy-a90-touch.png",
+                image: "product-library/transparent/gy-a90-touch.png",
                 specs: { OS: "Android 14", Display: "6.1 in FHD touch", Scan: "Integrated 2D imager", Rugged: "IP68 / 1.8 m drop" },
                 tags: ["Touch only", "Wi-Fi 6E", "6200 mAh"]
             }
@@ -97,7 +97,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Built-in UHF PDA",
                 summary: "Compact RFID terminal for retail cycle counts, light warehouse work, and asset verification.",
                 kind: "rfid",
-                image: "product-images/gy-r52-compact.png",
+                image: "product-library/transparent/gy-r52-compact.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 4 m", Scan: "1D/2D optional", Rugged: "IP65 / 1.5 m drop" },
                 tags: ["Internal antenna", "NFC", "4500 mAh"]
             },
@@ -106,7 +106,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Ergonomic RFID reader",
                 summary: "Balanced pistol-grip reader for daily stock counts, pallet checks, and returns processing.",
                 kind: "rfid",
-                image: "product-images/gy-r60-grip.png",
+                image: "product-library/transparent/gy-r60-grip.png",
                 specs: { OS: "Android 13", RFID: "UHF up to 8 m", Scan: "2D imager", Rugged: "IP65 / 1.6 m drop" },
                 tags: ["Circular antenna", "Wi-Fi 6", "6000 mAh"]
             },
@@ -115,7 +115,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Long-range RFID reader",
                 summary: "High-power UHF handheld for warehouse aisles, dock doors, and bulk tag collection.",
                 kind: "rfid",
-                image: "product-images/gy-r70-longrange.png",
+                image: "product-library/transparent/gy-r70-longrange.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 12 m", Scan: "2D + DPM option", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["33 dBm output", "5.5 in display", "7800 mAh"]
             },
@@ -124,7 +124,7 @@ const GYUTRON_PRODUCTS = {
                 type: "5G RFID terminal",
                 summary: "Connected RFID computer for field asset teams that need wide-area data sync and secure Android apps.",
                 kind: "rfid",
-                image: "product-images/gy-r86-5g.png",
+                image: "product-library/transparent/gy-r86-5g.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 10 m", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["5G", "Dual-band GNSS", "7000 mAh"]
             }
@@ -134,7 +134,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Long-range UHF RFID reader",
                 summary: "High-power RFID handheld for bulk inventory, dock-door checks, asset tracking, and pallet-level reads.",
                 kind: "rfid",
-                image: "product-cutouts/generated/gy-r90-falcon.png",
+                image: "product-library/transparent/gy-r90-falcon.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 15 m", Scan: "2D + RFID", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["33 dBm", "Circular antenna", "8200 mAh"]
             }
@@ -154,7 +154,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Universal wired scanner",
                 summary: "Durable area-imaging scanner for receiving desks, production benches, and packaging stations.",
                 kind: "scanner",
-                image: "product-images/gy-s210.png",
+                image: "product-library/transparent/gy-s210.png",
                 specs: { Scan: "1D/2D area imager", Link: "USB-C / RS232", Motion: "Up to 4 m/s", Rugged: "IP54 / 1.5 m drop" },
                 tags: ["Presentation mode", "White LED", "Fast decode"]
             },
@@ -163,7 +163,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Wireless industrial scanner",
                 summary: "Cordless scanner with base station for pick-pack, shipping, and flexible workcells.",
                 kind: "scanner",
-                image: "product-images/gy-s240w.png",
+                image: "product-library/transparent/gy-s240w.png",
                 specs: { Scan: "1D/2D area imager", Link: "2.4G / Bluetooth", Range: "Up to 80 m open field", Rugged: "IP54 / 1.5 m drop" },
                 tags: ["Batch memory", "Cradle", "2200 mAh"]
             },
@@ -172,7 +172,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Cold-chain scanner",
                 summary: "Wireless scanner for refrigerated warehouses, food processing, and low-temperature receiving.",
                 kind: "scanner",
-                image: "product-images/gy-s330-cold.png",
+                image: "product-library/transparent/gy-s330-cold.png",
                 specs: { Scan: "1D/2D", Link: "Bluetooth 5.2", Temp: "-30 C to 50 C", Rugged: "IP65 / 1.8 m drop" },
                 tags: ["Anti-condensation", "Glove grip", "3200 mAh"]
             },
@@ -181,7 +181,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Extended-range scanner",
                 summary: "Long-range model for rack labels, dock doors, pallet positions, and forklift-adjacent scan tasks.",
                 kind: "scanner",
-                image: "product-images/gy-s360-xr.png",
+                image: "product-library/transparent/gy-s360-xr.png",
                 specs: { Scan: "Near/far 1D/2D", Range: "10 cm to 15 m", Link: "Bluetooth / USB", Rugged: "IP65 / 2.0 m drop" },
                 tags: ["Long range", "Laser aimer", "Warehouse"]
             },
@@ -190,7 +190,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Hands-free scan station",
                 summary: "Desktop scan module for benchtop verification, kitting, and small-parts traceability stations.",
                 kind: "scanner",
-                image: "product-images/gy-s410-base.png",
+                image: "product-library/transparent/gy-s410-base.png",
                 specs: { Scan: "2D presentation", Mount: "Desktop / fixture", Link: "USB / Ethernet option", Rugged: "Sealed front window" },
                 tags: ["Auto trigger", "Fixture-ready", "White light"]
             },
@@ -199,7 +199,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Wearable ring scanner",
                 summary: "Lightweight wearable scanner for hands-free picking, sorting, and replenishment tasks.",
                 kind: "scanner",
-                image: "product-images/gy-s520-wear.png",
+                image: "product-library/transparent/gy-s520-wear.png",
                 specs: { Scan: "1D/2D short range", Link: "Bluetooth 5.2", Battery: "Hot-swap 900 mAh", Rugged: "IP54 / 1.5 m drop" },
                 tags: ["Wearable", "Hands-free", "Warehouse"]
             },
@@ -208,7 +208,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Industrial dock-door scanner",
                 summary: "Fixed-position scanner for dock verification, pallet pass-through checks, and automated conveyor reads.",
                 kind: "scanner",
-                image: "product-images/gy-s680-dock.png",
+                image: "product-library/transparent/gy-s680-dock.png",
                 specs: { Scan: "Wide-angle 2D", Link: "Ethernet / USB", Trigger: "Photoeye input", Rugged: "IP65 metal housing" },
                 tags: ["Dock door", "Conveyor", "Ethernet"]
             }
@@ -218,7 +218,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Extended-range scan gun",
                 summary: "Industrial barcode scanner for rack labels, forklift-adjacent workflows, and long-distance warehouse reads.",
                 kind: "scanner",
-                image: "product-cutouts/generated/gy-s900-xr.png",
+                image: "product-library/transparent/gy-s900-xr.png",
                 specs: { Scan: "1D/2D near-far", Range: "Up to 18 m", Link: "Bluetooth / USB-C", Rugged: "IP65 / 2.0 m drop" },
                 tags: ["Long range", "Laser aimer", "Warehouse"]
             }
@@ -239,7 +239,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Scan-only PDA package",
                 summary: "Recommended baseline for warehouse teams that need Android PDA, 2D scan engine, dock, spare battery, and MDM profile.",
                 kind: "config",
-                image: "product-images/gy-conf-scan.png",
+                image: "product-library/transparent/gy-conf-scan.png",
                 specs: { Device: "A50 / A55 class", Scan: "Standard 2D", Accessories: "Dock + boot", Lead: "Sample in 7-10 days" },
                 tags: ["Warehouse", "Inventory", "Starter kit"]
             },
@@ -248,7 +248,7 @@ const GYUTRON_PRODUCTS = {
                 type: "RFID inventory package",
                 summary: "UHF reader bundle for bulk stock count, asset tagging, retail stock rooms, and warehouse receiving.",
                 kind: "config",
-                image: "product-images/gy-conf-rfid.png",
+                image: "product-library/transparent/gy-conf-rfid.png",
                 specs: { Device: "R60 / R70 class", RFID: "8-12 m option", Accessories: "Grip + charger", Lead: "Sample in 10-14 days" },
                 tags: ["UHF", "Asset tracking", "Bulk count"]
             },
@@ -257,7 +257,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Manufacturing DPM package",
                 summary: "DPM scanner and PDA option for etched metal codes, traceability stations, and production verification.",
                 kind: "config",
-                image: "product-images/gy-conf-dpm.png",
+                image: "product-library/transparent/gy-conf-dpm.png",
                 specs: { Device: "S300 / A60 class", Codes: "DPM + QR + DataMatrix", Lighting: "White light", Lead: "Pilot in 2-3 weeks" },
                 tags: ["DPM", "Traceability", "Quality"]
             }

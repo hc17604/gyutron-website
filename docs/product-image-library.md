@@ -38,29 +38,29 @@ Product count: **84**
 | Model | Category | Type | Current image | Target transparent image | Status |
 |---|---|---|---|---|---|
 | GY-A50 | android-pda | Compact Android PDA | `product-library/transparent/gy-a50.png` | `product-library/transparent/gy-a50.png` | wired-live |
-| GY-A55 Pro | android-pda | All-purpose PDA | `product-images/gy-a55-pro.png` | `product-library/transparent/gy-a55-pro.png` | rejected-direction-inconsistent |
-| GY-A60 Max | android-pda | Large-screen PDA | `product-images/gy-a60-max.png` | `product-library/transparent/gy-a60-max.png` | rejected-direction-inconsistent |
-| GY-A62K | android-pda | Keypad PDA | `product-images/gy-a62k.png` | `product-library/transparent/gy-a62k.png` | needs-regeneration |
-| GY-A92K KeyTouch | android-pda | Keypad mobile data terminal | `product-cutouts/generated/gy-a92k-keytouch.png` | `product-library/transparent/gy-a92k-keytouch.png` | needs-regeneration |
-| GY-A70 Cold | android-pda | Cold-chain PDA | `product-images/gy-a70-cold.png` | `product-library/transparent/gy-a70-cold.png` | needs-regeneration |
-| GY-A80 Ultra | android-pda | Ultra-rugged PDA | `product-images/gy-a80-ultra.png` | `product-library/transparent/gy-a80-ultra.png` | needs-regeneration |
-| GY-A90 Touch | android-pda | Touchscreen mobile data terminal | `product-cutouts/generated/gy-a90-touch.png` | `product-library/transparent/gy-a90-touch.png` | needs-regeneration |
-| GY-R52 Compact | rfid-handhelds | Built-in UHF PDA | `product-images/gy-r52-compact.png` | `product-library/transparent/gy-r52-compact.png` | needs-regeneration |
-| GY-R60 Grip | rfid-handhelds | Ergonomic RFID reader | `product-images/gy-r60-grip.png` | `product-library/transparent/gy-r60-grip.png` | needs-regeneration |
-| GY-R70 LongRange | rfid-handhelds | Long-range RFID reader | `product-images/gy-r70-longrange.png` | `product-library/transparent/gy-r70-longrange.png` | needs-regeneration |
-| GY-R86 5G | rfid-handhelds | 5G RFID terminal | `product-images/gy-r86-5g.png` | `product-library/transparent/gy-r86-5g.png` | needs-regeneration |
-| GY-R90 Falcon | rfid-handhelds | Long-range UHF RFID reader | `product-cutouts/generated/gy-r90-falcon.png` | `product-library/transparent/gy-r90-falcon.png` | needs-regeneration |
-| GY-S210 | barcode-scanners | Universal wired scanner | `product-images/gy-s210.png` | `product-library/transparent/gy-s210.png` | needs-regeneration |
-| GY-S240W | barcode-scanners | Wireless industrial scanner | `product-images/gy-s240w.png` | `product-library/transparent/gy-s240w.png` | needs-regeneration |
-| GY-S330 Cold | barcode-scanners | Cold-chain scanner | `product-images/gy-s330-cold.png` | `product-library/transparent/gy-s330-cold.png` | needs-regeneration |
-| GY-S360 XR | barcode-scanners | Extended-range scanner | `product-images/gy-s360-xr.png` | `product-library/transparent/gy-s360-xr.png` | needs-regeneration |
-| GY-S410 Base | barcode-scanners | Hands-free scan station | `product-images/gy-s410-base.png` | `product-library/transparent/gy-s410-base.png` | needs-regeneration |
-| GY-S520 Wear | barcode-scanners | Wearable ring scanner | `product-images/gy-s520-wear.png` | `product-library/transparent/gy-s520-wear.png` | needs-regeneration |
-| GY-S680 Dock | barcode-scanners | Industrial dock-door scanner | `product-images/gy-s680-dock.png` | `product-library/transparent/gy-s680-dock.png` | needs-regeneration |
-| GY-S900 XR | barcode-scanners | Extended-range scan gun | `product-cutouts/generated/gy-s900-xr.png` | `product-library/transparent/gy-s900-xr.png` | needs-regeneration |
-| GY-CONF-Scan | request-specification | Scan-only PDA package | `product-images/gy-conf-scan.png` | `product-library/transparent/gy-conf-scan.png` | needs-regeneration |
-| GY-CONF-RFID | request-specification | RFID inventory package | `product-images/gy-conf-rfid.png` | `product-library/transparent/gy-conf-rfid.png` | needs-regeneration |
-| GY-CONF-DPM | request-specification | Manufacturing DPM package | `product-images/gy-conf-dpm.png` | `product-library/transparent/gy-conf-dpm.png` | needs-regeneration |
+| GY-A55 Pro | android-pda | All-purpose PDA | `product-library/transparent/gy-a55-pro.png` | `product-library/transparent/gy-a55-pro.png` | wired-live |
+| GY-A60 Max | android-pda | Large-screen PDA | `product-library/transparent/gy-a60-max.png` | `product-library/transparent/gy-a60-max.png` | wired-live |
+| GY-A62K | android-pda | Keypad PDA | `product-library/transparent/gy-a62k.png` | `product-library/transparent/gy-a62k.png` | wired-live |
+| GY-A92K KeyTouch | android-pda | Keypad mobile data terminal | `product-library/transparent/gy-a92k-keytouch.png` | `product-library/transparent/gy-a92k-keytouch.png` | wired-live |
+| GY-A70 Cold | android-pda | Cold-chain PDA | `product-library/transparent/gy-a70-cold.png` | `product-library/transparent/gy-a70-cold.png` | wired-live |
+| GY-A80 Ultra | android-pda | Ultra-rugged PDA | `product-library/transparent/gy-a80-ultra.png` | `product-library/transparent/gy-a80-ultra.png` | wired-live |
+| GY-A90 Touch | android-pda | Touchscreen mobile data terminal | `product-library/transparent/gy-a90-touch.png` | `product-library/transparent/gy-a90-touch.png` | wired-live |
+| GY-R52 Compact | rfid-handhelds | Built-in UHF PDA | `product-library/transparent/gy-r52-compact.png` | `product-library/transparent/gy-r52-compact.png` | wired-live |
+| GY-R60 Grip | rfid-handhelds | Ergonomic RFID reader | `product-library/transparent/gy-r60-grip.png` | `product-library/transparent/gy-r60-grip.png` | wired-live |
+| GY-R70 LongRange | rfid-handhelds | Long-range RFID reader | `product-library/transparent/gy-r70-longrange.png` | `product-library/transparent/gy-r70-longrange.png` | wired-live |
+| GY-R86 5G | rfid-handhelds | 5G RFID terminal | `product-library/transparent/gy-r86-5g.png` | `product-library/transparent/gy-r86-5g.png` | wired-live |
+| GY-R90 Falcon | rfid-handhelds | Long-range UHF RFID reader | `product-library/transparent/gy-r90-falcon.png` | `product-library/transparent/gy-r90-falcon.png` | wired-live |
+| GY-S210 | barcode-scanners | Universal wired scanner | `product-library/transparent/gy-s210.png` | `product-library/transparent/gy-s210.png` | wired-live |
+| GY-S240W | barcode-scanners | Wireless industrial scanner | `product-library/transparent/gy-s240w.png` | `product-library/transparent/gy-s240w.png` | wired-live |
+| GY-S330 Cold | barcode-scanners | Cold-chain scanner | `product-library/transparent/gy-s330-cold.png` | `product-library/transparent/gy-s330-cold.png` | wired-live |
+| GY-S360 XR | barcode-scanners | Extended-range scanner | `product-library/transparent/gy-s360-xr.png` | `product-library/transparent/gy-s360-xr.png` | wired-live |
+| GY-S410 Base | barcode-scanners | Hands-free scan station | `product-library/transparent/gy-s410-base.png` | `product-library/transparent/gy-s410-base.png` | wired-live |
+| GY-S520 Wear | barcode-scanners | Wearable ring scanner | `product-library/transparent/gy-s520-wear.png` | `product-library/transparent/gy-s520-wear.png` | wired-live |
+| GY-S680 Dock | barcode-scanners | Industrial dock-door scanner | `product-library/transparent/gy-s680-dock.png` | `product-library/transparent/gy-s680-dock.png` | wired-live |
+| GY-S900 XR | barcode-scanners | Extended-range scan gun | `product-library/transparent/gy-s900-xr.png` | `product-library/transparent/gy-s900-xr.png` | wired-live |
+| GY-CONF-Scan | request-specification | Scan-only PDA package | `product-library/transparent/gy-conf-scan.png` | `product-library/transparent/gy-conf-scan.png` | wired-live |
+| GY-CONF-RFID | request-specification | RFID inventory package | `product-library/transparent/gy-conf-rfid.png` | `product-library/transparent/gy-conf-rfid.png` | wired-live |
+| GY-CONF-DPM | request-specification | Manufacturing DPM package | `product-library/transparent/gy-conf-dpm.png` | `product-library/transparent/gy-conf-dpm.png` | wired-live |
 | GY-PX18 | proximity-sensors | Photoelectric sensor | `product-images/gy-px18.png` | `product-library/transparent/gy-px18.png` | needs-regeneration |
 | GY-PR12 | proximity-sensors | Inductive proximity sensor | `product-images/gy-pr12.png` | `product-library/transparent/gy-pr12.png` | needs-regeneration |
 | GY-FB200 | proximity-sensors | Fiber amplifier sensor | `product-images/gy-fb200.png` | `product-library/transparent/gy-fb200.png` | needs-regeneration |

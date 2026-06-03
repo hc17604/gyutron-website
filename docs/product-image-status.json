@@ -8,30 +8,310 @@
     "archivedRejectedAsset": "asset-workbench/product-images/rejected/gy-a50-transparent-rejected-direction.png",
     "qa": {
       "transparentCorners": true,
-      "greenFringeOpaquePixels": 0,
       "purpleHarmonized": true,
       "direction": "wired",
-      "notes": "New touchscreen PDA generated from the user-approved XYZ direction-angle reference and wired to GY-A50 in en/de/ja product data. Previous direction-mismatched render remains archived."
-    }
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    },
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-a50-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-a50-source.png"
   },
   "gy-a55-pro": {
-    "status": "rejected-direction-inconsistent",
+    "status": "wired-live",
     "generatedAt": "2026-06-03",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "rejected",
-      "notes": "Rejected by user: direction differs from other PDA renders. Archived only; do not wire to site."
-    }
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    },
+    "liveAsset": "astro/public/product-library/transparent/gy-a55-pro.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-a55-pro-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-a55-pro-source.png"
   },
   "gy-a60-max": {
-    "status": "rejected-direction-inconsistent",
+    "status": "wired-live",
     "generatedAt": "2026-06-03",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "rejected",
-      "notes": "Rejected by user: direction differs from other PDA renders. Archived only; do not wire to site."
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    },
+    "liveAsset": "astro/public/product-library/transparent/gy-a60-max.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-a60-max-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-a60-max-source.png"
+  },
+  "gy-a62k": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-a62k.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-a62k-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-a62k-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-a92k-keytouch": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-a92k-keytouch.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-a92k-keytouch-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-a92k-keytouch-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-a70-cold": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-a70-cold.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-a70-cold-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-a70-cold-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-a80-ultra": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-a80-ultra.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-a80-ultra-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-a80-ultra-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-a90-touch": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-a90-touch.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-a90-touch-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-a90-touch-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-r52-compact": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-r52-compact.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-r52-compact-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-r52-compact-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-r60-grip": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-r60-grip.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-r60-grip-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-r60-grip-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-r70-longrange": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-r70-longrange.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-r70-longrange-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-r70-longrange-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-r86-5g": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-r86-5g.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-r86-5g-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-r86-5g-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-r90-falcon": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-r90-falcon.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-r90-falcon-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-r90-falcon-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-s210": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-s210.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-s210-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-s210-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-s240w": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-s240w.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-s240w-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-s240w-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-s330-cold": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-s330-cold.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-s330-cold-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-s330-cold-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-s360-xr": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-s360-xr.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-s360-xr-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-s360-xr-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-s410-base": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-s410-base.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-s410-base-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-s410-base-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-s520-wear": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-s520-wear.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-s520-wear-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-s520-wear-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-s680-dock": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-s680-dock.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-s680-dock-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-s680-dock-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-s900-xr": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-s900-xr.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-s900-xr-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-s900-xr-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-conf-scan": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-conf-scan.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-conf-scan-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-conf-scan-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-conf-rfid": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-conf-rfid.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-conf-rfid-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-conf-rfid-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
+    }
+  },
+  "gy-conf-dpm": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-03",
+    "liveAsset": "astro/public/product-library/transparent/gy-conf-dpm.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-conf-dpm-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-conf-dpm-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "wired",
+      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
     }
   }
 }
