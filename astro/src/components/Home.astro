@@ -3,8 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { t, localizeUrl, type Locale } from '../i18n';
 import TabCarousel from './TabCarousel.astro';
 import HeroSlider from './HeroSlider.astro';
-import PaymentMethods from './PaymentMethods.astro';
-import CompanyAddresses from './CompanyAddresses.astro';
+import Footer from './Footer.astro';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/';
@@ -415,55 +414,5 @@ const path = '/';
             });
         })();
     </script>
-<footer class="footer" slot="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3 class="footer-brand-name">GYUTRON</h3>
-                    <p>{t(locale, "main.331")}</p>
-                    <CompanyAddresses locale={locale} />
-                </div>
-                <div>
-                    <h4>{t(locale, "main.004")}</h4>
-                    <a href={localizeUrl(locale, "/android-pda.html")}>{t(locale, "main.332")}</a>
-                    <a href={localizeUrl(locale, "/proximity-sensors.html")}>{t(locale, "main.333")}</a>
-                    <a href={localizeUrl(locale, "/area-scan-cameras.html")}>{t(locale, "main.334")}</a>
-                    <a href={localizeUrl(locale, "/dimensional-gauges.html")}>{t(locale, "main.419")}</a>
-                    <h4 style="margin-top:28px">{t(locale, "main.051")}</h4>
-                    <a href={localizeUrl(locale, "/automated-vision-inspection.html")}>{t(locale, "main.055")}</a>
-                    <a href={localizeUrl(locale, "/solutions/electronics-manufacturing")}>{t(locale, "main.264")}</a>
-                    <a href={localizeUrl(locale, "/solutions/robotics-automation")}>{t(locale, "fnav.robotics")}</a>
-                </div>
-                <div>
-                    <h4>{t(locale, "fnav.support")}</h4>
-                    <a href={localizeUrl(locale, "/support/faq")}>{t(locale, "fnav.faq")}</a>
-                    <a href={localizeUrl(locale, "/support")}>{t(locale, "fnav.contactSupport")}</a>
-                    <a href={localizeUrl(locale, "/support/warranty")}>{t(locale, "fnav.warranty")}</a>
-                    <a href={localizeUrl(locale, "/support/shipping-delivery")}>{t(locale, "fnav.shipping")}</a>
-                    <a href={localizeUrl(locale, "/privacy-policy")}>{t(locale, "fnav.privacy")}</a>
-                    <a href={localizeUrl(locale, "/terms-and-conditions")}>{t(locale, "fnav.terms")}</a>
-                </div>
-                <div>
-                    <h4>{t(locale, "main.182")}</h4>
-                    <a href={localizeUrl(locale, "/about")}>{t(locale, "main.183")}</a>
-                    <a href={localizeUrl(locale, "/certifications")}>{t(locale, "main.462")}</a>
-                    <a href={localizeUrl(locale, "/downloads")}>{t(locale, "main.420")}</a>
-                    <a href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "fnav.contact")}</a>
-                    <a href="mailto:info@gyutron.com">info@gyutron.com</a>
-                    <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
-                    <a href="https://shop.gyutron.com">{t(locale, "main.335")}</a>
-                    <PaymentMethods />
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>{t(locale, "main.267")}</span>
-                <div class="socials" aria-label="Social media placeholders">
-                    <span aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></span>
-                    <span aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube"></i></span>
-                    <span aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></span>
-                    <span aria-label="TikTok" title="TikTok"><i class="fa-brands fa-tiktok"></i></span>
-                </div>
-            </div>
-        </div>
-    </footer>
+<Footer slot="footer" locale={locale} />
 </Layout>
