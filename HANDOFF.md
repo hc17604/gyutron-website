@@ -1,6 +1,6 @@
 # GYUTRON gyutron.com — Engineering Handoff (single source of truth)
 
-> Consolidated handoff for the agent/engineer taking over. **This supersedes the older, partly-stale rules in `AGENTS.md` where they conflict** (see §10). Last updated 2026-06-02. Current live HEAD: use `git rev-parse origin/main` after `git fetch`.
+> Consolidated handoff for the agent/engineer taking over. **This supersedes the older, partly-stale rules in `AGENTS.md` where they conflict** (see §10). Last updated 2026-06-03. Current live HEAD: use `git rev-parse origin/main` after `git fetch`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
 
 ---
@@ -13,6 +13,7 @@
 5. **`t(locale,key)` THROWS on a missing key** (intentional build gate). Any new visible text needs **en + de + ja** or the build fails.
 6. **Write de/ja TEXT as UTF-8.** Never write Japanese/German via a Python process without `PYTHONUTF8=1` / `PYTHONIOENCODING=utf-8` — it silently corrupts the characters to `?` (mojibake). *(This exact bug hit the new 900-series products' Japanese `type`/`summary` in `products.ja.js`.)* Edit the json/data files directly as UTF-8; after any de/ja data edit, `grep -nP '\?{4,}'` the file — it must be empty.
 7. **Product data must be FULLY localized; run the audit.** Every product's `type`/`summary` and every category's eyebrow/title/navLabel/panelMetric/panelText/sectionIntro need de+ja translations (this was a systemic gap — ~60 products + many category fields shipped English). **Run `python tools/i18n-audit.py`** after any `products.*.js` change (exit 0 = clean; catches untranslated / partial-English / mojibake / renamed-model-name). **NEVER translate a product model NAME** — keep `GY-CR720 Conveyor` etc. identical in all locales (and matching the `getProductsByName` refs).
+8. **Dual-agent sync + long-term architecture.** Claude AND Codex both develop this repo — `git fetch` then **READ this `HANDOFF.md` before every task**, and **UPDATE it after every task** (see §4). On every change follow the **long-term architecture principles (§11)** — componentize, data-drive, static/SEO/perf/i18n-ready, industrial visual, don't over-engineer.
 
 ---
 
@@ -40,10 +41,11 @@
 - Commit PROMPTLY — don't leave uncommitted work a blind `git add -A` could sweep up. Prefer **`git add -- astro/ public/`** (plus explicit doc paths), not blind `-A`.
 - Never kill `node` (agent tooling runs on node). Windows quirks: git's "LF will be replaced by CRLF" warning is harmless; PowerShell shows `git push` stderr as a red error even on success — trust the `local==origin` re-check, not the red text.
 - **USER PREFERENCE: deploy directly, do NOT ask "deploy now?".** Still build + visually verify (desktop + mobile) + run the guard, then commit + push autonomously.
+- **🔄 DUAL-AGENT MD SYNC (Claude + Codex both develop this repo).** This `HANDOFF.md` is how the two agents hand off — keep it the LIVE source of truth, not a stale snapshot. **BEFORE every task:** `git fetch` + RE-READ this file (+ the `AGENTS.md` banner) — structure/keys/state drift between sessions (e.g. nav scrollbar CSS got centralized into `nav-chrome.css`; `Layout.astro` moved to `src/layouts/`). **AFTER every task:** UPDATE this file in the SAME commit — bump "Last updated", and reflect what changed (new/moved components, new data files, new i18n keys, new gotchas, completed/added TODOs) so the other agent never works from a stale map. Keep doc edits surgical.
 
 ## 5. Architecture
 - **i18n**: dicts `astro/src/i18n/{en,de,ja}.json`; `src/i18n/index.ts` exposes `t(locale,key)` (THROWS on missing), `localizeUrl(locale,path)`, `ogLocale/htmlLang/...`. New text → **reuse existing translated `main.*` / `seo.*` / `home.*` keys** where possible; if you must add a key, add it to **all three** json files.
-- **Components** (`astro/src/components/`): `Layout`, `Header`, `Footer`, `LangSwitch`, `Home`, `ProductPage`, `SolutionPage`, `ContactSales`, `MetaRedirect`, **`HeroSlider`**, `TabCarousel`.
+- **Layout**: `astro/src/layouts/Layout.astro` (per-locale canonical + hreflang + og, ja font block, loads page CSS via `pageCss` + shared chrome). **Components** (`astro/src/components/`): `Header`, `Footer`, `LangSwitch`, `Home`, `ProductPage`, `SolutionPage`, `ContactSales`, `MetaRedirect`, **`HeroSlider`**, `TabCarousel`. *(Toward the long-term structure — §11 — components may later group into common/home/product/solution subfolders; migrate incrementally + announce.)*
 - **Products**: build-time from `src/data/products.{en,de,ja}.js` via `pages/[category].astro` (+ `de/` + `ja/`). Per-locale files (title/intro/summary/type translated). **`specs`/`tags` are canonical English** — the spec object KEYS double as compare-table identifiers (`s.Scan`/`s.RFID`…) so they MUST stay English — and are **localized at RENDER time by `src/lib/productI18n.ts`** (`specLabel/specVal/tagText`: maps the 85 field labels + descriptive values + descriptive tags → de/ja, with **English passthrough** for anything unlisted, incl. universal tech notation like Android 14 / IP68 / GigE / Wi-Fi 6E / mAh / MP / protocols which intentionally stays English). Used by `ProductPage.astro` + `HeroSlider.astro`. **Adding a product with a NEW descriptive value/tag → add one row to the matching map in `productI18n.ts`** (it's UTF-8 — never write its ja/de via non-UTF-8 Python). 3 redirect categories: smart-cameras→area-scan-cameras, industrial-sensors→proximity-sensors, inspection-instruments→dimensional-gauges.
 - **CSS** in `astro/public/` (loaded via Layout `pageCss` plus shared chrome): `global.css`, `product-page.css`, `solution-page.css`, `contact-page.css`, `mobile-navigation.css`, `home-sections.css`, `hero-slider.css`, `nav-chrome.css`.
 - **Shared chrome rule (hard):** Header/Footer/nav/language/global interaction changes must be treated as cross-locale AND cross-page-type work. The same `Header.astro` renders en/de/ja, but different page types load different CSS (`global.css`, `product-page.css`, `contact-page.css`, etc.). Do not assume an English homepage CSS fix reaches Japanese/German product pages. Either move the behavior into a truly shared stylesheet/component, or update every stylesheet that controls that shared UI, then verify at least one en page, one de page, one ja product page, and contact-sales before shipping.
@@ -89,3 +91,41 @@ The most-iterated piece. **3 DISTINCT layouts** (field `layout` in `heroSlides.t
 - **Line 14 (hero = colored bars / old carousel structure)** → SUPERSEDED by §6 (3 Astro layouts, no colored bars).
 - **Line 16 (de is a homepage-only sample; most subpages still English)** → SUPERSEDED — all 21 pages are localized en/de/ja via Astro.
 - **`tools/update_navigation.py` / editing "root HTML pages"** → those root pages are legacy; edit `astro/src/**` (shared chrome = Header/Footer components) instead.
+
+---
+
+## 11. Long-term architecture principles & constraints (apply on EVERY change)
+> User directive 2026-06-03. The site is early but must grow into a long-extensible **industrial-tech brand site**: brand site → multilingual → product/solution library → industry-content hub → inquiry-conversion funnel → eventually backend/CRM/product-DB/CMS. **Priority right now = a clean, stable, maintainable, i18n-ready, SEO-friendly, low-maintenance Astro architecture — NOT piling on features.** These are DIRECTIONAL: apply on every change, migrate toward them **INCREMENTALLY** (never a big-bang refactor); if you find the structure messy, **tell the user first + propose SMALL steps.**
+
+**Brand:** GYUTRON / 具创智能 — B2B industrial tech (工业自动化, 机器视觉, 智能机器人, AGV/AMR, 工业相机, 传感器, 自动化零部件); China supply chain → global; overseas B2B. NOT a plain display page, NOT pure e-commerce.
+
+**9 hard principles**
+1. **Componentize, never copy-paste.** Product card / industry case / CTA / header / footer / nav recur across home + product + industry + solution pages and all locales → build reusable components from the start.
+2. **Data-drive content** → `src/data/*`, not hardcoded deep in components (so text/image/link edits stay easy).
+3. **Astro file layout (gradual target):** pages→`src/pages`, components→`src/components` (group `common/ home/ product/ solution/`), layouts→`src/layouts`, data→`src/data`, styles→`src/styles`, static images→`public/images`. No mega-HTML files; no heavy lib/framework for a simple feature.
+4. **Static-first.** Prefer Astro static generation; don't turn statically-renderable content into pure client-side JS render. JS only for necessary interactions.
+5. **i18n-ready — don't block it.** Don't scatter text deep in components; keep content data-driven; URL structure must allow future locales; img `alt` + meta title/description translatable; Header/Footer/CTA/category names language-switchable. (Don't add a heavy i18n lib unless truly needed.) Future locales contemplated: en/zh/ja/de/es.
+6. **SEO.** Exactly one `<h1>` per page; sane h1/h2/h3 hierarchy; unique `<title>` + meta description per page; img `alt`; clean readable URLs; important content output in HTML (not JS-only); home/product/solution/industry pages all indexable.
+7. **Performance (global audience: CN mainland, SEA, EU, US).** Compress images; optimize above-the-fold first; no gratuitous big JS libs; CSS animation over heavy animation libs; avoid CLS; smooth mobile; keep the homepage light.
+8. **Industrial-tech visual** (工业 / 专业 / 克制 / 硬核 / 国际化 / B2B / 科技但不花哨). Reference QUALITY (never copy assets/copy/logo): Keyence, Cognex, Basler, LUCID Vision Labs, ABB Robotics, OMRON, SICK, ifm. AVOID: 电商大促风 / 小红书风 / 过度霓虹·粒子科技风 / 普通 SaaS 模板风 / 国内低端工业站风. (= existing §2 thinklucid rule + brand purple.)
+9. **Don't over-engineer.** User is NOT a programmer; keep the project understandable + AI-maintainable. Avoid needless abstraction, heavy toolchains, unnecessary state management, premature backend/microservices, over-complex TS types, refactor-for-show. **Test: genuinely improves future maintenance → do it; just looks advanced + adds complexity → don't.**
+
+**Future content columns (anticipate, don't build one-off-for-today):** Home · Products · Solutions · Industries · Resources · About · Contact.
+- **Products:** Machine Vision · Industrial Cameras · Lenses · Lighting · 3D Vision · Robotics · AGV/AMR · Sensors · Automation Components.
+- **Solutions:** Vision Inspection · Vision-Guided Robotics · Warehouse Automation · Factory Automation · Industrial AI · Cross-border Sourcing.
+- **Industries:** Automotive · Electronics · Battery · Food & Packaging · Logistics · Metal Processing · Medical Devices · Agriculture.
+- **Resources:** Blog · Application Notes · Case Studies · Technical Guides · Downloads · FAQ.
+
+**Backend / forms:** stay an Astro static site for now; **no backend unless explicitly needed** (user system, auth, complex product filtering, CMS, payments, customer-data, CRM, form automation, product DB). Future options when needed: Supabase / PostgreSQL / Airtable / Sanity / Strapi / Directus / HubSpot / custom API — never added "to look advanced." **Inquiry forms** (Contact / Inquiry / Request Quote / Download Datasheet): clear fields, NOT fake front-end-only, ONE reusable component, leave hooks for email/CRM/DB/webhook, carry per-product source + trackable lead-source. Future fields: Name, Company, Email, Phone/WhatsApp, Country/Region, Industry, Interested Product, Project Description, Expected Quantity, Application Scenario. (Contact form already posts `/api/contact` → `contact-handler.mjs`.)
+
+**✅ Pre-change checklist (run before EVERY edit):** 1) which component does this belong in? 2) should this content live in `src/data`? 3) reused later? 4) multilingual impact? 5) SEO impact? 6) mobile impact? 7) slows the homepage? 8) fits the industrial-brand visual? 9) harder to maintain? — **If existing structure is messy: tell the user first + propose SMALL incremental refactors, never a big uncontrolled rewrite.**
+
+**📤 Report after EVERY change:** 1) files changed; 2) components added; 3) where data is maintained; 4) where image assets live; 5) mobile impact; 6) SEO impact; 7) `npm run build` passes?; 8) how to extend it next.
+
+**Ideal vs CURRENT state (gradual; several deliberate — prefer ideal for NEW code, migrate existing only in small ANNOUNCED steps):**
+- **Layouts:** `Layout.astro` already in `src/layouts/` ✓.
+- **Components:** currently FLAT in `src/components/`; target = group into `common/ home/ product/ solution/`.
+- **Styles:** CSS currently in `astro/public/*.css` (loaded via `pageCss`), not `src/styles/` — legacy-extracted; low-priority gradual target.
+- **Data:** products in per-locale `products.{en,de,ja}.js` (DELIBERATE — drives build-time per-locale pages + `i18n-audit.py`; keep). `heroSlides.ts` exists; `navigation/solutions/industries/site` not yet extracted to `src/data` — extract when next touched.
+- **URLs/i18n:** `/` (en) + `/de/` + `/ja/`, `build.format:'preserve'` byte-matching legacy. **Do NOT blindly switch to `/en/…`** — breaks indexed URLs / needs redirects.
+- **Images:** product imagery at `public/product-images/` + cutouts `public/product-cutouts/` (user owns product imagery himself).

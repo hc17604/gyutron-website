@@ -7,6 +7,7 @@
 > - **shop.gyutron.com is out of scope** — never touch `public/shop`, `public/de/shop`, `public/ja/shop`.
 > - **Write de/ja TEXT as UTF-8.** Never write Japanese/German via a Python process without `PYTHONUTF8=1` (`PYTHONIOENCODING=utf-8`) — it silently turns the characters into `?` (mojibake). Edit `astro/src/i18n/{de,ja}.json` and `astro/src/data/products.{de,ja}.js` directly as UTF-8; after ANY de/ja data change, run `grep -nP '\?{4,}' astro/src/data/products.ja.js` (and de) — it MUST be empty.
 > - **After ANY `products.*.js` change, run `python tools/i18n-audit.py`** (exit 0 = de+ja fully localized; it catches untranslated / partial-English / mojibake fields and renamed model names). **Translate `type`/`summary` + the category fields (eyebrow/title/navLabel/panelMetric/panelText/sectionIntro) to de+ja; NEVER translate a product model NAME** — keep it brand-invariant (e.g. `GY-CR720 Conveyor` in ALL locales, and the `getProductsByName([...])` refs must match exactly).
+> - **🔄 DUAL-AGENT MD SYNC + long-term architecture:** Claude + Codex both develop this repo. **READ `HANDOFF.md` before every task; UPDATE it after** (HANDOFF.md §4). On every change, follow the **long-term architecture principles in `HANDOFF.md` §11** (componentize, data-drive, static/SEO/perf/i18n-ready, industrial visual, don't over-engineer; 9-point pre-change checklist).
 >
 > The rules below about navigation structure, brand/logo, responsive breakpoints, store/shop conventions, product-catalog consistency, micro-interactions, and Cloudflare routing are STILL VALID.
 
