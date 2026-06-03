@@ -2241,7 +2241,7 @@
         "transparentCorners": true,
         "purpleHarmonized": true,
         "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "notes": "Regenerated after user QA; prior unrealistic generated asset archived under asset-workbench/product-images/rejected. New render uses a plausible desktop verifier form, was harmonized to #4b2e83, and was contact-sheet checked against code-reader family orientation."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
@@ -2274,7 +2274,7 @@
         "transparentCorners": true,
         "purpleHarmonized": true,
         "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "notes": "Regenerated after user QA; prior unrealistic generated asset archived under asset-workbench/product-images/rejected. New render uses a plausible rail-mounted inline verifier form, was harmonized to #4b2e83, and was contact-sheet checked against code-reader family orientation."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
@@ -2307,7 +2307,7 @@
         "transparentCorners": true,
         "purpleHarmonized": true,
         "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "notes": "Regenerated after user QA; prior unrealistic gantry-like generated asset archived under asset-workbench/product-images/rejected. New render uses a plausible compact multi-window fixed code reader form, was harmonized to #4b2e83, and was contact-sheet checked against code-reader family orientation."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
