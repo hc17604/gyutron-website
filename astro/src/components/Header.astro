@@ -313,3 +313,25 @@ const { locale, path } = Astro.props;
             </div>
         </div>
     </header>
+    <script is:inline>
+      (() => {
+        const links = Array.from(document.querySelectorAll(".mega-links"));
+        links.forEach((panel) => {
+          let hideTimer = 0;
+          const canScroll = () => panel.scrollHeight > panel.clientHeight + 2;
+          const showScrollbar = () => {
+            if (!canScroll()) return;
+            panel.classList.add("is-scrolling");
+            window.clearTimeout(hideTimer);
+            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 720);
+          };
+          panel.addEventListener("scroll", showScrollbar, { passive: true });
+          panel.addEventListener("wheel", showScrollbar, { passive: true });
+          panel.addEventListener("touchmove", showScrollbar, { passive: true });
+          panel.addEventListener("pointerleave", () => {
+            window.clearTimeout(hideTimer);
+            hideTimer = window.setTimeout(() => panel.classList.remove("is-scrolling"), 180);
+          });
+        });
+      })();
+    </script>
