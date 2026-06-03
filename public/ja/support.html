@@ -119,6 +119,28 @@
           requestUpdate();
         });
       })();
+
+      (() => {
+        // mega-menu active submenu (JS-driven): default = first group on open, switch on hover,
+        // stays sticky while the pointer is inside the active group's submenu (a child of the group).
+        // Fixes: blank right panel on open + reverting to the first group when moving into the submenu.
+        Array.prototype.forEach.call(document.querySelectorAll(".nav-item"), (item) => {
+          const menu = item.querySelector(".mega-menu");
+          if (!menu) return;
+          const groups = Array.prototype.slice.call(menu.querySelectorAll(".mega-link-group"));
+          if (!groups.length) return;
+          const setActive = (g) => groups.forEach((x) => x.classList.toggle("is-open", x === g));
+          const clear = () => groups.forEach((x) => x.classList.remove("is-open"));
+          item.addEventListener("pointerenter", () => setActive(groups[0]));
+          item.addEventListener("pointerleave", clear);
+          item.addEventListener("focusin", (e) => {
+            const g = e.target.closest && e.target.closest(".mega-link-group");
+            setActive(g || groups[0]);
+          });
+          item.addEventListener("focusout", (e) => { if (!item.contains(e.relatedTarget)) clear(); });
+          groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
+        });
+      })();
     </script>  <main class="support-page"> <section class="support-hero" style="background-image: linear-gradient(118deg, rgba(4,5,8,0.96) 0%, rgba(18,5,31,0.9) 50%, rgba(27,11,46,0.84) 100%), url('/nav-company-engineering-lab.png'); background-size: cover; background-position: center;"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/ja/index.html">ホーム</a> / <span>サポート</span> </nav> <span class="support-eyebrow">ヘルプ＆サポート</span> <h1>サポート</h1> <p class="support-intro">GYUTRON 産業用ハードウェアのエンジニアリング主導のサポート——製品選定・統合から、保証・アフターサービスまで、グローバルな B2B チームを支援します。</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">センサーの評価、ラインへのカメラ統合、稼働中の機器群の保守——いずれの場合も、当社のアプリケーション・サポートエンジニアがお手伝いします。</p> <h2>問い合わせ窓口</h2> <div class="support-channels"> <div class="support-channel"> <i class="fa-solid fa-envelope"></i> <h3>メール</h3> <p>一般・技術サポート、ドキュメント、RMA 依頼。</p> <a href="mailto:info@gyutron.com">info@gyutron.com</a> </div> <div class="support-channel"> <i class="fa-brands fa-whatsapp"></i> <h3>WhatsApp</h3> <p>営業時間内の事前相談や統合に関する簡単な質問。</p> <a href="https://wa.me/85269509801">+852 6950 9801</a> </div> <div class="support-channel"> <i class="fa-solid fa-headset"></i> <h3>セールスエンジニアリング</h3> <p>仕様、見積もり、サンプル、プロジェクトの検討。</p> <a href="/ja/contact-sales.html">営業に問い合わせ →</a> </div> </div> <h2>サポート依頼時に含める情報</h2> <p>エンジニアが迅速に対応できるよう、以下をできるだけご提供ください：</p> <ul> <li><strong>会社名</strong>とご担当者・連絡先。</li> <li><strong>製品型番</strong>（例：GY-A90 Touch、GY-CR720）と対象数量。</li> <li><strong>シリアル番号</strong>とファームウェア/ソフトウェアのバージョン（分かる場合）。</li> <li><strong>使用シナリオ</strong>——ホストプラットフォーム、インターフェース（GigE Vision / USB3 / IO-Link / RS-232/485 / デジタル I/O）、使用環境。</li> <li><strong>写真または動画</strong>（セットアップの様子、必要に応じてサンプル画像）。</li> <li><strong>エラーの説明</strong>——期待した動作と実際の動作、エラーコードやログがあれば添付。</li> <li><strong>注文または見積もりの参照番号</strong>（商務・RMA 案件の場合）。</li> <li><strong>仕向け国 / 地域</strong>（配送や現地対応の文脈）。</li> </ul> <h2>応答時間</h2> <p>サポートは香港および深圳のチームが、標準的な営業時間（GMT+8）の月曜～金曜に対応します。新規のお問い合わせには 1 営業日以内の受付確認を目指しています。複雑な統合案件や RMA 案件では、エンジニアリングチームによる追加確認が必要となる場合があります。</p> <h2>セルフサービス</h2> <p>多くの質問は<a href="/ja/support/faq.html">よくある質問</a>で回答しています。<a href="/ja/support/warranty.html">保証</a>および<a href="/ja/support/shipping-delivery.html">配送・お届け</a>もご覧ください。</p> <h2>拠点</h2> <p><strong>香港本社</strong> — 香港サイエンスパーク、沙田、新界、香港特別行政区<br> <strong>深圳研究開発センター</strong> — 深圳湾科技生態園、南山区、深圳市、広東省、中国</p>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));

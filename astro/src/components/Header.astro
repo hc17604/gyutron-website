@@ -426,4 +426,26 @@ const { locale, path } = Astro.props;
           requestUpdate();
         });
       })();
+
+      (() => {
+        // mega-menu active submenu (JS-driven): default = first group on open, switch on hover,
+        // stays sticky while the pointer is inside the active group's submenu (a child of the group).
+        // Fixes: blank right panel on open + reverting to the first group when moving into the submenu.
+        Array.prototype.forEach.call(document.querySelectorAll(".nav-item"), (item) => {
+          const menu = item.querySelector(".mega-menu");
+          if (!menu) return;
+          const groups = Array.prototype.slice.call(menu.querySelectorAll(".mega-link-group"));
+          if (!groups.length) return;
+          const setActive = (g) => groups.forEach((x) => x.classList.toggle("is-open", x === g));
+          const clear = () => groups.forEach((x) => x.classList.remove("is-open"));
+          item.addEventListener("pointerenter", () => setActive(groups[0]));
+          item.addEventListener("pointerleave", clear);
+          item.addEventListener("focusin", (e) => {
+            const g = e.target.closest && e.target.closest(".mega-link-group");
+            setActive(g || groups[0]);
+          });
+          item.addEventListener("focusout", (e) => { if (!item.contains(e.relatedTarget)) clear(); });
+          groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
+        });
+      })();
     </script>

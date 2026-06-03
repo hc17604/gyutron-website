@@ -119,6 +119,28 @@
           requestUpdate();
         });
       })();
+
+      (() => {
+        // mega-menu active submenu (JS-driven): default = first group on open, switch on hover,
+        // stays sticky while the pointer is inside the active group's submenu (a child of the group).
+        // Fixes: blank right panel on open + reverting to the first group when moving into the submenu.
+        Array.prototype.forEach.call(document.querySelectorAll(".nav-item"), (item) => {
+          const menu = item.querySelector(".mega-menu");
+          if (!menu) return;
+          const groups = Array.prototype.slice.call(menu.querySelectorAll(".mega-link-group"));
+          if (!groups.length) return;
+          const setActive = (g) => groups.forEach((x) => x.classList.toggle("is-open", x === g));
+          const clear = () => groups.forEach((x) => x.classList.remove("is-open"));
+          item.addEventListener("pointerenter", () => setActive(groups[0]));
+          item.addEventListener("pointerleave", clear);
+          item.addEventListener("focusin", (e) => {
+            const g = e.target.closest && e.target.closest(".mega-link-group");
+            setActive(g || groups[0]);
+          });
+          item.addEventListener("focusout", (e) => { if (!item.contains(e.relatedTarget)) clear(); });
+          groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
+        });
+      })();
     </script>  <main class="support-page"> <section class="support-hero" style="background-image: linear-gradient(118deg, rgba(4,5,8,0.96) 0%, rgba(18,5,31,0.9) 50%, rgba(27,11,46,0.84) 100%), url('/nav-company-quality-bench.png'); background-size: cover; background-position: center;"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/ja/index.html">ホーム</a> / <span>保証</span> </nav> <span class="support-eyebrow">ヘルプ＆サポート</span> <h1>保証</h1> <p class="support-intro">GYUTRON は、材料および製造上の欠陥に対する限定保証で産業用ハードウェアを支えます。</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">本ページは B2B のお客様向けの標準的な限定保証の概要です。個別の注文に適用される保証は、該当する見積もり・注文確認書・書面による合意に記載されたものが優先します。</p> <h2>限定保証</h2> <p>GYUTRON は、当社のハードウェア製品が、公表仕様の範囲内での通常の産業利用において、材料および製造上の欠陥がないことを保証します。適用される保証期間中、欠陥が認められた製品を GYUTRON の裁量で修理または交換します。</p> <h2>保証対象</h2> <ul> <li>製品の公表仕様の範囲内での通常使用における、材料および製造上の欠陥。</li> <li>GYUTRON の裁量による、新品または同等品の部品/製品での修理または交換。</li> </ul> <p>保証条件は、製品カテゴリ、サプライヤー方針、プロジェクト合意により異なる場合があります。具体的な範囲と期間は、該当する見積もり・注文確認書・書面による合意で確定します。</p> <h2>保証対象外</h2> <ul> <li>誤用、不適切な設置、公表仕様外での使用、または不十分な保守。</li> <li>無断の改造、分解、または修理。</li> <li>定格の防塵防水等級を超える曝露を含む、事故・物理的・電気的・液体による損傷。</li> <li>消耗・摩耗部品（例：バッテリー、ケーブル、ガスケット）および傷などの外観上の摩耗。</li> <li>サードパーティ製アクセサリ、電源異常、または不可抗力による損傷。</li> </ul> <h2>RMA / 保証請求の流れ</h2> <ul> <li><strong>1. サポートに連絡。</strong> <a href="mailto:info@gyutron.com">info@gyutron.com</a> に、製品型番・シリアル番号・不具合の説明（可能であれば写真・ログ・サンプル画像）を添えてメールしてください。</li> <li><strong>2. RMA 番号の発行。</strong> 当社チームが案件を確認し、対象となる場合は返送手順とともに RMA（返品承認）番号を発行します。</li> <li><strong>3. 製品の返送。</strong> 製品を安全に梱包し（必要に応じて ESD 保護）、RMA の指示に従って発送してください。</li> <li><strong>4. 検査と対応。</strong> 検査後、修理・交換・返送を行い、状況を随時ご連絡します。</li> </ul> <h2>保証期間外サービス</h2> <p>保証期間を過ぎた製品や対象外の事象についても、有償で修理・サービスをご利用いただけます。査定と見積もりについてはサポートまでご連絡ください。</p> <h2>製品別の保証条件</h2> <p>一部の製品カテゴリ、構成、プロジェクト合意には、本概要に優先する固有の保証条件が適用される場合があります。該当する場合、その条件はお客様の注文に関する製品ドキュメント、見積もり、注文確認書、または書面による合意に記載されます。</p> <div class="support-note">本概要は、法人のお客様に対する GYUTRON の保証に関する一般的な方針を説明するものです。個別の注文に適用される範囲・期間・救済は、GYUTRON とお客様との間の該当する見積もり・注文確認書・売買契約・書面契約、および適用法上排除できない法定の権利に従います。保証に関するご質問は<a href="/ja/support.html">サポートへお問い合わせ</a>ください。</div>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));

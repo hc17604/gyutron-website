@@ -112,6 +112,28 @@
           requestUpdate();
         });
       })();
+
+      (() => {
+        // mega-menu active submenu (JS-driven): default = first group on open, switch on hover,
+        // stays sticky while the pointer is inside the active group's submenu (a child of the group).
+        // Fixes: blank right panel on open + reverting to the first group when moving into the submenu.
+        Array.prototype.forEach.call(document.querySelectorAll(".nav-item"), (item) => {
+          const menu = item.querySelector(".mega-menu");
+          if (!menu) return;
+          const groups = Array.prototype.slice.call(menu.querySelectorAll(".mega-link-group"));
+          if (!groups.length) return;
+          const setActive = (g) => groups.forEach((x) => x.classList.toggle("is-open", x === g));
+          const clear = () => groups.forEach((x) => x.classList.remove("is-open"));
+          item.addEventListener("pointerenter", () => setActive(groups[0]));
+          item.addEventListener("pointerleave", clear);
+          item.addEventListener("focusin", (e) => {
+            const g = e.target.closest && e.target.closest(".mega-link-group");
+            setActive(g || groups[0]);
+          });
+          item.addEventListener("focusout", (e) => { if (!item.contains(e.relatedTarget)) clear(); });
+          groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
+        });
+      })();
     </script>  <main class="support-page"> <section class="support-hero" style="background-image: linear-gradient(118deg, rgba(4,5,8,0.96) 0%, rgba(18,5,31,0.9) 50%, rgba(27,11,46,0.84) 100%), url('/nav-industry-logistics-rfid.png'); background-size: cover; background-position: center;"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/index.html">Home</a> / <span>Shipping &amp; Delivery</span> </nav> <span class="support-eyebrow">Help &amp; Support</span> <h1>Shipping &amp; Delivery</h1> <p class="support-intro">We ship industrial hardware to manufacturers and integrators worldwide, with terms suited to project-based and cross-border B2B orders.</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">Shipping terms for any order are confirmed in the applicable quotation or order confirmation. The summary below describes how we typically handle delivery for B2B orders.</p> <h2>Shipping origin</h2> <p>Shipments may be arranged from Hong Kong, Shenzhen, or supplier warehouses depending on product availability and project requirements. The origin and routing for your order are confirmed at order processing.</p> <h2>Order processing</h2> <p>Once an order is confirmed and payment terms are met, in-stock items are prepared for dispatch; configured or made-to-order items are scheduled according to the agreed lead time. Export documentation is prepared for cross-border shipments.</p> <h2>Lead time</h2> <ul> <li><strong>In-stock products</strong> — typically dispatched within a few business days of order confirmation.</li> <li><strong>Configured / made-to-order products</strong> — lead time depends on options and quantity and is confirmed on the quotation.</li> </ul> <h2>International shipping &amp; Incoterms</h2> <p>International shipments are arranged under agreed Incoterms (for example EXW, FOB or DAP) using established couriers and freight forwarders. For larger or palletized orders we can coordinate with your nominated forwarder.</p> <h2>Customs, duties &amp; taxes</h2> <p>For cross-border shipments, import duties, taxes and customs clearance are the responsibility of the importer of record unless otherwise agreed. We provide the commercial documentation required for clearance.</p> <h2>Packaging</h2> <p>Products are protected with industrial packaging appropriate to the device, including ESD protection for sensitive electronics and palletization for larger equipment. Multi-line orders may ship in multiple parcels.</p> <h2>Tracking</h2> <p>Tracking details are provided once your order is dispatched. For project shipments we can coordinate scheduling and documentation with your logistics team.</p> <h2>Partial shipments</h2> <p>For multi-line orders we can ship available items first rather than holding the entire order for a single line, as agreed on the order.</p> <h2>Delivery issues</h2> <p>Please inspect goods on receipt and report any transit damage, shortage or discrepancy promptly so we can assist with the carrier claim and resolution.</p> <div class="support-note">Delivery origin, Incoterms, lead times and routing are confirmed during order review and governed by the applicable quotation or order confirmation. For a delivery estimate to your location, please <a href="/contact-sales.html">contact our sales team</a>.</div>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));

@@ -119,6 +119,28 @@
           requestUpdate();
         });
       })();
+
+      (() => {
+        // mega-menu active submenu (JS-driven): default = first group on open, switch on hover,
+        // stays sticky while the pointer is inside the active group's submenu (a child of the group).
+        // Fixes: blank right panel on open + reverting to the first group when moving into the submenu.
+        Array.prototype.forEach.call(document.querySelectorAll(".nav-item"), (item) => {
+          const menu = item.querySelector(".mega-menu");
+          if (!menu) return;
+          const groups = Array.prototype.slice.call(menu.querySelectorAll(".mega-link-group"));
+          if (!groups.length) return;
+          const setActive = (g) => groups.forEach((x) => x.classList.toggle("is-open", x === g));
+          const clear = () => groups.forEach((x) => x.classList.remove("is-open"));
+          item.addEventListener("pointerenter", () => setActive(groups[0]));
+          item.addEventListener("pointerleave", clear);
+          item.addEventListener("focusin", (e) => {
+            const g = e.target.closest && e.target.closest(".mega-link-group");
+            setActive(g || groups[0]);
+          });
+          item.addEventListener("focusout", (e) => { if (!item.contains(e.relatedTarget)) clear(); });
+          groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
+        });
+      })();
     </script>  <main class="support-page"> <section class="support-hero"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/ja/index.html">ホーム</a> / <span>プライバシーポリシー</span> </nav> <span class="support-eyebrow">法的事項</span> <h1>プライバシーポリシー</h1> <p class="support-intro">本ポリシーは、GYUTRON が本ウェブサイトを通じて収集する個人データの取り扱いについて説明します。</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">本ポリシーは GYUTRON ブランドサイト（gyutron.com）に適用されます。公式ストアは別途運営されており、独自の通知が適用される場合があります。</p> <h2>収集する情報</h2> <ul> <li><strong>お客様が提供する情報</strong> — お問い合わせ、見積もり依頼、ご連絡の際に、お名前、会社名、メールアドレス、電話番号、国/地域、メッセージ内容などを収集します。</li> <li><strong>やり取りの記録</strong> — サポートおよび品質向上のための、当社とのコミュニケーション（メール、メッセージ）の記録。</li> <li><strong>利用データ</strong> — ウェブサイトの運用・改善のため、Cookie 等の技術を通じて収集する基本的な技術・解析データ（閲覧ページ、デバイス/ブラウザの種類、おおよその地域など）。</li> </ul> <h2>情報の利用目的</h2> <ul> <li>お問い合わせへの対応、見積もり・技術・アフターサービスの提供のため。</li> <li>ウェブサイトおよび当社製品・サービスの運用、保護、改善のため。</li> <li>法令、規制、契約上の義務を遵守するため。</li> </ul> <h2>共有と移転</h2> <p>当社は個人データを販売しません。運用を支援するサービス提供者（ホスティング、メール、解析など）に対し、適切な守秘義務のもとで、また法令で必要な場合に共有することがあります。香港および中国本土を拠点にグローバルなお客様にサービスを提供する企業として、お客様のデータは適切な保護措置のもとで国境を越えて処理される場合があります。</p> <h2>Cookie</h2> <p>本サイトは必須 Cookie を使用し、利用状況を把握するために解析 Cookie を使用する場合があります。Cookie はブラウザ設定で制御または無効化できますが、必須 Cookie がない場合、一部の機能が動作しないことがあります。</p> <h2>データの保持</h2> <p>個人データは、上記の目的に必要な期間、または法令で求められる期間に限り保持し、その後は削除または匿名化します。</p> <h2>お客様の権利</h2> <p>適用法に従い、個人データへのアクセス、訂正、削除を求め、または特定の処理に異議を申し立てることができます。ご請求は <a href="mailto:info@gyutron.com">info@gyutron.com</a> までご連絡ください。</p> <h2>セキュリティ</h2> <p>当社は、不正アクセス・紛失・誤用から個人データを保護するため、適切な技術的・組織的措置を講じます。</p> <h2>変更と連絡先</h2> <p>本ポリシーは随時更新する場合があり、最新版を本ページに掲載します。本ポリシーに関するご質問は <a href="mailto:info@gyutron.com">info@gyutron.com</a> までお送りください。</p> <div class="support-note">本書は、一般的なウェブサイトおよびビジネスコミュニケーションの目的で提供されます。具体的なデータ処理の取り決めや商務条件は、該当する見積もり、注文確認書、書面による合意、または適用法に従う場合があります。プライバシーに関するお問い合わせは <a href="mailto:info@gyutron.com">info@gyutron.com</a> までご連絡ください。</div>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));

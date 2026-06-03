@@ -112,6 +112,28 @@
           requestUpdate();
         });
       })();
+
+      (() => {
+        // mega-menu active submenu (JS-driven): default = first group on open, switch on hover,
+        // stays sticky while the pointer is inside the active group's submenu (a child of the group).
+        // Fixes: blank right panel on open + reverting to the first group when moving into the submenu.
+        Array.prototype.forEach.call(document.querySelectorAll(".nav-item"), (item) => {
+          const menu = item.querySelector(".mega-menu");
+          if (!menu) return;
+          const groups = Array.prototype.slice.call(menu.querySelectorAll(".mega-link-group"));
+          if (!groups.length) return;
+          const setActive = (g) => groups.forEach((x) => x.classList.toggle("is-open", x === g));
+          const clear = () => groups.forEach((x) => x.classList.remove("is-open"));
+          item.addEventListener("pointerenter", () => setActive(groups[0]));
+          item.addEventListener("pointerleave", clear);
+          item.addEventListener("focusin", (e) => {
+            const g = e.target.closest && e.target.closest(".mega-link-group");
+            setActive(g || groups[0]);
+          });
+          item.addEventListener("focusout", (e) => { if (!item.contains(e.relatedTarget)) clear(); });
+          groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
+        });
+      })();
     </script>  <main class="support-page"> <section class="support-hero"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/de/index.html">Startseite</a> / <span>Datenschutzerklärung</span> </nav> <span class="support-eyebrow">Rechtliches</span> <h1>Datenschutzerklärung</h1> <p class="support-intro">Diese Erklärung beschreibt, wie GYUTRON über diese Website erhobene personenbezogene Daten verarbeitet.</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">Sie gilt für die GYUTRON-Markenwebsite (gyutron.com). Unser offizieller Store wird separat betrieben und kann eigene Hinweise haben.</p> <h2>Welche Daten wir erheben</h2> <ul> <li><strong>Von Ihnen bereitgestellte Daten</strong> — bei einer Anfrage, einer Angebotsanforderung oder einer Kontaktaufnahme erheben wir Angaben wie Name, Firma, E-Mail, Telefonnummer, Land/Region und den Inhalt Ihrer Nachricht.</li> <li><strong>Korrespondenz</strong> — Aufzeichnungen Ihrer Kommunikation mit uns (E-Mail, Messaging) für Support und Qualität.</li> <li><strong>Nutzungsdaten</strong> — grundlegende technische und Analysedaten (z. B. aufgerufene Seiten, Geräte-/Browsertyp und ungefähre Region), die über Cookies oder ähnliche Technologien erhoben werden, um die Website zu betreiben und zu verbessern.</li> </ul> <h2>Wie wir Daten verwenden</h2> <ul> <li>Zur Beantwortung von Anfragen und zur Bereitstellung von Angeboten, technischem und After-Sales-Support.</li> <li>Zum Betrieb, zur Sicherung und Verbesserung der Website sowie unserer Produkte und Dienstleistungen.</li> <li>Zur Erfüllung rechtlicher, regulatorischer und vertraglicher Pflichten.</li> </ul> <h2>Weitergabe &amp; Übermittlung</h2> <p>Wir verkaufen keine personenbezogenen Daten. Wir geben sie ggf. an Dienstleister weiter, die uns beim Betrieb unterstützen (z. B. Hosting-, E-Mail- und Analyseanbieter), unter angemessenen Vertraulichkeitspflichten und sofern gesetzlich vorgeschrieben. Als ein von Hongkong und Festlandchina aus tätiges Unternehmen, das globale Kunden bedient, können Ihre Daten grenzüberschreitend mit angemessenen Garantien verarbeitet werden.</p> <h2>Cookies</h2> <p>Die Website verwendet essenzielle Cookies und ggf. Analyse-Cookies, um die Nutzung zu verstehen. Sie können Cookies über Ihre Browsereinstellungen steuern oder deaktivieren; ohne essenzielle Cookies funktionieren einige Funktionen möglicherweise nicht.</p> <h2>Speicherdauer</h2> <p>Wir bewahren personenbezogene Daten nur so lange auf, wie es für die genannten Zwecke erforderlich oder gesetzlich vorgeschrieben ist; danach werden sie gelöscht oder anonymisiert.</p> <h2>Ihre Rechte</h2> <p>Vorbehaltlich des geltenden Rechts können Sie Auskunft, Berichtigung oder Löschung Ihrer personenbezogenen Daten verlangen oder bestimmten Verarbeitungen widersprechen. Für eine Anfrage kontaktieren Sie uns unter <a href="mailto:info@gyutron.com">info@gyutron.com</a>.</p> <h2>Sicherheit</h2> <p>Wir setzen angemessene technische und organisatorische Maßnahmen ein, um personenbezogene Daten vor unbefugtem Zugriff, Verlust oder Missbrauch zu schützen.</p> <h2>Änderungen &amp; Kontakt</h2> <p>Wir können diese Erklärung von Zeit zu Zeit aktualisieren; die jeweils aktuelle Fassung wird auf dieser Seite veröffentlicht. Fragen zu dieser Erklärung richten Sie an <a href="mailto:info@gyutron.com">info@gyutron.com</a>.</p> <div class="support-note">Dieses Dokument dient allgemeinen Website- und Geschäftskommunikationszwecken. Konkrete Datenverarbeitungsvereinbarungen und kaufmännische Bedingungen können sich nach dem jeweiligen Angebot, der Auftragsbestätigung, einer schriftlichen Vereinbarung oder dem geltenden Recht richten. Bei Datenschutzfragen kontaktieren Sie <a href="mailto:info@gyutron.com">info@gyutron.com</a>.</div>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));

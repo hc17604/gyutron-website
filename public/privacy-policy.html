@@ -112,6 +112,28 @@
           requestUpdate();
         });
       })();
+
+      (() => {
+        // mega-menu active submenu (JS-driven): default = first group on open, switch on hover,
+        // stays sticky while the pointer is inside the active group's submenu (a child of the group).
+        // Fixes: blank right panel on open + reverting to the first group when moving into the submenu.
+        Array.prototype.forEach.call(document.querySelectorAll(".nav-item"), (item) => {
+          const menu = item.querySelector(".mega-menu");
+          if (!menu) return;
+          const groups = Array.prototype.slice.call(menu.querySelectorAll(".mega-link-group"));
+          if (!groups.length) return;
+          const setActive = (g) => groups.forEach((x) => x.classList.toggle("is-open", x === g));
+          const clear = () => groups.forEach((x) => x.classList.remove("is-open"));
+          item.addEventListener("pointerenter", () => setActive(groups[0]));
+          item.addEventListener("pointerleave", clear);
+          item.addEventListener("focusin", (e) => {
+            const g = e.target.closest && e.target.closest(".mega-link-group");
+            setActive(g || groups[0]);
+          });
+          item.addEventListener("focusout", (e) => { if (!item.contains(e.relatedTarget)) clear(); });
+          groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
+        });
+      })();
     </script>  <main class="support-page"> <section class="support-hero"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/index.html">Home</a> / <span>Privacy Policy</span> </nav> <span class="support-eyebrow">Legal</span> <h1>Privacy Policy</h1> <p class="support-intro">This policy explains how GYUTRON handles personal data collected through this website.</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">It applies to the GYUTRON brand website (gyutron.com). Our official store operates separately and may have its own notices.</p> <h2>Information we collect</h2> <ul> <li><strong>Information you provide</strong> — when you submit an inquiry, request a quotation or contact us, we collect details such as your name, company, email, phone number, country/region and the content of your message.</li> <li><strong>Correspondence</strong> — records of your communications with us (email, messaging) for support and quality.</li> <li><strong>Usage data</strong> — basic technical and analytics data (such as pages viewed, device/browser type and approximate region) collected via cookies or similar technologies to operate and improve the site.</li> </ul> <h2>How we use information</h2> <ul> <li>To respond to inquiries and provide quotations, technical and after-sales support.</li> <li>To operate, secure and improve the website and our products and services.</li> <li>To comply with legal, regulatory and contractual obligations.</li> </ul> <h2>Sharing &amp; transfers</h2> <p>We do not sell personal data. We may share it with service providers who help us operate (for example hosting, email and analytics providers) under appropriate confidentiality obligations, and where required by law. As a company operating from Hong Kong and mainland China serving global customers, your data may be processed across borders with appropriate safeguards.</p> <h2>Cookies</h2> <p>The site uses essential cookies and may use analytics cookies to understand usage. You can control or disable cookies through your browser settings; some features may not function without essential cookies.</p> <h2>Data retention</h2> <p>We retain personal data only for as long as necessary for the purposes described above or as required by applicable law, after which it is deleted or anonymized.</p> <h2>Your rights</h2> <p>Subject to applicable law, you may request access to, correction or deletion of your personal data, or object to certain processing. To make a request, contact us at <a href="mailto:info@gyutron.com">info@gyutron.com</a>.</p> <h2>Security</h2> <p>We apply reasonable technical and organizational measures to protect personal data against unauthorized access, loss or misuse.</p> <h2>Changes &amp; contact</h2> <p>We may update this policy from time to time; the latest version is published on this page. Questions about this policy can be sent to <a href="mailto:info@gyutron.com">info@gyutron.com</a>.</p> <div class="support-note">This document is provided for general website and business-communication purposes. Specific data-processing arrangements and commercial terms may be governed by the applicable quotation, order confirmation, written agreement or applicable law. For privacy questions, contact <a href="mailto:info@gyutron.com">info@gyutron.com</a>.</div>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));

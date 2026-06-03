@@ -112,6 +112,28 @@
           requestUpdate();
         });
       })();
+
+      (() => {
+        // mega-menu active submenu (JS-driven): default = first group on open, switch on hover,
+        // stays sticky while the pointer is inside the active group's submenu (a child of the group).
+        // Fixes: blank right panel on open + reverting to the first group when moving into the submenu.
+        Array.prototype.forEach.call(document.querySelectorAll(".nav-item"), (item) => {
+          const menu = item.querySelector(".mega-menu");
+          if (!menu) return;
+          const groups = Array.prototype.slice.call(menu.querySelectorAll(".mega-link-group"));
+          if (!groups.length) return;
+          const setActive = (g) => groups.forEach((x) => x.classList.toggle("is-open", x === g));
+          const clear = () => groups.forEach((x) => x.classList.remove("is-open"));
+          item.addEventListener("pointerenter", () => setActive(groups[0]));
+          item.addEventListener("pointerleave", clear);
+          item.addEventListener("focusin", (e) => {
+            const g = e.target.closest && e.target.closest(".mega-link-group");
+            setActive(g || groups[0]);
+          });
+          item.addEventListener("focusout", (e) => { if (!item.contains(e.relatedTarget)) clear(); });
+          groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
+        });
+      })();
     </script>  <main class="support-page"> <section class="support-hero" style="background-image: linear-gradient(118deg, rgba(4,5,8,0.96) 0%, rgba(18,5,31,0.9) 50%, rgba(27,11,46,0.84) 100%), url('/nav-company-engineering-lab.png'); background-size: cover; background-position: center;"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/de/index.html">Startseite</a> / <span>Support</span> </nav> <span class="support-eyebrow">Hilfe &amp; Support</span> <h1>Support</h1> <p class="support-intro">Engineering-geführter Support für GYUTRON-Industriehardware — von der Produktauswahl und Integration bis zu Garantie und After-Sales-Service für globale B2B-Teams.</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">Ob Sie einen Sensor evaluieren, eine Kamera in eine Produktionslinie integrieren oder eine im Feld installierte Flotte warten — unsere Applikations- und Supportingenieure helfen Ihnen weiter.</p> <h2>Kontaktwege</h2> <div class="support-channels"> <div class="support-channel"> <i class="fa-solid fa-envelope"></i> <h3>E-Mail</h3> <p>Allgemeiner &amp; technischer Support, Dokumentation und RMA-Anfragen.</p> <a href="mailto:info@gyutron.com">info@gyutron.com</a> </div> <div class="support-channel"> <i class="fa-brands fa-whatsapp"></i> <h3>WhatsApp</h3> <p>Schnelle Vorab- und Integrationsfragen während der Geschäftszeiten.</p> <a href="https://wa.me/85269509801">+852 6950 9801</a> </div> <div class="support-channel"> <i class="fa-solid fa-headset"></i> <h3>Vertriebs-Engineering</h3> <p>Spezifikationen, Angebote, Muster und Projektabstimmung.</p> <a href="/de/contact-sales.html">Vertrieb kontaktieren →</a> </div> </div> <h2>Angaben für eine Support-Anfrage</h2> <p>Damit unsere Ingenieure Ihren Fall schnell lösen können, geben Sie bitte möglichst viele der folgenden Angaben an:</p> <ul> <li><strong>Firmenname</strong> sowie Ihre Funktion/Kontaktdaten.</li> <li><strong>Produktmodell</strong> (z. B. GY-A90 Touch, GY-CR720) und betroffene Menge.</li> <li><strong>Seriennummer</strong> und Firmware-/Softwareversion, falls verfügbar.</li> <li><strong>Anwendungsszenario</strong> — Host-Plattform, Schnittstelle (GigE Vision / USB3 / IO-Link / RS-232/485 / digitale E/A) und Einsatzumgebung.</li> <li><strong>Fotos oder Videos</strong> des Aufbaus sowie ggf. Beispielbilder.</li> <li><strong>Fehlerbeschreibung</strong> — erwartetes versus tatsächliches Verhalten, mit Fehlercodes oder Logs.</li> <li><strong>Auftrags- oder Angebotsreferenz</strong> für kaufmännische oder RMA-Fälle.</li> <li><strong>Zielland / -region</strong> für Lieferung oder Vor-Ort-Kontext.</li> </ul> <h2>Reaktionszeiten</h2> <p>Der Support wird von unseren Teams in Hongkong und Shenzhen während der üblichen Geschäftszeiten (GMT+8), Montag bis Freitag, bearbeitet. Wir bemühen uns, neue Anfragen innerhalb eines Geschäftstags zu bestätigen. Komplexe Integrations- oder RMA-Fälle können eine zusätzliche Prüfung mit unserem Engineering-Team erfordern.</p> <h2>Selbsthilfe</h2> <p>Viele Fragen werden in unseren <a href="/de/support/faq.html">häufig gestellten Fragen</a> beantwortet. Siehe auch <a href="/de/support/warranty.html">Garantie</a> und <a href="/de/support/shipping-delivery.html">Versand &amp; Lieferung</a>.</p> <h2>Standorte</h2> <p><strong>Hauptsitz Hongkong</strong> — Hong Kong Science Park, Shatin, New Territories, Hongkong SAR<br> <strong>F&amp;E-Zentrum Shenzhen</strong> — Shenzhen Bay Technology and Ecology Park, Bezirk Nanshan, Shenzhen, Guangdong, China</p>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));

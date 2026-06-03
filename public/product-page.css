@@ -1116,3 +1116,8 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
 }
 
 
+
+/* ===== mega-menu submenu: show ONLY the JS-active (.is-open) group ===== */
+/* Fixes: blank right-panel when hovering the tab + reverting to the first group when the pointer enters the submenu. */
+.mega-menu .mega-link-group .submenu { opacity: 0 !important; pointer-events: none !important; transform: none !important; }
+.mega-menu .mega-link-group.is-open .submenu { opacity: 1 !important; pointer-events: auto !important; }
