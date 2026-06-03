@@ -231,7 +231,7 @@ const GYUTRON_PRODUCTS = {
         navLabel: "Spezifikation anfordern",
         heroImage: "product-hero-request-specification-matrix.png",
         intro: "Vordefinierte Konfigurationspfade für Käufer, die PDA, Scanner, RFID, Zubehör und Softwareanforderungen abstimmen möchten.",
-        panelMetric: "3 packs",
+        panelMetric: "3 Pakete",
         panelText: "Nutzen Sie diese Optionen als Ausgangspunkt für Angebote, Muster oder OEM-/ODM-Abstimmungen.",
         products: [
             {
@@ -816,39 +816,39 @@ GYUTRON_PRODUCTS["inspection-instruments"].redirectTo = "dimensional-gauges";
 
 Object.assign(GYUTRON_PRODUCTS, {
     "proximity-sensors": {
-        eyebrow: "Sensing & I/O",
-        title: "Presence & Object Detection",
-        navLabel: "Presence & Object Detection",
+        eyebrow: "Sensorik & I/O",
+        title: "Anwesenheits- & Objekterkennung",
+        navLabel: "Anwesenheits-/Objekterkennung",
         navGroup: "sensors",
         heroImage: "product-hero-proximity-sensors-matrix.png",
         intro: "Photoelektrische, induktive, Faser-, Ultraschall- und Sicherheitssensorik für Teileanwesenheit, Vorrichtungen, Fördertechnik und abgesicherte Stationen.",
         panelMetric: "6 Modelle",
-        panelText: "Photoelectric, inductive, fiber, and safety sensing for clear detection jobs.",
-        sectionIntro: "This page keeps detection products together instead of mixing them with measurement or condition-monitoring devices.",
+        panelText: "Lichttaster, induktive, Faser- und Sicherheitssensorik für klare Detektionsaufgaben.",
+        sectionIntro: "Diese Seite fasst Detektionsprodukte zusammen, statt sie mit Mess- oder Zustandsüberwachungsgeräten zu vermischen.",
         products: getProductsByName(["GY-PX18", "GY-PR12", "GY-FB200", "GY-SAFE24", "GY-PX90", "GY-SAFE90"])
     },
     "laser-measurement": {
-        eyebrow: "Sensing & I/O",
+        eyebrow: "Sensorik & I/O",
         title: "Distance & Position Sensoren",
-        navLabel: "Distance & Position",
+        navLabel: "Abstand & Position",
         navGroup: "sensors",
         heroImage: "product-hero-laser-measurement-matrix.png",
         intro: "Berührungslose Laser- und Ultraschall-Distanzprodukte für Positionsprüfung, Spaltbestätigung, Füllstandserfassung und Maschinenfeedback.",
         panelMetric: "3 Modelle",
-        panelText: "Laser displacement and ultrasonic distance sensing, without unrelated IO or fiber-amplifier products.",
-        sectionIntro: "This category now uses a broader distance-and-position framing and only includes products that genuinely measure position or distance.",
+        panelText: "Laser-Wegmessung und Ultraschall-Abstandsmessung, ohne fremde IO- oder Faserverstärker-Produkte.",
+        sectionIntro: "Diese Kategorie nutzt nun einen breiteren Rahmen „Abstand & Position“ und enthält nur Produkte, die tatsächlich Position oder Abstand messen.",
         products: getProductsByName(["GY-LD40", "GY-UL80", "GY-LD90"])
     },
     "environmental-sensing": {
-        eyebrow: "Sensing & I/O",
-        title: "Process & Condition Monitoring",
-        navLabel: "Process & Condition",
+        eyebrow: "Sensorik & I/O",
+        title: "Prozess- & Zustandsüberwachung",
+        navLabel: "Prozess & Zustand",
         navGroup: "sensors",
         heroImage: "product-hero-environmental-sensing-matrix.png",
         intro: "Druck-, Temperatur-, Feuchte-, Vibrations- und Sensornetzwerkprodukte für Uptime-Transparenz und Prozessstabilität.",
         panelMetric: "4 Modelle",
-        panelText: "Environmental monitoring, pneumatic pressure checks, and distributed IO diagnostics.",
-        sectionIntro: "Process and condition products belong together because buyers use them to monitor machine health, cabinet conditions, pneumatic performance, and connected sensor status.",
+        panelText: "Umgebungsüberwachung, pneumatische Druckprüfung und verteilte IO-Diagnose.",
+        sectionIntro: "Prozess- und Zustandsprodukte gehören zusammen, da Anwender sie zur Überwachung von Maschinenzustand, Schaltschrankbedingungen, Pneumatikleistung und Sensorstatus nutzen.",
         products: getProductsByName(["GY-PS60", "GY-ENV32", "GY-NET8", "GY-NET90"])
     },
     "area-scan-cameras": {
@@ -859,31 +859,31 @@ Object.assign(GYUTRON_PRODUCTS, {
         heroImage: "product-hero-area-scan-cameras-matrix.png",
         intro: "2D-Smart-Kameras für Vollbildprüfung, Montageverifikation, Messtechnik, Führung und KI-gestützte Kontrollen.",
         panelMetric: "10 Modelle",
-        panelText: "Compact, color, mono, AI, high-resolution, high-speed, and telecentric imaging options.",
-        sectionIntro: "Area-scan products capture a full image frame, with supporting optics kept in the same imaging chain. This lineup separates sensor class, speed, resolution, AI capability, and inspection role so buyers can shortlist models more realistically.",
+        panelText: "Kompakt-, Farb-, Mono-, KI-, Hochauflösungs-, Highspeed- und telezentrische Imaging-Optionen.",
+        sectionIntro: "Flächenkameras erfassen ein vollständiges Bildfeld, wobei die zugehörige Optik in derselben Bildkette bleibt. Diese Auswahl trennt Sensorklasse, Geschwindigkeit, Auflösung, KI-Fähigkeit und Prüfaufgabe, damit Anwender Modelle realistischer eingrenzen können.",
         products: getProductsByName(["GY-V120", "GY-V160 Compact", "GY-V240 Color", "GY-V280 AI", "GY-V320 Mono", "GY-V380 Pro", "GY-V500 HR", "GY-V640 HS", "GY-OPT25", "GY-V900 Pro"])
     },
     "smart-vision-sensors": {
         eyebrow: "Machine-Vision-Systeme",
-        title: "Vision Controllers & 3D Systems",
+        title: "Vision-Controller & 3D-Systeme",
         navLabel: "Controller & 3D-Vision",
         navGroup: "vision",
         heroImage: "product-hero-smart-vision-sensors-matrix.png",
         intro: "Vision-Controller, 3D-Profilkameras und Line-Scan-Systeme für größere Prüfzellen und komplexere Anwendungen.",
         panelMetric: "10 Modelle",
-        panelText: "Vision controllers, 3D sensors, line-scan acquisition, timing I/O, frame-grabber, strobe control, and robot guidance modules.",
-        sectionIntro: "This lineup supports more complete machine vision cells: acquisition, processing, 3D profiling, timing I/O, illumination triggering, frame capture, and robot-guidance integration.",
+        panelText: "Vision-Controller, 3D-Sensoren, Zeilenscan-Erfassung, Timing-I/O, Framegrabber, Blitzsteuerung und Roboterführungsmodule.",
+        sectionIntro: "Diese Auswahl unterstützt vollständigere Machine-Vision-Zellen: Erfassung, Verarbeitung, 3D-Profilierung, Timing-I/O, Beleuchtungstriggerung, Bildaufnahme und Roboterführungs-Integration.",
         products: getProductsByName(["GY-VC8", "GY-V3D90", "GY-V3D150", "GY-VL2048", "GY-VX12", "GY-VIO16", "GY-LC4", "GY-VFG4", "GY-VRG200", "GY-V3D900"])
     },
     "code-reading-cameras": {
         eyebrow: "Machine-Vision-Systeme",
-        title: "Code Reading & Verification",
-        navLabel: "Code Reading & Verification",
+        title: "Codelesung & Verifizierung",
+        navLabel: "Codelesung & Verifizierung",
         navGroup: "vision",
         heroImage: "product-hero-code-reading-cameras-matrix.png",
         intro: "Stationäre und mobile bildbasierte Leser für Barcode, QR, Data Matrix, DPM und regulierte Rückverfolgbarkeits-Workflows.",
         panelMetric: "9 Modelle",
-        panelText: "Compact readers, DPM readers, high-speed conveyor readers, handheld DPM, inline verification, and tunnel capture.",
+        panelText: "Kompaktleser, DPM-Leser, Highspeed-Förderleser, Handheld-DPM, Inline-Verifizierung und Tunnelerfassung.",
         sectionIntro: "Rückverfolgbarkeit buyers think in terms of read rate, DPM capability, field of view, verification standards, and record output, so this category now covers both fixed readers and grading workflows.",
         products: getProductsByName(["GY-CR120", "GY-CR390", "GY-CR520 DPM", "GY-CR720 Fördertechnik", "GY-S300 DPM", "GY-CV100", "GY-CV220 Inline", "GY-RT800", "GY-CR900 Matrix"])
     },
@@ -895,8 +895,8 @@ Object.assign(GYUTRON_PRODUCTS, {
         heroImage: "product-hero-vision-lighting-matrix.png",
         intro: "Weißlicht-Beleuchtungszubehör für stabile Machine-Vision-Bilder ohne Farbverfälschung oder violette Lichteffekte.",
         panelMetric: "5 Modelle",
-        panelText: "Ring, bar, dome, backlight, and line-light illumination products.",
-        sectionIntro: "Vision lighting products determine image stability, defect contrast, and measurement repeatability. This category now keeps only illumination hardware, while controllers and optics live with the broader vision system categories.",
+        panelText: "Ring-, Balken-, Dom-, Durchlicht- und Linienlicht-Beleuchtungsprodukte.",
+        sectionIntro: "Vision-Beleuchtung bestimmt Bildstabilität, Defektkontrast und Messwiederholbarkeit. Diese Kategorie enthält nur Beleuchtungshardware; Controller und Optik liegen bei den übergeordneten Vision-System-Kategorien.",
         products: getProductsByName(["GY-LR70", "GY-LB220", "GY-LDome120", "GY-LBL150", "GY-LL300"])
     },
     "dimensional-gauges": {
@@ -907,7 +907,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         heroImage: "product-hero-dimensional-gauges-matrix.png",
         intro: "Messwerkzeuge für Geometrie, Ausrichtung, Höhe, Spalt, Profil und Produktionstoleranzen.",
         panelMetric: "4 Modelle",
-        panelText: "Contact gauge and optical measurement station options.",
+        panelText: "Tastende Messgeräte und optische Messstationen.",
         sectionIntro: "Maßprüfung gauges are kept to dedicated metrology instruments, while distance sensors and 3D profile cameras remain in their own automation categories.",
         products: getProductsByName(["GY-MG50", "GY-VM200", "GY-MG90", "GY-VM900"])
     },
@@ -920,7 +920,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         intro: "Spezialisierte Oberflächenqualitätsgeräte für Rauheit, Glanz, Schichtdicke und sichtbare Finish-Prüfungen.",
         panelMetric: "3 Modelle",
         panelText: "Rauheit, gloss, and coating-thickness tools without borrowing camera-system products.",
-        sectionIntro: "Surface inspection now contains only dedicated surface-quality instruments, so line-scan cameras and AI cameras stay in machine vision.",
+        sectionIntro: "Die Oberflächeninspektion enthält jetzt nur dedizierte Oberflächenprüfgeräte, sodass Zeilenkameras und KI-Kameras in der Machine Vision bleiben.",
         products: [
             ...getProductsByName(["GY-SF30"]),
             {
@@ -951,8 +951,8 @@ Object.assign(GYUTRON_PRODUCTS, {
         heroImage: "product-hero-portable-testers-matrix.png",
         intro: "Handheld-Tester für elektrische, thermische und signalbezogene Prüfungen durch Wartungs- und Qualitätsteams.",
         panelMetric: "3 Modelle",
-        panelText: "Electrical safety, loop-signal, and thermal diagnostic tools.",
-        sectionIntro: "Portable testers are selected for maintenance teams and quality engineers who need quick checks away from fixed stations. Process sensors and environmental monitors stay in Sensing & I/O.",
+        panelText: "Werkzeuge für elektrische Sicherheit, Schleifensignale und Thermodiagnose.",
+        sectionIntro: "Tragbare Prüfgeräte sind für Instandhaltungsteams und Qualitätsingenieure gedacht, die abseits fester Stationen schnelle Prüfungen benötigen. Prozesssensoren und Umgebungsmonitore bleiben in Sensorik & I/O.",
         products: [
             ...getProductsByName(["GY-ET75"]),
             {
@@ -984,7 +984,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         intro: "Kalibrier- und Verifizierungszubehör für Machine Vision, Messtechnik, Codequalität und dokumentierte Messmittelpflege.",
         panelMetric: "3 Modelle",
         panelText: "Kalibriergitter, gauge block, and light-reference tools.",
-        sectionIntro: "Calibration tools make inspection systems more repeatable by supporting setup verification, traceable checks, and documented maintenance routines.",
+        sectionIntro: "Kalibrierwerkzeuge erhöhen die Wiederholbarkeit von Prüfsystemen, indem sie Einrichtungsverifizierung, rückführbare Prüfungen und dokumentierte Wartungsroutinen unterstützen.",
         products: [
             {
                 name: "GY-CAL-Grid",

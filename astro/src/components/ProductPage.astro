@@ -34,7 +34,7 @@ const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];
         <p>{cat.intro}</p>
       </div>
       <aside class="hero-panel">
-        <span>Portfolio</span>
+        <span>{locale === 'ja' ? '製品ラインアップ' : 'Portfolio'}</span>
         <strong>{cat.panelMetric}</strong>
         <p>{cat.panelText}</p>
       </aside>
