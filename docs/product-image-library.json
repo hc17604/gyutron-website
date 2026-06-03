@@ -1151,8 +1151,8 @@
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "wired",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+        "direction": "corrected-wired",
+        "notes": "Transparent PNG generated and harmonized to #4b2e83; direction corrected after QA so it matches the approved family orientation before deployment."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "presence-and-safety-sensors",
@@ -1184,8 +1184,8 @@
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "wired",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
+        "direction": "corrected-wired",
+        "notes": "Transparent PNG generated and harmonized to #4b2e83; direction corrected after QA so it matches the approved family orientation before deployment."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "distance-position-sensors",

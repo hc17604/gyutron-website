@@ -388,9 +388,11 @@
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "wired",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
-    }
+      "direction": "corrected-wired",
+      "notes": "Transparent PNG generated and harmonized to #4b2e83; direction corrected after QA so it matches the approved family orientation before deployment."
+    },
+    "correctedAt": "2026-06-03",
+    "directionCorrection": "Horizontally mirrored after user QA flagged opposite XYZ orientation within the product family."
   },
   "gy-ld40": {
     "status": "wired-live",
@@ -401,9 +403,11 @@
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "wired",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the sensing tertiary categories."
-    }
+      "direction": "corrected-wired",
+      "notes": "Transparent PNG generated and harmonized to #4b2e83; direction corrected after QA so it matches the approved family orientation before deployment."
+    },
+    "correctedAt": "2026-06-03",
+    "directionCorrection": "Horizontally mirrored after user QA flagged opposite XYZ orientation within the product family."
   },
   "gy-ul80": {
     "status": "wired-live",
