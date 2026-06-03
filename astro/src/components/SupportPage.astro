@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from './Footer.astro';
+import { localizeUrl, type Locale } from '../i18n';
+interface Props {
+  locale: Locale;
+  path: string;
+  title: string;        // SEO <title>
+  description: string;  // SEO meta description
+  eyebrow?: string;     // small kicker above the H1
+  heading: string;      // visible H1
+  intro?: string;       // hero sub-paragraph
+  crumb: string;        // breadcrumb leaf label
+  updated?: string;     // optional "Last updated ..." line
+}
+const { locale, path, title, description, eyebrow = 'Help & Support', heading, intro, crumb, updated } = Astro.props;
+---
+<Layout
+  locale={locale}
+  path={path}
+  title={title}
+  description={description}
+  pageCss={["/product-page.css", "/support-page.css", "/mobile-navigation.css"]}
+>
+  <main class="support-page">
+    <section class="support-hero">
+      <div class="container">
+        <nav class="support-crumbs" aria-label="Breadcrumb">
+          <a href={localizeUrl(locale, "/index.html")}>Home</a> / <span>{crumb}</span>
+        </nav>
+        <span class="support-eyebrow">{eyebrow}</span>
+        <h1>{heading}</h1>
+        {intro && <p class="support-intro">{intro}</p>}
+      </div>
+    </section>
+
+    <section class="support-body">
+      <div class="container">
+        <div class="support-content">
+          <slot />
+          {updated && <p class="support-updated">{updated}</p>}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer slot="footer" locale={locale} />
+
+  <script is:inline>
+    (() => {
+      const navItems = Array.from(document.querySelectorAll(".nav-item"));
+      const closeDelay = 520;
+      const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
+      const closeItem = (item) => {
+        window.clearTimeout(item.closeTimer);
+        item.closeTimer = window.setTimeout(() => {
+          item.classList.remove("is-open");
+          item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+        }, closeDelay);
+      };
+      const setActiveGroup = (groups, activeGroup) => groups.forEach((group) => group.classList.toggle("is-open", group === activeGroup));
+      const openItem = (item, groups) => {
+        navItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            window.clearTimeout(otherItem.closeTimer);
+            otherItem.classList.remove("is-open");
+            otherItem.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          }
+        });
+        window.clearTimeout(item.closeTimer);
+        item.classList.add("is-open");
+        if (groups.length && !groups.some((group) => group.classList.contains("is-open"))) setActiveGroup(groups, groups[0]);
+      };
+      navItems.forEach((item) => {
+        const menu = item.querySelector(".mega-menu");
+        if (!menu) return;
+        const groups = Array.from(item.querySelectorAll(".mega-link-group"));
+        const trigger = item.querySelector(".nav-trigger");
+        trigger?.addEventListener("click", (event) => {
+          if (isTouchNavigation() && !item.classList.contains("is-open")) { event.preventDefault(); openItem(item, groups); }
+        });
+        item.addEventListener("pointerenter", () => openItem(item, groups));
+        item.addEventListener("pointerleave", () => closeItem(item));
+        menu.addEventListener("pointerenter", () => openItem(item, groups));
+        menu.addEventListener("pointerleave", () => closeItem(item));
+        groups.forEach((group) => {
+          group.addEventListener("pointerenter", () => { openItem(item, groups); setActiveGroup(groups, group); });
+          group.addEventListener("focusin", () => { openItem(item, groups); setActiveGroup(groups, group); });
+        });
+      });
+    })();
+  </script>
+</Layout>
