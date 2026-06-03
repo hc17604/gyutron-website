@@ -26,12 +26,12 @@ const { locale } = Astro.props;
       </div>
       <div>
         <h4>{t(locale, "fnav.support")}</h4>
-        <a href="/support/faq.html">{t(locale, "fnav.faq")}</a>
-        <a href="/support.html">{t(locale, "fnav.contactSupport")}</a>
-        <a href="/support/warranty.html">{t(locale, "fnav.warranty")}</a>
-        <a href="/support/shipping-delivery.html">{t(locale, "fnav.shipping")}</a>
-        <a href="/privacy-policy.html">{t(locale, "fnav.privacy")}</a>
-        <a href="/terms-and-conditions.html">{t(locale, "fnav.terms")}</a>
+        <a href={localizeUrl(locale, "/support/faq.html")}>{t(locale, "fnav.faq")}</a>
+        <a href={localizeUrl(locale, "/support.html")}>{t(locale, "fnav.contactSupport")}</a>
+        <a href={localizeUrl(locale, "/support/warranty.html")}>{t(locale, "fnav.warranty")}</a>
+        <a href={localizeUrl(locale, "/support/shipping-delivery.html")}>{t(locale, "fnav.shipping")}</a>
+        <a href={localizeUrl(locale, "/privacy-policy.html")}>{t(locale, "fnav.privacy")}</a>
+        <a href={localizeUrl(locale, "/terms-and-conditions.html")}>{t(locale, "fnav.terms")}</a>
       </div>
       <div>
         <h4>{t(locale, "main.182")}</h4>
