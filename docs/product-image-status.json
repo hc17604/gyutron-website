@@ -949,5 +949,174 @@
       "direction": "contact-sheet-verified",
       "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
     }
+  },
+  "gy-mg50": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-mg50.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-mg50-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-mg50-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Dimensional gauge generated for dimensional-gauges; front-left 3/4 metrology direction, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-vm200": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-vm200.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-vm200-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-vm200-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Vision measuring station generated for dimensional-gauges; front-left 3/4 metrology direction, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-mg90": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-mg90.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-mg90-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-mg90-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Higher-range dimensional gauge generated for dimensional-gauges; front-left 3/4 metrology direction, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-vm900": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-vm900.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-vm900-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-vm900-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Large vision measuring station generated for dimensional-gauges; front-left 3/4 metrology direction, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-sf30": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-sf30.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-sf30-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-sf30-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Surface finish tester generated for surface-inspection; no readable screen text, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-gl20": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-gl20.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-gl20-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-gl20-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Industrial gloss meter generated for surface-inspection; no readable screen text, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-ct45": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-ct45.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ct45-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ct45-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Coating thickness tester generated for surface-inspection; no readable screen text, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-et75": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-et75.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-et75-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-et75-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Electrical tester generated for portable-testers; no readable screen/dial text, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-lt40": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-lt40.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-lt40-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-lt40-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Loop signal tester generated for portable-testers; no readable UI text, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-th90": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-th90.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-th90-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-th90-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Thermal spot tester generated for portable-testers; no readable UI text, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-cal-grid": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-cal-grid.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cal-grid-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cal-grid-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Vision calibration target kit generated for calibration-tools; no readable text, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-cal-block": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-cal-block.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cal-block-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cal-block-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Gauge block kit generated for calibration-tools; no readable text, transparent PNG, harmonized to #4b2e83."
+    }
+  },
+  "gy-cal-light": {
+    "status": "wired-live",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/transparent/gy-cal-light.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cal-light-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cal-light-source.png",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "contact-sheet-verified",
+      "notes": "Light reference kit generated for calibration-tools; no readable text, transparent PNG, harmonized to #4b2e83."
+    }
   }
 }

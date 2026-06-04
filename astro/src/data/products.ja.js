@@ -732,7 +732,7 @@ const GYUTRON_PRODUCTS = {
                 type: "デジタル測定ゲージ",
                 summary: "再現性のある寸法チェック、合否(Go/No-Go)検査、SPCデータ取得向けのベンチ・治具ゲージ。",
                 kind: "instrument",
-                image: "product-images/gy-mg50.png",
+                image: "product-library/transparent/gy-mg50.png",
                 specs: { Range: "50 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
                 tags: ["寸法測定", "SPC", "治具対応"]
             },
@@ -741,7 +741,7 @@ const GYUTRON_PRODUCTS = {
                 type: "画像測定機",
                 summary: "小部品、エッジ、穴、溝、輪郭の検証向けのコンパクト光学測定ステーション。",
                 kind: "instrument",
-                image: "product-images/gy-vm200.png",
+                image: "product-library/transparent/gy-vm200.png",
                 specs: { Stage: "200 x 120 mm", Camera: "5 MP", Lighting: "White coaxial / ring", Output: "CSV / report" },
                 tags: ["Optical", "Measurement", "Lab"]
             },
@@ -750,7 +750,7 @@ const GYUTRON_PRODUCTS = {
                 type: "表面粗さ測定器",
                 summary: "機械加工部品、工具、受入材料の粗さチェック向けのポータブル表面測定器。",
                 kind: "instrument",
-                image: "product-images/gy-sf30.png",
+                image: "product-library/transparent/gy-sf30.png",
                 specs: { Parameter: "Ra / Rz / Rq", Stroke: "5.6 mm", Display: "Color LCD", Data: "USB export" },
                 tags: ["粗さ", "Portable", "加工"]
             },
@@ -768,7 +768,7 @@ const GYUTRON_PRODUCTS = {
                 type: "産業用電気テスター",
                 summary: "電圧、導通、センサー電源、制御盤チェック向けのハンディ保全計器。",
                 kind: "instrument",
-                image: "product-images/gy-et75.png",
+                image: "product-library/transparent/gy-et75.png",
                 specs: { Voltage: "600 V CAT III", Inputs: "V / ohm / mA", Display: "Backlit LCD", Data: "Bluetooth option" },
                 tags: ["Maintenance", "Cabinet checks", "Portable"]
             }
@@ -778,7 +778,7 @@ const GYUTRON_PRODUCTS = {
                 type: "デジタル寸法ゲージ",
                 summary: "生産・QA工程での高さ・ギャップ・ストローク・治具測定に適した精密ゲージ。",
                 kind: "instrument",
-                image: "product-cutouts/generated/gy-mg90.png",
+                image: "product-library/transparent/gy-mg90.png",
                 specs: { Range: "90 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
                 tags: ["Metrology", "Height", "Fixture QA"]
             }
@@ -788,7 +788,7 @@ const GYUTRON_PRODUCTS = {
                 type: "画像測定器",
                 summary: "部品形状・エッジ検査・生産レポート向けの卓上型 光学測定システム。",
                 kind: "instrument",
-                image: "product-cutouts/generated/gy-vm900.png",
+                image: "product-library/transparent/gy-vm900.png",
                 specs: { Stage: "260 x 160 mm", Camera: "9 MP", Lighting: "Coaxial / ring", Output: "CSV / report" },
                 tags: ["Optical metrology", "Benchtop", "QA report"]
             }
@@ -928,7 +928,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "産業用光沢計",
                 summary: "コーティング、成形部品、塗装金属、仕上げ面の均一性チェック向けのポータブル光沢計。",
                 kind: "instrument",
-                image: "product-images/gy-gl20.png",
+                image: "product-library/transparent/gy-gl20.png",
                 specs: { Geometry: "60 degree", Range: "0 to 1000 GU", Repeatability: "+/- 0.2 GU", Data: "USB / Bluetooth" },
                 tags: ["Gloss", "コーティング", "外観仕上げ管理"]
             },
@@ -937,7 +937,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "膜厚計",
                 summary: "金属部品の塗装、めっき、陽極酸化、保護被膜の検査向けのハンディ膜厚計。",
                 kind: "instrument",
-                image: "product-images/gy-ct45.png",
+                image: "product-library/transparent/gy-ct45.png",
                 specs: { Range: "0 to 1500 um", Substrate: "Ferrous / non-ferrous", Probe: "Integrated", Data: "CSV export" },
                 tags: ["Coating", "塗装", "受入検査"]
             }
@@ -960,7 +960,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "ループ信号テスター",
                 summary: "4〜20 mAセンサー信号、制御ループ、盤の立上げ作業のチェック向けのポータブルループ校正器。",
                 kind: "instrument",
-                image: "product-images/gy-lt40.png",
+                image: "product-library/transparent/gy-lt40.png",
                 specs: { Signal: "4-20 mA source / measure", Power: "24 V loop supply", Accuracy: "0.05% class", Display: "Backlit LCD" },
                 tags: ["ループチェック", "立ち上げ", "Maintenance"]
             },
@@ -969,7 +969,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "サーマルスポットテスター",
                 summary: "盤、モーター、軸受、迅速な保全診断向けの非接触温度テスター。",
                 kind: "instrument",
-                image: "product-images/gy-th90.png",
+                image: "product-library/transparent/gy-th90.png",
                 specs: { Range: "-30 C to 650 C", Optics: "12:1", Emissivity: "Adjustable", Data: "Bluetooth option" },
                 tags: ["Thermal", "Maintenance", "Cabinet checks"]
             }
@@ -991,7 +991,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "ビジョン校正ターゲット",
                 summary: "カメラ設定、現場校正、レンズ歪みチェック、測定位置合わせ向けの精密グリッドターゲット。",
                 kind: "instrument",
-                image: "product-images/gy-cal-grid.png",
+                image: "product-library/transparent/gy-cal-grid.png",
                 specs: { Pattern: "Ceramic grid", Size: "120 x 90 mm", Accuracy: "5 um class", Case: "Protective frame" },
                 tags: ["画像処理設定", "グリッドターゲット", "Metrology"]
             },
@@ -1000,7 +1000,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "ブロックゲージキット",
                 summary: "治具ゲージ、プローブ点検、寸法セットアップ、定期検証向けの基準ブロックキット。",
                 kind: "instrument",
-                image: "product-images/gy-cal-block.png",
+                image: "product-library/transparent/gy-cal-block.png",
                 specs: { Material: "Hardened steel", Grade: "Workshop reference", Range: "1 to 50 mm", Case: "Indexed tray" },
                 tags: ["ゲージブロック", "プローブ確認", "治具設定"]
             },
@@ -1009,7 +1009,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "照明基準 kit",
                 summary: "画像処理照明の一貫性、露光設定、検査ステーション確認に使う白色光リファレンスキット。",
                 kind: "instrument",
-                image: "product-images/gy-cal-light.png",
+                image: "product-library/transparent/gy-cal-light.png",
                 specs: { Reference: "White diffuser", Control: "Portable module", Output: "Check record", Use: "Vision stations" },
                 tags: ["照明基準", "ホワイトバランス", "画像処理QA"]
             }

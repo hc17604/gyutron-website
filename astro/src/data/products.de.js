@@ -732,7 +732,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Digitales Messgerät",
                 summary: "Tisch- und Vorrichtungsmessgerät für wiederholbare Maßprüfungen, Gut/Ausschuss-Prüfung und SPC-Datenerfassung.",
                 kind: "instrument",
-                image: "product-images/gy-mg50.png",
+                image: "product-library/transparent/gy-mg50.png",
                 specs: { Range: "50 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
                 tags: ["Maßprüfung", "SPC", "Vorrichtungsbereit"]
             },
@@ -741,7 +741,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Bildmessgerät",
                 summary: "Kompakte optische Messstation für Kleinteile, Kanten, Bohrungen, Nuten und Konturverifizierung.",
                 kind: "instrument",
-                image: "product-images/gy-vm200.png",
+                image: "product-library/transparent/gy-vm200.png",
                 specs: { Stage: "200 x 120 mm", Camera: "5 MP", Lighting: "White coaxial / ring", Output: "CSV / report" },
                 tags: ["Optical", "Measurement", "Lab"]
             },
@@ -750,7 +750,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Oberflächenrauheits-Prüfgerät",
                 summary: "Tragbares Oberflächenprüfgerät für Rauheitsprüfungen an bearbeiteten Teilen, Werkzeugen und Wareneingangsmaterial.",
                 kind: "instrument",
-                image: "product-images/gy-sf30.png",
+                image: "product-library/transparent/gy-sf30.png",
                 specs: { Parameter: "Ra / Rz / Rq", Stroke: "5.6 mm", Display: "Color LCD", Data: "USB export" },
                 tags: ["Rauheit", "Portable", "Bearbeitung"]
             },
@@ -768,7 +768,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Industrielles Elektroprüfgerät",
                 summary: "Handgehaltenes Wartungsgerät für Spannungs-, Durchgangs-, Sensorversorgungs- und Schaltschrankprüfungen.",
                 kind: "instrument",
-                image: "product-images/gy-et75.png",
+                image: "product-library/transparent/gy-et75.png",
                 specs: { Voltage: "600 V CAT III", Inputs: "V / ohm / mA", Display: "Backlit LCD", Data: "Bluetooth option" },
                 tags: ["Maintenance", "Cabinet checks", "Portable"]
             }
@@ -778,7 +778,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Digitales Massmessgeraet",
                 summary: "Praezisionsgeraet fuer Hoehe, Spalt, Hub und Vorrichtungsmessung in Produktion und QA.",
                 kind: "instrument",
-                image: "product-cutouts/generated/gy-mg90.png",
+                image: "product-library/transparent/gy-mg90.png",
                 specs: { Range: "90 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
                 tags: ["Metrology", "Height", "Fixture QA"]
             }
@@ -788,7 +788,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Optisches Messsystem",
                 summary: "Tischgeraet fuer optische Messung von Bauteilgeometrie, Kantenpruefung und Produktionsberichte.",
                 kind: "instrument",
-                image: "product-cutouts/generated/gy-vm900.png",
+                image: "product-library/transparent/gy-vm900.png",
                 specs: { Stage: "260 x 160 mm", Camera: "9 MP", Lighting: "Coaxial / ring", Output: "CSV / report" },
                 tags: ["Optical metrology", "Benchtop", "QA report"]
             }
@@ -928,7 +928,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Industrielles Glanzmessgerät",
                 summary: "Tragbares Glanzmessgerät für Konsistenzprüfungen an Beschichtungen, Formteilen, lackiertem Metall und fertigen Oberflächen.",
                 kind: "instrument",
-                image: "product-images/gy-gl20.png",
+                image: "product-library/transparent/gy-gl20.png",
                 specs: { Geometry: "60 degree", Range: "0 to 1000 GU", Repeatability: "+/- 0.2 GU", Data: "USB / Bluetooth" },
                 tags: ["Gloss", "Beschichtungen", "Oberflächenkontrolle"]
             },
@@ -937,7 +937,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Schichtdickenmessgerät",
                 summary: "Handgehaltenes Schichtdickenmessgerät für die Prüfung von Lack, Beschichtung, Eloxierung und Schutzschichten auf Metallteilen.",
                 kind: "instrument",
-                image: "product-images/gy-ct45.png",
+                image: "product-library/transparent/gy-ct45.png",
                 specs: { Range: "0 to 1500 um", Substrate: "Ferrous / non-ferrous", Probe: "Integrated", Data: "CSV export" },
                 tags: ["Coating", "Lack", "Wareneingangsprüfung"]
             }
@@ -960,7 +960,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Schleifensignal-Prüfgerät",
                 summary: "Tragbarer Schleifenkalibrator zur Prüfung von 4–20-mA-Sensorsignalen, Regelkreisen und Schaltschrank-Inbetriebnahme.",
                 kind: "instrument",
-                image: "product-images/gy-lt40.png",
+                image: "product-library/transparent/gy-lt40.png",
                 specs: { Signal: "4-20 mA source / measure", Power: "24 V loop supply", Accuracy: "0.05% class", Display: "Backlit LCD" },
                 tags: ["Schleifenprüfung", "Inbetriebnahme", "Maintenance"]
             },
@@ -969,7 +969,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Thermisches Punktprüfgerät",
                 summary: "Berührungsloses Temperaturprüfgerät für Schaltschränke, Motoren, Lager und schnelle Wartungsdiagnose.",
                 kind: "instrument",
-                image: "product-images/gy-th90.png",
+                image: "product-library/transparent/gy-th90.png",
                 specs: { Range: "-30 C to 650 C", Optics: "12:1", Emissivity: "Adjustable", Data: "Bluetooth option" },
                 tags: ["Thermal", "Maintenance", "Cabinet checks"]
             }
@@ -991,7 +991,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Vision-Kalibriertarget",
                 summary: "Präzisions-Gittertarget für Kameraeinrichtung, Feldkalibrierung, Objektivverzeichnungsprüfung und Messausrichtung.",
                 kind: "instrument",
-                image: "product-images/gy-cal-grid.png",
+                image: "product-library/transparent/gy-cal-grid.png",
                 specs: { Pattern: "Ceramic grid", Size: "120 x 90 mm", Accuracy: "5 um class", Case: "Protective frame" },
                 tags: ["Vision-Setup", "Kalibriergitter", "Metrology"]
             },
@@ -1000,7 +1000,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Endmaß-Satz",
                 summary: "Referenzblock-Satz für Vorrichtungsmessgeräte, Tasterprüfung, Maßeinrichtung und routinemäßige Verifizierung.",
                 kind: "instrument",
-                image: "product-images/gy-cal-block.png",
+                image: "product-library/transparent/gy-cal-block.png",
                 specs: { Material: "Hardened steel", Grade: "Workshop reference", Range: "1 to 50 mm", Case: "Indexed tray" },
                 tags: ["Endmaße", "Tasterprüfung", "Vorrichtungseinrichtung"]
             },
@@ -1009,7 +1009,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Lichtreferenz kit",
                 summary: "Weißlicht-Referenzkit für konsistente Vision-Beleuchtung, Belichtungseinrichtung und Prüfplatzkontrollen.",
                 kind: "instrument",
-                image: "product-images/gy-cal-light.png",
+                image: "product-library/transparent/gy-cal-light.png",
                 specs: { Reference: "White diffuser", Control: "Portable module", Output: "Check record", Use: "Vision stations" },
                 tags: ["Lichtreferenz", "Weißabgleich", "Vision-QS"]
             }

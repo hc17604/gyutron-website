@@ -727,7 +727,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Digital measurement gauge",
                 summary: "Bench and fixture gauge for repeatable dimensional checks, go / no-go inspection, and SPC data capture.",
                 kind: "instrument",
-                image: "product-images/gy-mg50.png",
+                image: "product-library/transparent/gy-mg50.png",
                 specs: { Range: "50 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
                 tags: ["Dimensional", "SPC", "Fixture ready"]
             },
@@ -736,7 +736,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Vision measuring instrument",
                 summary: "Compact optical measurement station for small parts, edges, holes, slots, and profile verification.",
                 kind: "instrument",
-                image: "product-images/gy-vm200.png",
+                image: "product-library/transparent/gy-vm200.png",
                 specs: { Stage: "200 x 120 mm", Camera: "5 MP", Lighting: "White coaxial / ring", Output: "CSV / report" },
                 tags: ["Optical", "Measurement", "Lab"]
             },
@@ -745,7 +745,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Surface finish tester",
                 summary: "Portable surface tester for roughness checks on machined parts, tooling, and incoming materials.",
                 kind: "instrument",
-                image: "product-images/gy-sf30.png",
+                image: "product-library/transparent/gy-sf30.png",
                 specs: { Parameter: "Ra / Rz / Rq", Stroke: "5.6 mm", Display: "Color LCD", Data: "USB export" },
                 tags: ["Roughness", "Portable", "Machining"]
             },
@@ -763,7 +763,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Industrial electrical tester",
                 summary: "Handheld maintenance instrument for voltage, continuity, sensor power, and control-cabinet checks.",
                 kind: "instrument",
-                image: "product-images/gy-et75.png",
+                image: "product-library/transparent/gy-et75.png",
                 specs: { Voltage: "600 V CAT III", Inputs: "V / ohm / mA", Display: "Backlit LCD", Data: "Bluetooth option" },
                 tags: ["Maintenance", "Cabinet checks", "Portable"]
             }
@@ -773,7 +773,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Digital dimensional gauge",
                 summary: "Precision gauge for height, gap, stroke, and fixture measurement in production and QA stations.",
                 kind: "instrument",
-                image: "product-cutouts/generated/gy-mg90.png",
+                image: "product-library/transparent/gy-mg90.png",
                 specs: { Range: "90 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
                 tags: ["Metrology", "Height", "Fixture QA"]
             },
@@ -782,7 +782,7 @@ const GYUTRON_PRODUCTS = {
                 type: "Vision measuring instrument",
                 summary: "Benchtop optical measurement system for component geometry, edge checks, and production reports.",
                 kind: "instrument",
-                image: "product-cutouts/generated/gy-vm900.png",
+                image: "product-library/transparent/gy-vm900.png",
                 specs: { Stage: "260 x 160 mm", Camera: "9 MP", Lighting: "Coaxial / ring", Output: "CSV / report" },
                 tags: ["Optical metrology", "Benchtop", "QA report"]
             }
@@ -922,7 +922,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Industrial gloss meter",
                 summary: "Portable gloss meter for coating, molded-part, painted-metal, and finished-surface consistency checks.",
                 kind: "instrument",
-                image: "product-images/gy-gl20.png",
+                image: "product-library/transparent/gy-gl20.png",
                 specs: { Geometry: "60 degree", Range: "0 to 1000 GU", Repeatability: "+/- 0.2 GU", Data: "USB / Bluetooth" },
                 tags: ["Gloss", "Coatings", "Finish control"]
             },
@@ -931,7 +931,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Coating thickness tester",
                 summary: "Handheld coating gauge for paint, plating, anodizing, and protective coating inspection on metal parts.",
                 kind: "instrument",
-                image: "product-images/gy-ct45.png",
+                image: "product-library/transparent/gy-ct45.png",
                 specs: { Range: "0 to 1500 um", Substrate: "Ferrous / non-ferrous", Probe: "Integrated", Data: "CSV export" },
                 tags: ["Coating", "Paint", "Incoming QC"]
             }
@@ -954,7 +954,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Loop signal tester",
                 summary: "Portable loop calibrator for checking 4-20 mA sensor signals, control loops, and cabinet commissioning work.",
                 kind: "instrument",
-                image: "product-images/gy-lt40.png",
+                image: "product-library/transparent/gy-lt40.png",
                 specs: { Signal: "4-20 mA source / measure", Power: "24 V loop supply", Accuracy: "0.05% class", Display: "Backlit LCD" },
                 tags: ["Loop check", "Commissioning", "Maintenance"]
             },
@@ -963,7 +963,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Thermal spot tester",
                 summary: "Non-contact temperature tester for cabinets, motors, bearings, and quick maintenance diagnostics.",
                 kind: "instrument",
-                image: "product-images/gy-th90.png",
+                image: "product-library/transparent/gy-th90.png",
                 specs: { Range: "-30 C to 650 C", Optics: "12:1", Emissivity: "Adjustable", Data: "Bluetooth option" },
                 tags: ["Thermal", "Maintenance", "Cabinet checks"]
             }
@@ -985,7 +985,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Vision calibration target",
                 summary: "Precision grid target for camera setup, field calibration, lens distortion checks, and measurement alignment.",
                 kind: "instrument",
-                image: "product-images/gy-cal-grid.png",
+                image: "product-library/transparent/gy-cal-grid.png",
                 specs: { Pattern: "Ceramic grid", Size: "120 x 90 mm", Accuracy: "5 um class", Case: "Protective frame" },
                 tags: ["Vision setup", "Grid target", "Metrology"]
             },
@@ -994,7 +994,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Gauge block kit",
                 summary: "Reference block kit for fixture gauges, probe checks, dimensional setup, and routine verification.",
                 kind: "instrument",
-                image: "product-images/gy-cal-block.png",
+                image: "product-library/transparent/gy-cal-block.png",
                 specs: { Material: "Hardened steel", Grade: "Workshop reference", Range: "1 to 50 mm", Case: "Indexed tray" },
                 tags: ["Gauge blocks", "Probe check", "Fixture setup"]
             },
@@ -1003,7 +1003,7 @@ Object.assign(GYUTRON_PRODUCTS, {
                 type: "Light reference kit",
                 summary: "White-light reference kit for vision lighting consistency, exposure setup, and inspection station checks.",
                 kind: "instrument",
-                image: "product-images/gy-cal-light.png",
+                image: "product-library/transparent/gy-cal-light.png",
                 specs: { Reference: "White diffuser", Control: "Portable module", Output: "Check record", Use: "Vision stations" },
                 tags: ["Light reference", "White balance", "Vision QA"]
             }
