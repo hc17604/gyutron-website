@@ -1118,5 +1118,221 @@
       "direction": "contact-sheet-verified",
       "notes": "Light reference kit generated for calibration-tools; no readable text, transparent PNG, harmonized to #4b2e83."
     }
+  },
+  "gy-rc6-inspect": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-rc6-inspect.png",
+    "deployedAsset": "public/product-library/secondary/gy-rc6-inspect.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-rc6-inspect-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-rc6-inspect-source.png",
+    "category": "robot-workcells",
+    "visualFamily": "secondary-robot-workcells",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-rc12-tend": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-rc12-tend.png",
+    "deployedAsset": "public/product-library/secondary/gy-rc12-tend.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-rc12-tend-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-rc12-tend-source.png",
+    "category": "robot-workcells",
+    "visualFamily": "secondary-robot-workcells",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-rc4-pick": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-rc4-pick.png",
+    "deployedAsset": "public/product-library/secondary/gy-rc4-pick.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-rc4-pick-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-rc4-pick-source.png",
+    "category": "robot-workcells",
+    "visualFamily": "secondary-robot-workcells",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-rc14-pack": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-rc14-pack.png",
+    "deployedAsset": "public/product-library/secondary/gy-rc14-pack.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-rc14-pack-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-rc14-pack-source.png",
+    "category": "robot-workcells",
+    "visualFamily": "secondary-robot-workcells",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-ec200-din": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-ec200-din.png",
+    "deployedAsset": "public/product-library/secondary/gy-ec200-din.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ec200-din-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ec200-din-source.png",
+    "category": "edge-controllers",
+    "visualFamily": "secondary-edge-controllers",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-ec500-vision": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-ec500-vision.png",
+    "deployedAsset": "public/product-library/secondary/gy-ec500-vision.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ec500-vision-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ec500-vision-source.png",
+    "category": "edge-controllers",
+    "visualFamily": "secondary-edge-controllers",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-ec800-motion": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-ec800-motion.png",
+    "deployedAsset": "public/product-library/secondary/gy-ec800-motion.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ec800-motion-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ec800-motion-source.png",
+    "category": "edge-controllers",
+    "visualFamily": "secondary-edge-controllers",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-ec900-gateway": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-ec900-gateway.png",
+    "deployedAsset": "public/product-library/secondary/gy-ec900-gateway.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-ec900-gateway-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-ec900-gateway-source.png",
+    "category": "edge-controllers",
+    "visualFamily": "secondary-edge-controllers",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-cbl-m12": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-cbl-m12.png",
+    "deployedAsset": "public/product-library/secondary/gy-cbl-m12.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-cbl-m12-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-cbl-m12-source.png",
+    "category": "accessories",
+    "visualFamily": "secondary-accessories",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-mnt-uni": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-mnt-uni.png",
+    "deployedAsset": "public/product-library/secondary/gy-mnt-uni.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-mnt-uni-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-mnt-uni-source.png",
+    "category": "accessories",
+    "visualFamily": "secondary-accessories",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-pwr-24v": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-pwr-24v.png",
+    "deployedAsset": "public/product-library/secondary/gy-pwr-24v.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-pwr-24v-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-pwr-24v-source.png",
+    "category": "accessories",
+    "visualFamily": "secondary-accessories",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
+  },
+  "gy-opt-kit": {
+    "status": "wired-live-dedicated",
+    "generatedAt": "2026-06-04",
+    "liveAsset": "astro/public/product-library/secondary/gy-opt-kit.png",
+    "deployedAsset": "public/product-library/secondary/gy-opt-kit.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/gy-opt-kit-chroma.png",
+    "sourceAsset": "asset-workbench/product-images/source/gy-opt-kit-source.png",
+    "category": "accessories",
+    "visualFamily": "secondary-accessories",
+    "qa": {
+      "transparentCorners": true,
+      "purpleHarmonized": true,
+      "direction": "checked-by-family-contact-sheet",
+      "dedicatedSource": true,
+      "singleUse": true,
+      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
+    }
   }
 }

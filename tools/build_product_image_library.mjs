@@ -88,6 +88,21 @@ const CATEGORY_VISUALS = {
     family: "calibration-reference-tools",
     direction: "organized 3/4 product view, reference surface/pattern/case visible",
     designNotes: "calibration targets, gauge blocks, and light-reference kits; clean precision accessory styling"
+  },
+  "robot-workcells": {
+    family: "secondary-robot-workcells",
+    direction: "locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs",
+    designNotes: "plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix"
+  },
+  "edge-controllers": {
+    family: "secondary-edge-controllers",
+    direction: "locked edge-controller XYZ direction-angle template: front-left 3/4 technical product view with front I/O face and right-side heat fins/depth visible; do not flip, mirror, or change side-angle between controller SKUs",
+    designNotes: "fanless DIN-rail/panel industrial controllers and gateways with realistic ports, terminal blocks, heat fins, mounting ears, and cabinet-ready form language; avoid consumer mini-PC/router shapes"
+  },
+  "accessories": {
+    family: "secondary-accessories",
+    direction: "organized front-left 3/4 catalog arrangement with a slight top-down camera; keep the same general XYZ direction and avoid mirrored kit layouts",
+    designNotes: "industrial deployment accessories such as M12 cables, mounting hardware, 24 V power modules, optics/filter kits, docks, brackets, and spare parts; each SKU must be a standalone product image, not a crop from a shared accessory spread"
   }
 };
 
@@ -177,7 +192,8 @@ const library = {
     "Use device accent purple #4b2e83 for physical trims/buttons/rings/panels; #8a63d2 is UI-only.",
     "Use a consistent XYZ direction-angle template inside each visual family; do not over-constrain product proportions or local feature geometry.",
     "No in-image text, no watermarks, no fake logos, no repeated generic products for different models.",
-    "If chroma key is used, keep source background flat #00ff00 with no shadows/gradients, then remove locally."
+    "If chroma key is used, keep source background flat #00ff00 with no shadows/gradients, then remove locally.",
+    "One image file has one purpose only: never reuse the same image for a SKU, menu panel, hero background, homepage slide, or another page slot."
   ],
   referenceBrandsForFormLanguage: [
     "Zebra rugged mobile computers and barcode scanners",

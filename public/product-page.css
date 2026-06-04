@@ -1091,16 +1091,19 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
     }
 
     .category-nav .container {
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 8px;
         overflow: visible;
         padding: 10px 0;
     }
 
     .category-nav a {
-        flex: 1 1 calc(50% - 8px);
-        font-size: 11px;
+        align-items: center;
+        display: flex;
+        font-size: 10px;
         justify-content: center;
+        letter-spacing: 0.04em;
         line-height: 1.2;
         min-width: 0;
         overflow-wrap: anywhere;

@@ -10,6 +10,8 @@ Use `docs/product-image-library.json` as the source of truth. This plan defines 
 - Keep product direction consistent inside each visual family. This is a hard QA gate for the product/camera XYZ rotation angles only: the same family must not randomly rotate, flip, lean, or change camera-side angle between SKUs. Do not over-constrain front-face ratio, side thickness, top scanner shape, exact baseline, or product proportions; those may vary by model. Do not batch-generate a product family until one approved XYZ direction-angle template exists for that family.
 - Avoid fake details that imply unavailable products. If a model is shown on the website, it must look like a plausible sellable SKU in its category.
 - Keep all chroma-key source files under `asset-workbench/product-images/chroma/`; final reusable transparent files go under `astro/public/product-library/transparent/`.
+- One image file has one purpose only. Do not reuse the same file for a SKU, menu image, product-page hero, homepage hero, or any other visual slot. If the same category needs both a menu image and a hero image, generate two distinct assets.
+- Do not generate one broad scene and crop it into multiple product photos. The user explicitly rejected this pattern; every SKU must have its own dedicated source render and final transparent PNG.
 
 ## Reference Form Language
 
