@@ -1008,6 +1008,153 @@ Object.assign(GYUTRON_PRODUCTS, {
                 tags: ["Light reference", "White balance", "Vision QA"]
             }
         ]
+    },
+    "robot-workcells": {
+        eyebrow: "More Products",
+        title: "Robot Workcells",
+        navLabel: "Robot Workcells",
+        navGroup: "more",
+        heroImage: "product-hero-robot-workcells-matrix.png",
+        intro: "Configurable robot workcell platforms for manufacturers that need repeatable loading, visual inspection, sorting, packing, and light assembly without building every station from zero.",
+        panelMetric: "4 cells",
+        panelText: "Collaborative inspection, machine tending, conveyor sorting, and palletizing-ready station concepts.",
+        sectionIntro: "This secondary product line is positioned for integrators and project buyers who need a practical automation cell around GYUTRON vision, sensing, edge control, fixtures, and industrial connectivity. The cells are presented as configurable platforms: final robot brand, gripper, guarding, acceptance cycle time, and safety scope are confirmed project by project.",
+        products: [
+            {
+                name: "GY-RC6 Inspect",
+                type: "Collaborative inspection cell",
+                summary: "Compact cobot inspection station for multi-side visual checks, code reading, small-part handling, and operator-assisted quality review.",
+                kind: "workcell",
+                image: "product-library/secondary/gy-rc6-inspect.png",
+                specs: { Payload: "6 kg class", Reach: "900 mm class", Vision: "2 cameras + lighting", Safety: "Scanner + e-stop" },
+                tags: ["Inspection cell", "Cobot-ready", "Fixture QA"]
+            },
+            {
+                name: "GY-RC12 Tend",
+                type: "Machine tending cell",
+                summary: "Configurable loading and unloading workcell for CNC, press, test fixture, and tray-fed process equipment.",
+                kind: "workcell",
+                image: "product-library/secondary/gy-rc12-tend.png",
+                specs: { Payload: "12 kg class", Reach: "1300 mm class", Fixture: "Tray / pneumatic", Control: "Robot + PLC handshake" },
+                tags: ["Machine tending", "Tray handling", "PLC interface"]
+            },
+            {
+                name: "GY-RC4 Pick",
+                type: "Vision-guided sorting cell",
+                summary: "Small conveyor workcell for pick-and-place, label orientation, reject sorting, and batch separation tasks.",
+                kind: "workcell",
+                image: "product-library/secondary/gy-rc4-pick.png",
+                specs: { Payload: "4 kg class", Reach: "600 mm class", Throughput: "Up to 35 picks/min", Vision: "Top camera + trigger" },
+                tags: ["Conveyor sorting", "Vision guided", "Compact cell"]
+            },
+            {
+                name: "GY-RC14 Pack",
+                type: "Packing and palletizing cell",
+                summary: "Light palletizing and case-packing platform for cartons, trays, bags, and end-of-line packing support.",
+                kind: "workcell",
+                image: "product-library/secondary/gy-rc14-pack.png",
+                specs: { Payload: "14 kg class", Reach: "1600 mm class", Pattern: "Carton / tray", Safety: "Guarded zone option" },
+                tags: ["End-of-line", "Palletizing", "Packing"]
+            }
+        ]
+    },
+    "edge-controllers": {
+        eyebrow: "More Products",
+        title: "Edge Controllers",
+        navLabel: "Edge Controllers",
+        navGroup: "more",
+        heroImage: "product-hero-edge-controllers-matrix.png",
+        intro: "Industrial edge controllers for collecting field signals, running local logic, connecting vision devices, and bridging production equipment with MES, WMS, SCADA, or cloud services.",
+        panelMetric: "4 controllers",
+        panelText: "DIN-rail I/O control, vision edge processing, motion coordination, and secure industrial gateway options.",
+        sectionIntro: "Edge controllers sit between sensors, cameras, scanners, robots, PLCs, and business systems. This line focuses on fanless industrial hardware, fieldbus connectivity, deterministic I/O where needed, and maintainable data handoff instead of consumer-style mini PCs.",
+        products: [
+            {
+                name: "GY-EC200 DIN",
+                type: "DIN-rail edge I/O controller",
+                summary: "Compact controller for sensor aggregation, light logic, IO-Link expansion, and cabinet-level machine visibility.",
+                kind: "controller",
+                image: "product-library/secondary/gy-ec200-din.png",
+                specs: { CPU: "Quad-core industrial", "I/O": "16 DI / 16 DO", Fieldbus: "Modbus TCP / MQTT", Temp: "-20 C to 60 C" },
+                tags: ["DIN rail", "Sensor gateway", "Cabinet IO"]
+            },
+            {
+                name: "GY-EC500 Vision",
+                type: "Vision edge controller",
+                summary: "Fanless vision controller for multi-camera inspection cells, local image processing, and quality record output.",
+                kind: "controller",
+                image: "product-library/secondary/gy-ec500-vision.png",
+                specs: { CPU: "Intel i5 class", AI: "20 TOPS option", Cameras: "4 x GigE / USB3", Storage: "1 TB NVMe option" },
+                tags: ["Vision edge", "Fanless", "Multi-camera"]
+            },
+            {
+                name: "GY-EC800 Motion",
+                type: "Real-time motion controller",
+                summary: "Machine controller for coordinated I/O, simple motion axes, robot handshakes, and timing-critical station logic.",
+                kind: "controller",
+                image: "product-library/secondary/gy-ec800-motion.png",
+                specs: { Fieldbus: "EtherCAT / PROFINET option", Axis: "Up to 16 axes", Cycle: "1 ms class", Mount: "Panel / DIN rail" },
+                tags: ["Motion IO", "EtherCAT", "Robot handshake"]
+            },
+            {
+                name: "GY-EC900 Gateway",
+                type: "Secure industrial edge gateway",
+                summary: "Rugged gateway for remote equipment monitoring, data buffering, protocol conversion, and service connectivity.",
+                kind: "controller",
+                image: "product-library/secondary/gy-ec900-gateway.png",
+                specs: { Network: "2 x GbE + 5G option", Security: "TPM / VPN ready", Ports: "RS-232 / RS-485 / CAN", Power: "9-36 VDC" },
+                tags: ["Remote access", "Protocol bridge", "Industrial gateway"]
+            }
+        ]
+    },
+    "accessories": {
+        eyebrow: "More Products",
+        title: "Accessories",
+        navLabel: "Accessories",
+        navGroup: "more",
+        heroImage: "product-hero-accessories-matrix.png",
+        intro: "Industrial accessories that make deployment easier: protected cabling, mounting hardware, power kits, optical add-ons, docks, brackets, and spare parts selected around real factory installation needs.",
+        panelMetric: "4 kits",
+        panelText: "Cables, mounts, 24 V power, optics, filters, docks, and fixture-ready installation hardware.",
+        sectionIntro: "Accessories are not treated as a miscellaneous store shelf. They are grouped as deployment kits that help engineers complete a working station: connection, mounting, power, optics, protection, charging, and maintenance. Final compatibility is confirmed against the selected PDA, camera, sensor, scanner, or controller model.",
+        products: [
+            {
+                name: "GY-CBL-M12",
+                type: "Industrial cable set",
+                summary: "Shielded M8/M12 and industrial Ethernet cable set for sensors, cameras, IO-Link devices, and cabinet wiring.",
+                kind: "accessory",
+                image: "product-library/secondary/gy-cbl-m12.png",
+                specs: { Connector: "M8 / M12 / RJ45", Rating: "IP67 option", Length: "2 / 5 / 10 m", Cable: "Shielded PUR" },
+                tags: ["M12 cable", "IO-Link", "Industrial Ethernet"]
+            },
+            {
+                name: "GY-MNT-UNI",
+                type: "Universal mounting kit",
+                summary: "Adjustable brackets, plates, clamps, and adapter hardware for sensors, cameras, lights, and barcode readers.",
+                kind: "accessory",
+                image: "product-library/secondary/gy-mnt-uni.png",
+                specs: { Material: "Anodized aluminum", Mount: "T-slot / plate / pole", Adjustment: "3-axis", Load: "Up to 8 kg" },
+                tags: ["Mounting", "Fixture-ready", "Machine frame"]
+            },
+            {
+                name: "GY-PWR-24V",
+                type: "Industrial power kit",
+                summary: "24 VDC power supply and protection kit for small inspection stations, sensor networks, and edge devices.",
+                kind: "accessory",
+                image: "product-library/secondary/gy-pwr-24v.png",
+                specs: { Power: "24 VDC", Output: "120 / 240 W", Protection: "Fuse + surge", Mount: "DIN rail" },
+                tags: ["24 VDC", "DIN rail", "Cabinet power"]
+            },
+            {
+                name: "GY-OPT-KIT",
+                type: "Vision optics accessory kit",
+                summary: "Lens, filter, spacer, and protective-window kit for practical machine vision setup and maintenance.",
+                kind: "accessory",
+                image: "product-library/secondary/gy-opt-kit.png",
+                specs: { Lens: "C-mount set", Filter: "Polarizer / IR-cut", Case: "Indexed tray", Use: "Vision stations" },
+                tags: ["Lens kit", "Filters", "Vision setup"]
+            }
+        ]
     }
 });
 
@@ -1015,7 +1162,8 @@ const CATEGORY_GROUPS = {
     "rugged-pda": ["android-pda", "rfid-handhelds", "barcode-scanners", "request-specification"],
     "sensors": ["proximity-sensors", "laser-measurement", "environmental-sensing"],
     "vision": ["area-scan-cameras", "smart-vision-sensors", "code-reading-cameras", "vision-lighting"],
-    "quality": ["dimensional-gauges", "surface-inspection", "portable-testers", "calibration-tools"]
+    "quality": ["dimensional-gauges", "surface-inspection", "portable-testers", "calibration-tools"],
+    "more": ["robot-workcells", "edge-controllers", "accessories"]
 };
 
 ["industrial-sensors", "smart-cameras", "inspection-instruments"].forEach((key) => {

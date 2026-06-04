@@ -1066,12 +1066,19 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
 
     .product-hero p,
     .hero-panel p {
-        max-width: calc(100vw - 28px);
+        font-size: 16px;
+        max-width: min(100%, 330px);
         overflow-wrap: break-word;
     }
 
     .hero-panel {
-        max-width: calc(100vw - 28px);
+        max-width: min(100%, 360px);
+    }
+
+    .section-head p,
+    .product-body p {
+        max-width: min(100%, 340px);
+        overflow-wrap: break-word;
     }
 
     .product-grid,
@@ -1081,6 +1088,25 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
 
     .category-nav {
         top: 66px;
+    }
+
+    .category-nav .container {
+        flex-wrap: wrap;
+        gap: 8px;
+        overflow: visible;
+        padding: 10px 0;
+    }
+
+    .category-nav a {
+        flex: 1 1 calc(50% - 8px);
+        font-size: 11px;
+        justify-content: center;
+        line-height: 1.2;
+        min-width: 0;
+        overflow-wrap: anywhere;
+        padding: 10px 8px;
+        text-align: center;
+        white-space: normal;
     }
 
     .compare-table {

@@ -1014,6 +1014,153 @@ Object.assign(GYUTRON_PRODUCTS, {
                 tags: ["照明基準", "ホワイトバランス", "画像処理QA"]
             }
         ]
+    },
+    "robot-workcells": {
+        eyebrow: "その他の製品",
+        title: "ロボットワークセル",
+        navLabel: "ロボットワークセル",
+        navGroup: "more",
+        heroImage: "product-hero-robot-workcells-matrix.png",
+        intro: "搬送、外観検査、仕分け、梱包、軽作業組立を毎回ゼロから設計せず、再現性のある自動化ステーションとして構成できるロボットワークセルです。",
+        panelMetric: "4セル",
+        panelText: "協働検査、機械投入、コンベヤ仕分け、パレタイズ対応ステーションの構成例。",
+        sectionIntro: "この製品ラインは主力カテゴリではなく、GYUTRONの画像処理、センサ、エッジ制御、治具、産業ネットワークを組み合わせた実用的な自動化セルとして位置付けています。最終的なロボットブランド、グリッパ、ガード、安全範囲、受入タクトはプロジェクトごとに確認します。",
+        products: [
+            {
+                name: "GY-RC6 Inspect",
+                type: "協働ロボット検査セル",
+                summary: "多面外観検査、コード読取、小物ハンドリング、作業者支援型の品質確認に使える小型Cobot検査ステーションです。",
+                kind: "workcell",
+                image: "product-library/secondary/gy-rc6-inspect.png",
+                specs: { Payload: "6 kg class", Reach: "900 mm class", Vision: "2 cameras + lighting", Safety: "Scanner + e-stop" },
+                tags: ["検査セル", "Cobot-ready", "治具QA"]
+            },
+            {
+                name: "GY-RC12 Tend",
+                type: "機械投入ワークセル",
+                summary: "CNC、プレス、検査治具、トレイ供給設備の投入・取出しに対応する構成可能なワークセルです。",
+                kind: "workcell",
+                image: "product-library/secondary/gy-rc12-tend.png",
+                specs: { Payload: "12 kg class", Reach: "1300 mm class", Fixture: "Tray / pneumatic", Control: "Robot + PLC handshake" },
+                tags: ["機械投入", "トレイ搬送", "PLC連携"]
+            },
+            {
+                name: "GY-RC4 Pick",
+                type: "画像誘導仕分けセル",
+                summary: "ピックアンドプレース、ラベル向き補正、不良排出、ロット分離に使える小型コンベヤセルです。",
+                kind: "workcell",
+                image: "product-library/secondary/gy-rc4-pick.png",
+                specs: { Payload: "4 kg class", Reach: "600 mm class", Throughput: "Up to 35 picks/min", Vision: "Top camera + trigger" },
+                tags: ["コンベヤ仕分け", "画像誘導", "小型セル"]
+            },
+            {
+                name: "GY-RC14 Pack",
+                type: "梱包・パレタイズセル",
+                summary: "カートン、トレイ、袋物などの軽量パレタイズとエンドオブライン梱包を支援するセルプラットフォームです。",
+                kind: "workcell",
+                image: "product-library/secondary/gy-rc14-pack.png",
+                specs: { Payload: "14 kg class", Reach: "1600 mm class", Pattern: "Carton / tray", Safety: "Guarded zone option" },
+                tags: ["エンドオブライン", "パレタイズ", "梱包"]
+            }
+        ]
+    },
+    "edge-controllers": {
+        eyebrow: "その他の製品",
+        title: "エッジコントローラ",
+        navLabel: "エッジコントローラ",
+        navGroup: "more",
+        heroImage: "product-hero-edge-controllers-matrix.png",
+        intro: "現場信号の収集、ローカルロジック、画像機器の接続、MES・WMS・SCADA・クラウドとのデータ連携を担う産業用エッジコントローラです。",
+        panelMetric: "4コントローラ",
+        panelText: "DINレールI/O、画像処理エッジ、モーション連携、安全な産業ゲートウェイの構成。",
+        sectionIntro: "エッジコントローラは、センサ、カメラ、スキャナ、ロボット、PLC、業務システムの間に入り、現場データを扱いやすい形に整えます。このラインは民生用ミニPCではなく、ファンレス筐体、フィールドバス、必要に応じた決定性I/O、保守しやすいデータ連携を重視しています。",
+        products: [
+            {
+                name: "GY-EC200 DIN",
+                type: "DINレール エッジI/Oコントローラ",
+                summary: "センサ集約、簡易ロジック、IO-Link拡張、制御盤内の設備可視化に使える小型コントローラです。",
+                kind: "controller",
+                image: "product-library/secondary/gy-ec200-din.png",
+                specs: { CPU: "Quad-core industrial", "I/O": "16 DI / 16 DO", Fieldbus: "Modbus TCP / MQTT", Temp: "-20 C to 60 C" },
+                tags: ["DINレール", "センサゲートウェイ", "盤内I/O"]
+            },
+            {
+                name: "GY-EC500 Vision",
+                type: "画像処理エッジコントローラ",
+                summary: "複数カメラの検査セル、ローカル画像処理、品質データ出力に対応するファンレスVisionコントローラです。",
+                kind: "controller",
+                image: "product-library/secondary/gy-ec500-vision.png",
+                specs: { CPU: "Intel i5 class", AI: "20 TOPS option", Cameras: "4 x GigE / USB3", Storage: "1 TB NVMe option" },
+                tags: ["Vision Edge", "ファンレス", "複数カメラ"]
+            },
+            {
+                name: "GY-EC800 Motion",
+                type: "リアルタイム モーションコントローラ",
+                summary: "協調I/O、簡易軸制御、ロボットハンドシェイク、タイミングが重要なステーション制御に使える機械コントローラです。",
+                kind: "controller",
+                image: "product-library/secondary/gy-ec800-motion.png",
+                specs: { Fieldbus: "EtherCAT / PROFINET option", Axis: "Up to 16 axes", Cycle: "1 ms class", Mount: "Panel / DIN rail" },
+                tags: ["Motion IO", "EtherCAT", "ロボット連携"]
+            },
+            {
+                name: "GY-EC900 Gateway",
+                type: "セキュア産業エッジゲートウェイ",
+                summary: "設備の遠隔監視、データバッファ、プロトコル変換、サービス接続に対応する堅牢なゲートウェイです。",
+                kind: "controller",
+                image: "product-library/secondary/gy-ec900-gateway.png",
+                specs: { Network: "2 x GbE + 5G option", Security: "TPM / VPN ready", Ports: "RS-232 / RS-485 / CAN", Power: "9-36 VDC" },
+                tags: ["遠隔接続", "プロトコル変換", "産業ゲートウェイ"]
+            }
+        ]
+    },
+    "accessories": {
+        eyebrow: "その他の製品",
+        title: "アクセサリ",
+        navLabel: "アクセサリ",
+        navGroup: "more",
+        heroImage: "product-hero-accessories-matrix.png",
+        intro: "保護ケーブル、取付金具、電源キット、光学部品、ドック、ブラケット、交換部品など、実際の工場導入を支える産業用アクセサリです。",
+        panelMetric: "4キット",
+        panelText: "ケーブル、取付、24 V電源、レンズ、フィルタ、ドック、治具対応の設置金具。",
+        sectionIntro: "アクセサリは雑多な消耗品ではなく、接続、取付、電源、光学、保護、充電、保守を完了するための導入キットとして整理します。最終的な互換性は、選定されたPDA、カメラ、センサ、スキャナ、コントローラの型式に合わせて確認します。",
+        products: [
+            {
+                name: "GY-CBL-M12",
+                type: "産業用ケーブルセット",
+                summary: "センサ、カメラ、IO-Link機器、制御盤配線に使えるシールド付きM8/M12および産業Ethernetケーブルセットです。",
+                kind: "accessory",
+                image: "product-library/secondary/gy-cbl-m12.png",
+                specs: { Connector: "M8 / M12 / RJ45", Rating: "IP67 option", Length: "2 / 5 / 10 m", Cable: "Shielded PUR" },
+                tags: ["M12ケーブル", "IO-Link", "産業Ethernet"]
+            },
+            {
+                name: "GY-MNT-UNI",
+                type: "ユニバーサル取付キット",
+                summary: "センサ、カメラ、照明、コードリーダ向けの調整式ブラケット、プレート、クランプ、アダプタ金具です。",
+                kind: "accessory",
+                image: "product-library/secondary/gy-mnt-uni.png",
+                specs: { Material: "Anodized aluminum", Mount: "T-slot / plate / pole", Adjustment: "3-axis", Load: "Up to 8 kg" },
+                tags: ["取付", "治具対応", "機械フレーム"]
+            },
+            {
+                name: "GY-PWR-24V",
+                type: "産業用電源キット",
+                summary: "小型検査ステーション、センサネットワーク、エッジ機器向けの24 VDC電源・保護キットです。",
+                kind: "accessory",
+                image: "product-library/secondary/gy-pwr-24v.png",
+                specs: { Power: "24 VDC", Output: "120 / 240 W", Protection: "Fuse + surge", Mount: "DIN rail" },
+                tags: ["24 VDC", "DINレール", "制御盤電源"]
+            },
+            {
+                name: "GY-OPT-KIT",
+                type: "画像処理光学アクセサリキット",
+                summary: "実際のMachine Vision設定と保守に使えるレンズ、フィルタ、スペーサ、保護窓のキットです。",
+                kind: "accessory",
+                image: "product-library/secondary/gy-opt-kit.png",
+                specs: { Lens: "C-mount set", Filter: "Polarizer / IR-cut", Case: "Indexed tray", Use: "Vision stations" },
+                tags: ["レンズキット", "フィルタ", "Vision設定"]
+            }
+        ]
     }
 });
 
@@ -1021,7 +1168,8 @@ const CATEGORY_GROUPS = {
     "rugged-pda": ["android-pda", "rfid-handhelds", "barcode-scanners", "request-specification"],
     "sensors": ["proximity-sensors", "laser-measurement", "environmental-sensing"],
     "vision": ["area-scan-cameras", "smart-vision-sensors", "code-reading-cameras", "vision-lighting"],
-    "quality": ["dimensional-gauges", "surface-inspection", "portable-testers", "calibration-tools"]
+    "quality": ["dimensional-gauges", "surface-inspection", "portable-testers", "calibration-tools"],
+    "more": ["robot-workcells", "edge-controllers", "accessories"]
 };
 
 ["industrial-sensors", "smart-cameras", "inspection-instruments"].forEach((key) => {

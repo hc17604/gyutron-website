@@ -27,7 +27,7 @@ const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];
   pageCss={["/product-page.css", "/mobile-navigation.css"]}
 >
   <main>
-    <section class="product-hero"><div class="container"><div class="product-hero-grid">
+    <section class="product-hero" style={cat.heroImage ? `--hero-image: url('/${cat.heroImage}')` : undefined}><div class="container"><div class="product-hero-grid">
       <div>
         <span class="eyebrow">{cat.eyebrow}</span>
         <h1>{cat.title}</h1>
