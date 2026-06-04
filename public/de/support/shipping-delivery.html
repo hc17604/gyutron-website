@@ -134,6 +134,31 @@
           groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
         });
       })();
+
+      (() => {
+        const closeMenus = () => {
+          document.body.classList.add("nav-is-navigating");
+          document.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          document.querySelectorAll(".nav-item.is-open").forEach((item) => item.classList.remove("is-open"));
+          if (document.activeElement && document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        };
+
+        document.querySelectorAll(".site-header a[href], .top-strip a[href]").forEach((link) => {
+          link.addEventListener("click", (event) => {
+            const anchor = event.currentTarget;
+            const href = anchor.getAttribute("href") || "";
+            if (anchor.target === "_blank" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            closeMenus();
+            if (href.startsWith("#") || href.includes("#")) {
+              window.setTimeout(() => document.body.classList.remove("nav-is-navigating"), 420);
+            }
+          }, { capture: true });
+        });
+
+        window.addEventListener("pageshow", () => document.body.classList.remove("nav-is-navigating"));
+      })();
     </script>  <main class="support-page"> <section class="support-hero" style="background-image: linear-gradient(118deg, rgba(4,5,8,0.96) 0%, rgba(18,5,31,0.9) 50%, rgba(27,11,46,0.84) 100%), url('/nav-industry-logistics-rfid.png'); background-size: cover; background-position: center;"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/de/index.html">Startseite</a> / <span>Versand &amp; Lieferung</span> </nav> <span class="support-eyebrow">Hilfe &amp; Support</span> <h1>Versand &amp; Lieferung</h1> <p class="support-intro">Wir versenden Industriehardware weltweit an Hersteller und Integratoren, mit Konditionen, die auf projektbezogene und grenzüberschreitende B2B-Aufträge zugeschnitten sind.</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">Die Versandkonditionen für einen Auftrag werden im jeweiligen Angebot oder in der Auftragsbestätigung bestätigt. Die folgende Übersicht beschreibt, wie wir die Lieferung für B2B-Aufträge typischerweise abwickeln.</p> <h2>Versandursprung</h2> <p>Sendungen können je nach Produktverfügbarkeit und Projektanforderung aus Hongkong, Shenzhen oder Lieferantenlagern arrangiert werden. Ursprung und Routing für Ihren Auftrag werden bei der Auftragsabwicklung bestätigt.</p> <h2>Auftragsabwicklung</h2> <p>Sobald ein Auftrag bestätigt ist und die Zahlungsbedingungen erfüllt sind, werden Lagerartikel zum Versand vorbereitet; konfigurierte oder auftragsbezogene Artikel werden gemäß der vereinbarten Lieferzeit eingeplant. Für grenzüberschreitende Sendungen werden die Exportdokumente erstellt.</p> <h2>Lieferzeit</h2> <ul> <li><strong>Lagerprodukte</strong> — werden in der Regel innerhalb weniger Geschäftstage nach Auftragsbestätigung versandt.</li> <li><strong>Konfigurierte / auftragsbezogene Produkte</strong> — die Lieferzeit hängt von Optionen und Menge ab und wird im Angebot bestätigt.</li> </ul> <h2>Internationaler Versand &amp; Incoterms</h2> <p>Internationale Sendungen werden zu vereinbarten Incoterms (z. B. EXW, FOB oder DAP) über etablierte Kurier- und Speditionsdienste abgewickelt. Bei größeren oder palettierten Aufträgen koordinieren wir mit Ihrem benannten Spediteur.</p> <h2>Zoll, Abgaben &amp; Steuern</h2> <p>Bei grenzüberschreitenden Sendungen liegen Einfuhrzölle, Steuern und Zollabwicklung beim Importeur (Importer of Record), sofern nicht anders vereinbart. Wir stellen die für die Abfertigung erforderlichen Handelsdokumente bereit.</p> <h2>Verpackung</h2> <p>Produkte werden mit für das Gerät geeigneter Industrieverpackung geschützt, einschließlich ESD-Schutz für empfindliche Elektronik und Palettierung für größere Geräte. Aufträge mit mehreren Positionen können in mehreren Packstücken versandt werden.</p> <h2>Sendungsverfolgung</h2> <p>Trackingdaten werden nach Versand Ihres Auftrags bereitgestellt. Bei Projektsendungen koordinieren wir Terminierung und Dokumentation mit Ihrem Logistikteam.</p> <h2>Teillieferungen</h2> <p>Bei Aufträgen mit mehreren Positionen können verfügbare Artikel vorab versandt werden, statt den gesamten Auftrag wegen einer einzelnen Position zurückzuhalten — nach Vereinbarung im Auftrag.</p> <h2>Liefervorfälle</h2> <p>Bitte prüfen Sie die Ware beim Empfang und melden Sie Transportschäden, Fehlmengen oder Abweichungen umgehend, damit wir bei der Schadensmeldung beim Spediteur und der Lösung unterstützen können.</p> <div class="support-note">Lieferursprung, Incoterms, Lieferzeiten und Routing werden bei der Auftragsprüfung bestätigt und richten sich nach dem jeweiligen Angebot oder der Auftragsbestätigung. Für eine Lieferschätzung an Ihren Standort <a href="/de/contact-sales.html">kontaktieren Sie bitte unser Vertriebsteam</a>.</div>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));

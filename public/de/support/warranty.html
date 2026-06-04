@@ -134,6 +134,31 @@
           groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
         });
       })();
+
+      (() => {
+        const closeMenus = () => {
+          document.body.classList.add("nav-is-navigating");
+          document.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          document.querySelectorAll(".nav-item.is-open").forEach((item) => item.classList.remove("is-open"));
+          if (document.activeElement && document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        };
+
+        document.querySelectorAll(".site-header a[href], .top-strip a[href]").forEach((link) => {
+          link.addEventListener("click", (event) => {
+            const anchor = event.currentTarget;
+            const href = anchor.getAttribute("href") || "";
+            if (anchor.target === "_blank" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            closeMenus();
+            if (href.startsWith("#") || href.includes("#")) {
+              window.setTimeout(() => document.body.classList.remove("nav-is-navigating"), 420);
+            }
+          }, { capture: true });
+        });
+
+        window.addEventListener("pageshow", () => document.body.classList.remove("nav-is-navigating"));
+      })();
     </script>  <main class="support-page"> <section class="support-hero" style="background-image: linear-gradient(118deg, rgba(4,5,8,0.96) 0%, rgba(18,5,31,0.9) 50%, rgba(27,11,46,0.84) 100%), url('/nav-company-quality-bench.png'); background-size: cover; background-position: center;"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/de/index.html">Startseite</a> / <span>Garantie</span> </nav> <span class="support-eyebrow">Hilfe &amp; Support</span> <h1>Garantie</h1> <p class="support-intro">GYUTRON steht mit einer begrenzten Garantie gegen Material- und Verarbeitungsfehler hinter seiner Industriehardware.</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">Diese Seite fasst unsere standardmäßige begrenzte Garantie für B2B-Kunden zusammen. Maßgeblich für einen konkreten Auftrag ist die Garantie aus dem jeweiligen Angebot, der Auftragsbestätigung oder der schriftlichen Vereinbarung.</p> <h2>Begrenzte Garantie</h2> <p>GYUTRON gewährleistet, dass seine Hardwareprodukte bei normalem industriellem Einsatz innerhalb der veröffentlichten Spezifikationen frei von Material- und Verarbeitungsfehlern sind. Innerhalb des geltenden Garantiezeitraums wird GYUTRON ein als fehlerhaft befundenes Produkt nach eigenem Ermessen reparieren oder ersetzen.</p> <h2>Garantieumfang</h2> <ul> <li>Material- und Verarbeitungsfehler bei normalem Einsatz innerhalb der veröffentlichten Spezifikationen des Produkts.</li> <li>Reparatur oder Ersatz durch neue oder gleichwertige Teile/Produkte nach Ermessen von GYUTRON.</li> </ul> <p>Die Garantiebedingungen können je nach Produktkategorie, Lieferantenrichtlinie und Projektvereinbarung variieren. Konkreter Umfang und Dauer werden im jeweiligen Angebot, in der Auftragsbestätigung oder schriftlichen Vereinbarung bestätigt.</p> <h2>Was nicht abgedeckt ist</h2> <ul> <li>Missbrauch, unsachgemäße Installation, Betrieb außerhalb der veröffentlichten Spezifikationen oder unzureichende Wartung.</li> <li>Unbefugte Änderung, Demontage oder Reparatur.</li> <li>Unfall-, physische, elektrische oder Flüssigkeitsschäden, einschließlich Einwirkung über die angegebene Schutzart hinaus.</li> <li>Verbrauchs- und Verschleißteile (z. B. Akkus, Kabel, Dichtungen) sowie kosmetischer Verschleiß wie Kratzer.</li> <li>Schäden durch Drittzubehör, Spannungsanomalien oder höhere Gewalt.</li> </ul> <h2>RMA- / Garantieabwicklung</h2> <ul> <li><strong>1. Support kontaktieren.</strong> Senden Sie eine E-Mail an <a href="mailto:info@gyutron.com">info@gyutron.com</a> mit Produktmodell, Seriennummer und Fehlerbeschreibung (nach Möglichkeit mit Fotos, Logs oder Beispielbildern).</li> <li><strong>2. RMA-Nummer erhalten.</strong> Unser Team prüft den Fall und stellt bei Berechtigung eine Return Merchandise Authorization mit Rücksendeanweisungen aus.</li> <li><strong>3. Gerät zurücksenden.</strong> Verpacken Sie das Produkt sicher (ggf. mit ESD-Schutz) und versenden Sie es gemäß den RMA-Anweisungen.</li> <li><strong>4. Prüfung &amp; Lösung.</strong> Nach der Prüfung reparieren, ersetzen oder retournieren wir das Gerät und halten Sie über den Status auf dem Laufenden.</li> </ul> <h2>Service außerhalb der Garantie</h2> <p>Reparatur und Service bleiben für Produkte außerhalb des Garantiezeitraums oder für nicht abgedeckte Fälle gegen Berechnung verfügbar. Kontaktieren Sie den Support für eine Bewertung und ein Angebot.</p> <h2>Produktspezifische Garantiebedingungen</h2> <p>Einige Produktkategorien, Konfigurationen oder Projektvereinbarungen unterliegen spezifischen Garantiebedingungen, die dieser allgemeinen Zusammenfassung vorgehen. Sofern zutreffend, sind diese Bedingungen in der Produktdokumentation, im Angebot, in der Auftragsbestätigung oder schriftlichen Vereinbarung für Ihren Auftrag angegeben.</p> <div class="support-note">Diese Zusammenfassung beschreibt das allgemeine Vorgehen von GYUTRON zur Garantie für Geschäftskunden; die für einen Auftrag geltende Abdeckung, Dauer und Abhilfe richten sich nach dem maßgeblichen Angebot, der Auftragsbestätigung, dem Kaufvertrag oder schriftlichen Vertrag zwischen GYUTRON und dem Kunden sowie nach zwingenden gesetzlichen Rechten. Bei Garantiefragen <a href="/de/support.html">kontaktieren Sie den Support</a>.</div>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));

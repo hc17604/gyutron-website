@@ -134,6 +134,31 @@
           groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
         });
       })();
+
+      (() => {
+        const closeMenus = () => {
+          document.body.classList.add("nav-is-navigating");
+          document.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          document.querySelectorAll(".nav-item.is-open").forEach((item) => item.classList.remove("is-open"));
+          if (document.activeElement && document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        };
+
+        document.querySelectorAll(".site-header a[href], .top-strip a[href]").forEach((link) => {
+          link.addEventListener("click", (event) => {
+            const anchor = event.currentTarget;
+            const href = anchor.getAttribute("href") || "";
+            if (anchor.target === "_blank" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            closeMenus();
+            if (href.startsWith("#") || href.includes("#")) {
+              window.setTimeout(() => document.body.classList.remove("nav-is-navigating"), 420);
+            }
+          }, { capture: true });
+        });
+
+        window.addEventListener("pageshow", () => document.body.classList.remove("nav-is-navigating"));
+      })();
     </script>  <main class="support-page"> <section class="support-hero" style="background-image: linear-gradient(118deg, rgba(4,5,8,0.96) 0%, rgba(18,5,31,0.9) 50%, rgba(27,11,46,0.84) 100%), url('/nav-company-quality-bench.png'); background-size: cover; background-position: center;"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/index.html">Home</a> / <span>Warranty</span> </nav> <span class="support-eyebrow">Help &amp; Support</span> <h1>Warranty</h1> <p class="support-intro">GYUTRON stands behind its industrial hardware with a limited warranty against defects in materials and workmanship.</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">This page summarizes our standard limited warranty for B2B customers. The warranty that applies to any specific order is the one stated in the applicable quotation, order confirmation or written agreement.</p> <h2>Limited warranty</h2> <p>GYUTRON warrants that its hardware products are free from defects in materials and workmanship under normal industrial use within the published specifications. During the applicable warranty period GYUTRON will, at its discretion, repair or replace a product found to be defective.</p> <h2>Warranty coverage</h2> <ul> <li>Defects in materials and workmanship under normal use within the product's published specifications.</li> <li>Repair or replacement with new or equivalent parts/products at GYUTRON's discretion.</li> </ul> <p>Warranty terms may vary by product category, supplier policy and project agreement. Specific coverage and duration are confirmed in the applicable quotation, order confirmation or written agreement.</p> <h2>What is not covered</h2> <ul> <li>Misuse, improper installation, operation outside published specifications, or inadequate maintenance.</li> <li>Unauthorized modification, disassembly or repair.</li> <li>Accidental, physical, electrical or liquid damage, including exposure beyond the product's stated ingress protection.</li> <li>Consumables and wear parts (for example batteries, cables, gaskets) and cosmetic wear such as scratches.</li> <li>Damage caused by third-party accessories, power anomalies, or force majeure.</li> </ul> <h2>RMA / warranty claim process</h2> <ul> <li><strong>1. Contact support.</strong> Email <a href="mailto:info@gyutron.com">info@gyutron.com</a> with the product model, serial number and a description of the fault (with photos, logs or sample images where possible).</li> <li><strong>2. Receive an RMA number.</strong> Our team reviews the case and, if eligible, issues a Return Merchandise Authorization with return instructions.</li> <li><strong>3. Return the unit.</strong> Pack the product securely (with ESD protection where applicable) and ship it per the RMA instructions.</li> <li><strong>4. Inspection &amp; resolution.</strong> After inspection we repair, replace or return the unit and keep you informed of status.</li> </ul> <h2>Out-of-warranty service</h2> <p>Repair and service remain available for products outside the warranty period or for non-covered conditions, on a paid basis. Contact support for an assessment and quotation.</p> <h2>Product-specific warranty terms</h2> <p>Some product categories, configurations or project agreements carry specific warranty terms that take precedence over this general summary. Where applicable, those terms are stated on the product documentation, quotation, order confirmation or written agreement for your order.</p> <div class="support-note">This summary describes GYUTRON's general approach to warranty for business customers; the applicable coverage, duration and remedy for any order are governed by the relevant quotation, order confirmation, sales agreement or written contract between GYUTRON and the customer, and by any statutory rights that cannot be excluded under applicable law. For warranty questions, <a href="/support.html">contact support</a>.</div>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));

@@ -463,4 +463,29 @@ const { locale, path } = Astro.props;
           groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
         });
       })();
+
+      (() => {
+        const closeMenus = () => {
+          document.body.classList.add("nav-is-navigating");
+          document.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          document.querySelectorAll(".nav-item.is-open").forEach((item) => item.classList.remove("is-open"));
+          if (document.activeElement && document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        };
+
+        document.querySelectorAll(".site-header a[href], .top-strip a[href]").forEach((link) => {
+          link.addEventListener("click", (event) => {
+            const anchor = event.currentTarget;
+            const href = anchor.getAttribute("href") || "";
+            if (anchor.target === "_blank" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            closeMenus();
+            if (href.startsWith("#") || href.includes("#")) {
+              window.setTimeout(() => document.body.classList.remove("nav-is-navigating"), 420);
+            }
+          }, { capture: true });
+        });
+
+        window.addEventListener("pageshow", () => document.body.classList.remove("nav-is-navigating"));
+      })();
     </script>

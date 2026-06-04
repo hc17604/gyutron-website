@@ -4,6 +4,20 @@
   transition: none !important;
 }
 
+body.nav-is-navigating .mega-menu,
+body.nav-is-navigating .submenu {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+.top-strip .container > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .mega-links {
   scrollbar-width: none;
   scrollbar-color: transparent transparent;
@@ -79,9 +93,11 @@
 
 .submenu.submenu--intro::before {
   background:
-    linear-gradient(135deg, rgba(75, 46, 131, 0.1), rgba(255, 255, 255, 0.96)),
+    linear-gradient(180deg, rgba(18, 5, 31, 0.02), rgba(18, 5, 31, 0.1)),
+    linear-gradient(90deg, rgba(18, 5, 31, 0.18), rgba(255, 255, 255, 0.02) 46%, rgba(18, 5, 31, 0.08)),
     var(--submenu-image, linear-gradient(135deg, #f7f3ff, #ffffff)) center / cover !important;
-  min-height: 136px;
+  filter: saturate(1.08) contrast(1.06);
+  min-height: 154px;
 }
 
 .submenu.submenu--intro a {

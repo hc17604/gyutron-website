@@ -141,6 +141,31 @@
           groups.forEach((g) => g.addEventListener("pointerenter", () => setActive(g)));
         });
       })();
+
+      (() => {
+        const closeMenus = () => {
+          document.body.classList.add("nav-is-navigating");
+          document.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          document.querySelectorAll(".nav-item.is-open").forEach((item) => item.classList.remove("is-open"));
+          if (document.activeElement && document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+          }
+        };
+
+        document.querySelectorAll(".site-header a[href], .top-strip a[href]").forEach((link) => {
+          link.addEventListener("click", (event) => {
+            const anchor = event.currentTarget;
+            const href = anchor.getAttribute("href") || "";
+            if (anchor.target === "_blank" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            closeMenus();
+            if (href.startsWith("#") || href.includes("#")) {
+              window.setTimeout(() => document.body.classList.remove("nav-is-navigating"), 420);
+            }
+          }, { capture: true });
+        });
+
+        window.addEventListener("pageshow", () => document.body.classList.remove("nav-is-navigating"));
+      })();
     </script>  <main class="support-page"> <section class="support-hero" style="background-image: linear-gradient(118deg, rgba(4,5,8,0.96) 0%, rgba(18,5,31,0.9) 50%, rgba(27,11,46,0.84) 100%), url('/nav-industry-logistics-rfid.png'); background-size: cover; background-position: center;"> <div class="container"> <nav class="support-crumbs" aria-label="Breadcrumb"> <a href="/ja/index.html">ホーム</a> / <span>配送・お届け</span> </nav> <span class="support-eyebrow">ヘルプ＆サポート</span> <h1>配送・お届け</h1> <p class="support-intro">当社は産業用ハードウェアを世界中のメーカーやインテグレーターへ発送します。条件はプロジェクトベースおよび越境の B2B 注文に適したものです。</p> </div> </section> <section class="support-body"> <div class="container"> <div class="support-content">  <p class="support-lead">各注文の配送条件は、該当する見積もりまたは注文確認書で確定します。以下は B2B 注文における当社の一般的なお届けの取り扱いの概要です。</p> <h2>出荷元</h2> <p>製品の在庫状況やプロジェクト要件に応じて、香港・深圳・サプライヤー倉庫から出荷を手配する場合があります。お客様の注文の出荷元と経路は、注文処理時に確定します。</p> <h2>注文処理</h2> <p>注文が確定し支払条件が満たされると、在庫品は発送準備に入り、構成品・受注生産品は合意したリードタイムに従って手配されます。越境出荷については輸出書類を準備します。</p> <h2>リードタイム</h2> <ul> <li><strong>在庫製品</strong> — 通常、注文確定後、数営業日以内に発送します。</li> <li><strong>構成 / 受注生産製品</strong> — リードタイムはオプションと数量により異なり、見積もりで確定します。</li> </ul> <h2>国際輸送と Incoterms</h2> <p>国際輸送は、合意した Incoterms（例：EXW、FOB、DAP）に基づき、実績のあるクーリエやフォワーダーを通じて手配します。大口またはパレット単位の注文では、お客様指定のフォワーダーと連携できます。</p> <h2>関税・諸税</h2> <p>越境出荷では、輸入関税・諸税および通関は、特段の合意がない限り輸入者（Importer of Record）の責任となります。通関に必要な商業書類は当社が提供します。</p> <h2>梱包</h2> <p>製品は機器に適した産業用梱包で保護し、精密電子機器には ESD 保護、大型機器にはパレット化を行います。複数明細の注文は複数の荷物に分かれる場合があります。</p> <h2>追跡</h2> <p>追跡情報は注文の発送後に提供します。プロジェクト出荷では、スケジュールや書類についてお客様の物流チームと調整できます。</p> <h2>分割出荷</h2> <p>複数明細の注文では、1 明細のために全体を保留せず、入手可能な品目を先行して出荷できます（注文時の取り決めによります）。</p> <h2>配送トラブル</h2> <p>受領時に商品をご確認いただき、輸送中の損傷・不足・相違があれば速やかにお知らせください。運送業者への請求と解決を当社が支援します。</p> <div class="support-note">出荷元、Incoterms、リードタイム、経路は注文確認時に確定し、該当する見積もりまたは注文確認書に従います。お客様の所在地へのお届け目安については、<a href="/ja/contact-sales.html">営業チームへお問い合わせ</a>ください。</div>   </div> </div> </section> </main>  <script>
     (() => {
       const navItems = Array.from(document.querySelectorAll(".nav-item"));
