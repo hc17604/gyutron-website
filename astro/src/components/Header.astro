@@ -66,9 +66,24 @@ const { locale, path } = Astro.props;
                                 </div>
                             </div>
                             <div class="mega-section-label">{t(locale, "main.044")}</div>
-                            <a href={localizeUrl(locale, "/index.html#products")}><span><strong>{t(locale, "main.045")}</strong><span>{t(locale, "main.046")}</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href={localizeUrl(locale, "/index.html#platform")}><span><strong>{t(locale, "main.047")}</strong><span>{t(locale, "main.048")}</span></span><i class="fa-solid fa-chevron-right"></i></a>
-                            <a href={localizeUrl(locale, "/index.html#products")}><span><strong>{t(locale, "main.049")}</strong><span>{t(locale, "main.050")}</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                            <div class="mega-link-group">
+                                <a class="mega-link" href={localizeUrl(locale, "/index.html#products")}><span><strong>{t(locale, "main.045")}</strong><span>{t(locale, "main.046")}</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <div class="submenu submenu--intro" style="--submenu-image: linear-gradient(135deg, #f7f3ff, #ffffff)">
+                                    <a href={localizeUrl(locale, "/index.html#products")}><strong>{t(locale, "main.045")}</strong><span>{t(locale, "main.046")}</span></a>
+                                </div>
+                            </div>
+                            <div class="mega-link-group">
+                                <a class="mega-link" href={localizeUrl(locale, "/index.html#platform")}><span><strong>{t(locale, "main.047")}</strong><span>{t(locale, "main.048")}</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <div class="submenu submenu--intro" style="--submenu-image: linear-gradient(135deg, #f7f3ff, #ffffff)">
+                                    <a href={localizeUrl(locale, "/index.html#platform")}><strong>{t(locale, "main.047")}</strong><span>{t(locale, "main.048")}</span></a>
+                                </div>
+                            </div>
+                            <div class="mega-link-group">
+                                <a class="mega-link" href={localizeUrl(locale, "/index.html#products")}><span><strong>{t(locale, "main.049")}</strong><span>{t(locale, "main.050")}</span></span><i class="fa-solid fa-chevron-right"></i></a>
+                                <div class="submenu submenu--intro" style="--submenu-image: linear-gradient(135deg, #f7f3ff, #ffffff)">
+                                    <a href={localizeUrl(locale, "/index.html#products")}><strong>{t(locale, "main.049")}</strong><span>{t(locale, "main.050")}</span></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </li>

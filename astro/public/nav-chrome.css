@@ -71,7 +71,39 @@
   background: rgba(75, 46, 131, 0.46);
 }
 
-/* Footer social icons — shared across ALL pages + locales (plain glyphs, no box, wide gap). */
+/* Products mega-menu intro panels for secondary product areas. */
+.submenu.submenu--intro {
+  grid-template-columns: 1fr !important;
+  gap: 18px;
+}
+
+.submenu.submenu--intro::before {
+  background:
+    linear-gradient(135deg, rgba(75, 46, 131, 0.1), rgba(255, 255, 255, 0.96)),
+    var(--submenu-image, linear-gradient(135deg, #f7f3ff, #ffffff)) center / cover !important;
+  min-height: 136px;
+}
+
+.submenu.submenu--intro a {
+  border: 1px solid rgba(75, 46, 131, 0.12);
+  min-height: 0;
+  padding: 18px 20px;
+}
+
+.submenu.submenu--intro a strong {
+  color: #0b0914;
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+.submenu.submenu--intro a span {
+  color: rgba(33, 27, 45, 0.68);
+  font-size: 14px;
+  line-height: 1.55;
+  max-width: 62ch;
+}
+
+/* Footer social icons shared across all pages and locales. */
 .socials {
   display: flex;
   align-items: center;
