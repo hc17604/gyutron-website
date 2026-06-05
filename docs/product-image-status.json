@@ -488,43 +488,52 @@
     }
   },
   "gy-v120": {
-    "status": "wired-live",
+    "status": "wired-live-replaced-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v120.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v120-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-05/gy-v120-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v120-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-front-right-no-side-io",
+      "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
+    },
+    "replacedAt": "2026-06-05",
+    "replacementReason": "Machine vision side I/O connector was visible on the product side face; regenerated from the original visual template so connectors are rear-only/hidden, not locally cropped or erased.",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-v120.png"
   },
   "gy-v160-compact": {
-    "status": "wired-live",
+    "status": "wired-live-replaced-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v160-compact.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v160-compact-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-05/gy-v160-compact-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v160-compact-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-front-right-no-side-io",
+      "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
+    },
+    "replacedAt": "2026-06-05",
+    "replacementReason": "Machine vision side I/O connector was visible on the product side face; regenerated from the original visual template so connectors are rear-only/hidden, not locally cropped or erased.",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-v160-compact.png"
   },
   "gy-v240-color": {
-    "status": "wired-live",
+    "status": "wired-live-replaced-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v240-color.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v240-color-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-05/gy-v240-color-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v240-color-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-front-right-no-side-io",
+      "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
+    },
+    "replacedAt": "2026-06-05",
+    "replacementReason": "Machine vision side I/O connector was visible on the product side face; regenerated from the original visual template so connectors are rear-only/hidden, not locally cropped or erased.",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-v240-color.png"
   },
   "gy-v280-ai": {
     "status": "wired-live",
@@ -540,17 +549,20 @@
     }
   },
   "gy-v320-mono": {
-    "status": "wired-live",
+    "status": "wired-live-replaced-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v320-mono.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v320-mono-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-05/gy-v320-mono-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v320-mono-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-front-right-no-side-io",
+      "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
+    },
+    "replacedAt": "2026-06-05",
+    "replacementReason": "Machine vision side I/O connector was visible on the product side face; regenerated from the original visual template so connectors are rear-only/hidden, not locally cropped or erased.",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-v320-mono.png"
   },
   "gy-v380-pro": {
     "status": "wired-live",
@@ -566,30 +578,36 @@
     }
   },
   "gy-v500-hr": {
-    "status": "wired-live",
+    "status": "wired-live-replaced-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v500-hr.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v500-hr-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-05/gy-v500-hr-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v500-hr-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-front-right-no-side-io",
+      "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
+    },
+    "replacedAt": "2026-06-05",
+    "replacementReason": "Machine vision side I/O connector was visible on the product side face; regenerated from the original visual template so connectors are rear-only/hidden, not locally cropped or erased.",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-v500-hr.png"
   },
   "gy-v640-hs": {
-    "status": "wired-live",
+    "status": "wired-live-replaced-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v640-hs.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v640-hs-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-05/gy-v640-hs-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v640-hs-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-front-right-no-side-io",
+      "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
+    },
+    "replacedAt": "2026-06-05",
+    "replacementReason": "Machine vision side I/O connector was visible on the product side face; regenerated from the original visual template so connectors are rear-only/hidden, not locally cropped or erased.",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-v640-hs.png"
   },
   "gy-opt25": {
     "status": "wired-live",
@@ -605,17 +623,20 @@
     }
   },
   "gy-v900-pro": {
-    "status": "wired-live",
+    "status": "wired-live-replaced-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v900-pro.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v900-pro-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-05/gy-v900-pro-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v900-pro-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-front-right-no-side-io",
+      "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
+    },
+    "replacedAt": "2026-06-05",
+    "replacementReason": "Machine vision side I/O connector was visible on the product side face; regenerated from the original visual template so connectors are rear-only/hidden, not locally cropped or erased.",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-v900-pro.png"
   },
   "gy-vc8": {
     "status": "wired-live",
@@ -735,17 +756,20 @@
     }
   },
   "gy-v3d900": {
-    "status": "wired-live",
+    "status": "wired-live-replaced-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v3d900.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v3d900-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-05/gy-v3d900-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v3d900-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-front-right-no-side-io",
+      "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
+    },
+    "replacedAt": "2026-06-05",
+    "replacementReason": "Machine vision side I/O connector was visible on the product side face; regenerated from the original visual template so connectors are rear-only/hidden, not locally cropped or erased.",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-v3d900.png"
   },
   "gy-cr120": {
     "status": "wired-live",
@@ -873,17 +897,20 @@
     }
   },
   "gy-cr900-matrix": {
-    "status": "wired-live",
+    "status": "wired-live-replaced-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-cr900-matrix.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-cr900-matrix-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-05/gy-cr900-matrix-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-cr900-matrix-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-front-right-no-side-io",
+      "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
+    },
+    "replacedAt": "2026-06-05",
+    "replacementReason": "Machine vision side I/O connector was visible on the product side face; regenerated from the original visual template so connectors are rear-only/hidden, not locally cropped or erased.",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-cr900-matrix.png"
   },
   "gy-lr70": {
     "status": "wired-live",

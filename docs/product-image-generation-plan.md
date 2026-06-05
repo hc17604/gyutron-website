@@ -8,6 +8,7 @@ Use `docs/product-image-library.json` as the source of truth. This plan defines 
 - Final production asset: PNG with alpha transparency, transparent corners, no background, no cast shadow, no contact shadow, no text, no watermark.
 - Physical device accents must use GYUTRON logo purple `#4b2e83`. Do not use blue-purple, pink-purple, neon purple, or UI purple `#8a63d2` on the product itself.
 - Keep product direction consistent inside each visual family. This is a hard QA gate for the product/camera XYZ rotation angles only: the same family must not randomly rotate, flip, lean, or change camera-side angle between SKUs. Do not over-constrain front-face ratio, side thickness, top scanner shape, exact baseline, or product proportions; those may vary by model. Do not batch-generate a product family until one approved XYZ direction-angle template exists for that family.
+- Machine-vision cameras, fixed code readers, 3D vision modules, and vision lights must not show power/data/I/O/M12 connectors on the visible side face in front or front-right 3/4 product renders. Connectors belong on the rear/back face and should be hidden if the rear face is not visible. If an otherwise good source has a visible side connector, use it only as a visual template and regenerate a complete no-side-connector product; never crop, erase, mask, or locally cut off the connector.
 - Avoid fake details that imply unavailable products. If a model is shown on the website, it must look like a plausible sellable SKU in its category.
 - Keep all chroma-key source files under `asset-workbench/product-images/chroma/`; final reusable transparent files go under `astro/public/product-library/transparent/`.
 - One image file has one purpose only. Do not reuse the same file for a SKU, menu image, product-page hero, homepage hero, or any other visual slot. If the same category needs both a menu image and a hero image, generate two distinct assets.
@@ -35,7 +36,7 @@ Use these brands only as broad form-language references, never as direct copies:
 For a product family, choose one approved XYZ direction-angle template first, then keep that 3D orientation across every model in that family.
 
 - **Rugged PDA / RFID / handheld scanners:** lock the same X/Y/Z orientation angle as the approved reference for the family. A PDA, RFID handle, or scan gun can have different thickness, handle, antenna, keypad, screen size, and scanner-window geometry, but it must not flip sides or use a different 3D rotation angle.
-- **Machine vision cameras / fixed readers:** lock the same lens-facing X/Y/Z angle for the family. Body depth, lens size, heatsink, port layout, and mounting geometry can vary by model.
+- **Machine vision cameras / fixed readers:** lock the same lens-facing X/Y/Z angle for the family. Body depth, lens size, heatsink, rear port layout, and mounting geometry can vary by model. The visible side face must remain a clean housing/heat-fin/structural face, with no side I/O/M12/socket/cable detail.
 - **Sensors / I/O modules:** lock the same technical catalog X/Y/Z angle for the family. Connector length, sensing face size, display/port layout, and housing shape can vary.
 - **Lighting / instruments / metrology:** lock the same bench/catalog X/Y/Z angle for the family. Product scale and base geometry can vary when the actual device type requires it.
 
