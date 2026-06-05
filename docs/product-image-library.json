@@ -184,7 +184,7 @@
         "family": "secondary-robot-workcells",
         "direction": "locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs",
         "designNotes": "plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix",
-        "materialInstruction": "Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, light gray metal platforms and fixtures, and only small physical accents exactly #4b2e83. Do not use black robot arms, black gantries, or black aluminum-extrusion platforms."
+        "materialInstruction": "Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, and light gray metal platforms/fixtures. Keep machine-vision cameras, lenses, barcode/vision sensors, LED lights, controller modules, I/O boxes, cables, and electronics black or dark graphite. Use #4b2e83 only as restrained physical accent trims. Do not use black robot arms, black aluminum-extrusion platforms, or all-white cameras/lights/controllers."
       }
     },
     "edge-controllers": {
@@ -2994,15 +2994,15 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-rc6-inspect.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-rc6-inspect-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-rc6-inspect/",
-      "status": "corrected-wired",
+      "status": "regenerated-wired",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
         "direction": "checked-against-existing-robot-workcells-xyz-template",
         "dedicatedSource": true,
         "singleUse": true,
-        "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
-        "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+        "notes": "Regenerated from a new chroma-key source, converted to transparent PNG, and checked in a contact sheet. Avoid the rejected whitewashed version that made vision/control components white.",
+        "materials": "white/silver robot arm and silver aluminum frame/platform; black/dark graphite cameras, lights, controllers, I/O boxes, cables, and electronics; restrained #4b2e83 accents"
       },
       "generatedAt": "2026-06-04",
       "visualFamily": "secondary-robot-workcells",
@@ -3015,7 +3015,7 @@
         "Cobot-ready",
         "Fixture QA"
       ],
-      "promptSeed": "Model GY-RC6 Inspect, Collaborative inspection cell. Industrial product render for Robot Workcells. locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, light gray metal platforms and fixtures, and only small physical accents exactly #4b2e83. Do not use black robot arms, black gantries, or black aluminum-extrusion platforms. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-RC6 Inspect, Collaborative inspection cell. Industrial product render for Robot Workcells. locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, and light gray metal platforms/fixtures. Keep machine-vision cameras, lenses, barcode/vision sensors, LED lights, controller modules, I/O boxes, cables, and electronics black or dark graphite. Use #4b2e83 only as restrained physical accent trims. Do not use black robot arms, black aluminum-extrusion platforms, or all-white cameras/lights/controllers. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-RC12 Tend",
@@ -3030,15 +3030,15 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-rc12-tend.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-rc12-tend-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-rc12-tend/",
-      "status": "corrected-wired",
+      "status": "regenerated-wired",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
         "direction": "checked-against-existing-robot-workcells-xyz-template",
         "dedicatedSource": true,
         "singleUse": true,
-        "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
-        "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+        "notes": "Regenerated from a new chroma-key source, converted to transparent PNG, and checked in a contact sheet. Avoid the rejected whitewashed version that made vision/control components white.",
+        "materials": "white/silver robot arm and silver aluminum frame/platform; black/dark graphite cameras, lights, controllers, I/O boxes, cables, and electronics; restrained #4b2e83 accents"
       },
       "generatedAt": "2026-06-04",
       "visualFamily": "secondary-robot-workcells",
@@ -3051,7 +3051,7 @@
         "Tray handling",
         "PLC interface"
       ],
-      "promptSeed": "Model GY-RC12 Tend, Machine tending cell. Industrial product render for Robot Workcells. locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, light gray metal platforms and fixtures, and only small physical accents exactly #4b2e83. Do not use black robot arms, black gantries, or black aluminum-extrusion platforms. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-RC12 Tend, Machine tending cell. Industrial product render for Robot Workcells. locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, and light gray metal platforms/fixtures. Keep machine-vision cameras, lenses, barcode/vision sensors, LED lights, controller modules, I/O boxes, cables, and electronics black or dark graphite. Use #4b2e83 only as restrained physical accent trims. Do not use black robot arms, black aluminum-extrusion platforms, or all-white cameras/lights/controllers. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-RC4 Pick",
@@ -3066,15 +3066,15 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-rc4-pick.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-rc4-pick-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-rc4-pick/",
-      "status": "corrected-wired",
+      "status": "regenerated-wired",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
         "direction": "checked-against-existing-robot-workcells-xyz-template",
         "dedicatedSource": true,
         "singleUse": true,
-        "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
-        "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+        "notes": "Regenerated from a new chroma-key source, converted to transparent PNG, and checked in a contact sheet. Avoid the rejected whitewashed version that made vision/control components white.",
+        "materials": "white/silver robot arm and silver aluminum frame/platform; black/dark graphite cameras, lights, controllers, I/O boxes, cables, and electronics; restrained #4b2e83 accents"
       },
       "generatedAt": "2026-06-04",
       "visualFamily": "secondary-robot-workcells",
@@ -3087,7 +3087,7 @@
         "Vision guided",
         "Compact cell"
       ],
-      "promptSeed": "Model GY-RC4 Pick, Vision-guided sorting cell. Industrial product render for Robot Workcells. locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, light gray metal platforms and fixtures, and only small physical accents exactly #4b2e83. Do not use black robot arms, black gantries, or black aluminum-extrusion platforms. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-RC4 Pick, Vision-guided sorting cell. Industrial product render for Robot Workcells. locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, and light gray metal platforms/fixtures. Keep machine-vision cameras, lenses, barcode/vision sensors, LED lights, controller modules, I/O boxes, cables, and electronics black or dark graphite. Use #4b2e83 only as restrained physical accent trims. Do not use black robot arms, black aluminum-extrusion platforms, or all-white cameras/lights/controllers. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-RC14 Pack",
@@ -3102,15 +3102,15 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-rc14-pack.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-rc14-pack-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-rc14-pack/",
-      "status": "corrected-wired",
+      "status": "regenerated-wired",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
         "direction": "checked-against-existing-robot-workcells-xyz-template",
         "dedicatedSource": true,
         "singleUse": true,
-        "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
-        "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+        "notes": "Regenerated from a new chroma-key source, converted to transparent PNG, and checked in a contact sheet. Avoid the rejected whitewashed version that made vision/control components white.",
+        "materials": "white/silver robot arm and silver aluminum frame/platform; black/dark graphite cameras, lights, controllers, I/O boxes, cables, and electronics; restrained #4b2e83 accents"
       },
       "generatedAt": "2026-06-04",
       "visualFamily": "secondary-robot-workcells",
@@ -3123,7 +3123,7 @@
         "Palletizing",
         "Packing"
       ],
-      "promptSeed": "Model GY-RC14 Pack, Packing and palletizing cell. Industrial product render for Robot Workcells. locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, light gray metal platforms and fixtures, and only small physical accents exactly #4b2e83. Do not use black robot arms, black gantries, or black aluminum-extrusion platforms. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
+      "promptSeed": "Model GY-RC14 Pack, Packing and palletizing cell. Industrial product render for Robot Workcells. locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, and light gray metal platforms/fixtures. Keep machine-vision cameras, lenses, barcode/vision sensors, LED lights, controller modules, I/O boxes, cables, and electronics black or dark graphite. Use #4b2e83 only as restrained physical accent trims. Do not use black robot arms, black aluminum-extrusion platforms, or all-white cameras/lights/controllers. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-EC200 DIN",

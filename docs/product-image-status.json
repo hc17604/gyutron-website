@@ -1120,11 +1120,11 @@
     }
   },
   "gy-rc6-inspect": {
-    "status": "corrected-wired",
+    "status": "regenerated-wired",
     "generatedAt": "2026-06-04",
     "liveAsset": "astro/public/product-library/secondary/gy-rc6-inspect.png",
     "deployedAsset": "public/product-library/secondary/gy-rc6-inspect.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-rc6-inspect-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/robot-workcells-regenerated-2026-06-05/gy-rc6-inspect-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-rc6-inspect-source.png",
     "category": "robot-workcells",
     "visualFamily": "secondary-robot-workcells",
@@ -1134,20 +1134,22 @@
       "direction": "checked-against-existing-robot-workcells-xyz-template",
       "dedicatedSource": true,
       "singleUse": true,
-      "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
-      "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+      "notes": "Regenerated from a new chroma-key source, converted to transparent PNG, and checked in a contact sheet. Avoid the rejected whitewashed version that made vision/control components white.",
+      "materials": "white/silver robot arm and silver aluminum frame/platform; black/dark graphite cameras, lights, controllers, I/O boxes, cables, and electronics; restrained #4b2e83 accents"
     },
     "correctedAt": "2026-06-05",
-    "replacementReason": "Rejected black/dark graphite robot arms, gantries, platforms, and aluminum extrusion structures; Robot Workcells must align with the homepage/menu white-silver collaborative robot visual language.",
+    "replacementReason": "The prior white/silver correction was rejected because it color-shifted black cameras, lighting, controllers, and electronics. This asset was regenerated from a new chroma-key source with realistic material separation: white/silver robot and frame, black vision/control hardware.",
     "rejectedAsset": "asset-workbench/product-images/rejected/robot-workcells-black-2026-06-05/gy-rc6-inspect-black-rejected.png",
-    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-white-metal-2026-06-05-v2/gy-rc6-inspect-white-metal-v2.png"
+    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-regenerated-2026-06-05/gy-rc6-inspect-transparent.png",
+    "regeneratedAt": "2026-06-05",
+    "rejectedWhitewashedAsset": "asset-workbench/product-images/rejected/robot-workcells-whitewashed-2026-06-05/gy-rc6-inspect-whitewashed-rejected.png"
   },
   "gy-rc12-tend": {
-    "status": "corrected-wired",
+    "status": "regenerated-wired",
     "generatedAt": "2026-06-04",
     "liveAsset": "astro/public/product-library/secondary/gy-rc12-tend.png",
     "deployedAsset": "public/product-library/secondary/gy-rc12-tend.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-rc12-tend-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/robot-workcells-regenerated-2026-06-05/gy-rc12-tend-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-rc12-tend-source.png",
     "category": "robot-workcells",
     "visualFamily": "secondary-robot-workcells",
@@ -1157,20 +1159,22 @@
       "direction": "checked-against-existing-robot-workcells-xyz-template",
       "dedicatedSource": true,
       "singleUse": true,
-      "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
-      "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+      "notes": "Regenerated from a new chroma-key source, converted to transparent PNG, and checked in a contact sheet. Avoid the rejected whitewashed version that made vision/control components white.",
+      "materials": "white/silver robot arm and silver aluminum frame/platform; black/dark graphite cameras, lights, controllers, I/O boxes, cables, and electronics; restrained #4b2e83 accents"
     },
     "correctedAt": "2026-06-05",
-    "replacementReason": "Rejected black/dark graphite robot arms, gantries, platforms, and aluminum extrusion structures; Robot Workcells must align with the homepage/menu white-silver collaborative robot visual language.",
+    "replacementReason": "The prior white/silver correction was rejected because it color-shifted black cameras, lighting, controllers, and electronics. This asset was regenerated from a new chroma-key source with realistic material separation: white/silver robot and frame, black vision/control hardware.",
     "rejectedAsset": "asset-workbench/product-images/rejected/robot-workcells-black-2026-06-05/gy-rc12-tend-black-rejected.png",
-    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-white-metal-2026-06-05-v2/gy-rc12-tend-white-metal-v2.png"
+    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-regenerated-2026-06-05/gy-rc12-tend-transparent.png",
+    "regeneratedAt": "2026-06-05",
+    "rejectedWhitewashedAsset": "asset-workbench/product-images/rejected/robot-workcells-whitewashed-2026-06-05/gy-rc12-tend-whitewashed-rejected.png"
   },
   "gy-rc4-pick": {
-    "status": "corrected-wired",
+    "status": "regenerated-wired",
     "generatedAt": "2026-06-04",
     "liveAsset": "astro/public/product-library/secondary/gy-rc4-pick.png",
     "deployedAsset": "public/product-library/secondary/gy-rc4-pick.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-rc4-pick-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/robot-workcells-regenerated-2026-06-05/gy-rc4-pick-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-rc4-pick-source.png",
     "category": "robot-workcells",
     "visualFamily": "secondary-robot-workcells",
@@ -1180,20 +1184,22 @@
       "direction": "checked-against-existing-robot-workcells-xyz-template",
       "dedicatedSource": true,
       "singleUse": true,
-      "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
-      "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+      "notes": "Regenerated from a new chroma-key source, converted to transparent PNG, and checked in a contact sheet. Avoid the rejected whitewashed version that made vision/control components white.",
+      "materials": "white/silver robot arm and silver aluminum frame/platform; black/dark graphite cameras, lights, controllers, I/O boxes, cables, and electronics; restrained #4b2e83 accents"
     },
     "correctedAt": "2026-06-05",
-    "replacementReason": "Rejected black/dark graphite robot arms, gantries, platforms, and aluminum extrusion structures; Robot Workcells must align with the homepage/menu white-silver collaborative robot visual language.",
+    "replacementReason": "The prior white/silver correction was rejected because it color-shifted black cameras, lighting, controllers, and electronics. This asset was regenerated from a new chroma-key source with realistic material separation: white/silver robot and frame, black vision/control hardware.",
     "rejectedAsset": "asset-workbench/product-images/rejected/robot-workcells-black-2026-06-05/gy-rc4-pick-black-rejected.png",
-    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-white-metal-2026-06-05-v2/gy-rc4-pick-white-metal-v2.png"
+    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-regenerated-2026-06-05/gy-rc4-pick-transparent.png",
+    "regeneratedAt": "2026-06-05",
+    "rejectedWhitewashedAsset": "asset-workbench/product-images/rejected/robot-workcells-whitewashed-2026-06-05/gy-rc4-pick-whitewashed-rejected.png"
   },
   "gy-rc14-pack": {
-    "status": "corrected-wired",
+    "status": "regenerated-wired",
     "generatedAt": "2026-06-04",
     "liveAsset": "astro/public/product-library/secondary/gy-rc14-pack.png",
     "deployedAsset": "public/product-library/secondary/gy-rc14-pack.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-rc14-pack-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/robot-workcells-regenerated-2026-06-05/gy-rc14-pack-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-rc14-pack-source.png",
     "category": "robot-workcells",
     "visualFamily": "secondary-robot-workcells",
@@ -1203,13 +1209,15 @@
       "direction": "checked-against-existing-robot-workcells-xyz-template",
       "dedicatedSource": true,
       "singleUse": true,
-      "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
-      "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+      "notes": "Regenerated from a new chroma-key source, converted to transparent PNG, and checked in a contact sheet. Avoid the rejected whitewashed version that made vision/control components white.",
+      "materials": "white/silver robot arm and silver aluminum frame/platform; black/dark graphite cameras, lights, controllers, I/O boxes, cables, and electronics; restrained #4b2e83 accents"
     },
     "correctedAt": "2026-06-05",
-    "replacementReason": "Rejected black/dark graphite robot arms, gantries, platforms, and aluminum extrusion structures; Robot Workcells must align with the homepage/menu white-silver collaborative robot visual language.",
+    "replacementReason": "The prior white/silver correction was rejected because it color-shifted black cameras, lighting, controllers, and electronics. This asset was regenerated from a new chroma-key source with realistic material separation: white/silver robot and frame, black vision/control hardware.",
     "rejectedAsset": "asset-workbench/product-images/rejected/robot-workcells-black-2026-06-05/gy-rc14-pack-black-rejected.png",
-    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-white-metal-2026-06-05-v2/gy-rc14-pack-white-metal-v2.png"
+    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-regenerated-2026-06-05/gy-rc14-pack-transparent.png",
+    "regeneratedAt": "2026-06-05",
+    "rejectedWhitewashedAsset": "asset-workbench/product-images/rejected/robot-workcells-whitewashed-2026-06-05/gy-rc14-pack-whitewashed-rejected.png"
   },
   "gy-ec200-din": {
     "status": "wired-live-dedicated",
