@@ -125,10 +125,10 @@ Product count: **96**
 | GY-CAL-Grid | calibration-tools | Vision calibration target | `product-library/transparent/gy-cal-grid.png` | `product-library/transparent/gy-cal-grid.png` | wired-live |
 | GY-CAL-Block | calibration-tools | Gauge block kit | `product-library/transparent/gy-cal-block.png` | `product-library/transparent/gy-cal-block.png` | wired-live |
 | GY-CAL-Light | calibration-tools | Light reference kit | `product-library/transparent/gy-cal-light.png` | `product-library/transparent/gy-cal-light.png` | wired-live |
-| GY-RC6 Inspect | robot-workcells | Collaborative inspection cell | `product-library/secondary/gy-rc6-inspect.png` | `product-library/transparent/gy-rc6-inspect.png` | wired-live-dedicated |
-| GY-RC12 Tend | robot-workcells | Machine tending cell | `product-library/secondary/gy-rc12-tend.png` | `product-library/transparent/gy-rc12-tend.png` | wired-live-dedicated |
-| GY-RC4 Pick | robot-workcells | Vision-guided sorting cell | `product-library/secondary/gy-rc4-pick.png` | `product-library/transparent/gy-rc4-pick.png` | wired-live-dedicated |
-| GY-RC14 Pack | robot-workcells | Packing and palletizing cell | `product-library/secondary/gy-rc14-pack.png` | `product-library/transparent/gy-rc14-pack.png` | wired-live-dedicated |
+| GY-RC6 Inspect | robot-workcells | Collaborative inspection cell | `product-library/secondary/gy-rc6-inspect.png` | `product-library/transparent/gy-rc6-inspect.png` | corrected-wired |
+| GY-RC12 Tend | robot-workcells | Machine tending cell | `product-library/secondary/gy-rc12-tend.png` | `product-library/transparent/gy-rc12-tend.png` | corrected-wired |
+| GY-RC4 Pick | robot-workcells | Vision-guided sorting cell | `product-library/secondary/gy-rc4-pick.png` | `product-library/transparent/gy-rc4-pick.png` | corrected-wired |
+| GY-RC14 Pack | robot-workcells | Packing and palletizing cell | `product-library/secondary/gy-rc14-pack.png` | `product-library/transparent/gy-rc14-pack.png` | corrected-wired |
 | GY-EC200 DIN | edge-controllers | DIN-rail edge I/O controller | `product-library/secondary/gy-ec200-din.png` | `product-library/transparent/gy-ec200-din.png` | wired-live-dedicated |
 | GY-EC500 Vision | edge-controllers | Vision edge controller | `product-library/secondary/gy-ec500-vision.png` | `product-library/transparent/gy-ec500-vision.png` | wired-live-dedicated |
 | GY-EC800 Motion | edge-controllers | Real-time motion controller | `product-library/secondary/gy-ec800-motion.png` | `product-library/transparent/gy-ec800-motion.png` | wired-live-dedicated |

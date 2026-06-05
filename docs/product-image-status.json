@@ -1120,7 +1120,7 @@
     }
   },
   "gy-rc6-inspect": {
-    "status": "wired-live-dedicated",
+    "status": "corrected-wired",
     "generatedAt": "2026-06-04",
     "liveAsset": "astro/public/product-library/secondary/gy-rc6-inspect.png",
     "deployedAsset": "public/product-library/secondary/gy-rc6-inspect.png",
@@ -1131,14 +1131,19 @@
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "checked-by-family-contact-sheet",
+      "direction": "checked-against-existing-robot-workcells-xyz-template",
       "dedicatedSource": true,
       "singleUse": true,
-      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
-    }
+      "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
+      "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+    },
+    "correctedAt": "2026-06-05",
+    "replacementReason": "Rejected black/dark graphite robot arms, gantries, platforms, and aluminum extrusion structures; Robot Workcells must align with the homepage/menu white-silver collaborative robot visual language.",
+    "rejectedAsset": "asset-workbench/product-images/rejected/robot-workcells-black-2026-06-05/gy-rc6-inspect-black-rejected.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-white-metal-2026-06-05-v2/gy-rc6-inspect-white-metal-v2.png"
   },
   "gy-rc12-tend": {
-    "status": "wired-live-dedicated",
+    "status": "corrected-wired",
     "generatedAt": "2026-06-04",
     "liveAsset": "astro/public/product-library/secondary/gy-rc12-tend.png",
     "deployedAsset": "public/product-library/secondary/gy-rc12-tend.png",
@@ -1149,14 +1154,19 @@
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "checked-by-family-contact-sheet",
+      "direction": "checked-against-existing-robot-workcells-xyz-template",
       "dedicatedSource": true,
       "singleUse": true,
-      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
-    }
+      "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
+      "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+    },
+    "correctedAt": "2026-06-05",
+    "replacementReason": "Rejected black/dark graphite robot arms, gantries, platforms, and aluminum extrusion structures; Robot Workcells must align with the homepage/menu white-silver collaborative robot visual language.",
+    "rejectedAsset": "asset-workbench/product-images/rejected/robot-workcells-black-2026-06-05/gy-rc12-tend-black-rejected.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-white-metal-2026-06-05-v2/gy-rc12-tend-white-metal-v2.png"
   },
   "gy-rc4-pick": {
-    "status": "wired-live-dedicated",
+    "status": "corrected-wired",
     "generatedAt": "2026-06-04",
     "liveAsset": "astro/public/product-library/secondary/gy-rc4-pick.png",
     "deployedAsset": "public/product-library/secondary/gy-rc4-pick.png",
@@ -1167,14 +1177,19 @@
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "checked-by-family-contact-sheet",
+      "direction": "checked-against-existing-robot-workcells-xyz-template",
       "dedicatedSource": true,
       "singleUse": true,
-      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
-    }
+      "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
+      "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+    },
+    "correctedAt": "2026-06-05",
+    "replacementReason": "Rejected black/dark graphite robot arms, gantries, platforms, and aluminum extrusion structures; Robot Workcells must align with the homepage/menu white-silver collaborative robot visual language.",
+    "rejectedAsset": "asset-workbench/product-images/rejected/robot-workcells-black-2026-06-05/gy-rc4-pick-black-rejected.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-white-metal-2026-06-05-v2/gy-rc4-pick-white-metal-v2.png"
   },
   "gy-rc14-pack": {
-    "status": "wired-live-dedicated",
+    "status": "corrected-wired",
     "generatedAt": "2026-06-04",
     "liveAsset": "astro/public/product-library/secondary/gy-rc14-pack.png",
     "deployedAsset": "public/product-library/secondary/gy-rc14-pack.png",
@@ -1185,11 +1200,16 @@
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "checked-by-family-contact-sheet",
+      "direction": "checked-against-existing-robot-workcells-xyz-template",
       "dedicatedSource": true,
       "singleUse": true,
-      "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
-    }
+      "notes": "Corrected from the earlier black robot-workcell render to match the site visual language: white/silver collaborative arm, silver industrial frame/platform, realistic light metal fixtures, and restrained #4b2e83 accents only.",
+      "materials": "white/silver robot arms, natural silver aluminum extrusion frames, light gray platforms and fixtures; black workcell structures are rejected for this family"
+    },
+    "correctedAt": "2026-06-05",
+    "replacementReason": "Rejected black/dark graphite robot arms, gantries, platforms, and aluminum extrusion structures; Robot Workcells must align with the homepage/menu white-silver collaborative robot visual language.",
+    "rejectedAsset": "asset-workbench/product-images/rejected/robot-workcells-black-2026-06-05/gy-rc14-pack-black-rejected.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/robot-workcells-white-metal-2026-06-05-v2/gy-rc14-pack-white-metal-v2.png"
   },
   "gy-ec200-din": {
     "status": "wired-live-dedicated",

@@ -92,7 +92,8 @@ const CATEGORY_VISUALS = {
   "robot-workcells": {
     family: "secondary-robot-workcells",
     direction: "locked robot-workcell XYZ direction-angle template: front-left 3/4 technical product view with a slightly downward camera; do not flip, mirror, or change side-angle between cell SKUs",
-    designNotes: "plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix"
+    designNotes: "plausible cobot/robot workcell platforms with conveyors, fixtures, inspection cameras, safety scanners, controller modules, and practical cable routing; each SKU must be a dedicated scene/product asset, never a crop from a shared matrix",
+    materialInstruction: "Use white or silver collaborative robot arms, natural silver aluminum extrusion frames, light gray metal platforms and fixtures, and only small physical accents exactly #4b2e83. Do not use black robot arms, black gantries, or black aluminum-extrusion platforms."
   },
   "edge-controllers": {
     family: "secondary-edge-controllers",
@@ -173,7 +174,7 @@ for (const [categoryKey, category] of Object.entries(GYUTRON_PRODUCTS)) {
         `Industrial product render for ${category.title}.`,
         visual.direction,
         visual.designNotes,
-        `Use matte black / graphite materials with physical device accents exactly ${BRAND.deviceAccentPurple}.`,
+        visual.materialInstruction || `Use matte black / graphite materials with physical device accents exactly ${BRAND.deviceAccentPurple}.`,
         "Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
       ].join(" ")
     });
