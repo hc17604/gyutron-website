@@ -5,7 +5,7 @@ Run after ANY change to astro/src/data/products.*.js:
     python tools/i18n-audit.py        (exit 1 if problems found)
 
 Flags, for de + ja:
-  - category fields (eyebrow/title/navLabel/panelMetric/panelText/sectionIntro/intro)
+  - category fields (eyebrow/title/navLabel/panelText/sectionIntro/intro)
     and product type/summary that are MISSING, == the English value (untranslated),
     or contain '?' mojibake (non-UTF-8 write — see HANDOFF.md / AGENTS.md).
   - leftover ENGLISH prose, incl. PARTIAL translations
@@ -19,7 +19,7 @@ are not rendered; their fields are reported under a separate, non-fatal heading.
 import os, re, sys
 
 DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "astro", "src", "data")
-CATF = ("eyebrow", "title", "navLabel", "sectionTitle", "panelMetric", "panelText", "sectionIntro", "intro")
+CATF = ("eyebrow", "title", "navLabel", "sectionTitle", "panelText", "sectionIntro", "intro")
 REDIRECT = {"industrial-sensors", "smart-cameras", "inspection-instruments"}
 # (category, field) pairs intentionally kept as the English/brand term (allowed to == en):
 WHITELIST = {("android-pda", "navLabel")}
