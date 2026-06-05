@@ -18,15 +18,6 @@ const GYUTRON_PRODUCTS = {
                 tags: ["Wi-Fi 6", "NFC", "4500 mAh"]
             },
             {
-                name: "GY-A55 Pro",
-                type: "All-purpose PDA",
-                summary: "Balanced handheld computer for logistics teams that need scanning, camera capture, and fast roaming.",
-                kind: "pda",
-                image: "product-library/transparent/gy-a55-pro.png",
-                specs: { OS: "Android 14", Display: "5.5 in HD+", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
-                tags: ["4G LTE", "13 MP camera", "5000 mAh"]
-            },
-            {
                 name: "GY-A60 Max",
                 type: "Large-screen PDA",
                 summary: "6-inch rugged terminal for mobile workflows with dense forms, WMS screens, and work instructions.",
@@ -45,15 +36,6 @@ const GYUTRON_PRODUCTS = {
                 tags: ["29 keys", "Scan handle", "5200 mAh"]
             },
             {
-                name: "GY-A92K KeyTouch",
-                type: "Keypad mobile data terminal",
-                summary: "Rugged Android PDA with touchscreen and physical keys for glove-friendly scanning, picking, and line-side data capture.",
-                kind: "keypad",
-                image: "product-library/transparent/gy-a92k-keytouch.png",
-                specs: { OS: "Android 14", Display: "4.7 in touch", Scan: "Angled 2D imager", Rugged: "IP67 / 1.8 m drop" },
-                tags: ["Numeric keypad", "Glove use", "5800 mAh"]
-            },
-            {
                 name: "GY-A70 Cold",
                 type: "Cold-chain PDA",
                 summary: "Rugged handheld for freezer aisles, food logistics, pharmaceutical storage, and outdoor winter work.",
@@ -70,8 +52,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-a80-ultra.png",
                 specs: { OS: "Android 14", Display: "6.2 in FHD", Scan: "Extended range 2D", Rugged: "IP68 / 2.0 m drop" },
                 tags: ["5G option", "GNSS", "7200 mAh"]
-            }
-        ,
+            },
             {
                 name: "GY-A90 Touch",
                 type: "Touchscreen mobile data terminal",
@@ -127,8 +108,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-r86-5g.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 10 m", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["5G", "Dual-band GNSS", "7000 mAh"]
-            }
-        ,
+            },
             {
                 name: "GY-R90 Falcon",
                 type: "Long-range UHF RFID reader",
@@ -211,8 +191,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-s680-dock.png",
                 specs: { Scan: "Wide-angle 2D", Link: "Ethernet / USB", Trigger: "Photoeye input", Rugged: "IP65 metal housing" },
                 tags: ["Dock door", "Conveyor", "Ethernet"]
-            }
-        ,
+            },
             {
                 name: "GY-S900 XR",
                 type: "Extended-range scan gun",
@@ -353,8 +332,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-net8.png",
                 specs: { Ports: "8 x M12 IO-Link", Network: "EtherNet/IP / PROFINET", Power: "24 VDC", Housing: "IP67" },
                 tags: ["IO-Link", "Diagnostics", "IP67 hub"]
-            }
-        ,
+            },
             {
                 name: "GY-PX90",
                 type: "Compact photoelectric sensor",
@@ -681,8 +659,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-opt25.png",
                 specs: { Optics: "25 mm class telecentric", Sensor: "Up to 2/3 inch", Distortion: "<0.08%", Mount: "C-mount" },
                 tags: ["Telecentric", "Metrology", "Low distortion"]
-            }
-        ,
+            },
             {
                 name: "GY-V900 Pro",
                 type: "Smart area-scan camera",
@@ -766,8 +743,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-et75.png",
                 specs: { Voltage: "600 V CAT III", Inputs: "V / ohm / mA", Display: "Backlit LCD", Data: "Bluetooth option" },
                 tags: ["Maintenance", "Cabinet checks", "Portable"]
-            }
-        ,
+            },
             {
                 name: "GY-MG90",
                 type: "Digital dimensional gauge",
@@ -1077,15 +1053,6 @@ Object.assign(GYUTRON_PRODUCTS, {
                 image: "product-library/secondary/gy-ec200-din.png",
                 specs: { CPU: "Quad-core industrial", "I/O": "16 DI / 16 DO", Fieldbus: "Modbus TCP / MQTT", Temp: "-20 C to 60 C" },
                 tags: ["DIN rail", "Sensor gateway", "Cabinet IO"]
-            },
-            {
-                name: "GY-EC500 Vision",
-                type: "Vision edge controller",
-                summary: "Fanless vision controller for multi-camera inspection cells, local image processing, and quality record output.",
-                kind: "controller",
-                image: "product-library/secondary/gy-ec500-vision.png",
-                specs: { CPU: "Intel i5 class", AI: "20 TOPS option", Cameras: "4 x GigE / USB3", Storage: "1 TB NVMe option" },
-                tags: ["Vision edge", "Fanless", "Multi-camera"]
             },
             {
                 name: "GY-EC800 Motion",

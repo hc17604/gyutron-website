@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "purpose": "Single source of truth for GYUTRON product image generation, archival, lookup, and future replacement.",
   "sourceData": "astro/src/data/products.en.js",
-  "productCount": 96,
+  "productCount": 93,
   "brandRules": {
     "deviceAccentPurple": "#4b2e83",
     "uiAccentPurple": "#8a63d2",
@@ -29,7 +29,7 @@
     "android-pda": {
       "title": "Android PDA",
       "navLabel": "Android PDA",
-      "count": 8,
+      "count": 6,
       "visual": {
         "family": "rugged-mobile-computers",
         "direction": "locked PDA family XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; do not flip, randomly rotate, or change lean/camera-side angle",
@@ -190,7 +190,7 @@
     "edge-controllers": {
       "title": "Edge Controllers",
       "navLabel": "Edge Controllers",
-      "count": 4,
+      "count": 3,
       "visual": {
         "family": "secondary-edge-controllers",
         "direction": "locked edge-controller XYZ direction-angle template: front-left 3/4 technical product view with front I/O face and right-side heat fins/depth visible; do not flip, mirror, or change side-angle between controller SKUs",
@@ -241,39 +241,6 @@
         "4500 mAh"
       ],
       "promptSeed": "Model GY-A50, Compact Android PDA. Industrial product render for Android PDA. locked PDA family XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; do not flip, randomly rotate, or change lean/camera-side angle Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; front-face ratio, side thickness, scanner shape, and baseline may vary by model, but the 3D orientation angle must stay consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
-    },
-    {
-      "model": "GY-A55 Pro",
-      "slug": "gy-a55-pro",
-      "categoryKey": "android-pda",
-      "categoryTitle": "Android PDA",
-      "type": "All-purpose PDA",
-      "kind": "pda",
-      "currentImage": "product-library/transparent/gy-a55-pro.png",
-      "targetTransparentImage": "product-library/transparent/gy-a55-pro.png",
-      "workspaceTransparentImage": "astro/public/product-library/transparent/gy-a55-pro.png",
-      "deployedTransparentImage": "public/product-library/transparent/gy-a55-pro.png",
-      "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a55-pro-chroma.png",
-      "archiveFolder": "asset-workbench/product-images/source/gy-a55-pro/",
-      "status": "wired-live",
-      "qa": {
-        "transparentCorners": true,
-        "purpleHarmonized": true,
-        "direction": "wired",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
-      },
-      "generatedAt": "2026-06-03",
-      "visualFamily": "rugged-mobile-computers",
-      "direction": "locked PDA family XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; do not flip, randomly rotate, or change lean/camera-side angle",
-      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; front-face ratio, side thickness, scanner shape, and baseline may vary by model, but the 3D orientation angle must stay consistent",
-      "brandAccent": "#4b2e83",
-      "specsSummary": "OS: Android 14; Display: 5.5 in HD+; Scan: Near/far 2D; Rugged: IP67 / 1.8 m drop",
-      "tags": [
-        "4G LTE",
-        "13 MP camera",
-        "5000 mAh"
-      ],
-      "promptSeed": "Model GY-A55 Pro, All-purpose PDA. Industrial product render for Android PDA. locked PDA family XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; do not flip, randomly rotate, or change lean/camera-side angle Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; front-face ratio, side thickness, scanner shape, and baseline may vary by model, but the 3D orientation angle must stay consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-A60 Max",
@@ -340,39 +307,6 @@
         "5200 mAh"
       ],
       "promptSeed": "Model GY-A62K, Keypad PDA. Industrial product render for Android PDA. locked PDA family XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; do not flip, randomly rotate, or change lean/camera-side angle Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; front-face ratio, side thickness, scanner shape, and baseline may vary by model, but the 3D orientation angle must stay consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
-    },
-    {
-      "model": "GY-A92K KeyTouch",
-      "slug": "gy-a92k-keytouch",
-      "categoryKey": "android-pda",
-      "categoryTitle": "Android PDA",
-      "type": "Keypad mobile data terminal",
-      "kind": "keypad",
-      "currentImage": "product-library/transparent/gy-a92k-keytouch.png",
-      "targetTransparentImage": "product-library/transparent/gy-a92k-keytouch.png",
-      "workspaceTransparentImage": "astro/public/product-library/transparent/gy-a92k-keytouch.png",
-      "deployedTransparentImage": "public/product-library/transparent/gy-a92k-keytouch.png",
-      "sourceChromaImage": "asset-workbench/product-images/chroma/gy-a92k-keytouch-chroma.png",
-      "archiveFolder": "asset-workbench/product-images/source/gy-a92k-keytouch/",
-      "status": "wired-live",
-      "qa": {
-        "transparentCorners": true,
-        "purpleHarmonized": true,
-        "direction": "wired",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, and wired into en/de/ja product data for the mobile data capture tertiary categories."
-      },
-      "generatedAt": "2026-06-03",
-      "visualFamily": "rugged-mobile-computers",
-      "direction": "locked PDA family XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; do not flip, randomly rotate, or change lean/camera-side angle",
-      "designNotes": "Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; front-face ratio, side thickness, scanner shape, and baseline may vary by model, but the 3D orientation angle must stay consistent",
-      "brandAccent": "#4b2e83",
-      "specsSummary": "OS: Android 14; Display: 4.7 in touch; Scan: Angled 2D imager; Rugged: IP67 / 1.8 m drop",
-      "tags": [
-        "Numeric keypad",
-        "Glove use",
-        "5800 mAh"
-      ],
-      "promptSeed": "Model GY-A92K KeyTouch, Keypad mobile data terminal. Industrial product render for Android PDA. locked PDA family XYZ direction-angle template: keep the same product/camera X/Y/Z rotation angles across SKUs; do not flip, randomly rotate, or change lean/camera-side angle Zebra-style rugged handheld proportions, rubberized bumpers, recessed screen, optional keypad/scan handle variants; front-face ratio, side thickness, scanner shape, and baseline may vary by model, but the 3D orientation angle must stay consistent Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-A70 Cold",
@@ -3159,41 +3093,6 @@
         "Cabinet IO"
       ],
       "promptSeed": "Model GY-EC200 DIN, DIN-rail edge I/O controller. Industrial product render for Edge Controllers. locked edge-controller XYZ direction-angle template: front-left 3/4 technical product view with front I/O face and right-side heat fins/depth visible; do not flip, mirror, or change side-angle between controller SKUs fanless DIN-rail/panel industrial controllers and gateways with realistic ports, terminal blocks, heat fins, mounting ears, and cabinet-ready form language; avoid consumer mini-PC/router shapes Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
-    },
-    {
-      "model": "GY-EC500 Vision",
-      "slug": "gy-ec500-vision",
-      "categoryKey": "edge-controllers",
-      "categoryTitle": "Edge Controllers",
-      "type": "Vision edge controller",
-      "kind": "controller",
-      "currentImage": "product-library/secondary/gy-ec500-vision.png",
-      "targetTransparentImage": "product-library/transparent/gy-ec500-vision.png",
-      "workspaceTransparentImage": "astro/public/product-library/transparent/gy-ec500-vision.png",
-      "deployedTransparentImage": "public/product-library/transparent/gy-ec500-vision.png",
-      "sourceChromaImage": "asset-workbench/product-images/chroma/gy-ec500-vision-chroma.png",
-      "archiveFolder": "asset-workbench/product-images/source/gy-ec500-vision/",
-      "status": "wired-live-dedicated",
-      "qa": {
-        "transparentCorners": true,
-        "purpleHarmonized": true,
-        "direction": "checked-by-family-contact-sheet",
-        "dedicatedSource": true,
-        "singleUse": true,
-        "notes": "Regenerated as an independent chroma-key source and converted to a transparent PNG. Replaces the previous crop-from-category-image placeholder."
-      },
-      "generatedAt": "2026-06-04",
-      "visualFamily": "secondary-edge-controllers",
-      "direction": "locked edge-controller XYZ direction-angle template: front-left 3/4 technical product view with front I/O face and right-side heat fins/depth visible; do not flip, mirror, or change side-angle between controller SKUs",
-      "designNotes": "fanless DIN-rail/panel industrial controllers and gateways with realistic ports, terminal blocks, heat fins, mounting ears, and cabinet-ready form language; avoid consumer mini-PC/router shapes",
-      "brandAccent": "#4b2e83",
-      "specsSummary": "CPU: Intel i5 class; AI: 20 TOPS option; Cameras: 4 x GigE / USB3; Storage: 1 TB NVMe option",
-      "tags": [
-        "Vision edge",
-        "Fanless",
-        "Multi-camera"
-      ],
-      "promptSeed": "Model GY-EC500 Vision, Vision edge controller. Industrial product render for Edge Controllers. locked edge-controller XYZ direction-angle template: front-left 3/4 technical product view with front I/O face and right-side heat fins/depth visible; do not flip, mirror, or change side-angle between controller SKUs fanless DIN-rail/panel industrial controllers and gateways with realistic ports, terminal blocks, heat fins, mounting ears, and cabinet-ready form language; avoid consumer mini-PC/router shapes Use matte black / graphite materials with physical device accents exactly #4b2e83. Transparent final PNG required; if generated with chroma key, use flat #00ff00 background only as intermediate."
     },
     {
       "model": "GY-EC800 Motion",

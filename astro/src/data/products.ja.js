@@ -18,15 +18,6 @@ const GYUTRON_PRODUCTS = {
                 tags: ["Wi-Fi 6", "NFC", "4500 mAh"]
             },
             {
-                name: "GY-A55 Pro",
-                type: "汎用PDA",
-                summary: "スキャン、カメラ記録、高速ローミングを必要とする物流チーム向けのバランス型ハンドヘルド。",
-                kind: "pda",
-                image: "product-library/transparent/gy-a55-pro.png",
-                specs: { OS: "Android 14", Display: "5.5 in HD+", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
-                tags: ["4G LTE", "13 MP camera", "5000 mAh"]
-            },
-            {
                 name: "GY-A60 Max",
                 type: "大画面PDA",
                 summary: "帳票、WMS画面、作業指示を扱うモバイル業務に適した6インチ堅牢端末。",
@@ -45,15 +36,6 @@ const GYUTRON_PRODUCTS = {
                 tags: ["29 keys", "Scan handle", "5200 mAh"]
             },
             {
-                name: "GY-A92K KeyTouch",
-                type: "キーパッド付きモバイルデータ端末",
-                summary: "タッチ画面と物理キーを備えた堅牢Android PDA。手袋操作、ピッキング、ラインサイドのデータ収集に適しています。",
-                kind: "keypad",
-                image: "product-library/transparent/gy-a92k-keytouch.png",
-                specs: { OS: "Android 14", Display: "4.7 in touch", Scan: "Angled 2D imager", Rugged: "IP67 / 1.8 m drop" },
-                tags: ["数字キーパッド", "手袋操作", "5800 mAh"]
-            },
-            {
                 name: "GY-A70 Cold",
                 type: "コールドチェーンPDA",
                 summary: "冷凍倉庫、食品物流、医薬品保管、冬季屋外作業に対応する堅牢ハンドヘルド。",
@@ -70,8 +52,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-a80-ultra.png",
                 specs: { OS: "Android 14", Display: "6.2 in FHD", Scan: "Extended range 2D", Rugged: "IP68 / 2.0 m drop" },
                 tags: ["5G option", "GNSS", "7200 mAh"]
-            }
-        ,
+            },
             {
                 name: "GY-A90 Touch",
                 type: "タッチスクリーン式モバイルデータ端末",
@@ -127,8 +108,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-r86-5g.png",
                 specs: { OS: "Android 14", RFID: "UHF up to 10 m", Scan: "Near/far 2D", Rugged: "IP67 / 1.8 m drop" },
                 tags: ["5G", "Dual-band GNSS", "7000 mAh"]
-            }
-        ,
+            },
             {
                 name: "GY-R90 Falcon",
                 type: "長距離UHF RFIDリーダー",
@@ -211,8 +191,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-s680-dock.png",
                 specs: { Scan: "Wide-angle 2D", Link: "Ethernet / USB", Trigger: "Photoeye input", Rugged: "IP65 metal housing" },
                 tags: ["ドックドア", "コンベヤ", "Ethernet"]
-            }
-        ,
+            },
             {
                 name: "GY-S900 XR",
                 type: "長距離スキャンガン",
@@ -353,8 +332,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-net8.png",
                 specs: { Ports: "8 x M12 IO-Link", Network: "EtherNet/IP / PROFINET", Power: "24 VDC", Housing: "IP67" },
                 tags: ["IO-Link", "診断", "IP67 hub"]
-            }
-        ,
+            },
             {
                 name: "GY-PX90",
                 type: "コンパクト光電センサー",
@@ -363,8 +341,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-px90.png",
                 specs: { Detection: "Diffuse / retroreflective", Range: "30 mm to 3 m", Output: "PNP / NPN", Housing: "IP67 compact" },
                 tags: ["Presence", "M12", "Fast setup"]
-            }
-        ,
+            },
             {
                 name: "GY-LD90",
                 type: "レーザー変位センサー",
@@ -373,8 +350,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-ld90.png",
                 specs: { Measurement: "90 mm class", Resolution: "5 um", Output: "IO-Link / analog", Housing: "IP67 metal" },
                 tags: ["Laser", "Position", "IO-Link"]
-            }
-        ,
+            },
             {
                 name: "GY-SAFE90",
                 type: "セーフティライトカーテン(ペア)",
@@ -383,8 +359,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-safe90.png",
                 specs: { Resolution: "14 / 30 mm", Height: "300 to 1500 mm", Safety: "Type 4 / PL e", Housing: "IP65 aluminum" },
                 tags: ["Machine safety", "Slim body", "Type 4"]
-            }
-        ,
+            },
             {
                 name: "GY-NET90",
                 type: "IP67リモートI/Oモジュール",
@@ -684,8 +659,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-opt25.png",
                 specs: { Optics: "25 mm class telecentric", Sensor: "Up to 2/3 inch", Distortion: "<0.08%", Mount: "C-mount" },
                 tags: ["Telecentric", "Metrology", "低歪み"]
-            }
-        ,
+            },
             {
                 name: "GY-V900 Pro",
                 type: "スマートエリアスキャンカメラ",
@@ -694,8 +668,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-v900-pro.png",
                 specs: { Sensor: "9 MP global shutter", AI: "On-device inference", Interface: "GigE + I/O", Rating: "IP67 metal" },
                 tags: ["AI vision", "9 MP", "GigE"]
-            }
-        ,
+            },
             {
                 name: "GY-V3D900",
                 type: "産業用3Dビジョンカメラ",
@@ -704,8 +677,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-v3d900.png",
                 specs: { Profile: "3D stereo / depth", Range: "900 mm class", Interface: "GigE Vision", Rating: "IP65 metal" },
                 tags: ["3D vision", "Depth", "Robot cells"]
-            }
-        ,
+            },
             {
                 name: "GY-CR900 Matrix",
                 type: "固定式産業用コードリーダー",
@@ -771,8 +743,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-et75.png",
                 specs: { Voltage: "600 V CAT III", Inputs: "V / ohm / mA", Display: "Backlit LCD", Data: "Bluetooth option" },
                 tags: ["Maintenance", "Cabinet checks", "Portable"]
-            }
-        ,
+            },
             {
                 name: "GY-MG90",
                 type: "デジタル寸法ゲージ",
@@ -781,8 +752,7 @@ const GYUTRON_PRODUCTS = {
                 image: "product-library/transparent/gy-mg90.png",
                 specs: { Range: "90 mm stroke", Resolution: "1 um", Output: "USB / RS-485", Fixture: "Bench / inline" },
                 tags: ["Metrology", "Height", "Fixture QA"]
-            }
-        ,
+            },
             {
                 name: "GY-VM900",
                 type: "画像測定器",
@@ -1083,15 +1053,6 @@ Object.assign(GYUTRON_PRODUCTS, {
                 image: "product-library/secondary/gy-ec200-din.png",
                 specs: { CPU: "Quad-core industrial", "I/O": "16 DI / 16 DO", Fieldbus: "Modbus TCP / MQTT", Temp: "-20 C to 60 C" },
                 tags: ["DINレール", "センサゲートウェイ", "盤内I/O"]
-            },
-            {
-                name: "GY-EC500 Vision",
-                type: "画像処理エッジコントローラ",
-                summary: "複数カメラの検査セル、ローカル画像処理、品質データ出力に対応するファンレスVisionコントローラです。",
-                kind: "controller",
-                image: "product-library/secondary/gy-ec500-vision.png",
-                specs: { CPU: "Intel i5 class", AI: "20 TOPS option", Cameras: "4 x GigE / USB3", Storage: "1 TB NVMe option" },
-                tags: ["Vision Edge", "ファンレス", "複数カメラ"]
             },
             {
                 name: "GY-EC800 Motion",
