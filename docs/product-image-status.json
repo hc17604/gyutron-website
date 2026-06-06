@@ -668,43 +668,67 @@
     }
   },
   "gy-v3d90": {
-    "status": "wired-live",
+    "status": "regenerated-wired-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v3d90.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v3d90-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-06/gy-v3d90-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v3d90-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-against-machine-vision-front-left-3-4-template",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin or sealed side/end face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
+    },
+    "regeneratedAt": "2026-06-06",
+    "correctedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-v3d90.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-06/gy-v3d90-transparent.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/machine-vision-side-io-2026-06-06/gy-v3d90-side-io-rejected.png",
+    "replacementReason": "Regenerated as a complete machine-vision product render with visible-side electrical connectors removed by design, not by cropping or erasing. Keeps the approved front-left 3/4 XYZ orientation, transparent PNG, and #4b2e83 product accents."
   },
   "gy-v3d150": {
-    "status": "wired-live",
+    "status": "regenerated-wired-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v3d150.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v3d150-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-06/gy-v3d150-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v3d150-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-against-machine-vision-front-left-3-4-template",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin or sealed side/end face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
+    },
+    "regeneratedAt": "2026-06-06",
+    "correctedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-v3d150.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-06/gy-v3d150-transparent.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/machine-vision-side-io-2026-06-06/gy-v3d150-side-io-rejected.png",
+    "replacementReason": "Regenerated as a complete machine-vision product render with visible-side electrical connectors removed by design, not by cropping or erasing. Keeps the approved front-left 3/4 XYZ orientation, transparent PNG, and #4b2e83 product accents."
   },
   "gy-vl2048": {
-    "status": "wired-live",
+    "status": "regenerated-wired-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-vl2048.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-vl2048-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-06/gy-vl2048-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-vl2048-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-against-machine-vision-front-left-3-4-template",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin or sealed side/end face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
+    },
+    "regeneratedAt": "2026-06-06",
+    "correctedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-vl2048.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-06/gy-vl2048-transparent.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/machine-vision-side-io-2026-06-06/gy-vl2048-side-io-rejected.png",
+    "replacementReason": "Regenerated as a complete machine-vision product render with visible-side electrical connectors removed by design, not by cropping or erasing. Keeps the approved front-left 3/4 XYZ orientation, transparent PNG, and #4b2e83 product accents."
   },
   "gy-vx12": {
     "status": "wired-live",
@@ -759,17 +783,25 @@
     }
   },
   "gy-vrg200": {
-    "status": "wired-live",
+    "status": "regenerated-wired-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-vrg200.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-vrg200-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-06/gy-vrg200-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-vrg200-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-against-machine-vision-front-left-3-4-template",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin or sealed side/end face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
+    },
+    "regeneratedAt": "2026-06-06",
+    "correctedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-vrg200.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-06/gy-vrg200-transparent.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/machine-vision-side-io-2026-06-06/gy-vrg200-side-io-rejected.png",
+    "replacementReason": "Regenerated as a complete machine-vision product render with visible-side electrical connectors removed by design, not by cropping or erasing. Keeps the approved front-left 3/4 XYZ orientation, transparent PNG, and #4b2e83 product accents."
   },
   "gy-v3d900": {
     "status": "wired-live-replaced-no-side-io",

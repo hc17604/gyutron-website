@@ -87,14 +87,14 @@ Product count: **93**
 | GY-OPT25 | area-scan-cameras | Telecentric optics module | `product-library/transparent/gy-opt25.png` | `product-library/transparent/gy-opt25.png` | wired-live |
 | GY-V900 Pro | area-scan-cameras | Smart area-scan camera | `product-library/transparent/gy-v900-pro.png` | `product-library/transparent/gy-v900-pro.png` | wired-live-replaced-no-side-io |
 | GY-VC8 | smart-vision-sensors | Vision controller | `product-library/transparent/gy-vc8.png` | `product-library/transparent/gy-vc8.png` | wired-live |
-| GY-V3D90 | smart-vision-sensors | 3D profile camera | `product-library/transparent/gy-v3d90.png` | `product-library/transparent/gy-v3d90.png` | wired-live |
-| GY-V3D150 | smart-vision-sensors | Wide-range 3D profile sensor | `product-library/transparent/gy-v3d150.png` | `product-library/transparent/gy-v3d150.png` | wired-live |
-| GY-VL2048 | smart-vision-sensors | Line scan smart camera | `product-library/transparent/gy-vl2048.png` | `product-library/transparent/gy-vl2048.png` | wired-live |
+| GY-V3D90 | smart-vision-sensors | 3D profile camera | `product-library/transparent/gy-v3d90.png` | `product-library/transparent/gy-v3d90.png` | regenerated-wired-no-side-io |
+| GY-V3D150 | smart-vision-sensors | Wide-range 3D profile sensor | `product-library/transparent/gy-v3d150.png` | `product-library/transparent/gy-v3d150.png` | regenerated-wired-no-side-io |
+| GY-VL2048 | smart-vision-sensors | Line scan smart camera | `product-library/transparent/gy-vl2048.png` | `product-library/transparent/gy-vl2048.png` | regenerated-wired-no-side-io |
 | GY-VX12 | smart-vision-sensors | AI vision processor | `product-library/transparent/gy-vx12.png` | `product-library/transparent/gy-vx12.png` | wired-live |
 | GY-VIO16 | smart-vision-sensors | Vision I/O expansion module | `product-library/transparent/gy-vio16.png` | `product-library/transparent/gy-vio16.png` | wired-live |
 | GY-LC4 | smart-vision-sensors | Four-channel strobe controller | `product-library/transparent/gy-lc4.png` | `product-library/transparent/gy-lc4.png` | wired-live |
 | GY-VFG4 | smart-vision-sensors | Industrial frame grabber | `product-library/transparent/gy-vfg4.png` | `product-library/transparent/gy-vfg4.png` | wired-live |
-| GY-VRG200 | smart-vision-sensors | Robot guidance 3D module | `product-library/transparent/gy-vrg200.png` | `product-library/transparent/gy-vrg200.png` | wired-live |
+| GY-VRG200 | smart-vision-sensors | Robot guidance 3D module | `product-library/transparent/gy-vrg200.png` | `product-library/transparent/gy-vrg200.png` | regenerated-wired-no-side-io |
 | GY-V3D900 | smart-vision-sensors | Industrial 3D vision camera | `product-library/transparent/gy-v3d900.png` | `product-library/transparent/gy-v3d900.png` | wired-live-replaced-no-side-io |
 | GY-CR120 | code-reading-cameras | Compact fixed code reader | `product-library/transparent/gy-cr120.png` | `product-library/transparent/gy-cr120.png` | wired-live |
 | GY-CR390 | code-reading-cameras | Fixed code reader camera | `product-library/transparent/gy-cr390.png` | `product-library/transparent/gy-cr390.png` | wired-live |

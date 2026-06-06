@@ -1744,12 +1744,14 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v3d90.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v3d90-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v3d90/",
-      "status": "wired-live",
+      "status": "regenerated-wired-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-against-machine-vision-front-left-3-4-template",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin or sealed side/end face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "vision-controllers-3d-systems",
@@ -1777,12 +1779,14 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v3d150.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v3d150-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v3d150/",
-      "status": "wired-live",
+      "status": "regenerated-wired-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-against-machine-vision-front-left-3-4-template",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin or sealed side/end face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "vision-controllers-3d-systems",
@@ -1810,12 +1814,14 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-vl2048.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-vl2048-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-vl2048/",
-      "status": "wired-live",
+      "status": "regenerated-wired-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-against-machine-vision-front-left-3-4-template",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin or sealed side/end face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "vision-controllers-3d-systems",
@@ -1975,12 +1981,14 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-vrg200.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-vrg200-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-vrg200/",
-      "status": "wired-live",
+      "status": "regenerated-wired-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-against-machine-vision-front-left-3-4-template",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin or sealed side/end face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "vision-controllers-3d-systems",
