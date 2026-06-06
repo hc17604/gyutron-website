@@ -22,6 +22,16 @@
   .nav-item { padding-left: 1px; padding-right: 1px; }
 }
 
+/* A submenu is a pointer target ONLY while its nav-item's menu is actually open.
+   The leave-flash fix keeps `.mega-link-group.is-open` after the menu closes, and the per-page override
+   gives an active submenu `pointer-events:auto`; since all mega-menus are centered (overlapping), that
+   left an INVISIBLE clickable submenu box at the page centre with the menu shut — the pointer passing over
+   it re-opened the menu / jumped to another tab. Gate pointer-events on the menu being open. */
+.mega-menu .mega-link-group.is-open .submenu { pointer-events: none !important; }
+.nav-item:hover .mega-menu .mega-link-group.is-open .submenu,
+.nav-item:focus-within .mega-menu .mega-link-group.is-open .submenu,
+.nav-item.is-open .mega-menu .mega-link-group.is-open .submenu { pointer-events: auto !important; }
+
 body.nav-is-navigating .mega-menu,
 body.nav-is-navigating .submenu {
   opacity: 0 !important;
