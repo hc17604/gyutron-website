@@ -53,7 +53,10 @@ const {
   structuredData = ORGANIZATION,
 } = Astro.props;
 const robotsContent = noindex ? 'noindex, follow' : (robots ?? DEFAULT_ROBOTS);
-const jsonLd = structuredData ? JSON.stringify(structuredData) : '';
+// Normalize to a list so a page can emit several JSON-LD nodes (Organization + Breadcrumb +
+// CollectionPage). One <script> per node. The default (Organization) emits a single script,
+// byte-identical to before.
+const jsonLdNodes = structuredData == null ? [] : Array.isArray(structuredData) ? structuredData : [structuredData];
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
@@ -75,4 +78,4 @@ const jsonLd = structuredData ? JSON.stringify(structuredData) : '';
 <meta name="twitter:title" content={ogTitle ?? title} />
 <meta name="twitter:description" content={ogDescription ?? description} />
 <meta name="twitter:image" content={ogImage} />
-{jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+{jsonLdNodes.map((node) => <script type="application/ld+json" set:html={JSON.stringify(node)} />)}

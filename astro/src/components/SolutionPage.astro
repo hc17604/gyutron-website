@@ -2,9 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from './Footer.astro';
 import { t, localizeUrl, type Locale } from '../i18n';
+import { canonicalUrl } from '../utils/seo';
+import { createOrganizationJsonLd, breadcrumbFromHome } from '../utils/structured-data';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/automated-vision-inspection.html';
+const structuredData = [
+  createOrganizationJsonLd(),
+  breadcrumbFromHome(locale, [{ name: t(locale, 'main.055'), url: canonicalUrl(locale, path) }]),
+];
 ---
 <Layout
   locale={locale}
@@ -12,6 +18,7 @@ const path = '/automated-vision-inspection.html';
   title={t(locale, 'seo.automated-vision-inspection.title')}
   description={t(locale, 'seo.automated-vision-inspection.desc')}
   pageCss={["/product-page.css", "/solution-page.css", "/mobile-navigation.css"]}
+  structuredData={structuredData}
 >
   <main>
     <section class="solution-hero">

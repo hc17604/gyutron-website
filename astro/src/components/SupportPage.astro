@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from './Footer.astro';
 import { localizeUrl, type Locale } from '../i18n';
+import { canonicalUrl } from '../utils/seo';
+import { createOrganizationJsonLd, breadcrumbFromHome } from '../utils/structured-data';
 interface Props {
   locale: Locale;
   path: string;
@@ -16,6 +18,10 @@ interface Props {
 }
 const { locale, path, title, description, eyebrow = 'Help & Support', heading, intro, crumb, updated, heroImage } = Astro.props;
 const homeLabel = ({ en: 'Home', de: 'Startseite', ja: 'ホーム' } as const)[locale];
+const structuredData = [
+  createOrganizationJsonLd(),
+  breadcrumbFromHome(locale, [{ name: crumb, url: canonicalUrl(locale, path) }]),
+];
 const heroStyle = heroImage
   ? `background-image: linear-gradient(118deg, rgba(4,5,8,0.96) 0%, rgba(18,5,31,0.9) 50%, rgba(27,11,46,0.84) 100%), url('${heroImage}'); background-size: cover; background-position: center;`
   : undefined;
@@ -26,6 +32,7 @@ const heroStyle = heroImage
   title={title}
   description={description}
   pageCss={["/product-page.css", "/support-page.css", "/mobile-navigation.css"]}
+  structuredData={structuredData}
 >
   <main class="support-page">
     <section class="support-hero" style={heroStyle}>

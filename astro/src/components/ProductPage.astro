@@ -4,6 +4,8 @@ import Footer from './Footer.astro';
 import { t, localizeUrl, type Locale } from '../i18n';
 import { productSummary } from '../lib/productText';
 import { specLabel, specVal, tagText } from '../lib/productI18n';
+import { canonicalUrl } from '../utils/seo';
+import { createOrganizationJsonLd, breadcrumbFromHome, createCollectionPageJsonLd } from '../utils/structured-data';
 import * as enData from '../data/products.en.js';
 import * as deData from '../data/products.de.js';
 import * as jaData from '../data/products.ja.js';
@@ -17,6 +19,17 @@ const GROUPS: any = data.CATEGORY_GROUPS;
 const cat: any = PRODUCTS[category];
 const path = `/${category}.html`;
 const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];
+const canonical = canonicalUrl(locale, path);
+const structuredData = [
+  createOrganizationJsonLd(),
+  breadcrumbFromHome(locale, [{ name: cat.title, url: canonical }]),
+  createCollectionPageJsonLd({
+    name: cat.title,
+    description: cat.intro,
+    url: canonical,
+    products: (cat.products || []).map((p: any) => ({ name: p.name, description: p.summary, image: p.image, category: cat.title })),
+  }),
+];
 ---
 <Layout
   locale={locale}
@@ -25,6 +38,7 @@ const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];
   description={t(locale, `seo.${category}.desc`)}
   bodyClass={`product-page cat-${category}`}
   pageCss={["/product-page.css", "/mobile-navigation.css"]}
+  structuredData={structuredData}
 >
   <main>
     <section class="product-hero" style={cat.heroImage ? `--hero-image: url('/${cat.heroImage}')` : undefined}><div class="container"><div class="product-hero-grid">

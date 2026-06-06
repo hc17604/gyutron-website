@@ -2,9 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import { t, localizeUrl, type Locale } from '../i18n';
 import Footer from './Footer.astro';
+import { canonicalUrl } from '../utils/seo';
+import { createOrganizationJsonLd, breadcrumbFromHome } from '../utils/structured-data';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/contact-sales.html';
+const structuredData = [
+  createOrganizationJsonLd(),
+  breadcrumbFromHome(locale, [{ name: t(locale, 'fnav.contact'), url: canonicalUrl(locale, path) }]),
+];
 ---
 <Layout
   locale={locale}
@@ -14,6 +20,7 @@ const path = '/contact-sales.html';
   ogTitle={t(locale, 'seo.contact-sales.ogtitle')}
   ogDescription={t(locale, 'seo.contact-sales.ogdesc')}
   pageCss={["/contact-page.css", "/mobile-navigation.css"]}
+  structuredData={structuredData}
 >
   <main>
     <section class="contact-hero">
