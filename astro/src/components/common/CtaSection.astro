@@ -1,0 +1,24 @@
+---
+/** Presentational call-to-action band with up to two buttons. Reusable across pages. */
+interface Props {
+  title: string;
+  text?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+const { title, text, primaryLabel, primaryHref, secondaryLabel, secondaryHref } = Astro.props;
+---
+<section class="cta-section">
+  <h2 class="cta-section__title">{title}</h2>
+  {text && <p class="cta-section__text">{text}</p>}
+  <div class="cta-section__actions">
+    {primaryLabel && primaryHref && (
+      <a class="cta-section__btn cta-section__btn--primary" href={primaryHref}>{primaryLabel}</a>
+    )}
+    {secondaryLabel && secondaryHref && (
+      <a class="cta-section__btn" href={secondaryHref}>{secondaryLabel}</a>
+    )}
+  </div>
+</section>

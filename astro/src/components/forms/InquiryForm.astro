@@ -1,0 +1,34 @@
+---
+/**
+ * Placeholder inquiry form. Renders the fields; submission is intentionally a no-op until
+ * wired to `src/lib/forms/contact.ts` → submitContactForm() (which posts to /api/contact).
+ * Not used by any page yet — drop it in and replace the placeholder handler when ready.
+ */
+import type { Locale } from '../../i18n';
+interface Props {
+  locale: Locale;
+  /** Lead-source label carried with the inquiry once wired. */
+  source?: string;
+}
+const { locale, source = 'inquiry-form' } = Astro.props;
+---
+<form class="inquiry-form" data-locale={locale} data-source={source} aria-label="Inquiry form (placeholder)">
+  <label>Full name<input name="fullName" type="text" required /></label>
+  <label>Company<input name="company" type="text" required /></label>
+  <label>Work email<input name="workEmail" type="email" required /></label>
+  <label>Project details<textarea name="projectDetails" required></textarea></label>
+  <input name="website" type="text" tabindex="-1" autocomplete="off" hidden aria-hidden="true" />
+  <button type="submit">Send</button>
+  <p class="inquiry-form__note" role="status" aria-live="polite"></p>
+</form>
+<script>
+  // TODO: import { submitContactForm } from '../../lib/forms/contact' and call it here.
+  // Placeholder: prevents submission so the component is safe to use before backend wiring.
+  for (const form of document.querySelectorAll('.inquiry-form')) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const note = form.querySelector('.inquiry-form__note');
+      if (note) note.textContent = 'This inquiry form is a placeholder and is not connected yet.';
+    });
+  }
+</script>

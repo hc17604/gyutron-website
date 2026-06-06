@@ -1,0 +1,45 @@
+---
+/**
+ * Upgraded SEO <head> block: everything Layout.astro emits today PLUS Twitter Card,
+ * og:image, and Organization JSON-LD. NOT yet wired into Layout (adopting it changes the
+ * rendered <head>, intentionally deferred). To adopt: replace Layout's inline meta with
+ * <SeoHead .../> and diff astro/dist to confirm the only additions are the new tags.
+ * See docs/SEO.md.
+ */
+import { htmlLang, ogLocale, localizeUrl, locales, type Locale } from '../../i18n';
+import { SITE_URL, SITE_NAME } from '../../config/site';
+import { DEFAULT_OG_IMAGE, TWITTER_HANDLE, ORGANIZATION } from '../../config/seo';
+
+interface Props {
+  locale: Locale;
+  path: string;
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+}
+const { locale, path, title, description, ogTitle, ogDescription, ogImage = DEFAULT_OG_IMAGE } = Astro.props;
+const canonical = `${SITE_URL}${localizeUrl(locale, path)}`;
+const jsonLd = JSON.stringify(ORGANIZATION);
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{locales.map((l) => (
+  <link rel="alternate" hreflang={htmlLang[l]} href={`${SITE_URL}${localizeUrl(l, path)}`} />
+))}
+<link rel="alternate" hreflang="x-default" href={`${SITE_URL}${path}`} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={ogLocale[locale]} />
+<meta property="og:title" content={ogTitle ?? title} />
+<meta property="og:description" content={ogDescription ?? description} />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:image" content={ogImage} />
+<meta name="twitter:card" content="summary_large_image" />
+{TWITTER_HANDLE !== '' && <meta name="twitter:site" content={TWITTER_HANDLE} />}
+<meta name="twitter:title" content={ogTitle ?? title} />
+<meta name="twitter:description" content={ogDescription ?? description} />
+<meta name="twitter:image" content={ogImage} />
+<script type="application/ld+json" set:html={jsonLd} />
