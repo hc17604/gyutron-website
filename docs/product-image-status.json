@@ -536,17 +536,25 @@
     "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-v240-color.png"
   },
   "gy-v280-ai": {
-    "status": "wired-live",
+    "status": "regenerated-wired-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v280-ai.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v280-ai-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-06/gy-v280-ai-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v280-ai-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-against-machine-vision-front-left-3-4-template",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin side face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
+    },
+    "regeneratedAt": "2026-06-06",
+    "correctedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-v280-ai.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-06/gy-v280-ai-transparent.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/machine-vision-side-io-2026-06-06/gy-v280-ai-side-io-rejected.png",
+    "replacementReason": "Regenerated as a complete machine-vision product render with the visible side connector removed by design, not by cropping or erasing. Keeps the approved front-left 3/4 XYZ orientation, clean side heat-fin housing, transparent PNG, and #4b2e83 product accents."
   },
   "gy-v320-mono": {
     "status": "wired-live-replaced-no-side-io",
@@ -565,17 +573,25 @@
     "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-05/gy-v320-mono.png"
   },
   "gy-v380-pro": {
-    "status": "wired-live",
+    "status": "regenerated-wired-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-v380-pro.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-v380-pro-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/machine-vision-no-side-io-2026-06-06/gy-v380-pro-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-v380-pro-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "checked-against-machine-vision-front-left-3-4-template",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin side face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
+    },
+    "regeneratedAt": "2026-06-06",
+    "correctedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-v380-pro.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/machine-vision-no-side-io-2026-06-06/gy-v380-pro-transparent.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/machine-vision-side-io-2026-06-06/gy-v380-pro-side-io-rejected.png",
+    "replacementReason": "Regenerated as a complete machine-vision product render with the visible side connector removed by design, not by cropping or erasing. Keeps the approved front-left 3/4 XYZ orientation, clean side heat-fin housing, transparent PNG, and #4b2e83 product accents."
   },
   "gy-v500-hr": {
     "status": "wired-live-replaced-no-side-io",

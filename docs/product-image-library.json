@@ -1377,12 +1377,12 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v120.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v120-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v120/",
-      "status": "wired-live",
+      "status": "wired-live-replaced-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-front-right-no-side-io",
+        "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "industrial-vision-cameras",
@@ -1410,12 +1410,12 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v160-compact.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v160-compact-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v160-compact/",
-      "status": "wired-live",
+      "status": "wired-live-replaced-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-front-right-no-side-io",
+        "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "industrial-vision-cameras",
@@ -1443,12 +1443,12 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v240-color.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v240-color-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v240-color/",
-      "status": "wired-live",
+      "status": "wired-live-replaced-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-front-right-no-side-io",
+        "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "industrial-vision-cameras",
@@ -1476,12 +1476,14 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v280-ai.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v280-ai-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v280-ai/",
-      "status": "wired-live",
+      "status": "regenerated-wired-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-against-machine-vision-front-left-3-4-template",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin side face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "industrial-vision-cameras",
@@ -1509,12 +1511,12 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v320-mono.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v320-mono-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v320-mono/",
-      "status": "wired-live",
+      "status": "wired-live-replaced-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-front-right-no-side-io",
+        "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "industrial-vision-cameras",
@@ -1542,12 +1544,14 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v380-pro.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v380-pro-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v380-pro/",
-      "status": "wired-live",
+      "status": "regenerated-wired-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-against-machine-vision-front-left-3-4-template",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "notes": "No visible side/rear power/data/I/O/M12/socket/cable connector; complete housing with clean heat-fin side face. Generated through built-in image tool, chroma-key removed locally, and copied into astro/public plus public."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "industrial-vision-cameras",
@@ -1575,12 +1579,12 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v500-hr.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v500-hr-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v500-hr/",
-      "status": "wired-live",
+      "status": "wired-live-replaced-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-front-right-no-side-io",
+        "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "industrial-vision-cameras",
@@ -1608,12 +1612,12 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v640-hs.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v640-hs-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v640-hs/",
-      "status": "wired-live",
+      "status": "wired-live-replaced-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-front-right-no-side-io",
+        "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "industrial-vision-cameras",
@@ -1674,12 +1678,12 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v900-pro.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v900-pro-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v900-pro/",
-      "status": "wired-live",
+      "status": "wired-live-replaced-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by area-scan-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-front-right-no-side-io",
+        "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "industrial-vision-cameras",
@@ -2004,12 +2008,12 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-v3d900.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-v3d900-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-v3d900/",
-      "status": "wired-live",
+      "status": "wired-live-replaced-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by smart-vision-sensors contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-front-right-no-side-io",
+        "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "vision-controllers-3d-systems",
@@ -2301,12 +2305,12 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-cr900-matrix.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr900-matrix-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr900-matrix/",
-      "status": "wired-live",
+      "status": "wired-live-replaced-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "checked-front-right-no-side-io",
+        "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",

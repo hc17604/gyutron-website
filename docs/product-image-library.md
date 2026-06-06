@@ -76,16 +76,16 @@ Product count: **93**
 | GY-ENV32 | environmental-sensing | Environmental sensor | `product-library/transparent/gy-env32.png` | `product-library/transparent/gy-env32.png` | wired-live |
 | GY-NET8 | environmental-sensing | Sensor network hub | `product-library/transparent/gy-net8.png` | `product-library/transparent/gy-net8.png` | wired-live |
 | GY-NET90 | environmental-sensing | IP67 remote I/O module | `product-library/transparent/gy-net90.png` | `product-library/transparent/gy-net90.png` | wired-live |
-| GY-V120 | area-scan-cameras | Compact smart camera | `product-library/transparent/gy-v120.png` | `product-library/transparent/gy-v120.png` | wired-live |
-| GY-V160 Compact | area-scan-cameras | Compact area scan camera | `product-library/transparent/gy-v160-compact.png` | `product-library/transparent/gy-v160-compact.png` | wired-live |
-| GY-V240 Color | area-scan-cameras | Color inspection camera | `product-library/transparent/gy-v240-color.png` | `product-library/transparent/gy-v240-color.png` | wired-live |
-| GY-V280 AI | area-scan-cameras | AI vision sensor | `product-library/transparent/gy-v280-ai.png` | `product-library/transparent/gy-v280-ai.png` | wired-live |
-| GY-V320 Mono | area-scan-cameras | Monochrome area scan camera | `product-library/transparent/gy-v320-mono.png` | `product-library/transparent/gy-v320-mono.png` | wired-live |
-| GY-V380 Pro | area-scan-cameras | High-speed smart camera | `product-library/transparent/gy-v380-pro.png` | `product-library/transparent/gy-v380-pro.png` | wired-live |
-| GY-V500 HR | area-scan-cameras | High-resolution area camera | `product-library/transparent/gy-v500-hr.png` | `product-library/transparent/gy-v500-hr.png` | wired-live |
-| GY-V640 HS | area-scan-cameras | High-speed area scan camera | `product-library/transparent/gy-v640-hs.png` | `product-library/transparent/gy-v640-hs.png` | wired-live |
+| GY-V120 | area-scan-cameras | Compact smart camera | `product-library/transparent/gy-v120.png` | `product-library/transparent/gy-v120.png` | wired-live-replaced-no-side-io |
+| GY-V160 Compact | area-scan-cameras | Compact area scan camera | `product-library/transparent/gy-v160-compact.png` | `product-library/transparent/gy-v160-compact.png` | wired-live-replaced-no-side-io |
+| GY-V240 Color | area-scan-cameras | Color inspection camera | `product-library/transparent/gy-v240-color.png` | `product-library/transparent/gy-v240-color.png` | wired-live-replaced-no-side-io |
+| GY-V280 AI | area-scan-cameras | AI vision sensor | `product-library/transparent/gy-v280-ai.png` | `product-library/transparent/gy-v280-ai.png` | regenerated-wired-no-side-io |
+| GY-V320 Mono | area-scan-cameras | Monochrome area scan camera | `product-library/transparent/gy-v320-mono.png` | `product-library/transparent/gy-v320-mono.png` | wired-live-replaced-no-side-io |
+| GY-V380 Pro | area-scan-cameras | High-speed smart camera | `product-library/transparent/gy-v380-pro.png` | `product-library/transparent/gy-v380-pro.png` | regenerated-wired-no-side-io |
+| GY-V500 HR | area-scan-cameras | High-resolution area camera | `product-library/transparent/gy-v500-hr.png` | `product-library/transparent/gy-v500-hr.png` | wired-live-replaced-no-side-io |
+| GY-V640 HS | area-scan-cameras | High-speed area scan camera | `product-library/transparent/gy-v640-hs.png` | `product-library/transparent/gy-v640-hs.png` | wired-live-replaced-no-side-io |
 | GY-OPT25 | area-scan-cameras | Telecentric optics module | `product-library/transparent/gy-opt25.png` | `product-library/transparent/gy-opt25.png` | wired-live |
-| GY-V900 Pro | area-scan-cameras | Smart area-scan camera | `product-library/transparent/gy-v900-pro.png` | `product-library/transparent/gy-v900-pro.png` | wired-live |
+| GY-V900 Pro | area-scan-cameras | Smart area-scan camera | `product-library/transparent/gy-v900-pro.png` | `product-library/transparent/gy-v900-pro.png` | wired-live-replaced-no-side-io |
 | GY-VC8 | smart-vision-sensors | Vision controller | `product-library/transparent/gy-vc8.png` | `product-library/transparent/gy-vc8.png` | wired-live |
 | GY-V3D90 | smart-vision-sensors | 3D profile camera | `product-library/transparent/gy-v3d90.png` | `product-library/transparent/gy-v3d90.png` | wired-live |
 | GY-V3D150 | smart-vision-sensors | Wide-range 3D profile sensor | `product-library/transparent/gy-v3d150.png` | `product-library/transparent/gy-v3d150.png` | wired-live |
@@ -95,7 +95,7 @@ Product count: **93**
 | GY-LC4 | smart-vision-sensors | Four-channel strobe controller | `product-library/transparent/gy-lc4.png` | `product-library/transparent/gy-lc4.png` | wired-live |
 | GY-VFG4 | smart-vision-sensors | Industrial frame grabber | `product-library/transparent/gy-vfg4.png` | `product-library/transparent/gy-vfg4.png` | wired-live |
 | GY-VRG200 | smart-vision-sensors | Robot guidance 3D module | `product-library/transparent/gy-vrg200.png` | `product-library/transparent/gy-vrg200.png` | wired-live |
-| GY-V3D900 | smart-vision-sensors | Industrial 3D vision camera | `product-library/transparent/gy-v3d900.png` | `product-library/transparent/gy-v3d900.png` | wired-live |
+| GY-V3D900 | smart-vision-sensors | Industrial 3D vision camera | `product-library/transparent/gy-v3d900.png` | `product-library/transparent/gy-v3d900.png` | wired-live-replaced-no-side-io |
 | GY-CR120 | code-reading-cameras | Compact fixed code reader | `product-library/transparent/gy-cr120.png` | `product-library/transparent/gy-cr120.png` | wired-live |
 | GY-CR390 | code-reading-cameras | Fixed code reader camera | `product-library/transparent/gy-cr390.png` | `product-library/transparent/gy-cr390.png` | wired-live |
 | GY-CR520 DPM | code-reading-cameras | DPM fixed code reader | `product-library/transparent/gy-cr520-dpm.png` | `product-library/transparent/gy-cr520-dpm.png` | wired-live |
@@ -104,7 +104,7 @@ Product count: **93**
 | GY-CV100 | code-reading-cameras | Barcode verifier | `product-library/transparent/gy-cv100.png` | `product-library/transparent/gy-cv100.png` | wired-live |
 | GY-CV220 Inline | code-reading-cameras | Inline barcode verifier | `product-library/transparent/gy-cv220-inline.png` | `product-library/transparent/gy-cv220-inline.png` | wired-live |
 | GY-RT800 | code-reading-cameras | Multi-camera reader module | `product-library/transparent/gy-rt800.png` | `product-library/transparent/gy-rt800.png` | wired-live |
-| GY-CR900 Matrix | code-reading-cameras | Fixed industrial code reader | `product-library/transparent/gy-cr900-matrix.png` | `product-library/transparent/gy-cr900-matrix.png` | wired-live |
+| GY-CR900 Matrix | code-reading-cameras | Fixed industrial code reader | `product-library/transparent/gy-cr900-matrix.png` | `product-library/transparent/gy-cr900-matrix.png` | wired-live-replaced-no-side-io |
 | GY-LR70 | vision-lighting | White ring light | `product-library/transparent/gy-lr70.png` | `product-library/transparent/gy-lr70.png` | wired-live |
 | GY-LB220 | vision-lighting | White bar light | `product-library/transparent/gy-lb220.png` | `product-library/transparent/gy-lb220.png` | wired-live |
 | GY-LDome120 | vision-lighting | Dome light | `product-library/transparent/gy-ldome120.png` | `product-library/transparent/gy-ldome120.png` | wired-live |
