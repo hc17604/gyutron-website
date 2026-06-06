@@ -2,6 +2,7 @@
 
 > Consolidated handoff for the agent/engineer taking over. **This supersedes the older, partly-stale rules in `AGENTS.md` where they conflict** (see §10). Last updated 2026-06-06. Current live HEAD: use `git rev-parse origin/main` after `git fetch`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
+> 🏗️ **2026-06-06:** an **additive engineering foundation** was added — repo-root **`docs/`** (9 guides) + `astro/src/{config,types,data}` + `astro/src/lib/{api,forms,crm,cms,agent,logger}` (all **mock/placeholder**) + `astro/.env.example`. It is **mostly NOT wired into pages yet — adopt incrementally.** See **§5b** and `docs/`.
 
 ---
 
@@ -56,6 +57,28 @@
 - **Pages**: index, [category], automated-vision-inspection, contact-sales — each × en/de/ja.
 
 - **2026-06-04 support legal hero images:** Privacy Policy and Terms and Conditions no longer use blank/dark-only heroes. They now use dedicated single-purpose generated assets `support-privacy-policy-hero.png` and `support-terms-conditions-hero.png` in both `astro/public/` and `public/`, wired across en/de/ja page files. Keep them text-free (no baked-in readable copy) and do not reuse them for product/menu/commerce imagery.
+
+## 5b. Engineering foundation (scaffold) — added 2026-06-06
+A maintainable foundation was added **additively** (new files; nothing existing rewritten **except** `Layout.astro` now imports `SITE_URL` from `config/site.ts`, byte-identical output). It is **mostly NOT wired into pages yet — adopt incrementally.** Full guides in repo-root **`docs/`** (ARCHITECTURE / ROUTES / COMPONENTS / I18N / SEO / CONTENT_GUIDE / DEPLOYMENT / FUTURE_INTEGRATIONS / TROUBLESHOOTING).
+
+- **Scope (hard):** brand site **gyutron.com only**; shop.gyutron.com excluded. **No real backend is connected** — CMS / CRM / Agent / database / e-commerce payment are **mock / placeholder / TODO** (no real services, secrets, or DB).
+- **`astro/src/config/`** — `site` (`SITE_URL`/`SITE_NAME` — the single source `Layout.astro` now imports), `seo` (defaults + Organization JSON-LD), `i18n` (RE-EXPORTS `src/i18n` — single source, NOT a duplicate), `routes`, `integrations` (provider switches; default mock/local).
+- **`astro/src/types/`** — shared TS types (site/product/solution/support/inquiry/locale/api/agent). **No order/payment/cart/inventory types** by design.
+- **`astro/src/data/`** — `navigation`, `company`, `faq`, `solutions`, `support`, `locales` + a typed `products.ts` accessor over the per-locale `products.{en,de,ja}.js` (does NOT merge them). They reference i18n keys.
+- **`astro/src/lib/`** — mock adapters behind business functions: `forms` (`submitContactForm` wraps the existing `/api/contact`), `crm`, `cms`, `agent`, `logger`, `api`. Pattern: page → business fn → adapter (chosen by `config/integrations.ts`). Pages must never call a third-party SDK directly.
+- **`astro/src/components/{common,seo,forms}/`** — new presentational components (`SectionTitle`, `CtaSection`, `SeoHead` = upgraded head adding Twitter Card + `og:image` + JSON-LD, `InquiryForm` placeholder). `{layout,navigation,language}/README.md` mark the target grouping; existing `Header`/`Footer`/`LangSwitch` are NOT moved.
+- **`astro/.env.example`** — `PUBLIC_SITE_*` + CRM/CMS/ANALYTICS/AGENT providers (mock). **No payment vars.** Real worker secrets (`RESEND_API_KEY`, `CONTACT_FROM_EMAIL`) stay in Cloudflare.
+
+**Run / build / verify**
+- `cd astro && npm install` (deps = `astro` only).
+- `npm run build` — builds the site; a missing i18n key throws (the gate). Run after every change.
+- **No `lint` / `typecheck` scripts exist.** `npm run check` (astro check) needs `@astrojs/check`+`typescript` — NOT installed; don't add it casually. To typecheck the scaffold TS: write a temp tsconfig extending `astro/tsconfigs/strict` that includes `src/{config,types,lib,data}` and run the local `node_modules/.bin/tsc --noEmit -p <it>` (exit 0 = clean), then delete it.
+
+**Dev principles (apply on every wiring step)**
+Small steps · build-verify each step · keep it rollback-friendly · don't change existing page URLs · no heavy deps · stay Astro (no Next.js) · keep all future integrations mock/placeholder until truly needed · don't over-engineer (§11).
+
+**Next steps (incremental adoption, low→higher touch)**
+1. ✅ **Footer nav** now reads `data/navigation.ts` `FOOTER_NAV` (done 2026-06-06 — `Footer.astro` maps the link columns; build output verified byte-identical, so no `public/` re-render). 2. **Header mega-menu → `data/navigation.ts` `MAIN_NAV`** (next; bigger — the mega-menu is large and the submenu groups come from the product catalog). 3. Adopt `seo/SeoHead.astro` in `Layout.astro` (adds Twitter/og:image/JSON-LD; diff `astro/dist` to confirm the only changes are the new tags). 4. i18n residual cleanup. 5. Data-drive content gradually — Products (already data) · Support/FAQ (`data/faq.ts`) · Solutions. Also: add `@astrojs/sitemap` (root `sitemap.xml` is a stale hand-written file, not Astro-generated); unify robots host (`gyutron.com` vs canonical `www.gyutron.com`).
 
 ## 6. HERO — `HeroSlider.astro` + `src/data/heroSlides.ts` + `public/hero-slider.css`
 The most-iterated piece. **3 DISTINCT layouts** (field `layout` in `heroSlides.ts`), not one template. **No colored bars** (removed — old AGENTS.md line 14 is stale).
