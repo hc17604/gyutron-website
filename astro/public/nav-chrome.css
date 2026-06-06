@@ -4,6 +4,12 @@
   transition: none !important;
 }
 
+/* The submenu is always JS-shown (Header.astro sets .is-open on a group), so the menu-level
+   overview montage is vestigial — hide it so it can never flash through on open/close. */
+.mega-menu::after {
+  display: none !important;
+}
+
 body.nav-is-navigating .mega-menu,
 body.nav-is-navigating .submenu {
   opacity: 0 !important;
