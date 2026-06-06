@@ -61,6 +61,7 @@ const canonical = `${SITE}${localizeUrl(locale, path)}`;
     <Header locale={locale} path={path} />
     <slot />
     <slot name="footer" />
+    <script src="/nav-search.js" is:inline></script>
     <script src="/mobile-navigation.js" is:inline></script>
   </body>
 </html>

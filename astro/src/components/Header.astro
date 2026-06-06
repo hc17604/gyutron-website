@@ -3,6 +3,13 @@ import { t, localizeUrl, type Locale } from '../i18n';
 import LangSwitch from './LangSwitch.astro';
 interface Props { locale: Locale; path: string; }
 const { locale, path } = Astro.props;
+// Localized chrome strings for the nav search (UI chrome, not page content).
+const SEARCH_I18N: Record<Locale, { label: string; placeholder: string; close: string; noresults: string }> = {
+  en: { label: 'Search', placeholder: 'Search products, solutions, support…', close: 'Close search', noresults: 'No results for' },
+  de: { label: 'Suche', placeholder: 'Produkte, Lösungen, Support suchen…', close: 'Suche schließen', noresults: 'Keine Ergebnisse für' },
+  ja: { label: '検索', placeholder: '製品・ソリューション・サポートを検索…', close: '検索を閉じる', noresults: '該当する結果がありません:' },
+};
+const si = SEARCH_I18N[locale];
 ---
     <div class="top-strip">
         <div class="container">
@@ -323,6 +330,19 @@ const { locale, path } = Astro.props;
                 </li>
             </ul>
             <div class="header-actions">
+                <div class="nav-search" data-locale={locale} data-noresults={si.noresults}>
+                    <button type="button" class="nav-search-toggle" aria-label={si.label} aria-expanded="false" aria-haspopup="true">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    </button>
+                    <div class="nav-search-dropdown" hidden>
+                        <div class="nav-search-bar">
+                            <i class="fa-solid fa-magnifying-glass nav-search-bar-icon" aria-hidden="true"></i>
+                            <input type="search" class="nav-search-input" placeholder={si.placeholder} aria-label={si.label} autocomplete="off" enterkeyhint="search" />
+                            <button type="button" class="nav-search-close" aria-label={si.close}><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="nav-search-results" role="listbox" aria-label={si.label}></div>
+                    </div>
+                </div>
                 <LangSwitch variant="desktop" locale={locale} path={path} />
                 <a class="button button-primary" href={localizeUrl(locale, "/contact-sales.html")}><span class="cta-label-full">{t(locale, "main.256")}</span><span class="cta-label-short">{t(locale, "main.257")}</span> <i class="fa-solid fa-arrow-right"></i></a>
             </div>

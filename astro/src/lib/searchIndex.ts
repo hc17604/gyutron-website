@@ -1,0 +1,58 @@
+// Build-time site search index (per locale). Consumed by the `search-index.json` endpoints,
+// fetched once on the client by nav-search.js. Static — no backend.
+// Records: { t: title, u: url (localized), k: kind/type label, d: extra searchable text }.
+import { localizeUrl, type Locale } from '../i18n';
+import { GYUTRON_PRODUCTS as EN } from '../data/products.en.js';
+import { GYUTRON_PRODUCTS as DE } from '../data/products.de.js';
+import { GYUTRON_PRODUCTS as JA } from '../data/products.ja.js';
+
+export type SearchRecord = { t: string; u: string; k: string; d: string };
+
+const DATA: Record<Locale, any> = { en: EN, de: DE, ja: JA };
+const CAT_LABEL: Record<Locale, string> = { en: 'Product category', de: 'Produktkategorie', ja: '製品カテゴリ' };
+
+// Curated non-product pages (homepage sections are reachable from the home page; legal pages omitted
+// as low search value). URLs are localized in buildSearchIndex().
+const PAGES: Record<Locale, SearchRecord[]> = {
+  en: [
+    { t: 'Automated Vision Inspection', u: '/automated-vision-inspection.html', k: 'Solution', d: 'Turnkey automated optical inspection cells and machine-vision integration for production lines.' },
+    { t: 'Contact Sales', u: '/contact-sales.html', k: 'Contact', d: 'Talk to the GYUTRON team about products, pilots, integration, and quotes.' },
+    { t: 'Support', u: '/support.html', k: 'Support', d: 'Documentation, warranty, shipping and delivery, and technical support.' },
+    { t: 'FAQ', u: '/support/faq.html', k: 'Support', d: 'Frequently asked questions about products, ordering, and support.' },
+    { t: 'Warranty', u: '/support/warranty.html', k: 'Support', d: 'Product warranty terms and coverage.' },
+    { t: 'Shipping & Delivery', u: '/support/shipping-delivery.html', k: 'Support', d: 'Shipping options, lead times, and delivery information.' },
+  ],
+  de: [
+    { t: 'Automatisierte Bildverarbeitungs-Inspektion', u: '/automated-vision-inspection.html', k: 'Lösung', d: 'Schlüsselfertige automatisierte optische Prüfzellen und Machine-Vision-Integration für Produktionslinien.' },
+    { t: 'Vertrieb kontaktieren', u: '/contact-sales.html', k: 'Kontakt', d: 'Sprechen Sie mit dem GYUTRON-Team über Produkte, Pilotprojekte, Integration und Angebote.' },
+    { t: 'Support', u: '/support.html', k: 'Support', d: 'Dokumentation, Garantie, Versand und Lieferung sowie technischer Support.' },
+    { t: 'FAQ', u: '/support/faq.html', k: 'Support', d: 'Häufig gestellte Fragen zu Produkten, Bestellung und Support.' },
+    { t: 'Garantie', u: '/support/warranty.html', k: 'Support', d: 'Garantiebedingungen und Abdeckung der Produkte.' },
+    { t: 'Versand & Lieferung', u: '/support/shipping-delivery.html', k: 'Support', d: 'Versandoptionen, Lieferzeiten und Lieferinformationen.' },
+  ],
+  ja: [
+    { t: '自動外観検査', u: '/automated-vision-inspection.html', k: 'ソリューション', d: '生産ライン向けのターンキー自動光学検査セルとマシンビジョン統合。' },
+    { t: '営業へのお問い合わせ', u: '/contact-sales.html', k: 'お問い合わせ', d: '製品・実証・統合・お見積もりについて GYUTRON チームにご相談ください。' },
+    { t: 'サポート', u: '/support.html', k: 'サポート', d: 'ドキュメント、保証、配送・お届け、技術サポート。' },
+    { t: 'よくある質問', u: '/support/faq.html', k: 'サポート', d: '製品・ご注文・サポートに関するよくある質問。' },
+    { t: '保証', u: '/support/warranty.html', k: 'サポート', d: '製品の保証条件と適用範囲。' },
+    { t: '配送・お届け', u: '/support/shipping-delivery.html', k: 'サポート', d: '配送オプション、リードタイム、お届け情報。' },
+  ],
+};
+
+export function buildSearchIndex(locale: Locale): SearchRecord[] {
+  const data = DATA[locale];
+  const out: SearchRecord[] = [];
+  for (const p of PAGES[locale]) out.push({ ...p, u: localizeUrl(locale, p.u) });
+  for (const slug of Object.keys(data)) {
+    const cat = data[slug];
+    if (!cat || !Array.isArray(cat.products) || cat.products.length === 0) continue; // skip redirect/empty categories
+    const url = localizeUrl(locale, `/${slug}.html`);
+    out.push({ t: cat.title, u: url, k: CAT_LABEL[locale], d: cat.intro || cat.panelText || '' });
+    for (const prod of cat.products) {
+      const kw = [prod.summary, ...(prod.tags || []), ...Object.values(prod.specs || {})].filter(Boolean).join(' ');
+      out.push({ t: prod.name, u: url, k: prod.type || CAT_LABEL[locale], d: kw });
+    }
+  }
+  return out;
+}

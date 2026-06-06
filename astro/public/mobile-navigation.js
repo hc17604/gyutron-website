@@ -138,6 +138,12 @@
         panel.className = "mobile-nav-panel";
         panel.id = "mobile-navigation-panel";
         panel.setAttribute("aria-label", "Mobile navigation");
+        const navSearchEl = document.querySelector(".nav-search");
+        const searchLocale = (navSearchEl && navSearchEl.getAttribute("data-locale")) || (document.documentElement.lang || "en").slice(0, 2);
+        const escA = (s) => (s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+        const searchPh = (navSearchEl && navSearchEl.querySelector(".nav-search-input") && navSearchEl.querySelector(".nav-search-input").getAttribute("placeholder")) || "Search";
+        const searchLabel = (navSearchEl && navSearchEl.querySelector(".nav-search-toggle") && navSearchEl.querySelector(".nav-search-toggle").getAttribute("aria-label")) || "Search";
+        const searchNores = (navSearchEl && navSearchEl.getAttribute("data-noresults")) || "No results for";
         panel.innerHTML = `
             <div class="mobile-nav-inner">
                 <div class="mobile-nav-head">
@@ -145,6 +151,11 @@
                     <div class="mobile-nav-title">Menu</div>
                     <button class="mobile-nav-close" type="button" aria-label="Close menu">X</button>
                 </div>
+                <div class="mobile-nav-search">
+                    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                    <input type="search" class="mobile-nav-search-input" placeholder="${escA(searchPh)}" aria-label="${escA(searchLabel)}" autocomplete="off" enterkeyhint="search" />
+                </div>
+                <div class="mobile-nav-results" hidden></div>
                 <ul class="mobile-nav-list"></ul>
             </div>
         `;
@@ -159,6 +170,11 @@
         const closeMenu = () => {
             document.body.classList.remove("mobile-nav-open");
             toggle.setAttribute("aria-expanded", "false");
+            const si = panel.querySelector(".mobile-nav-search-input");
+            const sr = panel.querySelector(".mobile-nav-results");
+            if (si) si.value = "";
+            if (sr) { sr.hidden = true; sr.innerHTML = ""; }
+            list.hidden = false;
             stack.splice(1);
             render();
         };
@@ -230,6 +246,22 @@
                 closeMenu();
             }
         });
+
+        const searchInput = panel.querySelector(".mobile-nav-search-input");
+        const searchResults = panel.querySelector(".mobile-nav-results");
+        searchInput.addEventListener("input", async () => {
+            const q = searchInput.value;
+            if (!q.trim()) { searchResults.hidden = true; searchResults.innerHTML = ""; list.hidden = false; return; }
+            if (!window.GyutronSearch) return;
+            const idx = await window.GyutronSearch.getIndex(searchLocale);
+            const hits = window.GyutronSearch.rank(idx, q, 12);
+            list.hidden = true;
+            searchResults.hidden = false;
+            searchResults.innerHTML = hits.length
+                ? hits.map(window.GyutronSearch.hitHtml).join("")
+                : '<div class="mobile-nav-empty">' + escA(searchNores) + ' “' + escA(q.trim()) + '”</div>';
+        });
+        searchResults.addEventListener("click", (e) => { if (e.target.closest("a")) closeMenu(); });
 
         render();
     }
