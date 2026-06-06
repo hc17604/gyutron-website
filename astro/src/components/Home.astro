@@ -310,15 +310,15 @@ const path = '/';
             }
 
             const navItems = Array.from(document.querySelectorAll(".nav-item"));
-            const closeDelay = 520;
             const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
 
+            // Close instantly (zero delay, no hover-intent lingering). Fired only when the pointer truly
+            // leaves the nav-item — whose hover area already includes the mega-menu child — so moving
+            // between the trigger and the menu does NOT close it.
             const closeItem = (item) => {
                 window.clearTimeout(item.closeTimer);
-                item.closeTimer = window.setTimeout(() => {
-                    item.classList.remove("is-open");
-                    item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
-                }, closeDelay);
+                item.classList.remove("is-open");
+                item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
             };
 
             const setActiveGroup = (groups, activeGroup) => {
@@ -360,7 +360,6 @@ const path = '/';
                 item.addEventListener("pointerenter", () => openItem(item, groups));
                 item.addEventListener("pointerleave", () => closeItem(item));
                 menu.addEventListener("pointerenter", () => openItem(item, groups));
-                menu.addEventListener("pointerleave", () => closeItem(item));
                 item.addEventListener("focusin", () => openItem(item, groups));
                 item.addEventListener("focusout", (event) => {
                     if (!item.contains(event.relatedTarget)) {
