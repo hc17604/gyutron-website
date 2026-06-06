@@ -10,6 +10,18 @@
   display: none !important;
 }
 
+/* Seamless nav hover zones: the inter-item flex gap is a dead strip that closes the open
+   mega-menu mid-traverse, so moving between titles flickers. Remove the gap and put that
+   spacing into transparent .nav-item padding so adjacent hover boxes touch edge-to-edge.
+   Padding mirrors the responsive gap (base 8px → 4px/side; 1181–1380px tier 2px → 1px/side)
+   so the visible layout is unchanged. (.nav-item is position:static, so this never moves the
+   absolutely-positioned mega-menu.) */
+.nav { gap: 0 !important; }
+.nav-item { padding-left: 4px; padding-right: 4px; }
+@media (min-width: 1181px) and (max-width: 1380px) {
+  .nav-item { padding-left: 1px; padding-right: 1px; }
+}
+
 body.nav-is-navigating .mega-menu,
 body.nav-is-navigating .submenu {
   opacity: 0 !important;
