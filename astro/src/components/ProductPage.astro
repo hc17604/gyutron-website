@@ -46,10 +46,7 @@ const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];
     </div></nav>
 
     <section class="section"><div class="container">
-      <div class="section-head">
-        <div><span class="eyebrow">{t(locale, 'main.258')}</span><h2>{cat.sectionTitle}</h2></div>
-        <p>{cat.sectionIntro}</p>
-      </div>
+      <h2 class="sr-only">{cat.sectionTitle || cat.title}</h2>
       <div class="product-grid">
         {cat.products.map((product: any) => (
           <article class="product-card">
