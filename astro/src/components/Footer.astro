@@ -2,8 +2,14 @@
 import { t, localizeUrl, type Locale } from '../i18n';
 import PaymentMethods from './PaymentMethods.astro';
 import CompanyAddresses from './CompanyAddresses.astro';
+import { FOOTER_NAV } from '../data/navigation';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
+// Footer link columns are data-driven from FOOTER_NAV (src/data/navigation.ts) — edit links
+// there. Layout unchanged: col 2 stacks Products + Solutions; col 4 keeps the Company links
+// plus the contact/shop links and PaymentMethods. The `{i > 0 && ' '}` keeps the inter-link
+// whitespace byte-identical to the previous hand-written markup (no public/ re-render churn).
+const [products, solutions, support, company] = FOOTER_NAV;
 ---
 <footer class="footer">
   <div class="container">
@@ -14,31 +20,26 @@ const { locale } = Astro.props;
         <CompanyAddresses locale={locale} />
       </div>
       <div>
-        <h4>{t(locale, "main.004")}</h4>
-        <a href={localizeUrl(locale, "/android-pda.html")}>{t(locale, "main.332")}</a>
-        <a href={localizeUrl(locale, "/proximity-sensors.html")}>{t(locale, "main.333")}</a>
-        <a href={localizeUrl(locale, "/area-scan-cameras.html")}>{t(locale, "main.334")}</a>
-        <a href={localizeUrl(locale, "/dimensional-gauges.html")}>{t(locale, "main.419")}</a>
-        <h4 style="margin-top:28px">{t(locale, "main.051")}</h4>
-        <a href={localizeUrl(locale, "/automated-vision-inspection.html")}>{t(locale, "main.055")}</a>
-        <a href={localizeUrl(locale, "/solutions/electronics-manufacturing")}>{t(locale, "main.264")}</a>
-        <a href={localizeUrl(locale, "/solutions/robotics-automation")}>{t(locale, "fnav.robotics")}</a>
+        <h4>{t(locale, products.labelKey!)}</h4>
+        {products.links.map((l, i) => (
+          <Fragment>{i > 0 && ' '}<a href={localizeUrl(locale, l.href!)}>{t(locale, l.labelKey!)}</a></Fragment>
+        ))}
+        <h4 style="margin-top:28px">{t(locale, solutions.labelKey!)}</h4>
+        {solutions.links.map((l, i) => (
+          <Fragment>{i > 0 && ' '}<a href={localizeUrl(locale, l.href!)}>{t(locale, l.labelKey!)}</a></Fragment>
+        ))}
       </div>
       <div>
-        <h4>{t(locale, "fnav.support")}</h4>
-        <a href={localizeUrl(locale, "/support/faq.html")}>{t(locale, "fnav.faq")}</a>
-        <a href={localizeUrl(locale, "/support.html")}>{t(locale, "fnav.contactSupport")}</a>
-        <a href={localizeUrl(locale, "/support/warranty.html")}>{t(locale, "fnav.warranty")}</a>
-        <a href={localizeUrl(locale, "/support/shipping-delivery.html")}>{t(locale, "fnav.shipping")}</a>
-        <a href={localizeUrl(locale, "/privacy-policy.html")}>{t(locale, "fnav.privacy")}</a>
-        <a href={localizeUrl(locale, "/terms-and-conditions.html")}>{t(locale, "fnav.terms")}</a>
+        <h4>{t(locale, support.labelKey!)}</h4>
+        {support.links.map((l, i) => (
+          <Fragment>{i > 0 && ' '}<a href={localizeUrl(locale, l.href!)}>{t(locale, l.labelKey!)}</a></Fragment>
+        ))}
       </div>
       <div>
-        <h4>{t(locale, "main.182")}</h4>
-        <a href={localizeUrl(locale, "/about")}>{t(locale, "main.183")}</a>
-        <a href={localizeUrl(locale, "/certifications")}>{t(locale, "main.462")}</a>
-        <a href={localizeUrl(locale, "/downloads")}>{t(locale, "main.420")}</a>
-        <a href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "fnav.contact")}</a>
+        <h4>{t(locale, company.labelKey!)}</h4>
+        {company.links.map((l, i) => (
+          <Fragment>{i > 0 && ' '}<a href={localizeUrl(locale, l.href!)}>{t(locale, l.labelKey!)}</a></Fragment>
+        ))}
         <a href="mailto:info@gyutron.com">info@gyutron.com</a>
         <a href="https://wa.me/85269509801">WhatsApp: +852 69509801</a>
         <a href="https://shop.gyutron.com">{t(locale, "main.335")}</a>
