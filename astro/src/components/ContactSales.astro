@@ -243,11 +243,19 @@ const structuredData = [
         }
       });
     })();
+  </script>
+
+  <script>
+    // Form logic lives in the forms layer (src/lib/forms/contact.ts) — the page only
+    // collects fields, calls submitContactForm(), and renders the status. Behavior is
+    // unchanged: HTML5 validation, same /api/contact endpoint, same status messages.
+    import { submitContactForm, normalizeContactPayload } from '../lib/forms/contact';
 
     const salesForm = document.getElementById("salesInquiryForm");
     const salesStatus = document.getElementById("salesInquiryStatus");
 
     function setSalesStatus(message, type) {
+      if (!salesStatus) return;
       salesStatus.textContent = message;
       salesStatus.className = `form-status is-visible ${type ? `is-${type}` : ""}`;
     }
@@ -260,35 +268,28 @@ const structuredData = [
       }
 
       const submitButton = salesForm.querySelector('button[type="submit"]');
-      const formData = new FormData(salesForm);
-      const payload = Object.fromEntries(formData.entries());
+      const payload = normalizeContactPayload(new FormData(salesForm));
 
       salesForm.classList.add("is-sending");
-      submitButton.disabled = true;
+      if (submitButton) submitButton.disabled = true;
       setSalesStatus("Sending your inquiry...", "");
 
-      try {
-        const response = await fetch("/api/contact", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
-        const result = await response.json().catch(() => ({}));
+      const result = await submitContactForm(payload);
+      const body = result.ok ? result.data : null;
 
-        if (!response.ok || !result.ok) {
-          throw new Error(result.message || "The inquiry could not be sent right now.");
-        }
-
+      if (result.ok && body && body.ok) {
         salesForm.reset();
-        setSalesStatus(result.message || "Thanks. Your inquiry has been sent to the GYUTRON sales team.", "success");
-      } catch (error) {
-        setSalesStatus(`${error.message} Please email info@gyutron.com or use WhatsApp: +852 69509801.`, "error");
-      } finally {
-        salesForm.classList.remove("is-sending");
-        submitButton.disabled = false;
+        setSalesStatus(body.message || "Thanks. Your inquiry has been sent to the GYUTRON sales team.", "success");
+      } else {
+        const message =
+          (!result.ok && result.error && result.error.message) ||
+          (body && body.message) ||
+          "The inquiry could not be sent right now.";
+        setSalesStatus(`${message} Please email info@gyutron.com or use WhatsApp: +852 69509801.`, "error");
       }
+
+      salesForm.classList.remove("is-sending");
+      if (submitButton) submitButton.disabled = false;
     });
   </script>
 </Layout>

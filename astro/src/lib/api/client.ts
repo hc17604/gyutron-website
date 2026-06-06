@@ -15,9 +15,20 @@ export async function apiFetch<T>(url: string, opts: ApiRequestOptions = {}): Pr
       signal: opts.signal,
     });
     const text = await res.text();
-    const data = (text ? JSON.parse(text) : undefined) as T;
-    if (!res.ok) return err('http_error', `Request failed (${res.status})`);
-    return ok(data);
+    let data: unknown;
+    try {
+      data = text ? JSON.parse(text) : undefined;
+    } catch {
+      data = undefined;
+    }
+    if (!res.ok) {
+      const msg =
+        data && typeof data === 'object' && typeof (data as { message?: unknown }).message === 'string'
+          ? (data as { message: string }).message
+          : `Request failed (${res.status})`;
+      return err('http_error', msg);
+    }
+    return ok(data as T);
   } catch (e) {
     return err('network_error', e instanceof Error ? e.message : 'Network error');
   }
