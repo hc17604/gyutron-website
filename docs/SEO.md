@@ -12,9 +12,9 @@
 
 | Gap | Fix |
 |---|---|
-| No Twitter Card tags | add `twitter:card`/`title`/`description`/`image` (see `seo/SeoHead.astro`) |
-| No `og:image` | add a default share image in `src/config/seo.ts` (`DEFAULT_OG_IMAGE`) |
-| No structured data (JSON-LD) | emit `Organization` + per-page `Product`/`BreadcrumbList` |
+| ~~No Twitter Card~~ | ✅ done — `SeoHead.astro` emits `twitter:card`/`title`/`description`/`image` |
+| ~~No `og:image`~~ | ✅ done — `DEFAULT_OG_IMAGE` in `src/config/seo.ts`, emitted by `SeoHead` |
+| Structured data (JSON-LD) | ✅ `Organization` site-wide via `SeoHead`; per-page `Product`/`BreadcrumbList` still TODO |
 | `sitemap.xml` is stale | only a hand-written `sitemap.xml` exists at repo root; Astro does **not** generate one. Adopt `@astrojs/sitemap`. |
 | robots host mismatch | `public/robots.txt` points at `gyutron.com` but canonical is `www.gyutron.com` — unify |
 
@@ -22,10 +22,11 @@
 
 - `src/config/seo.ts` — defaults: title template, default description, `DEFAULT_OG_IMAGE`,
   `TWITTER_HANDLE`, and the `Organization` JSON-LD object (for future adoption).
-- `src/components/seo/SeoHead.astro` — the **upgraded** `<head>` block (current meta **plus** Twitter
-  Card, `og:image`, JSON-LD). It is intentionally **not yet wired into `Layout.astro`**, so this pass
-  does not change any rendered HTML. To adopt: replace the inline `<head>` meta in `Layout.astro` with
-  `<SeoHead .../>`, build, and diff `astro/dist` to confirm the only changes are the new tags.
+- `src/components/seo/SeoHead.astro` — the unified `<head>` SEO block, **now rendered by
+  `Layout.astro`** (adopted 2026-06-06). Emits title / description / canonical / hreflang / OG **plus**
+  `robots`, `og:image`, Twitter Card, and Organization JSON-LD. Every field is overridable per page
+  (`title`/`description`/`canonical`/`locale`/`ogTitle`/`ogDescription`/`ogImage`/`ogType`/
+  `twitterCard`/`noindex`/`robots`/`structuredData`). URL helpers live in `src/utils/seo.ts`.
 
 ## Per-page title/description
 

@@ -1,45 +1,78 @@
 ---
 /**
- * Upgraded SEO <head> block: everything Layout.astro emits today PLUS Twitter Card,
- * og:image, and Organization JSON-LD. NOT yet wired into Layout (adopting it changes the
- * rendered <head>, intentionally deferred). To adopt: replace Layout's inline meta with
- * <SeoHead .../> and diff astro/dist to confirm the only additions are the new tags.
- * See docs/SEO.md.
+ * Unified SEO <head> block — the single source for per-page SEO meta. Adopted by
+ * `Layout.astro`. With only the required props it emits the same title/description/
+ * canonical/hreflang/OG tags the layout used before, PLUS og:image, Twitter Card, a robots
+ * directive, and Organization JSON-LD. Every field is overridable per page. See docs/SEO.md.
  */
-import { htmlLang, ogLocale, localizeUrl, locales, type Locale } from '../../i18n';
-import { SITE_URL, SITE_NAME } from '../../config/site';
-import { DEFAULT_OG_IMAGE, TWITTER_HANDLE, ORGANIZATION } from '../../config/seo';
+import { htmlLang, ogLocale, locales, type Locale } from '../../i18n';
+import { SITE_NAME } from '../../config/site';
+import {
+  DEFAULT_OG_IMAGE,
+  DEFAULT_OG_TYPE,
+  TWITTER_CARD,
+  TWITTER_HANDLE,
+  DEFAULT_ROBOTS,
+  ORGANIZATION,
+} from '../../config/seo';
+import { absoluteUrl, canonicalUrl } from '../../utils/seo';
 
 interface Props {
   locale: Locale;
+  /** Canonical page path, no locale prefix, e.g. '/barcode-scanners.html'. */
   path: string;
   title: string;
   description: string;
+  /** Override the computed canonical URL. */
+  canonical?: string;
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
+  ogType?: string;
+  twitterCard?: string;
+  /** When true, emits robots "noindex, follow". */
+  noindex?: boolean;
+  /** Explicit robots directive (ignored when noindex is true). */
+  robots?: string;
+  /** Replace the default Organization JSON-LD (object or array). Pass null to omit. */
+  structuredData?: unknown;
 }
-const { locale, path, title, description, ogTitle, ogDescription, ogImage = DEFAULT_OG_IMAGE } = Astro.props;
-const canonical = `${SITE_URL}${localizeUrl(locale, path)}`;
-const jsonLd = JSON.stringify(ORGANIZATION);
+const {
+  locale,
+  path,
+  title,
+  description,
+  canonical = canonicalUrl(locale, path),
+  ogTitle,
+  ogDescription,
+  ogImage = DEFAULT_OG_IMAGE,
+  ogType = DEFAULT_OG_TYPE,
+  twitterCard = TWITTER_CARD,
+  noindex = false,
+  robots,
+  structuredData = ORGANIZATION,
+} = Astro.props;
+const robotsContent = noindex ? 'noindex, follow' : (robots ?? DEFAULT_ROBOTS);
+const jsonLd = structuredData ? JSON.stringify(structuredData) : '';
 ---
 <title>{title}</title>
 <meta name="description" content={description} />
+<meta name="robots" content={robotsContent} />
 <link rel="canonical" href={canonical} />
 {locales.map((l) => (
-  <link rel="alternate" hreflang={htmlLang[l]} href={`${SITE_URL}${localizeUrl(l, path)}`} />
+  <link rel="alternate" hreflang={htmlLang[l]} href={canonicalUrl(l, path)} />
 ))}
-<link rel="alternate" hreflang="x-default" href={`${SITE_URL}${path}`} />
-<meta property="og:type" content="website" />
+<link rel="alternate" hreflang="x-default" href={absoluteUrl(path)} />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={canonical} />
 <meta property="og:locale" content={ogLocale[locale]} />
 <meta property="og:title" content={ogTitle ?? title} />
 <meta property="og:description" content={ogDescription ?? description} />
 <meta property="og:site_name" content={SITE_NAME} />
 <meta property="og:image" content={ogImage} />
-<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:card" content={twitterCard} />
 {TWITTER_HANDLE !== '' && <meta name="twitter:site" content={TWITTER_HANDLE} />}
 <meta name="twitter:title" content={ogTitle ?? title} />
 <meta name="twitter:description" content={ogDescription ?? description} />
 <meta name="twitter:image" content={ogImage} />
-<script type="application/ld+json" set:html={jsonLd} />
+{jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
