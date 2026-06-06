@@ -2049,12 +2049,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-cr120.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr120-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr120/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-left-facing-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "left-facing-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/code-reading-left-facing-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked against Code Reading & Verification left-facing family orientation. The optical face sits on the left/front side and the body recedes right/back; visible side surfaces are complete housing/heat fins only."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
@@ -2082,12 +2086,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-cr390.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr390-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr390/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-left-facing-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "left-facing-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/code-reading-left-facing-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked against Code Reading & Verification left-facing family orientation. The optical face sits on the left/front side and the body recedes right/back; visible side surfaces are complete housing/heat fins only."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
@@ -2115,12 +2123,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-cr520-dpm.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr520-dpm-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr520-dpm/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-left-facing-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "left-facing-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/code-reading-left-facing-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked against Code Reading & Verification left-facing family orientation. The optical face sits on the left/front side and the body recedes right/back; visible side surfaces are complete housing/heat fins only."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
@@ -2148,12 +2160,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-cr720-conveyor.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr720-conveyor-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr720-conveyor/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-left-facing-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "left-facing-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/code-reading-left-facing-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked against Code Reading & Verification left-facing family orientation. The optical face sits on the left/front side and the body recedes right/back; visible side surfaces are complete housing/heat fins only."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
@@ -2181,12 +2197,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-s300-dpm.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-s300-dpm-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-s300-dpm/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-left-facing-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by code-reading-cameras contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "left-facing-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/code-reading-left-facing-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked against Code Reading & Verification left-facing family orientation. The optical face sits on the left/front side and the body recedes right/back; visible side surfaces are complete housing/heat fins only."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
@@ -2214,12 +2234,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-cv100.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cv100-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cv100/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-left-facing-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Regenerated after user QA; prior unrealistic generated asset archived under asset-workbench/product-images/rejected. New render uses a plausible desktop verifier form, was harmonized to #4b2e83, and was contact-sheet checked against code-reader family orientation."
+        "direction": "left-facing-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/code-reading-left-facing-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked against Code Reading & Verification left-facing family orientation. The optical face sits on the left/front side and the body recedes right/back; visible side surfaces are complete housing/heat fins only."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
@@ -2247,12 +2271,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-cv220-inline.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cv220-inline-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cv220-inline/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-left-facing-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Regenerated after user QA; prior unrealistic generated asset archived under asset-workbench/product-images/rejected. New render uses a plausible rail-mounted inline verifier form, was harmonized to #4b2e83, and was contact-sheet checked against code-reader family orientation."
+        "direction": "left-facing-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/code-reading-left-facing-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked against Code Reading & Verification left-facing family orientation. The optical face sits on the left/front side and the body recedes right/back; visible side surfaces are complete housing/heat fins only."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
@@ -2280,12 +2308,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-rt800.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-rt800-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-rt800/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-left-facing-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Regenerated after user QA; prior unrealistic gantry-like generated asset archived under asset-workbench/product-images/rejected. New render uses a plausible compact multi-window fixed code reader form, was harmonized to #4b2e83, and was contact-sheet checked against code-reader family orientation."
+        "direction": "left-facing-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/code-reading-left-facing-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked against Code Reading & Verification left-facing family orientation. The optical face sits on the left/front side and the body recedes right/back; visible side surfaces are complete housing/heat fins only."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",
@@ -2313,12 +2345,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-cr900-matrix.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-cr900-matrix-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-cr900-matrix/",
-      "status": "wired-live-replaced-no-side-io",
+      "status": "wired-live-regenerated-left-facing-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "checked-front-right-no-side-io",
-        "notes": "Regenerated as a complete product render from the original visual template. Visible side face has clean housing/heat-fin geometry only; side I/O is not shown."
+        "direction": "left-facing-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/code-reading-left-facing-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked against Code Reading & Verification left-facing family orientation. The optical face sits on the left/front side and the body recedes right/back; visible side surfaces are complete housing/heat fins only."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "fixed-code-readers-verifiers",

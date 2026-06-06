@@ -96,15 +96,15 @@ Product count: **93**
 | GY-VFG4 | smart-vision-sensors | Industrial frame grabber | `product-library/transparent/gy-vfg4.png` | `product-library/transparent/gy-vfg4.png` | wired-live |
 | GY-VRG200 | smart-vision-sensors | Robot guidance 3D module | `product-library/transparent/gy-vrg200.png` | `product-library/transparent/gy-vrg200.png` | regenerated-wired-no-side-io |
 | GY-V3D900 | smart-vision-sensors | Industrial 3D vision camera | `product-library/transparent/gy-v3d900.png` | `product-library/transparent/gy-v3d900.png` | wired-live-replaced-no-side-io |
-| GY-CR120 | code-reading-cameras | Compact fixed code reader | `product-library/transparent/gy-cr120.png` | `product-library/transparent/gy-cr120.png` | wired-live |
-| GY-CR390 | code-reading-cameras | Fixed code reader camera | `product-library/transparent/gy-cr390.png` | `product-library/transparent/gy-cr390.png` | wired-live |
-| GY-CR520 DPM | code-reading-cameras | DPM fixed code reader | `product-library/transparent/gy-cr520-dpm.png` | `product-library/transparent/gy-cr520-dpm.png` | wired-live |
-| GY-CR720 Conveyor | code-reading-cameras | High-speed code reader | `product-library/transparent/gy-cr720-conveyor.png` | `product-library/transparent/gy-cr720-conveyor.png` | wired-live |
-| GY-S300 DPM | code-reading-cameras | DPM code scanner | `product-library/transparent/gy-s300-dpm.png` | `product-library/transparent/gy-s300-dpm.png` | wired-live |
-| GY-CV100 | code-reading-cameras | Barcode verifier | `product-library/transparent/gy-cv100.png` | `product-library/transparent/gy-cv100.png` | wired-live |
-| GY-CV220 Inline | code-reading-cameras | Inline barcode verifier | `product-library/transparent/gy-cv220-inline.png` | `product-library/transparent/gy-cv220-inline.png` | wired-live |
-| GY-RT800 | code-reading-cameras | Multi-camera reader module | `product-library/transparent/gy-rt800.png` | `product-library/transparent/gy-rt800.png` | wired-live |
-| GY-CR900 Matrix | code-reading-cameras | Fixed industrial code reader | `product-library/transparent/gy-cr900-matrix.png` | `product-library/transparent/gy-cr900-matrix.png` | wired-live-replaced-no-side-io |
+| GY-CR120 | code-reading-cameras | Compact fixed code reader | `product-library/transparent/gy-cr120.png` | `product-library/transparent/gy-cr120.png` | wired-live-regenerated-left-facing-no-side-io |
+| GY-CR390 | code-reading-cameras | Fixed code reader camera | `product-library/transparent/gy-cr390.png` | `product-library/transparent/gy-cr390.png` | wired-live-regenerated-left-facing-no-side-io |
+| GY-CR520 DPM | code-reading-cameras | DPM fixed code reader | `product-library/transparent/gy-cr520-dpm.png` | `product-library/transparent/gy-cr520-dpm.png` | wired-live-regenerated-left-facing-no-side-io |
+| GY-CR720 Conveyor | code-reading-cameras | High-speed code reader | `product-library/transparent/gy-cr720-conveyor.png` | `product-library/transparent/gy-cr720-conveyor.png` | wired-live-regenerated-left-facing-no-side-io |
+| GY-S300 DPM | code-reading-cameras | DPM code scanner | `product-library/transparent/gy-s300-dpm.png` | `product-library/transparent/gy-s300-dpm.png` | wired-live-regenerated-left-facing-no-side-io |
+| GY-CV100 | code-reading-cameras | Barcode verifier | `product-library/transparent/gy-cv100.png` | `product-library/transparent/gy-cv100.png` | wired-live-regenerated-left-facing-no-side-io |
+| GY-CV220 Inline | code-reading-cameras | Inline barcode verifier | `product-library/transparent/gy-cv220-inline.png` | `product-library/transparent/gy-cv220-inline.png` | wired-live-regenerated-left-facing-no-side-io |
+| GY-RT800 | code-reading-cameras | Multi-camera reader module | `product-library/transparent/gy-rt800.png` | `product-library/transparent/gy-rt800.png` | wired-live-regenerated-left-facing-no-side-io |
+| GY-CR900 Matrix | code-reading-cameras | Fixed industrial code reader | `product-library/transparent/gy-cr900-matrix.png` | `product-library/transparent/gy-cr900-matrix.png` | wired-live-regenerated-left-facing-no-side-io |
 | GY-LR70 | vision-lighting | White ring light | `product-library/transparent/gy-lr70.png` | `product-library/transparent/gy-lr70.png` | wired-live |
 | GY-LB220 | vision-lighting | White bar light | `product-library/transparent/gy-lb220.png` | `product-library/transparent/gy-lb220.png` | wired-live |
 | GY-LDome120 | vision-lighting | Dome light | `product-library/transparent/gy-ldome120.png` | `product-library/transparent/gy-ldome120.png` | wired-live |
