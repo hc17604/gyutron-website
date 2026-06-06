@@ -1,6 +1,7 @@
 ---
 import { htmlLang, ogLocale, localizeUrl, locales, type Locale } from '../i18n';
 import Header from '../components/Header.astro';
+import { SITE_URL } from '../config/site';
 
 interface Props {
   locale: Locale;
@@ -13,7 +14,7 @@ interface Props {
   pageCss?: string[];
 }
 const { locale, path, title, description, ogTitle, ogDescription, bodyClass, pageCss = [] } = Astro.props;
-const SITE = 'https://www.gyutron.com';
+const SITE = SITE_URL;
 const canonical = `${SITE}${localizeUrl(locale, path)}`;
 ---
 <!doctype html>
