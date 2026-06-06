@@ -1042,69 +1042,114 @@
     "rejectedAsset": "asset-workbench/product-images/rejected/code-reading-replaced-2026-06-06/gy-cr900-matrix-old-replaced.png"
   },
   "gy-lr70": {
-    "status": "wired-live",
+    "status": "wired-live-regenerated-vision-lighting-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-lr70.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-lr70-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/vision-lighting-no-side-io-2026-06-06/gy-lr70-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-lr70-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "vision-lighting-family-angle-checked-contact-sheet",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "singleUse": true,
+      "contactSheet": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06-transparent-contact-sheet.png",
+      "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked as Vision Lighting family assets. Visible surfaces are sealed frames/end caps/housings only; connectors are hidden on unseen rear/back."
+    },
+    "regeneratedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-lr70.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06/gy-lr70.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/vision-lighting-side-io-2026-06-06/gy-lr70-old-side-io-rejected.png",
+    "replacementReason": "Regenerated Vision Lighting product as a complete product render with sealed end caps/housing and no visible side/rear cable, M12, power, Ethernet, or I/O connector. This is not a local crop/erase/mask edit; old side-connector asset is archived."
   },
   "gy-lb220": {
-    "status": "wired-live",
+    "status": "wired-live-regenerated-vision-lighting-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-lb220.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-lb220-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/vision-lighting-no-side-io-2026-06-06/gy-lb220-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-lb220-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "vision-lighting-family-angle-checked-contact-sheet",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "singleUse": true,
+      "contactSheet": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06-transparent-contact-sheet.png",
+      "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked as Vision Lighting family assets. Visible surfaces are sealed frames/end caps/housings only; connectors are hidden on unseen rear/back."
+    },
+    "regeneratedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-lb220.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06/gy-lb220.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/vision-lighting-side-io-2026-06-06/gy-lb220-old-side-io-rejected.png",
+    "replacementReason": "Regenerated Vision Lighting product as a complete product render with sealed end caps/housing and no visible side/rear cable, M12, power, Ethernet, or I/O connector. This is not a local crop/erase/mask edit; old side-connector asset is archived."
   },
   "gy-ldome120": {
-    "status": "wired-live",
+    "status": "wired-live-regenerated-vision-lighting-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-ldome120.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-ldome120-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/vision-lighting-no-side-io-2026-06-06/gy-ldome120-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-ldome120-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "vision-lighting-family-angle-checked-contact-sheet",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "singleUse": true,
+      "contactSheet": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06-transparent-contact-sheet.png",
+      "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked as Vision Lighting family assets. Visible surfaces are sealed frames/end caps/housings only; connectors are hidden on unseen rear/back."
+    },
+    "regeneratedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-ldome120.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06/gy-ldome120.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/vision-lighting-side-io-2026-06-06/gy-ldome120-old-side-io-rejected.png",
+    "replacementReason": "Regenerated Vision Lighting product as a complete product render with sealed end caps/housing and no visible side/rear cable, M12, power, Ethernet, or I/O connector. This is not a local crop/erase/mask edit; old side-connector asset is archived."
   },
   "gy-lbl150": {
-    "status": "wired-live",
+    "status": "wired-live-regenerated-vision-lighting-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-lbl150.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-lbl150-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/vision-lighting-no-side-io-2026-06-06/gy-lbl150-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-lbl150-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "vision-lighting-family-angle-checked-contact-sheet",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "singleUse": true,
+      "contactSheet": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06-transparent-contact-sheet.png",
+      "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked as Vision Lighting family assets. Visible surfaces are sealed frames/end caps/housings only; connectors are hidden on unseen rear/back."
+    },
+    "regeneratedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-lbl150.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06/gy-lbl150.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/vision-lighting-side-io-2026-06-06/gy-lbl150-old-side-io-rejected.png",
+    "replacementReason": "Regenerated Vision Lighting product as a complete product render with sealed end caps/housing and no visible side/rear cable, M12, power, Ethernet, or I/O connector. This is not a local crop/erase/mask edit; old side-connector asset is archived."
   },
   "gy-ll300": {
-    "status": "wired-live",
+    "status": "wired-live-regenerated-vision-lighting-no-side-io",
     "generatedAt": "2026-06-03",
     "liveAsset": "astro/public/product-library/transparent/gy-ll300.png",
-    "chromaAsset": "asset-workbench/product-images/chroma/gy-ll300-chroma.png",
+    "chromaAsset": "asset-workbench/product-images/chroma/vision-lighting-no-side-io-2026-06-06/gy-ll300-chroma.png",
     "sourceAsset": "asset-workbench/product-images/source/gy-ll300-source.png",
     "qa": {
       "transparentCorners": true,
       "purpleHarmonized": true,
-      "direction": "contact-sheet-verified",
-      "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
-    }
+      "direction": "vision-lighting-family-angle-checked-contact-sheet",
+      "noVisibleSideConnector": true,
+      "completeRegeneratedBody": true,
+      "singleUse": true,
+      "contactSheet": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06-transparent-contact-sheet.png",
+      "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked as Vision Lighting family assets. Visible surfaces are sealed frames/end caps/housings only; connectors are hidden on unseen rear/back."
+    },
+    "regeneratedAt": "2026-06-06",
+    "deployedAsset": "public/product-library/transparent/gy-ll300.png",
+    "candidateAsset": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06/gy-ll300.png",
+    "rejectedAsset": "asset-workbench/product-images/rejected/vision-lighting-side-io-2026-06-06/gy-ll300-old-side-io-rejected.png",
+    "replacementReason": "Regenerated Vision Lighting product as a complete product render with sealed end caps/housing and no visible side/rear cable, M12, power, Ethernet, or I/O connector. This is not a local crop/erase/mask edit; old side-connector asset is archived."
   },
   "gy-mg50": {
     "status": "wired-live",

@@ -105,11 +105,11 @@ Product count: **93**
 | GY-CV220 Inline | code-reading-cameras | Inline barcode verifier | `product-library/transparent/gy-cv220-inline.png` | `product-library/transparent/gy-cv220-inline.png` | wired-live-regenerated-left-facing-no-side-io |
 | GY-RT800 | code-reading-cameras | Multi-camera reader module | `product-library/transparent/gy-rt800.png` | `product-library/transparent/gy-rt800.png` | wired-live-regenerated-left-facing-no-side-io |
 | GY-CR900 Matrix | code-reading-cameras | Fixed industrial code reader | `product-library/transparent/gy-cr900-matrix.png` | `product-library/transparent/gy-cr900-matrix.png` | wired-live-regenerated-left-facing-no-side-io |
-| GY-LR70 | vision-lighting | White ring light | `product-library/transparent/gy-lr70.png` | `product-library/transparent/gy-lr70.png` | wired-live |
-| GY-LB220 | vision-lighting | White bar light | `product-library/transparent/gy-lb220.png` | `product-library/transparent/gy-lb220.png` | wired-live |
-| GY-LDome120 | vision-lighting | Dome light | `product-library/transparent/gy-ldome120.png` | `product-library/transparent/gy-ldome120.png` | wired-live |
-| GY-LBL150 | vision-lighting | White backlight panel | `product-library/transparent/gy-lbl150.png` | `product-library/transparent/gy-lbl150.png` | wired-live |
-| GY-LL300 | vision-lighting | High-output line light | `product-library/transparent/gy-ll300.png` | `product-library/transparent/gy-ll300.png` | wired-live |
+| GY-LR70 | vision-lighting | White ring light | `product-library/transparent/gy-lr70.png` | `product-library/transparent/gy-lr70.png` | wired-live-regenerated-vision-lighting-no-side-io |
+| GY-LB220 | vision-lighting | White bar light | `product-library/transparent/gy-lb220.png` | `product-library/transparent/gy-lb220.png` | wired-live-regenerated-vision-lighting-no-side-io |
+| GY-LDome120 | vision-lighting | Dome light | `product-library/transparent/gy-ldome120.png` | `product-library/transparent/gy-ldome120.png` | wired-live-regenerated-vision-lighting-no-side-io |
+| GY-LBL150 | vision-lighting | White backlight panel | `product-library/transparent/gy-lbl150.png` | `product-library/transparent/gy-lbl150.png` | wired-live-regenerated-vision-lighting-no-side-io |
+| GY-LL300 | vision-lighting | High-output line light | `product-library/transparent/gy-ll300.png` | `product-library/transparent/gy-ll300.png` | wired-live-regenerated-vision-lighting-no-side-io |
 | GY-MG50 | dimensional-gauges | Digital measurement gauge | `product-library/transparent/gy-mg50.png` | `product-library/transparent/gy-mg50.png` | wired-live |
 | GY-VM200 | dimensional-gauges | Vision measuring instrument | `product-library/transparent/gy-vm200.png` | `product-library/transparent/gy-vm200.png` | wired-live |
 | GY-MG90 | dimensional-gauges | Digital dimensional gauge | `product-library/transparent/gy-mg90.png` | `product-library/transparent/gy-mg90.png` | wired-live |

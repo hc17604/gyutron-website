@@ -2382,12 +2382,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-lr70.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-lr70-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-lr70/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-vision-lighting-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "vision-lighting-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked as Vision Lighting family assets. Visible surfaces are sealed frames/end caps/housings only; connectors are hidden on unseen rear/back."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "vision-lighting",
@@ -2415,12 +2419,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-lb220.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-lb220-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-lb220/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-vision-lighting-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "vision-lighting-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked as Vision Lighting family assets. Visible surfaces are sealed frames/end caps/housings only; connectors are hidden on unseen rear/back."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "vision-lighting",
@@ -2448,12 +2456,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-ldome120.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-ldome120-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-ldome120/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-vision-lighting-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "vision-lighting-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked as Vision Lighting family assets. Visible surfaces are sealed frames/end caps/housings only; connectors are hidden on unseen rear/back."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "vision-lighting",
@@ -2481,12 +2493,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-lbl150.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-lbl150-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-lbl150/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-vision-lighting-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "vision-lighting-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked as Vision Lighting family assets. Visible surfaces are sealed frames/end caps/housings only; connectors are hidden on unseen rear/back."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "vision-lighting",
@@ -2514,12 +2530,16 @@
       "deployedTransparentImage": "public/product-library/transparent/gy-ll300.png",
       "sourceChromaImage": "asset-workbench/product-images/chroma/gy-ll300-chroma.png",
       "archiveFolder": "asset-workbench/product-images/source/gy-ll300/",
-      "status": "wired-live",
+      "status": "wired-live-regenerated-vision-lighting-no-side-io",
       "qa": {
         "transparentCorners": true,
         "purpleHarmonized": true,
-        "direction": "contact-sheet-verified",
-        "notes": "Generated as transparent PNG, harmonized to #4b2e83, direction-checked by vision-lighting contact sheet, and wired into en/de/ja product data for the machine vision tertiary categories."
+        "direction": "vision-lighting-family-angle-checked-contact-sheet",
+        "noVisibleSideConnector": true,
+        "completeRegeneratedBody": true,
+        "singleUse": true,
+        "contactSheet": "asset-workbench/product-images/candidates/vision-lighting-no-side-io-2026-06-06-transparent-contact-sheet.png",
+        "notes": "Final transparent PNG generated through built-in image tool + chroma removal, harmonized to #4b2e83, checked as Vision Lighting family assets. Visible surfaces are sealed frames/end caps/housings only; connectors are hidden on unseen rear/back."
       },
       "generatedAt": "2026-06-03",
       "visualFamily": "vision-lighting",
