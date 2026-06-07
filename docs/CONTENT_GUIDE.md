@@ -17,6 +17,8 @@ Where each kind of content lives, and how to edit it.
 | Contact-form product options | **`CONTACT_PRODUCT_OPTIONS`** in `src/data/products.ts` | curated subset; `{category, labelKey}` pairs |
 | Solutions | **`src/data/solutions.ts`** (`SOLUTIONS`; type in `src/types/solution.ts`), rendered by `SolutionPage.astro` | see SOLUTIONS_GUIDE.md |
 | Pages (routing/SEO/sitemap metadata) | **`src/data/pages.ts`** (`SITE_PAGES`; type in `src/types/page.ts`) | sitemap derives static pages from it; see ROUTES.md |
+| News posts | **`src/data/news.ts`** (`NEWS`; type in `src/types/news.ts`), homepage "Newsroom" | locale-aware `Record<Locale>` per post |
+| Partners / ecosystem | **`src/data/partners.ts`** (`PARTNERS`; type in `src/types/partner.ts`), homepage "Ecosystem & integration" | name + optional logo image |
 | Legal (privacy / terms / warranty / shipping) | hardcoded in the page `.astro` files | long prose; migrate only if needed |
 
 ## Add a product
@@ -108,8 +110,38 @@ For **image weight, alt-text rules, decorative-image rules, when to compress, an
 see **docs/PERFORMANCE.md**. Run `npm run verify:assets` (from `astro/`, REPORT-only) to list large /
 duplicate / missing-alt images before and after adding media.
 
+## Brand color (purple-only)
+
+The brand uses **only purple**. The accent / second color is **light purple `--purple-500 #8a63d2`**
+(tokens `--signal` / `--hero-accent` / homepage `--hx-accent`; paler fills use `--violet-soft #efe8ff`).
+**Do NOT introduce green / teal / cyan** accents — they were removed 2026-06-07 and mapped to purple.
+Functional red (form errors) and amber (`--warning`) may stay. To retune the accent shade, change the
+token in one place. See HANDOFF §2.
+
+## Add a news post
+
+News is data-driven in **`src/data/news.ts`** (`NEWS`), rendered on the homepage "Newsroom" section
+(latest 3 via `getLatestNews`). Prepend a `NewsItem` with a newer `date` (`YYYY-MM-DD`), `category` /
+`title` / `excerpt` as `{en,de,ja}`, and optionally an `image` (public path; a placeholder block shows if
+omitted). Leave `href` OFF until a `/news/<slug>` article page exists (so no dead link renders). Then
+`astro build`. A future `/news/` index + article pages can reuse this same data.
+
+## Edit partners / ecosystem
+
+The homepage "Ecosystem & integration" wall renders **`src/data/partners.ts`** (`PARTNERS`). Each entry
+is `{ id, name, logo?, url? }` — if `logo` (a public image path) is set it renders the image, else `name`
+renders as a text tile. It is seeded with the industrial interface STANDARDS GYUTRON supports; add real
+partner companies by adding entries with a `logo` (drop the file in `public/` AND `astro/public/`).
+
+## Edit the About / company section
+
+The homepage "About GYUTRON" section uses i18n keys (`home.x.about.*`, `home.x.val1..4.*`) for copy plus a
+small facility-image list in `Home.astro` (`aboutImages`, currently `nav-company-*.png`). Edit copy in all
+three dicts; swap facility images by changing `aboutImages`.
+
 ## Data layer
 
 `src/data/` holds the maintainable content models (`navigation`, `company`, `faq`, `solutions`,
-`support`, `locales`, `assets`, and a typed `products` accessor). They follow the site convention of
-**referencing i18n keys** rather than inlining translated text.
+`support`, `locales`, `assets`, `pages`, `news`, `partners`, and a typed `products` accessor). Most
+follow the site convention of **referencing i18n keys**; `faq` and `news` inline `Record<Locale,string>`
+content (better for frequently-edited posts).

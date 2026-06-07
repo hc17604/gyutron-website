@@ -23,6 +23,9 @@ first — it lists what breaks the site.
 | Edit contact-form product options | `CONTACT_PRODUCT_OPTIONS` in `data/products.ts` | CONTENT_GUIDE, COMPONENTS |
 | Add / edit a solution | `data/solutions.ts` (+ i18n keys, page wrappers) | SOLUTIONS_GUIDE |
 | Add / edit a FAQ | `data/faq.ts` | CONTENT_GUIDE |
+| Add a news post | `data/news.ts` (`NEWS`), homepage Newsroom | CONTENT_GUIDE |
+| Edit partners / ecosystem | `data/partners.ts` (`PARTNERS`) | CONTENT_GUIDE |
+| Edit the About / company section | `home.x.about.*` keys + `aboutImages` in `Home.astro` | CONTENT_GUIDE |
 | Edit the Header mega-menu | `data/header-navigation.ts` (then `verify:header`) | CONTENT_GUIDE, COMPONENTS |
 | Edit the Footer | `data/navigation.ts` `FOOTER_NAV` (+ `company.ts`, `footer.*` keys) | CONTENT_GUIDE |
 | Edit multilingual copy | `src/i18n/{en,de,ja}.json` (all three) | I18N |

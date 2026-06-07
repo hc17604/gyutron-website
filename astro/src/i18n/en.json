@@ -822,5 +822,22 @@
   "home.x.oem.label": "OEM / ODM",
   "home.x.oem.title": "Build it under your brand.",
   "home.x.oem.desc": "For qualified volume programs we customize configurations, firmware, housings, connectors and private labeling — your specification, our hardware platform.",
-  "home.x.oem.cta": "Discuss an OEM project"
+  "home.x.oem.cta": "Discuss an OEM project",
+  "home.x.about.label": "About GYUTRON",
+  "home.x.about.title": "An industrial intelligent-hardware partner, built for global manufacturing.",
+  "home.x.about.body": "GYUTRON designs and supplies machine vision, sensing, code reading, measurement and rugged data-capture hardware — and the engineering to turn it into working production systems. We work with manufacturers, machine builders and system integrators worldwide, in English, German and Japanese.",
+  "home.x.val1.t": "Engineering-led",
+  "home.x.val1.d": "We solve the production problem, not just ship a part number.",
+  "home.x.val2.t": "Quality-managed",
+  "home.x.val2.d": "ISO-managed production with documented, repeatable quality.",
+  "home.x.val3.t": "Global & multilingual",
+  "home.x.val3.d": "Sales-engineering support across regions — in your language.",
+  "home.x.val4.t": "Long-term partner",
+  "home.x.val4.d": "From pilot to volume, and from one line to the next.",
+  "home.x.partners.label": "Ecosystem & integration",
+  "home.x.partners.title": "Built to fit the line you already run.",
+  "home.x.partners.sub": "GYUTRON hardware speaks the standard industrial interfaces, so it drops into your PLCs, robots, MES and host systems.",
+  "home.x.news.label": "Newsroom",
+  "home.x.news.title": "Latest from GYUTRON",
+  "home.x.news.sub": "Product launches, new capabilities and company updates."
 }

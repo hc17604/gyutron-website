@@ -4,6 +4,8 @@ import { t, localizeUrl, type Locale } from '../i18n';
 import TabCarousel from './TabCarousel.astro';
 import HeroSlider from './HeroSlider.astro';
 import Footer from './Footer.astro';
+import { getLatestNews } from '../data/news';
+import { PARTNERS } from '../data/partners';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/';
@@ -17,6 +19,14 @@ const procSteps = [
   { n: '03', t: 'home.x.proc.s3.t', d: 'home.x.proc.s3.d', icon: 'fa-plug-circle-check' },
   { n: '04', t: 'home.x.proc.s4.t', d: 'home.x.proc.s4.d', icon: 'fa-arrow-trend-up' },
 ];
+const values = [
+  { icon: 'fa-compass-drafting', t: 'home.x.val1.t', d: 'home.x.val1.d' },
+  { icon: 'fa-certificate', t: 'home.x.val2.t', d: 'home.x.val2.d' },
+  { icon: 'fa-earth-asia', t: 'home.x.val3.t', d: 'home.x.val3.d' },
+  { icon: 'fa-handshake', t: 'home.x.val4.t', d: 'home.x.val4.d' },
+];
+const aboutImages = ['/nav-company-engineering-lab.png', '/nav-company-quality-bench.png', '/nav-company-overview.png'];
+const news = getLatestNews(3);
 ---
 <Layout locale={locale} path={path} title={t(locale, 'seo.index.title')} description={t(locale, 'seo.index.desc')} bodyClass="home" pageCss={["/global.css", "/hero-slider.css", "/home-sections.css", "/mobile-navigation.css"]}>
 <noscript><style>body.home [data-reveal]{opacity:1 !important;transform:none !important;}</style></noscript>
@@ -110,6 +120,29 @@ const procSteps = [
                     <div class="proof-item">
                         <strong data-count="30" data-suffix="d">30d</strong>
                         <span>{t(locale, "main.362")}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section hx-about" id="about" data-reveal>
+            <div class="container">
+                <div class="hx-about__grid">
+                    <div class="hx-about__copy">
+                        <span class="eyebrow">{t(locale, "home.x.about.label")}</span>
+                        <h2>{t(locale, "home.x.about.title")}</h2>
+                        <p>{t(locale, "home.x.about.body")}</p>
+                        <ul class="hx-values">
+                            {values.map((v) => (
+                                <li class="hx-value">
+                                    <i class={`fa-solid ${v.icon}`}></i>
+                                    <div><strong>{t(locale, v.t)}</strong><span>{t(locale, v.d)}</span></div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div class="hx-about__media" aria-hidden="true">
+                        {aboutImages.map((src) => (<div class="hx-about__img"><img src={src} alt="" loading="lazy" /></div>))}
                     </div>
                 </div>
             </div>
@@ -254,6 +287,54 @@ const procSteps = [
                         </li>
                     ))}
                 </ol>
+            </div>
+        </section>
+
+        <section class="section section-alt hx-partners" id="partners" data-reveal>
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">{t(locale, "home.x.partners.label")}</span>
+                        <h2>{t(locale, "home.x.partners.title")}</h2>
+                    </div>
+                    <p>{t(locale, "home.x.partners.sub")}</p>
+                </div>
+                <ul class="hx-partner-grid">
+                    {PARTNERS.map((p) => (
+                        <li class="hx-partner">
+                            {p.logo ? <img src={p.logo} alt={p.name} loading="lazy" /> : <span>{p.name}</span>}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </section>
+
+        <section class="section hx-news" id="news" data-reveal>
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">{t(locale, "home.x.news.label")}</span>
+                        <h2>{t(locale, "home.x.news.title")}</h2>
+                    </div>
+                    <p>{t(locale, "home.x.news.sub")}</p>
+                </div>
+                <div class="hx-news-grid">
+                    {news.map((item) => (
+                        <article class="hx-news-card" data-reveal>
+                            <div class="hx-news-card__media">
+                                {item.image ? <img src={item.image} alt="" loading="lazy" /> : <div class="hx-news-card__ph"></div>}
+                            </div>
+                            <div class="hx-news-card__body">
+                                <div class="hx-news-card__meta">
+                                    <span class="hx-news-card__cat">{item.category[locale]}</span>
+                                    <time datetime={item.date}>{item.date}</time>
+                                </div>
+                                <h3>{item.title[locale]}</h3>
+                                <p>{item.excerpt[locale]}</p>
+                            </div>
+                        </article>
+                    ))}
+                </div>
             </div>
         </section>
 
