@@ -1,23 +1,13 @@
 import type { APIRoute } from 'astro';
 import { locales, localizeUrl, htmlLang } from '../i18n';
 import { SITE_URL } from '../config/site';
-import { ROUTES } from '../config/routes';
 import { getCatalog } from '../data/products';
+import { sitemapStaticPaths } from '../data/pages';
 
-// Static, indexable brand pages, reused from config/routes (shop.gyutron.com is out of
-// scope and is never enumerated here). Placeholder footer links (/about, /certifications,
-// /downloads, /solutions/*) are intentionally omitted — no page exists yet.
-const STATIC_PATHS: string[] = [
-  ROUTES.home,
-  ROUTES.solution,
-  ROUTES.contact,
-  ROUTES.support,
-  ROUTES.faq,
-  ROUTES.warranty,
-  ROUTES.shipping,
-  ROUTES.privacy,
-  ROUTES.terms,
-];
+// Static, indexable brand pages come from the page registry (src/data/pages.ts) — the single
+// source of page metadata (type / sitemap-inclusion / noindex). shop.gyutron.com is out of scope
+// and never enumerated; redirect stubs are includeInSitemap:false there; placeholder footer links
+// (/about, /certifications, /downloads, /solutions/*) have no page and are not registered.
 
 // Product category pages that actually render products — redirect / empty categories
 // (smart-cameras, industrial-sensors, inspection-instruments) are skipped.
@@ -38,7 +28,7 @@ function categoryPaths(): string[] {
  * page lists are derived from config/routes + the product catalog, not hand-maintained.
  */
 export const GET: APIRoute = () => {
-  const paths = [...STATIC_PATHS, ...categoryPaths()];
+  const paths = [...sitemapStaticPaths(), ...categoryPaths()];
   const body = paths
     .flatMap((path) =>
       locales.map((loc) => {
