@@ -7,6 +7,40 @@
 
 ---
 
+## 🤝 CODEX HANDOFF — current state (2026-06-07)
+
+A large UI + architecture overhaul shipped this session. **Everything below is LIVE**; `local == origin` at HEAD **`1e2a24f`** (run `git fetch` and confirm `HEAD == origin/main`, then continue). Codex now owns the task. **Read `docs/MAINTENANCE.md` (task→file index) + `docs/SAFETY_CHECKLIST.md` before editing.**
+
+**What shipped this session (don't redo / don't revert):**
+1. **Verification gates + CI.** `npm run verify:all` = build-gated **verify:header / verify:sitemap / verify:routes / verify:seo / verify:a11y-lite** (+ `verify:i18n` & `verify:assets` = report-only). GitHub Actions (`.github/workflows/verify.yml`) runs them on push/PR to main — **it never deploys**. Scripts live in `astro/scripts/*.mjs` (plain Node, no deps).
+2. **Engineering layers (mostly additive).** `lib/cms` local facade (delegates to `src/data`), `lib/crm` + `lib/agent` mock interfaces, asset registry `data/assets.ts`, **page registry `data/pages.ts`** (sitemap derives static pages from it). `lib/*` integrations stay **mock** — see FUTURE_INTEGRATIONS.md.
+3. **Solutions data model** (`types/solution.ts` + `data/solutions.ts` → `SolutionPage.astro` renders from data).
+4. **Homepage rebuilt below the hero** (`Home.astro` + `home-sections.css`, all `body.home`-scoped — `global.css` untouched): industries trust strip → dark stats band (counters) → capabilities (6 **distinct product-family** cards) → OEM/ODM band → industries TabCarousel → platform/why-us → "how we work" process → **About/company** (intro+values+facility imgs) → **Partners/ecosystem** → **Newsroom** → CTA. Motion = scroll-reveal (Apple-style rise+scale, `--rd` stagger) + stat counters + auto-scroll marquee; **only card items carry `[data-reveal]`** (no nested → no flicker); the **CTA/contact band must NOT animate**.
+5. **News system.** `/news` index + `/news/<slug>` article pages (en/de/ja) from `data/news.ts` (`NewsIndex.astro` / `NewsArticle.astro`); homepage Newsroom + search link to articles; registered in `data/pages.ts` → sitemap (now 93 URLs = 31 paths × 3). Seed posts are factual — replace with real ones.
+6. **Search cards.** Product / solution / news results render as image cards (`nav-search.js` `hitHtml` + `searchIndex.ts` records gain `i`/`c`); support/pages stay text rows. Header markup unchanged (cards rendered via JS).
+7. **Content & i18n.** Fixed residual English in `products.{de,ja}.js`; de-duplicated overlapping homepage copy (Products / Solutions / Platform / About) + the 6 solution cards (each now a distinct product family). **Brand color rule below.**
+
+**NON-NEGOTIABLE RULES (new this session + reaffirmed):**
+- 🟣 **PURPLE-ONLY.** Accent = light purple `--purple-500 #8a63d2` (paler tint `--violet-soft #efe8ff`); **NEVER green/teal/cyan** (the old `#00c2a8`/`#00d2be`/`#18b6c9` were removed). Functional red (errors) + amber (`--warning`) may stay. Retune via the `--signal`/`--hero-accent`/`--hx-accent`/`--purple-*` tokens. See §2.
+- 🧱 **Hard-edged industrial.** `border-radius: 0`; heavy + tight headings; brand text uppercase. Reference: thinklucid/onlogic. All motion `transform`/`opacity` only + respects `prefers-reduced-motion`.
+- 🚫 **HONESTY — NEVER fabricate** stats, claims, client counts, founding dates, specs, or partner logos. Only true, verifiable GYUTRON facts. (A prior AI draft invented "since 2010 / 200+ clients / 18-month lead time / managed fleet" — all rejected. Don't reintroduce them.)
+- 🌐 **i18n.** Every visible string needs en+de+ja or the build throws (`t()` gate). Never translate model names (`GY-*`). Category fields in `products.{de,ja}.js` are hand-translated (verify:i18n only scans rendered pages). Same-page language switch.
+- 📦 **Deploy = committed `public/`.** After a change: `npm run build`, then sync ONLY the changed `astro/dist/*` into `public/` (check `diff -rq astro/dist public`); **never bulk-copy dist→public, never touch `public/shop*`**. `dist/` and `package-lock.json` are gitignored (CI uses `npm install`).
+- 🧩 **Header DOM is a byte-contract** → run `npm run verify:header` after ANY header/nav change. Don't revert data-driven modules to hardcoding.
+- ✅ **Per change:** `npm run build` + `npm run verify:all`; commit per change with **specific paths** (not blind `git add -A`); before commit/push re-check no other agent is mid-push and `HEAD == origin/main`.
+
+**STALE rules deeper in `AGENTS.md` — IGNORE where they conflict:** the "colored-bars hero" rule (hero is 3 layouts, no bars); the `locales/` + `npm run i18n:build` / `i18n:sync` / `tools/generate_localized_site.py` generator (NEVER run — it CLOBBERS the Astro site); "de is a homepage-only sample" (all pages are Astro-localized en/de/ja); the homepage Solutions-card taxonomy (the 6 homepage cards were re-scoped to distinct product families 2026-06-07 — the header Solutions mega-menu in `data/header-navigation.ts` is the nav taxonomy source).
+
+**Remaining TODO (pick up here):**
+- Replace the 3 **seed Newsroom posts** in `data/news.ts` with real posts (set `body`, `image`, keep `href: /news/<slug>.html`).
+- Add real **partner logos** in `data/partners.ts` (`logo` field) — currently honest interface-standard text tiles (no fabricated 3rd-party logos).
+- Add a footer/header **"News" nav link** (deferred — Footer renders on every page, so it re-syncs all pages; news is reachable via homepage CTA + search + sitemap).
+- Optional **industrial webfont** (a condensed grotesk) — needs a self-hosted font file or a CDN decision (conflicts with the self-contained/perf convention); CSS heading-hardening already applied.
+- `.nav-trigger` **`aria-expanded`** (a11y) — high blast radius (all-page header + the per-page nav scripts + `mobile-navigation.js`); see ACCESSIBILITY.md.
+- **CSS dedup** across the per-page CSS files; extend the global heading-hardening to non-homepage pages (the global heading rule only loads on the homepage today).
+
+---
+
 ## 0. TL;DR — the 5 things that BREAK the site if you get them wrong
 1. **The site is now ASTRO** (everything lives in the **`astro/`** subdir). The old root-level `*.html` pages + the Python generator are DEAD/legacy.
 2. **NEVER run the legacy generator** — `npm run i18n:build`, `npm run i18n:sync`, or `tools/generate_localized_site.py`. It regenerates legacy pages into `public/` and **CLOBBERS the Astro site**. *(This contradicts old AGENTS.md lines 17–18 — ignore those.)*
@@ -146,7 +180,7 @@ The most-iterated piece. **3 DISTINCT layouts** (field `layout` in `heroSlides.t
 
 ## 9. Residual / TODO
 - Residual English: `verify:i18n` reports **0 suspects** on rendered de/ja pages. Phase 6 (2026-06-07) corrected the earlier "= 0" claim by fixing product-DATA residuals that bypass the i18n dicts in `products.{de,ja}.js`: the rendered `calibration-tools` `panelText` (ja) + non-rendered `panelMetric`/`sectionIntro` (ja+de) — see docs/I18N.md "Residual-English status". **Still TODO: native language QA of those translations** + **DEFERRED: product SPEC translation** (~85 labels + values, de/ja still English in product cards) — user will supply a glossary or approve MT; final content pass.
-- TODO: CSS dedup (chrome duplicated in `global.css` + `product-page.css`); retire legacy root-level pages + dead `product-data.js`/`product-catalog.js`; `Home.astro` still has a dead pre-HeroSlider `[data-hero-carousel]` inline script (~lines 263–309) that no-ops — safe to delete that one block (keep the mega-menu nav script below it); optional sitemap.xml + per-page twitter tags.
+- **➡️ Current TODO list lives in the "🤝 CODEX HANDOFF" block at the top of this file.** Done since: sitemap.xml (build-time endpoint) ✅, per-page Twitter tags ✅ (SeoHead), the dead `[data-hero-carousel]` inline script in `Home.astro` ✅ removed in the 2026-06-07 homepage rebuild. Still open: CSS dedup (chrome duplicated across the per-page CSS); retire legacy root-level pages + dead `product-data.js`/`product-catalog.js`.
 
 ## 10. Reconciliation with `AGENTS.md` (older; partly stale)
 `AGENTS.md` still has many **VALID** rules — navigation structure, brand/logo (`gyutron-logo-purple.png`), responsive breakpoints (1440/1024/768/430/390), store/shop conventions, product-catalog consistency, micro-interactions, Cloudflare routing. Keep following those. **SUPERSEDED items:**
