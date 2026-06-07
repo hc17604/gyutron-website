@@ -4,6 +4,7 @@ import { t, localizeUrl, type Locale } from '../i18n';
 import Footer from './Footer.astro';
 import { canonicalUrl } from '../utils/seo';
 import { createOrganizationJsonLd, breadcrumbFromHome } from '../utils/structured-data';
+import { CONTACT_PRODUCT_OPTIONS } from '../data/products';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/contact-sales.html';
@@ -118,12 +119,7 @@ const STATUS = ({
               {t(locale, "main.414")}
               <select name="productInterest" required>
                 <option value="">{t(locale, "main.320")}</option>
-                <option>{t(locale, "main.007")}</option>
-                <option>{t(locale, "main.017")}</option>
-                <option>{t(locale, "main.025")}</option>
-                <option>{t(locale, "main.034")}</option>
-                <option>{t(locale, "main.045")}</option>
-                <option>{t(locale, "main.047")}</option>
+                {CONTACT_PRODUCT_OPTIONS.map((o) => (<option>{t(locale, o.labelKey)}</option>))}
                 <option>{t(locale, "main.415")}</option>
               </select>
             </label>

@@ -47,3 +47,19 @@ const CATEGORY_GROUPS_BY_LOCALE: Record<Locale, Record<string, string[]>> = {
 export function getCategoryGroups(locale: Locale): Record<string, string[]> {
   return CATEGORY_GROUPS_BY_LOCALE[locale];
 }
+
+/**
+ * Curated product options for the Contact Sales form's <select> — a SUBSET (product
+ * families), NOT every product. Each links a real category slug to its existing nav-label
+ * i18n key, so the visible option text is unchanged while the list lives in one place and
+ * stays tied to the catalog. The "Select one" placeholder and the trailing "OEM / ODM
+ * Cooperation" option are rendered in ContactSales.astro (they are not catalog categories).
+ */
+export const CONTACT_PRODUCT_OPTIONS: { category: string; labelKey: string }[] = [
+  { category: 'android-pda', labelKey: 'main.007' },
+  { category: 'proximity-sensors', labelKey: 'main.017' },
+  { category: 'area-scan-cameras', labelKey: 'main.025' },
+  { category: 'dimensional-gauges', labelKey: 'main.034' },
+  { category: 'robot-workcells', labelKey: 'main.045' },
+  { category: 'edge-controllers', labelKey: 'main.047' },
+];
