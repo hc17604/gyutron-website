@@ -8,7 +8,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "verify:header": "node scripts/verify-header-equivalence.mjs"
+    "verify:header": "node scripts/verify-header-equivalence.mjs",
+    "verify:sitemap": "node scripts/verify-sitemap.mjs",
+    "verify:routes": "node scripts/verify-routes.mjs",
+    "verify:i18n": "node scripts/verify-i18n.mjs",
+    "verify:all": "npm run verify:header && npm run verify:sitemap && npm run verify:routes && npm run verify:i18n"
   },
   "dependencies": {
     "astro": "^5"

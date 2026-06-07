@@ -1,5 +1,25 @@
 # Troubleshooting — gyutron.com
 
+## Website verification gates (`npm run verify:*`)
+
+Run from `astro/` **after `npm run build`** (they read `astro/dist`). Also run automatically in CI
+(`.github/workflows/verify.yml`) on push/PR to `main` — build + the first three as hard gates, i18n
+informational; CI never deploys.
+
+| Command | Checks | Gate |
+|---|---|---|
+| `npm run verify:header` | built header (en/de/ja) is equivalent to deployed `public/` + structural/mobile-hook contract (see "Verify a header / nav change" below) | hard |
+| `npm run verify:sitemap` | `dist/sitemap.xml`: every `<url>` has hreflang en/de/ja + x-default, canonical `https://www.gyutron.com`, NO shop, NO redirect stubs, `<loc>` count = paths×locales | hard |
+| `npm run verify:routes` | `config/routes` core pages exist in en/de/ja; every Header/Footer internal link resolves to a built page (known footer placeholders listed, not failed) | hard |
+| `npm run verify:i18n` | heuristic residual-English scan of de/ja pages; ALL-CAPS acronyms / model names excluded, a proper-noun allowlist applies | **report** (exit 0) |
+| `npm run verify:all` | the four above in sequence | hard (i18n stays report) |
+
+- A `verify:*` FAIL prints exactly what broke. Fix the data/source, rebuild, re-run.
+- `verify:i18n` is REPORT-only on purpose: product-spec *values* in de/ja are still English (deferred
+  pending a glossary), so it currently flags those by design. Add `-- --strict` to make it a hard gate
+  once spec translation is complete; extend its `CONTEXT_ALLOWLIST` for legitimate English proper nouns.
+- New verify scripts live in `astro/scripts/*.mjs` (plain Node, no dependencies).
+
 ## Build fails: `[i18n] missing key "x" for locale "de"`
 A page references a key that isn't in `de.json` (or `ja`/`en`). Add the key to **all three** dicts.
 This gate is intentional — it stops English from silently shipping.

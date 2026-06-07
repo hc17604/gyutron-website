@@ -1,0 +1,49 @@
+# Website verification CI for gyutron.com (the Astro brand site in astro/).
+# Build + structural gates only — this NEVER deploys. Cloudflare serves the committed public/
+# via its own Worker (see docs/DEPLOYMENT.md); this workflow just stops a broken PR from merging.
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Avoid piling up redundant runs on rapid pushes.
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: astro
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Repo convention: package-lock.json is gitignored (deps = astro only), so there is no
+      # committed lockfile — use `npm install`, not `npm ci`, and skip lockfile-based caching.
+      - name: Install (no new deps; astro only)
+        run: npm install --no-audit --no-fund
+
+      - name: Build
+        run: npm run build
+
+      # Hard gates — deterministic, fail the run on regression.
+      - name: Verify header equivalence
+        run: npm run verify:header
+      - name: Verify sitemap
+        run: npm run verify:sitemap
+      - name: Verify routes / nav links
+        run: npm run verify:routes
+
+      # Informational — heuristic residual-English scan (report mode, never fails the run).
+      # Promote to a gate with `-- --strict` once product-spec translation is complete.
+      - name: Verify i18n (report)
+        run: npm run verify:i18n
