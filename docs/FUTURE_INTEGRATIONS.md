@@ -12,7 +12,7 @@ src/config/integrations.ts   reads providers from env (all default to mock/local
 src/lib/api/                  client.ts, endpoints in index.ts, types.ts
 src/lib/forms/                contact.ts, inquiry.ts, validation.ts  (business-level form fns)
 src/lib/crm/                  index.ts, mock-crm.ts, types.ts        (lead storage adapter)
-src/lib/cms/                  index.ts, mock-cms.ts, types.ts        (content source adapter)
+src/lib/cms/                  index.ts, local-cms.ts, types.ts       (content source adapter; local impl)
 src/lib/agent/                index.ts, mock-agent.ts, types.ts      (AI tasks adapter)
 src/lib/logger/               index.ts                               (structured console logger)
 ```
@@ -35,6 +35,31 @@ Agent:   classifyInquiry()  suggestProduct()  generateFAQAnswer()
          runWebsiteAudit()  checkTranslationQuality()
 Logger:  logInfo()  logWarning()  logError()
 ```
+
+## CMS facade — implemented (provider `local`)
+
+`src/lib/cms/` is a **working facade over the in-repo data layer**, not a stub. The default
+adapter `local-cms.ts` (selected when `CMS_PROVIDER=local`, the default) delegates:
+
+```
+getProducts(locale)          → src/data/products.ts  getCatalog(locale)      (ProductCatalog)
+getProductBySlug(slug,loc)   → src/data/products.ts  getCategory(loc,slug)   (ProductCategory | null)
+getSolutions(locale)         → src/data/solutions.ts SOLUTIONS               (Solution[])
+getSolutionBySlug(slug,loc)  → src/data/solutions.ts getSolution(slug)       (Solution | null)
+getFAQItems(locale)          → src/data/faq.ts       FAQ_ITEMS               (FaqItem[])
+getPageContent(slug,locale)  → support/solution registry → { title (i18n), body:'' }
+```
+
+Return types are the in-repo data-model types (`CmsAdapter` in `cms/types.ts`), so callers stay
+type-safe. Page **bodies** are component-rendered (not in the data layer), so `getPageContent`
+returns the localized title with an empty `body`. Pages may still import `src/data` directly today;
+the facade exists so they *can* migrate without lock-in.
+
+**To swap in a real headless CMS (Sanity / Strapi / Directus / Payload):**
+1. Add `src/lib/cms/<vendor>-cms.ts` implementing the `CmsAdapter` interface (`cms/types.ts`).
+2. Add a `case '<vendor>': return <vendor>Cms;` in `getAdapter()` (`cms/index.ts`).
+3. Set `CMS_PROVIDER=<vendor>` (+ any vendor keys) in Cloudflare env / local `.env`.
+   Pages and the facade signatures do not change.
 
 ## The one real path today
 
