@@ -12,6 +12,7 @@ Where each kind of content lives, and how to edit it.
 | Navigation — header (incl. mega-menu) | **`src/data/header-navigation.ts` `HEADER_NAV`** (rendered by `components/navigation/*`); `MAIN_NAV` is a derived top-level view | |
 | Company info (offices, email, WhatsApp, socials) | `footer.*` i18n keys + `src/data/company.ts` | |
 | FAQ items | **`src/data/faq.ts`** (locale-aware), rendered by `components/support/FaqList.astro` | |
+| Site-level images (logo, social share, payment, hero backgrounds) | **`src/data/assets.ts`** (`SITE_IMAGES`; type in `src/types/asset.ts`) | curated index; per-product/nav/hero image SETS stay in their own data files |
 | Legal (privacy / terms / warranty / shipping) | hardcoded in the page `.astro` files | long prose; migrate only if needed |
 
 ## Add a product
@@ -59,8 +60,22 @@ wrappers and need no edit. Then `astro build`.
 > Support legal pages (warranty / shipping / privacy / terms) are still per-locale prose in their
 > `.astro` files — intentionally not migrated (long-form legal text, low churn).
 
+## Images & assets
+
+**Site-level shared images** (logos, the default social-share/og image, payment marks, homepage hero
+backgrounds and the hero industry collage) are indexed in **`src/data/assets.ts`** (`SITE_IMAGES`,
+typed by `src/types/asset.ts` `SiteImage`). Each entry records `src`, localized `alt` (empty for
+decorative), `usage` (where it's used), `owner`, and a `decorative` flag. Use `getImage(id)` to look one
+up. The registry is a documentation/lookup index — it is **not yet wired** into components, so editing an
+image still means editing its current reference (Header logo path, `config/seo.ts` og image, etc.).
+
+Bulk image SETS keep living in their own data layer — do **not** move them into `assets.ts`:
+per-product/category images in `products.{en,de,ja}.js`, mega-menu panels in `header-navigation.ts`,
+hero art in `heroSlides.ts`. The file header in `assets.ts` also records the dist alt-audit result
+(the only empty-alt images are intentional decorative hero layers).
+
 ## Data layer
 
 `src/data/` holds the maintainable content models (`navigation`, `company`, `faq`, `solutions`,
-`support`, `locales`, and a typed `products` accessor). They follow the site convention of
+`support`, `locales`, `assets`, and a typed `products` accessor). They follow the site convention of
 **referencing i18n keys** rather than inlining translated text.
