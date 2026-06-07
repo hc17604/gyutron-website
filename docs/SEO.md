@@ -33,6 +33,27 @@
 Set via i18n keys, e.g. `title={t(locale, 'seo.index.title')}`. Add the `seo.<page>.title` /
 `seo.<page>.desc` keys to all three dicts when adding a page.
 
+## Adding a page — SEO checklist
+
+When you add a page, render it through `Layout.astro` (which uses `SeoHead.astro`) and confirm:
+
+1. Page uses `Layout` and passes `locale` + canonical `path` (no locale prefix, e.g. `/x.html`).
+2. `seo.<page>.title` and `seo.<page>.desc` keys exist in **all three** dicts (`en/de/ja`).
+3. Create the `en`, `de/`, `ja/` page variants so the hreflang set resolves for every locale.
+4. If the page should not be indexed, pass `noindex` (emits `noindex, follow`) — and it should
+   NOT be added to the sitemap (see `sitemap.xml.ts`).
+5. Use a custom `ogImage` only if the default social image is wrong for the page.
+6. `npm run build` then `npm run verify:seo` (+ `verify:sitemap`, `verify:routes`).
+
+## Automated check (`npm run verify:seo`)
+
+`scripts/verify-seo.mjs` scans every built `dist/**.html` page (skipping redirect stubs) and
+**fails the build** if a page is missing: a non-empty `<title>`, meta description, robots, a
+canonical under the www origin with the correct locale prefix, the full hreflang set
+(`en/de/ja` + `x-default`), `og:type/url/title/description/image` (image absolute) + `twitter:card`,
+or at least one valid `application/ld+json` block (`@context` + `@type`). It runs in CI
+(`.github/workflows/verify.yml`) as a hard gate and is part of `npm run verify:all`.
+
 ## Don't
 
 Don't keyword-stuff. The brand is industrial automation / machine vision — keep copy professional and

@@ -3,7 +3,7 @@
 ## Website verification gates (`npm run verify:*`)
 
 Run from `astro/` **after `npm run build`** (they read `astro/dist`). Also run automatically in CI
-(`.github/workflows/verify.yml`) on push/PR to `main` — build + the first three as hard gates, i18n
+(`.github/workflows/verify.yml`) on push/PR to `main` — build + the first four as hard gates, i18n
 informational; CI never deploys.
 
 | Command | Checks | Gate |
@@ -11,8 +11,9 @@ informational; CI never deploys.
 | `npm run verify:header` | built header (en/de/ja) is equivalent to deployed `public/` + structural/mobile-hook contract (see "Verify a header / nav change" below) | hard |
 | `npm run verify:sitemap` | `dist/sitemap.xml`: every `<url>` has hreflang en/de/ja + x-default, canonical `https://www.gyutron.com`, NO shop, NO redirect stubs, `<loc>` count = paths×locales | hard |
 | `npm run verify:routes` | `config/routes` core pages exist in en/de/ja; every Header/Footer internal link resolves to a built page (known footer placeholders listed, not failed) | hard |
+| `npm run verify:seo` | every built `dist/**.html` page's `<head>`: title, meta description, robots, canonical (correct locale prefix), hreflang en/de/ja + x-default, og + twitter:card, ≥1 valid JSON-LD; redirect stubs skipped | hard |
 | `npm run verify:i18n` | heuristic residual-English scan of de/ja pages; ALL-CAPS acronyms / model names excluded, a proper-noun allowlist applies | **report** (exit 0) |
-| `npm run verify:all` | the four above in sequence | hard (i18n stays report) |
+| `npm run verify:all` | the five above in sequence | hard (i18n stays report) |
 
 - A `verify:*` FAIL prints exactly what broke. Fix the data/source, rebuild, re-run.
 - `verify:i18n` is REPORT-only on purpose: product-spec *values* in de/ja are still English (deferred
