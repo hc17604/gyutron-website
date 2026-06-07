@@ -2,7 +2,8 @@
 
 > Consolidated handoff for the agent/engineer taking over. **This supersedes the older, partly-stale rules in `AGENTS.md` where they conflict** (see §10). Last updated 2026-06-06. Current live HEAD: use `git rev-parse origin/main` after `git fetch`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
-> 🏗️ **2026-06-06:** an **additive engineering foundation** was added — repo-root **`docs/`** (9 guides) + `astro/src/{config,types,data}` + `astro/src/lib/{api,forms,crm,cms,agent,logger}` (all **mock/placeholder**) + `astro/.env.example`. It is **mostly NOT wired into pages yet — adopt incrementally.** See **§5b** and `docs/`.
+> 🏗️ **2026-06-06:** an **additive engineering foundation** was added — repo-root **`docs/`** + `astro/src/{config,types,data}` + `astro/src/lib/{api,forms,crm,cms,agent,logger}` (mock/placeholder) + `astro/.env.example`. See **§5b** and `docs/`.
+> 🧭 **New maintainer / employee / agent: START at `docs/MAINTENANCE.md`** (a task→doc index for every common change) and read **`docs/SAFETY_CHECKLIST.md`** (what breaks the site). Other guides: ARCHITECTURE, COMPONENTS, CONTENT_GUIDE, ROUTES, I18N, SEO, ACCESSIBILITY, PERFORMANCE, FUTURE_INTEGRATIONS, SOLUTIONS_GUIDE, DEPLOYMENT, TROUBLESHOOTING.
 
 ---
 

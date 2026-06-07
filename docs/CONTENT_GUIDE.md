@@ -13,6 +13,10 @@ Where each kind of content lives, and how to edit it.
 | Company info (offices, email, WhatsApp, socials) | `footer.*` i18n keys + `src/data/company.ts` | |
 | FAQ items | **`src/data/faq.ts`** (locale-aware), rendered by `components/support/FaqList.astro` | |
 | Site-level images (logo, social share, payment, hero backgrounds) | **`src/data/assets.ts`** (`SITE_IMAGES`; type in `src/types/asset.ts`) | curated index; per-product/nav/hero image SETS stay in their own data files |
+| Homepage hero / carousel slides | **`src/data/heroSlides.ts`** (`HERO_SLIDES`), rendered by `HeroSlider.astro` | 3 layouts (solutions/grid/product); copy via i18n keys |
+| Contact-form product options | **`CONTACT_PRODUCT_OPTIONS`** in `src/data/products.ts` | curated subset; `{category, labelKey}` pairs |
+| Solutions | **`src/data/solutions.ts`** (`SOLUTIONS`; type in `src/types/solution.ts`), rendered by `SolutionPage.astro` | see SOLUTIONS_GUIDE.md |
+| Pages (routing/SEO/sitemap metadata) | **`src/data/pages.ts`** (`SITE_PAGES`; type in `src/types/page.ts`) | sitemap derives static pages from it; see ROUTES.md |
 | Legal (privacy / terms / warranty / shipping) | hardcoded in the page `.astro` files | long prose; migrate only if needed |
 
 ## Add a product
@@ -27,6 +31,32 @@ Where each kind of content lives, and how to edit it.
 Add a new key to `GYUTRON_PRODUCTS` in all three files with `{ eyebrow, title, navLabel, heroImage,
 intro, panelMetric, panelText, products: [...] }`. The `[category].astro` route picks it up
 automatically. Add `seo.<category>.title`/`.desc` i18n keys. Link it in the nav.
+
+> ⚠️ `eyebrow`, `title`, `navLabel`, `intro`, `panelText` are written directly per-locale in
+> `products.{de,ja}.js` (NOT via the i18n dicts), so **translate them by hand** in all three files —
+> `verify:i18n` only scans rendered pages and won't catch a residual in a not-yet-rendered field
+> (`panelMetric`/`sectionIntro`). See I18N.md "Residual-English status".
+
+## Edit the homepage hero / carousel
+
+Slides are data-driven in **`src/data/heroSlides.ts`** (`HERO_SLIDES`), rendered by `HeroSlider.astro`.
+Each slide has a `layout` (`solutions` | `grid` | `product`), a `bg` image, and copy via i18n keys
+(`kickerKey`/`titleKey`/`subKey`/`ctaKey`…). To change a slide, edit its entry (and any `*Key` must
+exist in all three dicts). The hero is **visually sensitive** — after editing, `npm run build` and
+visually verify desktop + mobile before deploying. See HANDOFF.md §6.
+
+## Edit contact-form product options
+
+The Contact Sales `<select>` options come from **`CONTACT_PRODUCT_OPTIONS`** in `src/data/products.ts`
+— a curated array of `{ category, labelKey }` (the label reuses an existing nav-label i18n key, so the
+visible text stays consistent). Add/remove/reorder entries there; the "Select one" placeholder and the
+trailing "OEM / ODM Cooperation" option are rendered in `ContactSales.astro`. Do **not** change the
+form field `name`s or the `/api/contact` submit logic. Then `npm run build`.
+
+## Add / edit a solution
+
+Solutions are data-driven in `src/data/solutions.ts`. See **docs/SOLUTIONS_GUIDE.md** for the full
+step-by-step (model fields, page wrapper, byte-equivalence note).
 
 ## Edit navigation
 

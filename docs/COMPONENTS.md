@@ -96,6 +96,12 @@ FAILs, the mobile-load-bearing class list, and rollback.
 - ✅ **Footer nav** renders `data/navigation.ts` `FOOTER_NAV`.
 - ✅ **Header nav** (top-level + mega-menu panels) renders `data/header-navigation.ts` `HEADER_NAV` via
   `components/navigation/*` (done 2026-06-07; output verified byte-structure-identical across en/de/ja).
-- Mega-menu interaction JS is inlined in several page components (Header/Home/ContactSales/…).
-- The contact form's product `<select>` hardcodes a product subset — could derive from `data/products`.
-- `HeroSlider.astro` imports the per-locale product files directly — could use the `data/products` accessor.
+- ✅ **Contact form product `<select>`** is data-driven from `CONTACT_PRODUCT_OPTIONS` in
+  `data/products.ts` (a curated subset of product families). To edit the dropdown, change that array —
+  see CONTENT_GUIDE.md "Edit contact-form product options".
+- ✅ **HeroSlider** reads products via the `data/products` accessor (`getCatalog(locale)`); hero slide
+  definitions live in `data/heroSlides.ts`.
+- ✅ **SolutionPage** renders from the `data/solutions.ts` model (content keys + meta); section/card
+  markup is kept literal (byte-equivalence) — a generic multi-solution renderer is the next step.
+- Mega-menu interaction JS is still inlined in several page components (Header/Home/SolutionPage/…) —
+  a known, accepted duplication (the rendered nav DOM is the contract; see Header nav notes above).

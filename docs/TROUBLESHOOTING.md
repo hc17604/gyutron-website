@@ -23,6 +23,25 @@ hard gates, i18n + assets informational; CI never deploys.
   once spec translation is complete; extend its `CONTEXT_ALLOWLIST` for legitimate English proper nouns.
 - New verify scripts live in `astro/scripts/*.mjs` (plain Node, no dependencies).
 
+## CI / deploy failures
+
+- **GitHub Actions run is red.** `gh run list` → `gh run watch <id>` (or open the run on GitHub) and
+  read the failing step. It's always one of: `build`, `verify:header`, `verify:sitemap`,
+  `verify:routes`, `verify:seo`, `verify:a11y-lite` (i18n + assets are informational and never fail).
+  Reproduce locally: `cd astro && npm run build && npm run verify:all` (+ `verify:a11y-lite`), fix the
+  data/source, push again. **CI never deploys**, so a red run doesn't change the live site — but don't
+  leave it red. Common causes: a new visible string missing from one of the three i18n dicts (build
+  throws), a header edit that broke the DOM contract (`verify:header`), or a new page missing a SEO tag
+  (`verify:seo`).
+- **GitHub Actions install step fails.** The workflow uses `npm install` (NOT `npm ci`) because
+  `package-lock.json` is gitignored by convention. If you add a real dependency, install locally and
+  confirm the build still works; don't commit a lockfile unless the convention changes.
+- **Cloudflare didn't pick up a change.** The Worker serves the committed **`public/`**, with no build
+  step. If your change isn't live, you likely edited `astro/src/**` and built `astro/dist/` but forgot
+  to sync the changed page into `public/` and commit it. Check `git status public/` and re-do the
+  DEPLOYMENT.md sync (copy only the affected `astro/dist/<page>` → `public/<page>`, never bulk-copy,
+  never shop). Pushing to `main` is what triggers the deploy.
+
 ## Build fails: `[i18n] missing key "x" for locale "de"`
 A page references a key that isn't in `de.json` (or `ja`/`en`). Add the key to **all three** dicts.
 This gate is intentional — it stops English from silently shipping.
