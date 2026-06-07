@@ -76,6 +76,7 @@ A maintainable foundation was added **additively** (new files; nothing existing 
 **Run / build / verify**
 - `cd astro && npm install` (deps = `astro` only).
 - `npm run build` — builds the site; a missing i18n key throws (the gate). Run after every change.
+- `npm run verify:header` — **header regression gate** (`scripts/verify-header-equivalence.mjs`). Run after build whenever you touch `Header.astro`, `components/navigation/*`, or `data/header-navigation.ts`: STRICT-asserts the built header (en/de/ja) is whitespace-normalized **equivalent to the deployed `public/`** and the structural/mobile-hook contract holds. Intentional nav change → `npm run verify:header -- --report` (content deltas become INFO; structural contract stays a hard gate), then sync `dist → public`. See `docs/TROUBLESHOOTING.md` "Verify a header / nav change".
 - **No `lint` / `typecheck` scripts exist.** `npm run check` (astro check) needs `@astrojs/check`+`typescript` — NOT installed; don't add it casually. To typecheck the scaffold TS: write a temp tsconfig extending `astro/tsconfigs/strict` that includes `src/{config,types,lib,data}` and run the local `node_modules/.bin/tsc --noEmit -p <it>` (exit 0 = clean), then delete it.
 
 **Dev principles (apply on every wiring step)**

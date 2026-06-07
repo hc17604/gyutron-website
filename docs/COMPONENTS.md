@@ -77,8 +77,19 @@ lang switch, CTA, the inline scrollbar/active-submenu/close-on-click scripts) an
 with (a) the desktop CSS (`nav-chrome.css` + the per-page chrome), (b) `Header.astro`/`Home.astro` inline
 scripts (`.nav-item`, `.mega-link-group.is-open`, …), and (c) `public/mobile-navigation.js`, which **clones
 the rendered desktop DOM by selector** (`.mega-links` children, `:scope > .mega-link`, `:scope > .submenu > a`).
-The components emit byte-structure-identical DOM to the old hand-written markup — verified across en/de/ja
-(see [TROUBLESHOOTING.md](TROUBLESHOOTING.md) "Verify a header refactor"). Keep it that way.
+The components emit byte-structure-identical DOM to the old hand-written markup — verified across en/de/ja.
+Keep it that way: after any change to `Header.astro`, `components/navigation/*`, or `header-navigation.ts`,
+run the gate from `astro/`:
+
+```
+npm run build && npm run verify:header        # strict: header must stay EQUIVALENT to deployed public/
+npm run verify:header -- --report             # use when the nav content change is intentional
+```
+
+`scripts/verify-header-equivalence.mjs` checks the normalized header region per locale, the href/class/
+style-url sets + counts, and the structural contract (hook classes + count invariants + en/de/ja
+consistency). See [TROUBLESHOOTING.md](TROUBLESHOOTING.md) "Verify a header / nav change" for reading
+FAILs, the mobile-load-bearing class list, and rollback.
 
 ## Known duplication / TODO (incremental)
 

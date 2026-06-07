@@ -43,26 +43,49 @@ A JS block comment (`/** … */`) contains a `*/` sequence in its text — e.g. 
 `pages/**/support` (the `**/` includes `*/`, which closes the comment early; the rest is parsed as code).
 Fix: avoid `*/` / `**/` inside doc comments — write `pages/[locale]/support` or `src/pages/.../support`.
 
-## Verify a header / nav refactor (the header is a hard DOM contract)
+## Verify a header / nav change (the header is a hard DOM contract)
 
 The header nav is data-driven (`data/header-navigation.ts` → `components/navigation/*`), but its rendered
 DOM is a contract with the desktop CSS, the `Header.astro`/`Home.astro` inline scripts, and
-`public/mobile-navigation.js` (which clones the desktop DOM by selector). Any nav change must keep the
-rendered DOM structure identical. To verify, don't eyeball — diff the built output:
+`public/mobile-navigation.js` (which **clones the rendered desktop DOM by CSS selector**). After ANY change
+to `Header.astro`, the `components/navigation/*` pieces, or `data/header-navigation.ts`, don't eyeball —
+run the gate:
 
-1. Build the **old** tree first and snapshot the header region of a few pages (en/de/ja home + a product +
-   support + contact): slice each built HTML from `<div class="top-strip">` to `</header>`.
-2. Make the change, `cd astro && npx astro build` again.
-3. Normalize whitespace (drop inter-tag whitespace, collapse runs) and compare old vs new — they must be
-   **identical**. Also check counts: `<a href>` set, `class` set, `url('…')` images, `.mega-link-group`,
-   `.submenu`, `.mega-section-label`. The committed `public/` holds the last-deployed header, so a quick
-   full check is: for every `astro/dist/**/*.html`, compare its normalized header region to `public/`'s
-   (skip `shop/` and the 9 redirect stubs that have no header).
-4. Confirm only the header changed: bytes **before** `<div class="top-strip">` and **after** `</header>`
-   must be byte-identical to `public/` (the refactor must not touch page body, footer, or `<head>`).
+```
+cd astro
+npm run build          # always build first; missing i18n key throws here
+npm run verify:header  # strict: built header must be EQUIVALENT to the deployed public/
+```
 
-If the normalized diff is non-empty, a class/href/text/order/image changed — fix the data or component
-until it's empty. Allowed: whitespace/indentation only.
+- **PASS ✓ (exit 0)** — the freshly-built header (en/de/ja) is whitespace-normalized byte-identical to the
+  deployed `public/` header, the structural contract holds, and the three locales share one structure.
+  This is the expected result for a *rendering/refactor* change that shouldn't alter content.
+- **FAIL ✗ (exit 1)** — the report prints exactly what changed: `href` / `class` / `style url()` items
+  **removed** or **added**, and count deltas (`nav-item`, `mega-menu`, `mega-link-group`, `mega-link`,
+  `submenu`, `submenu--intro`, bare link). `removed` items / decreasing counts = a likely accidental loss.
+
+**Made an intentional nav change** (added a product, a section, a link)? The strict gate fails because the
+built header now differs from the still-old deployed `public/`. Re-run `npm run verify:header -- --report`:
+content deltas become INFO (a removal/decrease is shown as a ⚠ loss to double-check), and only the
+**structural contract** stays a hard gate — mobile/desktop hook classes present (`.nav .nav-item .nav-trigger
+.mega-menu .mega-links .button-primary .language-switch-mobile|.language-icon-mobile .nav-search data-locale
+data-noresults .brand`) and count invariants (`nav-item==mega-menu`, `mega-links==mega-menu`,
+`mega-link-group==mega-link==submenu`, `submenu--intro<=submenu`, `mega-compact<=mega-menu`). Confirm the
+printed deltas are exactly what you intended, then sync `dist/*.html → public/` and deploy; after the sync,
+strict `verify:header` passes again.
+
+Mode of operation: STRICT compares the whole normalized header region (`<div class="top-strip"> … </header>`,
+which covers every desktop/mobile dependency) — an identical region means no regression, so it is the safe
+default. REPORT mode's structural gate is **count-level**: it deliberately allows a *balanced* content
+change (e.g. removing a whole group: link-group+mega-link+submenu all drop together) and only flags it via
+the loss warning — for a non-content (component markup) change, rely on STRICT. Other flags:
+`--reference ../public` / `--candidate dist` (override sources), `--ref-file a --cand-file b` (diff two
+header files directly), `--locales en,de,ja`.
+
+**Which classes are mobile-load-bearing — do NOT rename/drop:** `.nav`, `.nav-item`, `.nav-trigger`,
+`.mega-menu` (+`.mega-compact`), `.mega-links`, `.mega-section-label`, `.mega-link-group`, `.mega-link`,
+`.submenu` (+`.submenu--intro`), `.brand`, `.button-primary`, `.language-switch-mobile`/`.language-icon-mobile`,
+`.nav-search` (+ its `data-locale` / `data-noresults`). `mobile-navigation.js` selects on all of these.
 
 ## Roll back a header / nav refactor
 
