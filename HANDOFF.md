@@ -25,6 +25,7 @@
 
 ## 2. Design rule (hard requirement, all gyutron.com work)
 **Industrial / rugged / hard-edged — NOT a soft "software-company" look.** (The lucid.co floating-cards style was rejected.) Reference: **thinklucid.com** — dark, product-forward, hard edges (border-radius 0), uppercase technical type, real imagery, square page dots. Use GYUTRON's own copy/images + **brand purple**: `--purple-500 #8a63d2` for accents on dark (the true `--brand-purple #4b2e83` is too dark to read on near-black). Keep GYUTRON brand text uppercase in visible copy.
+- **⭐ COLOR RULE (hard, user 2026-06-07): PURPLE-ONLY.** The brand uses **only purple**. The secondary / accent color is **LIGHT PURPLE `--purple-500 #8a63d2`** (with paler tints `--violet-soft #efe8ff` for fills). **NEVER use green / teal / cyan** as an accent (the old `#00c2a8` `--signal`, `#00d2be` hero-accent and a `#18b6c9` homepage accent were all removed and mapped to purple on 2026-06-07). Functional **red** (errors) and **amber** (`--warning`) may stay; only the green/teal "second color" is banned. New work must not introduce non-purple accents — reuse `--signal` / `--hero-accent` / `--hx-accent` / `--purple-*` tokens.
 
 ## 3. Deploy procedure (EVERY change)
 1. Edit `astro/src/**` (components/pages/data/i18n) or `astro/public/**` (static CSS/assets).

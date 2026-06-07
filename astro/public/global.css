@@ -19,7 +19,8 @@
             --line: #e6e0ee;
             --paper: #fbfafc;
             --white: #ffffff;
-            --signal: #00c2a8;
+            --signal: #8a63d2;
+            --hero-accent: #8a63d2;
             --warning: #ffb000;
             --shadow: 0 24px 70px rgba(31, 11, 53, 0.18);
             --shadow-sm: 0 10px 30px rgba(31, 11, 53, 0.10);
@@ -773,7 +774,7 @@
         }
 
         .hero-bars span {
-            background: var(--hero-accent, #00d2be);
+            background: var(--hero-accent, #8a63d2);
             display: block;
             height: 6px;
         }
@@ -886,7 +887,7 @@
         }
 
         .hero-feature-row i {
-            color: var(--hero-accent, #00d2be);
+            color: var(--hero-accent, #8a63d2);
         }
 
         .hero-product {

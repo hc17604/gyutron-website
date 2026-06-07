@@ -765,9 +765,9 @@
         }
 
         .form-status.is-success {
-            background: #f3fff8;
-            border-color: #b9e9ca;
-            color: #155d2c;
+            background: #f4f0fc;
+            border-color: #cdb9ef;
+            color: #4b177f;
         }
 
         .form-status.is-error {
