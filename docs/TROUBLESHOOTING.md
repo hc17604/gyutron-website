@@ -43,5 +43,34 @@ A JS block comment (`/** … */`) contains a `*/` sequence in its text — e.g. 
 `pages/**/support` (the `**/` includes `*/`, which closes the comment early; the rest is parsed as code).
 Fix: avoid `*/` / `**/` inside doc comments — write `pages/[locale]/support` or `src/pages/.../support`.
 
+## Verify a header / nav refactor (the header is a hard DOM contract)
+
+The header nav is data-driven (`data/header-navigation.ts` → `components/navigation/*`), but its rendered
+DOM is a contract with the desktop CSS, the `Header.astro`/`Home.astro` inline scripts, and
+`public/mobile-navigation.js` (which clones the desktop DOM by selector). Any nav change must keep the
+rendered DOM structure identical. To verify, don't eyeball — diff the built output:
+
+1. Build the **old** tree first and snapshot the header region of a few pages (en/de/ja home + a product +
+   support + contact): slice each built HTML from `<div class="top-strip">` to `</header>`.
+2. Make the change, `cd astro && npx astro build` again.
+3. Normalize whitespace (drop inter-tag whitespace, collapse runs) and compare old vs new — they must be
+   **identical**. Also check counts: `<a href>` set, `class` set, `url('…')` images, `.mega-link-group`,
+   `.submenu`, `.mega-section-label`. The committed `public/` holds the last-deployed header, so a quick
+   full check is: for every `astro/dist/**/*.html`, compare its normalized header region to `public/`'s
+   (skip `shop/` and the 9 redirect stubs that have no header).
+4. Confirm only the header changed: bytes **before** `<div class="top-strip">` and **after** `</header>`
+   must be byte-identical to `public/` (the refactor must not touch page body, footer, or `<head>`).
+
+If the normalized diff is non-empty, a class/href/text/order/image changed — fix the data or component
+until it's empty. Allowed: whitespace/indentation only.
+
+## Roll back a header / nav refactor
+
+The change is isolated: `components/navigation/*`, `data/header-navigation.ts`, `types/navigation.ts`, plus
+the `Header.astro` + `data/navigation.ts` edits, and the `public/*.html` re-render. To revert, `git revert`
+the nav commits (or `git checkout <prev> -- astro/src/components/navigation astro/src/data/header-navigation.ts
+astro/src/types/navigation.ts astro/src/components/Header.astro astro/src/data/navigation.ts`), then rebuild
+Astro and re-sync `dist/*.html → public/`. No other subsystem depends on the new files.
+
 ## Where to look
 `docs/` (this folder), repo-root `HANDOFF.md` (operational handoff), `tools/i18n-audit.py` (i18n gate).

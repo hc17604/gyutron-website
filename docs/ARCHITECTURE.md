@@ -24,8 +24,8 @@ No UI framework (React/Vue), no CSS-in-JS, no state library. Keep it light.
 astro/src/
   pages/          route files (en at root, de/, ja/); [category].astro is dynamic
   layouts/        Layout.astro — <head>, SEO meta, Header + slots
-  components/     13 .astro components (see COMPONENTS.md)
-  data/           products.{en,de,ja}.js, heroSlides.ts  + NEW scaffold (navigation/company/faq/…)
+  components/     core .astro components + navigation/ (data-driven header nav) — see COMPONENTS.md
+  data/           products.{en,de,ja}.js, heroSlides.ts, header-navigation.ts  + scaffold (navigation/company/faq/…)
   i18n/           en.json / de.json / ja.json (807 keys) + index.ts
   lib/            productI18n.ts, productText.ts, searchIndex.ts  + NEW scaffold (api/forms/crm/cms/agent/logger)
   config/         NEW — centralized site/seo/i18n/routes/integrations config
@@ -41,8 +41,8 @@ Repo root also contains: `public/` (the **deployed build output**, committed), `
 
 ## Active vs. scaffold
 
-- **Active** (renders the live site): `pages/` (incl. `sitemap.xml.ts`), `layouts/Layout.astro` → `components/seo/SeoHead.astro` (uses `config/{site,seo}` + `utils/{seo,structured-data}`), `components/` (incl. `support/FaqList.astro`), `i18n/`, `config/{site,seo,i18n,routes}`, `data/{products.*.js, products.ts (accessor), faq.ts, navigation.ts→FOOTER_NAV, heroSlides.ts}`, `utils/{seo,structured-data}`, `lib/{productI18n, productText, searchIndex, forms/contact, api}`.
-- **Scaffold** (not yet wired into pages — adopt incrementally): `config/integrations`, `types/`, `data/{company,solutions,support,locales}.ts` + `navigation.ts` `MAIN_NAV`, `lib/{crm,cms,agent,logger}` + `lib/forms/inquiry`, the grouped `components/{layout,navigation,language,forms,common}/` placeholders, and `.env.example`. All future-integration code (CRM/CMS/Agent) is **mock/placeholder** — see [FUTURE_INTEGRATIONS.md](FUTURE_INTEGRATIONS.md).
+- **Active** (renders the live site): `pages/` (incl. `sitemap.xml.ts`), `layouts/Layout.astro` → `components/seo/SeoHead.astro` (uses `config/{site,seo}` + `utils/{seo,structured-data}`), `components/` (incl. `support/FaqList.astro` and `navigation/*` rendering the header), `i18n/`, `config/{site,seo,i18n,routes}`, `data/{products.*.js, products.ts (accessor), faq.ts, header-navigation.ts, navigation.ts (FOOTER_NAV + derived MAIN_NAV), heroSlides.ts}`, `types/navigation.ts`, `utils/{seo,structured-data}`, `lib/{productI18n, productText, searchIndex, forms/contact, api}`.
+- **Scaffold** (not yet wired into pages — adopt incrementally): `config/integrations`, most of `types/`, `data/{company,solutions,support,locales}.ts`, `lib/{crm,cms,agent,logger}` + `lib/forms/inquiry`, the grouped `components/{layout,language,forms,common}/` placeholders, and `.env.example`. All future-integration code (CRM/CMS/Agent) is **mock/placeholder** — see [FUTURE_INTEGRATIONS.md](FUTURE_INTEGRATIONS.md).
 
 ## Principles (apply on every change)
 

@@ -8,7 +8,12 @@ All components live in `astro/src/components/` and take a `locale: Locale` prop,
 | Component | Role | Reusability |
 |---|---|---|
 | `Layout.astro` (in `layouts/`) | `<head>` + SEO meta + Header + slots | high |
-| `Header.astro` | desktop mega-menu, top bar, search, lang switch | singleton |
+| `Header.astro` | top bar, brand, search, lang switch + `<HeaderNav/>` (nav now data-driven) | singleton |
+| `navigation/HeaderNav.astro` | `<ul class="nav">` — data-driven from `HEADER_NAV` | singleton |
+| `navigation/MegaMenu.astro` | one `.mega-menu` panel (feature + sections + extra links) | **high** |
+| `navigation/MegaMenuFeature.astro` | `.mega-feature` hero link (standard panels) | high |
+| `navigation/MegaMenuSection.astro` | `.mega-section-label` + the groups under it | high |
+| `navigation/MegaMenuLink.astro` | one `.mega-link-group` (`.mega-link` + `.submenu`) | **high** |
 | `Footer.astro` | footer nav (data-driven via `FOOTER_NAV`) + company + payment | singleton |
 | `Home.astro` | homepage sections | page-specific |
 | `ProductPage.astro` | product category template (data-driven) | **high** |
@@ -52,11 +57,34 @@ Until then existing components stay where they are.
   is `ContactSales.astro`, which already routes through `lib/forms/contact.ts`.
 - `common/SectionTitle.astro`, `common/CtaSection.astro` — presentational, not yet imported.
 
+## Header navigation (data-driven) — added 2026-06-07
+
+The whole header nav (top-level triggers **and** the mega-menu panels) is data-driven from
+**`src/data/header-navigation.ts`** `HEADER_NAV` (typed by `src/types/navigation.ts`), rendered by the
+`components/navigation/*` pieces above. `Header.astro` keeps only the chrome (top strip, brand, search,
+lang switch, CTA, the inline scrollbar/active-submenu/close-on-click scripts) and calls `<HeaderNav/>`.
+`MAIN_NAV` (in `data/navigation.ts`) is now a derived projection of `HEADER_NAV`.
+
+**To edit the nav, edit `header-navigation.ts` only** — never the components:
+- new top-level item → add a `HeaderNavItem` (`triggerHref` + `labelKey` + `menu`).
+- new mega section → push `{ labelKey, groups: [] }` onto `menu.sections`.
+- new product/category card → push `{ link, submenu }` onto a section's `groups`.
+- new submenu link → push `{ href, titleKey, descKey }` onto `submenu.links`.
+- standard (wide) panel → `variant: 'standard'` + a `feature`; compact → `variant: 'compact'`, no feature.
+- a one-link intro panel → `submenu.intro: true`. A language-neutral label → `titleText` instead of `titleKey`.
+
+**Hard DOM contract (do not break):** the rendered class names, nesting, and child order are a contract
+with (a) the desktop CSS (`nav-chrome.css` + the per-page chrome), (b) `Header.astro`/`Home.astro` inline
+scripts (`.nav-item`, `.mega-link-group.is-open`, …), and (c) `public/mobile-navigation.js`, which **clones
+the rendered desktop DOM by selector** (`.mega-links` children, `:scope > .mega-link`, `:scope > .submenu > a`).
+The components emit byte-structure-identical DOM to the old hand-written markup — verified across en/de/ja
+(see [TROUBLESHOOTING.md](TROUBLESHOOTING.md) "Verify a header refactor"). Keep it that way.
+
 ## Known duplication / TODO (incremental)
 
 - ✅ **Footer nav** renders `data/navigation.ts` `FOOTER_NAV`.
-- **Header mega-menu** still authored in `Header.astro` (deep irregular markup + the mobile menu clones
-  the desktop DOM by selector). Top-level lives in `MAIN_NAV`; the panel rewrite is **deferred (high risk)**.
+- ✅ **Header nav** (top-level + mega-menu panels) renders `data/header-navigation.ts` `HEADER_NAV` via
+  `components/navigation/*` (done 2026-06-07; output verified byte-structure-identical across en/de/ja).
 - Mega-menu interaction JS is inlined in several page components (Header/Home/ContactSales/…).
 - The contact form's product `<select>` hardcodes a product subset — could derive from `data/products`.
 - `HeroSlider.astro` imports the per-locale product files directly — could use the `data/products` accessor.

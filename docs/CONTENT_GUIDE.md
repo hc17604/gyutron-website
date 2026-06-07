@@ -9,7 +9,7 @@ Where each kind of content lives, and how to edit it.
 | UI labels, headings, SEO title/desc, home & solution copy | `src/i18n/{en,de,ja}.json` | edit all 3 |
 | Products (categories + models + specs) | `src/data/products.{en,de,ja}.js` | per-locale, **kept separate on purpose** |
 | Navigation — footer | **`src/data/navigation.ts` `FOOTER_NAV`** (Footer.astro renders from it) | |
-| Navigation — header | top-level in **`src/data/navigation.ts` `MAIN_NAV`**; mega-menu PANELS stay in `Header.astro` (rewrite deferred — high risk) | |
+| Navigation — header (incl. mega-menu) | **`src/data/header-navigation.ts` `HEADER_NAV`** (rendered by `components/navigation/*`); `MAIN_NAV` is a derived top-level view | |
 | Company info (offices, email, WhatsApp, socials) | `footer.*` i18n keys + `src/data/company.ts` | |
 | FAQ items | **`src/data/faq.ts`** (locale-aware), rendered by `components/support/FaqList.astro` | |
 | Legal (privacy / terms / warranty / shipping) | hardcoded in the page `.astro` files | long prose; migrate only if needed |
@@ -30,10 +30,17 @@ automatically. Add `seo.<category>.title`/`.desc` i18n keys. Link it in the nav.
 ## Edit navigation
 
 - **Footer** is data-driven: edit `src/data/navigation.ts` `FOOTER_NAV` (Footer.astro maps it).
-- **Header top-level** (the 6 mega-menu triggers) is modelled in `src/data/navigation.ts` `MAIN_NAV`.
-  The deep mega-menu PANELS (sections, link groups, submenus, images) are still authored directly in
-  `Header.astro` — rewriting them to be data-driven is deferred as high risk (irregular markup + the
-  mobile menu clones the desktop DOM by selector). To change a mega-menu link today, edit `Header.astro`.
+- **Header** (top-level triggers **and** the full mega-menu panels) is data-driven in
+  **`src/data/header-navigation.ts` `HEADER_NAV`**, rendered by `components/navigation/*`. Edit links,
+  sections, submenus, panel images, and trigger labels there — never in the components. `MAIN_NAV` (in
+  `navigation.ts`) is a derived top-level projection of `HEADER_NAV`.
+  - top-level item → add a `HeaderNavItem` (`triggerHref` + `labelKey` + `menu`).
+  - section → push `{ labelKey, groups: [] }` onto `menu.sections`; card → push `{ link, submenu }` onto `groups`.
+  - submenu link → push `{ href, titleKey, descKey }` onto `submenu.links` (use `titleText` for a literal label).
+  - panel images are `menu.overviewImage` / `submenu.image` (keep any `?v=` cache-buster).
+  - Every `*Key` must exist in all three i18n dicts; never translate model names (GY-*). Then `astro build`.
+  - The rendered DOM (classes/nesting/order) is a hard contract with the desktop CSS/JS and the mobile
+    drawer (`mobile-navigation.js` clones it). See COMPONENTS.md "Header navigation" + TROUBLESHOOTING.md.
 
 ## Edit company info / addresses
 
