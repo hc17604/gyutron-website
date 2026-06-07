@@ -74,6 +74,10 @@ per-product/category images in `products.{en,de,ja}.js`, mega-menu panels in `he
 hero art in `heroSlides.ts`. The file header in `assets.ts` also records the dist alt-audit result
 (the only empty-alt images are intentional decorative hero layers).
 
+For **image weight, alt-text rules, decorative-image rules, when to compress, and what not to delete**,
+see **docs/PERFORMANCE.md**. Run `npm run verify:assets` (from `astro/`, REPORT-only) to list large /
+duplicate / missing-alt images before and after adding media.
+
 ## Data layer
 
 `src/data/` holds the maintainable content models (`navigation`, `company`, `faq`, `solutions`,

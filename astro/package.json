@@ -13,6 +13,7 @@
     "verify:routes": "node scripts/verify-routes.mjs",
     "verify:seo": "node scripts/verify-seo.mjs",
     "verify:i18n": "node scripts/verify-i18n.mjs",
+    "verify:assets": "node scripts/verify-assets.mjs",
     "verify:all": "npm run verify:header && npm run verify:sitemap && npm run verify:routes && npm run verify:seo && npm run verify:i18n"
   },
   "dependencies": {

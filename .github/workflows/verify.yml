@@ -49,3 +49,5 @@ jobs:
       # Promote to a gate with `-- --strict` once product-spec translation is complete.
       - name: Verify i18n (report)
         run: npm run verify:i18n
+      - name: Verify assets (report)
+        run: npm run verify:assets
