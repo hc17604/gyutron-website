@@ -26,6 +26,21 @@
 
 de/ja live under `pages/de/…` and `pages/ja/…` with the same structure.
 
+## Page registry (`src/data/pages.ts`)
+
+`src/data/pages.ts` (`SITE_PAGES`, typed by `src/types/page.ts` `SitePage`) is the single, typed
+index of the **static + solution + redirect-stub** pages and their metadata: `type`
+(home/product/solution/support/legal/contact/redirect), canonical `path`, optional `titleKey`/
+`descKey`, `includeInSitemap`, `noindex`, and `source`. Paths are composed from `ROUTES` and
+`SOLUTIONS` (not duplicated). Product category pages are **dynamic** and intentionally not listed.
+
+- **`sitemap.xml.ts` derives its static-page list from `sitemapStaticPaths()`** here (verified
+  byte-identical output). Redirect stubs are `includeInSitemap: false` + `noindex: true`, so they
+  never enter the sitemap.
+- Helpers: `getPage(id)`, `getSitePages()`, `sitemapStaticPaths()`.
+- Adoption is incremental: SEO / nav / route checks can move onto `SITE_PAGES` over time; today only
+  the sitemap consumes it. `config/routes.ts` `ROUTES` remains the canonical path constants.
+
 ## Dynamic product route — `[category].astro`
 
 ```
@@ -45,6 +60,10 @@ getStaticPaths() → Object.keys(GYUTRON_PRODUCTS)
 2. Create `pages/de/<slug>.astro` and `pages/ja/<slug>.astro` as thin wrappers (`locale="de"|"ja"`).
 3. Add the `seo.<slug>.title` / `.desc` keys to **all three** i18n dicts (build fails on a missing key).
 4. Add the link to navigation (`Header.astro` / `Footer.astro`; canonical list in `src/data/navigation.ts`).
-5. `cd astro && npx astro build` to verify, then deploy (see DEPLOYMENT.md).
+5. **Register it in `src/data/pages.ts` `SITE_PAGES`** (set `type`, `includeInSitemap`, `noindex` as
+   appropriate) so the sitemap (and future SEO/nav consumers) pick it up. A new indexable page with
+   `includeInSitemap: true` will appear in `sitemap.xml` automatically.
+6. `cd astro && npx astro build`, then `npm run verify:all` (sitemap/routes/seo), then deploy
+   (see DEPLOYMENT.md).
 
-Canonical path constants live in `src/config/routes.ts`.
+Canonical path constants live in `src/config/routes.ts`; page metadata in `src/data/pages.ts`.
