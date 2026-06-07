@@ -51,15 +51,21 @@ export const FOOTER_NAV: NavGroup[] = [
 ];
 
 /**
- * Top-level header items. Labels are English placeholders pending a label→i18n-key mapping
- * (do NOT invent keys; map them when this is wired into Header.astro). The Products groups
- * come from the product catalog; Support/Company mirror FOOTER_NAV.
+ * Top-level header nav — the 6 mega-menu triggers, mirroring Header.astro exactly (i18n
+ * label key + trigger href). The deep mega-menu PANELS (section labels, link groups,
+ * submenus, per-submenu images) remain authored in Header.astro and are deliberately NOT
+ * data-driven yet — that rewrite is deferred as HIGH RISK (see docs/COMPONENTS.md): the
+ * structure is highly irregular (mega-compact vs full, optional .mega-feature, a bare <a>
+ * in .mega-links, submenu--intro one-link variants, versioned images, a literal "FAQ"),
+ * and the mobile menu clones the rendered desktop DOM by CSS selector — so any change must
+ * stay byte-structure-identical or it breaks desktop + mobile nav at once. This list is the
+ * canonical top-level model for whoever adopts it.
  */
 export const MAIN_NAV: NavItem[] = [
-  { label: 'Products', href: '/' }, // opens the products mega-menu (categories from product catalog)
-  { label: 'Solutions', href: '/automated-vision-inspection.html' },
-  { label: 'Industries' },
-  { label: 'Resources' },
-  { label: 'Company', href: '/about' },
-  { label: 'Support', href: '/support.html' },
+  { labelKey: 'main.004', href: '/index.html#products' },              // Products
+  { labelKey: 'main.051', href: '/automated-vision-inspection.html' }, // Solutions
+  { labelKey: 'main.103', href: '/index.html#solutions' },             // Industries
+  { labelKey: 'main.141', href: '/index.html#resources' },             // Customers
+  { labelKey: 'main.182', href: '/index.html#contact' },               // Company
+  { labelKey: 'main.220', href: '/index.html#resources' },             // Resources
 ];
