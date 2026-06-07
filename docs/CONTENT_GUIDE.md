@@ -120,11 +120,18 @@ token in one place. See HANDOFF §2.
 
 ## Add a news post
 
-News is data-driven in **`src/data/news.ts`** (`NEWS`), rendered on the homepage "Newsroom" section
-(latest 3 via `getLatestNews`). Prepend a `NewsItem` with a newer `date` (`YYYY-MM-DD`), `category` /
-`title` / `excerpt` as `{en,de,ja}`, and optionally an `image` (public path; a placeholder block shows if
-omitted). Leave `href` OFF until a `/news/<slug>` article page exists (so no dead link renders). Then
-`astro build`. A future `/news/` index + article pages can reuse this same data.
+News is data-driven in **`src/data/news.ts`** (`NEWS`). It powers the homepage "Newsroom" teaser
+(latest 3 via `getLatestNews`), the **`/news` index** (`NewsIndex.astro`) and per-post **`/news/<slug>`
+article pages** (`NewsArticle.astro`, generated via `getStaticPaths`). To add a post, prepend a
+`NewsItem`:
+- `id`, `slug`, `date` (`YYYY-MM-DD`), `category` / `title` / `excerpt` / optional `body` as `{en,de,ja}`.
+- `href: '/news/<slug>.html'` (the article page is created automatically from the slug; homepage cards
+  and site search link to it).
+- optional `image` (public path; a placeholder block shows if omitted).
+
+Then `astro build` (new `/news/<slug>` pages appear in all three locales + the sitemap, via
+`data/pages.ts`). The article page falls back to the `excerpt` when `body` is absent. A future headless
+CMS can back this same `NEWS` source.
 
 ## Edit partners / ecosystem
 
