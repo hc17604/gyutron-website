@@ -1,6 +1,7 @@
 /**
  * Support-center types: the support page registry and FAQ data model.
  */
+import type { Locale } from '../i18n';
 
 /** Metadata for one support/legal page (FAQ, warranty, shipping, privacy, terms…). */
 export interface SupportPageMeta {
@@ -17,23 +18,21 @@ export interface SupportPageMeta {
 /** A FAQ category groups related questions, e.g. "Products & Compatibility". */
 export interface FaqCategory {
   id: string;
-  /** i18n key, or plain label for the category heading. */
-  titleKey?: string;
-  title?: string;
+  /** Localized category heading. */
+  title: Record<Locale, string>;
 }
 
 /**
- * A single FAQ item. The question/answer currently live as hardcoded markup in the
- * `support/faq.astro` pages; the data-driven target stores them either as i18n keys
- * (`questionKey`/`answerKey`) or inline reference text — see `src/data/faq.ts`.
+ * A single FAQ item, locale-aware. `answer` is inline HTML (it may contain localized
+ * `<a>` links), so it is rendered with `set:html` in `FaqList.astro`. Data lives in
+ * `src/data/faq.ts` (extracted verbatim from the former per-locale `support/faq.astro`).
  */
 export interface FaqItem {
   id: string;
   /** Category id this item belongs to (see FaqCategory). */
   category: string;
-  questionKey?: string;
-  answerKey?: string;
-  /** Reference English text (used until per-locale keys are populated). */
-  question?: string;
-  answer?: string;
+  /** Localized question (plain text). */
+  question: Record<Locale, string>;
+  /** Localized answer as inline HTML. */
+  answer: Record<Locale, string>;
 }

@@ -1,0 +1,26 @@
+---
+/**
+ * Renders the FAQ accordion (categories + Q&A) from the data layer (src/data/faq.ts) for a
+ * given locale. Output matches the former hardcoded markup: an <h2> per category followed by
+ * a <div class="support-faq"> of <details><summary>question</summary><p>answer</p></details>.
+ * `answer` (and the category title) are inline HTML — rendered via set:html to keep the
+ * localized <a> links — so do NOT double-escape. Styling lives in support-page.css.
+ */
+import { FAQ_CATEGORIES, faqByCategory } from '../../data/faq';
+import type { Locale } from '../../i18n';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+{FAQ_CATEGORIES.map((category) => (
+  <Fragment>
+    <h2 set:html={category.title[locale]} />
+    <div class="support-faq">
+      {faqByCategory(category.id).map((item) => (
+        <details>
+          <summary>{item.question[locale]}</summary>
+          <p set:html={item.answer[locale]} />
+        </details>
+      ))}
+    </div>
+  </Fragment>
+))}
