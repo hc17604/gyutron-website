@@ -44,6 +44,19 @@
   const escapeHtml = (s) => (s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   function hitHtml(r) {
+    // Products / solutions / news (records with c:1 + an image) render as image CARDS; support and
+    // other pages render as plain TEXT rows. Title text is kept in both forms.
+    if (r.c && r.i) {
+      return (
+        '<a class="nav-search-card" role="option" href="' + escapeHtml(r.u) + '">' +
+        '<span class="nav-search-card-media"><img src="' + escapeHtml(r.i) + '" alt="" loading="lazy"></span>' +
+        '<span class="nav-search-card-body">' +
+        '<span class="nav-search-card-kind">' + escapeHtml(r.k) + "</span>" +
+        '<span class="nav-search-card-title">' + escapeHtml(r.t) + "</span>" +
+        "</span>" +
+        "</a>"
+      );
+    }
     return (
       '<a class="nav-search-hit" role="option" href="' + escapeHtml(r.u) + '">' +
       '<span class="nav-search-hit-title">' + escapeHtml(r.t) + "</span>" +
@@ -107,7 +120,7 @@
   }
 
   function move(delta) {
-    const els = results.querySelectorAll(".nav-search-hit");
+    const els = results.querySelectorAll(".nav-search-hit, .nav-search-card");
     if (!els.length) return;
     activeIdx = (activeIdx + delta + els.length) % els.length;
     els.forEach((el, i) => el.classList.toggle("is-active", i === activeIdx));
@@ -121,7 +134,7 @@
     if (e.key === "ArrowDown") { e.preventDefault(); move(1); }
     else if (e.key === "ArrowUp") { e.preventDefault(); move(-1); }
     else if (e.key === "Enter") {
-      const els = results.querySelectorAll(".nav-search-hit");
+      const els = results.querySelectorAll(".nav-search-hit, .nav-search-card");
       if (activeIdx >= 0 && els[activeIdx]) window.location.href = els[activeIdx].getAttribute("href");
       else if (currentHits[0]) window.location.href = currentHits[0].u;
     } else if (e.key === "Escape") { close(); toggle.focus(); }

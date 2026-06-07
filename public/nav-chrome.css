@@ -188,18 +188,30 @@ body.nav-is-navigating .submenu {
 .nav-search-close { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 0; border-radius: 2px; background: transparent; color: var(--muted, #8b8397); cursor: pointer; font-size: 16px; transition: background 160ms ease, color 160ms ease; }
 .nav-search-close:hover { background: var(--violet-soft, #f1ecfa); color: var(--purple-600, #5a3aa6); }
 .nav-search-results { max-width: 940px; margin: 0 auto; max-height: min(60vh, 520px); overflow-y: auto; }
-.nav-search-results.has-content { border-top: 1px solid var(--line, #eee); }
+.nav-search-results.has-content { border-top: 1px solid var(--line, #eee); display: flex; flex-wrap: wrap; gap: 12px; padding: 14px 24px; align-content: flex-start; }
+.nav-search-results.has-content .nav-search-hit { flex: 1 1 100%; padding: 11px 6px; }
 .nav-search-hit { display: flex; align-items: baseline; gap: 14px; justify-content: space-between; padding: 13px 24px; border-bottom: 1px solid var(--line, #f0ecf6); text-decoration: none; color: var(--ink, #17121f); }
 .nav-search-hit:hover, .nav-search-hit.is-active { background: var(--violet-soft, #f5f1fc); }
 .nav-search-hit-title { font-weight: 800; font-size: 15px; }
 .nav-search-hit-kind { flex: none; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--purple-600, #5a3aa6); background: var(--violet-soft, #f1ecfa); padding: 3px 9px; border-radius: 2px; white-space: nowrap; }
-.nav-search-empty { padding: 22px 24px; color: var(--muted, #8b8397); font-size: 15px; max-width: 940px; margin: 0 auto; }
+.nav-search-empty { padding: 22px 24px; color: var(--muted, #8b8397); font-size: 15px; max-width: 940px; margin: 0 auto; flex: 1 1 100%; }
+/* Rich image card results (products / solutions / news) — hard-edged, purple-only */
+.nav-search-card { flex: 0 0 calc(33.333% - 8px); display: flex; flex-direction: column; border: 1px solid var(--line, #e6e0ee); background: #fff; text-decoration: none; color: var(--ink, #17121f); transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
+.nav-search-card:hover, .nav-search-card.is-active { border-color: var(--purple-500, #8a63d2); box-shadow: 0 10px 26px rgba(75, 46, 131, 0.14); transform: translateY(-2px); }
+.nav-search-card-media { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--violet-soft, #efe8ff); }
+.nav-search-card-media img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+.nav-search-card-body { display: flex; flex-direction: column; gap: 6px; padding: 10px 12px 12px; }
+.nav-search-card-kind { align-self: flex-start; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--purple-600, #5a3aa6); }
+.nav-search-card-title { font-weight: 800; font-size: 13.5px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 720px) { .nav-search-card { flex: 0 0 calc(50% - 6px); } }
 @media (max-width: 1180px) { .nav-search { display: none; } }
 /* mobile drawer search (mobile-navigation.js) */
 .mobile-nav-search { display: flex; align-items: center; gap: 10px; margin: 2px 0 14px; padding: 11px 14px; border: 1px solid var(--line, #e7e2ef); border-radius: 4px; background: #fff; }
 .mobile-nav-search i { color: var(--purple-500, #8a63d2); font-size: 15px; }
 .mobile-nav-search-input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font-size: 16px; font-family: inherit; color: var(--ink, #17121f); }
-.mobile-nav-results { display: flex; flex-direction: column; }
+.mobile-nav-results { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; }
 .mobile-nav-results[hidden] { display: none; }
-.mobile-nav-results .nav-search-hit { padding: 13px 6px; }
+.mobile-nav-results .nav-search-hit { flex: 1 1 100%; padding: 13px 6px; }
+.mobile-nav-results .nav-search-card { flex: 0 0 calc(50% - 5px); }
+.mobile-nav-results .mobile-nav-empty { flex: 1 1 100%; }
 .mobile-nav-empty { padding: 18px 6px; color: var(--muted, #8b8397); font-size: 15px; }
