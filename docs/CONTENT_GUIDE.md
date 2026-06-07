@@ -8,9 +8,10 @@ Where each kind of content lives, and how to edit it.
 |---|---|---|
 | UI labels, headings, SEO title/desc, home & solution copy | `src/i18n/{en,de,ja}.json` | edit all 3 |
 | Products (categories + models + specs) | `src/data/products.{en,de,ja}.js` | per-locale, **kept separate on purpose** |
-| Navigation (header + footer) | `Header.astro` / `Footer.astro` today; canonical model in `src/data/navigation.ts` | |
+| Navigation — footer | **`src/data/navigation.ts` `FOOTER_NAV`** (Footer.astro renders from it) | |
+| Navigation — header | top-level in **`src/data/navigation.ts` `MAIN_NAV`**; mega-menu PANELS stay in `Header.astro` (rewrite deferred — high risk) | |
 | Company info (offices, email, WhatsApp, socials) | `footer.*` i18n keys + `src/data/company.ts` | |
-| FAQ items | hardcoded in `pages/**/support/faq.astro` today; target = `src/data/faq.ts` | |
+| FAQ items | **`src/data/faq.ts`** (locale-aware), rendered by `components/support/FaqList.astro` | |
 | Legal (privacy / terms / warranty / shipping) | hardcoded in the page `.astro` files | long prose; migrate only if needed |
 
 ## Add a product
@@ -28,8 +29,11 @@ automatically. Add `seo.<category>.title`/`.desc` i18n keys. Link it in the nav.
 
 ## Edit navigation
 
-Today: edit `Header.astro` (mega-menu) and `Footer.astro` (footer columns). The canonical data model
-is `src/data/navigation.ts` — when these get rewired to read from it, edit the data file only.
+- **Footer** is data-driven: edit `src/data/navigation.ts` `FOOTER_NAV` (Footer.astro maps it).
+- **Header top-level** (the 6 mega-menu triggers) is modelled in `src/data/navigation.ts` `MAIN_NAV`.
+  The deep mega-menu PANELS (sections, link groups, submenus, images) are still authored directly in
+  `Header.astro` — rewriting them to be data-driven is deferred as high risk (irregular markup + the
+  mobile menu clones the desktop DOM by selector). To change a mega-menu link today, edit `Header.astro`.
 
 ## Edit company info / addresses
 
@@ -37,11 +41,16 @@ Office labels & addresses are `footer.{hqLabel,hqAddr,rdLabel,rdAddr}` in the i1
 `CompanyAddresses.astro`). Language-neutral facts (email, WhatsApp, shop URL, socials) are centralized
 in `src/data/company.ts`.
 
-## FAQ
+## Add / edit a FAQ entry
 
-Currently the Q&A markup is duplicated across `pages/{,de/,ja/}/support/faq.astro`. The data-driven
-target is `src/data/faq.ts` (typed items) + a thin page that renders them. Until that migration lands,
-edit the three page files together.
+FAQ content is data-driven in **`src/data/faq.ts`** (`FAQ_CATEGORIES` + `FAQ_ITEMS`, both locale-aware
+`Record<Locale, string>`), rendered by `components/support/FaqList.astro`. To add a question, append a
+`FaqItem` — `{ id, category, question: {en,de,ja}, answer: {en,de,ja} }`. `answer` is inline HTML, so it
+may contain localized `<a>` links (rendered via `set:html`). The 3 `support/faq.astro` pages are thin
+wrappers and need no edit. Then `astro build`.
+
+> Support legal pages (warranty / shipping / privacy / terms) are still per-locale prose in their
+> `.astro` files — intentionally not migrated (long-form legal text, low churn).
 
 ## Data layer
 

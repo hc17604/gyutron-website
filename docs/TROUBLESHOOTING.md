@@ -38,5 +38,10 @@ degrades gracefully (shows the fallback email). Set the secrets in the Cloudflar
 `src/config`, `src/types`, `src/lib/{api,forms,crm,cms,agent,logger}` are typed scaffolding. They must
 stay type-clean even though no page imports them yet. Fix the types; don't delete the files.
 
+## `astro build` fails: "Expected ; but found …" inside a `.ts` data file
+A JS block comment (`/** … */`) contains a `*/` sequence in its text — e.g. a path glob written as
+`pages/**/support` (the `**/` includes `*/`, which closes the comment early; the rest is parsed as code).
+Fix: avoid `*/` / `**/` inside doc comments — write `pages/[locale]/support` or `src/pages/.../support`.
+
 ## Where to look
 `docs/` (this folder), repo-root `HANDOFF.md` (operational handoff), `tools/i18n-audit.py` (i18n gate).

@@ -41,8 +41,8 @@ Repo root also contains: `public/` (the **deployed build output**, committed), `
 
 ## Active vs. scaffold
 
-- **Active** (renders the live site): `pages/`, `layouts/`, `components/`, `i18n/`, `data/products.*.js`, `data/heroSlides.ts`, `lib/{productI18n,productText,searchIndex}.ts`.
-- **Scaffold** (created as a maintainable foundation; mostly not yet wired into pages — adopt incrementally): `config/`, `types/`, `data/{navigation,company,faq,solutions,support,locales,products}.ts`, `lib/{api,forms,crm,cms,agent,logger}`, the grouped `components/{layout,navigation,seo,language,forms,common}/` dirs, and `.env.example`. All future-integration code is **mock/placeholder** — see [FUTURE_INTEGRATIONS.md](FUTURE_INTEGRATIONS.md).
+- **Active** (renders the live site): `pages/` (incl. `sitemap.xml.ts`), `layouts/Layout.astro` → `components/seo/SeoHead.astro` (uses `config/{site,seo}` + `utils/{seo,structured-data}`), `components/` (incl. `support/FaqList.astro`), `i18n/`, `config/{site,seo,i18n,routes}`, `data/{products.*.js, products.ts (accessor), faq.ts, navigation.ts→FOOTER_NAV, heroSlides.ts}`, `utils/{seo,structured-data}`, `lib/{productI18n, productText, searchIndex, forms/contact, api}`.
+- **Scaffold** (not yet wired into pages — adopt incrementally): `config/integrations`, `types/`, `data/{company,solutions,support,locales}.ts` + `navigation.ts` `MAIN_NAV`, `lib/{crm,cms,agent,logger}` + `lib/forms/inquiry`, the grouped `components/{layout,navigation,language,forms,common}/` placeholders, and `.env.example`. All future-integration code (CRM/CMS/Agent) is **mock/placeholder** — see [FUTURE_INTEGRATIONS.md](FUTURE_INTEGRATIONS.md).
 
 ## Principles (apply on every change)
 
