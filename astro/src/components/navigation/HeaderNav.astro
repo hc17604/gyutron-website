@@ -1,0 +1,19 @@
+---
+// `<ul class="nav">` — the desktop top-level navigation, data-driven from HEADER_NAV.
+// Each item is a `.nav-trigger` + its `.mega-menu` panel. The mobile drawer
+// (public/mobile-navigation.js) clones this rendered DOM, so class names, nesting,
+// and order must match the legacy markup exactly.
+import { t, localizeUrl, type Locale } from '../../i18n';
+import { HEADER_NAV } from '../../data/header-navigation';
+import MegaMenu from './MegaMenu.astro';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+---
+<ul class="nav">
+    {HEADER_NAV.map((item) => (
+        <li class="nav-item">
+            <a class="nav-trigger" href={localizeUrl(locale, item.triggerHref)}>{t(locale, item.labelKey)} <i class="fa-solid fa-chevron-down"></i></a>
+            <MegaMenu locale={locale} menu={item.menu} />
+        </li>
+    ))}
+</ul>

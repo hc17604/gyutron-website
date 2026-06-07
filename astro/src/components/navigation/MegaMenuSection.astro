@@ -1,0 +1,12 @@
+---
+// A `.mega-section-label` followed by the `.mega-link-group`s in that section.
+// Renders as flat siblings (no wrapper) so they remain direct children of `.mega-links`,
+// which the mobile drawer iterates via `Array.from(links.children)`.
+import { t, type Locale } from '../../i18n';
+import type { MegaMenuSection } from '../../types/navigation';
+import MegaMenuLink from './MegaMenuLink.astro';
+interface Props { locale: Locale; section: MegaMenuSection; }
+const { locale, section } = Astro.props;
+---
+<div class="mega-section-label">{t(locale, section.labelKey)}</div>
+{section.groups.map((group) => <MegaMenuLink locale={locale} group={group} />)}

@@ -1,0 +1,11 @@
+---
+// The `.mega-feature` hero link shown on standard (non-compact) panels.
+import { t, localizeUrl, type Locale } from '../../i18n';
+import type { MegaFeature } from '../../types/navigation';
+interface Props { locale: Locale; feature: MegaFeature; }
+const { locale, feature } = Astro.props;
+---
+<a class={`mega-feature ${feature.modifier}`} href={localizeUrl(locale, feature.href)}>
+    <strong>{t(locale, feature.titleKey)}</strong>
+    <span>{t(locale, feature.descKey)}</span>
+</a>

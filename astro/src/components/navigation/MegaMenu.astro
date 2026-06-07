@@ -1,0 +1,21 @@
+---
+// One `.mega-menu` panel: optional `.mega-feature`, then `.mega-links` containing the
+// section labels + groups, then any trailing bare `extraLinks`. `mega-compact` = narrow
+// variant (no feature). DOM/order is a hard contract with desktop CSS + mobile drawer.
+import { t, localizeUrl, type Locale } from '../../i18n';
+import type { MegaMenu } from '../../types/navigation';
+import MegaMenuFeature from './MegaMenuFeature.astro';
+import MegaMenuSection from './MegaMenuSection.astro';
+interface Props { locale: Locale; menu: MegaMenu; }
+const { locale, menu } = Astro.props;
+const menuClass = menu.variant === 'compact' ? 'mega-menu mega-compact' : 'mega-menu';
+---
+<div class={menuClass} style={`--menu-overview-image: url('${menu.overviewImage}')`}>
+    {menu.feature && <MegaMenuFeature locale={locale} feature={menu.feature} />}
+    <div class="mega-links">
+        {menu.sections.map((section) => <MegaMenuSection locale={locale} section={section} />)}
+        {(menu.extraLinks ?? []).map((l) => (
+            <a href={localizeUrl(locale, l.href)}><span><strong>{t(locale, l.titleKey)}</strong><span>{t(locale, l.descKey)}</span></span><i class="fa-solid fa-chevron-right"></i></a>
+        ))}
+    </div>
+</div>
