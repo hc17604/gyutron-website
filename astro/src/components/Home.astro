@@ -7,12 +7,35 @@ import Footer from './Footer.astro';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/';
+const industries = [
+  'home.tc.auto.label', 'home.tc.elec.label', 'hero.s1.semi', 'home.tc.logistics.label',
+  'home.tc.pharma.label', 'home.x.ind.energy', 'home.x.ind.food', 'home.x.ind.oem',
+];
+const procSteps = [
+  { n: '01', t: 'home.x.proc.s1.t', d: 'home.x.proc.s1.d', icon: 'fa-comments' },
+  { n: '02', t: 'home.x.proc.s2.t', d: 'home.x.proc.s2.d', icon: 'fa-drafting-compass' },
+  { n: '03', t: 'home.x.proc.s3.t', d: 'home.x.proc.s3.d', icon: 'fa-plug-circle-check' },
+  { n: '04', t: 'home.x.proc.s4.t', d: 'home.x.proc.s4.d', icon: 'fa-arrow-trend-up' },
+];
 ---
 <Layout locale={locale} path={path} title={t(locale, 'seo.index.title')} description={t(locale, 'seo.index.desc')} bodyClass="home" pageCss={["/global.css", "/hero-slider.css", "/home-sections.css", "/mobile-navigation.css"]}>
+<noscript><style>body.home [data-reveal]{opacity:1 !important;transform:none !important;}</style></noscript>
 <main>
         <HeroSlider locale={locale} />
 
-        <section class="section section-alt" id="products">
+        <section class="hx-trust" aria-label="Industries served">
+            <div class="container">
+                <p class="hx-trust__label">{t(locale, "home.x.trust.label")}</p>
+                <div class="hx-marquee">
+                    <ul class="hx-marquee__track">
+                        {industries.map((k) => (<li class="hx-chip"><span class="hx-chip__tick"></span>{t(locale, k)}</li>))}
+                        {industries.map((k) => (<li class="hx-chip" aria-hidden="true"><span class="hx-chip__tick"></span>{t(locale, k)}</li>))}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="products" data-reveal>
             <div class="container">
                 <div class="section-head">
                     <div>
@@ -23,7 +46,7 @@ const path = '/';
                 </div>
 
                 <div class="product-showcase">
-                    <article class="feature-product">
+                    <article class="feature-product" data-reveal>
                         <div class="feature-image">
                             <img src="/product-vision-cell.png" alt="GYUTRON industrial robot vision inspection cell">
                         </div>
@@ -36,32 +59,32 @@ const path = '/';
                                 <li><i class="fa-solid fa-plug-circle-bolt"></i> {t(locale, "main.354")}</li>
                                 <li><i class="fa-solid fa-shield-halved"></i> {t(locale, "main.355")}</li>
                             </ul>
-                            <a class="link-arrow" href="#">{t(locale, "main.356")} <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="link-arrow" href={localizeUrl(locale, "/automated-vision-inspection.html")}>{t(locale, "main.356")} <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
                     <div class="compact-stack">
-                        <article class="compact-product">
+                        <article class="compact-product" data-reveal>
                             <div class="compact-image">
-                                <img src="/product-smart-camera-detail.png" alt="{t(locale, "main.357")}">
+                                <img src="/product-smart-camera-detail.png" alt={t(locale, "main.357")}>
                             </div>
                             <div class="product-body">
                                 <span class="badge"><i class="fa-solid fa-eye"></i> {t(locale, "main.439")}</span>
                                 <h3>{t(locale, "main.440")}</h3>
                                 <p>{t(locale, "main.358")}</p>
-                                <a class="link-arrow" href="#">{t(locale, "main.441")} <i class="fa-solid fa-arrow-right"></i></a>
+                                <a class="link-arrow" href={localizeUrl(locale, "/area-scan-cameras.html")}>{t(locale, "main.441")} <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </article>
 
-                        <article class="compact-product">
+                        <article class="compact-product" data-reveal>
                             <div class="compact-image">
-                                <img src="/product-intelligent-hardware.png" alt="{t(locale, "main.359")}">
+                                <img src="/product-intelligent-hardware.png" alt={t(locale, "main.359")}>
                             </div>
                             <div class="product-body">
                                 <span class="badge"><i class="fa-solid fa-mobile-screen-button"></i> {t(locale, "main.442")}</span>
                                 <h3>{t(locale, "main.443")}</h3>
                                 <p>{t(locale, "main.360")}</p>
-                                <a class="link-arrow" href="#">{t(locale, "main.444")} <i class="fa-solid fa-arrow-right"></i></a>
+                                <a class="link-arrow" href={localizeUrl(locale, "/android-pda.html")}>{t(locale, "main.444")} <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </article>
                     </div>
@@ -69,15 +92,15 @@ const path = '/';
             </div>
         </section>
 
-        <section class="proof-band">
+        <section class="proof-band" data-reveal>
             <div class="container">
                 <div class="proof-grid">
                     <div class="proof-item">
-                        <strong>4</strong>
+                        <strong data-count="4">4</strong>
                         <span>{t(locale, "main.445")}</span>
                     </div>
                     <div class="proof-item">
-                        <strong>200+</strong>
+                        <strong data-count="200" data-suffix="+">200+</strong>
                         <span>{t(locale, "main.446")}</span>
                     </div>
                     <div class="proof-item">
@@ -85,14 +108,14 @@ const path = '/';
                         <span>{t(locale, "main.361")}</span>
                     </div>
                     <div class="proof-item">
-                        <strong>30d</strong>
+                        <strong data-count="30" data-suffix="d">30d</strong>
                         <span>{t(locale, "main.362")}</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section solutions" id="solutions">
+        <section class="section solutions" id="solutions" data-reveal>
             <div class="container">
                 <div class="section-head">
                     <div>
@@ -102,32 +125,32 @@ const path = '/';
                     <p>{t(locale, "main.364")}</p>
                 </div>
                 <div class="solutions-grid">
-                    <article class="solution-card">
+                    <article class="solution-card" data-reveal>
                         <div class="solution-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                         <h3>{t(locale, "main.447")}</h3>
                         <p>{t(locale, "main.365")}</p>
                     </article>
-                    <article class="solution-card">
+                    <article class="solution-card" data-reveal>
                         <div class="solution-icon"><i class="fa-solid fa-microchip"></i></div>
                         <h3>{t(locale, "main.366")}</h3>
                         <p>{t(locale, "main.367")}</p>
                     </article>
-                    <article class="solution-card">
+                    <article class="solution-card" data-reveal>
                         <div class="solution-icon"><i class="fa-solid fa-industry"></i></div>
                         <h3>{t(locale, "main.448")}</h3>
                         <p>{t(locale, "main.368")}</p>
                     </article>
-                    <article class="solution-card">
+                    <article class="solution-card" data-reveal>
                         <div class="solution-icon"><i class="fa-solid fa-network-wired"></i></div>
                         <h3>{t(locale, "main.369")}</h3>
                         <p>{t(locale, "main.370")}</p>
                     </article>
-                    <article class="solution-card">
+                    <article class="solution-card" data-reveal>
                         <div class="solution-icon"><i class="fa-solid fa-warehouse"></i></div>
                         <h3>{t(locale, "main.371")}</h3>
                         <p>{t(locale, "main.372")}</p>
                     </article>
-                    <article class="solution-card">
+                    <article class="solution-card" data-reveal>
                         <div class="solution-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
                         <h3>{t(locale, "main.449")}</h3>
                         <p>{t(locale, "main.373")}</p>
@@ -136,12 +159,31 @@ const path = '/';
             </div>
         </section>
 
+        <section class="hx-oem" id="oem" data-reveal>
+            <div class="container">
+                <div class="hx-oem__inner">
+                    <div class="hx-oem__copy">
+                        <span class="eyebrow">{t(locale, "home.x.oem.label")}</span>
+                        <h2>{t(locale, "home.x.oem.title")}</h2>
+                        <p>{t(locale, "home.x.oem.desc")}</p>
+                        <a class="button button-primary" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "home.x.oem.cta")} <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                    <div class="hx-oem__marks" aria-hidden="true">
+                        <span class="hx-oem__mark"><i class="fa-solid fa-microchip"></i></span>
+                        <span class="hx-oem__mark"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                        <span class="hx-oem__mark"><i class="fa-solid fa-cube"></i></span>
+                        <span class="hx-oem__mark"><i class="fa-solid fa-tags"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <TabCarousel locale={locale} />
 
-        <section class="section section-alt" id="platform">
+        <section class="section section-alt" id="platform" data-reveal>
             <div class="container">
                 <div class="platform">
-                    <div class="platform-visual">
+                    <div class="platform-visual" data-reveal>
                         <div class="orbit-panel">
                             <strong>{t(locale, "main.450")}</strong>
                             <div class="status-line">
@@ -191,7 +233,31 @@ const path = '/';
             </div>
         </section>
 
-        <section class="section" id="resources">
+        <section class="section hx-process" id="process" data-reveal>
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="eyebrow">{t(locale, "home.x.proc.label")}</span>
+                        <h2>{t(locale, "home.x.proc.title")}</h2>
+                    </div>
+                    <p>{t(locale, "home.x.proc.sub")}</p>
+                </div>
+                <ol class="hx-steps">
+                    {procSteps.map((s) => (
+                        <li class="hx-step" data-reveal>
+                            <div class="hx-step__top">
+                                <span class="hx-step__num">{s.n}</span>
+                                <i class={`fa-solid ${s.icon}`}></i>
+                            </div>
+                            <h3>{t(locale, s.t)}</h3>
+                            <p>{t(locale, s.d)}</p>
+                        </li>
+                    ))}
+                </ol>
+            </div>
+        </section>
+
+        <section class="section" id="resources" data-reveal>
             <div class="container">
                 <div class="section-head">
                     <div>
@@ -201,7 +267,7 @@ const path = '/';
                     <p>{t(locale, "main.383")}</p>
                 </div>
                 <div class="resources-grid">
-                    <article class="resource-card esg-card">
+                    <article class="resource-card esg-card" data-reveal>
                         <div class="resource-image">
                             <img src="/business-operations-meeting.jpeg" alt="Business professionals discussing responsible operations in an office meeting" data-source="https://www.pexels.com/photo/36733315/">
                         </div>
@@ -211,9 +277,9 @@ const path = '/';
                             <p>{t(locale, "main.385")}</p>
                         </div>
                     </article>
-                    <article class="resource-card esg-card">
+                    <article class="resource-card esg-card" data-reveal>
                         <div class="resource-image">
-                            <img src="/office-team-discussion.jpeg" alt="{t(locale, "main.386")}" data-source="https://www.pexels.com/photo/4344116/">
+                            <img src="/office-team-discussion.jpeg" alt={t(locale, "main.386")} data-source="https://www.pexels.com/photo/4344116/">
                         </div>
                         <div class="resource-body">
                             <div class="resource-kicker">{t(locale, "main.459")}</div>
@@ -221,9 +287,9 @@ const path = '/';
                             <p>{t(locale, "main.388")}</p>
                         </div>
                     </article>
-                    <article class="resource-card esg-card">
+                    <article class="resource-card esg-card" data-reveal>
                         <div class="resource-image">
-                            <img src="/governance-documentation.png" alt="{t(locale, "main.389")}">
+                            <img src="/governance-documentation.png" alt={t(locale, "main.389")}>
                         </div>
                         <div class="resource-body">
                             <div class="resource-kicker">{t(locale, "main.460")}</div>
@@ -235,7 +301,7 @@ const path = '/';
             </div>
         </section>
 
-        <section class="cta" id="contact">
+        <section class="cta" id="contact" data-reveal>
             <div class="container">
                 <div class="cta-inner">
                     <div>
@@ -262,59 +328,54 @@ const path = '/';
     </main>
 <script is:inline>
         (() => {
-            const hero = document.querySelector("[data-hero-carousel]");
-            if (hero) {
-                const slides = Array.from(hero.querySelectorAll("[data-hero-slide]"));
-                const tabs = Array.from(hero.querySelectorAll("[data-hero-tab]"));
-                const intervalMs = 6500;
-                let activeIndex = Math.max(0, slides.findIndex((slide) => slide.classList.contains("is-active")));
-                let timer = null;
-
-                const setHeroSlide = (index) => {
-                    activeIndex = (index + slides.length) % slides.length;
-                    slides.forEach((slide, slideIndex) => {
-                        slide.classList.toggle("is-active", slideIndex === activeIndex);
+            // Scroll-reveal + animated counters (motion-safe; respects reduced-motion).
+            const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const reveals = Array.from(document.querySelectorAll("[data-reveal]"));
+            if (reveals.length && !reduce && "IntersectionObserver" in window) {
+                // Progressive enhancement: only hide (via body.reveal-ready) once JS is running, so a
+                // JS failure leaves all content visible. Reveal in-viewport items synchronously (no
+                // flash) and observe the rest for scroll reveal.
+                document.body.classList.add("reveal-ready");
+                const vh = window.innerHeight || document.documentElement.clientHeight;
+                const ro = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) { entry.target.classList.add("is-revealed"); ro.unobserve(entry.target); }
                     });
-                    tabs.forEach((tab, tabIndex) => {
-                        tab.classList.toggle("is-active", tabIndex === activeIndex);
-                        tab.setAttribute("aria-selected", String(tabIndex === activeIndex));
-                    });
-                };
-
-                const startHero = () => {
-                    window.clearInterval(timer);
-                    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-                    timer = window.setInterval(() => setHeroSlide(activeIndex + 1), intervalMs);
-                    hero.classList.remove("is-paused");
-                };
-
-                const pauseHero = () => {
-                    window.clearInterval(timer);
-                    hero.classList.add("is-paused");
-                };
-
-                tabs.forEach((tab, index) => {
-                    tab.setAttribute("aria-selected", String(index === activeIndex));
-                    tab.addEventListener("click", () => {
-                        setHeroSlide(index);
-                        startHero();
-                    });
+                }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+                reveals.forEach((el) => {
+                    if (el.getBoundingClientRect().top < vh * 0.92) el.classList.add("is-revealed");
+                    else ro.observe(el);
                 });
-
-                hero.addEventListener("pointerenter", pauseHero);
-                hero.addEventListener("pointerleave", startHero);
-                hero.addEventListener("focusin", pauseHero);
-                hero.addEventListener("focusout", startHero);
-                setHeroSlide(activeIndex);
-                startHero();
             }
 
+            const counters = Array.from(document.querySelectorAll("[data-count]"));
+            if (counters.length) {
+                const run = (el) => {
+                    const target = parseFloat(el.getAttribute("data-count")) || 0;
+                    const suffix = el.getAttribute("data-suffix") || "";
+                    if (reduce) { el.textContent = String(target) + suffix; return; }
+                    const dur = 1200; const t0 = performance.now();
+                    const tick = (now) => {
+                        const p = Math.min(1, (now - t0) / dur);
+                        const eased = 1 - Math.pow(1 - p, 3);
+                        el.textContent = String(Math.round(target * eased)) + suffix;
+                        if (p < 1) requestAnimationFrame(tick);
+                    };
+                    requestAnimationFrame(tick);
+                };
+                if (!("IntersectionObserver" in window)) { counters.forEach(run); }
+                else {
+                    const co = new IntersectionObserver((entries) => {
+                        entries.forEach((entry) => { if (entry.isIntersecting) { run(entry.target); co.unobserve(entry.target); } });
+                    }, { threshold: 0.5 });
+                    counters.forEach((el) => co.observe(el));
+                }
+            }
+
+            // ---- Desktop mega-menu nav (unchanged) ----
             const navItems = Array.from(document.querySelectorAll(".nav-item"));
             const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
 
-            // Close instantly (zero delay, no hover-intent lingering). Fired only when the pointer truly
-            // leaves the nav-item — whose hover area already includes the mega-menu child — so moving
-            // between the trigger and the menu does NOT close it.
             const closeItem = (item) => {
                 window.clearTimeout(item.closeTimer);
                 item.classList.remove("is-open");
