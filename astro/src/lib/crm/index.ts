@@ -20,4 +20,5 @@ const crm = getAdapter();
 export const createInquiry = (inquiry: AnyInquiry) => crm.createInquiry(inquiry);
 export const listInquiries = () => crm.listInquiries();
 export const getInquiryById = (id: string) => crm.getInquiryById(id);
+export const tagInquiry = (id: string, tag: string) => crm.tagInquiry(id, tag);
 export type { CrmLead, CrmAdapter } from './types';

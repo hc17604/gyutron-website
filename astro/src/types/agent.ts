@@ -9,7 +9,11 @@ export type AgentTaskType =
   | 'suggest-product'
   | 'generate-faq-answer'
   | 'website-audit'
-  | 'translation-check';
+  | 'translation-check'
+  | 'score-lead';
+
+/** Lead-priority tier returned by scoreLead. */
+export type LeadTier = 'low' | 'medium' | 'high';
 
 export type AgentTaskStatus = 'queued' | 'running' | 'succeeded' | 'failed';
 

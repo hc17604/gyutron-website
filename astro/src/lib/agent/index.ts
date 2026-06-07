@@ -2,6 +2,7 @@
  * Agent entry point. Selects an adapter by `integrations.agent.provider` (only 'mock'
  * today). Never bind business code to a specific model vendor — extend from here.
  */
+import type { AnyInquiry } from '../../types/inquiry';
 import { integrations } from '../../config/integrations';
 import { mockAgent } from './mock-agent';
 import type { AgentAdapter } from './types';
@@ -21,4 +22,5 @@ export const suggestProduct = (need: string) => agent.suggestProduct(need);
 export const generateFAQAnswer = (question: string) => agent.generateFAQAnswer(question);
 export const runWebsiteAudit = () => agent.runWebsiteAudit();
 export const checkTranslationQuality = (locale: string) => agent.checkTranslationQuality(locale);
+export const scoreLead = (inquiry: AnyInquiry) => agent.scoreLead(inquiry);
 export type { AgentAdapter } from './types';

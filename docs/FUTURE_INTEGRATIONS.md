@@ -30,9 +30,9 @@ src/lib/logger/               index.ts                               (structured
 Forms:   submitContactForm()  submitProductInquiry()  submitSupportRequest()
 CMS:     getPageContent()  getProducts()  getProductBySlug()  getSolutions()
          getSolutionBySlug()  getFAQItems()
-CRM:     createInquiry()  listInquiries()  getInquiryById()
+CRM:     createInquiry()  listInquiries()  getInquiryById()  tagInquiry()
 Agent:   classifyInquiry()  suggestProduct()  generateFAQAnswer()
-         runWebsiteAudit()  checkTranslationQuality()
+         runWebsiteAudit()  checkTranslationQuality()  scoreLead()
 Logger:  logInfo()  logWarning()  logError()
 ```
 

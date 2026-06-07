@@ -22,4 +22,7 @@ export const mockAgent: AgentAdapter = {
   async checkTranslationQuality() {
     return done({ findings: [] });
   },
+  async scoreLead() {
+    return done({ score: 0, tier: 'low' as const });
+  },
 };
