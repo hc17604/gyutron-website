@@ -248,9 +248,9 @@ const GYUTRON_PRODUCTS = {
         navLabel: "Sensing & I/O",
         heroImage: "product-hero-industrial-sensors-matrix.png",
         intro: "Industrielle Sensorik-, Mess-, Sicherheits- und I/O-Hardware für Maschinenbauer und Fabrikautomationsteams.",
-        panelMetric: "9 models",
+        panelMetric: "9 Modelle",
         panelText: "Anwesenheitserkennung, Distanzmessung, Prozessüberwachung, Sicherheit und IO-Link-Konnektivität.",
-        sectionIntro: "GYUTRON sensing products are grouped by real factory jobs: detecting objects, measuring position, monitoring process conditions, protecting access points, and connecting distributed devices.",
+        sectionIntro: "GYUTRON Sensorikprodukte sind nach realen Fertigungsaufgaben gegliedert: Objekte erkennen, Position messen, Prozessbedingungen überwachen, Zugangspunkte sichern und verteilte Geräte vernetzen.",
         products: [
             {
                 name: "GY-PX18",
@@ -379,7 +379,7 @@ const GYUTRON_PRODUCTS = {
         intro: "Embedded Smart-Kameras, feste Codeleser, Line-Scan-Systeme, 3D-Vision, Controller und Beleuchtungszubehör.",
         panelMetric: "7 Modelle",
         panelText: "2D-Prüfung, KI-Tools, Line-Scan, 3D-Profiling, Codelesen und Vision-Control-Optionen.",
-        sectionIntro: "GYUTRON machine vision products follow common deployment patterns: embedded inspection, traceability reading, continuous web inspection, 3D profiling, and controlled white-light illumination.",
+        sectionIntro: "GYUTRON Machine-Vision-Produkte folgen gängigen Einsatzmustern: eingebettete Prüfung, Rückverfolgbarkeitslesung, kontinuierliche Bahninspektion, 3D-Profilierung und kontrollierte Weißlichtbeleuchtung.",
         products: [
             {
                 name: "GY-V120",
@@ -697,7 +697,7 @@ const GYUTRON_PRODUCTS = {
         intro: "Portable und inlinefähige Messgeräte für Maßprüfung, Oberflächenbewertung, Code-Grading und Qualitätsdokumentation.",
         panelMetric: "5 Modelle",
         panelText: "Maß-, optische, Oberflächen-, Code-Verifikations- und portable elektrische Prüfgeräte.",
-        sectionIntro: "GYUTRON inspection instruments are designed as practical quality-control tools for production engineers, lab teams, maintenance groups, and integrators.",
+        sectionIntro: "GYUTRON Prüfgeräte sind als praxistaugliche Qualitätssicherungswerkzeuge für Fertigungsingenieure, Laborteams, Instandhaltungsgruppen und Integratoren konzipiert.",
         products: [
             {
                 name: "GY-MG50",

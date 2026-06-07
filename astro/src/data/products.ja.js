@@ -248,9 +248,9 @@ const GYUTRON_PRODUCTS = {
         navLabel: "Sensing & I/O",
         heroImage: "product-hero-industrial-sensors-matrix.png",
         intro: "機械メーカーと工場自動化チーム向けの産業用センシング、計測、安全、I/Oハードウェア。",
-        panelMetric: "9 models",
+        panelMetric: "9モデル",
         panelText: "有無検知、距離測定、プロセス監視、安全、IO-Link接続。",
-        sectionIntro: "GYUTRON sensing products are grouped by real factory jobs: detecting objects, measuring position, monitoring process conditions, protecting access points, and connecting distributed devices.",
+        sectionIntro: "GYUTRONのセンシング製品は、実際の工程作業（物体の検知、位置の測定、プロセス状態の監視、アクセスポイントの保護、分散デバイスの接続）ごとに分類しています。",
         products: [
             {
                 name: "GY-PX18",
@@ -379,7 +379,7 @@ const GYUTRON_PRODUCTS = {
         intro: "組込みスマートカメラ、固定式コードリーダー、ラインスキャン、3Dビジョン、コントローラー、照明アクセサリ。",
         panelMetric: "7モデル",
         panelText: "2D検査、AIツール、ラインスキャン、3Dプロファイル、コード読み取り、ビジョン制御の選択肢。",
-        sectionIntro: "GYUTRON machine vision products follow common deployment patterns: embedded inspection, traceability reading, continuous web inspection, 3D profiling, and controlled white-light illumination.",
+        sectionIntro: "GYUTRONのマシンビジョン製品は、一般的な導入パターン（組込み検査、トレーサビリティ読み取り、連続ウェブ検査、3Dプロファイリング、制御された白色光照明）に沿って構成しています。",
         products: [
             {
                 name: "GY-V120",
@@ -697,7 +697,7 @@ const GYUTRON_PRODUCTS = {
         intro: "寸法確認、表面評価、コードグレーディング、品質記録に対応するポータブルおよびインライン計測機器。",
         panelMetric: "5モデル",
         panelText: "寸法、光学、表面、コード検証、ハンドヘルド電気試験機器。",
-        sectionIntro: "GYUTRON inspection instruments are designed as practical quality-control tools for production engineers, lab teams, maintenance groups, and integrators.",
+        sectionIntro: "GYUTRONの検査機器は、生産技術者、ラボチーム、保全グループ、インテグレーター向けの実用的な品質管理ツールとして設計しています。",
         products: [
             {
                 name: "GY-MG50",
@@ -953,7 +953,7 @@ Object.assign(GYUTRON_PRODUCTS, {
         heroImage: "product-hero-calibration-tools-matrix.png",
         intro: "マシンビジョン、計測、コード品質、測定ライフサイクル記録向けの校正・検証アクセサリ。",
         panelMetric: "3モデル",
-        panelText: "グリッドターゲット, gauge block, and light-reference tools.",
+        panelText: "グリッドターゲット、ゲージブロック、光基準ツール。",
         sectionIntro: "校正ツールは、設定検証・トレーサブルな点検・文書化された保守手順を支え、検査システムの再現性を高めます。",
         products: [
             {
