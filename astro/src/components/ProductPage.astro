@@ -6,16 +6,13 @@ import { productSummary } from '../lib/productText';
 import { specLabel, specVal, tagText } from '../lib/productI18n';
 import { canonicalUrl } from '../utils/seo';
 import { createOrganizationJsonLd, breadcrumbFromHome, createCollectionPageJsonLd } from '../utils/structured-data';
-import * as enData from '../data/products.en.js';
-import * as deData from '../data/products.de.js';
-import * as jaData from '../data/products.ja.js';
+import { getCatalog, getCategoryGroups } from '../data/products';
 
 interface Props { locale: Locale; category: string; }
 const { locale, category } = Astro.props;
 
-const data: any = ({ en: enData, de: deData, ja: jaData } as const)[locale];
-const PRODUCTS: any = data.GYUTRON_PRODUCTS;
-const GROUPS: any = data.CATEGORY_GROUPS;
+const PRODUCTS: any = getCatalog(locale);
+const GROUPS: any = getCategoryGroups(locale);
 const cat: any = PRODUCTS[category];
 const path = `/${category}.html`;
 const navOrder: string[] = GROUPS[cat.navGroup || 'rugged-pda'] || [];

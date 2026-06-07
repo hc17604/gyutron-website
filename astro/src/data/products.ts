@@ -6,9 +6,9 @@
  */
 import type { Locale } from '../i18n';
 import type { ProductCatalog, ProductCategory, Product } from '../types/product';
-import { GYUTRON_PRODUCTS as EN } from './products.en.js';
-import { GYUTRON_PRODUCTS as DE } from './products.de.js';
-import { GYUTRON_PRODUCTS as JA } from './products.ja.js';
+import { GYUTRON_PRODUCTS as EN, CATEGORY_GROUPS as EN_GROUPS } from './products.en.js';
+import { GYUTRON_PRODUCTS as DE, CATEGORY_GROUPS as DE_GROUPS } from './products.de.js';
+import { GYUTRON_PRODUCTS as JA, CATEGORY_GROUPS as JA_GROUPS } from './products.ja.js';
 
 const CATALOGS: Record<Locale, ProductCatalog> = {
   en: EN as unknown as ProductCatalog,
@@ -34,4 +34,16 @@ export function getCategorySlugs(): string[] {
 /** The products in a category (empty array for redirect/unknown categories). */
 export function getProducts(locale: Locale, slug: string): Product[] {
   return getCategory(locale, slug)?.products ?? [];
+}
+
+/** Per-locale CATEGORY_GROUPS (nav-group key → ordered category slugs). */
+const CATEGORY_GROUPS_BY_LOCALE: Record<Locale, Record<string, string[]>> = {
+  en: EN_GROUPS as unknown as Record<string, string[]>,
+  de: DE_GROUPS as unknown as Record<string, string[]>,
+  ja: JA_GROUPS as unknown as Record<string, string[]>,
+};
+
+/** The category-group ordering map for a locale (the product page's category nav uses it). */
+export function getCategoryGroups(locale: Locale): Record<string, string[]> {
+  return CATEGORY_GROUPS_BY_LOCALE[locale];
 }

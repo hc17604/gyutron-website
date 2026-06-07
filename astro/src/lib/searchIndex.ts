@@ -2,13 +2,10 @@
 // fetched once on the client by nav-search.js. Static — no backend.
 // Records: { t: title, u: url (localized), k: kind/type label, d: extra searchable text }.
 import { localizeUrl, type Locale } from '../i18n';
-import { GYUTRON_PRODUCTS as EN } from '../data/products.en.js';
-import { GYUTRON_PRODUCTS as DE } from '../data/products.de.js';
-import { GYUTRON_PRODUCTS as JA } from '../data/products.ja.js';
+import { getCatalog } from '../data/products';
 
 export type SearchRecord = { t: string; u: string; k: string; d: string };
 
-const DATA: Record<Locale, any> = { en: EN, de: DE, ja: JA };
 const CAT_LABEL: Record<Locale, string> = { en: 'Product category', de: 'Produktkategorie', ja: '製品カテゴリ' };
 
 // Curated non-product pages (homepage sections are reachable from the home page; legal pages omitted
@@ -41,7 +38,7 @@ const PAGES: Record<Locale, SearchRecord[]> = {
 };
 
 export function buildSearchIndex(locale: Locale): SearchRecord[] {
-  const data = DATA[locale];
+  const data: any = getCatalog(locale);
   const out: SearchRecord[] = [];
   for (const p of PAGES[locale]) out.push({ ...p, u: localizeUrl(locale, p.u) });
   for (const slug of Object.keys(data)) {
