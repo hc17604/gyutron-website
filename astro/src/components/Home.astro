@@ -164,17 +164,17 @@ const news = getLatestNews(3);
                         <p>{t(locale, "main.365")}</p>
                     </article>
                     <article class="solution-card" data-reveal>
-                        <div class="solution-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="solution-icon"><i class="fa-solid fa-barcode"></i></div>
                         <h3>{t(locale, "main.366")}</h3>
                         <p>{t(locale, "main.367")}</p>
                     </article>
                     <article class="solution-card" data-reveal>
-                        <div class="solution-icon"><i class="fa-solid fa-industry"></i></div>
+                        <div class="solution-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
                         <h3>{t(locale, "main.448")}</h3>
                         <p>{t(locale, "main.368")}</p>
                     </article>
                     <article class="solution-card" data-reveal>
-                        <div class="solution-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="solution-icon"><i class="fa-solid fa-ruler-combined"></i></div>
                         <h3>{t(locale, "main.369")}</h3>
                         <p>{t(locale, "main.370")}</p>
                     </article>
@@ -184,7 +184,7 @@ const news = getLatestNews(3);
                         <p>{t(locale, "main.372")}</p>
                     </article>
                     <article class="solution-card" data-reveal>
-                        <div class="solution-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <div class="solution-icon"><i class="fa-solid fa-network-wired"></i></div>
                         <h3>{t(locale, "main.449")}</h3>
                         <p>{t(locale, "main.373")}</p>
                     </article>
@@ -321,6 +321,7 @@ const news = getLatestNews(3);
                 <div class="hx-news-grid">
                     {news.map((item) => (
                         <article class="hx-news-card" data-reveal>
+                            <a class="hx-news-card__link" href={item.href ? localizeUrl(locale, item.href) : '#'} aria-label={item.title[locale]}></a>
                             <div class="hx-news-card__media">
                                 {item.image ? <img src={item.image} alt="" loading="lazy" /> : <div class="hx-news-card__ph"></div>}
                             </div>
@@ -335,6 +336,7 @@ const news = getLatestNews(3);
                         </article>
                     ))}
                 </div>
+                <div class="hx-news-more"><a class="link-arrow" href={localizeUrl(locale, "/news.html")}>{t(locale, "home.x.news.all")} <i class="fa-solid fa-arrow-right"></i></a></div>
             </div>
         </section>
 

@@ -45,9 +45,9 @@ export function buildSearchIndex(locale: Locale): SearchRecord[] {
   const data: any = getCatalog(locale);
   const out: SearchRecord[] = [];
   for (const p of PAGES[locale]) out.push({ ...p, u: localizeUrl(locale, p.u) });
-  // News — render as cards; link to the homepage news section until /news article pages exist.
+  // News — render as cards linking to their /news/<slug> article page.
   for (const n of NEWS) {
-    out.push({ t: n.title[locale], u: localizeUrl(locale, '/') + '#news', k: NEWS_LABEL[locale], d: n.excerpt[locale], i: img(n.image), c: 1 });
+    out.push({ t: n.title[locale], u: localizeUrl(locale, n.href || '/news.html'), k: NEWS_LABEL[locale], d: n.excerpt[locale], i: img(n.image), c: 1 });
   }
   for (const slug of Object.keys(data)) {
     const cat = data[slug];

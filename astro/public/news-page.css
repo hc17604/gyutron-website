@@ -1,0 +1,46 @@
+/* ============================================================================
+ * news-page.css — /news index + /news/<slug> article pages.
+ * Hard-edged, purple-only, industrial. Loaded after product-page.css (base chrome/tokens).
+ * ========================================================================== */
+.news-page { background: var(--paper, #fbfafc); }
+.news-page h1, .news-page h2, .news-page h3 { font-weight: 900; letter-spacing: -0.03em; }
+html[lang="ja"] .news-page h1, html[lang="ja"] .news-page h2, html[lang="ja"] .news-page h3 { letter-spacing: -0.01em; }
+
+/* Hero */
+.news-hero { background: #fff; border-bottom: 1px solid var(--line, #e6e0ee); padding: clamp(40px, 7vw, 88px) 0 clamp(28px, 4vw, 44px); }
+.news-crumbs { font-size: 13px; color: var(--muted, #6f687a); margin-bottom: 18px; letter-spacing: 0.01em; }
+.news-crumbs a { color: var(--purple-600, #6f2dbd); text-decoration: none; }
+.news-crumbs a:hover { text-decoration: underline; }
+.news-eyebrow { display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: 0.16em; font-weight: 800; font-size: 12.5px; color: var(--purple-600, #6f2dbd); }
+.news-eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--purple-500, #8a63d2); display: inline-block; }
+.news-hero h1 { font-size: clamp(30px, 4.4vw, 52px); line-height: 1.05; color: var(--ink, #17151d); margin: 12px 0 0; }
+.news-intro { margin: 16px 0 0; max-width: 62ch; color: #5a5368; font-size: clamp(15px, 1.4vw, 18px); line-height: 1.65; }
+
+/* Index grid */
+.news-list { padding: clamp(34px, 5vw, 64px) 0 clamp(48px, 7vw, 88px); }
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.5vw, 30px); }
+.news-card { position: relative; display: flex; flex-direction: column; border: 1px solid var(--line, #e6e0ee); background: #fff; text-decoration: none; color: var(--ink, #17151d); overflow: hidden; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+.news-card:hover { transform: translateY(-5px); box-shadow: 0 22px 48px rgba(31, 11, 53, 0.12); border-color: var(--purple-500, #8a63d2); }
+.news-card__media { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--violet-soft, #efe8ff); }
+.news-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.news-card:hover .news-card__media img { transform: scale(1.06); }
+.news-card__ph { display: block; width: 100%; height: 100%; background: linear-gradient(135deg, var(--violet-soft, #efe8ff), #fff); }
+.news-card__body { display: flex; flex-direction: column; gap: 10px; padding: 20px 22px 24px; flex: 1; }
+.news-card__meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.news-card__cat { text-transform: uppercase; letter-spacing: 0.1em; font-size: 11.5px; font-weight: 800; color: var(--purple-600, #6f2dbd); }
+.news-card__meta time { font-size: 13px; color: #8b8398; }
+.news-card__title { font-weight: 900; font-size: 18px; line-height: 1.3; letter-spacing: -0.02em; }
+.news-card__excerpt { color: #6f687a; font-size: 14.5px; line-height: 1.55; }
+@media (max-width: 900px) { .news-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .news-grid { grid-template-columns: 1fr; } }
+
+/* Article */
+.news-article__date { margin: 14px 0 0; color: #8b8398; font-size: 14px; }
+.news-body { padding: clamp(34px, 5vw, 64px) 0 clamp(48px, 7vw, 88px); }
+.news-article__content { max-width: 760px; }
+.news-article__img { width: 100%; height: auto; border: 1px solid var(--line, #e6e0ee); margin: 0 0 28px; }
+.news-article__content > p { color: var(--text, #302b3a); font-size: clamp(16px, 1.5vw, 18px); line-height: 1.75; margin: 0 0 24px; }
+.news-back { display: inline-flex; align-items: center; gap: 8px; color: var(--purple-700, #4b177f); font-weight: 800; text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em; font-size: 14px; }
+.news-back i { transition: transform .2s ease; }
+.news-back:hover { color: var(--purple-600, #6f2dbd); }
+.news-back:hover i { transform: translateX(-4px); }

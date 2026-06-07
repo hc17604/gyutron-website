@@ -9,10 +9,10 @@
  * (no per-locale slugs), and the data-layer convention is to reference i18n keys rather than inline
  * translated strings; per-locale path/title maps would be pure redundancy + a divergence risk.
  */
-export type PageType = 'home' | 'product' | 'solution' | 'support' | 'legal' | 'contact' | 'redirect';
+export type PageType = 'home' | 'product' | 'solution' | 'support' | 'legal' | 'contact' | 'news' | 'redirect';
 
 /** Where the page's existence is sourced from. */
-export type PageSource = 'static' | 'product' | 'solution' | 'redirect';
+export type PageSource = 'static' | 'product' | 'solution' | 'news' | 'redirect';
 
 export interface SitePage {
   /** Stable id, e.g. "home", "faq", "automated-vision-inspection". */

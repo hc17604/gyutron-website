@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from './Footer.astro';
+import { t, localizeUrl, type Locale } from '../i18n';
+import { canonicalUrl } from '../utils/seo';
+import { createOrganizationJsonLd, breadcrumbFromHome } from '../utils/structured-data';
+import { getNews } from '../data/news';
+interface Props { locale: Locale; slug: string; }
+const { locale, slug } = Astro.props;
+const item = getNews(slug);
+if (!item) throw new Error(`[NewsArticle] unknown news slug "${slug}"`);
+const path = `/news/${slug}.html`;
+const homeLabel = ({ en: 'Home', de: 'Startseite', ja: 'ホーム' } as const)[locale];
+const newsLabel = t(locale, 'home.x.news.label');
+const bodyText = (item.body && item.body[locale]) || item.excerpt[locale];
+const structuredData = [
+  createOrganizationJsonLd(),
+  breadcrumbFromHome(locale, [
+    { name: newsLabel, url: canonicalUrl(locale, '/news.html') },
+    { name: item.title[locale], url: canonicalUrl(locale, path) },
+  ]),
+];
+---
+<Layout
+  locale={locale}
+  path={path}
+  title={`${item.title[locale]} | GYUTRON`}
+  description={item.excerpt[locale]}
+  pageCss={["/product-page.css", "/news-page.css", "/mobile-navigation.css"]}
+  structuredData={structuredData}
+>
+  <main class="news-page news-article">
+    <section class="news-hero">
+      <div class="container">
+        <nav class="news-crumbs" aria-label="Breadcrumb">
+          <a href={localizeUrl(locale, "/index.html")}>{homeLabel}</a> /
+          <a href={localizeUrl(locale, "/news.html")}>{newsLabel}</a> /
+          <span>{item.category[locale]}</span>
+        </nav>
+        <span class="news-eyebrow">{item.category[locale]}</span>
+        <h1>{item.title[locale]}</h1>
+        <p class="news-article__date"><time datetime={item.date}>{item.date}</time></p>
+      </div>
+    </section>
+
+    <section class="news-body">
+      <div class="container">
+        <article class="news-article__content">
+          {item.image && <img class="news-article__img" src={item.image} alt="" />}
+          <p>{bodyText}</p>
+          <a class="news-back" href={localizeUrl(locale, "/news.html")}><i class="fa-solid fa-arrow-left"></i> {t(locale, 'news.back')}</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <Footer slot="footer" locale={locale} />
+
+  <script is:inline>
+    (() => {
+      const navItems = Array.from(document.querySelectorAll(".nav-item"));
+      const closeDelay = 520;
+      const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
+      const closeItem = (item) => {
+        window.clearTimeout(item.closeTimer);
+        item.closeTimer = window.setTimeout(() => {
+          item.classList.remove("is-open");
+          item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+        }, closeDelay);
+      };
+      const setActiveGroup = (groups, activeGroup) => groups.forEach((group) => group.classList.toggle("is-open", group === activeGroup));
+      const openItem = (item, groups) => {
+        navItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            window.clearTimeout(otherItem.closeTimer);
+            otherItem.classList.remove("is-open");
+            otherItem.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          }
+        });
+        window.clearTimeout(item.closeTimer);
+        item.classList.add("is-open");
+        if (groups.length && !groups.some((group) => group.classList.contains("is-open"))) setActiveGroup(groups, groups[0]);
+      };
+      navItems.forEach((item) => {
+        const menu = item.querySelector(".mega-menu");
+        if (!menu) return;
+        const groups = Array.from(item.querySelectorAll(".mega-link-group"));
+        const trigger = item.querySelector(".nav-trigger");
+        trigger?.addEventListener("click", (event) => {
+          if (isTouchNavigation() && !item.classList.contains("is-open")) { event.preventDefault(); openItem(item, groups); }
+        });
+        item.addEventListener("pointerenter", () => openItem(item, groups));
+        item.addEventListener("pointerleave", () => closeItem(item));
+        menu.addEventListener("pointerenter", () => openItem(item, groups));
+        menu.addEventListener("pointerleave", () => closeItem(item));
+        groups.forEach((group) => {
+          group.addEventListener("pointerenter", () => { openItem(item, groups); setActiveGroup(groups, group); });
+          group.addEventListener("focusin", () => { openItem(item, groups); setActiveGroup(groups, group); });
+        });
+      });
+    })();
+  </script>
+</Layout>

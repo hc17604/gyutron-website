@@ -16,6 +16,7 @@
 import type { SitePage } from '../types/page';
 import { ROUTES } from '../config/routes';
 import { SOLUTIONS } from './solutions';
+import { NEWS } from './news';
 
 // Order is significant: it defines the static-page order in the sitemap (kept identical to the
 // previous hand-maintained STATIC_PATHS: home, solution(s), contact, support, faq, warranty,
@@ -38,6 +39,9 @@ export const SITE_PAGES: SitePage[] = [
   { id: 'shipping', type: 'support', path: ROUTES.shipping, includeInSitemap: true, source: 'static' },
   { id: 'privacy', type: 'legal', path: ROUTES.privacy, includeInSitemap: true, source: 'static' },
   { id: 'terms', type: 'legal', path: ROUTES.terms, includeInSitemap: true, source: 'static' },
+  // Newsroom — index + one article page per post (data/news.ts).
+  { id: 'news', type: 'news', path: '/news.html', titleKey: 'seo.news.title', descKey: 'seo.news.desc', includeInSitemap: true, source: 'news' },
+  ...NEWS.map((n): SitePage => ({ id: 'news-' + n.slug, type: 'news', path: '/news/' + n.slug + '.html', includeInSitemap: true, source: 'news' })),
   // Redirect stubs: render a MetaRedirect, must NOT be indexed or in the sitemap.
   { id: 'smart-cameras', type: 'redirect', path: '/smart-cameras.html', includeInSitemap: false, noindex: true, source: 'redirect' },
   { id: 'industrial-sensors', type: 'redirect', path: '/industrial-sensors.html', includeInSitemap: false, noindex: true, source: 'redirect' },

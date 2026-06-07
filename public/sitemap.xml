@@ -190,6 +190,90 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/terms-and-conditions.html"/>
   </url>
   <url>
+    <loc>https://www.gyutron.com/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/de/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/ja/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/news/900-series-launch.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news/900-series-launch.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news/900-series-launch.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news/900-series-launch.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news/900-series-launch.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/de/news/900-series-launch.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news/900-series-launch.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news/900-series-launch.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news/900-series-launch.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news/900-series-launch.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/ja/news/900-series-launch.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news/900-series-launch.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news/900-series-launch.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news/900-series-launch.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news/900-series-launch.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/news/site-en-de-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news/site-en-de-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news/site-en-de-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news/site-en-de-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news/site-en-de-ja.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/de/news/site-en-de-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news/site-en-de-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news/site-en-de-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news/site-en-de-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news/site-en-de-ja.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/ja/news/site-en-de-ja.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news/site-en-de-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news/site-en-de-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news/site-en-de-ja.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news/site-en-de-ja.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/news/oem-odm-program.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news/oem-odm-program.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news/oem-odm-program.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news/oem-odm-program.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news/oem-odm-program.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/de/news/oem-odm-program.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news/oem-odm-program.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news/oem-odm-program.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news/oem-odm-program.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news/oem-odm-program.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/ja/news/oem-odm-program.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/news/oem-odm-program.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/news/oem-odm-program.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/news/oem-odm-program.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/news/oem-odm-program.html"/>
+  </url>
+  <url>
     <loc>https://www.gyutron.com/android-pda.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/android-pda.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/android-pda.html"/>
