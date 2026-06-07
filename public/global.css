@@ -49,6 +49,15 @@
             text-decoration: none;
         }
 
+        /* Industrial headings: tighter tracking site-wide (harder/technical feel). The homepage
+           tightens further in home-sections.css. CJK (ja) is relaxed so it never looks cramped. */
+        h1, h2, h3 {
+            letter-spacing: -0.022em;
+        }
+        html[lang="ja"] h1, html[lang="ja"] h2, html[lang="ja"] h3 {
+            letter-spacing: -0.005em;
+        }
+
         img {
             display: block;
             max-width: 100%;

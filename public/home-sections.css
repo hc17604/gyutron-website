@@ -114,21 +114,38 @@ body.home .eyebrow { display: inline-flex; align-items: center; gap: 10px; text-
   letter-spacing: .16em; font-weight: 800; color: var(--purple-600, #6f2dbd); }
 body.home .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--hx-accent); display: inline-block; }
 
-/* ---- Scroll reveal ---- */
+/* ---- Industrial headings (heavier + tighter tracking = harder/technical feel) ---- */
+body.home h1, body.home h2, body.home h3 { font-weight: 900; letter-spacing: -0.035em; }
+html[lang="ja"] body.home h1, html[lang="ja"] body.home h2, html[lang="ja"] body.home h3 { letter-spacing: -0.01em; }
+
+/* ---- Scroll reveal — Apple-style: gentle rise + slight scale, per-grid stagger ----
+ * Only CARD items carry [data-reveal] (parents do NOT) so there is no nested double-fade
+ * flicker. Gated on .reveal-ready (added by JS) so a JS failure leaves content visible.
+ * The CTA / contact band is intentionally NOT animated. */
 @media (prefers-reduced-motion: no-preference) {
-  /* Gated on .reveal-ready (added by JS) so a JS failure leaves content visible. */
-  body.home.reveal-ready [data-reveal] { opacity: 0; transform: translateY(24px);
-    transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
-  body.home.reveal-ready [data-reveal].is-revealed { opacity: 1; transform: none; }
-  body.home .solutions-grid [data-reveal]:nth-child(2) { transition-delay: .07s; }
-  body.home .solutions-grid [data-reveal]:nth-child(3) { transition-delay: .14s; }
-  body.home .solutions-grid [data-reveal]:nth-child(4) { transition-delay: .21s; }
-  body.home .solutions-grid [data-reveal]:nth-child(5) { transition-delay: .28s; }
-  body.home .solutions-grid [data-reveal]:nth-child(6) { transition-delay: .35s; }
-  body.home .hx-steps .hx-step:nth-child(2) { transition-delay: .1s; }
-  body.home .hx-steps .hx-step:nth-child(3) { transition-delay: .2s; }
-  body.home .hx-steps .hx-step:nth-child(4) { transition-delay: .3s; }
-  body.home .compact-stack .compact-product:nth-child(2) { transition-delay: .1s; }
+  body.home.reveal-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(30px) scale(0.985);
+    transition: opacity .8s cubic-bezier(0.16, 1, 0.3, 1) var(--rd, 0ms),
+                transform .8s cubic-bezier(0.16, 1, 0.3, 1) var(--rd, 0ms);
+    will-change: opacity, transform;
+  }
+  body.home.reveal-ready [data-reveal].is-revealed { opacity: 1; transform: none; will-change: auto; }
+  /* per-grid stagger via --rd (sequence, not unison) */
+  body.home .product-showcase .compact-product:nth-child(1) { --rd: 90ms; }
+  body.home .product-showcase .compact-product:nth-child(2) { --rd: 170ms; }
+  body.home .solutions-grid [data-reveal]:nth-child(2) { --rd: 70ms; }
+  body.home .solutions-grid [data-reveal]:nth-child(3) { --rd: 140ms; }
+  body.home .solutions-grid [data-reveal]:nth-child(4) { --rd: 70ms; }
+  body.home .solutions-grid [data-reveal]:nth-child(5) { --rd: 140ms; }
+  body.home .solutions-grid [data-reveal]:nth-child(6) { --rd: 210ms; }
+  body.home .hx-steps .hx-step:nth-child(2) { --rd: 90ms; }
+  body.home .hx-steps .hx-step:nth-child(3) { --rd: 180ms; }
+  body.home .hx-steps .hx-step:nth-child(4) { --rd: 270ms; }
+  body.home .hx-news-grid .hx-news-card:nth-child(2) { --rd: 90ms; }
+  body.home .hx-news-grid .hx-news-card:nth-child(3) { --rd: 180ms; }
+  body.home .resources-grid .resource-card:nth-child(2) { --rd: 90ms; }
+  body.home .resources-grid .resource-card:nth-child(3) { --rd: 180ms; }
 }
 
 /* ---- Card hover: lift + light-purple accent + image zoom ---- */

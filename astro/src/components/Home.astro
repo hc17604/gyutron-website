@@ -45,7 +45,7 @@ const news = getLatestNews(3);
             </div>
         </section>
 
-        <section class="section section-alt" id="products" data-reveal>
+        <section class="section section-alt" id="products">
             <div class="container">
                 <div class="section-head">
                     <div>
@@ -148,7 +148,7 @@ const news = getLatestNews(3);
             </div>
         </section>
 
-        <section class="section solutions" id="solutions" data-reveal>
+        <section class="section solutions" id="solutions">
             <div class="container">
                 <div class="section-head">
                     <div>
@@ -216,7 +216,7 @@ const news = getLatestNews(3);
         <section class="section section-alt" id="platform" data-reveal>
             <div class="container">
                 <div class="platform">
-                    <div class="platform-visual" data-reveal>
+                    <div class="platform-visual">
                         <div class="orbit-panel">
                             <strong>{t(locale, "main.450")}</strong>
                             <div class="status-line">
@@ -266,7 +266,7 @@ const news = getLatestNews(3);
             </div>
         </section>
 
-        <section class="section hx-process" id="process" data-reveal>
+        <section class="section hx-process" id="process">
             <div class="container">
                 <div class="section-head">
                     <div>
@@ -309,7 +309,7 @@ const news = getLatestNews(3);
             </div>
         </section>
 
-        <section class="section hx-news" id="news" data-reveal>
+        <section class="section hx-news" id="news">
             <div class="container">
                 <div class="section-head">
                     <div>
@@ -338,7 +338,7 @@ const news = getLatestNews(3);
             </div>
         </section>
 
-        <section class="section" id="resources" data-reveal>
+        <section class="section" id="resources">
             <div class="container">
                 <div class="section-head">
                     <div>
@@ -382,7 +382,8 @@ const news = getLatestNews(3);
             </div>
         </section>
 
-        <section class="cta" id="contact" data-reveal>
+        <!-- CTA / contact band — intentionally NOT animated (no data-reveal) per brand. -->
+        <section class="cta" id="contact">
             <div class="container">
                 <div class="cta-inner">
                     <div>
@@ -413,20 +414,17 @@ const news = getLatestNews(3);
             const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             const reveals = Array.from(document.querySelectorAll("[data-reveal]"));
             if (reveals.length && !reduce && "IntersectionObserver" in window) {
-                // Progressive enhancement: only hide (via body.reveal-ready) once JS is running, so a
-                // JS failure leaves all content visible. Reveal in-viewport items synchronously (no
-                // flash) and observe the rest for scroll reveal.
+                // Progressive enhancement: hide [data-reveal] only once JS runs (body.reveal-ready),
+                // so a JS failure leaves all content visible. A single observer reveals each item as it
+                // scrolls into view (Apple-style rise); above-the-fold items animate in on load. Only
+                // card items carry [data-reveal] (no nested parents) so there is no double-fade flicker.
                 document.body.classList.add("reveal-ready");
-                const vh = window.innerHeight || document.documentElement.clientHeight;
                 const ro = new IntersectionObserver((entries) => {
                     entries.forEach((entry) => {
                         if (entry.isIntersecting) { entry.target.classList.add("is-revealed"); ro.unobserve(entry.target); }
                     });
-                }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-                reveals.forEach((el) => {
-                    if (el.getBoundingClientRect().top < vh * 0.92) el.classList.add("is-revealed");
-                    else ro.observe(el);
-                });
+                }, { threshold: 0, rootMargin: "0px 0px -12% 0px" });
+                reveals.forEach((el) => ro.observe(el));
             }
 
             const counters = Array.from(document.querySelectorAll("[data-count]"));
