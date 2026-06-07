@@ -14,7 +14,8 @@
     "verify:seo": "node scripts/verify-seo.mjs",
     "verify:i18n": "node scripts/verify-i18n.mjs",
     "verify:assets": "node scripts/verify-assets.mjs",
-    "verify:all": "npm run verify:header && npm run verify:sitemap && npm run verify:routes && npm run verify:seo && npm run verify:i18n"
+    "verify:a11y-lite": "node scripts/verify-a11y-lite.mjs",
+    "verify:all": "npm run verify:header && npm run verify:sitemap && npm run verify:routes && npm run verify:seo && npm run verify:a11y-lite && npm run verify:i18n"
   },
   "dependencies": {
     "astro": "^5"

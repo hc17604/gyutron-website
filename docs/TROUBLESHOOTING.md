@@ -3,8 +3,8 @@
 ## Website verification gates (`npm run verify:*`)
 
 Run from `astro/` **after `npm run build`** (they read `astro/dist`). Also run automatically in CI
-(`.github/workflows/verify.yml`) on push/PR to `main` — build + the first four as hard gates, i18n
-informational; CI never deploys.
+(`.github/workflows/verify.yml`) on push/PR to `main` — build + header/sitemap/routes/seo/a11y-lite as
+hard gates, i18n + assets informational; CI never deploys.
 
 | Command | Checks | Gate |
 |---|---|---|
@@ -12,9 +12,10 @@ informational; CI never deploys.
 | `npm run verify:sitemap` | `dist/sitemap.xml`: every `<url>` has hreflang en/de/ja + x-default, canonical `https://www.gyutron.com`, NO shop, NO redirect stubs, `<loc>` count = paths×locales | hard |
 | `npm run verify:routes` | `config/routes` core pages exist in en/de/ja; every Header/Footer internal link resolves to a built page (known footer placeholders listed, not failed) | hard |
 | `npm run verify:seo` | every built `dist/**.html` page's `<head>`: title, meta description, robots, canonical (correct locale prefix), hreflang en/de/ja + x-default, og + twitter:card, ≥1 valid JSON-LD; redirect stubs skipped | hard |
+| `npm run verify:a11y-lite` | static a11y scan of dist HTML: HARD = every `<img>` has alt, no empty `href`, `<html lang>`; REPORT = icon-only unnamed links/buttons, duplicate ids, >1 `<h1>`, `.nav-trigger` without `aria-expanded` (see ACCESSIBILITY.md) | hard (report items don't fail) |
 | `npm run verify:i18n` | heuristic residual-English scan of de/ja pages; ALL-CAPS acronyms / model names excluded, a proper-noun allowlist applies | **report** (exit 0) |
 | `npm run verify:assets` | asset report over deployed `public/` (shop excluded) + dist HTML: large images (>1 MB), duplicate image bytes, `<img>` missing alt, decorative `alt=""` count | **report** (exit 0; `--fail-over N` opt-in gate) |
-| `npm run verify:all` | the five hard/report gates above (header, sitemap, routes, seo, i18n) | hard (i18n stays report) |
+| `npm run verify:all` | header, sitemap, routes, seo, a11y-lite, i18n in sequence | hard (i18n stays report) |
 
 - A `verify:*` FAIL prints exactly what broke. Fix the data/source, rebuild, re-run.
 - `verify:i18n` is REPORT-only on purpose: product-spec *values* in de/ja are still English (deferred

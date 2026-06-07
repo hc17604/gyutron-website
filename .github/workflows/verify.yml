@@ -44,6 +44,8 @@ jobs:
         run: npm run verify:routes
       - name: Verify SEO head
         run: npm run verify:seo
+      - name: Verify accessibility (a11y-lite)
+        run: npm run verify:a11y-lite
 
       # Informational — heuristic residual-English scan (report mode, never fails the run).
       # Promote to a gate with `-- --strict` once product-spec translation is complete.
