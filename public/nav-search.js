@@ -44,8 +44,21 @@
   const escapeHtml = (s) => (s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
   function hitHtml(r) {
-    // Products / solutions / news (records with c:1 + an image) render as image CARDS; support and
-    // other pages render as plain TEXT rows. Title text is kept in both forms.
+    // Three forms: f:1 → full-width FEATURE long card (categories / solutions / news, pinned on top);
+    // c:1 + image → product image CARD (grid); otherwise → plain TEXT row (support / contact).
+    if (r.f && r.i) {
+      return (
+        '<a class="nav-search-feature" role="option" href="' + escapeHtml(r.u) + '">' +
+        '<span class="nav-search-feature-media"><img src="' + escapeHtml(r.i) + '" alt="" loading="lazy"></span>' +
+        '<span class="nav-search-feature-body">' +
+        '<span class="nav-search-feature-kind">' + escapeHtml(r.k) + "</span>" +
+        '<span class="nav-search-feature-title">' + escapeHtml(r.t) + "</span>" +
+        (r.d ? '<span class="nav-search-feature-desc">' + escapeHtml(r.d) + "</span>" : "") +
+        "</span>" +
+        '<span class="nav-search-feature-go" aria-hidden="true">&rarr;</span>' +
+        "</a>"
+      );
+    }
     if (r.c && r.i) {
       return (
         '<a class="nav-search-card" role="option" href="' + escapeHtml(r.u) + '">' +
@@ -65,7 +78,16 @@
     );
   }
 
-  window.GyutronSearch = { getIndex, rank, hitHtml, escapeHtml };
+  // Reorder ranked hits into display groups: feature long-cards (categories / solutions / news)
+  // pinned on top, then product image cards, then text rows. Relevance order kept within each group.
+  function group(hits) {
+    const features = hits.filter((r) => r.f && r.i);
+    const products = hits.filter((r) => r.c && r.i && !r.f);
+    const texts = hits.filter((r) => !r.i);
+    return features.concat(products, texts);
+  }
+
+  window.GyutronSearch = { getIndex, rank, group, hitHtml, escapeHtml };
 
   // ---- Desktop nav search (icon in header → full-width dropdown below the header) ----
   const root = document.querySelector(".nav-search");
@@ -103,14 +125,18 @@
   }
 
   function render(hits, q) {
-    currentHits = hits; activeIdx = -1;
-    if (!q.trim()) { results.innerHTML = ""; results.classList.remove("has-content"); return; }
+    activeIdx = -1;
+    if (!q.trim()) { currentHits = []; results.innerHTML = ""; results.classList.remove("has-content"); return; }
     results.classList.add("has-content");
     if (!hits.length) {
+      currentHits = [];
       results.innerHTML = '<div class="nav-search-empty">' + escapeHtml(noresults) + ' “' + escapeHtml(q.trim()) + '”</div>';
       return;
     }
-    results.innerHTML = hits.map(hitHtml).join("");
+    // Feature long-cards (categories / solutions / news) pinned on top, then product grid, then rows.
+    const ordered = group(hits);
+    currentHits = ordered;
+    results.innerHTML = ordered.map(hitHtml).join("");
   }
 
   async function onInput() {
@@ -120,7 +146,7 @@
   }
 
   function move(delta) {
-    const els = results.querySelectorAll(".nav-search-hit, .nav-search-card");
+    const els = results.querySelectorAll(".nav-search-feature, .nav-search-hit, .nav-search-card");
     if (!els.length) return;
     activeIdx = (activeIdx + delta + els.length) % els.length;
     els.forEach((el, i) => el.classList.toggle("is-active", i === activeIdx));
@@ -134,7 +160,7 @@
     if (e.key === "ArrowDown") { e.preventDefault(); move(1); }
     else if (e.key === "ArrowUp") { e.preventDefault(); move(-1); }
     else if (e.key === "Enter") {
-      const els = results.querySelectorAll(".nav-search-hit, .nav-search-card");
+      const els = results.querySelectorAll(".nav-search-feature, .nav-search-hit, .nav-search-card");
       if (activeIdx >= 0 && els[activeIdx]) window.location.href = els[activeIdx].getAttribute("href");
       else if (currentHits[0]) window.location.href = currentHits[0].u;
     } else if (e.key === "Escape") { close(); toggle.focus(); }

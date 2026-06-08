@@ -254,7 +254,7 @@
             if (!q.trim()) { searchResults.hidden = true; searchResults.innerHTML = ""; list.hidden = false; return; }
             if (!window.GyutronSearch) return;
             const idx = await window.GyutronSearch.getIndex(searchLocale);
-            const hits = window.GyutronSearch.rank(idx, q, 12);
+            const hits = window.GyutronSearch.group(window.GyutronSearch.rank(idx, q, 12));
             list.hidden = true;
             searchResults.hidden = false;
             searchResults.innerHTML = hits.length

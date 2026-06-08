@@ -5,7 +5,9 @@ import { localizeUrl, type Locale } from '../i18n';
 import { getCatalog } from '../data/products';
 import { NEWS } from '../data/news';
 
-export type SearchRecord = { t: string; u: string; k: string; d: string; i?: string; c?: 1 };
+// c:1 → render as an image card. f:1 → render as a full-width "feature" long card pinned above the
+// product grid (categories / solutions / news — i.e. the non-product, image-bearing results).
+export type SearchRecord = { t: string; u: string; k: string; d: string; i?: string; c?: 1; f?: 1 };
 
 const CAT_LABEL: Record<Locale, string> = { en: 'Product category', de: 'Produktkategorie', ja: '製品カテゴリ' };
 const NEWS_LABEL: Record<Locale, string> = { en: 'News', de: 'Nachrichten', ja: 'ニュース' };
@@ -44,16 +46,17 @@ const PAGES: Record<Locale, SearchRecord[]> = {
 export function buildSearchIndex(locale: Locale): SearchRecord[] {
   const data: any = getCatalog(locale);
   const out: SearchRecord[] = [];
-  for (const p of PAGES[locale]) out.push({ ...p, u: localizeUrl(locale, p.u) });
-  // News — render as cards linking to their /news/<slug> article page.
+  // Imaged pages (solutions) become feature long-cards; text-only pages (support/contact) stay rows.
+  for (const p of PAGES[locale]) out.push({ ...p, u: localizeUrl(locale, p.u), ...(p.i ? ({ f: 1 } as const) : {}) });
+  // News — render as feature long-cards linking to their /news/<slug> article page.
   for (const n of NEWS) {
-    out.push({ t: n.title[locale], u: localizeUrl(locale, n.href || '/news.html'), k: NEWS_LABEL[locale], d: n.excerpt[locale], i: img(n.image), c: 1 });
+    out.push({ t: n.title[locale], u: localizeUrl(locale, n.href || '/news.html'), k: NEWS_LABEL[locale], d: n.excerpt[locale], i: img(n.image), c: 1, f: 1 });
   }
   for (const slug of Object.keys(data)) {
     const cat = data[slug];
     if (!cat || !Array.isArray(cat.products) || cat.products.length === 0) continue; // skip redirect/empty categories
     const url = localizeUrl(locale, `/${slug}.html`);
-    out.push({ t: cat.title, u: url, k: CAT_LABEL[locale], d: cat.intro || cat.panelText || '', i: img(cat.heroImage), c: 1 });
+    out.push({ t: cat.title, u: url, k: CAT_LABEL[locale], d: cat.intro || cat.panelText || '', i: img(cat.heroImage), c: 1, f: 1 });
     for (const prod of cat.products) {
       const kw = [prod.summary, ...(prod.tags || []), ...Object.values(prod.specs || {})].filter(Boolean).join(' ');
       out.push({ t: prod.name, u: url, k: prod.type || CAT_LABEL[locale], d: kw, i: img(prod.image), c: 1 });
