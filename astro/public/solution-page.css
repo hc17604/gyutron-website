@@ -1,7 +1,7 @@
 .solution-hero {
     background:
         linear-gradient(90deg, rgba(4, 5, 8, 0.96) 0%, rgba(18, 5, 31, 0.86) 45%, rgba(18, 5, 31, 0.34) 100%),
-        url("product-vision-cell.png") center / cover;
+        var(--sol-hero-img, url("product-vision-cell.png")) center / cover;
     color: var(--white);
     padding: 92px 0 70px;
 }
@@ -38,7 +38,7 @@
 .solution-panel {
     background: rgba(255, 255, 255, 0.10);
     border: 1px solid rgba(255, 255, 255, 0.20);
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 24px;
     transition: background var(--motion), border-color var(--motion), box-shadow var(--motion), transform var(--motion);
 }
@@ -82,7 +82,7 @@
 
 .solution-tabs a {
     border: 1px solid var(--line);
-    border-radius: 6px;
+    border-radius: 2px;
     color: var(--text);
     flex: 0 0 auto;
     font-size: 13px;
@@ -153,7 +153,7 @@
 .workflow-step {
     background: var(--white);
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 22px;
     transition: background var(--motion), border-color var(--motion), box-shadow var(--motion), transform var(--motion);
 }
@@ -185,16 +185,39 @@
 
 .architecture-grid {
     display: grid;
-    gap: 22px;
-    grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.72fr);
+    gap: 28px;
+    grid-template-columns: minmax(0, 0.85fr) minmax(440px, 1.12fr);
+}
+
+/* Architecture cards read as a numbered Acquire→Analyze→Interlock→Record pipeline (2×2, not a cramped
+   4-wide column where the copy collapsed to one word per line). */
+.architecture-grid .capability-grid {
+    align-content: start;
+    counter-reset: archstage;
+    gap: 14px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.solution-section.dark .architecture-card {
+    counter-increment: archstage;
+}
+
+.solution-section.dark .architecture-card h3::before {
+    color: var(--purple-500);
+    content: counter(archstage, decimal-leading-zero);
+    display: block;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
 }
 
 .architecture-visual {
     background:
         linear-gradient(180deg, rgba(18, 5, 31, 0.05), rgba(18, 5, 31, 0.20)),
-        url("product-smart-camera-detail.png") center / cover;
+        var(--sol-arch-img, url("product-smart-camera-detail.png")) center / cover;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 8px;
+    border-radius: 2px;
     min-height: 420px;
     overflow: hidden;
     transition: filter var(--motion), transform var(--motion-slow);
@@ -223,7 +246,7 @@
 .solution-cta-inner {
     align-items: center;
     background: var(--purple-950);
-    border-radius: 8px;
+    border-radius: 2px;
     color: var(--white);
     display: grid;
     gap: 28px;
@@ -236,9 +259,9 @@
 .capability-card:hover,
 .architecture-card:hover,
 .workflow-step:hover {
-    border-color: rgba(111, 45, 189, 0.34);
-    box-shadow: 0 22px 48px rgba(31, 11, 53, 0.14);
-    transform: translateY(-4px);
+    border-color: var(--purple-500);
+    box-shadow: 0 8px 18px rgba(31, 11, 53, 0.10);
+    transform: translateY(-2px);
 }
 
 .solution-panel:hover {
@@ -272,6 +295,327 @@
 .solution-cta p {
     color: rgba(255, 255, 255, 0.72);
     margin-top: 10px;
+}
+
+/* Hero KPI strip — lead with quantified numbers (competitor-standard). */
+.solution-kpis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 34px;
+    margin: 30px 0 0;
+}
+
+.solution-kpi {
+    border-left: 2px solid var(--purple-500);
+    padding-left: 14px;
+}
+
+.solution-kpi dt {
+    color: var(--white);
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.solution-kpi dd {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin: 6px 0 0;
+    text-transform: uppercase;
+}
+
+/* "Products used in this solution" — cross-links each solution to its product category pages. */
+.solution-products-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.solution-product-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color var(--motion), box-shadow var(--motion), transform var(--motion);
+}
+
+.solution-product-card:hover {
+    border-color: rgba(111, 45, 189, 0.34);
+    box-shadow: 0 18px 40px rgba(31, 11, 53, 0.12);
+    transform: translateY(-3px);
+}
+
+.solution-product-media {
+    aspect-ratio: 16 / 10;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    display: block;
+    overflow: hidden;
+}
+
+.solution-product-media img {
+    height: 100%;
+    /* category hero banners are dark on the LEFT — crop right (same standard as the nav-search cards) */
+    object-fit: cover;
+    object-position: 100% 50%;
+    width: 100%;
+}
+
+.solution-product-body {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    padding: 14px 16px;
+}
+
+.solution-product-title {
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.solution-product-go {
+    color: var(--purple-600);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+@media (max-width: 640px) {
+    .solution-kpi dt {
+        font-size: 24px;
+    }
+}
+
+/* ===== "Sample results" captured-image gallery (real-image proof, competitor-standard) ===== */
+.solution-shots {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.solution-shot {
+    margin: 0;
+}
+
+.solution-shot-frame {
+    aspect-ratio: 4 / 3;
+    background: #0d0a14;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.solution-shot-frame img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.solution-shot-tag {
+    background: rgba(13, 10, 20, 0.78);
+    border: 1px solid rgba(138, 99, 210, 0.5);
+    border-radius: 3px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    left: 10px;
+    letter-spacing: 0.04em;
+    padding: 3px 8px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 10px;
+}
+
+.solution-shot figcaption {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 12px;
+    text-align: center;
+}
+
+/* Schematic placeholder cell — original, on-brand (machine-vision crosshair on a faint grid). A real
+   captured image (set `shot.image`) replaces it; Codex/user drops the real shots in later. */
+.solution-shot-ph {
+    background:
+        repeating-linear-gradient(0deg, transparent 0 15px, rgba(138, 99, 210, 0.12) 15px 16px),
+        repeating-linear-gradient(90deg, transparent 0 15px, rgba(138, 99, 210, 0.12) 15px 16px);
+    display: block;
+    height: 100%;
+    position: relative;
+}
+
+.solution-shot-ph::before,
+.solution-shot-ph::after {
+    background: rgba(138, 99, 210, 0.55);
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+}
+
+.solution-shot-ph::before {
+    height: 2px;
+    transform: translate(-50%, -50%);
+    width: 30px;
+}
+
+.solution-shot-ph::after {
+    height: 30px;
+    transform: translate(-50%, -50%);
+    width: 2px;
+}
+
+/* ===== Case study (named, concrete proof) ===== */
+.solution-case-grid {
+    align-items: center;
+    display: grid;
+    gap: 36px;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+}
+
+.solution-case-visual {
+    aspect-ratio: 4 / 3;
+    background: #0d0a14;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.solution-case-visual img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.solution-case-points {
+    display: grid;
+    gap: 16px;
+    margin: 22px 0 0;
+}
+
+.solution-case-points dt {
+    color: var(--purple-500);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.solution-case-points dd {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 15px;
+    margin: 4px 0 0;
+}
+
+.solution-case-quote {
+    border-left: 3px solid var(--purple-500);
+    margin: 26px 0 0;
+    padding-left: 18px;
+}
+
+.solution-case-quote p {
+    color: #fff;
+    font-size: 17px;
+    font-style: italic;
+}
+
+.solution-case-quote cite {
+    color: rgba(255, 255, 255, 0.6);
+    display: block;
+    font-size: 13px;
+    font-style: normal;
+    margin-top: 8px;
+}
+
+/* "Representative deployments" — case showcase cards (hard-edged, proof-forward). */
+.solution-cases-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.solution-case-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: border-color var(--motion), box-shadow var(--motion);
+}
+
+.solution-case-card:hover {
+    border-color: var(--purple-500);
+    box-shadow: 0 8px 18px rgba(31, 11, 53, 0.10);
+}
+
+.solution-case-card-media {
+    aspect-ratio: 16 / 10;
+    background: #0d0a14;
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+}
+
+.solution-case-card-media img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.solution-case-card-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 18px;
+}
+
+.solution-case-card-tag {
+    color: var(--purple-600);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.solution-case-card h3 {
+    color: var(--ink);
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.22;
+    margin: 10px 0 0;
+}
+
+.solution-case-card-metric {
+    border-top: 1px solid var(--line);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    margin-top: auto;
+    padding-top: 14px;
+}
+
+.solution-case-card-body h3 + .solution-case-card-metric {
+    margin-top: 14px;
+}
+
+@media (max-width: 900px) {
+    .solution-case-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .solution-cases-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -22,6 +22,11 @@ export const SOLUTIONS: Solution[] = [
       titleKey: 'main.055',
       descKey: 'main.270',
       panel: { labelKey: 'main.271', valueKey: 'main.408', descKey: 'main.272' },
+      kpis: [
+        { value: '≥ 99.5%', label: 'Defect detection rate' },
+        { value: '< 20 ms', label: 'Inspection cycle' },
+        { value: '12 MP', label: 'Imaging resolution' },
+      ],
     },
     tabs: [
       { href: '#capabilities', labelKey: 'main.273' },
@@ -29,6 +34,21 @@ export const SOLUTIONS: Solution[] = [
       { href: '#workflow', labelKey: 'main.275' },
       { href: '#deployment', labelKey: 'main.276' },
     ],
+    // Captured-image proof gallery. `image` omitted → schematic placeholder; Codex/user drops real
+    // production captures in later (per the user: real frames > parameters on a solutions page).
+    gallery: {
+      eyebrowKey: 'sol.avi.gallery.eyebrow',
+      titleKey: 'sol.avi.gallery.title',
+      introKey: 'sol.avi.gallery.intro',
+      shots: [
+        { tagKey: 'sol.avi.shot.1.tag', captionKey: 'sol.avi.shot.1.cap' },
+        { tagKey: 'sol.avi.shot.2.tag', captionKey: 'sol.avi.shot.2.cap' },
+        { tagKey: 'sol.avi.shot.3.tag', captionKey: 'sol.avi.shot.3.cap' },
+        { tagKey: 'sol.avi.shot.4.tag', captionKey: 'sol.avi.shot.4.cap' },
+        { tagKey: 'sol.avi.shot.5.tag', captionKey: 'sol.avi.shot.5.cap' },
+        { tagKey: 'sol.avi.shot.6.tag', captionKey: 'sol.avi.shot.6.cap' },
+      ],
+    },
     sections: [
       {
         id: 'capabilities',
@@ -72,6 +92,25 @@ export const SOLUTIONS: Solution[] = [
         ],
       },
     ],
+    cases: {
+      eyebrowKey: 'sol.avi.cases.eyebrow',
+      titleKey: 'sol.avi.cases.title',
+      introKey: 'sol.avi.cases.intro',
+      items: [
+        { tagKey: 'sol.avi.case1.tag', titleKey: 'sol.avi.case1.title', metricKey: 'sol.avi.case1.metric' },
+        { tagKey: 'sol.avi.case2.tag', titleKey: 'sol.avi.case2.title', metricKey: 'sol.avi.case2.metric' },
+        { tagKey: 'sol.avi.case3.tag', titleKey: 'sol.avi.case3.title', metricKey: 'sol.avi.case3.metric' },
+      ],
+    },
+    caseStudy: {
+      eyebrowKey: 'sol.avi.case.eyebrow',
+      titleKey: 'sol.avi.case.title',
+      points: [
+        { labelKey: 'sol.avi.case.challenge.l', valueKey: 'sol.avi.case.challenge.v' },
+        { labelKey: 'sol.avi.case.approach.l', valueKey: 'sol.avi.case.approach.v' },
+        { labelKey: 'sol.avi.case.result.l', valueKey: 'sol.avi.case.result.v' },
+      ],
+    },
     cta: {
       id: 'deployment',
       titleKey: 'main.304',

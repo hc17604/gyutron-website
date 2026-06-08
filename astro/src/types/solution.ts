@@ -41,12 +41,21 @@ export interface SolutionTab {
   labelKey: string;
 }
 
+/** A quantified KPI shown in the hero strip. value/label are plain (technical/numeric) strings —
+ * specs/units read the same across locales, so they intentionally bypass the i18n dictionaries. */
+export interface SolutionKpi {
+  value: string;
+  label: string;
+}
+
 export interface SolutionHero {
   eyebrowKey: string;
   /** Hero title — also the page <h1>. */
   titleKey: string;
   descKey: string;
   panel: { labelKey: string; valueKey: string; descKey: string };
+  /** Optional quantified KPI strip (competitor-standard: lead with numbers). Plain strings. */
+  kpis?: SolutionKpi[];
 }
 
 export interface SolutionCta {
@@ -57,6 +66,53 @@ export interface SolutionCta {
   buttonKey: string;
   /** Canonical (en) href, localized at render via localizeUrl. */
   href: string;
+}
+
+/** One captured-image sample in the "Sample results" gallery (the real-image proof competitors lead
+ * with — ViTrox's Good/Dented/Crack, OPT's Original/Result). `image` omitted → a schematic placeholder
+ * cell renders so the gallery reads correctly until a real capture is dropped in (Codex/user). */
+export interface SolutionShot {
+  image?: string;
+  captionKey: string;
+  /** Small corner tag, e.g. "Good" / "Defect" / "Result" (i18n key). */
+  tagKey?: string;
+}
+
+export interface SolutionGallery {
+  eyebrowKey: string;
+  titleKey: string;
+  introKey: string;
+  shots: SolutionShot[];
+}
+
+/** A compact case card in the "Representative deployments" showcase row (industry + result + image). */
+export interface SolutionCaseCard {
+  image?: string;
+  /** Industry / segment tag, e.g. "Electronics / SMT" (i18n key). */
+  tagKey: string;
+  /** Result-led headline (i18n key). */
+  titleKey: string;
+  /** Optional hard outcome line, e.g. "≥99.5% catch · 100% inline" (i18n key). */
+  metricKey?: string;
+}
+
+export interface SolutionCases {
+  eyebrowKey: string;
+  titleKey: string;
+  introKey: string;
+  items: SolutionCaseCard[];
+}
+
+/** A concrete deployed example (named industry + challenge/result) — proof, not generic copy. */
+export interface SolutionCaseStudy {
+  eyebrowKey: string;
+  titleKey: string;
+  /** Optional photo (placeholder if omitted). */
+  image?: string;
+  /** Challenge / Approach / Result rows (label + value i18n keys). */
+  points: { labelKey: string; valueKey: string }[];
+  quoteKey?: string;
+  attributionKey?: string;
 }
 
 export interface Solution {
@@ -73,11 +129,22 @@ export interface Solution {
   /** Optional industry / application tags (i18n keys). */
   industryKey?: string;
   applicationKey?: string;
-  /** Slugs of related product categories (cross-links / future use). */
+  /** Slugs of related product categories. Rendered as the "Products used in this solution" grid
+   * (cross-links to the category pages with their images) — set on a solution to show that section. */
   relatedProducts?: string[];
+  /** Optional placeholder background images (paths under public/). Fall back to the CSS defaults.
+   * `heroImage` = the hero band; `archImage` = the architecture-visual block. Codex swaps these later. */
+  heroImage?: string;
+  archImage?: string;
   /** Page content (i18n-key driven, render-ready). Optional → a solution can be meta-only. */
   hero?: SolutionHero;
   tabs?: SolutionTab[];
+  /** "Sample results" captured-image gallery (real-image proof). Renders after the hero. */
+  gallery?: SolutionGallery;
   sections?: SolutionSection[];
+  /** "Representative deployments" showcase — a row of compact case cards (concrete proof). */
+  cases?: SolutionCases;
+  /** A named deployed case study (concrete proof). Renders before "Products used". */
+  caseStudy?: SolutionCaseStudy;
   cta?: SolutionCta;
 }
