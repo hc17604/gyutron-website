@@ -2164,24 +2164,42 @@
 /* Fixes: blank right-panel when hovering the tab + reverting to the first group when the pointer enters the submenu. */
 .mega-menu .mega-link-group .submenu { opacity: 0 !important; pointer-events: none !important; transform: none !important; }
 .mega-menu .mega-link-group.is-open .submenu { opacity: 1 !important; pointer-events: auto !important; }
-/* Solution mega-menu flyout (.submenu--solution): short intro blurb + the solution's own capability
-   list, sized so it never overflows the panel (scoped so the Products menu is untouched). */
-.submenu--solution::before { height: 104px; }
+/* Solution mega-menu flyout (.submenu--solution): an INFO panel, NOT a link list — so users do not
+   mistake it for navigation and instead click the second-level solution name. Single column, no banner;
+   a short intro blurb + the solution own capabilities as full-width purple info boxes (white title). */
+.submenu--solution {
+    grid-template-columns: 1fr;
+    align-content: start;
+    gap: 8px;
+}
+.submenu--solution::before { display: none; }
 .submenu-intro {
-    grid-column: 1 / -1;
-    color: var(--muted);
+    color: var(--text);
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     font-size: 13px;
     line-height: 1.5;
-    margin: 0 0 2px;
+    margin: 2px 0 4px;
     overflow: hidden;
 }
-.submenu--solution a { min-height: 0; padding: 8px 12px; }
-.submenu--solution a span {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+.submenu-cap {
+    background: var(--brand-purple);
+    border-radius: 2px;
+    padding: 9px 13px;
+}
+.submenu-cap strong {
+    color: #fff;
+    display: block;
+    font-size: 13.5px;
+    font-weight: 800;
+    line-height: 1.22;
+    margin-bottom: 3px;
+}
+.submenu-cap span {
+    color: #d7cbf2;
+    display: block;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 1.42;
 }
