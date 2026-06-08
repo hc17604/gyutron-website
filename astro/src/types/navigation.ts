@@ -28,8 +28,8 @@ export interface MegaSubmenuLink {
   titleKey?: string;
   /** Language-neutral bold label (e.g. "FAQ"), when the markup hard-codes it. */
   titleText?: string;
-  /** i18n key for the muted description span. */
-  descKey: string;
+  /** i18n key for the muted description span. Omit for a title-only link (e.g. industry coverage chips). */
+  descKey?: string;
 }
 
 /** The flyout panel under a `.mega-link` (`.submenu`, optionally `.submenu--intro`). */

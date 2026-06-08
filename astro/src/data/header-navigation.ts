@@ -39,18 +39,17 @@ const solutionGroups = SOLUTIONS.map((s) => {
 });
 
 // Industries mega-menu groups derived from the industries registry so the top nav always lists EVERY
-// industry production line and auto-syncs as industries are added/removed/reordered. Each group = one
-// industry; its flyout is a soft info panel (.submenu--solution, blurbKey set) = a one-line intro plus
-// that industry's production-line stations (front-to-back) rendered as non-clickable cap boxes — the
-// dedicated per-industry page (production-line graphic) is a later step, so the stations preview the
-// line rather than link out. The mega-link itself points at `ind.path` (a homepage anchor until the
-// industry page exists).
+// industry and auto-syncs as industries are added/removed/reordered. Each group = one industry; its
+// flyout is a soft info panel (.submenu--solution, blurbKey set) = a one-line intro plus the areas that
+// industry COVERS, rendered as non-clickable title-only cap boxes (no per-item description). The
+// dedicated per-industry page is a later step, so the coverage previews the scope rather than links out.
+// The mega-link itself points at `ind.path` (a homepage anchor until the industry page exists).
 const industryGroups = INDUSTRIES.map((ind) => ({
   link: { href: ind.path, titleKey: ind.labelKey, descKey: ind.taglineKey },
   submenu: {
     image: ind.image,
     blurbKey: ind.introKey,
-    links: ind.stations.map((st) => ({ href: ind.path, titleKey: st.titleKey, descKey: st.descKey })),
+    links: ind.coverage.map((c) => ({ href: ind.path, titleKey: c.labelKey })),
   },
 }));
 

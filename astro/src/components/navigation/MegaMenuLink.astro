@@ -20,11 +20,11 @@ const submenuClass = submenu.intro
         {submenu.blurbKey
             ? <div class="submenu-caps">
                 {submenu.links.map((l) => (
-                    <div class="submenu-cap"><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong><span>{t(locale, l.descKey)}</span></div>
+                    <div class="submenu-cap"><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong>{l.descKey && <span>{t(locale, l.descKey)}</span>}</div>
                 ))}
               </div>
             : submenu.links.map((l) => (
-                <a href={localizeUrl(locale, l.href)}><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong><span>{t(locale, l.descKey)}</span></a>
+                <a href={localizeUrl(locale, l.href)}><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong>{l.descKey && <span>{t(locale, l.descKey)}</span>}</a>
               ))}
     </div>
 </div>
