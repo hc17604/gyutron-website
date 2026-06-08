@@ -1058,15 +1058,24 @@
 /* Fixes: blank right-panel when hovering the tab + reverting to the first group when the pointer enters the submenu. */
 .mega-menu .mega-link-group .submenu { opacity: 0 !important; pointer-events: none !important; transform: none !important; }
 .mega-menu .mega-link-group.is-open .submenu { opacity: 1 !important; pointer-events: auto !important; }
-/* Solution mega-menu flyout: full-width intro blurb under the banner (fills the panel + introduces the solution). */
+/* Solution mega-menu flyout (.submenu--solution): short intro blurb + the solution's own capability
+   list, sized so it never overflows the panel (scoped so the Products menu is untouched). */
+.submenu--solution::before { height: 104px; }
 .submenu-intro {
     grid-column: 1 / -1;
     color: var(--muted);
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     font-size: 13px;
     line-height: 1.5;
-    margin: 2px 0 4px;
+    margin: 0 0 2px;
+    overflow: hidden;
+}
+.submenu--solution a { min-height: 0; padding: 8px 12px; }
+.submenu--solution a span {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
 }

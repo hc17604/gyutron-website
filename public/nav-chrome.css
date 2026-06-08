@@ -233,8 +233,10 @@ body.nav-is-navigating .submenu {
    mobile-navigation.css). Adaptive 2+-up grid: min(48%,160px) guarantees ≥2 columns on any phone. */
 .mobile-nav-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(45%, 160px), 1fr)); gap: 10px; align-content: start; padding: 4px 18px 18px; }
 .mobile-nav-results[hidden], .mobile-nav-list[hidden] { display: none; }
-.mobile-nav-results .nav-search-feature { grid-column: 1 / -1; }
-.mobile-nav-results .nav-search-feature-media { flex: 0 0 116px; }
+/* min-height gives the flex row a definite height so the media (img height:100%) can't collapse —
+   on mobile the body is just a title, so without this the whole feature card shrank to ~2px. */
+.mobile-nav-results .nav-search-feature { grid-column: 1 / -1; min-height: 74px; }
+.mobile-nav-results .nav-search-feature-media { flex: 0 0 116px; min-height: 74px; }
 .mobile-nav-results .nav-search-feature-title { font-size: 14px; }
 .mobile-nav-results .nav-search-feature-desc { display: none; }
 .mobile-nav-results .nav-search-feature-go { display: none; }

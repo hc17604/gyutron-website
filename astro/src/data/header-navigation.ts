@@ -24,7 +24,9 @@ const solutionGroups = SOLUTIONS.map((s) => {
   // Each solution's flyout is built from ITS OWN data so the third level is differentiated, not the
   // same generic anchors on every solution: a short intro blurb (hero desc) + that solution's actual
   // capability list (3–5 specific items). Fills the panel and reads as a real solution overview.
-  const caps = s.sections?.find((sec) => sec.kind === 'capability')?.cards ?? [];
+  // up to 4 of the solution's OWN capabilities (verbatim from the page data, not invented) — 2×2 keeps
+  // the flyout balanced and from overflowing the panel.
+  const caps = (s.sections?.find((sec) => sec.kind === 'capability')?.cards ?? []).slice(0, 4);
   return {
     link: { href: s.path, titleKey: s.breadcrumbKey!, descKey: s.sections?.[0]?.titleKey ?? s.descKey! },
     submenu: {
