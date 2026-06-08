@@ -31,6 +31,8 @@ export interface Industry {
   taglineKey: string;
   /** i18n key for the one-sentence flyout intro/blurb above the coverage list. */
   introKey: string;
+  /** i18n key for a longer description paragraph shown UNDER the coverage chips (fills the flyout). */
+  detailKey: string;
   /** Background image path for the flyout banner (keep any `?v=` cache-buster). */
   image: string;
   /** The areas this industry covers (sub-domains / applications), shown as the flyout list. */

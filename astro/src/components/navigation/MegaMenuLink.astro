@@ -18,11 +18,14 @@ const submenuClass = submenu.intro
     <div class={submenuClass} style={`--submenu-image: url('${submenu.image}')`}>
         {submenu.blurbKey && <p class="submenu-intro">{t(locale, submenu.blurbKey)}</p>}
         {submenu.blurbKey
-            ? <div class="submenu-caps">
-                {submenu.links.map((l) => (
-                    <div class="submenu-cap"><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong>{l.descKey && <span>{t(locale, l.descKey)}</span>}</div>
-                ))}
-              </div>
+            ? <Fragment>
+                <div class="submenu-caps">
+                    {submenu.links.map((l) => (
+                        <div class="submenu-cap"><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong>{l.descKey && <span>{t(locale, l.descKey)}</span>}</div>
+                    ))}
+                </div>
+                {submenu.detailKey && <p class="submenu-detail">{t(locale, submenu.detailKey)}</p>}
+              </Fragment>
             : submenu.links.map((l) => (
                 <a href={localizeUrl(locale, l.href)}><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong>{l.descKey && <span>{t(locale, l.descKey)}</span>}</a>
               ))}

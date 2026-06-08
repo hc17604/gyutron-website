@@ -269,4 +269,12 @@ body.nav-is-navigating .submenu {
   }
   .mega-compact .submenu--solution .submenu-cap strong { font-size: 13px; line-height: 1.15; }
   .mega-compact .submenu--solution .submenu-cap span { display: none; }
+  /* Longer description under the chips — black body text that fills the lower half of the panel. */
+  .mega-compact .submenu--solution .submenu-detail {
+    color: var(--text, #211b2d);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 16px 0 0;
+    max-width: 60ch;
+  }
 }

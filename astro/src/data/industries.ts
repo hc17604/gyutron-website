@@ -23,6 +23,7 @@ export const INDUSTRIES: Industry[] = [
     labelKey: 'ind.elec.name',
     taglineKey: 'ind.elec.tagline',
     introKey: 'ind.elec.intro',
+    detailKey: 'ind.elec.detail',
     image: '/nav-industry-electronics-smt.png?v=20260525-hd2',
     coverage: cov(
       'ind.elec.c1', 'ind.elec.c2', 'ind.elec.c3', 'ind.elec.c4',
@@ -35,6 +36,7 @@ export const INDUSTRIES: Industry[] = [
     labelKey: 'ind.battery.name',
     taglineKey: 'ind.battery.tagline',
     introKey: 'ind.battery.intro',
+    detailKey: 'ind.battery.detail',
     image: '/nav-industry-automotive-ev.png?v=20260525-hd2',
     coverage: cov(
       'ind.battery.c1', 'ind.battery.c2', 'ind.battery.c3', 'ind.battery.c4', 'ind.battery.c5',
@@ -47,6 +49,7 @@ export const INDUSTRIES: Industry[] = [
     labelKey: 'ind.logi.name',
     taglineKey: 'ind.logi.tagline',
     introKey: 'ind.logi.intro',
+    detailKey: 'ind.logi.detail',
     image: '/nav-industry-logistics-rfid.png?v=20260525-hd2',
     coverage: cov(
       'ind.logi.c1', 'ind.logi.c2', 'ind.logi.c3', 'ind.logi.c4',
@@ -59,6 +62,7 @@ export const INDUSTRIES: Industry[] = [
     labelKey: 'ind.gen.name',
     taglineKey: 'ind.gen.tagline',
     introKey: 'ind.gen.intro',
+    detailKey: 'ind.gen.detail',
     image: '/nav-industry-oem-machine-builders.png?v=20260525-hd2',
     coverage: cov(
       'ind.gen.c1', 'ind.gen.c2', 'ind.gen.c3', 'ind.gen.c4',

@@ -40,6 +40,8 @@ export interface MegaSubmenu {
   image: string;
   /** Optional i18n key for a short intro/blurb paragraph rendered under the banner (full width). */
   blurbKey?: string;
+  /** Optional i18n key for a longer description paragraph rendered UNDER the links (info-panel only). */
+  detailKey?: string;
   links: MegaSubmenuLink[];
 }
 

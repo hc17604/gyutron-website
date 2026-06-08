@@ -49,6 +49,7 @@ const industryGroups = INDUSTRIES.map((ind) => ({
   submenu: {
     image: ind.image,
     blurbKey: ind.introKey,
+    detailKey: ind.detailKey,
     links: ind.coverage.map((c) => ({ href: ind.path, titleKey: c.labelKey })),
   },
 }));
