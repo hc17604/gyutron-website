@@ -1144,7 +1144,7 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
     align-content: start;
     gap: 8px;
 }
-.submenu--solution::before { display: none; }
+.submenu--solution::before { height: 110px; }
 .submenu-intro {
     color: var(--text);
     display: -webkit-box;
@@ -1168,10 +1168,4 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
     line-height: 1.22;
     margin-bottom: 3px;
 }
-.submenu-cap span {
-    color: #d7cbf2;
-    display: block;
-    font-size: 12.5px;
-    font-weight: 500;
-    line-height: 1.42;
-}
+.submenu-cap span { display: none; }
