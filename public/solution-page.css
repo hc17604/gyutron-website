@@ -101,6 +101,9 @@
 
 .solution-section {
     padding: 72px 0;
+    /* clear the fixed header (~116px: top-strip + header) + the sticky tab bar (~65px) so a tab anchor
+       lands on the section heading, not 180px under it (hidden behind the sticky chrome). */
+    scroll-margin-top: 192px;
 }
 
 .solution-section.alt {
@@ -241,6 +244,7 @@
 .solution-cta {
     background: var(--white);
     padding: 72px 0;
+    scroll-margin-top: 192px;
 }
 
 .solution-cta-inner {
@@ -652,6 +656,11 @@
 
     .solution-tabs {
         top: 82px;
+    }
+
+    .solution-section,
+    .solution-cta {
+        scroll-margin-top: 150px;
     }
 }
 
