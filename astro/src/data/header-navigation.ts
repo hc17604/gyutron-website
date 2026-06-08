@@ -16,6 +16,7 @@
  */
 import type { HeaderNavItem } from '../types/navigation';
 import { SOLUTIONS } from './solutions';
+import { INDUSTRIES } from './industries';
 
 // Solutions mega-menu groups derived from the solutions registry so the top nav always lists EVERY
 // solution page and auto-syncs as solutions are added/removed. Each group = one solution; its submenu
@@ -36,6 +37,22 @@ const solutionGroups = SOLUTIONS.map((s) => {
     },
   };
 });
+
+// Industries mega-menu groups derived from the industries registry so the top nav always lists EVERY
+// industry production line and auto-syncs as industries are added/removed/reordered. Each group = one
+// industry; its flyout is a soft info panel (.submenu--solution, blurbKey set) = a one-line intro plus
+// that industry's production-line stations (front-to-back) rendered as non-clickable cap boxes — the
+// dedicated per-industry page (production-line graphic) is a later step, so the stations preview the
+// line rather than link out. The mega-link itself points at `ind.path` (a homepage anchor until the
+// industry page exists).
+const industryGroups = INDUSTRIES.map((ind) => ({
+  link: { href: ind.path, titleKey: ind.labelKey, descKey: ind.taglineKey },
+  submenu: {
+    image: ind.image,
+    blurbKey: ind.introKey,
+    links: ind.stations.map((st) => ({ href: ind.path, titleKey: st.titleKey, descKey: st.descKey })),
+  },
+}));
 
 export const HEADER_NAV: HeaderNavItem[] = [
   {
@@ -158,59 +175,7 @@ export const HEADER_NAV: HeaderNavItem[] = [
       variant: 'compact',
       overviewImage: '/nav-industries-overview.png?v=20260525-hd2',
       sections: [
-        {
-          labelKey: 'main.103',
-          groups: [
-            {
-              link: { href: '/index.html#solutions', titleKey: 'main.104', descKey: 'main.105' },
-              submenu: {
-                image: '/nav-industry-automotive-ev.png?v=20260525-hd2',
-                links: [
-                  { href: '/index.html#solutions', titleKey: 'main.399', descKey: 'main.106' },
-                  { href: '/index.html#solutions', titleKey: 'main.107', descKey: 'main.108' },
-                  { href: '/index.html#solutions', titleKey: 'main.109', descKey: 'main.110' },
-                  { href: '/index.html#solutions', titleKey: 'main.111', descKey: 'main.112' },
-                ],
-              },
-            },
-            {
-              link: { href: '/index.html#solutions', titleKey: 'main.113', descKey: 'main.114' },
-              submenu: {
-                image: '/nav-industry-electronics-smt.png?v=20260525-hd2',
-                links: [
-                  { href: '/index.html#solutions', titleKey: 'main.400', descKey: 'main.115' },
-                  { href: '/index.html#solutions', titleKey: 'main.116', descKey: 'main.117' },
-                  { href: '/index.html#solutions', titleKey: 'main.118', descKey: 'main.119' },
-                  { href: '/index.html#solutions', titleKey: 'main.120', descKey: 'main.121' },
-                ],
-              },
-            },
-            {
-              link: { href: '/index.html#solutions', titleKey: 'main.122', descKey: 'main.123' },
-              submenu: {
-                image: '/nav-industry-logistics-rfid.png?v=20260525-hd2',
-                links: [
-                  { href: '/index.html#solutions', titleKey: 'main.124', descKey: 'main.125' },
-                  { href: '/index.html#solutions', titleKey: 'main.126', descKey: 'main.127' },
-                  { href: '/index.html#solutions', titleKey: 'main.398', descKey: 'main.128' },
-                  { href: '/index.html#solutions', titleKey: 'main.129', descKey: 'main.130' },
-                ],
-              },
-            },
-            {
-              link: { href: '/index.html#solutions', titleKey: 'main.131', descKey: 'main.132' },
-              submenu: {
-                image: '/nav-industry-food-beverage.png?v=20260525-hd2',
-                links: [
-                  { href: '/index.html#solutions', titleKey: 'main.133', descKey: 'main.134' },
-                  { href: '/index.html#solutions', titleKey: 'main.135', descKey: 'main.136' },
-                  { href: '/index.html#solutions', titleKey: 'main.137', descKey: 'main.138' },
-                  { href: '/index.html#solutions', titleKey: 'main.139', descKey: 'main.140' },
-                ],
-              },
-            },
-          ],
-        },
+        { labelKey: 'ind.section.label', groups: industryGroups },
       ],
     },
   },

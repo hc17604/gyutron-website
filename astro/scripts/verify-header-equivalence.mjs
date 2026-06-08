@@ -115,7 +115,7 @@ function analyze(html, label) {
     sectionLabel: cnt(/class="mega-section-label"/g),
     linkGroup: cnt(/class="mega-link-group"/g),
     megaLink: cnt(/class="mega-link"/g),
-    submenu: cnt(/class="submenu(?:"| submenu--intro")/g),
+    submenu: cnt(/class="submenu(?:"| submenu--intro"| submenu--solution")/g),
     submenuIntro: cnt(/\bsubmenu--intro\b/g),
   };
   // bare links = top-level .mega-links anchors with a chevron-right that are NOT .mega-link.

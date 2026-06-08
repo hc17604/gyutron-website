@@ -243,3 +243,25 @@ body.nav-is-navigating .submenu {
 .mobile-nav-results .nav-search-hit { grid-column: 1 / -1; padding: 13px 6px; }
 .mobile-nav-results .mobile-nav-empty { grid-column: 1 / -1; }
 .mobile-nav-empty { padding: 18px 6px; color: var(--muted, #8b8397); font-size: 15px; }
+
+/* ===== Industries mega-menu: production-line station board =====
+   `.mega-compact` + `.submenu--solution` occurs ONLY on the Industries flyout (Solutions reuses the
+   info-panel style but is a wide `.mega-menu`, not compact). An industry is one production line front
+   to back, so we surface ALL of its stations — a single column of 6 ran ~110px past the compact panel,
+   so lay them out as a 2-column station board (6 -> 3 rows) that fits the panel cleanly. Desktop only;
+   the mobile drawer renders these as a normal stacked list. */
+@media (min-width: 1181px) {
+  /* The compact base forces the flyout to 2 columns (`.mega-compact .submenu`), which splits the
+     info panel's intro and caps side by side. Force it back to a single column (banner -> intro ->
+     full-width caps board), matching the Solutions info-panel, so the caps board gets the full width. */
+  .mega-compact .submenu--solution { grid-template-columns: 1fr; }
+  .mega-compact .submenu--solution .submenu-caps {
+    column-gap: 26px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 6px 16px;
+  }
+  .mega-compact .submenu--solution .submenu-cap { padding: 8px 0; border-top: 0; border-bottom: 1px solid rgba(75, 46, 131, 0.12); }
+  /* drop the divider under the final row (last two cells) so the board ends clean */
+  .mega-compact .submenu--solution .submenu-cap:nth-last-child(-n + 2) { border-bottom: 0; }
+}
