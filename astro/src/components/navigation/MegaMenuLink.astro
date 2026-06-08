@@ -17,10 +17,14 @@ const submenuClass = submenu.intro
     <a class="mega-link" href={localizeUrl(locale, link.href)}><span><strong>{t(locale, link.titleKey)}</strong><span>{t(locale, link.descKey)}</span></span><i class="fa-solid fa-chevron-right"></i></a>
     <div class={submenuClass} style={`--submenu-image: url('${submenu.image}')`}>
         {submenu.blurbKey && <p class="submenu-intro">{t(locale, submenu.blurbKey)}</p>}
-        {submenu.links.map((l) => (
-            submenu.blurbKey
-                ? <div class="submenu-cap"><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong><span>{t(locale, l.descKey)}</span></div>
-                : <a href={localizeUrl(locale, l.href)}><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong><span>{t(locale, l.descKey)}</span></a>
-        ))}
+        {submenu.blurbKey
+            ? <div class="submenu-caps">
+                {submenu.links.map((l) => (
+                    <div class="submenu-cap"><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong><span>{t(locale, l.descKey)}</span></div>
+                ))}
+              </div>
+            : submenu.links.map((l) => (
+                <a href={localizeUrl(locale, l.href)}><strong>{l.titleKey ? t(locale, l.titleKey) : l.titleText}</strong><span>{t(locale, l.descKey)}</span></a>
+              ))}
     </div>
 </div>

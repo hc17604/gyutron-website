@@ -1155,17 +1155,27 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
     margin: 2px 0 4px;
     overflow: hidden;
 }
-.submenu-cap {
-    background: var(--brand-purple);
+.submenu-caps {
+    background: var(--violet-soft);
     border-radius: 2px;
-    padding: 9px 13px;
+    padding: 2px 14px;
 }
+.submenu-cap { padding: 9px 0; }
+.submenu-cap + .submenu-cap { border-top: 1px solid rgba(75, 46, 131, 0.12); }
 .submenu-cap strong {
-    color: #fff;
+    color: var(--brand-purple);
     display: block;
-    font-size: 13.5px;
-    font-weight: 800;
-    line-height: 1.22;
-    margin-bottom: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
 }
-.submenu-cap span { display: none; }
+.submenu-cap span {
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-top: 2px;
+    overflow: hidden;
+}
