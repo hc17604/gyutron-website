@@ -188,16 +188,19 @@ body.nav-is-navigating .submenu {
 .nav-search-close { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 0; border-radius: 2px; background: transparent; color: var(--muted, #8b8397); cursor: pointer; font-size: 16px; transition: background 160ms ease, color 160ms ease; }
 .nav-search-close:hover { background: var(--violet-soft, #f1ecfa); color: var(--purple-600, #5a3aa6); }
 .nav-search-results { max-width: 1200px; margin: 0 auto; max-height: min(64vh, 560px); overflow-y: auto; }
-.nav-search-results.has-content { border-top: 1px solid var(--line, #eee); display: flex; flex-wrap: wrap; gap: 12px; padding: 14px 24px; align-content: flex-start; }
-.nav-search-results.has-content .nav-search-hit { flex: 1 1 100%; padding: 11px 6px; }
+/* Adaptive product grid: cards are as narrow as ~175px and the column count auto-fits the panel
+   width (≈6 across at the 1200px max), killing the wide-card internal whitespace. Full-width rows
+   (features / text hits / empty) span every column via grid-column:1/-1. */
+.nav-search-results.has-content { border-top: 1px solid var(--line, #eee); display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 12px; padding: 14px 24px; align-content: start; }
+.nav-search-results.has-content .nav-search-hit { grid-column: 1 / -1; padding: 11px 6px; }
 .nav-search-hit { display: flex; align-items: baseline; gap: 14px; justify-content: space-between; padding: 13px 24px; border-bottom: 1px solid var(--line, #f0ecf6); text-decoration: none; color: var(--ink, #17121f); }
 .nav-search-hit:hover, .nav-search-hit.is-active { background: var(--violet-soft, #f5f1fc); }
 .nav-search-hit-title { font-weight: 800; font-size: 15px; }
 .nav-search-hit-kind { flex: none; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--purple-600, #5a3aa6); background: var(--violet-soft, #f1ecfa); padding: 3px 9px; border-radius: 2px; white-space: nowrap; }
-.nav-search-empty { padding: 22px 24px; color: var(--muted, #8b8397); font-size: 15px; max-width: 1200px; margin: 0 auto; flex: 1 1 100%; }
+.nav-search-empty { padding: 22px 24px; color: var(--muted, #8b8397); font-size: 15px; max-width: 1200px; margin: 0 auto; grid-column: 1 / -1; }
 /* Feature long-cards (categories / solutions / news) — full-width, image band left, pinned on top.
    Visually distinct from the product grid: horizontal, purple left rule, white body. */
-.nav-search-feature { flex: 1 1 100%; display: flex; align-items: stretch; border: 1px solid var(--line, #e6e0ee); border-left: 3px solid var(--purple-500, #8a63d2); background: #fff; text-decoration: none; color: var(--ink, #17121f); overflow: hidden; transition: box-shadow 160ms ease, border-color 160ms ease; }
+.nav-search-feature { grid-column: 1 / -1; display: flex; align-items: stretch; border: 1px solid var(--line, #e6e0ee); border-left: 3px solid var(--purple-500, #8a63d2); background: #fff; text-decoration: none; color: var(--ink, #17121f); overflow: hidden; transition: box-shadow 160ms ease, border-color 160ms ease; }
 .nav-search-feature:hover, .nav-search-feature.is-active { box-shadow: 0 10px 26px rgba(75, 46, 131, 0.14); border-left-color: var(--purple-600, #6f2dbd); }
 /* These banners were drawn for the product-page hero — the flat-black vignette sits on the LEFT.
    Standard: a narrow band showing the RIGHT ~60% (object-position:right) crops that black off; what
@@ -209,28 +212,30 @@ body.nav-is-navigating .submenu {
 .nav-search-feature-title { font-weight: 800; font-size: 16px; line-height: 1.25; }
 .nav-search-feature-desc { font-size: 12.5px; line-height: 1.45; color: var(--muted, #6f687a); display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
 .nav-search-feature-go { flex: none; align-self: center; padding-right: 18px; color: var(--purple-500, #8a63d2); font-size: 20px; font-weight: 700; }
-/* Rich image card results (products) — hard-edged, purple-only, 4 per row */
-.nav-search-card { flex: 0 0 calc(25% - 9px); display: flex; flex-direction: column; border: 1px solid var(--line, #e6e0ee); background: #fff; text-decoration: none; color: var(--ink, #17121f); transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
+/* Rich image card results (products) — hard-edged, purple-only; one card per adaptive grid cell */
+.nav-search-card { display: flex; flex-direction: column; border: 1px solid var(--line, #e6e0ee); background: #fff; text-decoration: none; color: var(--ink, #17121f); transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
 .nav-search-card:hover, .nav-search-card.is-active { border-color: var(--purple-500, #8a63d2); box-shadow: 0 10px 26px rgba(75, 46, 131, 0.14); transform: translateY(-2px); }
 .nav-search-card-media { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #fff; border-bottom: 1px solid var(--line, #e6e0ee); }
 .nav-search-card-media img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
 .nav-search-card-body { display: flex; flex-direction: column; gap: 6px; padding: 11px 12px 13px; background: var(--violet-soft, #efe8ff); }
 .nav-search-card-kind { align-self: flex-start; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--purple-600, #5a3aa6); }
 .nav-search-card-title { font-weight: 800; font-size: 13.5px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-@media (max-width: 720px) { .nav-search-card { flex: 0 0 calc(50% - 6px); } }
 @media (max-width: 1180px) { .nav-search { display: none; } }
-/* mobile drawer search (mobile-navigation.js) */
-.mobile-nav-search { display: flex; align-items: center; gap: 10px; margin: 2px 0 14px; padding: 11px 14px; border: 1px solid var(--line, #e7e2ef); border-radius: 4px; background: #fff; }
+/* mobile drawer search (mobile-navigation.js) — inset to match the drawer's head/list padding,
+   hard-edged, with a purple focus ring so it reads as part of the drawer (was flush + abrupt). */
+.mobile-nav-search { display: flex; align-items: center; gap: 10px; margin: 12px 18px 8px; padding: 12px 14px; border: 1px solid var(--line, #e7e2ef); border-radius: 2px; background: var(--white, #fff); transition: border-color 160ms ease, box-shadow 160ms ease; }
+.mobile-nav-search:focus-within { border-color: var(--purple-500, #8a63d2); box-shadow: 0 0 0 3px rgba(138, 99, 210, 0.16); }
 .mobile-nav-search i { color: var(--purple-500, #8a63d2); font-size: 15px; }
 .mobile-nav-search-input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font-size: 16px; font-family: inherit; color: var(--ink, #17121f); }
-.mobile-nav-results { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; }
-.mobile-nav-results[hidden] { display: none; }
-.mobile-nav-results .nav-search-feature { flex: 1 1 100%; }
+/* Results = the drawer's scrollable body (grid-row/overflow set with the panel layout in
+   mobile-navigation.css). Adaptive 2+-up grid: min(48%,160px) guarantees ≥2 columns on any phone. */
+.mobile-nav-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(45%, 160px), 1fr)); gap: 10px; align-content: start; padding: 4px 18px 18px; }
+.mobile-nav-results[hidden], .mobile-nav-list[hidden] { display: none; }
+.mobile-nav-results .nav-search-feature { grid-column: 1 / -1; }
 .mobile-nav-results .nav-search-feature-media { flex: 0 0 116px; }
 .mobile-nav-results .nav-search-feature-title { font-size: 14px; }
 .mobile-nav-results .nav-search-feature-desc { display: none; }
 .mobile-nav-results .nav-search-feature-go { display: none; }
-.mobile-nav-results .nav-search-hit { flex: 1 1 100%; padding: 13px 6px; }
-.mobile-nav-results .nav-search-card { flex: 0 0 calc(50% - 5px); }
-.mobile-nav-results .mobile-nav-empty { flex: 1 1 100%; }
+.mobile-nav-results .nav-search-hit { grid-column: 1 / -1; padding: 13px 6px; }
+.mobile-nav-results .mobile-nav-empty { grid-column: 1 / -1; }
 .mobile-nav-empty { padding: 18px 6px; color: var(--muted, #8b8397); font-size: 15px; }

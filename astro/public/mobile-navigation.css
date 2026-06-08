@@ -139,23 +139,56 @@ body.mobile-nav-open {
 }
 
 body.mobile-nav-open .mobile-nav-panel {
+    animation: mobileNavPanelIn 200ms ease both;
     display: block;
+}
+
+@keyframes mobileNavPanelIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.mobile-nav-open .mobile-nav-panel { animation: none; }
 }
 
 .mobile-nav-inner {
     display: grid;
-    grid-template-rows: auto 1fr;
+    /* head (auto) · search (auto) · scrollable body. The results and the menu list both live in row 3
+       and are mutually exclusive, so whichever is shown gets the remaining height + scrolls. The
+       minmax(120px, …) floor keeps that scroll area usable even when the visual viewport collapses
+       (iOS soft keyboard / landscape), so content is never squeezed to nothing.
+       (Previously this was `auto 1fr` with 4 children, so 1fr landed on the SEARCH box — stretching it
+       huge — and the list/results fell into unconstrained implicit rows that the panel clipped.) */
+    grid-template-rows: auto auto minmax(120px, 1fr);
+    /* Single column pinned to the panel width (minmax(0,…) lets children shrink instead of the lone
+       implicit `auto` column expanding to max-content and overflowing the fixed panel horizontally). */
+    grid-template-columns: minmax(0, 1fr);
     height: 100%;
+}
+
+/* grid-row:3 puts both in the scroll body. min-height:0 lets the item shrink below its content height
+   so overflow-y:auto engages (else long lists/results won't scroll). min-width:0 is the horizontal twin:
+   without it the grid item keeps its max-content width and the results grid overflows the panel. */
+.mobile-nav-results,
+.mobile-nav-list {
+    grid-row: 3;
+    min-height: 0;
+    min-width: 0;
+    overflow-y: auto;
 }
 
 .mobile-nav-head {
     align-items: center;
+    background: var(--white);
     border-bottom: 1px solid var(--line);
     display: grid;
     gap: 12px;
     grid-template-columns: 44px 1fr 44px;
     min-height: 62px;
     padding: 8px 18px;
+    position: relative;
+    z-index: 10;
 }
 
 .mobile-nav-back,
@@ -191,7 +224,7 @@ body.mobile-nav-open .mobile-nav-panel {
 .mobile-nav-list {
     list-style: none;
     margin: 0;
-    overflow-y: auto;
+    /* grid-row:3 / min-height:0 / overflow-y:auto come from the shared rule above */
     padding: 14px 18px 26px;
 }
 
