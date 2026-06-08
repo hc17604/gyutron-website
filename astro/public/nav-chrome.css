@@ -198,9 +198,9 @@ body.nav-is-navigating .submenu {
 /* Rich image card results (products / solutions / news) — hard-edged, purple-only */
 .nav-search-card { flex: 0 0 calc(33.333% - 8px); display: flex; flex-direction: column; border: 1px solid var(--line, #e6e0ee); background: #fff; text-decoration: none; color: var(--ink, #17121f); transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
 .nav-search-card:hover, .nav-search-card.is-active { border-color: var(--purple-500, #8a63d2); box-shadow: 0 10px 26px rgba(75, 46, 131, 0.14); transform: translateY(-2px); }
-.nav-search-card-media { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: var(--violet-soft, #efe8ff); }
+.nav-search-card-media { display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #fff; border-bottom: 1px solid var(--line, #e6e0ee); }
 .nav-search-card-media img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
-.nav-search-card-body { display: flex; flex-direction: column; gap: 6px; padding: 10px 12px 12px; }
+.nav-search-card-body { display: flex; flex-direction: column; gap: 6px; padding: 11px 12px 13px; background: var(--violet-soft, #efe8ff); }
 .nav-search-card-kind { align-self: flex-start; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--purple-600, #5a3aa6); }
 .nav-search-card-title { font-weight: 800; font-size: 13.5px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 @media (max-width: 720px) { .nav-search-card { flex: 0 0 calc(50% - 6px); } }
