@@ -512,8 +512,9 @@ const scrollFrames = [
                         const steps = Array.from(story.querySelectorAll("[data-scroll-step]"));
                         if (!panels.length) return;
 
-                        const travel = Math.max(1, rect.height - window.innerHeight);
-                        const progress = clamp(-rect.top / travel, 0, 1);
+                        const travel = Math.max(1, rect.height * 0.72);
+                        const triggerLine = window.innerHeight * 0.72;
+                        const progress = clamp((triggerLine - rect.top) / travel, 0, 1);
                         const active = clamp(Math.round(progress * (panels.length - 1)), 0, panels.length - 1);
                         const segment = panels.length > 1 ? 1 / (panels.length - 1) : 1;
 
