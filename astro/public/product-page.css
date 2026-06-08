@@ -1135,3 +1135,16 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
 /* Fixes: blank right-panel when hovering the tab + reverting to the first group when the pointer enters the submenu. */
 .mega-menu .mega-link-group .submenu { opacity: 0 !important; pointer-events: none !important; transform: none !important; }
 .mega-menu .mega-link-group.is-open .submenu { opacity: 1 !important; pointer-events: auto !important; }
+
+/* Solution mega-menu flyout: full-width intro blurb under the banner (fills the panel + introduces the solution). */
+.submenu-intro {
+    grid-column: 1 / -1;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 2px 0 4px;
+    overflow: hidden;
+}

@@ -20,17 +20,20 @@ import { SOLUTIONS } from './solutions';
 // Solutions mega-menu groups derived from the solutions registry so the top nav always lists EVERY
 // solution page and auto-syncs as solutions are added/removed. Each group = one solution; its submenu
 // links to that solution's key in-page sections (samples shown only when the solution has a gallery).
-const solutionGroups = SOLUTIONS.map((s) => ({
-  link: { href: s.path, titleKey: s.breadcrumbKey!, descKey: s.sections?.[0]?.titleKey ?? s.descKey! },
-  submenu: {
-    image: s.heroImage ?? '/product-vision-cell.png',
-    links: [
-      ...(s.gallery ? [{ href: `${s.path}#samples`, titleKey: 'sol.common.nav.samples', descKey: 'sol.common.nav.samplesD' }] : []),
-      { href: `${s.path}#capabilities`, titleKey: 'sol.common.nav.caps', descKey: 'sol.common.nav.capsD' },
-      { href: `${s.path}#cases`, titleKey: 'sol.common.nav.cases', descKey: 'sol.common.nav.casesD' },
-    ],
-  },
-}));
+const solutionGroups = SOLUTIONS.map((s) => {
+  // Each solution's flyout is built from ITS OWN data so the third level is differentiated, not the
+  // same generic anchors on every solution: a short intro blurb (hero desc) + that solution's actual
+  // capability list (3–5 specific items). Fills the panel and reads as a real solution overview.
+  const caps = s.sections?.find((sec) => sec.kind === 'capability')?.cards ?? [];
+  return {
+    link: { href: s.path, titleKey: s.breadcrumbKey!, descKey: s.sections?.[0]?.titleKey ?? s.descKey! },
+    submenu: {
+      image: s.heroImage ?? '/product-vision-cell.png',
+      blurbKey: s.hero?.descKey ?? s.descKey!,
+      links: caps.map((c) => ({ href: `${s.path}#capabilities`, titleKey: c.titleKey, descKey: c.descKey })),
+    },
+  };
+});
 
 export const HEADER_NAV: HeaderNavItem[] = [
   {

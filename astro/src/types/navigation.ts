@@ -38,6 +38,8 @@ export interface MegaSubmenu {
   intro?: boolean;
   /** Background image path for `--submenu-image` (keep any `?v=` cache-buster). */
   image: string;
+  /** Optional i18n key for a short intro/blurb paragraph rendered under the banner (full width). */
+  blurbKey?: string;
   links: MegaSubmenuLink[];
 }
 
