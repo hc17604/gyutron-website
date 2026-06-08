@@ -27,11 +27,6 @@ const values = [
 ];
 const aboutImages = ['/nav-company-engineering-lab.png', '/nav-company-quality-bench.png', '/nav-company-overview.png'];
 const news = getLatestNews(3);
-const scrollFrames = [
-  { n: '01', t: 'home.x.scroll.s1.t', d: 'home.x.scroll.s1.d', image: '/product-smart-camera-detail.png', icon: 'fa-camera' },
-  { n: '02', t: 'home.x.scroll.s2.t', d: 'home.x.scroll.s2.d', image: '/product-hero-industrial-sensors-matrix.png', icon: 'fa-wave-square' },
-  { n: '03', t: 'home.x.scroll.s3.t', d: 'home.x.scroll.s3.d', image: '/product-vision-cell.png', icon: 'fa-diagram-project' },
-];
 ---
 <Layout locale={locale} path={path} title={t(locale, 'seo.index.title')} description={t(locale, 'seo.index.desc')} bodyClass="home" pageCss={["/global.css", "/hero-slider.css", "/home-sections.css", "/mobile-navigation.css"]}>
 <noscript><style>body.home [data-reveal]{opacity:1 !important;transform:none !important;}</style></noscript>
@@ -271,40 +266,6 @@ const scrollFrames = [
             </div>
         </section>
 
-        <section class="hx-scroll-story" id="system-layer" data-scroll-story>
-            <div class="container">
-                <div class="hx-scroll-story__sticky">
-                    <div class="hx-scroll-story__copy">
-                        <span class="eyebrow">{t(locale, "home.x.scroll.label")}</span>
-                        <h2>{t(locale, "home.x.scroll.title")}</h2>
-                        <p>{t(locale, "home.x.scroll.sub")}</p>
-                        <ol class="hx-scroll-story__steps">
-                            {scrollFrames.map((frame, index) => (
-                                <li class={index === 0 ? 'is-active' : ''} data-scroll-step>
-                                    <span>{frame.n}</span>
-                                    <div>
-                                        <strong>{t(locale, frame.t)}</strong>
-                                        <small>{t(locale, frame.d)}</small>
-                                    </div>
-                                </li>
-                            ))}
-                        </ol>
-                    </div>
-                    <div class="hx-scroll-story__stage" aria-hidden="true">
-                        {scrollFrames.map((frame, index) => (
-                            <article class={index === 0 ? 'hx-scroll-panel is-active' : 'hx-scroll-panel'} data-scroll-panel>
-                                <img src={frame.image} alt="" loading="lazy" />
-                                <div class="hx-scroll-panel__meta">
-                                    <i class={`fa-solid ${frame.icon}`}></i>
-                                    <span>{frame.n}</span>
-                                </div>
-                            </article>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section class="section hx-process" id="process">
             <div class="container">
                 <div class="section-head">
@@ -499,49 +460,6 @@ const scrollFrames = [
                     }, { threshold: 0.5 });
                     counters.forEach((el) => co.observe(el));
                 }
-            }
-
-            const scrollStories = Array.from(document.querySelectorAll("[data-scroll-story]"));
-            if (scrollStories.length && !reduce) {
-                let ticking = false;
-                const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-                const updateStories = () => {
-                    scrollStories.forEach((story) => {
-                        const rect = story.getBoundingClientRect();
-                        const panels = Array.from(story.querySelectorAll("[data-scroll-panel]"));
-                        const steps = Array.from(story.querySelectorAll("[data-scroll-step]"));
-                        if (!panels.length) return;
-
-                        const travel = Math.max(1, rect.height * 0.72);
-                        const triggerLine = window.innerHeight * 0.72;
-                        const progress = clamp((triggerLine - rect.top) / travel, 0, 1);
-                        const active = clamp(Math.round(progress * (panels.length - 1)), 0, panels.length - 1);
-                        const segment = panels.length > 1 ? 1 / (panels.length - 1) : 1;
-
-                        story.style.setProperty("--story-progress", progress.toFixed(3));
-                        panels.forEach((panel, index) => {
-                            const center = panels.length === 1 ? 0 : index / (panels.length - 1);
-                            const open = clamp(1 - Math.abs(progress - center) / segment, 0, 1);
-                            const eased = 1 - Math.pow(1 - open, 3);
-                            panel.classList.toggle("is-active", index === active);
-                            panel.style.opacity = String(0.14 + eased * 0.86);
-                            panel.style.transform = `translate3d(${(1 - eased) * 28}px, ${(index - active) * 10}px, 0) scale(${0.92 + eased * 0.08})`;
-                            panel.style.clipPath = `inset(${(1 - eased) * 18}% ${(1 - eased) * 14}% round 0)`;
-                            panel.style.zIndex = String(10 + Math.round(eased * 20));
-                        });
-                        steps.forEach((step, index) => step.classList.toggle("is-active", index === active));
-                    });
-                    ticking = false;
-                };
-                const requestUpdate = () => {
-                    if (!ticking) {
-                        ticking = true;
-                        requestAnimationFrame(updateStories);
-                    }
-                };
-                updateStories();
-                window.addEventListener("scroll", requestUpdate, { passive: true });
-                window.addEventListener("resize", requestUpdate);
             }
 
             // ---- Desktop mega-menu nav (unchanged) ----

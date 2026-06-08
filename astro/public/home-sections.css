@@ -221,57 +221,6 @@ body.home .proof-item span { display: block; margin-top: 10px; font-size: 13px; 
 .hx-oem__mark:hover { transform: translateY(-4px); border-color: var(--hx-accent); background: rgba(138,99,210,.12); }
 @media (max-width: 860px) { .hx-oem__inner { grid-template-columns: 1fr; } .hx-oem__marks { max-width: 360px; } }
 
-/* ---- Scroll-built system layer: Apple-like sticky unfold, industrialized ---- */
-.hx-scroll-story { position: relative; background: var(--purple-950, #12051f); color: #fff; overflow: clip; }
-.hx-scroll-story::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .34;
-  background-image:
-    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-  background-size: 54px 54px; }
-.hx-scroll-story::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
-  background: linear-gradient(180deg, transparent, var(--hx-accent, #8a63d2), transparent);
-  transform: scaleY(var(--story-progress, 0)); transform-origin: top; opacity: .9; }
-.hx-scroll-story__sticky { position: relative; display: grid; grid-template-columns: .86fr 1.14fr;
-  gap: clamp(28px, 5vw, 72px); align-items: center; padding: clamp(54px, 7vw, 92px) 0; z-index: 1; }
-.hx-scroll-story .eyebrow { color: #fff; }
-.hx-scroll-story .eyebrow::before { background: var(--hx-accent, #8a63d2); }
-.hx-scroll-story__copy h2 { margin: 14px 0 16px; color: #fff; font-size: clamp(34px, 5vw, 72px); line-height: .96; max-width: 11ch; }
-.hx-scroll-story__copy > p { margin: 0; color: rgba(255,255,255,.72); max-width: 56ch; line-height: 1.7; font-size: clamp(15px, 1.35vw, 18px); }
-.hx-scroll-story__steps { list-style: none; margin: clamp(28px, 4vw, 46px) 0 0; padding: 0; display: grid; gap: 10px; }
-.hx-scroll-story__steps li { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start;
-  padding: 18px 0; border-top: 1px solid rgba(255,255,255,.14); opacity: .48; transition: opacity .35s ease, transform .35s ease; }
-.hx-scroll-story__steps li.is-active { opacity: 1; transform: translateX(8px); }
-.hx-scroll-story__steps li > span { color: var(--hx-accent, #8a63d2); font-weight: 900; font-size: 24px; line-height: 1; }
-.hx-scroll-story__steps strong { display: block; color: #fff; font-size: 17px; text-transform: uppercase; letter-spacing: .04em; }
-.hx-scroll-story__steps small { display: block; margin-top: 6px; color: rgba(255,255,255,.62); line-height: 1.55; font-size: 14px; }
-.hx-scroll-story__stage { position: relative; min-height: clamp(380px, 42vw, 560px); perspective: 1200px; }
-.hx-scroll-panel { position: absolute; inset: 0; overflow: hidden; border: 1px solid rgba(255,255,255,.18);
-  background: rgba(255,255,255,.04); box-shadow: 0 40px 100px rgba(0,0,0,.38); transform-origin: center; will-change: transform, opacity, clip-path; }
-.hx-scroll-panel::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(110deg, rgba(18,5,31,.72), rgba(18,5,31,.08) 48%, rgba(138,99,210,.22)); }
-.hx-scroll-panel::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--hx-accent, #8a63d2); z-index: 2; }
-.hx-scroll-panel img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.04) contrast(1.08); transform: scale(1.04); }
-.hx-scroll-panel__meta { position: absolute; left: 26px; bottom: 24px; z-index: 3; display: inline-flex; align-items: center; gap: 14px;
-  color: #fff; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
-.hx-scroll-panel__meta i { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px;
-  border: 1px solid rgba(255,255,255,.26); color: var(--hx-accent, #8a63d2); }
-@media (max-width: 960px) {
-  .hx-scroll-story { min-height: auto; }
-  .hx-scroll-story__sticky { position: relative; grid-template-columns: 1fr; min-height: auto; padding: 64px 0; }
-  .hx-scroll-story__copy h2 { max-width: 14ch; }
-  .hx-scroll-story__stage { min-height: 420px; }
-}
-@media (max-width: 620px) {
-  .hx-scroll-story__steps li { grid-template-columns: 40px 1fr; transform: none !important; }
-  .hx-scroll-story__stage { min-height: 360px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hx-scroll-story { min-height: auto; }
-  .hx-scroll-story__sticky { position: relative; min-height: auto; }
-  .hx-scroll-panel { position: relative; inset: auto; min-height: 260px; opacity: 1 !important; transform: none !important; clip-path: none !important; margin-top: 14px; }
-  .hx-scroll-story__stage { min-height: auto; display: grid; gap: 14px; }
-}
-
 /* ---- Process / how-we-work steps ---- */
 .hx-process .hx-steps { list-style: none; margin: clamp(28px, 4vw, 46px) 0 0; padding: 0;
   display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--ink, #17151d); }
