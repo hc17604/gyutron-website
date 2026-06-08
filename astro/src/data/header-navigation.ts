@@ -15,6 +15,22 @@
  * byte-structure-identical to the old header across en/de/ja (see HANDOFF.md / docs).
  */
 import type { HeaderNavItem } from '../types/navigation';
+import { SOLUTIONS } from './solutions';
+
+// Solutions mega-menu groups derived from the solutions registry so the top nav always lists EVERY
+// solution page and auto-syncs as solutions are added/removed. Each group = one solution; its submenu
+// links to that solution's key in-page sections (samples shown only when the solution has a gallery).
+const solutionGroups = SOLUTIONS.map((s) => ({
+  link: { href: s.path, titleKey: s.breadcrumbKey!, descKey: s.sections?.[0]?.titleKey ?? s.descKey! },
+  submenu: {
+    image: s.heroImage ?? '/product-vision-cell.png',
+    links: [
+      ...(s.gallery ? [{ href: `${s.path}#samples`, titleKey: 'sol.common.nav.samples', descKey: 'sol.common.nav.samplesD' }] : []),
+      { href: `${s.path}#capabilities`, titleKey: 'sol.common.nav.caps', descKey: 'sol.common.nav.capsD' },
+      { href: `${s.path}#cases`, titleKey: 'sol.common.nav.cases', descKey: 'sol.common.nav.casesD' },
+    ],
+  },
+}));
 
 export const HEADER_NAV: HeaderNavItem[] = [
   {
@@ -123,71 +139,7 @@ export const HEADER_NAV: HeaderNavItem[] = [
       overviewImage: '/product-vision-cell.png',
       feature: { modifier: 'mega-feature-solutions', href: '/automated-vision-inspection.html', titleKey: 'main.052', descKey: 'main.053' },
       sections: [
-        {
-          labelKey: 'main.054',
-          groups: [
-            {
-              link: { href: '/automated-vision-inspection.html', titleKey: 'main.055', descKey: 'main.056' },
-              submenu: {
-                image: '/product-hero-area-scan-cameras-matrix.png',
-                links: [
-                  { href: '/automated-vision-inspection.html#capabilities', titleKey: 'main.057', descKey: 'main.058' },
-                  { href: '/automated-vision-inspection.html#capabilities', titleKey: 'main.059', descKey: 'main.060' },
-                  { href: '/automated-vision-inspection.html#capabilities', titleKey: 'main.061', descKey: 'main.062' },
-                  { href: '/automated-vision-inspection.html#capabilities', titleKey: 'main.063', descKey: 'main.064' },
-                ],
-              },
-            },
-            {
-              link: { href: '/index.html#solutions', titleKey: 'main.065', descKey: 'main.066' },
-              submenu: {
-                image: '/product-hero-code-reading-cameras-matrix.png',
-                links: [
-                  { href: '/index.html#solutions', titleKey: 'main.067', descKey: 'main.068' },
-                  { href: '/index.html#solutions', titleKey: 'main.069', descKey: 'main.070' },
-                  { href: '/index.html#solutions', titleKey: 'main.071', descKey: 'main.072' },
-                  { href: '/index.html#solutions', titleKey: 'main.073', descKey: 'main.074' },
-                ],
-              },
-            },
-            {
-              link: { href: '/index.html#platform', titleKey: 'main.075', descKey: 'main.076' },
-              submenu: {
-                image: '/cta-industrial-control.png',
-                links: [
-                  { href: '/index.html#platform', titleKey: 'main.395', descKey: 'main.077' },
-                  { href: '/index.html#platform', titleKey: 'main.396', descKey: 'main.078' },
-                  { href: '/index.html#platform', titleKey: 'main.079', descKey: 'main.080' },
-                  { href: '/index.html#platform', titleKey: 'main.081', descKey: 'main.082' },
-                ],
-              },
-            },
-            {
-              link: { href: '/index.html#platform', titleKey: 'main.083', descKey: 'main.084' },
-              submenu: {
-                image: '/product-hero-request-specification-matrix.png',
-                links: [
-                  { href: '/index.html#platform', titleKey: 'main.085', descKey: 'main.086' },
-                  { href: '/index.html#platform', titleKey: 'main.087', descKey: 'main.088' },
-                  { href: '/index.html#platform', titleKey: 'main.089', descKey: 'main.090' },
-                  { href: '/index.html#platform', titleKey: 'main.397', descKey: 'main.091' },
-                ],
-              },
-            },
-            {
-              link: { href: '/index.html#solutions', titleKey: 'main.092', descKey: 'main.093' },
-              submenu: {
-                image: '/product-hero-rfid-handhelds-matrix.png',
-                links: [
-                  { href: '/index.html#solutions', titleKey: 'main.094', descKey: 'main.095' },
-                  { href: '/index.html#solutions', titleKey: 'main.398', descKey: 'main.096' },
-                  { href: '/index.html#solutions', titleKey: 'main.097', descKey: 'main.098' },
-                  { href: '/index.html#solutions', titleKey: 'main.099', descKey: 'main.100' },
-                ],
-              },
-            },
-          ],
-        },
+        { labelKey: 'main.054', groups: solutionGroups },
       ],
       extraLinks: [
         { href: '/index.html#resources', titleKey: 'main.101', descKey: 'main.102' },

@@ -1,9 +1,10 @@
 // Build-time site search index (per locale). Consumed by the `search-index.json` endpoints,
 // fetched once on the client by nav-search.js. Static — no backend.
 // Records: { t: title, u: url (localized), k: kind/type label, d: extra searchable text }.
-import { localizeUrl, type Locale } from '../i18n';
+import { localizeUrl, t, type Locale } from '../i18n';
 import { getCatalog } from '../data/products';
 import { NEWS } from '../data/news';
+import { SOLUTIONS } from '../data/solutions';
 
 // c:1 → render as an image card. f:1 → render as a full-width "feature" long card pinned above the
 // product grid (categories / solutions / news — i.e. the non-product, image-bearing results).
@@ -11,6 +12,7 @@ export type SearchRecord = { t: string; u: string; k: string; d: string; i?: str
 
 const CAT_LABEL: Record<Locale, string> = { en: 'Product category', de: 'Produktkategorie', ja: '製品カテゴリ' };
 const NEWS_LABEL: Record<Locale, string> = { en: 'News', de: 'Nachrichten', ja: 'ニュース' };
+const SOL_LABEL: Record<Locale, string> = { en: 'Solution', de: 'Lösung', ja: 'ソリューション' };
 /** Ensure an image path is absolute from the public root (product data uses relative paths). */
 const img = (s?: string): string => (s ? (s[0] === '/' ? s : '/' + s) : '');
 
@@ -18,7 +20,6 @@ const img = (s?: string): string => (s ? (s[0] === '/' ? s : '/' + s) : '');
 // as low search value). URLs are localized in buildSearchIndex().
 const PAGES: Record<Locale, SearchRecord[]> = {
   en: [
-    { t: 'Automated Vision Inspection', u: '/automated-vision-inspection.html', k: 'Solution', d: 'Turnkey automated optical inspection cells and machine-vision integration for production lines.', i: '/product-vision-cell.png', c: 1 },
     { t: 'Contact Sales', u: '/contact-sales.html', k: 'Contact', d: 'Talk to the GYUTRON team about products, pilots, integration, and quotes.' },
     { t: 'Support', u: '/support.html', k: 'Support', d: 'Documentation, warranty, shipping and delivery, and technical support.' },
     { t: 'FAQ', u: '/support/faq.html', k: 'Support', d: 'Frequently asked questions about products, ordering, and support.' },
@@ -26,7 +27,6 @@ const PAGES: Record<Locale, SearchRecord[]> = {
     { t: 'Shipping & Delivery', u: '/support/shipping-delivery.html', k: 'Support', d: 'Shipping options, lead times, and delivery information.' },
   ],
   de: [
-    { t: 'Automatisierte Bildverarbeitungs-Inspektion', u: '/automated-vision-inspection.html', k: 'Lösung', d: 'Schlüsselfertige automatisierte optische Prüfzellen und Machine-Vision-Integration für Produktionslinien.', i: '/product-vision-cell.png', c: 1 },
     { t: 'Vertrieb kontaktieren', u: '/contact-sales.html', k: 'Kontakt', d: 'Sprechen Sie mit dem GYUTRON-Team über Produkte, Pilotprojekte, Integration und Angebote.' },
     { t: 'Support', u: '/support.html', k: 'Support', d: 'Dokumentation, Garantie, Versand und Lieferung sowie technischer Support.' },
     { t: 'FAQ', u: '/support/faq.html', k: 'Support', d: 'Häufig gestellte Fragen zu Produkten, Bestellung und Support.' },
@@ -34,7 +34,6 @@ const PAGES: Record<Locale, SearchRecord[]> = {
     { t: 'Versand & Lieferung', u: '/support/shipping-delivery.html', k: 'Support', d: 'Versandoptionen, Lieferzeiten und Lieferinformationen.' },
   ],
   ja: [
-    { t: '自動外観検査', u: '/automated-vision-inspection.html', k: 'ソリューション', d: '生産ライン向けのターンキー自動光学検査セルとマシンビジョン統合。', i: '/product-vision-cell.png', c: 1 },
     { t: '営業へのお問い合わせ', u: '/contact-sales.html', k: 'お問い合わせ', d: '製品・実証・統合・お見積もりについて GYUTRON チームにご相談ください。' },
     { t: 'サポート', u: '/support.html', k: 'サポート', d: 'ドキュメント、保証、配送・お届け、技術サポート。' },
     { t: 'よくある質問', u: '/support/faq.html', k: 'サポート', d: '製品・ご注文・サポートに関するよくある質問。' },
@@ -46,8 +45,21 @@ const PAGES: Record<Locale, SearchRecord[]> = {
 export function buildSearchIndex(locale: Locale): SearchRecord[] {
   const data: any = getCatalog(locale);
   const out: SearchRecord[] = [];
-  // Imaged pages (solutions) become feature long-cards; text-only pages (support/contact) stay rows.
+  // Text-only curated pages (support/contact) stay rows.
   for (const p of PAGES[locale]) out.push({ ...p, u: localizeUrl(locale, p.u), ...(p.i ? ({ f: 1 } as const) : {}) });
+  // Solutions — derived from the registry so every solution page (incl. the new ones) is searchable
+  // and stays in sync with the nav. Rendered as feature long-cards.
+  for (const sol of SOLUTIONS) {
+    out.push({
+      t: t(locale, sol.breadcrumbKey || sol.titleKey),
+      u: localizeUrl(locale, sol.path),
+      k: SOL_LABEL[locale],
+      d: sol.descKey ? t(locale, sol.descKey) : '',
+      i: img(sol.heroImage || '/product-vision-cell.png'),
+      c: 1,
+      f: 1,
+    });
+  }
   // News — render as feature long-cards linking to their /news/<slug> article page.
   for (const n of NEWS) {
     out.push({ t: n.title[locale], u: localizeUrl(locale, n.href || '/news.html'), k: NEWS_LABEL[locale], d: n.excerpt[locale], i: img(n.image), c: 1, f: 1 });

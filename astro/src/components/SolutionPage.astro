@@ -6,21 +6,17 @@ import { canonicalUrl } from '../utils/seo';
 import { createOrganizationJsonLd, breadcrumbFromHome } from '../utils/structured-data';
 import { getSolution } from '../data/solutions';
 import { getCatalog } from '../data/products';
-// Content + meta come from the Solution data model (src/data/solutions.ts). The section/card
-// MARKUP is kept literal here (byte-identical to the deployed page) — Astro strips whitespace
-// between .map() siblings, which would change inter-element spacing, so the layout stays literal.
-// A fully-generic multi-solution body renderer is a documented next step (see docs/SOLUTIONS_GUIDE.md).
+// Generic, data-driven Solution renderer (src/data/solutions.ts). Sections, tabs, gallery, cases and
+// the case study are ALL optional and variable-length so each solution can have its own shape/length
+// (some short, some long; some heavy on samples, some on cases) — they are NOT a fixed template.
 interface Props { locale: Locale; slug?: string; }
 const { locale, slug = 'automated-vision-inspection' } = Astro.props;
 const sol = getSolution(slug);
 if (!sol) throw new Error(`[SolutionPage] unknown solution slug "${slug}"`);
 const path = sol.path;
 const hero = sol.hero!;
-const [tabCap, tabArch, tabWf, tabDep] = sol.tabs!;
-const [capSec, archSec, wfSec] = sol.sections!;
-const cap = capSec.cards;
-const arch = archSec.cards;
-const wf = wfSec.cards;
+const tabs = sol.tabs ?? [];
+const sections = sol.sections ?? [];
 const cta = sol.cta!;
 const kpis = hero.kpis ?? [];
 // "Products used in this solution" — resolve related category slugs to render-ready cards (title +
@@ -77,14 +73,13 @@ const structuredData = [
       </div>
     </section>
 
-    <nav class="solution-tabs" aria-label="Solution page sections">
-      <div class="container">
-        <a href={tabCap.href}>{t(locale, tabCap.labelKey)}</a>
-        <a href={tabArch.href}>{t(locale, tabArch.labelKey)}</a>
-        <a href={tabWf.href}>{t(locale, tabWf.labelKey)}</a>
-        <a href={tabDep.href}>{t(locale, tabDep.labelKey)}</a>
-      </div>
-    </nav>
+    {tabs.length > 0 && (
+      <nav class="solution-tabs" aria-label="Solution page sections">
+        <div class="container">
+          {tabs.map((tb) => (<a href={tb.href}>{t(locale, tb.labelKey)}</a>))}
+        </div>
+      </nav>
+    )}
 
     {sol.gallery && (
       <section class="solution-section solution-gallery" id="samples">
@@ -113,101 +108,81 @@ const structuredData = [
       </section>
     )}
 
-    <section class="solution-section" id={capSec.id}>
-      <div class="container">
-        <div class="solution-head">
-          <div>
-            <span class="eyebrow">{t(locale, capSec.eyebrowKey)}</span>
-            <h2>{t(locale, capSec.titleKey)}</h2>
+    {sections.map((sec) => {
+      const cls = sec.variant ? `solution-section ${sec.variant}` : 'solution-section';
+      if (sec.kind === 'architecture') {
+        return (
+          <section class={cls} id={sec.id}>
+            <div class="container">
+              <div class="solution-head">
+                <div>
+                  <span class="eyebrow">{t(locale, sec.eyebrowKey)}</span>
+                  <h2>{t(locale, sec.titleKey)}</h2>
+                </div>
+                <p>{t(locale, sec.introKey)}</p>
+              </div>
+              <div class="architecture-grid">
+                <div class="architecture-visual" style={archStyle} aria-label={sec.visualAriaKey ? t(locale, sec.visualAriaKey) : undefined}></div>
+                <div class="capability-grid">
+                  {sec.cards.map((c) => (
+                    <article class="architecture-card">
+                      <h3>{t(locale, c.titleKey)}</h3>
+                      <p>{t(locale, c.descKey)}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+      if (sec.kind === 'workflow') {
+        return (
+          <section class={cls} id={sec.id}>
+            <div class="container">
+              <div class="solution-head">
+                <div>
+                  <span class="eyebrow">{t(locale, sec.eyebrowKey)}</span>
+                  <h2>{t(locale, sec.titleKey)}</h2>
+                </div>
+                <p>{t(locale, sec.introKey)}</p>
+              </div>
+              <div class="workflow-grid">
+                {sec.cards.map((c) => (
+                  <article class="workflow-step">
+                    {c.icon && <i class={c.icon}></i>}
+                    <h3>{t(locale, c.titleKey)}</h3>
+                    <p>{t(locale, c.descKey)}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+      return (
+        <section class={cls} id={sec.id}>
+          <div class="container">
+            <div class="solution-head">
+              <div>
+                <span class="eyebrow">{t(locale, sec.eyebrowKey)}</span>
+                <h2>{t(locale, sec.titleKey)}</h2>
+              </div>
+              <p>{t(locale, sec.introKey)}</p>
+            </div>
+            <div class="capability-grid">
+              {sec.cards.map((c) => (
+                <article class="capability-card">
+                  {c.icon && <i class={c.icon}></i>}
+                  <h3>{t(locale, c.titleKey)}</h3>
+                  <p>{t(locale, c.descKey)}</p>
+                </article>
+              ))}
+            </div>
           </div>
-          <p>{t(locale, capSec.introKey)}</p>
-        </div>
-        <div class="capability-grid">
-          <article class="capability-card">
-            <i class={cap[0].icon}></i>
-            <h3>{t(locale, cap[0].titleKey)}</h3>
-            <p>{t(locale, cap[0].descKey)}</p>
-          </article>
-          <article class="capability-card">
-            <i class={cap[1].icon}></i>
-            <h3>{t(locale, cap[1].titleKey)}</h3>
-            <p>{t(locale, cap[1].descKey)}</p>
-          </article>
-          <article class="capability-card">
-            <i class={cap[2].icon}></i>
-            <h3>{t(locale, cap[2].titleKey)}</h3>
-            <p>{t(locale, cap[2].descKey)}</p>
-          </article>
-          <article class="capability-card">
-            <i class={cap[3].icon}></i>
-            <h3>{t(locale, cap[3].titleKey)}</h3>
-            <p>{t(locale, cap[3].descKey)}</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="solution-section dark" id={archSec.id}>
-      <div class="container">
-        <div class="solution-head">
-          <div>
-            <span class="eyebrow">{t(locale, archSec.eyebrowKey)}</span>
-            <h2>{t(locale, archSec.titleKey)}</h2>
-          </div>
-          <p>{t(locale, archSec.introKey)}</p>
-        </div>
-        <div class="architecture-grid">
-          <div class="architecture-visual" style={archStyle} aria-label={t(locale, archSec.visualAriaKey!)}></div>
-          <div class="capability-grid">
-            <article class="architecture-card">
-              <h3>{t(locale, arch[0].titleKey)}</h3>
-              <p>{t(locale, arch[0].descKey)}</p>
-            </article>
-            <article class="architecture-card">
-              <h3>{t(locale, arch[1].titleKey)}</h3>
-              <p>{t(locale, arch[1].descKey)}</p>
-            </article>
-            <article class="architecture-card">
-              <h3>{t(locale, arch[2].titleKey)}</h3>
-              <p>{t(locale, arch[2].descKey)}</p>
-            </article>
-            <article class="architecture-card">
-              <h3>{t(locale, arch[3].titleKey)}</h3>
-              <p>{t(locale, arch[3].descKey)}</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="solution-section alt" id={wfSec.id}>
-      <div class="container">
-        <div class="solution-head">
-          <div>
-            <span class="eyebrow">{t(locale, wfSec.eyebrowKey)}</span>
-            <h2>{t(locale, wfSec.titleKey)}</h2>
-          </div>
-          <p>{t(locale, wfSec.introKey)}</p>
-        </div>
-        <div class="workflow-grid">
-          <article class="workflow-step">
-            <i class={wf[0].icon}></i>
-            <h3>{t(locale, wf[0].titleKey)}</h3>
-            <p>{t(locale, wf[0].descKey)}</p>
-          </article>
-          <article class="workflow-step">
-            <i class={wf[1].icon}></i>
-            <h3>{t(locale, wf[1].titleKey)}</h3>
-            <p>{t(locale, wf[1].descKey)}</p>
-          </article>
-          <article class="workflow-step">
-            <i class={wf[2].icon}></i>
-            <h3>{t(locale, wf[2].titleKey)}</h3>
-            <p>{t(locale, wf[2].descKey)}</p>
-          </article>
-        </div>
-      </div>
-    </section>
+        </section>
+      );
+    })}
 
     {sol.cases && (
       <section class="solution-section alt solution-cases" id="cases">

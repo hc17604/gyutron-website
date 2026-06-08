@@ -148,7 +148,8 @@
 .capability-grid {
     display: grid;
     gap: 18px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    /* adaptive to a variable number of capability cards (3–5 per solution) */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .capability-card,
@@ -238,7 +239,8 @@
 .workflow-grid {
     display: grid;
     gap: 18px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    /* adaptive to a variable number of workflow steps (3–4 per solution) */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .solution-cta {
@@ -647,11 +649,6 @@
         max-width: min(320px, calc(100vw - 56px));
         min-width: 0;
         overflow-wrap: break-word;
-    }
-
-    .capability-grid,
-    .workflow-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .solution-tabs {

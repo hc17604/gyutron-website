@@ -8,6 +8,7 @@
  * Today one live solution (automated-vision-inspection), modeled faithfully from the existing page.
  */
 import type { Solution } from '../types/solution';
+import { GENERATED_SOLUTIONS } from './solutions-generated';
 
 export const SOLUTIONS: Solution[] = [
   {
@@ -119,6 +120,7 @@ export const SOLUTIONS: Solution[] = [
       href: '/contact-sales.html',
     },
   },
+  ...GENERATED_SOLUTIONS,
 ];
 
 /** One solution by slug, or undefined. */
