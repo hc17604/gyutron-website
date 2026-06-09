@@ -29,12 +29,13 @@
 .cw-launcher--contact:hover { background: var(--purple-900); }
 .cw-launcher-icon { display: grid; place-items: center; width: 50px; height: 50px; font-size: 19px; flex: 0 0 auto; }
 .cw-launcher-label {
-  max-width: 0; opacity: 0; padding: 0; white-space: nowrap;
+  width: 0; opacity: 0; padding: 0; white-space: nowrap; overflow: hidden;
   font-size: 13.5px; font-weight: 800; letter-spacing: 0.02em;
-  transition: max-width var(--motion), opacity var(--motion-fast), padding var(--motion);
+  transition: width var(--motion), opacity var(--motion-fast), padding var(--motion);
 }
+/* Fixed expanded width so the Support and Contact tabs expand to the SAME length. */
 .cw-launcher:hover .cw-launcher-label,
-.cw-launcher:focus-visible .cw-launcher-label { max-width: 180px; opacity: 1; padding: 0 4px 0 16px; }
+.cw-launcher:focus-visible .cw-launcher-label { width: 92px; opacity: 1; padding: 0 6px 0 16px; }
 
 /* ---- Panel -------------------------------------------------------------- */
 .cw-panel {
