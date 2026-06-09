@@ -363,45 +363,34 @@ const news = getLatestNews(3);
 
         <section class="section" id="resources">
             <div class="container">
-                <div class="section-head">
-                    <div>
-                        <span class="eyebrow">ESG</span>
-                        <h2>{t(locale, "main.382")}</h2>
+                <div class="qr" data-reveal>
+                    <div class="qr-copy">
+                        <span class="eyebrow">{t(locale, "home.qr.eyebrow")}</span>
+                        <h2>{t(locale, "home.qr.title")}</h2>
+                        <p>{t(locale, "home.qr.intro")}</p>
                     </div>
-                    <p>{t(locale, "main.383")}</p>
+                    <div class="qr-media" aria-hidden="true">
+                        <img src="/governance-documentation.png" alt="" loading="lazy">
+                    </div>
                 </div>
-                <div class="resources-grid">
-                    <article class="resource-card esg-card" data-reveal>
-                        <div class="resource-image">
-                            <img src="/business-operations-meeting.jpeg" alt="Business professionals discussing responsible operations in an office meeting" data-source="https://www.pexels.com/photo/36733315/">
-                        </div>
-                        <div class="resource-body">
-                            <div class="resource-kicker">{t(locale, "main.458")}</div>
-                            <h3>{t(locale, "main.384")}</h3>
-                            <p>{t(locale, "main.385")}</p>
-                        </div>
-                    </article>
-                    <article class="resource-card esg-card" data-reveal>
-                        <div class="resource-image">
-                            <img src="/office-team-discussion.jpeg" alt={t(locale, "main.386")} data-source="https://www.pexels.com/photo/4344116/">
-                        </div>
-                        <div class="resource-body">
-                            <div class="resource-kicker">{t(locale, "main.459")}</div>
-                            <h3>{t(locale, "main.387")}</h3>
-                            <p>{t(locale, "main.388")}</p>
-                        </div>
-                    </article>
-                    <article class="resource-card esg-card" data-reveal>
-                        <div class="resource-image">
-                            <img src="/governance-documentation.png" alt={t(locale, "main.389")}>
-                        </div>
-                        <div class="resource-body">
-                            <div class="resource-kicker">{t(locale, "main.460")}</div>
-                            <h3>{t(locale, "main.461")}</h3>
-                            <p>{t(locale, "main.390")}</p>
-                        </div>
-                    </article>
-                </div>
+                <ul class="qr-points">
+                    <li class="qr-point" data-reveal>
+                        <i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i>
+                        <div><h3>{t(locale, "home.qr.p1.t")}</h3><p>{t(locale, "home.qr.p1.d")}</p></div>
+                    </li>
+                    <li class="qr-point" data-reveal>
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                        <div><h3>{t(locale, "home.qr.p2.t")}</h3><p>{t(locale, "home.qr.p2.d")}</p></div>
+                    </li>
+                    <li class="qr-point" data-reveal>
+                        <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+                        <div><h3>{t(locale, "home.qr.p3.t")}</h3><p>{t(locale, "home.qr.p3.d")}</p></div>
+                    </li>
+                    <li class="qr-point" data-reveal>
+                        <i class="fa-solid fa-user-lock" aria-hidden="true"></i>
+                        <div><h3>{t(locale, "home.qr.p4.t")}</h3><p>{t(locale, "home.qr.p4.d")}</p></div>
+                    </li>
+                </ul>
             </div>
         </section>
 

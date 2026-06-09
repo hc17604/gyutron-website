@@ -180,6 +180,19 @@ body.home .feat-tag { font-size: 12.5px; font-weight: 700; color: var(--purple-7
 body.home .feat-bar .button { white-space: nowrap; }
 @media (max-width: 720px) { body.home .feat-bar { flex-direction: column; align-items: stretch; } body.home .feat-bar .button { width: 100%; } }
 
+/* ---- Quality & Responsibility (industrial trust module; replaces ESG cards) ---- */
+body.home .qr { display: grid; grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); gap: 44px; align-items: center; margin-bottom: 30px; }
+body.home .qr-copy h2 { margin: 14px 0 16px; }
+body.home .qr-copy p { color: var(--muted, #6f687a); font-size: 16px; max-width: 56ch; }
+body.home .qr-media img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--line, #e6e0ee); }
+body.home .qr-points { list-style: none; margin: 0; padding: 26px 0 0; border-top: 1px solid var(--line, #e6e0ee); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+body.home .qr-point { display: flex; gap: 13px; align-items: flex-start; }
+body.home .qr-point > i { color: var(--purple-600, #6f2dbd); font-size: 19px; line-height: 1.45; flex: 0 0 auto; }
+body.home .qr-point h3 { font-size: 15px; font-weight: 800; color: var(--ink, #17151d); margin: 0 0 5px; line-height: 1.25; }
+body.home .qr-point p { font-size: 13px; line-height: 1.5; color: var(--muted, #6f687a); margin: 0; }
+@media (max-width: 900px) { body.home .qr { grid-template-columns: 1fr; gap: 26px; } body.home .qr-points { grid-template-columns: 1fr 1fr; gap: 22px 24px; } }
+@media (max-width: 560px) { body.home .qr-points { grid-template-columns: 1fr; } }
+
 /* ---- Industries trust strip (auto-scroll marquee) ---- */
 .hx-trust { background: #fff; border-top: 1px solid var(--line, #e6e0ee); border-bottom: 1px solid var(--line, #e6e0ee); padding: 22px 0; }
 .hx-trust__label { margin: 0 0 14px; text-align: center; text-transform: uppercase; letter-spacing: .16em;
