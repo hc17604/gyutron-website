@@ -269,6 +269,18 @@ export const HEADER_NAV: HeaderNavItem[] = [
               },
             },
             {
+              link: { href: '/index.html#resources', titleKey: 'nav.cases.title', descKey: 'nav.cases.desc' },
+              submenu: {
+                image: '/office-team-discussion.jpeg',
+                links: [
+                  { href: '/index.html#resources', titleKey: 'nav.cases.c1', descKey: 'nav.cases.c1d' },
+                  { href: '/index.html#resources', titleKey: 'nav.cases.c2', descKey: 'nav.cases.c2d' },
+                  { href: '/index.html#resources', titleKey: 'nav.cases.c3', descKey: 'nav.cases.c3d' },
+                  { href: '/index.html#resources', titleKey: 'nav.cases.c4', descKey: 'nav.cases.c4d' },
+                ],
+              },
+            },
+            {
               link: { href: '/index.html#resources', titleKey: 'main.237', descKey: 'main.238' },
               submenu: {
                 image: '/governance-documentation.png',

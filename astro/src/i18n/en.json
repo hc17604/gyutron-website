@@ -1330,5 +1330,15 @@
   "ind.gen.c5": "Food & Beverage",
   "ind.gen.c6": "Hardware",
   "ind.gen.c7": "Non-standard Automation",
-  "ind.gen.c8": "Line Upgrades"
+  "ind.gen.c8": "Line Upgrades",
+  "nav.cases.title": "Case Studies",
+  "nav.cases.desc": "Real deployments and measured results across our focus industries.",
+  "nav.cases.c1": "Customer Stories",
+  "nav.cases.c1d": "How manufacturers deployed GYUTRON vision, sensing, and data capture.",
+  "nav.cases.c2": "Application Examples",
+  "nav.cases.c2d": "Worked examples of inspection, measurement, identification, and traceability.",
+  "nav.cases.c3": "Industry References",
+  "nav.cases.c3d": "Selected projects across electronics, battery, logistics, and manufacturing.",
+  "nav.cases.c4": "Results & ROI",
+  "nav.cases.c4d": "How throughput, yield, and quality gains are measured and reported."
 }

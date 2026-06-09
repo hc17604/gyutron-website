@@ -41,13 +41,15 @@ export const FOOTER_NAV: NavGroup[] = [
   },
   {
     // Company is footer-only now (Option B demoted it from the top nav); this column is its home.
+    // Kept lean (5 links) so it doesn't outgrow the others — Certifications/Downloads are reachable
+    // from the Support / Resources nav, so they don't need a footer slot here.
     labelKey: 'main.182', // Company
     links: [
-      { labelKey: 'main.183', href: '/about' },
-      { labelKey: 'main.172', href: '/contact-sales.html' }, // Partner Programs (ex-Customers)
-      { labelKey: 'main.462', href: '/certifications' },
-      { labelKey: 'main.420', href: '/downloads' },
-      { labelKey: 'fnav.contact', href: '/contact-sales.html' },
+      { labelKey: 'main.183', href: '/about' },                  // About GYUTRON
+      { labelKey: 'main.403', href: '/about' },                  // Careers
+      { labelKey: 'main.401', href: '/news.html' },              // Newsroom
+      { labelKey: 'main.172', href: '/contact-sales.html' },     // Partner Programs (ex-Customers)
+      { labelKey: 'fnav.contact', href: '/contact-sales.html' }, // Contact
     ],
   },
 ];

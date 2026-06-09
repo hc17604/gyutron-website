@@ -1330,5 +1330,15 @@
   "ind.gen.c5": "Food & Beverage",
   "ind.gen.c6": "Hardware",
   "ind.gen.c7": "Non-standard Automation",
-  "ind.gen.c8": "Line Upgrades"
+  "ind.gen.c8": "Line Upgrades",
+  "nav.cases.title": "事例紹介",
+  "nav.cases.desc": "重点産業における実際の導入事例と測定された成果。",
+  "nav.cases.c1": "顧客事例",
+  "nav.cases.c1d": "メーカーがGYUTRONのビジョン・センシング・データ収集をどう導入したか。",
+  "nav.cases.c2": "アプリケーション例",
+  "nav.cases.c2d": "検査・測定・識別・トレーサビリティの実例。",
+  "nav.cases.c3": "業界リファレンス",
+  "nav.cases.c3d": "エレクトロニクス・電池・物流・製造の代表的プロジェクト。",
+  "nav.cases.c4": "成果とROI",
+  "nav.cases.c4d": "スループット・歩留まり・品質向上の測定と報告方法。"
 }

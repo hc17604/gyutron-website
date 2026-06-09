@@ -1330,5 +1330,15 @@
   "ind.gen.c5": "Food & Beverage",
   "ind.gen.c6": "Hardware",
   "ind.gen.c7": "Non-standard Automation",
-  "ind.gen.c8": "Line Upgrades"
+  "ind.gen.c8": "Line Upgrades",
+  "nav.cases.title": "Fallstudien",
+  "nav.cases.desc": "Reale Einsätze und gemessene Ergebnisse in unseren Schwerpunktbranchen.",
+  "nav.cases.c1": "Kundenberichte",
+  "nav.cases.c1d": "Wie Hersteller GYUTRON Vision, Sensorik und Datenerfassung einsetzen.",
+  "nav.cases.c2": "Anwendungsbeispiele",
+  "nav.cases.c2d": "Praxisbeispiele für Prüfung, Messung, Identifikation und Rückverfolgbarkeit.",
+  "nav.cases.c3": "Branchenreferenzen",
+  "nav.cases.c3d": "Ausgewählte Projekte in Elektronik, Batterie, Logistik und Fertigung.",
+  "nav.cases.c4": "Ergebnisse & ROI",
+  "nav.cases.c4d": "Wie Durchsatz-, Ausbeute- und Qualitätsgewinne gemessen und berichtet werden."
 }
