@@ -1,0 +1,125 @@
+/* ============================================================================
+ * GYUTRON support chat widget — brand-consistent, client-side FAQ assistant.
+ * Right-edge launcher hugs the viewport; hover reveals the label (peek), click
+ * opens the panel. No backend: it answers from the FAQ data embedded by
+ * components/ChatWidget.astro and hands off to Contact Sales. Tokens come from
+ * global.css (purple palette, Inter, --shadow, --motion*).
+ * ========================================================================== */
+
+.cw { position: fixed; z-index: 900; }
+
+/* ---- Launcher (collapsed → hover peek) ---------------------------------- */
+.cw-launcher {
+  position: fixed; right: 0; top: 60%;
+  display: flex; align-items: center;
+  height: 52px; padding: 0; overflow: hidden;
+  background: var(--purple-600); color: #fff;
+  border: none; cursor: pointer;
+  border-radius: 14px 0 0 14px;
+  box-shadow: -6px 12px 30px rgba(31, 11, 53, 0.30);
+  transition: background var(--motion-fast), box-shadow var(--motion), transform var(--motion), opacity var(--motion);
+}
+.cw-launcher:hover { background: var(--purple-700); box-shadow: -8px 16px 38px rgba(31, 11, 53, 0.38); }
+.cw-launcher-icon { display: grid; place-items: center; width: 52px; height: 52px; font-size: 20px; flex: 0 0 auto; }
+.cw-launcher-label {
+  max-width: 0; opacity: 0; padding: 0; white-space: nowrap;
+  font-size: 14px; font-weight: 800; letter-spacing: 0.01em;
+  transition: max-width var(--motion), opacity var(--motion-fast), padding var(--motion);
+}
+.cw-launcher:hover .cw-launcher-label,
+.cw-launcher:focus-visible .cw-launcher-label { max-width: 170px; opacity: 1; padding: 0 6px 0 16px; }
+.cw.is-open .cw-launcher { transform: translateX(120%); opacity: 0; pointer-events: none; }
+
+/* gentle attention pulse until first open */
+.cw-launcher::after {
+  content: ""; position: absolute; right: 9px; top: 9px;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--warning);
+  box-shadow: 0 0 0 0 rgba(255, 176, 0, 0.55); animation: cw-pulse 2.4s infinite;
+}
+.cw.is-seen .cw-launcher::after, .cw.is-open .cw-launcher::after { display: none; }
+@keyframes cw-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 176, 0, 0.5); } 70% { box-shadow: 0 0 0 9px rgba(255, 176, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 176, 0, 0); } }
+
+/* ---- Panel -------------------------------------------------------------- */
+.cw-panel {
+  position: fixed; right: 20px; bottom: 20px;
+  width: min(372px, calc(100vw - 32px));
+  max-height: min(620px, calc(100vh - 132px));
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--white); color: var(--text);
+  border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: var(--shadow);
+  transform: translateY(18px) scale(0.98); opacity: 0;
+  transition: transform var(--motion), opacity var(--motion);
+}
+.cw.is-open .cw-panel { transform: none; opacity: 1; }
+.cw-panel[hidden] { display: none; }
+
+.cw-head {
+  display: flex; align-items: center; gap: 12px; padding: 14px 12px 14px 16px;
+  background: linear-gradient(135deg, var(--purple-900), var(--purple-700)); color: #fff;
+}
+.cw-avatar {
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.22); font-size: 16px;
+}
+.cw-head-text { display: flex; flex-direction: column; line-height: 1.25; flex: 1 1 auto; min-width: 0; }
+.cw-head-text strong { font-size: 15px; font-weight: 800; }
+.cw-head-text span { font-size: 12px; color: rgba(255, 255, 255, 0.74); }
+.cw-close {
+  flex: 0 0 auto; width: 32px; height: 32px; border-radius: 8px; cursor: pointer;
+  background: transparent; border: none; color: rgba(255, 255, 255, 0.82); font-size: 17px;
+  transition: background var(--motion-fast), color var(--motion-fast);
+}
+.cw-close:hover { background: rgba(255, 255, 255, 0.14); color: #fff; }
+
+.cw-scroll { flex: 1 1 auto; overflow-y: auto; padding: 16px; background: var(--paper); display: flex; flex-direction: column; gap: 12px; }
+.cw-msg { font-size: 13.5px; line-height: 1.55; border-radius: 13px; padding: 10px 13px; max-width: 92%; word-wrap: break-word; }
+.cw-bot { background: #fff; border: 1px solid var(--line); align-self: flex-start; border-bottom-left-radius: 4px; }
+.cw-user { background: var(--purple-600); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+.cw-bot a { color: var(--purple-600); font-weight: 700; text-decoration: underline; }
+.cw-bot p + p { margin-top: 8px; }
+
+.cw-block { display: flex; flex-direction: column; gap: 9px; }
+.cw-block-label { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.cw-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.cw-chip {
+  background: var(--violet-soft); color: var(--purple-700); border: 1px solid rgba(111, 45, 189, 0.18);
+  border-radius: 999px; padding: 7px 13px; font-size: 12.5px; font-weight: 700; cursor: pointer;
+  transition: background var(--motion-fast), border-color var(--motion-fast), transform var(--motion-fast);
+}
+.cw-chip:hover { background: #fff; border-color: var(--purple-500); transform: translateY(-1px); }
+
+.cw-thread { display: flex; flex-direction: column; gap: 12px; }
+.cw-list-intro { font-size: 12.5px; color: var(--muted); margin-bottom: 8px; }
+.cw-qlist { display: flex; flex-direction: column; gap: 6px; }
+.cw-q {
+  text-align: left; background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+  padding: 9px 12px; font-size: 13px; font-weight: 600; color: var(--ink); cursor: pointer; line-height: 1.4;
+  transition: border-color var(--motion-fast), background var(--motion-fast);
+}
+.cw-q:hover { border-color: var(--purple-500); background: #fff; }
+.cw-q mark { background: var(--violet-soft); color: var(--purple-700); padding: 0 2px; border-radius: 3px; }
+
+.cw-search { display: flex; align-items: center; gap: 9px; padding: 10px 14px; border-top: 1px solid var(--line); background: #fff; }
+.cw-search i { color: var(--muted); font-size: 13px; }
+.cw-search input { flex: 1 1 auto; min-width: 0; border: none; outline: none; font: inherit; font-size: 13.5px; color: var(--text); background: transparent; }
+
+.cw-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 11px 14px; background: var(--purple-950); color: rgba(255, 255, 255, 0.82); font-size: 12.5px;
+}
+.cw-foot-cta {
+  display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; color: #fff; font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.24); border-radius: 8px; padding: 7px 12px;
+  transition: background var(--motion-fast), border-color var(--motion-fast);
+}
+.cw-foot-cta:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.4); }
+
+@media (max-width: 520px) {
+  .cw-panel { right: 12px; left: 12px; bottom: 12px; width: auto; max-height: min(78vh, 560px); }
+  .cw-launcher { top: auto; bottom: 86px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cw-launcher, .cw-launcher-label, .cw-panel { transition-duration: 1ms !important; }
+  .cw-launcher::after { animation: none; }
+}

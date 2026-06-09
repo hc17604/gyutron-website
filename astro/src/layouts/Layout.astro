@@ -1,6 +1,7 @@
 ---
 import { htmlLang, type Locale } from '../i18n';
 import Header from '../components/Header.astro';
+import ChatWidget from '../components/ChatWidget.astro';
 import SeoHead from '../components/seo/SeoHead.astro';
 import { withVersion } from '../lib/cssVersion';
 
@@ -38,6 +39,7 @@ const { locale, path, title, description, ogTitle, ogDescription, bodyClass, pag
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     {pageCss.map((href) => <link rel="stylesheet" href={withVersion(href)} />)}
     <link rel="stylesheet" href={withVersion('/nav-chrome.css')} />
+    <link rel="stylesheet" href={withVersion('/chat-widget.css')} />
     {locale === 'ja' && (
       <>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -58,7 +60,9 @@ const { locale, path, title, description, ogTitle, ogDescription, bodyClass, pag
     <Header locale={locale} path={path} />
     <slot />
     <slot name="footer" />
+    <ChatWidget locale={locale} />
     <script src="/nav-search.js" is:inline></script>
     <script src="/mobile-navigation.js" is:inline></script>
+    <script src="/chat-widget.js" is:inline></script>
   </body>
 </html>

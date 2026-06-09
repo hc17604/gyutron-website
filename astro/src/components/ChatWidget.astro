@@ -1,0 +1,68 @@
+---
+/**
+ * ChatWidget.astro — site-wide support widget (right-edge launcher → FAQ chat panel).
+ * Rendered once in Layout.astro on every page. No backend: it answers from the locale
+ * FAQ (src/data/faq.ts) embedded below as JSON, and hands off to Contact Sales. Styling
+ * in public/chat-widget.css; interaction in public/chat-widget.js. Chrome text is i18n
+ * (`cw.*`); FAQ Q&A reuse the already-localized faq.ts content.
+ */
+import { FAQ_CATEGORIES, FAQ_ITEMS } from '../data/faq';
+import { t, localizeUrl, type Locale } from '../i18n';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const cats = FAQ_CATEGORIES.map((c) => ({ id: c.id, title: c.title[locale] }));
+const items = FAQ_ITEMS.map((it) => ({ id: it.id, cat: it.category, q: it.question[locale], a: it.answer[locale] }));
+// Embed safely inside a <script type="application/json"> (escape `<` so an answer's HTML
+// or a stray "</script>" can't terminate the tag). JSON.parse restores it client-side.
+const faqJson = JSON.stringify({ cats, items }).replace(/</g, '\\u003c');
+
+const contactUrl = localizeUrl(locale, '/contact-sales.html');
+---
+<aside
+  class="cw"
+  data-cw
+  data-l-pick={t(locale, 'cw.pick')}
+  data-l-results={t(locale, 'cw.results')}
+  data-l-none={t(locale, 'cw.noresult')}
+>
+  <button type="button" class="cw-launcher" data-cw-open aria-label={t(locale, 'cw.open')}>
+    <span class="cw-launcher-label">{t(locale, 'cw.launcher')}</span>
+    <span class="cw-launcher-icon" aria-hidden="true"><i class="fa-solid fa-headset"></i></span>
+  </button>
+
+  <section class="cw-panel" role="dialog" aria-label={t(locale, 'cw.title')} hidden data-cw-panel>
+    <header class="cw-head">
+      <span class="cw-avatar" aria-hidden="true"><i class="fa-solid fa-headset"></i></span>
+      <div class="cw-head-text">
+        <strong>{t(locale, 'cw.title')}</strong>
+        <span>{t(locale, 'cw.subtitle')}</span>
+      </div>
+      <button type="button" class="cw-close" data-cw-close aria-label={t(locale, 'cw.close')}><i class="fa-solid fa-xmark"></i></button>
+    </header>
+
+    <div class="cw-scroll" data-cw-scroll>
+      <div class="cw-msg cw-bot">{t(locale, 'cw.greeting')}</div>
+      <div class="cw-block">
+        <span class="cw-block-label">{t(locale, 'cw.topics')}</span>
+        <div class="cw-chips">
+          {cats.map((c) => (<button type="button" class="cw-chip" data-cw-cat={c.id}>{c.title}</button>))}
+        </div>
+      </div>
+      <div class="cw-thread" data-cw-thread></div>
+    </div>
+
+    <div class="cw-search">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" data-cw-search placeholder={t(locale, 'cw.search')} aria-label={t(locale, 'cw.search')} autocomplete="off" />
+    </div>
+
+    <footer class="cw-foot">
+      <span>{t(locale, 'cw.cta.text')}</span>
+      <a class="cw-foot-cta" href={contactUrl}>{t(locale, 'cw.cta.button')} <i class="fa-solid fa-arrow-right"></i></a>
+    </footer>
+
+    <script type="application/json" data-cw-faq set:html={faqJson}></script>
+  </section>
+</aside>
