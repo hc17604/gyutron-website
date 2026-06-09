@@ -180,27 +180,17 @@ export const HEADER_NAV: HeaderNavItem[] = [
     },
   },
   {
-    triggerHref: '/index.html#resources',
-    labelKey: 'main.141',
+    // SUPPORT — owner-facing service + downloads/docs (Option B). Built by recombining the existing
+    // service/training keys (ex-"Customers") with the documentation/help keys (ex-"Resources").
+    triggerHref: '/support.html',
+    labelKey: 'fnav.support',
     menu: {
       variant: 'compact',
       overviewImage: '/nav-customers-overview.png?v=20260525-hd2',
       sections: [
         {
-          labelKey: 'main.141',
+          labelKey: 'fnav.support',
           groups: [
-            {
-              link: { href: '/contact-sales.html', titleKey: 'main.142', descKey: 'main.143' },
-              submenu: {
-                image: '/nav-customer-pilot-lab.png?v=20260525-hd2',
-                links: [
-                  { href: '/contact-sales.html', titleKey: 'main.144', descKey: 'main.145' },
-                  { href: '/contact-sales.html', titleKey: 'main.146', descKey: 'main.147' },
-                  { href: '/contact-sales.html', titleKey: 'main.148', descKey: 'main.149' },
-                  { href: '/index.html#resources', titleKey: 'main.150', descKey: 'main.151' },
-                ],
-              },
-            },
             {
               link: { href: '/contact-sales.html', titleKey: 'main.152', descKey: 'main.153' },
               submenu: {
@@ -210,6 +200,18 @@ export const HEADER_NAV: HeaderNavItem[] = [
                   { href: '/contact-sales.html', titleKey: 'main.156', descKey: 'main.157' },
                   { href: '/contact-sales.html', titleKey: 'main.158', descKey: 'main.159' },
                   { href: '/index.html#products', titleKey: 'main.160', descKey: 'main.161' },
+                ],
+              },
+            },
+            {
+              link: { href: '/index.html#resources', titleKey: 'main.229', descKey: 'main.230' },
+              submenu: {
+                image: '/nav-resources-technical-library.png?v=20260525-hd2',
+                links: [
+                  { href: '/index.html#resources', titleKey: 'main.231', descKey: 'main.232' },
+                  { href: '/index.html#resources', titleKey: 'main.406', descKey: 'main.233' },
+                  { href: '/index.html#resources', titleKey: 'main.234', descKey: 'main.235' },
+                  { href: '/index.html#resources', titleKey: 'main.407', descKey: 'main.236' },
                 ],
               },
             },
@@ -226,14 +228,14 @@ export const HEADER_NAV: HeaderNavItem[] = [
               },
             },
             {
-              link: { href: '/contact-sales.html', titleKey: 'main.172', descKey: 'main.173' },
+              link: { href: '/support.html', titleKey: 'main.247', descKey: 'main.248' },
               submenu: {
-                image: '/nav-customer-integration.png?v=20260525-hd2',
+                image: '/contact-sales-hero.png',
                 links: [
-                  { href: '/contact-sales.html', titleKey: 'main.174', descKey: 'main.175' },
-                  { href: '/contact-sales.html', titleKey: 'main.176', descKey: 'main.177' },
-                  { href: '/contact-sales.html', titleKey: 'main.178', descKey: 'main.179' },
-                  { href: '/contact-sales.html', titleKey: 'main.180', descKey: 'main.181' },
+                  { href: '/support/faq.html', titleText: 'FAQ', descKey: 'main.249' },
+                  { href: '/support.html', titleKey: 'main.254', descKey: 'main.255' },
+                  { href: '/contact-sales.html', titleKey: 'main.250', descKey: 'main.251' },
+                  { href: '/index.html#resources', titleKey: 'main.252', descKey: 'main.253' },
                 ],
               },
             },
@@ -243,69 +245,8 @@ export const HEADER_NAV: HeaderNavItem[] = [
     },
   },
   {
-    triggerHref: '/index.html#contact',
-    labelKey: 'main.182',
-    menu: {
-      variant: 'compact',
-      overviewImage: '/nav-company-overview.png?v=20260525-hd2',
-      sections: [
-        {
-          labelKey: 'main.182',
-          groups: [
-            {
-              link: { href: '/index.html#contact', titleKey: 'main.183', descKey: 'main.184' },
-              submenu: {
-                image: '/nav-company-engineering-lab.png?v=20260525-hd2',
-                links: [
-                  { href: '/index.html#contact', titleKey: 'main.185', descKey: 'main.186' },
-                  { href: '/index.html#platform', titleKey: 'main.187', descKey: 'main.188' },
-                  { href: '/contact-sales.html', titleKey: 'main.189', descKey: 'main.190' },
-                  { href: '/index.html#resources', titleKey: 'main.191', descKey: 'main.192' },
-                ],
-              },
-            },
-            {
-              link: { href: '/index.html#platform', titleKey: 'main.193', descKey: 'main.194' },
-              submenu: {
-                image: '/nav-company-quality-bench.png?v=20260525-hd2',
-                links: [
-                  { href: '/index.html#platform', titleKey: 'main.195', descKey: 'main.196' },
-                  { href: '/index.html#products', titleKey: 'main.197', descKey: 'main.198' },
-                  { href: '/index.html#platform', titleKey: 'main.199', descKey: 'main.200' },
-                  { href: '/automated-vision-inspection.html', titleKey: 'main.201', descKey: 'main.202' },
-                ],
-              },
-            },
-            {
-              link: { href: '/index.html#resources', titleKey: 'main.203', descKey: 'main.204' },
-              submenu: {
-                image: '/nav-company-supply-chain.png?v=20260525-hd2',
-                links: [
-                  { href: '/index.html#resources', titleKey: 'main.205', descKey: 'main.206' },
-                  { href: '/index.html#products', titleKey: 'main.207', descKey: 'main.208' },
-                  { href: '/index.html#platform', titleKey: 'main.209', descKey: 'main.210' },
-                  { href: '/index.html#resources', titleKey: 'main.211', descKey: 'main.212' },
-                ],
-              },
-            },
-            {
-              link: { href: '/index.html#resources', titleKey: 'main.213', descKey: 'main.214' },
-              submenu: {
-                image: '/office-team-discussion.jpeg',
-                links: [
-                  { href: '/index.html#resources', titleKey: 'main.401', descKey: 'main.215' },
-                  { href: '/index.html#resources', titleKey: 'main.402', descKey: 'main.216' },
-                  { href: '/index.html#contact', titleKey: 'main.403', descKey: 'main.217' },
-                  { href: '/index.html#resources', titleKey: 'main.218', descKey: 'main.219' },
-                ],
-              },
-            },
-          ],
-        },
-      ],
-    },
-  },
-  {
+    // RESOURCES — top-of-funnel learning + pre-sales decision tools (Option B). Company was demoted to
+    // the footer; the old "Customer Success" pre-sales group lives here as "Plan Your Project".
     triggerHref: '/index.html#resources',
     labelKey: 'main.220',
     menu: {
@@ -328,21 +269,9 @@ export const HEADER_NAV: HeaderNavItem[] = [
               },
             },
             {
-              link: { href: '/index.html#platform', titleKey: 'main.229', descKey: 'main.230' },
+              link: { href: '/index.html#resources', titleKey: 'main.237', descKey: 'main.238' },
               submenu: {
                 image: '/governance-documentation.png',
-                links: [
-                  { href: '/index.html#resources', titleKey: 'main.231', descKey: 'main.232' },
-                  { href: '/index.html#platform', titleKey: 'main.406', descKey: 'main.233' },
-                  { href: '/index.html#platform', titleKey: 'main.234', descKey: 'main.235' },
-                  { href: '/index.html#resources', titleKey: 'main.407', descKey: 'main.236' },
-                ],
-              },
-            },
-            {
-              link: { href: '/contact-sales.html', titleKey: 'main.237', descKey: 'main.238' },
-              submenu: {
-                image: '/contact-sales-hero.png',
                 links: [
                   { href: '/index.html#products', titleKey: 'main.239', descKey: 'main.240' },
                   { href: '/contact-sales.html', titleKey: 'main.241', descKey: 'main.242' },
@@ -352,14 +281,14 @@ export const HEADER_NAV: HeaderNavItem[] = [
               },
             },
             {
-              link: { href: '/contact-sales.html', titleKey: 'main.247', descKey: 'main.248' },
+              link: { href: '/contact-sales.html', titleKey: 'main.142', descKey: 'main.143' },
               submenu: {
-                image: '/business-operations-meeting.jpeg',
+                image: '/nav-customer-pilot-lab.png?v=20260525-hd2',
                 links: [
-                  { href: '/contact-sales.html', titleText: 'FAQ', descKey: 'main.249' },
-                  { href: '/contact-sales.html', titleKey: 'main.250', descKey: 'main.251' },
-                  { href: '/index.html#resources', titleKey: 'main.252', descKey: 'main.253' },
-                  { href: '/contact-sales.html', titleKey: 'main.254', descKey: 'main.255' },
+                  { href: '/contact-sales.html', titleKey: 'main.144', descKey: 'main.145' },
+                  { href: '/contact-sales.html', titleKey: 'main.146', descKey: 'main.147' },
+                  { href: '/contact-sales.html', titleKey: 'main.148', descKey: 'main.149' },
+                  { href: '/contact-sales.html', titleKey: 'main.150', descKey: 'main.151' },
                 ],
               },
             },

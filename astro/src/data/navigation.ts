@@ -40,9 +40,11 @@ export const FOOTER_NAV: NavGroup[] = [
     ],
   },
   {
+    // Company is footer-only now (Option B demoted it from the top nav); this column is its home.
     labelKey: 'main.182', // Company
     links: [
       { labelKey: 'main.183', href: '/about' },
+      { labelKey: 'main.172', href: '/contact-sales.html' }, // Partner Programs (ex-Customers)
       { labelKey: 'main.462', href: '/certifications' },
       { labelKey: 'main.420', href: '/downloads' },
       { labelKey: 'fnav.contact', href: '/contact-sales.html' },
