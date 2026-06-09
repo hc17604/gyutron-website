@@ -19,7 +19,7 @@ const cov = (...keys: string[]) => keys.map((labelKey) => ({ labelKey }));
 export const INDUSTRIES: Industry[] = [
   {
     slug: 'electronics-semiconductor',
-    path: '/index.html#solutions',
+    path: '/electronics-semiconductor.html',
     labelKey: 'ind.elec.name',
     taglineKey: 'ind.elec.tagline',
     introKey: 'ind.elec.intro',
@@ -29,6 +29,82 @@ export const INDUSTRIES: Industry[] = [
       'ind.elec.c1', 'ind.elec.c2', 'ind.elec.c3', 'ind.elec.c4',
       'ind.elec.c5', 'ind.elec.c6', 'ind.elec.c7',
     ),
+    // --- dedicated page ---
+    titleKey: 'iep.title',
+    descKey: 'iep.desc',
+    breadcrumbKey: 'iep.breadcrumb',
+    heroImage: '/nav-industry-electronics-smt.png',
+    relatedProducts: ['area-scan-cameras', 'code-reading-cameras', 'smart-vision-sensors', 'dimensional-gauges'],
+    hero: {
+      eyebrowKey: 'iep.hero.eyebrow',
+      titleKey: 'iep.hero.title',
+      descKey: 'iep.hero.desc',
+      panel: { labelKey: 'iep.hero.panel.label', valueKey: 'iep.hero.panel.value', descKey: 'iep.hero.panel.desc' },
+      kpis: [
+        { value: '≥ 99.5%', label: 'Defect detection rate' },
+        { value: '< 20 ms', label: 'Inspection cycle' },
+        { value: '≥ 99.9%', label: '1D/2D/DPM read rate' },
+      ],
+    },
+    tabs: [
+      { href: '#line', labelKey: 'iep.tab.line' },
+      { href: '#segments', labelKey: 'iep.tab.segments' },
+      { href: '#inspection', labelKey: 'iep.tab.inspection' },
+      { href: '#why', labelKey: 'iep.tab.why' },
+      { href: '#cases', labelKey: 'iep.tab.cases' },
+    ],
+    sections: [
+      {
+        id: 'line', kind: 'workflow', eyebrowKey: 'iep.line.eyebrow', titleKey: 'iep.line.title', introKey: 'iep.line.intro',
+        cards: [
+          { icon: 'fa-solid fa-microchip', titleKey: 'iep.line.s1.t', descKey: 'iep.line.s1.d' },
+          { icon: 'fa-solid fa-print', titleKey: 'iep.line.s2.t', descKey: 'iep.line.s2.d' },
+          { icon: 'fa-solid fa-grip', titleKey: 'iep.line.s3.t', descKey: 'iep.line.s3.d' },
+          { icon: 'fa-solid fa-fire', titleKey: 'iep.line.s4.t', descKey: 'iep.line.s4.d' },
+          { icon: 'fa-solid fa-x-ray', titleKey: 'iep.line.s5.t', descKey: 'iep.line.s5.d' },
+          { icon: 'fa-solid fa-layer-group', titleKey: 'iep.line.s6.t', descKey: 'iep.line.s6.d' },
+          { icon: 'fa-solid fa-barcode', titleKey: 'iep.line.s7.t', descKey: 'iep.line.s7.d' },
+        ],
+      },
+      {
+        id: 'segments', kind: 'capability', eyebrowKey: 'iep.seg.eyebrow', titleKey: 'iep.seg.title', introKey: 'iep.seg.intro',
+        cards: [
+          { icon: 'fa-solid fa-mobile-screen', titleKey: 'iep.seg.c1.t', descKey: 'iep.seg.c1.d' },
+          { icon: 'fa-solid fa-microchip', titleKey: 'iep.seg.c2.t', descKey: 'iep.seg.c2.d' },
+          { icon: 'fa-solid fa-industry', titleKey: 'iep.seg.c3.t', descKey: 'iep.seg.c3.d' },
+          { icon: 'fa-solid fa-vector-square', titleKey: 'iep.seg.c4.t', descKey: 'iep.seg.c4.d' },
+        ],
+      },
+      {
+        id: 'inspection', variant: 'alt', kind: 'capability', eyebrowKey: 'iep.insp.eyebrow', titleKey: 'iep.insp.title', introKey: 'iep.insp.intro',
+        cards: [
+          { icon: 'fa-solid fa-print', titleKey: 'iep.insp.c1.t', descKey: 'iep.insp.c1.d' },
+          { icon: 'fa-solid fa-camera-retro', titleKey: 'iep.insp.c2.t', descKey: 'iep.insp.c2.d' },
+          { icon: 'fa-solid fa-x-ray', titleKey: 'iep.insp.c3.t', descKey: 'iep.insp.c3.d' },
+          { icon: 'fa-solid fa-barcode', titleKey: 'iep.insp.c4.t', descKey: 'iep.insp.c4.d' },
+          { icon: 'fa-solid fa-ruler-combined', titleKey: 'iep.insp.c5.t', descKey: 'iep.insp.c5.d' },
+          { icon: 'fa-solid fa-circle-check', titleKey: 'iep.insp.c6.t', descKey: 'iep.insp.c6.d' },
+        ],
+      },
+      {
+        id: 'why', variant: 'dark', kind: 'capability', eyebrowKey: 'iep.why.eyebrow', titleKey: 'iep.why.title', introKey: 'iep.why.intro',
+        cards: [
+          { icon: 'fa-solid fa-gauge-high', titleKey: 'iep.why.c1.t', descKey: 'iep.why.c1.d' },
+          { icon: 'fa-solid fa-shield-halved', titleKey: 'iep.why.c2.t', descKey: 'iep.why.c2.d' },
+          { icon: 'fa-solid fa-plug', titleKey: 'iep.why.c3.t', descKey: 'iep.why.c3.d' },
+          { icon: 'fa-solid fa-truck-fast', titleKey: 'iep.why.c4.t', descKey: 'iep.why.c4.d' },
+        ],
+      },
+    ],
+    cases: {
+      eyebrowKey: 'iep.cases.eyebrow', titleKey: 'iep.cases.title', introKey: 'iep.cases.intro',
+      items: [
+        { tagKey: 'iep.cases.c1.tag', titleKey: 'iep.cases.c1.title', metricKey: 'iep.cases.c1.metric' },
+        { tagKey: 'iep.cases.c2.tag', titleKey: 'iep.cases.c2.title', metricKey: 'iep.cases.c2.metric' },
+        { tagKey: 'iep.cases.c3.tag', titleKey: 'iep.cases.c3.title', metricKey: 'iep.cases.c3.metric' },
+      ],
+    },
+    cta: { id: 'contact', titleKey: 'iep.cta.title', descKey: 'iep.cta.desc', buttonKey: 'iep.cta.button', href: '/contact-sales.html' },
   },
   {
     slug: 'ev-battery-new-energy',

@@ -16,6 +16,7 @@
 import type { SitePage } from '../types/page';
 import { ROUTES } from '../config/routes';
 import { SOLUTIONS } from './solutions';
+import { INDUSTRIES } from './industries';
 import { NEWS } from './news';
 
 // Order is significant: it defines the static-page order in the sitemap (kept identical to the
@@ -31,6 +32,16 @@ export const SITE_PAGES: SitePage[] = [
     descKey: s.descKey,
     includeInSitemap: true,
     source: 'solution',
+  })),
+  // Industry pages: only those that have a built page (titleKey set + a real /<slug>.html path).
+  ...INDUSTRIES.filter((i) => i.titleKey && i.path.endsWith('.html')).map((i): SitePage => ({
+    id: i.slug,
+    type: 'industry',
+    path: i.path,
+    titleKey: i.titleKey,
+    descKey: i.descKey,
+    includeInSitemap: true,
+    source: 'industry',
   })),
   { id: 'contact', type: 'contact', path: ROUTES.contact, includeInSitemap: true, source: 'static' },
   { id: 'support', type: 'support', path: ROUTES.support, includeInSitemap: true, source: 'static' },

@@ -169,6 +169,27 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/composite-mobile-robots.html"/>
   </url>
   <url>
+    <loc>https://www.gyutron.com/electronics-semiconductor.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/electronics-semiconductor.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/electronics-semiconductor.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/electronics-semiconductor.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/electronics-semiconductor.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/de/electronics-semiconductor.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/electronics-semiconductor.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/electronics-semiconductor.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/electronics-semiconductor.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/electronics-semiconductor.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/ja/electronics-semiconductor.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/electronics-semiconductor.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/electronics-semiconductor.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/electronics-semiconductor.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/electronics-semiconductor.html"/>
+  </url>
+  <url>
     <loc>https://www.gyutron.com/contact-sales.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/contact-sales.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/contact-sales.html"/>

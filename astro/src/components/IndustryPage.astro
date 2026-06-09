@@ -1,0 +1,271 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from './Footer.astro';
+import { t, localizeUrl, type Locale } from '../i18n';
+import { canonicalUrl } from '../utils/seo';
+import { createOrganizationJsonLd, breadcrumbFromHome } from '../utils/structured-data';
+import { getIndustry } from '../data/industries';
+import { getCatalog } from '../data/products';
+// Data-driven Industry page renderer (src/data/industries.ts). Mirrors SolutionPage.astro and reuses
+// the same content shapes + solution-page.css so industry and solution pages stay visually consistent.
+// Sections / gallery / cases / case-study are all optional and variable-length.
+interface Props { locale: Locale; slug?: string; }
+const { locale, slug = 'electronics-semiconductor' } = Astro.props;
+const ind = getIndustry(slug);
+if (!ind) throw new Error(`[IndustryPage] unknown industry slug "${slug}"`);
+if (!ind.hero) throw new Error(`[IndustryPage] industry "${slug}" has no page content (hero)`);
+const path = ind.path;
+const hero = ind.hero;
+const tabs = ind.tabs ?? [];
+const sections = ind.sections ?? [];
+const cta = ind.cta!;
+const kpis = hero.kpis ?? [];
+const catalog: Record<string, any> = getCatalog(locale) as any;
+const productsUsed = (ind.relatedProducts ?? [])
+  .map((s) => {
+    const c = catalog[s];
+    if (!c) return null;
+    const img = c.heroImage ? (c.heroImage[0] === '/' ? c.heroImage : '/' + c.heroImage) : '';
+    return { slug: s, title: c.title as string, image: img, url: localizeUrl(locale, `/${s}.html`) };
+  })
+  .filter(Boolean) as { slug: string; title: string; image: string; url: string }[];
+const heroStyle = ind.heroImage ? `--sol-hero-img:url("${ind.heroImage}")` : undefined;
+const structuredData = [
+  createOrganizationJsonLd(),
+  breadcrumbFromHome(locale, [{ name: t(locale, ind.breadcrumbKey ?? ind.labelKey), url: canonicalUrl(locale, path) }]),
+];
+---
+<Layout
+  locale={locale}
+  path={path}
+  title={t(locale, ind.titleKey!)}
+  description={t(locale, ind.descKey!)}
+  pageCss={["/product-page.css", "/solution-page.css", "/mobile-navigation.css"]}
+  structuredData={structuredData}
+>
+  <main>
+    <section class="solution-hero" style={heroStyle}>
+      <div class="container">
+        <div class="solution-hero-grid">
+          <div>
+            <span class="eyebrow">{t(locale, hero.eyebrowKey)}</span>
+            <h1>{t(locale, hero.titleKey)}</h1>
+            <p>{t(locale, hero.descKey)}</p>
+            {kpis.length > 0 && (
+              <dl class="solution-kpis">
+                {kpis.map((k) => (
+                  <div class="solution-kpi">
+                    <dt>{k.value}</dt>
+                    <dd>{k.label}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+          </div>
+          <aside class="solution-panel">
+            <span>{t(locale, hero.panel.labelKey)}</span>
+            <strong>{t(locale, hero.panel.valueKey)}</strong>
+            <p>{t(locale, hero.panel.descKey)}</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    {tabs.length > 0 && (
+      <nav class="solution-tabs" aria-label="Industry page sections">
+        <div class="container">
+          {tabs.map((tb) => (<a href={tb.href}>{t(locale, tb.labelKey)}</a>))}
+        </div>
+      </nav>
+    )}
+
+    {ind.gallery && (
+      <section class="solution-section solution-gallery" id="samples">
+        <div class="container">
+          <div class="solution-head">
+            <div>
+              <span class="eyebrow">{t(locale, ind.gallery.eyebrowKey)}</span>
+              <h2>{t(locale, ind.gallery.titleKey)}</h2>
+            </div>
+            <p>{t(locale, ind.gallery.introKey)}</p>
+          </div>
+          <div class="solution-shots">
+            {ind.gallery.shots.map((shot) => (
+              <figure class="solution-shot">
+                <div class={shot.image ? 'solution-shot-frame' : 'solution-shot-frame is-placeholder'}>
+                  {shot.image
+                    ? <img src={shot.image} alt="" loading="lazy" />
+                    : <span class="solution-shot-ph" aria-hidden="true"></span>}
+                  {shot.tagKey && <span class="solution-shot-tag">{t(locale, shot.tagKey)}</span>}
+                </div>
+                <figcaption>{t(locale, shot.captionKey)}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {sections.map((sec) => {
+      const cls = sec.variant ? `solution-section ${sec.variant}` : 'solution-section';
+      if (sec.kind === 'workflow') {
+        return (
+          <section class={cls} id={sec.id}>
+            <div class="container">
+              <div class="solution-head">
+                <div>
+                  <span class="eyebrow">{t(locale, sec.eyebrowKey)}</span>
+                  <h2>{t(locale, sec.titleKey)}</h2>
+                </div>
+                <p>{t(locale, sec.introKey)}</p>
+              </div>
+              <div class="workflow-grid">
+                {sec.cards.map((c) => (
+                  <article class="workflow-step">
+                    {c.icon && <i class={c.icon}></i>}
+                    <h3>{t(locale, c.titleKey)}</h3>
+                    <p>{t(locale, c.descKey)}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      }
+      return (
+        <section class={cls} id={sec.id}>
+          <div class="container">
+            <div class="solution-head">
+              <div>
+                <span class="eyebrow">{t(locale, sec.eyebrowKey)}</span>
+                <h2>{t(locale, sec.titleKey)}</h2>
+              </div>
+              <p>{t(locale, sec.introKey)}</p>
+            </div>
+            <div class="capability-grid">
+              {sec.cards.map((c) => (
+                <article class="capability-card">
+                  {c.icon && <i class={c.icon}></i>}
+                  <h3>{t(locale, c.titleKey)}</h3>
+                  <p>{t(locale, c.descKey)}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    })}
+
+    {ind.cases && (
+      <section class="solution-section alt solution-cases" id="cases">
+        <div class="container">
+          <div class="solution-head">
+            <div>
+              <span class="eyebrow">{t(locale, ind.cases.eyebrowKey)}</span>
+              <h2>{t(locale, ind.cases.titleKey)}</h2>
+            </div>
+            <p>{t(locale, ind.cases.introKey)}</p>
+          </div>
+          <div class="solution-cases-grid">
+            {ind.cases.items.map((c) => (
+              <article class="solution-case-card">
+                <div class="solution-case-card-media">
+                  {c.image
+                    ? <img src={c.image} alt="" loading="lazy" />
+                    : <span class="solution-shot-ph" aria-hidden="true"></span>}
+                </div>
+                <div class="solution-case-card-body">
+                  <span class="solution-case-card-tag">{t(locale, c.tagKey)}</span>
+                  <h3>{t(locale, c.titleKey)}</h3>
+                  {c.metricKey && <span class="solution-case-card-metric">{t(locale, c.metricKey)}</span>}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {productsUsed.length > 0 && (
+      <section class="solution-section alt solution-products" id="products">
+        <div class="container">
+          <div class="solution-head">
+            <div>
+              <span class="eyebrow">{t(locale, 'ind.common.products.eyebrow')}</span>
+              <h2>{t(locale, 'ind.common.products.title')}</h2>
+            </div>
+            <p>{t(locale, 'ind.common.products.intro')}</p>
+          </div>
+          <div class="solution-products-grid">
+            {productsUsed.map((p) => (
+              <a class="solution-product-card" href={p.url}>
+                <span class="solution-product-media"><img src={p.image} alt="" loading="lazy" /></span>
+                <span class="solution-product-body">
+                  <span class="solution-product-title">{p.title}</span>
+                  <span class="solution-product-go" aria-hidden="true">&rarr;</span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="solution-cta" id={cta.id}>
+      <div class="container">
+        <div class="solution-cta-inner">
+          <div>
+            <h2>{t(locale, cta.titleKey)}</h2>
+            <p>{t(locale, cta.descKey)}</p>
+          </div>
+          <a class="button button-primary" href={localizeUrl(locale, cta.href)}>{t(locale, cta.buttonKey)} <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer slot="footer" locale={locale} />
+  <script is:inline>
+    (() => {
+      const navItems = Array.from(document.querySelectorAll(".nav-item"));
+      const closeDelay = 520;
+      const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
+      const closeItem = (item) => {
+        window.clearTimeout(item.closeTimer);
+        item.closeTimer = window.setTimeout(() => {
+          item.classList.remove("is-open");
+          item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+        }, closeDelay);
+      };
+      const setActiveGroup = (groups, activeGroup) => groups.forEach((group) => group.classList.toggle("is-open", group === activeGroup));
+      const openItem = (item, groups) => {
+        navItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            window.clearTimeout(otherItem.closeTimer);
+            otherItem.classList.remove("is-open");
+            otherItem.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          }
+        });
+        window.clearTimeout(item.closeTimer);
+        item.classList.add("is-open");
+        if (groups.length && !groups.some((group) => group.classList.contains("is-open"))) setActiveGroup(groups, groups[0]);
+      };
+      navItems.forEach((item) => {
+        const menu = item.querySelector(".mega-menu");
+        if (!menu) return;
+        const groups = Array.from(item.querySelectorAll(".mega-link-group"));
+        const trigger = item.querySelector(".nav-trigger");
+        trigger?.addEventListener("click", (event) => {
+          if (isTouchNavigation() && !item.classList.contains("is-open")) { event.preventDefault(); openItem(item, groups); }
+        });
+        item.addEventListener("pointerenter", () => openItem(item, groups));
+        item.addEventListener("pointerleave", () => closeItem(item));
+        menu.addEventListener("pointerenter", () => openItem(item, groups));
+        menu.addEventListener("pointerleave", () => closeItem(item));
+        groups.forEach((group) => {
+          group.addEventListener("pointerenter", () => { openItem(item, groups); setActiveGroup(groups, group); });
+          group.addEventListener("focusin", () => { openItem(item, groups); setActiveGroup(groups, group); });
+        });
+      });
+    })();
+  </script>
+</Layout>

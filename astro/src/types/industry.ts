@@ -10,6 +10,11 @@
  * Mirrors the Solutions registry pattern (`types/solution.ts`); kept intentionally small.
  */
 
+import type {
+  SolutionHero, SolutionTab, SolutionGallery, SolutionSection,
+  SolutionCases, SolutionCaseStudy, SolutionCta,
+} from './solution';
+
 /** One coverage area within an industry (a sub-domain / application keyword, e.g. "PCB / PCBA"). */
 export interface IndustryCoverage {
   /** i18n key for the coverage term. */
@@ -37,4 +42,27 @@ export interface Industry {
   image: string;
   /** The areas this industry covers (sub-domains / applications), shown as the flyout list. */
   coverage: IndustryCoverage[];
+
+  // ---- Dedicated industry PAGE (optional). An industry is nav-only until these are set; once `hero`
+  // exists, `path` should point at `/<slug>.html` and `IndustryPage.astro` renders the page. The page
+  // reuses the Solution content shapes + solution-page.css so industry and solution pages stay visually
+  // consistent.
+  /** i18n key for the SEO <title>. */
+  titleKey?: string;
+  /** i18n key for the SEO meta description. */
+  descKey?: string;
+  /** i18n key for the breadcrumb / h-nav label. */
+  breadcrumbKey?: string;
+  /** Hero band background image (path under public/). */
+  heroImage?: string;
+  /** Slugs of related product categories → "Products used" cross-link grid. */
+  relatedProducts?: string[];
+  /** Page content (render-ready, i18n-key driven). Optional → industry stays nav-only without it. */
+  hero?: SolutionHero;
+  tabs?: SolutionTab[];
+  gallery?: SolutionGallery;
+  sections?: SolutionSection[];
+  cases?: SolutionCases;
+  caseStudy?: SolutionCaseStudy;
+  cta?: SolutionCta;
 }
