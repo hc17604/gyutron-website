@@ -49,27 +49,39 @@ const news = getLatestNews(3);
             <div class="container">
                 <div class="section-head">
                     <div>
-                        <span class="eyebrow">{t(locale, "main.004")}</span>
-                        <h2>{t(locale, "main.350")}</h2>
+                        <span class="eyebrow">{t(locale, "home.feat.eyebrow")}</span>
+                        <h2>{t(locale, "home.feat.title")}</h2>
                     </div>
-                    <p>{t(locale, "main.351")}</p>
+                    <p>{t(locale, "home.feat.sub")}</p>
+                </div>
+
+                <div class="feat-bar">
+                    <div class="feat-industries">
+                        <span class="feat-industries__label">{t(locale, "home.feat.tagsLabel")}</span>
+                        <span class="feat-tag">{t(locale, "home.feat.tag1")}</span>
+                        <span class="feat-tag">{t(locale, "home.feat.tag2")}</span>
+                        <span class="feat-tag">{t(locale, "home.feat.tag3")}</span>
+                        <span class="feat-tag">{t(locale, "home.feat.tag4")}</span>
+                        <span class="feat-tag">{t(locale, "home.feat.tag5")}</span>
+                    </div>
+                    <a class="button button-primary" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "home.feat.cta")} <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <div class="product-showcase">
                     <article class="feature-product" data-reveal>
                         <div class="feature-image">
-                            <img src="/product-vision-cell.png" alt="GYUTRON industrial robot vision inspection cell">
+                            <img src="/product-vision-cell.png" alt="Robot vision workcell on a production line">
                         </div>
                         <div class="product-body">
-                            <span class="badge"><i class="fa-solid fa-robot"></i> {t(locale, "main.437")}</span>
-                            <h3>{t(locale, "main.438")}</h3>
-                            <p>{t(locale, "main.352")}</p>
+                            <span class="badge"><i class="fa-solid fa-robot"></i> {t(locale, "home.feat.f.badge")}</span>
+                            <h3>{t(locale, "home.feat.f.title")}</h3>
+                            <p>{t(locale, "home.feat.f.desc")}</p>
                             <ul class="spec-list">
-                                <li><i class="fa-solid fa-gauge-high"></i> {t(locale, "main.353")}</li>
-                                <li><i class="fa-solid fa-plug-circle-bolt"></i> {t(locale, "main.354")}</li>
-                                <li><i class="fa-solid fa-shield-halved"></i> {t(locale, "main.355")}</li>
+                                <li><i class="fa-solid fa-gauge-high"></i> {t(locale, "home.feat.f.b1")}</li>
+                                <li><i class="fa-solid fa-plug-circle-bolt"></i> {t(locale, "home.feat.f.b2")}</li>
+                                <li><i class="fa-solid fa-shield-halved"></i> {t(locale, "home.feat.f.b3")}</li>
                             </ul>
-                            <a class="link-arrow" href={localizeUrl(locale, "/automated-vision-inspection.html")}>{t(locale, "main.356")} <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="link-arrow" href={localizeUrl(locale, "/vision-guided-robotics.html")}>{t(locale, "home.feat.f.cta")} <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
@@ -79,10 +91,10 @@ const news = getLatestNews(3);
                                 <img src="/product-smart-camera-detail.png" alt={t(locale, "main.357")}>
                             </div>
                             <div class="product-body">
-                                <span class="badge"><i class="fa-solid fa-eye"></i> {t(locale, "main.439")}</span>
-                                <h3>{t(locale, "main.440")}</h3>
-                                <p>{t(locale, "main.358")}</p>
-                                <a class="link-arrow" href={localizeUrl(locale, "/area-scan-cameras.html")}>{t(locale, "main.441")} <i class="fa-solid fa-arrow-right"></i></a>
+                                <span class="badge"><i class="fa-solid fa-eye"></i> {t(locale, "home.feat.c1.badge")}</span>
+                                <h3>{t(locale, "home.feat.c1.title")}</h3>
+                                <p>{t(locale, "home.feat.c1.desc")}</p>
+                                <a class="link-arrow" href={localizeUrl(locale, "/automated-vision-inspection.html")}>{t(locale, "home.feat.c1.cta")} <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </article>
 
@@ -91,10 +103,10 @@ const news = getLatestNews(3);
                                 <img src="/product-intelligent-hardware.png" alt={t(locale, "main.359")}>
                             </div>
                             <div class="product-body">
-                                <span class="badge"><i class="fa-solid fa-mobile-screen-button"></i> {t(locale, "main.442")}</span>
-                                <h3>{t(locale, "main.443")}</h3>
-                                <p>{t(locale, "main.360")}</p>
-                                <a class="link-arrow" href={localizeUrl(locale, "/android-pda.html")}>{t(locale, "main.444")} <i class="fa-solid fa-arrow-right"></i></a>
+                                <span class="badge"><i class="fa-solid fa-mobile-screen-button"></i> {t(locale, "home.feat.c2.badge")}</span>
+                                <h3>{t(locale, "home.feat.c2.title")}</h3>
+                                <p>{t(locale, "home.feat.c2.desc")}</p>
+                                <a class="link-arrow" href={localizeUrl(locale, "/identification-traceability.html")}>{t(locale, "home.feat.c2.cta")} <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </article>
                     </div>

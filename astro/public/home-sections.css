@@ -172,6 +172,14 @@ body.home .link-arrow { text-transform: uppercase; letter-spacing: .04em; font-w
 body.home .link-arrow i { transition: transform .25s ease; }
 body.home .link-arrow:hover i { transform: translateX(5px); }
 
+/* ---- Featured capabilities: industry tags + business CTA bar (hard-edged) ---- */
+body.home .feat-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 20px; margin: 2px 0 30px; }
+body.home .feat-industries { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+body.home .feat-industries__label { font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted, #6f687a); margin-right: 2px; }
+body.home .feat-tag { font-size: 12.5px; font-weight: 700; color: var(--purple-700, #4b177f); background: var(--violet-soft, #efe8ff); border: 1px solid rgba(111,45,189,.2); border-radius: 0; padding: 6px 11px; }
+body.home .feat-bar .button { white-space: nowrap; }
+@media (max-width: 720px) { body.home .feat-bar { flex-direction: column; align-items: stretch; } body.home .feat-bar .button { width: 100%; } }
+
 /* ---- Industries trust strip (auto-scroll marquee) ---- */
 .hx-trust { background: #fff; border-top: 1px solid var(--line, #e6e0ee); border-bottom: 1px solid var(--line, #e6e0ee); padding: 22px 0; }
 .hx-trust__label { margin: 0 0 14px; text-align: center; text-transform: uppercase; letter-spacing: .16em;
