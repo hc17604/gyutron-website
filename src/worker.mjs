@@ -1,14 +1,36 @@
 import { handleContactRequest } from "./contact-handler.mjs";
+import { handleFormRequest } from "./api/forms.mjs";
+import { handleDataApi } from "./api/data.mjs";
+import { handleAdmin } from "./api/admin.mjs";
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    const pathname = url.pathname;
+    const isShopHost = url.hostname === "shop.gyutron.com";
 
-    if (url.pathname === "/api/contact") {
-      return handleContactRequest(request, env, ctx);
+    // Backend routes apply on the brand host only; the storefront host is
+    // handled entirely by the shop block below.
+    if (!isShopHost) {
+      // ---- Form submission API ----
+      if (pathname === "/api/contact") return handleContactRequest(request, env, ctx);
+      if (pathname === "/api/rfq") return handleFormRequest("rfq", request, env, ctx);
+      if (pathname === "/api/support") return handleFormRequest("support", request, env, ctx);
+      if (pathname === "/api/download-request") return handleFormRequest("download", request, env, ctx);
+
+      // ---- Read-only Data API (consumed by the Agent Workspace) ----
+      if (pathname === "/api/v1" || pathname.startsWith("/api/v1/")) {
+        return handleDataApi(request, env, ctx, url);
+      }
+
+      // ---- Internal admin (single-admin, password-gated) ----
+      if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+        return handleAdmin(request, env, ctx, url);
+      }
     }
 
-    if (url.hostname === "shop.gyutron.com") {
+    // ---- Localized storefront on shop.gyutron.com (UNCHANGED) ----
+    if (isShopHost) {
       const assetUrl = new URL(request.url);
 
       // Localized store: a leading /de or /ja maps to that locale's store

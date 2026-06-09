@@ -1,3 +1,8 @@
+import { getDb } from "./platform/db/client.mjs";
+import { recordSubmission } from "./platform/db/submit.mjs";
+import { requestContext as submissionContext } from "./platform/request.mjs";
+import { normalizeMeta } from "./platform/validate.mjs";
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const JSON_HEADERS = {
@@ -26,6 +31,9 @@ export async function handleContactRequest(request, env = {}) {
   } catch {
     return json({ ok: false, message: "Please submit the form again." }, 400);
   }
+  if (typeof payload !== "object" || payload === null) {
+    return json({ ok: false, message: "Please submit the form again." }, 400);
+  }
 
   const inquiry = normalizeInquiry(payload);
   if (inquiry.website) {
@@ -37,11 +45,82 @@ export async function handleContactRequest(request, env = {}) {
     return json({ ok: false, message: validationError }, 400);
   }
 
+  // 1) Persist to D1 as the system of record (best-effort; lands in the events
+  //    stream too). Degrades silently if no DB is bound yet.
+  let publicId = null;
+  const db = getDb(env);
+  if (db) {
+    try {
+      const ctx = await submissionContext(request, env);
+      const meta = normalizeMeta(payload);
+      const now = new Date().toISOString();
+      const leadRow = {
+        type: "contact_sales",
+        name: inquiry.fullName,
+        company: inquiry.company,
+        email: inquiry.workEmail,
+        phone: inquiry.phone || null,
+        country: inquiry.country || null,
+        product_interest: inquiry.productInterest || null,
+        message: inquiry.projectDetails,
+        source_page: meta.source_page || "/contact-sales.html",
+        locale: meta.locale || null,
+        utm_source: meta.utm_source || null,
+        utm_medium: meta.utm_medium || null,
+        utm_campaign: meta.utm_campaign || null,
+        user_agent: ctx.user_agent,
+        ip_hash: ctx.ip_hash,
+        ip_country: ctx.ip_country,
+        status: "new",
+        created_at: now,
+        updated_at: now,
+      };
+      const res = await recordSubmission(db, env, {
+        table: "leads",
+        idPrefix: "LEAD",
+        row: leadRow,
+        eventType: "lead.created",
+        entityType: "lead",
+        eventPayload: {
+          company: leadRow.company,
+          email: leadRow.email,
+          product_interest: leadRow.product_interest,
+          locale: leadRow.locale,
+          source_page: leadRow.source_page,
+        },
+      });
+      publicId = res.publicId;
+    } catch (e) {
+      console.error("contact persist failed:", e && e.message);
+    }
+  }
+
+  // 2) Email notification via Resend (best-effort — keeps the existing behavior).
   const toEmail = env.CONTACT_TO_EMAIL || "info@gyutron.com";
   const fromEmail = env.CONTACT_FROM_EMAIL;
   const resendApiKey = env.RESEND_API_KEY;
+  const emailConfigured = Boolean(resendApiKey && fromEmail);
+  let emailId = null;
+  let emailed = false;
+  if (emailConfigured) {
+    const sent = await sendWithResend({ apiKey: resendApiKey, from: fromEmail, to: toEmail, inquiry, request });
+    emailed = sent.ok;
+    emailId = sent.id || null;
+  }
 
-  if (!resendApiKey || !fromEmail) {
+  // 3) Success if the lead was captured anywhere (DB or email). Distinguish a
+  //    configured-but-failed email (502, transient) from nothing configured (503),
+  //    so we never tell the user "not configured" when it actually is.
+  if (!publicId && !emailed) {
+    if (emailConfigured) {
+      return json(
+        {
+          ok: false,
+          message: "The inquiry could not be sent right now. Please email info@gyutron.com or use WhatsApp.",
+        },
+        502,
+      );
+    }
     return json(
       {
         ok: false,
@@ -51,28 +130,10 @@ export async function handleContactRequest(request, env = {}) {
     );
   }
 
-  const sent = await sendWithResend({
-    apiKey: resendApiKey,
-    from: fromEmail,
-    to: toEmail,
-    inquiry,
-    request,
-  });
-
-  if (!sent.ok) {
-    return json(
-      {
-        ok: false,
-        message: "The inquiry could not be sent right now. Please email info@gyutron.com or use WhatsApp.",
-      },
-      502,
-    );
-  }
-
   return json({
     ok: true,
     message: "Thanks. Your inquiry has been sent to the GYUTRON sales team.",
-    id: sent.id,
+    id: publicId || emailId,
   });
 }
 

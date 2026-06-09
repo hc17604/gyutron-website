@@ -1,3 +1,16 @@
+# Copy this file to `.dev.vars` (gitignored) for `wrangler dev`. NEVER commit real
+# values — production values are set with `wrangler secret put <NAME>`.
+
+# --- Contact form email (existing) ---
 RESEND_API_KEY=re_your_resend_api_key_here
 CONTACT_TO_EMAIL=info@gyutron.com
 CONTACT_FROM_EMAIL=GYUTRON Website <inquiries@gyutron.com>
+
+# --- Phase 1 backend (Data Layer + Data API) ---
+DATA_API_KEY=dev-data-key
+ADMIN_PASSWORD=dev-admin-password
+ADMIN_SECRET=dev-admin-hmac-secret
+IP_HASH_SALT=dev-salt
+# TURNSTILE_SECRET_KEY=
+# DATA_SOURCE_ID=gyutron-website
+# DATA_SOURCE_NAME=GYUTRON
