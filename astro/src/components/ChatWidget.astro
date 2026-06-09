@@ -27,10 +27,16 @@ const contactUrl = localizeUrl(locale, '/contact-sales.html');
   data-l-results={t(locale, 'cw.results')}
   data-l-none={t(locale, 'cw.noresult')}
 >
-  <button type="button" class="cw-launcher" data-cw-open aria-label={t(locale, 'cw.open')}>
-    <span class="cw-launcher-label">{t(locale, 'cw.launcher')}</span>
-    <span class="cw-launcher-icon" aria-hidden="true"><i class="fa-solid fa-headset"></i></span>
-  </button>
+  <div class="cw-rail" data-cw-rail>
+    <button type="button" class="cw-launcher" data-cw-open aria-label={t(locale, 'cw.open')}>
+      <span class="cw-launcher-label">{t(locale, 'cw.launcher')}</span>
+      <span class="cw-launcher-icon" aria-hidden="true"><i class="fa-solid fa-headset"></i></span>
+    </button>
+    <a class="cw-launcher cw-launcher--contact" href={contactUrl} aria-label={t(locale, 'cw.cta.button')}>
+      <span class="cw-launcher-label">{t(locale, 'cw.cta.button')}</span>
+      <span class="cw-launcher-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
+    </a>
+  </div>
 
   <section class="cw-panel" role="dialog" aria-label={t(locale, 'cw.title')} hidden data-cw-panel>
     <header class="cw-head">
