@@ -244,37 +244,39 @@ body.nav-is-navigating .submenu {
 .mobile-nav-results .mobile-nav-empty { grid-column: 1 / -1; }
 .mobile-nav-empty { padding: 18px 6px; color: var(--muted, #8b8397); font-size: 15px; }
 
-/* ===== Industries mega-menu: coverage chips =====
+/* ===== Industries mega-menu: coverage chips + description =====
    `.mega-compact` + `.submenu--solution` occurs ONLY on the Industries flyout (Solutions reuses the
-   info-panel style but is a wide `.mega-menu`, not compact). Each industry shows a one-line intro plus
-   the areas it COVERS as title-only wrapped chips. Desktop only; the mobile drawer lists the industries
-   (the chips, like the Solutions caps, are a desktop info panel and don't expand in the drawer). */
-@media (min-width: 1181px) {
-  /* The compact base forces the flyout to 2 columns (`.mega-compact .submenu`), which would split the
-     info panel's intro and chips side by side. Force it back to a single column (banner -> intro ->
-     full-width chip row). */
-  .mega-compact .submenu--solution { grid-template-columns: 1fr; }
-  .mega-compact .submenu--solution .submenu-caps {
-    background: transparent;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px 10px;
-    padding: 6px 0 2px;
-  }
-  .mega-compact .submenu--solution .submenu-cap {
-    background: var(--violet-soft);
-    border: 1px solid rgba(75, 46, 131, 0.16);
-    border-radius: 2px;
-    padding: 7px 13px;
-  }
-  .mega-compact .submenu--solution .submenu-cap strong { font-size: 13px; line-height: 1.15; }
-  .mega-compact .submenu--solution .submenu-cap span { display: none; }
-  /* Longer description under the chips — black body text that fills the lower half of the panel. */
-  .mega-compact .submenu--solution .submenu-detail {
-    color: var(--text, #211b2d);
-    font-size: 13px;
-    line-height: 1.6;
-    margin: 16px 0 0;
-    max-width: 60ch;
-  }
+   info-panel style but is a wide `.mega-menu`, not compact). Each industry shows a one-line intro, the
+   areas it COVERS as title-only wrapped chips, and a black description paragraph under them. NOT gated
+   behind a min-width media query on purpose: these selectors only ever match the desktop flyout (the
+   whole `.nav` is `display:none` at <=1180px), and gating them risked an unstyled flyout if the
+   breakpoint ever drifted. */
+/* The compact base forces the flyout to 2 columns (`.mega-compact .submenu`), which would split the
+   info panel's intro and chips side by side. Force it back to a single column (banner -> intro ->
+   full-width chip row -> description). */
+.mega-compact .submenu--solution { grid-template-columns: 1fr; }
+.mega-compact .submenu--solution .submenu-caps {
+  background: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 10px;
+  padding: 6px 0 2px;
+}
+.mega-compact .submenu--solution .submenu-cap {
+  background: var(--violet-soft);
+  border: 1px solid rgba(75, 46, 131, 0.16);
+  border-radius: 2px;
+  padding: 7px 13px;
+}
+.mega-compact .submenu--solution .submenu-cap strong { font-size: 13px; line-height: 1.15; }
+.mega-compact .submenu--solution .submenu-cap span { display: none; }
+/* Longer description under the chips — black body text that fills the lower half of the panel.
+   `min(62ch, 100%)` + overflow-wrap keep it inside the panel at every width (never clips on the right). */
+.mega-compact .submenu--solution .submenu-detail {
+  color: var(--text, #211b2d);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 16px 0 0;
+  max-width: min(62ch, 100%);
+  overflow-wrap: break-word;
 }
