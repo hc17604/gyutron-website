@@ -40,10 +40,10 @@ export const HERO_SLIDES: HeroSlide[] = [
     cta2Key: 'home.tc.cta',
     cta2Href: '/contact-sales.html',
     industries: [
-      { img: '/hero-industry-automotive-ev.png', labelKey: 'home.tc.auto.label' },
-      { img: '/nav-industry-electronics-smt.png', labelKey: 'home.tc.elec.label' },
-      { img: '/nav-industry-semiconductor.png', labelKey: 'hero.s1.semi' },
-      { img: '/nav-industry-logistics-rfid.png', labelKey: 'home.tc.logistics.label' },
+      { img: '/hero-industry-automotive-ev.jpg', labelKey: 'home.tc.auto.label' },
+      { img: '/hero-industry-electronics.jpg', labelKey: 'home.tc.elec.label' },
+      { img: '/hero-industry-semiconductor.jpg', labelKey: 'hero.s1.semi' },
+      { img: '/hero-industry-logistics.jpg', labelKey: 'home.tc.logistics.label' },
     ],
   },
   {
