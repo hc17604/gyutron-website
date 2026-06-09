@@ -136,6 +136,12 @@
 .cw-scroll::-webkit-scrollbar-corner,
 .nav-search-results::-webkit-scrollbar-corner { background: transparent; }
 
+/* Scroll containment — a wheel over these overlays must not chain to the page
+   body (paired with the wheel guard in chat-widget.js for the non-scrollable case). */
+.cw-scroll, .cw-panel,
+.mega-links, .mega-menu,
+.nav-search-results, .nav-search-dropdown { overscroll-behavior: contain; }
+
 @media (max-width: 520px) {
   .cw-panel { width: 100vw; max-height: min(80vh, 580px); }
   .cw-rail { top: auto; bottom: 84px; }

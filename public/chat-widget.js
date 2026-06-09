@@ -138,3 +138,44 @@
     });
   }
 })();
+
+/* ---- Overlay scroll containment ----------------------------------------
+ * When a flyout overlay is OPEN (mega-menu / nav search / this chat panel), a
+ * wheel over it must scroll only that overlay, never the page body. CSS
+ * overscroll-behavior covers the at-boundary case; this also covers the
+ * not-scrollable and hover-over-a-non-scroller-part cases. Inert when closed. */
+(function () {
+  function trap(zone, getScroller, isOpen) {
+    zone.addEventListener('wheel', function (e) {
+      if (isOpen && !isOpen()) return;                 // overlay closed -> normal page scroll
+      var s = getScroller();
+      if (!s) { e.preventDefault(); return; }
+      if (s.scrollHeight <= s.clientHeight + 1) { e.preventDefault(); return; } // nothing to scroll
+      var up = e.deltaY < 0;
+      var atTop = s.scrollTop <= 0;
+      var atBottom = s.scrollTop + s.clientHeight >= s.scrollHeight - 1;
+      if (s === e.target || s.contains(e.target)) {
+        if ((up && atTop) || (!up && atBottom)) e.preventDefault();    // block chaining at the edge
+      } else {
+        s.scrollTop += e.deltaY; e.preventDefault();                   // over a non-scroller part: drive it
+      }
+    }, { passive: false });
+  }
+
+  var cwRoot = document.querySelector('[data-cw]');
+  var cwPanel = cwRoot && cwRoot.querySelector('[data-cw-panel]');
+  if (cwPanel) trap(cwPanel,
+    function () { return cwPanel.querySelector('[data-cw-scroll]'); },
+    function () { return cwRoot.classList.contains('is-open'); });
+
+  var dd = document.querySelector('.nav-search-dropdown');
+  if (dd) trap(dd,
+    function () { return dd.querySelector('.nav-search-results'); },
+    function () { return !dd.hasAttribute('hidden'); });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.mega-menu'), function (menu) {
+    trap(menu,
+      function () { return menu.querySelector('.mega-links'); },
+      function () { var ni = menu.closest('.nav-item'); return !!(ni && ni.classList.contains('is-open')); });
+  });
+})();
