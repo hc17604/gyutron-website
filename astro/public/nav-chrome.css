@@ -253,8 +253,20 @@ body.nav-is-navigating .submenu {
    breakpoint ever drifted. */
 /* The compact base forces the flyout to 2 columns (`.mega-compact .submenu`), which would split the
    info panel's intro and chips side by side. Force it back to a single column (banner -> intro ->
-   full-width chip row -> description). */
-.mega-compact .submenu--solution { grid-template-columns: 1fr; }
+   full-width chip row -> description).
+   The panel height is fixed by the left rail and the flyout is absolutely positioned, so tall content
+   (e.g. a visitor with a large/min font size or a wide fallback font when Inter hasn't loaded) would
+   spill out the BOTTOM of the panel. Cap the flyout at the panel height and let it scroll internally —
+   normal text fits with no scrollbar; only oversized text scrolls, and it never overflows. */
+.mega-compact .submenu--solution {
+  grid-template-columns: 1fr;
+  max-height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+/* Slightly shorter banner than the other compact flyouts so the intro + chips + description fit the
+   panel with headroom (no scrollbar) at the normal font size. */
+.mega-compact .submenu--solution::before { height: 116px; }
 .mega-compact .submenu--solution .submenu-caps {
   background: transparent;
   display: flex;
