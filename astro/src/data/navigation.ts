@@ -30,16 +30,17 @@ export const FOOTER_NAV: NavGroup[] = [
   },
   {
     // Support quick-links. Downloads + Certifications live here (the top nav has the granular doc /
-    // compliance items, but no single "Downloads" or "Certifications" link). Privacy/Terms moved to the
-    // bottom legal row in Footer.astro — they are legal, not support.
+    // compliance items, but no single "Downloads" or "Certifications" link).
     labelKey: 'fnav.support', // Support
     links: [
       { labelKey: 'fnav.contactSupport', href: '/support.html' },
       { labelKey: 'fnav.faq', href: '/support/faq.html' },
-      { labelKey: 'main.420', href: '/index.html#resources' },   // Downloads (restored; /downloads page not built yet -> homepage anchor, no 404)
-      { labelKey: 'main.462', href: '/index.html#platform' },    // Certifications (restored; /certifications page not built yet -> homepage anchor, no 404)
+      { labelKey: 'main.420', href: '/index.html#resources' },   // Downloads (/downloads page not built yet -> homepage anchor, no 404)
+      { labelKey: 'main.462', href: '/index.html#platform' },    // Certifications (/certifications page not built yet -> homepage anchor, no 404)
       { labelKey: 'fnav.warranty', href: '/support/warranty.html' },
       { labelKey: 'fnav.shipping', href: '/support/shipping-delivery.html' },
+      { labelKey: 'fnav.privacy', href: '/privacy-policy.html' },
+      { labelKey: 'fnav.terms', href: '/terms-and-conditions.html' },
     ],
   },
   {
