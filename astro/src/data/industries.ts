@@ -34,7 +34,20 @@ export const INDUSTRIES: Industry[] = [
     descKey: 'iep.desc',
     breadcrumbKey: 'iep.breadcrumb',
     heroImage: '/nav-industry-electronics-smt.png',
-    relatedProducts: ['area-scan-cameras', 'code-reading-cameras', 'smart-vision-sensors', 'dimensional-gauges'],
+    archImage: '/nav-industry-semiconductor.png',
+    relatedProducts: ['area-scan-cameras', 'code-reading-cameras', 'smart-vision-sensors', 'vision-lighting', 'laser-measurement', 'dimensional-gauges', 'surface-inspection', 'edge-controllers'],
+    relatedSolutions: ['automated-vision-inspection', 'identification-traceability', 'measurement-3d-profiling', 'vision-guided-robotics', 'industrial-sensing'],
+    gallery: {
+      eyebrowKey: 'iep.gallery.eyebrow', titleKey: 'iep.gallery.title', introKey: 'iep.gallery.intro',
+      shots: [
+        { tagKey: 'iep.gallery.s1.tag', captionKey: 'iep.gallery.s1.cap' },
+        { tagKey: 'iep.gallery.s2.tag', captionKey: 'iep.gallery.s2.cap' },
+        { tagKey: 'iep.gallery.s3.tag', captionKey: 'iep.gallery.s3.cap' },
+        { tagKey: 'iep.gallery.s4.tag', captionKey: 'iep.gallery.s4.cap' },
+        { tagKey: 'iep.gallery.s5.tag', captionKey: 'iep.gallery.s5.cap' },
+        { tagKey: 'iep.gallery.s6.tag', captionKey: 'iep.gallery.s6.cap' },
+      ],
+    },
     hero: {
       eyebrowKey: 'iep.hero.eyebrow',
       titleKey: 'iep.hero.title',
@@ -49,6 +62,7 @@ export const INDUSTRIES: Industry[] = [
     tabs: [
       { href: '#line', labelKey: 'iep.tab.line' },
       { href: '#segments', labelKey: 'iep.tab.segments' },
+      { href: '#semiconductor', labelKey: 'iep.tab.semi' },
       { href: '#inspection', labelKey: 'iep.tab.inspection' },
       { href: '#why', labelKey: 'iep.tab.why' },
       { href: '#cases', labelKey: 'iep.tab.cases' },
@@ -73,6 +87,15 @@ export const INDUSTRIES: Industry[] = [
           { icon: 'fa-solid fa-microchip', titleKey: 'iep.seg.c2.t', descKey: 'iep.seg.c2.d' },
           { icon: 'fa-solid fa-industry', titleKey: 'iep.seg.c3.t', descKey: 'iep.seg.c3.d' },
           { icon: 'fa-solid fa-vector-square', titleKey: 'iep.seg.c4.t', descKey: 'iep.seg.c4.d' },
+        ],
+      },
+      {
+        id: 'semiconductor', variant: 'dark', kind: 'architecture', eyebrowKey: 'iep.semi.eyebrow', titleKey: 'iep.semi.title', introKey: 'iep.semi.intro', visualAriaKey: 'iep.semi.aria',
+        cards: [
+          { titleKey: 'iep.semi.c1.t', descKey: 'iep.semi.c1.d' },
+          { titleKey: 'iep.semi.c2.t', descKey: 'iep.semi.c2.d' },
+          { titleKey: 'iep.semi.c3.t', descKey: 'iep.semi.c3.d' },
+          { titleKey: 'iep.semi.c4.t', descKey: 'iep.semi.c4.d' },
         ],
       },
       {
@@ -102,6 +125,14 @@ export const INDUSTRIES: Industry[] = [
         { tagKey: 'iep.cases.c1.tag', titleKey: 'iep.cases.c1.title', metricKey: 'iep.cases.c1.metric' },
         { tagKey: 'iep.cases.c2.tag', titleKey: 'iep.cases.c2.title', metricKey: 'iep.cases.c2.metric' },
         { tagKey: 'iep.cases.c3.tag', titleKey: 'iep.cases.c3.title', metricKey: 'iep.cases.c3.metric' },
+      ],
+    },
+    caseStudy: {
+      eyebrowKey: 'iep.cs.eyebrow', titleKey: 'iep.cs.title',
+      points: [
+        { labelKey: 'sol.common.challenge', valueKey: 'iep.cs.challenge' },
+        { labelKey: 'sol.common.approach', valueKey: 'iep.cs.approach' },
+        { labelKey: 'sol.common.result', valueKey: 'iep.cs.result' },
       ],
     },
     cta: { id: 'contact', titleKey: 'iep.cta.title', descKey: 'iep.cta.desc', buttonKey: 'iep.cta.button', href: '/contact-sales.html' },

@@ -5,6 +5,7 @@ import { t, localizeUrl, type Locale } from '../i18n';
 import { canonicalUrl } from '../utils/seo';
 import { createOrganizationJsonLd, breadcrumbFromHome } from '../utils/structured-data';
 import { getIndustry } from '../data/industries';
+import { getSolution } from '../data/solutions';
 import { getCatalog } from '../data/products';
 // Data-driven Industry page renderer (src/data/industries.ts). Mirrors SolutionPage.astro and reuses
 // the same content shapes + solution-page.css so industry and solution pages stay visually consistent.
@@ -30,6 +31,16 @@ const productsUsed = (ind.relatedProducts ?? [])
   })
   .filter(Boolean) as { slug: string; title: string; image: string; url: string }[];
 const heroStyle = ind.heroImage ? `--sol-hero-img:url("${ind.heroImage}")` : undefined;
+const archStyle = ind.archImage ? `--sol-arch-img:url("${ind.archImage}")` : undefined;
+// "Related solutions" — resolve solution slugs to render-ready cards (name + image + localized URL).
+const relatedSolutions = (ind.relatedSolutions ?? [])
+  .map((s) => {
+    const so = getSolution(s);
+    if (!so) return null;
+    const img = so.heroImage ? (so.heroImage[0] === '/' ? so.heroImage : '/' + so.heroImage) : '/product-vision-cell.png';
+    return { slug: s, title: t(locale, so.breadcrumbKey ?? so.titleKey), image: img, url: localizeUrl(locale, so.path) };
+  })
+  .filter(Boolean) as { slug: string; title: string; image: string; url: string }[];
 const structuredData = [
   createOrganizationJsonLd(),
   breadcrumbFromHome(locale, [{ name: t(locale, ind.breadcrumbKey ?? ind.labelKey), url: canonicalUrl(locale, path) }]),
@@ -108,6 +119,32 @@ const structuredData = [
 
     {sections.map((sec) => {
       const cls = sec.variant ? `solution-section ${sec.variant}` : 'solution-section';
+      if (sec.kind === 'architecture') {
+        return (
+          <section class={cls} id={sec.id}>
+            <div class="container">
+              <div class="solution-head">
+                <div>
+                  <span class="eyebrow">{t(locale, sec.eyebrowKey)}</span>
+                  <h2>{t(locale, sec.titleKey)}</h2>
+                </div>
+                <p>{t(locale, sec.introKey)}</p>
+              </div>
+              <div class="architecture-grid">
+                <div class="architecture-visual" style={archStyle} aria-label={sec.visualAriaKey ? t(locale, sec.visualAriaKey) : undefined}></div>
+                <div class="capability-grid">
+                  {sec.cards.map((c) => (
+                    <article class="architecture-card">
+                      <h3>{t(locale, c.titleKey)}</h3>
+                      <p>{t(locale, c.descKey)}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
       if (sec.kind === 'workflow') {
         return (
           <section class={cls} id={sec.id}>
@@ -180,6 +217,63 @@ const structuredData = [
                   {c.metricKey && <span class="solution-case-card-metric">{t(locale, c.metricKey)}</span>}
                 </div>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {ind.caseStudy && (
+      <section class="solution-section dark solution-case" id="case-study">
+        <div class="container">
+          <div class="solution-case-grid">
+            <div class="solution-case-visual">
+              {ind.caseStudy.image
+                ? <img src={ind.caseStudy.image} alt="" loading="lazy" />
+                : <span class="solution-shot-ph" aria-hidden="true"></span>}
+            </div>
+            <div class="solution-case-body">
+              <span class="eyebrow">{t(locale, ind.caseStudy.eyebrowKey)}</span>
+              <h2>{t(locale, ind.caseStudy.titleKey)}</h2>
+              <dl class="solution-case-points">
+                {ind.caseStudy.points.map((pt) => (
+                  <div>
+                    <dt>{t(locale, pt.labelKey)}</dt>
+                    <dd>{t(locale, pt.valueKey)}</dd>
+                  </div>
+                ))}
+              </dl>
+              {ind.caseStudy.quoteKey && (
+                <blockquote class="solution-case-quote">
+                  <p>{t(locale, ind.caseStudy.quoteKey)}</p>
+                  {ind.caseStudy.attributionKey && <cite>{t(locale, ind.caseStudy.attributionKey)}</cite>}
+                </blockquote>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    {relatedSolutions.length > 0 && (
+      <section class="solution-section alt solution-products" id="solutions">
+        <div class="container">
+          <div class="solution-head">
+            <div>
+              <span class="eyebrow">{t(locale, 'ind.common.solutions.eyebrow')}</span>
+              <h2>{t(locale, 'ind.common.solutions.title')}</h2>
+            </div>
+            <p>{t(locale, 'ind.common.solutions.intro')}</p>
+          </div>
+          <div class="solution-products-grid">
+            {relatedSolutions.map((p) => (
+              <a class="solution-product-card" href={p.url}>
+                <span class="solution-product-media"><img src={p.image} alt="" loading="lazy" /></span>
+                <span class="solution-product-body">
+                  <span class="solution-product-title">{p.title}</span>
+                  <span class="solution-product-go" aria-hidden="true">&rarr;</span>
+                </span>
+              </a>
             ))}
           </div>
         </div>

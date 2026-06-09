@@ -55,8 +55,12 @@ export interface Industry {
   breadcrumbKey?: string;
   /** Hero band background image (path under public/). */
   heroImage?: string;
+  /** Architecture-visual background image (path under public/), e.g. the semiconductor back-end block. */
+  archImage?: string;
   /** Slugs of related product categories → "Products used" cross-link grid. */
   relatedProducts?: string[];
+  /** Slugs of related Solution pages → "Related solutions" cross-link grid. */
+  relatedSolutions?: string[];
   /** Page content (render-ready, i18n-key driven). Optional → industry stays nav-only without it. */
   hero?: SolutionHero;
   tabs?: SolutionTab[];
