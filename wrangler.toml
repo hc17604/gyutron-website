@@ -1,4 +1,4 @@
-name = "gyutron-website"
+﻿name = "gyutron-website"
 main = "src/worker.mjs"
 compatibility_date = "2026-05-18"
 compatibility_flags = ["nodejs_compat"]
@@ -20,13 +20,13 @@ run_worker_first = true
 # ===========================================================================
 
 # --- D1 (leads / rfqs / support_requests / download_requests / events / api_keys)
-#   wrangler d1 create gyutron_db        # prints database_id → paste below
+#   wrangler d1 create gyutron_db        # prints database_id 鈫?paste below
 #   wrangler d1 migrations apply gyutron_db --remote
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "gyutron_db"
-# database_id = "PASTE-DATABASE-ID-HERE"
-# migrations_dir = "migrations"
+[[d1_databases]]
+binding = "DB"
+database_name = "gyutron_db"
+database_id = "d79a8073-0d51-4a80-ab62-e18d8b305801"
+migrations_dir = "migrations"
 
 # --- R2 (datasheets / manuals / brochures / certificates / application-notes)
 #   wrangler r2 bucket create gyutron-assets
@@ -35,17 +35,17 @@ run_worker_first = true
 # bucket_name = "gyutron-assets"
 
 # --- KV (optional: form rate-limiting; without it the limiter is a no-op)
-#   wrangler kv namespace create RATE_LIMIT     # prints id → paste below
-# [[kv_namespaces]]
-# binding = "RATE_LIMIT"
-# id = "PASTE-KV-NAMESPACE-ID-HERE"
+#   wrangler kv namespace create RATE_LIMIT     # prints id 鈫?paste below
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "c3fba30b49b5451ca25f0f3983560c47"
 
 # --- Non-secret config (safe to commit). Override to re-skin for a new customer.
 # [vars]
 # DATA_SOURCE_ID = "gyutron-website"
 # DATA_SOURCE_NAME = "GYUTRON"
 
-# --- SECRETS (NEVER put real values here — set with `wrangler secret put NAME`):
+# --- SECRETS (NEVER put real values here 鈥?set with `wrangler secret put NAME`):
 #   DATA_API_KEY        bearer key for the read-only Data API (Agent Workspace)
 #   ADMIN_PASSWORD      enables + protects /admin
 #   ADMIN_SECRET        (optional) HMAC key for the admin session cookie
