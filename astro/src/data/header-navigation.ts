@@ -233,8 +233,8 @@ export const HEADER_NAV: HeaderNavItem[] = [
                 image: '/contact-sales-hero.png',
                 links: [
                   { href: '/support/faq.html', titleText: 'FAQ', descKey: 'main.249' },
-                  { href: '/support.html', titleKey: 'main.254', descKey: 'main.255' },
-                  { href: '/contact-sales.html', titleKey: 'main.250', descKey: 'main.251' },
+                  { href: '/support/contact.html', titleKey: 'main.254', descKey: 'main.255' },
+                  { href: '/support/contact.html', titleKey: 'main.250', descKey: 'main.251' },
                   { href: '/index.html#resources', titleKey: 'main.252', descKey: 'main.253' },
                 ],
               },
@@ -261,7 +261,7 @@ export const HEADER_NAV: HeaderNavItem[] = [
               submenu: {
                 image: '/nav-resources-technical-library.png?v=20260525-hd2',
                 links: [
-                  { href: '/index.html#resources', titleKey: 'main.223', descKey: 'main.224' },
+                  { href: '/resources/download-request.html', titleKey: 'main.223', descKey: 'main.224' },
                   { href: '/index.html#resources', titleKey: 'main.225', descKey: 'main.226' },
                   { href: '/index.html#resources', titleKey: 'main.404', descKey: 'main.227' },
                   { href: '/index.html#resources', titleKey: 'main.405', descKey: 'main.228' },
@@ -286,9 +286,9 @@ export const HEADER_NAV: HeaderNavItem[] = [
                 image: '/governance-documentation.png',
                 links: [
                   { href: '/index.html#products', titleKey: 'main.239', descKey: 'main.240' },
-                  { href: '/contact-sales.html', titleKey: 'main.241', descKey: 'main.242' },
+                  { href: '/request-quote.html', titleKey: 'main.241', descKey: 'main.242' },
                   { href: '/contact-sales.html', titleKey: 'main.243', descKey: 'main.244' },
-                  { href: '/index.html#resources', titleKey: 'main.245', descKey: 'main.246' },
+                  { href: '/resources/download-request.html', titleKey: 'main.245', descKey: 'main.246' },
                 ],
               },
             },

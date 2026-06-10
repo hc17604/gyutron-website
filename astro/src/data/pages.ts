@@ -44,6 +44,10 @@ export const SITE_PAGES: SitePage[] = [
     source: 'industry',
   })),
   { id: 'contact', type: 'contact', path: ROUTES.contact, includeInSitemap: true, source: 'static' },
+  // Phase-2 form pages (RFQ / support / download-request) — backed by the worker form APIs.
+  { id: 'request-quote', type: 'contact', path: ROUTES.requestQuote, titleKey: 'seo.request-quote.title', descKey: 'seo.request-quote.desc', includeInSitemap: true, source: 'static' },
+  { id: 'support-contact', type: 'support', path: ROUTES.supportContact, titleKey: 'seo.support-contact.title', descKey: 'seo.support-contact.desc', includeInSitemap: true, source: 'static' },
+  { id: 'download-request', type: 'support', path: ROUTES.downloadRequest, titleKey: 'seo.download-request.title', descKey: 'seo.download-request.desc', includeInSitemap: true, source: 'static' },
   { id: 'support', type: 'support', path: ROUTES.support, includeInSitemap: true, source: 'static' },
   { id: 'faq', type: 'support', path: ROUTES.faq, includeInSitemap: true, source: 'static' },
   { id: 'warranty', type: 'support', path: ROUTES.warranty, includeInSitemap: true, source: 'static' },

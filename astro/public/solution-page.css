@@ -261,6 +261,12 @@
     transition: box-shadow var(--motion), transform var(--motion);
 }
 
+.solution-cta .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
 .solution-panel:hover,
 .capability-card:hover,
 .architecture-card:hover,

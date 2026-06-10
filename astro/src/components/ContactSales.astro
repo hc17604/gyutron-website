@@ -5,6 +5,7 @@ import Footer from './Footer.astro';
 import { canonicalUrl } from '../utils/seo';
 import { createOrganizationJsonLd, breadcrumbFromHome } from '../utils/structured-data';
 import { CONTACT_PRODUCT_OPTIONS } from '../data/products';
+import { TURNSTILE_SITE_KEY, TURNSTILE_SCRIPT_URL } from '../config/turnstile';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
 const path = '/contact-sales.html';
@@ -128,6 +129,9 @@ const STATUS = ({
             {t(locale, "main.416")}
             <textarea name="projectDetails" placeholder={t(locale, "main.321")} required></textarea>
           </label>
+          {TURNSTILE_SITE_KEY && (
+            <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY}></div>
+          )}
           <div class="form-status" id="salesInquiryStatus" role="status" aria-live="polite"></div>
           <div class="form-footer">
             <button class="button button-primary" type="submit">{t(locale, "main.322")} <i class="fa-solid fa-arrow-right"></i></button>
@@ -159,6 +163,7 @@ const STATUS = ({
   </main>
 
   <Footer slot="footer" locale={locale} />
+  {TURNSTILE_SITE_KEY && <script is:inline async defer src={TURNSTILE_SCRIPT_URL}></script>}
 
   <script is:inline>
     (() => {
@@ -311,6 +316,7 @@ const STATUS = ({
         setSalesStatus(`${message} ${salesForm.dataset.msgFallback}`, "error");
       }
 
+      (window as any).turnstile?.reset?.();
       salesForm.classList.remove("is-sending");
       if (submitButton) submitButton.disabled = false;
     });

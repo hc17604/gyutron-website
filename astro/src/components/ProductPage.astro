@@ -102,7 +102,10 @@ const structuredData = [
 
     <section class="cta-band"><div class="container"><div class="cta-inner">
       <div><h2>{t(locale, 'main.261')}</h2><p>{t(locale, 'main.262')}</p></div>
-      <a class="button button-primary" href={localizeUrl(locale, '/contact-sales.html')}>{t(locale, 'main.256')} <i class="fa-solid fa-arrow-right"></i></a>
+      <div class="cta-actions">
+        <a class="button button-primary" href={localizeUrl(locale, '/contact-sales.html')}>{t(locale, 'main.256')} <i class="fa-solid fa-arrow-right"></i></a>
+        <a class="button button-outline" href={localizeUrl(locale, `/request-quote.html?productCategory=${category}`)}>{t(locale, 'rfq.cta')} <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
     </div></div></section>
   </main>
   <Footer slot="footer" locale={locale} />

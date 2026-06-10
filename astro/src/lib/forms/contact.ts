@@ -24,6 +24,7 @@ export function normalizeContactPayload(raw: FormData | Record<string, unknown>)
     productInterest: get('productInterest'),
     projectDetails: get('projectDetails'),
     website: get('website'), // honeypot — passed through; the worker silently drops bots
+    'cf-turnstile-response': get('cf-turnstile-response'), // present only when the widget is configured
   };
 }
 

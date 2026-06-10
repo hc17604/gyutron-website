@@ -6,6 +6,9 @@
 export const ROUTES = {
   home: '/',
   contact: '/contact-sales.html',
+  requestQuote: '/request-quote.html',
+  supportContact: '/support/contact.html',
+  downloadRequest: '/resources/download-request.html',
   solution: '/automated-vision-inspection.html',
   support: '/support.html',
   faq: '/support/faq.html',

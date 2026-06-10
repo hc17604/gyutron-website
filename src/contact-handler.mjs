@@ -2,6 +2,7 @@ import { getDb } from "./platform/db/client.mjs";
 import { recordSubmission } from "./platform/db/submit.mjs";
 import { requestContext as submissionContext } from "./platform/request.mjs";
 import { normalizeMeta } from "./platform/validate.mjs";
+import { verifyTurnstile } from "./platform/security/turnstile.mjs";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -38,6 +39,17 @@ export async function handleContactRequest(request, env = {}) {
   const inquiry = normalizeInquiry(payload);
   if (inquiry.website) {
     return json({ ok: true, message: "Thanks. Your inquiry has been received." });
+  }
+
+  // Anti-spam (graceful: skipped while TURNSTILE_SECRET_KEY is unset — see
+  // docs/cloudflare-deployment.md §5 for the widget-first rollout order).
+  const ts = await verifyTurnstile(
+    env,
+    payload["cf-turnstile-response"] || "",
+    request.headers.get("cf-connecting-ip") || "",
+  );
+  if (!ts.ok) {
+    return json({ ok: false, message: "Anti-spam verification failed. Please reload and try again." }, 400);
   }
 
   const validationError = validateInquiry(inquiry);

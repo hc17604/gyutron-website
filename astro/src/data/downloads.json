@@ -1,0 +1,89 @@
+{
+  "comment": "Resource-center manifest (single source of truth). Consumed by the download-request form (astro) AND the worker download endpoint (src/api/downloads.mjs). access_level: public = direct link | gated = capture request then short-lived link | manual_review = request only, team sends the file by email. All entries start as manual_review until the actual files are uploaded to R2 (gyutron-assets/<r2_key>) — then flip access_level. NEVER list a file as public/gated unless the object really exists in R2.",
+  "files": [
+    {
+      "id": "ds-gy-a90-touch",
+      "title": "GY-A90 Touch — Datasheet (PDF)",
+      "file_type": "pdf",
+      "product_model": "GY-A90 Touch",
+      "category": "datasheets",
+      "access_level": "manual_review",
+      "r2_key": "datasheets/gy-a90-touch.pdf",
+      "locale": "en",
+      "version": "v1",
+      "updated_at": "2026-06-10"
+    },
+    {
+      "id": "ds-gy-a80-ultra",
+      "title": "GY-A80 Ultra — Datasheet (PDF)",
+      "file_type": "pdf",
+      "product_model": "GY-A80 Ultra",
+      "category": "datasheets",
+      "access_level": "manual_review",
+      "r2_key": "datasheets/gy-a80-ultra.pdf",
+      "locale": "en",
+      "version": "v1",
+      "updated_at": "2026-06-10"
+    },
+    {
+      "id": "ds-gy-a60-max",
+      "title": "GY-A60 Max — Datasheet (PDF)",
+      "file_type": "pdf",
+      "product_model": "GY-A60 Max",
+      "category": "datasheets",
+      "access_level": "manual_review",
+      "r2_key": "datasheets/gy-a60-max.pdf",
+      "locale": "en",
+      "version": "v1",
+      "updated_at": "2026-06-10"
+    },
+    {
+      "id": "manual-gy-a90-touch",
+      "title": "GY-A90 Touch — User Manual (PDF)",
+      "file_type": "pdf",
+      "product_model": "GY-A90 Touch",
+      "category": "manuals",
+      "access_level": "manual_review",
+      "r2_key": "manuals/gy-a90-touch.pdf",
+      "locale": "en",
+      "version": "v1",
+      "updated_at": "2026-06-10"
+    },
+    {
+      "id": "brochure-gyutron-overview",
+      "title": "GYUTRON Product Overview — Brochure (PDF)",
+      "file_type": "pdf",
+      "product_model": "",
+      "category": "brochures",
+      "access_level": "manual_review",
+      "r2_key": "brochures/gyutron-product-overview.pdf",
+      "locale": "en",
+      "version": "v1",
+      "updated_at": "2026-06-10"
+    },
+    {
+      "id": "cert-ce-declarations",
+      "title": "CE Declarations of Conformity (per model)",
+      "file_type": "pdf",
+      "product_model": "",
+      "category": "certificates",
+      "access_level": "manual_review",
+      "r2_key": "certificates/ce-declarations.pdf",
+      "locale": "en",
+      "version": "v1",
+      "updated_at": "2026-06-10"
+    },
+    {
+      "id": "an-inline-vision-inspection",
+      "title": "Application Note — Inline Vision Inspection (PDF)",
+      "file_type": "pdf",
+      "product_model": "",
+      "category": "application-notes",
+      "access_level": "manual_review",
+      "r2_key": "application-notes/inline-vision-inspection.pdf",
+      "locale": "en",
+      "version": "v1",
+      "updated_at": "2026-06-10"
+    }
+  ]
+}

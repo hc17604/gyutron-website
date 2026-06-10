@@ -861,6 +861,18 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
     max-width: 720px;
 }
 
+.cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+/* .button-outline is white-on-dark by default; the cta-band is white, so re-tint. */
+.cta-band .button-outline {
+    border-color: var(--brand-purple);
+    color: var(--brand-purple);
+}
+
 .footer {
     background: var(--purple-950);
     color: rgba(255, 255, 255, 0.76);

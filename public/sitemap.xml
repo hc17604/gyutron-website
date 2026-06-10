@@ -211,6 +211,69 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/contact-sales.html"/>
   </url>
   <url>
+    <loc>https://www.gyutron.com/request-quote.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/request-quote.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/request-quote.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/request-quote.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/request-quote.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/de/request-quote.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/request-quote.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/request-quote.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/request-quote.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/request-quote.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/ja/request-quote.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/request-quote.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/request-quote.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/request-quote.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/request-quote.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/support/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/support/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/support/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/support/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/support/contact.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/de/support/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/support/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/support/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/support/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/support/contact.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/ja/support/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/support/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/support/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/support/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/support/contact.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/resources/download-request.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/resources/download-request.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/resources/download-request.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/resources/download-request.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/resources/download-request.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/de/resources/download-request.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/resources/download-request.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/resources/download-request.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/resources/download-request.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/resources/download-request.html"/>
+  </url>
+  <url>
+    <loc>https://www.gyutron.com/ja/resources/download-request.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/resources/download-request.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/resources/download-request.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.gyutron.com/ja/resources/download-request.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.gyutron.com/resources/download-request.html"/>
+  </url>
+  <url>
     <loc>https://www.gyutron.com/support.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.gyutron.com/support.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://www.gyutron.com/de/support.html"/>

@@ -1,0 +1,345 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { t, localizeUrl, type Locale } from '../i18n';
+import Footer from './Footer.astro';
+import { canonicalUrl } from '../utils/seo';
+import { createOrganizationJsonLd, breadcrumbFromHome } from '../utils/structured-data';
+import { getCatalog } from '../data/products';
+import { INDUSTRIES } from '../data/industries';
+import { TURNSTILE_SITE_KEY, TURNSTILE_SCRIPT_URL } from '../config/turnstile';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const path = '/request-quote.html';
+const structuredData = [
+  createOrganizationJsonLd(),
+  breadcrumbFromHome(locale, [{ name: t(locale, 'rfq.eyebrow'), url: canonicalUrl(locale, path) }]),
+];
+// Product categories (non-redirect) for the select — value = stable slug, label localized.
+const CATALOG: any = getCatalog(locale);
+const CATEGORY_OPTIONS = Object.keys(CATALOG)
+  .filter((slug) => CATALOG[slug]?.products?.length)
+  .map((slug) => ({ slug, label: CATALOG[slug].navLabel || CATALOG[slug].title }));
+// Timeline options — VALUE stays English (stable data for the Agent), label localized.
+const TIMELINE_OPTIONS = [
+  { value: 'As soon as possible', labelKey: 'rfq.tl.1' },
+  { value: '1-3 months', labelKey: 'rfq.tl.2' },
+  { value: '3-6 months', labelKey: 'rfq.tl.3' },
+  { value: 'Evaluating options', labelKey: 'rfq.tl.4' },
+];
+// Localized form status messages — same data-* injection pattern as ContactSales.
+const STATUS = ({
+  en: {
+    sending: 'Sending your quote request...',
+    success: 'Thanks. Your quote request has been received — a GYUTRON engineer will follow up by email.',
+    error: 'The request could not be sent right now.',
+    fallback: 'Please email info@gyutron.com or use WhatsApp: +852 69509801.',
+  },
+  de: {
+    sending: 'Ihre Angebotsanfrage wird gesendet …',
+    success: 'Danke. Ihre Angebotsanfrage ist eingegangen – ein GYUTRON-Ingenieur meldet sich per E-Mail.',
+    error: 'Die Anfrage konnte derzeit nicht gesendet werden.',
+    fallback: 'Bitte schreiben Sie an info@gyutron.com oder nutzen Sie WhatsApp: +852 69509801.',
+  },
+  ja: {
+    sending: 'お見積もり依頼を送信しています…',
+    success: 'ありがとうございます。お見積もり依頼を受け付けました。GYUTRON のエンジニアがメールでご連絡します。',
+    error: '現在リクエストを送信できませんでした。',
+    fallback: 'info@gyutron.com までメールするか、WhatsApp: +852 69509801 をご利用ください。',
+  },
+} as const)[locale];
+---
+<Layout
+  locale={locale}
+  path={path}
+  title={t(locale, 'seo.request-quote.title')}
+  description={t(locale, 'seo.request-quote.desc')}
+  ogTitle={t(locale, 'seo.request-quote.ogtitle')}
+  ogDescription={t(locale, 'seo.request-quote.ogdesc')}
+  pageCss={["/contact-page.css", "/mobile-navigation.css"]}
+  structuredData={structuredData}
+>
+  <main>
+    <section class="contact-hero">
+      <div class="container">
+        <span class="eyebrow">{t(locale, "rfq.eyebrow")}</span>
+        <h1>{t(locale, "rfq.title")}</h1>
+        <p>{t(locale, "rfq.sub")}</p>
+      </div>
+    </section>
+
+    <section class="container contact-layout" aria-label={t(locale, "rfq.title")}>
+      <aside class="info-panel">
+        <div class="section-label">{t(locale, "main.311")}</div>
+        <h2>{t(locale, "rfq.info.title")}</h2>
+        <p>{t(locale, "rfq.info.text")}</p>
+        <div class="contact-methods">
+          <a class="contact-method" href="mailto:info@gyutron.com">
+            <i class="fa-solid fa-envelope"></i>
+            <span><strong>{t(locale, "main.410")}</strong><span>info@gyutron.com</span></span>
+          </a>
+          <a class="contact-method" href="https://wa.me/85269509801">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span><strong>WhatsApp</strong><span>+852 69509801</span></span>
+          </a>
+        </div>
+        <p class="response-note">{t(locale, "main.314")}</p>
+      </aside>
+
+      <section class="form-panel">
+        <div class="section-label">{t(locale, "main.315")}</div>
+        <h2>{t(locale, "rfq.form.title")}</h2>
+        <p>{t(locale, "fx.required")}</p>
+        <form class="sales-form" id="rfqForm" data-locale={locale}
+          data-msg-sending={STATUS.sending}
+          data-msg-success={STATUS.success}
+          data-msg-error={STATUS.error}
+          data-msg-fallback={STATUS.fallback}
+        >
+          <label class="hidden-field" aria-hidden="true">
+            {t(locale, "main.411")}
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </label>
+          <div class="field-grid">
+            <label>
+              {t(locale, "main.412")}
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+            <label>
+              {t(locale, "main.182")}
+              <input type="text" name="company" autocomplete="organization" />
+            </label>
+          </div>
+          <div class="field-grid">
+            <label>
+              {t(locale, "main.413")}
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label>
+              {t(locale, "main.318")}
+              <input type="tel" name="phone" autocomplete="tel" />
+            </label>
+          </div>
+          <div class="field-grid">
+            <label>
+              {t(locale, "main.319")}
+              <input type="text" name="country" autocomplete="country-name" />
+            </label>
+            <label>
+              {t(locale, "rfq.f.industry")}
+              <select name="industry">
+                <option value="">{t(locale, "main.320")}</option>
+                {INDUSTRIES.map((ind) => (<option value={ind.slug}>{t(locale, ind.labelKey)}</option>))}
+              </select>
+            </label>
+          </div>
+          <div class="field-grid">
+            <label>
+              {t(locale, "rfq.f.cat")}
+              <select name="productCategory">
+                <option value="">{t(locale, "main.320")}</option>
+                {CATEGORY_OPTIONS.map((o) => (<option value={o.slug}>{o.label}</option>))}
+              </select>
+            </label>
+            <label>
+              {t(locale, "fx.model")}
+              <input type="text" name="productModel" placeholder={t(locale, "fx.modelPh")} />
+            </label>
+          </div>
+          <div class="field-grid">
+            <label>
+              {t(locale, "rfq.f.qty")}
+              <input type="text" name="quantity" placeholder={t(locale, "rfq.f.qtyPh")} />
+            </label>
+            <label>
+              {t(locale, "rfq.f.timeline")}
+              <select name="timeline">
+                <option value="">{t(locale, "main.320")}</option>
+                {TIMELINE_OPTIONS.map((o) => (<option value={o.value}>{t(locale, o.labelKey)}</option>))}
+              </select>
+            </label>
+          </div>
+          <label>
+            {t(locale, "rfq.f.app")}
+            <textarea name="applicationDescription" placeholder={t(locale, "rfq.f.appPh")} required minlength="12"></textarea>
+          </label>
+          {TURNSTILE_SITE_KEY && (
+            <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY}></div>
+          )}
+          <div class="form-status" id="rfqStatus" role="status" aria-live="polite"></div>
+          <div class="form-footer">
+            <button class="button button-primary" type="submit">{t(locale, "rfq.submit")} <i class="fa-solid fa-arrow-right"></i></button>
+            <p class="form-disclaimer">{t(locale, "main.323")}</p>
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <Footer slot="footer" locale={locale} />
+  {TURNSTILE_SITE_KEY && <script is:inline async defer src={TURNSTILE_SCRIPT_URL}></script>}
+
+  <script is:inline>
+    (() => {
+      const navItems = Array.from(document.querySelectorAll(".nav-item"));
+      const closeDelay = 520;
+      const isTouchNavigation = () => window.matchMedia("(hover: none)").matches;
+
+      const closeItem = (item) => {
+        window.clearTimeout(item.closeTimer);
+        item.closeTimer = window.setTimeout(() => {
+          item.classList.remove("is-open");
+          item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+        }, closeDelay);
+      };
+
+      const setActiveGroup = (groups, activeGroup) => {
+        groups.forEach((group) => group.classList.toggle("is-open", group === activeGroup));
+      };
+
+      const openItem = (item, groups) => {
+        navItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            window.clearTimeout(otherItem.closeTimer);
+            otherItem.classList.remove("is-open");
+            otherItem.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          }
+        });
+
+        window.clearTimeout(item.closeTimer);
+        item.classList.add("is-open");
+
+        if (groups.length && !groups.some((group) => group.classList.contains("is-open"))) {
+          setActiveGroup(groups, groups[0]);
+        }
+      };
+
+      navItems.forEach((item) => {
+        const menu = item.querySelector(".mega-menu");
+        if (!menu) {
+          return;
+        }
+
+        const groups = Array.from(item.querySelectorAll(".mega-link-group"));
+        const trigger = item.querySelector(".nav-trigger");
+        trigger?.addEventListener("click", (event) => {
+          if (isTouchNavigation() && !item.classList.contains("is-open")) {
+            event.preventDefault();
+            openItem(item, groups);
+          }
+        });
+
+        item.addEventListener("pointerenter", () => openItem(item, groups));
+        item.addEventListener("pointerleave", () => closeItem(item));
+        menu.addEventListener("pointerenter", () => openItem(item, groups));
+        menu.addEventListener("pointerleave", () => closeItem(item));
+        item.addEventListener("focusin", () => openItem(item, groups));
+        item.addEventListener("focusout", (event) => {
+          if (!item.contains(event.relatedTarget)) {
+            closeItem(item);
+          }
+        });
+
+        groups.forEach((group) => {
+          const groupTrigger = group.querySelector(".mega-link");
+          groupTrigger?.addEventListener("click", (event) => {
+            if (isTouchNavigation() && !group.classList.contains("is-open")) {
+              event.preventDefault();
+              openItem(item, groups);
+              setActiveGroup(groups, group);
+            }
+          });
+
+          group.addEventListener("pointerenter", () => {
+            openItem(item, groups);
+            setActiveGroup(groups, group);
+          });
+          group.addEventListener("focusin", () => {
+            openItem(item, groups);
+            setActiveGroup(groups, group);
+          });
+
+          group.querySelectorAll(".submenu a").forEach((link) => {
+            link.addEventListener("pointerenter", () => {
+              openItem(item, groups);
+              setActiveGroup(groups, group);
+            });
+            link.addEventListener("focus", () => {
+              openItem(item, groups);
+              setActiveGroup(groups, group);
+            });
+            link.addEventListener("click", (event) => {
+              event.stopPropagation();
+            });
+          });
+        });
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          navItems.forEach((item) => {
+            window.clearTimeout(item.closeTimer);
+            item.classList.remove("is-open");
+            item.querySelectorAll(".mega-link-group.is-open").forEach((group) => group.classList.remove("is-open"));
+          });
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    // Form logic lives in the forms layer (src/lib/forms/rfq.ts) — the page collects
+    // fields, calls submitRfq(), and renders the status. URL params prefill the form
+    // (e.g. /request-quote.html?productCategory=android-pda from a product page CTA).
+    import { submitRfq, normalizeRfqPayload } from '../lib/forms/rfq';
+
+    const rfqForm = document.getElementById("rfqForm") as HTMLFormElement | null;
+    const rfqStatus = document.getElementById("rfqStatus");
+
+    // Prefill from query params.
+    if (rfqForm) {
+      const q = new URLSearchParams(window.location.search);
+      for (const field of ["productCategory", "productModel", "industry"]) {
+        const v = q.get(field);
+        if (!v) continue;
+        const el = rfqForm.elements.namedItem(field) as HTMLInputElement | HTMLSelectElement | null;
+        if (el) el.value = v;
+      }
+    }
+
+    function setRfqStatus(message: string, type: string) {
+      if (!rfqStatus) return;
+      rfqStatus.textContent = message;
+      rfqStatus.className = `form-status is-visible ${type ? `is-${type}` : ""}`;
+    }
+
+    rfqForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!rfqForm.reportValidity()) return;
+
+      const submitButton = rfqForm.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+      const payload = normalizeRfqPayload(new FormData(rfqForm), rfqForm.dataset.locale || "en");
+
+      rfqForm.classList.add("is-sending");
+      if (submitButton) submitButton.disabled = true;
+      setRfqStatus(rfqForm.dataset.msgSending || "", "");
+
+      const result = await submitRfq(payload);
+      const body = result.ok ? result.data : null;
+
+      if (result.ok && body && body.ok) {
+        rfqForm.reset();
+        setRfqStatus(body.message || rfqForm.dataset.msgSuccess || "", "success");
+      } else {
+        const message =
+          (!result.ok && result.error && result.error.message) ||
+          (body && body.message) ||
+          rfqForm.dataset.msgError;
+        setRfqStatus(`${message} ${rfqForm.dataset.msgFallback}`, "error");
+      }
+
+      (window as any).turnstile?.reset?.();
+      rfqForm.classList.remove("is-sending");
+      if (submitButton) submitButton.disabled = false;
+    });
+  </script>
+</Layout>
