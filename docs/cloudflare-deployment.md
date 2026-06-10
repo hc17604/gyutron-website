@@ -16,6 +16,13 @@ creating resources and uncommenting their binding. One-time setup, ~10 minutes.
 > commands from the repo root). Local development and `--local` migrations work
 > without login; creating remote resources and deploying require it.
 
+> **One-shot activation (Windows):** steps 1–2 + secrets + deploy + verification are
+> automated in [`../scripts/activate-backend.ps1`](../scripts/activate-backend.ps1):
+> `powershell -ExecutionPolicy Bypass -File scripts\activate-backend.ps1`
+> After it succeeds, **commit + push the patched `wrangler.toml`** (the `database_id`
+> is not a secret) — otherwise the next push redeploys with the binding commented out
+> and the backend goes dormant again.
+
 ## 1. Create the D1 database
 
 ```bash
@@ -86,14 +93,27 @@ Uncomment `[[kv_namespaces]]` and paste the id. Without it the limiter is a no-o
 
 ## 5. Enable Turnstile on forms (optional)
 
-1. Create a Turnstile widget in the Cloudflare dashboard → get the **site key**
-   (public) and **secret key**.
-2. `npx wrangler secret put TURNSTILE_SECRET_KEY`.
-3. Add the Turnstile widget to the relevant Astro form(s) so the browser sends a
-   `cf-turnstile-response` token. **Do this step before setting the secret on the
-   live contact form** — otherwise the existing contact form (which has no widget yet)
-   would start failing verification. The RFQ/support/download handlers verify
-   gracefully (skip when the secret is unset).
+All four forms (contact / request-quote / support-contact / download-request) already
+carry the widget code, gated on a **BUILD-TIME** site key. Two keys, two different
+mechanics — do them in THIS order:
+
+1. Create a Turnstile widget in the Cloudflare dashboard → you get a **site key**
+   (public) and a **secret key**.
+2. **Site key = build-time.** Put it in `astro/.env` as
+   `PUBLIC_TURNSTILE_SITE_KEY=<site-key>`, then **rebuild + redeploy the site**
+   (`cd astro && npm run build`, sync changed `dist/*` → `public/`, commit + push).
+   The key is baked into the page HTML at build time — setting it anywhere in
+   Cloudflare does NOTHING; without a rebuild the widget will never appear.
+   While the env var is empty (the default), forms render with NO widget and
+   submissions are not blocked.
+3. **Secret key = runtime worker secret.** ONLY after step 2 is live:
+   `npx wrangler secret put TURNSTILE_SECRET_KEY`. The worker then enforces
+   verification on all four forms. If you set the secret while the widgets are not
+   live yet, every live form submission starts failing — that is why the order is
+   widget-first. (While the secret is unset, the worker skips verification.)
+4. Verify: submit a form in the browser (should pass) and
+   `curl -X POST .../api/rfq -d '{"name":"x","email":"a@b.com","applicationDescription":"twelve chars+"}'`
+   without a token (should now be rejected with "Anti-spam verification failed").
 
 ## 6. Deploy
 
