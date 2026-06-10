@@ -114,7 +114,11 @@ Status vocab: `new · approved · rejected · fulfilled · spam` · access_type:
 ### `GET /api/v1/events`
 Fields: `event_id, event_type, entity_type, entity_id, source, payload, created_at`
 (`payload` is the parsed JSON of the stored `payload_json`.)
-Event types (Phase 1): `lead.created · rfq.created · support.created · download.requested`.
+Event types: `lead.created · rfq.created · support.created · download.requested`
+(Phase 1) and `lead.status_changed · rfq.status_changed · support_request.status_changed ·
+download_request.status_changed` (Phase 3 — emitted when /admin changes a row's status;
+`payload` carries `old_status` / `new_status` / `source:"admin"`, so consumers can close
+follow-up loops without polling every table).
 `entity_id` is the related row's `public_id`. Filters: `since`, `cursor`, `limit`.
 
 ### `GET /api/v1/products` · `?locale=en|de|ja` · `?category=<slug>`

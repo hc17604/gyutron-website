@@ -15,6 +15,7 @@
 import { adminConfigured, isAuthed, verifyPassword, createSessionCookie, clearSessionCookie } from "../platform/security/admin-auth.mjs";
 import { getDb } from "../platform/db/client.mjs";
 import { list, count, getByPublicId, updateByPublicId, deleteByPublicId } from "../platform/db/repository.mjs";
+import { emitEvent } from "../platform/db/events.mjs";
 import { STATUS_VALUES, ACCESS_TYPES } from "../platform/schemas.mjs";
 import { toCsv, csvResponse } from "../platform/csv.mjs";
 import { rateLimit } from "../platform/security/ratelimit.mjs";
@@ -69,7 +70,7 @@ export async function handleAdmin(request, env, ctx, url) {
   // Detail / action: /admin/<resource>/<id>
   if (segments.length >= 2) {
     const id = decodeURIComponent(segments.slice(1).join("/"));
-    if (request.method === "POST") return doAction(request, db, resourceKey, id, secure);
+    if (request.method === "POST") return doAction(request, db, resourceKey, id, secure, env);
     return detailView(db, resourceKey, id);
   }
 
@@ -224,7 +225,10 @@ async function detailView(db, resourceKey, id) {
   return htmlResponse(page(`${resource.label} · ${short(id)}`, `${back}<table class="detail">${fields}</table>${actions}`, resourceKey));
 }
 
-async function doAction(request, db, resourceKey, id, secure) {
+/** events.entity_type values per admin resource (matches the *.created events). */
+const EVENT_ENTITY = { leads: "lead", rfqs: "rfq", support: "support_request", downloads: "download_request" };
+
+async function doAction(request, db, resourceKey, id, secure, env) {
   const resource = RESOURCES[resourceKey];
   if (!resource.editable) return redirect(`/admin/${resourceKey}`);
   const form = await request.formData().catch(() => null);
@@ -247,7 +251,24 @@ async function doAction(request, db, resourceKey, id, secure) {
       if (ACCESS_TYPES.includes(at)) patch.access_type = at;
     }
   }
+
+  // Status transitions feed the event stream so the Agent Workspace can close the
+  // follow-up loop ("replied" clears overdue alerts) without polling every table.
+  let oldStatus = null;
+  if (patch.status) {
+    const before = await getByPublicId(db, resource.table, id, ["status"]).catch(() => null);
+    oldStatus = before ? before.status : null;
+  }
   await updateByPublicId(db, resource.table, id, patch).catch((e) => console.error("admin update failed", e && e.message));
+  if (patch.status && oldStatus !== null && oldStatus !== patch.status) {
+    const entity = EVENT_ENTITY[resourceKey];
+    await emitEvent(db, env, {
+      eventType: `${entity}.status_changed`,
+      entityType: entity,
+      entityId: id,
+      payload: { public_id: id, old_status: oldStatus, new_status: patch.status, source: "admin" },
+    });
+  }
   return redirect(`/admin/${resourceKey}/${encodeURIComponent(id)}`);
 }
 
