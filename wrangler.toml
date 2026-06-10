@@ -29,10 +29,9 @@ database_id = "d79a8073-0d51-4a80-ab62-e18d8b305801"
 migrations_dir = "migrations"
 
 # --- R2 (datasheets / manuals / brochures / certificates / application-notes)
-#   wrangler r2 bucket create gyutron-assets
-# [[r2_buckets]]
-# binding = "R2"
-# bucket_name = "gyutron-assets"
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "gyutron-assets"
 
 # --- KV (optional: form rate-limiting; without it the limiter is a no-op)
 #   wrangler kv namespace create RATE_LIMIT     # prints id 鈫?paste below
