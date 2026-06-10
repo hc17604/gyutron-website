@@ -84,8 +84,14 @@ export async function handleFormRequest(formKey, request, env, _ctx) {
     created_at: now,
     updated_at: now,
   };
-  // access_type is a server-side policy decision, never client-supplied.
-  if (formKey === "download") row.access_type = "manual_review";
+  // access_type is a server-side policy decision, never client-supplied. The
+  // resource-center manifest is the policy source; unknown files = manual_review.
+  let manifestEntry = null;
+  if (formKey === "download") {
+    const { findManifestEntry } = await import("./downloads.mjs");
+    manifestEntry = await findManifestEntry(row.requested_file).catch(() => null);
+    row.access_type = (manifestEntry && manifestEntry.access_level) || "manual_review";
+  }
 
   const db = getDb(env);
   if (!db) {
@@ -105,8 +111,15 @@ export async function handleFormRequest(formKey, request, env, _ctx) {
         email: row.email || null,
         locale: row.locale || null,
         source_page: row.source_page || null,
+        ...(formKey === "download" ? { requested_file: row.requested_file, access_type: row.access_type } : {}),
       },
     });
+    // Resource center: public/gated files can be delivered immediately (P5).
+    if (formKey === "download" && manifestEntry) {
+      const { issueDownload } = await import("./downloads.mjs");
+      const download = await issueDownload(env, manifestEntry).catch(() => ({ status: "received" }));
+      return formOk(THANKYOU, { id: publicId, download });
+    }
     return formOk(THANKYOU, { id: publicId });
   } catch (e) {
     console.error(`${formKey} submission failed:`, e && e.message);

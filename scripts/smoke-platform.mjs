@@ -16,6 +16,7 @@ import { extractApiKey, authenticate, scopeAllows } from "../src/platform/securi
 import { insert, list, updateByPublicId, project } from "../src/platform/db/repository.mjs";
 import { formOk, apiData, apiError } from "../src/platform/response.mjs";
 import { handleProductsApi } from "../src/api/products.mjs";
+import { findManifestEntry, issueDownload, handleDownload } from "../src/api/downloads.mjs";
 
 let passed = 0;
 const failures = [];
@@ -206,6 +207,45 @@ await test("products api normalizes catalog", async () => {
   assert.ok("datasheet_url" in p && "shop_url" in p); // reserved fields present
   const ids = body.data.map((x) => x.id);
   assert.equal(ids.length, new Set(ids).size, "no duplicate product ids (redirect aliases skipped)");
+});
+
+/* ------------------------- resource center (P5) --------------------------- */
+await test("downloads manifest lookup", async () => {
+  const entry = await findManifestEntry("ds-gy-a90-touch");
+  assert.ok(entry, "seed entry exists");
+  assert.equal(entry.category, "datasheets");
+  assert.equal(await findManifestEntry("nope-" + Date.now()), null);
+  assert.equal(await findManifestEntry(""), null);
+});
+
+await test("issueDownload degrades without R2 / by access level", async () => {
+  const entry = { id: "x", access_level: "public", r2_key: "datasheets/x.pdf" };
+  // no R2 binding → request received, no link
+  assert.deepEqual(await issueDownload({}, entry), { status: "received" });
+  // R2 + public → direct link
+  const pub = await issueDownload({ R2: {} }, entry);
+  assert.equal(pub.status, "ready");
+  assert.equal(pub.url, "/api/download/x");
+  // R2 + gated + secret → tokenized link; without a secret → received
+  const gatedEntry = { ...entry, access_level: "gated" };
+  const gated = await issueDownload({ R2: {}, IP_HASH_SALT: "s" }, gatedEntry);
+  assert.equal(gated.status, "ready");
+  assert.match(gated.url, /^\/api\/download\/x\?token=\d+\./);
+  assert.deepEqual(await issueDownload({ R2: {} }, gatedEntry), { status: "received" });
+  // manual_review never yields a link
+  assert.deepEqual(await issueDownload({ R2: {}, IP_HASH_SALT: "s" }, { ...entry, access_level: "manual_review" }), { status: "received" });
+});
+
+await test("handleDownload gates by access level + token", async () => {
+  const get = (u) => new Request(u);
+  const u = (s) => new URL(s);
+  // manual_review → 403 even with R2
+  const env = { R2: { get: async () => null }, IP_HASH_SALT: "s" };
+  const mr = await handleDownload(get("https://x/api/download/ds-gy-a90-touch"), env, {}, u("https://x/api/download/ds-gy-a90-touch"));
+  assert.equal(mr.status, 403);
+  // unknown id → 404
+  const nf = await handleDownload(get("https://x/api/download/zzz"), env, {}, u("https://x/api/download/zzz"));
+  assert.equal(nf.status, 404);
 });
 
 /* --------------------------------- report --------------------------------- */

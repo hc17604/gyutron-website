@@ -18,6 +18,12 @@ export default {
       if (pathname === "/api/support") return handleFormRequest("support", request, env, ctx);
       if (pathname === "/api/download-request") return handleFormRequest("download", request, env, ctx);
 
+      // ---- Resource center file delivery (manifest + R2; see src/api/downloads.mjs) ----
+      if (pathname.startsWith("/api/download/")) {
+        const { handleDownload } = await import("./api/downloads.mjs");
+        return handleDownload(request, env, ctx, url);
+      }
+
       // ---- Read-only Data API (consumed by the Agent Workspace) ----
       if (pathname === "/api/v1" || pathname.startsWith("/api/v1/")) {
         return handleDataApi(request, env, ctx, url);

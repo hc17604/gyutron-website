@@ -155,6 +155,14 @@ curl -H "Authorization: Bearer $KEY" "https://www.gyutron.com/api/v1/events?curs
 curl -H "Authorization: Bearer $KEY" "https://www.gyutron.com/api/v1/products?locale=de"
 ```
 
+## Related (not part of the read-only v1 surface)
+
+`GET /api/download/:id` delivers resource-center files (public directly; gated via a
+short-lived token returned by `POST /api/download-request` as `download.url`;
+manual_review never). It is a site feature, not an Agent data feed — agents should
+read `download_requests` / `events` instead. See `docs/cloudflare-deployment.md` §3
+and `src/api/downloads.mjs`.
+
 ## Replication note (other customers)
 
 A second data source implements the same envelope, the same auth header, the same
