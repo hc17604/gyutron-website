@@ -9,6 +9,12 @@ export default {
     const pathname = url.pathname;
     const isShopHost = url.hostname === "shop.gyutron.com";
 
+    // Shop behavior beacon — available on BOTH hosts (the shop posts same-origin).
+    if (pathname === "/api/shop-event") {
+      const { handleShopEvent } = await import("./api/shop-events.mjs");
+      return handleShopEvent(request, env);
+    }
+
     // Backend routes apply on the brand host only; the storefront host is
     // handled entirely by the shop block below.
     if (!isShopHost) {
@@ -63,7 +69,20 @@ export default {
         assetUrl.pathname = assetUrl.pathname.slice(0, -5);
       }
 
-      return env.ASSETS.fetch(new Request(assetUrl, request));
+      // Inject the minimal behavior beacon into shop HTML (zero edits to the
+      // generated shop files; analytics lives in /shop-analytics.js).
+      const shopResponse = await env.ASSETS.fetch(new Request(assetUrl, request));
+      const contentType = shopResponse.headers.get("content-type") || "";
+      if (contentType.includes("text/html")) {
+        return new HTMLRewriter()
+          .on("head", {
+            element(el) {
+              el.append('<script src="/shop-analytics.js"></script>', { html: true });
+            },
+          })
+          .transform(shopResponse);
+      }
+      return shopResponse;
     }
 
     return env.ASSETS.fetch(request);

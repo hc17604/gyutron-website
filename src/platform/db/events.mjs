@@ -20,7 +20,7 @@ export async function emitEvent(db, env, evt) {
     event_type: evt.eventType,
     entity_type: evt.entityType ?? null,
     entity_id: evt.entityId ?? null,
-    source: dataSource(env).id,
+    source: evt.source || dataSource(env).id,
     payload_json: evt.payload ? JSON.stringify(evt.payload) : null,
     created_at: new Date().toISOString(),
   };
