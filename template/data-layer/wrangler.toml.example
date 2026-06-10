@@ -1,0 +1,33 @@
+# Customer Data Layer — wrangler config TEMPLATE.
+# Copy to deployments/<customer>/wrangler.toml and fill every <PLACEHOLDER>.
+# NOTHING customer-specific lives in code — identity comes from [vars] below.
+
+name = "<CUSTOMER>-data-layer"            # e.g. "acme-demo-data-layer"
+main = "../../src/worker.mjs"             # the shared template worker (thin entry)
+compatibility_date = "2026-05-18"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+[vars]
+DATA_SOURCE_ID = "<customer>-website"     # e.g. "acme-website" — appears in API meta.source
+DATA_SOURCE_NAME = "<Customer Brand>"     # e.g. "ACME Industrial"
+DATA_SOURCE_KIND = "industrial-brand-website"
+# CONTACT_TO_EMAIL = "sales@<customer>.com"   # optional contact notification recipient
+
+# --- D1 (create first: npx wrangler d1 create <customer>_db) ---
+[[d1_databases]]
+binding = "DB"
+database_name = "<customer>_db"
+database_id = "<PASTE-DATABASE-ID>"
+migrations_dir = "../../../../migrations"   # shared, versioned schema (repo root)
+
+# --- optional: KV rate limiting / R2 resource center (same as the main site) ---
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT"
+# id = "<PASTE-KV-ID>"
+
+# SECRETS (npx wrangler secret put <NAME> --config <this file>):
+#   DATA_API_KEY  ADMIN_PASSWORD  IP_HASH_SALT
+#   optional: ADMIN_SECRET  TURNSTILE_SECRET_KEY  RESEND_API_KEY  CONTACT_FROM_EMAIL

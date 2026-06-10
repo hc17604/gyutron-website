@@ -15,8 +15,10 @@ import { recordSubmission } from "../platform/db/submit.mjs";
 import { verifyTurnstile } from "../platform/security/turnstile.mjs";
 import { rateLimit } from "../platform/security/ratelimit.mjs";
 import { formOk, formError, json } from "../platform/response.mjs";
+import { dataSource } from "../platform/config.mjs";
 
-const THANKYOU = "Thanks. Your request has been received — the GYUTRON team will follow up by email.";
+// Brand name comes from DATA_SOURCE_NAME (customer-agnostic core rule).
+const thankyou = (env) => `Thanks. Your request has been received — the ${dataSource(env).name} team will follow up by email.`;
 
 function turnstileToken(payload) {
   return payload["cf-turnstile-response"] || payload.turnstileToken || payload.turnstile || "";
@@ -49,7 +51,7 @@ export async function handleFormRequest(formKey, request, env, _ctx) {
   }
 
   // Honeypot: silently accept so bots get no signal.
-  if (isHoneypotTripped(payload)) return formOk(THANKYOU);
+  if (isHoneypotTripped(payload)) return formOk(thankyou(env));
 
   const reqCtx = await requestContext(request, env);
 
@@ -118,9 +120,9 @@ export async function handleFormRequest(formKey, request, env, _ctx) {
     if (formKey === "download" && manifestEntry) {
       const { issueDownload } = await import("./downloads.mjs");
       const download = await issueDownload(env, manifestEntry).catch(() => ({ status: "received" }));
-      return formOk(THANKYOU, { id: publicId, download });
+      return formOk(thankyou(env), { id: publicId, download });
     }
-    return formOk(THANKYOU, { id: publicId });
+    return formOk(thankyou(env), { id: publicId });
   } catch (e) {
     console.error(`${formKey} submission failed:`, e && e.message);
     return formError("We couldn't save your request right now. Please email info@gyutron.com.", 500);

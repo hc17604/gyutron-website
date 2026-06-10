@@ -1,0 +1,19 @@
+# ACME Industrial — DEMO data-layer instance (mock customer; replication proof).
+name = "acme-demo-data-layer"
+main = "../../src/worker.mjs"
+compatibility_date = "2026-05-18"
+compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
+
+[vars]
+DATA_SOURCE_ID = "acme-website"
+DATA_SOURCE_NAME = "ACME Industrial (demo)"
+DATA_SOURCE_KIND = "industrial-brand-website"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "acme_demo_db"
+database_id = "dcae1e57-216e-42f9-b1be-7c4e6733d90a"
+migrations_dir = "../../../../migrations"
