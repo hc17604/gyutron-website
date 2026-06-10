@@ -44,7 +44,7 @@ export async function handleAdmin(request, env, ctx, url) {
   const segments = url.pathname.replace(/^\/admin\/?/, "").split("/").filter(Boolean);
 
   // Auth actions first.
-  if (segments[0] === "login" && request.method === "POST") return doLogin(request, env, secure);
+  if (segments[0] === "login" && request.method === "POST") return doLogin(request, env, secure, getDb(env));
   if (segments[0] === "logout" && request.method === "POST") return doLogout(secure);
 
   // Everything else requires a session.
@@ -80,7 +80,7 @@ export async function handleAdmin(request, env, ctx, url) {
 
 /* ------------------------------- auth flow -------------------------------- */
 
-async function doLogin(request, env, secure) {
+async function doLogin(request, env, secure, db) {
   // Throttle login attempts per IP to blunt online brute force. No-op without a
   // RATE_LIMIT KV binding, so a strong ADMIN_PASSWORD is still required.
   const ctx = await requestContext(request, env);
@@ -89,7 +89,15 @@ async function doLogin(request, env, secure) {
 
   const form = await request.formData().catch(() => null);
   const password = form ? form.get("password") : "";
-  if (await verifyPassword(env, password)) {
+  const ok = await verifyPassword(env, password);
+  // Audit trail (never the password; country only — same minimization as forms).
+  await emitEvent(db, env, {
+    eventType: ok ? "admin.login.succeeded" : "admin.login.failed",
+    entityType: "admin",
+    entityId: "login",
+    payload: { ip_country: ctx.ip_country || null },
+  });
+  if (ok) {
     return redirect("/admin", await createSessionCookie(env, { secure }));
   }
   return htmlResponse(loginPage(env, "Incorrect password."), 401);
@@ -236,6 +244,12 @@ async function doAction(request, db, resourceKey, id, secure, env) {
 
   if (action === "delete") {
     await deleteByPublicId(db, resource.table, id).catch((e) => console.error("admin delete failed", e && e.message));
+    await emitEvent(db, env, {
+      eventType: "admin.record_deleted",
+      entityType: EVENT_ENTITY[resourceKey],
+      entityId: id,
+      payload: { public_id: id, source: "admin" },
+    });
     return redirect(`/admin/${resourceKey}`);
   }
 

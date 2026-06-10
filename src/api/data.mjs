@@ -54,6 +54,17 @@ export async function handleDataApi(request, env, ctx, url) {
   const auth = await authenticate(request, env, db);
   if (!auth.ok) return apiError(env, "unauthorized", "Missing or invalid API key.", 401);
 
+  // Per-key rate limit (KV; graceful no-op without the binding). The limiter key
+  // is a hash of the credential — the key itself is never stored.
+  {
+    const { extractApiKey } = await import("../platform/security/auth.mjs");
+    const { sha256Hex } = await import("../platform/security/hash.mjs");
+    const { rateLimit } = await import("../platform/security/ratelimit.mjs");
+    const keyHash = (await sha256Hex(extractApiKey(request) || "")).slice(0, 16);
+    const rl = await rateLimit(env, `data-api:${keyHash}`, { limit: 120, windowSeconds: 60 });
+    if (!rl.ok) return apiError(env, "rate_limited", "Too many requests for this key.", 429);
+  }
+
   if (path === "/metadata" || path === "/metadata/") {
     if (!scopeAllows(auth.scope, "read:metadata")) return forbidden(env);
     return handleMetadata(env, db);

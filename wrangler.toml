@@ -6,6 +6,10 @@ compatibility_flags = ["nodejs_compat"]
 [observability]
 enabled = true
 
+# Daily D1 backup -> R2 backups/ (02:00 Beijing = 18:00 UTC). src/api/backup.mjs.
+[triggers]
+crons = ["0 18 * * *"]
+
 [assets]
 directory = "./public"
 binding = "ASSETS"

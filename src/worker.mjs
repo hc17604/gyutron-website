@@ -87,4 +87,10 @@ export default {
 
     return env.ASSETS.fetch(request);
   },
+
+  // Daily D1 → R2 backup (see src/api/backup.mjs; [triggers] in wrangler.toml).
+  async scheduled(event, env, ctx) {
+    const { runBackup } = await import("./api/backup.mjs");
+    ctx.waitUntil(runBackup(env));
+  },
 };
