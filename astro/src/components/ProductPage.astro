@@ -71,7 +71,10 @@ const structuredData = [
               </dl>
               <div class="product-tags">{(product.tags || []).map((tag: string) => (<span>{tagText(locale, tag)}</span>))}</div>
               <div class="product-actions">
-                <a href={localizeUrl(locale, '/contact-sales.html')}>{t(locale, 'main.256')}</a>
+                <a href={localizeUrl(locale, '/contact-sales.html')}>
+                  <span class="product-action-full">{t(locale, 'main.256')}</span>
+                  <span class="product-action-short">{t(locale, 'pp.card.ctaShort')}</span>
+                </a>
               </div>
             </div>
           </article>

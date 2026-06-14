@@ -796,6 +796,7 @@
   "pp.compare.rugged": "Robustheitsklasse",
   "pp.compare.fbCapability": "Industrielle Datenerfassung",
   "pp.compare.fbRugged": "Projektabhängig",
+  "pp.card.ctaShort": "Angebot",
   "home.fc.heading": "Eine Plattform für industrielle Intelligenz",
   "home.fc.sub": "Smart-Kameras, Sensoren, robuste Datenerfassung, Beleuchtung und Edge-Steuerung — verbunden zu einem Stack, der Linie, Daten und Entscheidungen synchron hält.",
   "home.fc.cameras.title": "Bildverarbeitung",

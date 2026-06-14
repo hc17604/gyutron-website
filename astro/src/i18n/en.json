@@ -796,6 +796,7 @@
   "pp.compare.rugged": "Rugged rating",
   "pp.compare.fbCapability": "Industrial data capture",
   "pp.compare.fbRugged": "Project-based",
+  "pp.card.ctaShort": "Quote",
   "home.fc.heading": "One platform for industrial intelligence",
   "home.fc.sub": "Smart cameras, sensors, rugged capture, lighting, and edge control — connected into one stack that keeps your line, data, and decisions in sync.",
   "home.fc.cameras.title": "Machine Vision",
