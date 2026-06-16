@@ -172,13 +172,32 @@ body.home .link-arrow { text-transform: uppercase; letter-spacing: .04em; font-w
 body.home .link-arrow i { transition: transform .25s ease; }
 body.home .link-arrow:hover i { transform: translateX(5px); }
 
-/* ---- Featured capabilities: industry tags + business CTA bar (hard-edged) ---- */
-body.home .feat-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 20px; margin: 2px 0 30px; }
-body.home .feat-industries { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-body.home .feat-industries__label { font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted, #6f687a); margin-right: 2px; }
-body.home .feat-tag { font-size: 12.5px; font-weight: 700; color: var(--purple-700, #4b177f); background: var(--violet-soft, #efe8ff); border: 1px solid rgba(111,45,189,.2); border-radius: 0; padding: 6px 11px; }
-body.home .feat-bar .button { white-space: nowrap; }
-@media (max-width: 720px) { body.home .feat-bar { flex-direction: column; align-items: stretch; } body.home .feat-bar .button { width: 100%; } }
+/* ---- Featured capabilities: tighter lead-in + industrial deployment tags ---- */
+body.home .section-products { padding-top: clamp(50px, 5vw, 66px); }
+body.home .section-products .section-head { margin-bottom: 30px; }
+body.home .feat-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 22px; margin: 0 0 32px; }
+body.home .feat-industries { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+body.home .feat-industries__label {
+  display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px 0 12px; margin-right: 3px;
+  border-left: 3px solid var(--hx-accent, #8a63d2); background: var(--ink, #17121f); color: #fff;
+  font-size: 11px; font-weight: 850; letter-spacing: .11em; line-height: 1; text-transform: uppercase;
+}
+body.home .feat-tag {
+  position: relative; display: inline-flex; align-items: center; min-height: 34px; padding: 0 11px 0 13px;
+  border: 1px solid rgba(23,18,31,.18); background: linear-gradient(180deg, #fff 0%, #f8f6fb 100%);
+  color: #20172d; box-shadow: inset 3px 0 0 rgba(138,99,210,.9), inset 0 -2px 0 rgba(75,46,131,.08), 0 8px 22px rgba(31,11,53,.055);
+  font-size: 12px; font-weight: 850; letter-spacing: .02em;
+}
+body.home .feat-bar .button { white-space: nowrap; padding-inline: 16px; }
+@media (max-width: 720px) {
+  body.home .section-products { padding-top: 44px; }
+  body.home .section-products .section-head { margin-bottom: 24px; }
+  body.home .feat-bar { flex-direction: column; align-items: stretch; margin-bottom: 26px; }
+  body.home .feat-industries { gap: 6px; }
+  body.home .feat-industries__label { width: 100%; }
+  body.home .feat-tag { flex: 1 1 calc(50% - 6px); min-width: min(160px, 100%); }
+  body.home .feat-bar .button { width: 100%; }
+}
 
 /* ---- Quality & Responsibility (industrial trust module; replaces ESG cards) ---- */
 body.home .qr-section { padding: 64px 0; }
