@@ -168,8 +168,8 @@ body.home .feature-image img, body.home .compact-image img, body.home .resource-
 body.home .feature-product:hover .feature-image img, body.home .compact-product:hover .compact-image img,
 body.home .resource-card:hover .resource-image img { transform: scale(1.05); }
 
-/* Robot Vision Workcells 大图: 纵向放大、裁掉底部传送带, 让机械臂末端相机落到画面中部(仅作用于大 feature 图, 不影响 compact/resource) */
-body.home .feature-product .feature-image img { height: 122%; object-position: 46% center; }
+/* Robot Vision Workcells 大图: 不缩放(100%), 仅横向偏移裁切窗口让机械臂末端相机水平居中(仅作用于大 feature 图, 不影响 compact/resource) */
+body.home .feature-product .feature-image img { object-position: 35% center; }
 
 body.home .link-arrow { text-transform: uppercase; letter-spacing: .04em; font-weight: 800; }
 body.home .link-arrow i { transition: transform .25s ease; }
