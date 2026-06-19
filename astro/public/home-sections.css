@@ -164,16 +164,13 @@ body.home .feature-product:hover, body.home .compact-product:hover, body.home .r
   transform: translateY(-4px); box-shadow: 0 22px 48px rgba(31,11,53,.12); border-color: var(--hx-accent); }
 body.home .feature-image, body.home .compact-image, body.home .resource-image { overflow: hidden; }
 body.home .feature-image img, body.home .compact-image img, body.home .resource-image img {
-  display: block; width: 100%; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  display: block; width: 100%; filter: none; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
 body.home .feature-product:hover .feature-image img, body.home .compact-product:hover .compact-image img,
 body.home .resource-card:hover .resource-image img { transform: scale(1.05); }
-
-body.home .compact-image--vision { position: relative; background: #12051f; }
-body.home .compact-image--vision img { filter: brightness(1.14) saturate(1.04) contrast(1.03); }
-body.home .compact-image--vision::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.05) 42%, rgba(255,255,255,0) 64%);
-  mix-blend-mode: screen;
+body.home .section-products .feature-image::after,
+body.home .section-products .compact-image::after {
+  content: none;
+  background: none;
 }
 
 /* Robot Vision Workcells 大图: 不缩放(100%), 仅横向偏移裁切窗口让机械臂末端相机水平居中(仅作用于大 feature 图, 不影响 compact/resource) */
