@@ -92,7 +92,7 @@ export const HEADER_NAV: HeaderNavItem[] = [
             {
               link: { href: '/area-scan-cameras.html', titleKey: 'main.025', descKey: 'main.026' },
               submenu: {
-                image: '/product-smart-camera-detail.png',
+                image: '/product-menu-machine-vision-systems.png',
                 links: [
                   { href: '/area-scan-cameras.html', titleKey: 'main.027', descKey: 'main.028' },
                   { href: '/smart-vision-sensors.html', titleKey: 'main.394', descKey: 'main.029' },
