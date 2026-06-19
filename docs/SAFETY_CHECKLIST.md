@@ -29,6 +29,14 @@ These are single sources of truth — edit the DATA, never re-hardcode in compon
 `data/products.ts` (products), `data/faq.ts` (FAQ), `data/solutions.ts` (solutions), `data/heroSlides.ts`
 (hero), `data/pages.ts` (page registry), `data/assets.ts` (site images).
 
+## Image reuse breaks visual ownership
+
+Content imagery must be single-use and slot-owned. Do **not** point a new homepage card, nav panel,
+product-page hero, SKU render, solution hero, or news/partner visual at an existing content image just
+because it looks close enough. Create a separately named file for that placement, then update only that
+placement's data/component reference. Shared baseline UI assets such as the logo, favicon, payment marks,
+social/share image, and icon libraries are the exceptions.
+
 ## Header is a hard contract
 
 The rendered header DOM (classes / nesting / order) is depended on by the desktop CSS, the inline nav

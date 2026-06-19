@@ -94,6 +94,13 @@ wrappers and need no edit. Then `astro build`.
 
 ## Images & assets
 
+**Content imagery is single-use.** Every content/marketing/product/navigation image slot must have its
+own purpose-named asset file. Do **not** reuse one content image in two places (for example homepage card
+and mega-menu panel, product-page hero and nav panel, SKU image and category hero, or one broad scene cropped
+into multiple slots). If a second slot needs a similar visual, create a second asset with a slot-specific
+name and wire only that slot to it. Shared baseline UI assets such as the GYUTRON logo, favicon, payment
+marks, social/share image, and icon libraries are the exceptions.
+
 **Site-level shared images** (logos, the default social-share/og image, payment marks, homepage hero
 backgrounds and the hero industry collage) are indexed in **`src/data/assets.ts`** (`SITE_IMAGES`,
 typed by `src/types/asset.ts` `SiteImage`). Each entry records `src`, localized `alt` (empty for
