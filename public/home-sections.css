@@ -169,11 +169,13 @@ body.home .feature-product:hover .feature-image img, body.home .compact-product:
 body.home .resource-card:hover .resource-image img { transform: scale(1.05); }
 
 body.home .compact-image--vision { position: relative; background: #12051f; }
-body.home .compact-image--vision img { filter: brightness(1.14) saturate(1.04) contrast(1.03); }
+body.home .compact-image--vision img { filter: brightness(.78) saturate(.9) contrast(1.06); }
 body.home .compact-image--vision::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.05) 42%, rgba(255,255,255,0) 64%);
-  mix-blend-mode: screen;
+  background:
+    linear-gradient(180deg, rgba(18,5,31,.08) 0%, rgba(18,5,31,.28) 52%, rgba(18,5,31,.56) 100%),
+    linear-gradient(90deg, rgba(18,5,31,.18) 0%, rgba(18,5,31,0) 42%, rgba(18,5,31,.08) 100%);
+  mix-blend-mode: multiply;
 }
 
 /* Robot Vision Workcells 大图: 不缩放(100%), 仅横向偏移裁切窗口让机械臂末端相机水平居中(仅作用于大 feature 图, 不影响 compact/resource) */
