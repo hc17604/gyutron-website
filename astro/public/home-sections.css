@@ -168,9 +168,9 @@ body.home .feature-image img, body.home .compact-image img, body.home .resource-
 body.home .feature-product:hover .feature-image img, body.home .compact-product:hover .compact-image img,
 body.home .resource-card:hover .resource-image img { transform: scale(1.05); }
 
-body.home .compact-image--vision { position: relative; background: #12051f; }
-body.home .compact-image--vision img { filter: brightness(.78) saturate(.9) contrast(1.06); }
-body.home .compact-image--vision::after {
+body.home .compact-image--vision, body.home .compact-image--data { position: relative; background: #12051f; }
+body.home .compact-image--vision img, body.home .compact-image--data img { filter: brightness(.78) saturate(.9) contrast(1.06); }
+body.home .compact-image--vision::after, body.home .compact-image--data::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
     linear-gradient(180deg, rgba(18,5,31,.08) 0%, rgba(18,5,31,.28) 52%, rgba(18,5,31,.56) 100%),
