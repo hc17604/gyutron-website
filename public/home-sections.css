@@ -188,11 +188,17 @@ body.home .link-arrow:hover i { transform: translateX(5px); }
 /* ---- Featured capabilities: tighter lead-in + industrial deployment tags ---- */
 body.home .section-products { padding-top: clamp(50px, 5vw, 66px); }
 body.home .section-products .section-head { align-items: start; margin-bottom: 28px; }
-body.home .section-products .section-head p {
-  margin: 40px 0 0; max-width: 48ch;
+body.home .section-products .section-copy { margin: 40px 0 0; max-width: 48ch; }
+body.home .section-products .section-copy p {
+  margin: 0;
   color: #5e576a; font-size: 15.5px; line-height: 1.55;
 }
-body.home .feat-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 22px; margin: 0 0 32px; }
+body.home .section-products .section-copy__cta {
+  margin-top: 24px; width: min(100%, 390px); justify-content: space-between;
+  white-space: nowrap; padding-inline: 18px; background: var(--brand-purple, #4b2e83); box-shadow: none;
+}
+body.home .section-products .section-copy__cta:hover { background: #3f256f; box-shadow: 0 10px 22px rgba(75,46,131,.22); }
+body.home .feat-bar { display: flex; align-items: center; margin: 0 0 32px; }
 body.home .feat-industries {
   display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; min-height: 42px;
   border: 1px solid rgba(31,11,53,.15); border-left: 0;
@@ -213,18 +219,16 @@ body.home .feat-tag::before {
   content: ""; width: 5px; height: 5px; margin-right: 10px; flex: 0 0 auto;
   background: var(--hx-accent, #8a63d2);
 }
-body.home .feat-bar .button { white-space: nowrap; padding-inline: 16px; }
-body.home .feat-bar .button-primary { background: var(--brand-purple, #4b2e83); box-shadow: none; }
-body.home .feat-bar .button-primary:hover { background: #3f256f; box-shadow: 0 10px 22px rgba(75,46,131,.22); }
 @media (max-width: 720px) {
   body.home .section-products { padding-top: 44px; }
   body.home .section-products .section-head { margin-bottom: 24px; }
-  body.home .section-products .section-head p { margin-top: 0; font-size: 15px; }
+  body.home .section-products .section-copy { margin-top: 0; max-width: none; }
+  body.home .section-products .section-copy p { font-size: 15px; }
+  body.home .section-products .section-copy__cta { width: 100%; margin-top: 18px; }
   body.home .feat-bar { flex-direction: column; align-items: stretch; margin-bottom: 26px; }
   body.home .feat-industries { border-left: 1px solid rgba(31,11,53,.15); box-shadow: 0 10px 22px rgba(31,11,53,.055); }
   body.home .feat-industries__label { width: 100%; min-height: 36px; }
   body.home .feat-tag { flex: 1 1 50%; min-width: min(160px, 100%); padding-inline: 13px; border-top: 1px solid rgba(31,11,53,.09); }
-  body.home .feat-bar .button { width: 100%; }
 }
 
 /* ---- Quality & Responsibility (industrial trust module; replaces ESG cards) ---- */

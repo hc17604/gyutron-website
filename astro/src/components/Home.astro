@@ -52,7 +52,10 @@ const news = getLatestNews(3);
                         <span class="eyebrow">{t(locale, "home.feat.eyebrow")}</span>
                         <h2>{t(locale, "home.feat.title")}</h2>
                     </div>
-                    <p>{t(locale, "home.feat.sub")}</p>
+                    <div class="section-copy">
+                        <p>{t(locale, "home.feat.sub")}</p>
+                        <a class="button button-primary section-copy__cta" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "home.feat.cta")} <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
                 </div>
 
                 <div class="feat-bar">
@@ -64,7 +67,6 @@ const news = getLatestNews(3);
                         <span class="feat-tag">{t(locale, "home.feat.tag4")}</span>
                         <span class="feat-tag">{t(locale, "home.feat.tag5")}</span>
                     </div>
-                    <a class="button button-primary" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "home.feat.cta")} <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <div class="product-showcase">
