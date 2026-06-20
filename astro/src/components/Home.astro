@@ -25,7 +25,11 @@ const values = [
   { icon: 'fa-earth-asia', t: 'home.x.val3.t', d: 'home.x.val3.d' },
   { icon: 'fa-handshake', t: 'home.x.val4.t', d: 'home.x.val4.d' },
 ];
-const aboutImages = ['/nav-company-engineering-lab.png', '/nav-company-quality-bench.png', '/nav-company-overview.png'];
+const aboutImages = [
+	'/home-about-headquarters-building.png',
+	'/home-about-quality-bench.png',
+	'/home-about-engineering-lab.png',
+];
 const news = getLatestNews(3);
 ---
 <Layout locale={locale} path={path} title={t(locale, 'seo.index.title')} description={t(locale, 'seo.index.desc')} bodyClass="home" pageCss={["/global.css", "/hero-slider.css", "/home-sections.css", "/mobile-navigation.css"]}>
