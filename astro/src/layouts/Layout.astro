@@ -64,5 +64,26 @@ const { locale, path, title, description, ogTitle, ogDescription, bodyClass, pag
     <script src="/nav-search.js" is:inline></script>
     <script src="/mobile-navigation.js" is:inline></script>
     <script src="/chat-widget.js" is:inline></script>
+    <script is:inline>
+      /* Header auto-hide: hide on scroll-down, reveal on scroll-up; always show near top. */
+      (() => {
+        const root = document.body;
+        let lastY = window.pageYOffset || 0;
+        let ticking = false;
+        const update = () => {
+          const y = window.pageYOffset || 0;
+          if (Math.abs(y - lastY) > 5) {
+            if (y > lastY && y > 130) root.classList.add('nav-hidden');
+            else if (y < lastY) root.classList.remove('nav-hidden');
+            lastY = y;
+          }
+          if (y <= 80) root.classList.remove('nav-hidden');
+          ticking = false;
+        };
+        window.addEventListener('scroll', () => {
+          if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+        }, { passive: true });
+      })();
+    </script>
   </body>
 </html>

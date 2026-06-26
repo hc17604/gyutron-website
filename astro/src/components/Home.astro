@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { t, localizeUrl, type Locale } from '../i18n';
 import TabCarousel from './TabCarousel.astro';
+import SolutionExplorer from './SolutionExplorer.astro';
 import HeroSlider from './HeroSlider.astro';
 import Footer from './Footer.astro';
 import { getLatestNews } from '../data/news';
@@ -62,17 +63,6 @@ const news = getLatestNews(3);
                     </div>
                 </div>
 
-                <div class="feat-bar">
-                    <div class="feat-industries">
-                        <span class="feat-industries__label">{t(locale, "home.feat.tagsLabel")}</span>
-                        <span class="feat-tag">{t(locale, "home.feat.tag1")}</span>
-                        <span class="feat-tag">{t(locale, "home.feat.tag2")}</span>
-                        <span class="feat-tag">{t(locale, "home.feat.tag3")}</span>
-                        <span class="feat-tag">{t(locale, "home.feat.tag4")}</span>
-                        <span class="feat-tag">{t(locale, "home.feat.tag5")}</span>
-                    </div>
-                </div>
-
                 <div class="product-showcase">
                     <article class="feature-product" data-reveal>
                         <div class="feature-image">
@@ -117,6 +107,8 @@ const news = getLatestNews(3);
                         </article>
                     </div>
                 </div>
+
+                <SolutionExplorer locale={locale} />
             </div>
         </section>
 

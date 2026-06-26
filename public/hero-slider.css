@@ -44,7 +44,7 @@
 
 .hsl-inner {
   position: relative; z-index: 3; height: 100%;
-  width: min(1220px, calc(100% - clamp(32px, 6vw, 96px)));
+  width: 84%;
   margin: 0 auto;
   display: grid; align-items: center; align-content: center;
   gap: clamp(24px, 4vw, 56px);

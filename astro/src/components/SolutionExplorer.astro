@@ -1,0 +1,100 @@
+---
+// Interactive "by application / by industry" solution explorer (homepage).
+// Reformatted away from the Cognex left-list/right-detail layout: the mode
+// toggle and the item labels sit as horizontal rows on TOP; the active item
+// then shows as image (lower-left) + a short copy block (lower-right).
+// Purple/hard-edged brand, real imagery, honest copy, vanilla inline JS.
+import { t, localizeUrl, type Locale } from '../i18n';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+type Item = { icon: string; t: string; d: string; img: string; href: string };
+
+const apps: Item[] = [
+  { icon: 'fa-clipboard-check',        t: 'home.exp.app1.t', d: 'home.exp.app1.d', img: '/product-vision-cell.png',                    href: '/automated-vision-inspection.html' },
+  { icon: 'fa-magnifying-glass-chart', t: 'home.exp.app2.t', d: 'home.exp.app2.d', img: '/product-hero-surface-inspection-matrix.png', href: '/automated-vision-inspection.html' },
+  { icon: 'fa-barcode',                t: 'home.exp.app3.t', d: 'home.exp.app3.d', img: '/product-hero-code-reading-cameras-matrix.png', href: '/identification-traceability.html' },
+  { icon: 'fa-ruler-combined',         t: 'home.exp.app4.t', d: 'home.exp.app4.d', img: '/product-hero-dimensional-gauges-matrix.png',  href: '/measurement-3d-profiling.html' },
+  { icon: 'fa-robot',                  t: 'home.exp.app5.t', d: 'home.exp.app5.d', img: '/product-hero-robot-workcells-stage.png',      href: '/vision-guided-robotics.html' },
+  { icon: 'fa-shuffle',                t: 'home.exp.app6.t', d: 'home.exp.app6.d', img: '/home-smart-camera-platform-line.png',         href: '/warehouse-logistics.html' },
+];
+
+const inds: Item[] = [
+  { icon: 'fa-microchip',   t: 'home.exp.ind1.t', d: 'home.exp.ind1.d', img: '/hero-industry-electronics.jpg',          href: '/electronics-semiconductor.html' },
+  { icon: 'fa-layer-group', t: 'home.exp.ind2.t', d: 'home.exp.ind2.d', img: '/hero-industry-semiconductor.jpg',        href: '/electronics-semiconductor.html' },
+  { icon: 'fa-car-battery', t: 'home.exp.ind3.t', d: 'home.exp.ind3.d', img: '/hero-industry-automotive-ev.jpg',        href: '#solutions' },
+  { icon: 'fa-warehouse',   t: 'home.exp.ind4.t', d: 'home.exp.ind4.d', img: '/hero-industry-logistics.jpg',           href: '/warehouse-logistics.html' },
+  { icon: 'fa-industry',    t: 'home.exp.ind5.t', d: 'home.exp.ind5.d', img: '/product-hero-robot-workcells-stage.png', href: '#solutions' },
+];
+
+const groups = [
+  { key: 'app', labelKey: 'home.exp.tab.app', items: apps },
+  { key: 'ind', labelKey: 'home.exp.tab.ind', items: inds },
+];
+const resolve = (href: string) => (href.charAt(0) === '#' ? href : localizeUrl(locale, href));
+---
+<section class="hx-explore" id="explore" aria-label={t(locale, 'home.exp.eyebrow')}>
+    <div class="hx-explore__panel-wrap" data-reveal>
+      <div class="hx-explore__tabs" role="tablist" aria-label={t(locale, 'home.exp.eyebrow')}>
+        {groups.map((g, gi) => (
+          <button type="button" class={`hx-explore__tab${gi === 0 ? ' is-active' : ''}`} role="tab" aria-selected={gi === 0 ? 'true' : 'false'} data-tab={g.key}>
+            {t(locale, g.labelKey)}
+          </button>
+        ))}
+      </div>
+
+      <div class="hx-explore__chips">
+        {groups.map((g, gi) => (
+          <div class={`hx-explore__chiprow${gi === 0 ? ' is-active' : ''}`} data-list={g.key} role="tablist" aria-label={t(locale, g.labelKey)}>
+            {g.items.map((it, i) => (
+              <button type="button" class={`hx-explore__chip${gi === 0 && i === 0 ? ' is-active' : ''}`} role="tab" aria-selected={gi === 0 && i === 0 ? 'true' : 'false'} data-tab={g.key} data-i={String(i)}>
+                <i class={`fa-solid ${it.icon}`} aria-hidden="true"></i>
+                <span>{t(locale, it.t)}</span>
+              </button>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div class="hx-explore__stage">
+        {groups.map((g) => g.items.map((it, i) => (
+          <article class={`hx-explore__card${g.key === 'app' && i === 0 ? ' is-active' : ''}`} data-tab={g.key} data-i={String(i)}>
+            <div class="hx-explore__media"><img src={it.img} alt="" loading="lazy" /></div>
+            <div class="hx-explore__copy">
+              <h3>{t(locale, it.t)}</h3>
+              <p>{t(locale, it.d)}</p>
+              <a class="link-arrow" href={resolve(it.href)}>{t(locale, 'home.exp.cta')} <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </article>
+        )))}
+      </div>
+    </div>
+
+  <script is:inline>
+    (() => {
+      const root = document.getElementById('explore');
+      if (!root) return;
+      const tabs = Array.from(root.querySelectorAll('.hx-explore__tab'));
+      const rows = Array.from(root.querySelectorAll('.hx-explore__chiprow'));
+      const chips = Array.from(root.querySelectorAll('.hx-explore__chip'));
+      const cards = Array.from(root.querySelectorAll('.hx-explore__card'));
+      const show = (tab, i) => {
+        const si = String(i);
+        rows.forEach((r) => r.classList.toggle('is-active', r.getAttribute('data-list') === tab));
+        tabs.forEach((t) => {
+          const on = t.getAttribute('data-tab') === tab;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        chips.forEach((c) => {
+          const on = c.getAttribute('data-tab') === tab && c.getAttribute('data-i') === si;
+          c.classList.toggle('is-active', on);
+          c.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        cards.forEach((c) => c.classList.toggle('is-active', c.getAttribute('data-tab') === tab && c.getAttribute('data-i') === si));
+      };
+      tabs.forEach((t) => t.addEventListener('click', () => show(t.getAttribute('data-tab'), 0)));
+      chips.forEach((c) => c.addEventListener('click', () => show(c.getAttribute('data-tab'), parseInt(c.getAttribute('data-i'), 10))));
+    })();
+  </script>
+</section>
