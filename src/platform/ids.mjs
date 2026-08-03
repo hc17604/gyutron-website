@@ -15,6 +15,7 @@ export const ID_PREFIX = Object.freeze({
   rfqs: "RFQ",
   support_requests: "SUP",
   download_requests: "DL",
+  order_intents: "OI",
   events: "EVT",
   api_keys: "KEY",
 });

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GYUTRON 公式ストア | 産業オートメーション製品</title>
-    <meta name="description" content="GYUTRON の産業用カメラ、センサー、バーコードスキャナー、堅牢型PDA、照明、レンズ、産業オートメーション用アクセサリをお買い求めいただけます。">
+    <meta name="description" content="GYUTRONの産業用カメラ、センサー、バーコードスキャナー、堅牢型PDA、照明、レンズ、アクセサリを閲覧し、確認用の注文または見積リクエストを送信できます。">
     <meta property="og:title" content="GYUTRON 公式ストア | 産業オートメーション製品">
-    <meta property="og:description" content="GYUTRON の産業用カメラ、センサー、バーコードスキャナー、堅牢型PDA、照明、レンズ、産業オートメーション用アクセサリをお買い求めいただけます。">
+    <meta property="og:description" content="GYUTRONの産業用カメラ、センサー、バーコードスキャナー、堅牢型PDA、照明、レンズ、アクセサリを閲覧し、確認用の注文または見積リクエストを送信できます。">
     <meta property="og:locale" content="ja_JP">
     <link rel="canonical" href="https://shop.gyutron.com/ja/shop/index.html">
     <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/index.html">
@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="/ja/shop/shop.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">メインコンテンツへ移動</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">GYUTRON 公式 産業用調達窓口</span>
@@ -68,12 +69,11 @@
                 </div>
                 <form class="store-search" action="/ja/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="製品を検索" aria-label="製品を検索">
-                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="検索"><i class="fa-solid fa-arrow-right"></i></button>
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="製品を検索" aria-label="製品を検索" autocomplete="off">
                 </form>
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="ストアメニューを開く"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">メニュー</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="ストア操作">
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="ストアメニューを開く"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">メニュー</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="言語と地域を選択"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="言語オプション">
@@ -82,35 +82,54 @@
                         <a href="/ja/shop/index.html" aria-current="page">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/ja/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="アカウント作成"><i class="fa-regular fa-user"></i><span data-i18n="account.label">アカウント</span></a>
-                <a class="icon-action cart-link" href="/ja/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="カート"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">カート</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/ja/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="アカウント"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">アカウント</span></a>
+                <a class="icon-action cart-link" href="/ja/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="カート"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">カート</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-    <main>
+
+    <main id="main-content">
         <section class="hero">
             <div class="container">
                 <div class="hero-grid">
-                    <div>
+                    <div class="hero-copy">
                         <span class="eyebrow" data-i18n="hero.eyebrow">GYUTRON 公式ストア</span>
-                        <h1 data-i18n="hero.title">産業オートメーション製品を、購入も見積もすぐに。</h1>
-                        <p data-i18n="hero.subtitle">サンプル、アクセサリ、明確なSKUはオンラインで購入できます。構成済みシステム、納期確認、認証、カスタム案件については、ご注文前に見積をご依頼ください。</p>
+                        <h1 data-i18n="hero.title">調達しやすく整理された産業オートメーション製品。</h1>
+                        <p data-i18n="hero.subtitle">サンプル、アクセサリ、明確なSKUをオンラインで選択でき、購入手続きでは確認用の注文リクエストを記録します。構成済みシステム、納期確認、認証、カスタム案件については、先に見積をご依頼ください。</p>
                         <div class="hero-actions">
                             <a class="button button-primary" href="/ja/shop/products.html"><span data-i18n="cta.shopProducts">製品を見る</span> <i class="fa-solid fa-chevron-right"></i></a>
                             <a class="button button-outline" href="/ja/shop/request-quote.html" data-i18n="cta.requestQuote">見積を依頼</a>
                             <a class="button button-soft" href="/ja/shop/contact-engineer.html" data-i18n="cta.contactEngineer">技術担当に相談</a>
                         </div>
+                        <form class="hero-search" action="/ja/shop/products.html" method="get" role="search">
+                            <label for="home-product-search" data-i18n="procurement.search.label">既知の製品を探す</label>
+                            <div class="hero-search__control">
+                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                                <input id="home-product-search" type="search" name="q" autocomplete="off" data-i18n-attr="placeholder=procurement.search.placeholder" placeholder="SKU、型式、シリーズ、用途で検索">
+                                <button type="submit" data-i18n="procurement.search.action">製品を検索</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="buy-panel">
-                        <h2 data-i18n="hero.panel.title">B2B調達のために設計</h2>
-                        <ul>
-                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b1">サンプル、アクセサリ、明確なSKUは今すぐ購入。</span></li>
-                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b2">数量、納期、認証、カスタマイズは見積を依頼。</span></li>
-                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b3">パラメータ選定と導入相談は技術担当に相談。</span></li>
-                        </ul>
-                        <a class="button button-dark" href="/ja/shop/payment-methods.html" style="width:100%;" data-i18n="cta.paymentInfo">お支払い・調達情報</a>
-                    </div>
+                    <aside class="procurement-guide" aria-labelledby="procurement-guide-title">
+                        <span class="eyebrow eyebrow-light" data-i18n="procurement.guide.eyebrow">最適な調達方法を選択</span>
+                        <h2 id="procurement-guide-title" data-i18n="hero.panel.title">B2B調達のために設計</h2>
+                        <a class="procurement-guide__row" href="/ja/shop/products.html">
+                            <span class="procurement-guide__number">01</span>
+                            <span><strong data-i18n="procurement.guide.buy.title">標準SKUの注文リクエストを開始</strong><small data-i18n="hero.panel.b1">サンプル、アクセサリ、明確なSKUの注文リクエストを開始。</small></span>
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="procurement-guide__row" href="/ja/shop/request-quote.html">
+                            <span class="procurement-guide__number">02</span>
+                            <span><strong data-i18n="procurement.guide.quote.title">取引条件を確認</strong><small data-i18n="hero.panel.b2">数量、納期、認証、カスタマイズは見積を依頼。</small></span>
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="procurement-guide__row" href="/ja/shop/contact-engineer.html">
+                            <span class="procurement-guide__number">03</span>
+                            <span><strong data-i18n="procurement.guide.engineer.title">用途適合性を確認</strong><small data-i18n="hero.panel.b3">パラメータ選定と導入相談は技術担当に相談。</small></span>
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </aside>
                 </div>
             </div>
         </section>
@@ -124,7 +143,49 @@
                     </div>
                     <p data-i18n="spotlight.subtitle">見積優先のB2B製品ウィンドウで、すばやい閲覧、SKU比較、技術担当によるサポート付き調達が可能です。</p>
                 </div>
-                <div class="spotlight-grid" data-spotlight></div>
+                <div class="spotlight-grid" data-spotlight aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="procurement-paths" aria-labelledby="procurement-paths-title">
+            <div class="container">
+                <div class="procurement-paths__head">
+                    <div>
+                        <span class="eyebrow" data-i18n="procurement.paths.eyebrow">調達ディレクトリ</span>
+                        <h2 id="procurement-paths-title" data-i18n="procurement.paths.title">お手元の情報から始められます。</h2>
+                    </div>
+                    <p data-i18n="procurement.paths.copy">カテゴリ、製品シリーズ、正確なSKU・型式、または解決したい用途から進めます。</p>
+                </div>
+                <div class="procurement-paths__grid">
+                    <a href="/ja/shop/products.html">
+                        <span>01</span>
+                        <strong data-i18n="procurement.paths.category.title">カテゴリから探す</strong>
+                        <small data-i18n="procurement.paths.category.body">カメラ、照明、センサー、スキャナー、堅牢端末、光学部品、ボード、アクセサリ。</small>
+                    </a>
+                    <a href="/ja/shop/products.html?view=series">
+                        <span>02</span>
+                        <strong data-i18n="procurement.paths.series.title">製品シリーズを比較</strong>
+                        <small data-i18n="procurement.paths.series.body">関連する型式を、仕様中心のコンパクトなカタログで比較できます。</small>
+                    </a>
+                    <a href="/ja/shop/products.html?q=GY-">
+                        <span>03</span>
+                        <strong data-i18n="procurement.paths.sku.title">SKU・型式を探す</strong>
+                        <small data-i18n="procurement.paths.sku.body">既知の品番、型式名、交換部品へ直接移動できます。</small>
+                    </a>
+                    <a href="/ja/shop/products.html?application=inspection">
+                        <span>04</span>
+                        <strong data-i18n="procurement.paths.application.title">用途から探す</strong>
+                        <small data-i18n="procurement.paths.application.body">検査、ガイダンス、トレーサビリティ、センシング、フィールド業務から始められます。</small>
+                    </a>
+                </div>
+                <div class="application-tags" data-i18n-attr="aria-label=procurement.applications.label" aria-label="用途別の入口">
+                    <span data-i18n="procurement.applications.label">用途別の入口</span>
+                    <a href="/ja/shop/products.html?application=inspection" data-i18n="procurement.applications.inspection">画像検査</a>
+                    <a href="/ja/shop/products.html?application=robotics" data-i18n="procurement.applications.robot">ロボットガイダンス</a>
+                    <a href="/ja/shop/products.html?application=traceability" data-i18n="procurement.applications.traceability">トレーサビリティ</a>
+                    <a href="/ja/shop/products.html?application=warehouse" data-i18n="procurement.applications.warehouse">倉庫スキャン</a>
+                    <a href="/ja/shop/products.html?q=rugged" data-i18n="procurement.applications.field">堅牢フィールド業務</a>
+                </div>
             </div>
         </section>
 
@@ -161,8 +222,8 @@
                     </article>
                     <article class="trust-card">
                         <i class="fa-solid fa-file-circle-check"></i>
-                        <h3 data-i18n="trust.docs.title">認証文書</h3>
-                        <p data-i18n="trust.docs.body">データシート、コンプライアンス文書、見積記録を調達チーム向けに準備できます。</p>
+                        <h3 data-i18n="trust.docs.title">調達関連文書</h3>
+                        <p data-i18n="trust.docs.body">データシート、適合文書、見積書類は、対象製品と注文ごとに確認します。</p>
                     </article>
                 </div>
             </div>

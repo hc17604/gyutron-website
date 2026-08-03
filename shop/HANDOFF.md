@@ -4,7 +4,7 @@
 > 与用户交流用**中文**；GYUTRON 品牌名在可见文案中保持**大写**；i18n key / URL / 文件路径保持原样。
 > 🔄 双代理协作：Claude + Codex 都可能动 shop。**开工 `git pull` 对齐 origin/main，收工更新本文件并 push。**
 
-最近更新：2026-06-14（接手时先 `git fetch && git pull`，确认 `HEAD == origin/main`）
+最近更新：2026-08-03（接手时先 `git fetch && git pull`，确认 `HEAD == origin/main`）
 
 ---
 
@@ -17,9 +17,25 @@
 
 ## §2 当前状态
 
+### 2026-08-03 企业采购商城与四步结账重塑
+
+- **页面与视觉**：首页、产品列表、产品详情、购物车、checkout、account、payment-methods 与共享商城 Header 已重构为 GYUTRON 硬边工业采购视觉；保留 `gyutron-logo-purple.png`、16 个原 SKU、原 URL、三语路径和 `gyutronShopCart`。
+- **产品采购路径**：产品卡与详情保留 Add to Cart、Buy Now、Request a Quote、Contact Engineer；库存、配置、价格、运费、税费与交期均使用“待确认/非约束估算”表达，没有新增销量、认证、库存、交期、折扣、客户或免费配送等无事实依据的声明。
+- **四步 checkout**：01 客户/公司；02 收货/账单；03 配送审核/采购信息；04 订单申请/形式发票申请。桌面为左流程 + 右侧 sticky 摘要；430/390 为顶部 62px 可展开摘要和 2×2 步骤导航。
+- **订单意向后端**：新增 `/api/order-intents` 与 D1 migration `0002_order_intents.sql`。接口只接受审核所需的联系人、企业、地址、采购和 SKU/数量/配置；递归拒绝卡号、CVC、银行信息、客户端价格和总额，并对所有嵌套值执行 Luhn 卡号与 MOD97 IBAN 结构检测（含 JSON 数值型卡号）；支持 Origin、体积、SKU、数量、幂等及速率限制。2026-08-03 已将 migration 应用于远端 `gyutron_db` 并确认无待执行迁移。
+- **支付真实状态**：**未接通真实支付**。页面不展示 Card、PayPal、Bank Transfer 或 Purchase Order 付款，不接收或保存任何完整卡号/CVC，不显示虚假付款成功。若以后接通，必须使用合规供应商 Hosted Checkout/Hosted Fields 并另行完成账户、密钥、webhook、退款与对账设计。
+- **订单真实状态**：订单申请已具备真实 Worker + D1 `pending_review` 记录边界，但不是已付款订单、库存预留或自动履约。后台可查看和更新审核状态。
+- **物流真实状态**：尚无承运商实时费率、库存/交期或 ETA 规则；当前仅收集目的地与采购背景，明确提示快递、货运、运费、关税、进口税、偏远地区费用与 ETA 均由正式报价确认。
+- **账户真实状态**：没有账户/登录后端，因此 account 页面只说明 Guest checkout、报价和工程支持入口，不采集密码，也不显示 Create account。
+- **三语与无障碍**：新增可见文案均进入 shop i18n；en/de/ja 同构。表单使用真实 label、必填说明、错误文本、`aria-invalid`、焦点管理、键盘/Escape 行为；完成/当前状态只使用 GYUTRON 紫色。
+- **安全生成方式**：仅使用 `python tools/build_shop.py` / `npm run shop:build` 写入 `shop/`、`de/shop/`、`ja/shop/` 及对应 `public` 镜像；没有运行旧 `i18n:build`、`i18n:sync` 或 `tools/generate_localized_site.py`，也没有批量覆盖 `public/`。
+- **验证**：shop smoke 121/121、platform smoke 34/34、i18n gate/audit、Astro build + `verify:all`、Wrangler dry-run 均通过；浏览器验证 1440/1024/768/430/390，40 个页面/视口组合无文档级横向溢出，控制台无错误。另已回归 768px 菜单开关/Escape、三语 12 个应用筛选入口，以及三个询盘表单的安全 POST 路由和真实 label。证据见仓根 `design-qa.md` 和本地 `artifacts/shop-qa-20260803/`。
+- **已知限制**：真实支付、实时库存、自动税费、承运商报价/轨迹、账户体系、自动开票和自动履约仍未配置；这些功能需要业务规则、供应商账户与密钥后才能启用。
+- **回滚**：推荐对本次部署提交执行 `git revert <本次 feat(shop) 提交 SHA>` 后 push `main`。上线前已知基线为 `d5315f969899f64a9004091ee93ea9c7afe3b289`。D1 migration 为仅新增表的可兼容迁移；代码回滚不要求删除表，避免破坏已记录的审核数据。
+
 - **三语 i18n 已铺开**：每页带 hreflang 备用链（`shop.gyutron.com/shop/`、`/de/shop/`、`/ja/shop/`，x-default=en）；产品 i18n 在**所有** shop 页面加载（不只首页）；产品规格表 key+描述值、产品标签、固定汇率本地货币均已本地化。
 - **de/ja 长文案适配**：产品卡操作按钮已为长德/日标签压缩；超长标题 wrap/hyphenate 防德语 hero 溢出；移动端菜单面板已本地化（曾硬编码英文，已修）。
-- **行为埋点（由主站 Worker 注入，shop 文件本身不动）**：Worker 通过 HTMLRewriter 给 shop HTML 注入 `/shop-analytics.js`，仅采集 `product.viewed`(product.html?sku=) + `cart.added`(localStorage 购物车 diff) → `POST /api/shop-event`（source=gyutron-shop，白名单+限流+不存 ip/session/PII）。**改 shop 时无需关心它，但别去复制/覆盖它。**
+- **行为埋点与询盘增强（由 Worker 注入）**：Worker 通过 HTMLRewriter 给 shop HTML 注入 `/shop-analytics.js`；匿名行为仅采集 `product.viewed`(product.html?sku=) + `cart.added`(localStorage 购物车数量 diff) → `POST /api/shop-event`（source=gyutron-shop，白名单+限流+不存 ip/session/PII）。同一脚本也将 Request Quote、Contact Engineer、Contact Us 表单安全提交到同源 `/api/rfq`、`/api/support`、`/api/contact`，并使用 Turnstile；这些 API 必须保持在 shop 静态 clean-path 映射之前。
 
 > 详细的近期改动看 `git log --oneline -- shop`。
 

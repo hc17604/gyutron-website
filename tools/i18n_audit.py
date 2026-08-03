@@ -83,6 +83,11 @@ def load_known_translations(code: str) -> set[str]:
     path = LOCALES_DIR / code / "strings.json"
     if path.exists():
         known |= set(json.loads(path.read_text(encoding="utf-8")).values())
+    shop_path = LOCALES_DIR / "i18n" / f"{code}.json"
+    if shop_path.exists():
+        # The shop builder's flat dictionary is authoritative for generated
+        # storefront metadata and static copy.
+        known |= set(json.loads(shop_path.read_text(encoding="utf-8")).values())
     meta_path = LOCALES_DIR / "locale-meta.json"
     if meta_path.exists():
         meta = json.loads(meta_path.read_text(encoding="utf-8")).get(code, {})

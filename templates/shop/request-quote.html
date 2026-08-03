@@ -14,7 +14,7 @@
 <body>
 {{include:shop-header}}
 
-    <main>
+    <main id="main-content">
         <section class="section section-soft">
             <div class="container">
                 <div class="section-head">
@@ -24,15 +24,16 @@
                     </div>
                     <p data-i18n="quote.copy">Use this for volume purchases, uncertain model selection, compliance documents, accessories, and shipping review.</p>
                 </div>
-                <form class="form" data-demo-form>
+                <form class="form" method="post" action="/api/rfq" data-demo-form>
                     <div class="form-grid">
-                        <div class="field"><label data-i18n="form.productSku">Product SKU</label><input name="sku" data-prefill-sku data-i18n-attr="placeholder=ph.optional" placeholder="Optional"></div>
-                        <div class="field"><label data-i18n="form.estQuantity">Estimated Quantity</label><input name="quantity" placeholder="10 / 50 / 100"></div>
-                        <div class="field"><label data-i18n="form.workEmail">Work Email</label><input required type="email" name="email"></div>
-                        <div class="field"><label data-i18n="form.company">Company</label><input name="company"></div>
-                        <div class="field"><label data-i18n="form.country">Country / Region</label><input name="country"></div>
-                        <div class="field"><label data-i18n="form.buyingTimeline">Buying Timeline</label><select name="timeline"><option data-i18n="timeline.asap">As soon as possible</option><option data-i18n="timeline.30days">Within 30 days</option><option data-i18n="timeline.quarter">This quarter</option><option data-i18n="timeline.planning">Planning stage</option></select></div>
-                        <div class="field field-wide"><label data-i18n="form.appRequirements">Application / Requirements</label><textarea required name="requirements" data-i18n-attr="placeholder=ph.appRequirements" placeholder="Application, interface, environment, certifications, packaging, lead time, or target budget."></textarea></div>
+                        <div class="field"><label for="quote-sku" data-i18n="form.productSku">Product SKU</label><input id="quote-sku" name="sku" autocomplete="off" data-prefill-sku data-i18n-attr="placeholder=ph.optional" placeholder="Optional"></div>
+                        <div class="field"><label for="quote-quantity" data-i18n="form.estQuantity">Estimated Quantity</label><input id="quote-quantity" name="quantity" inputmode="numeric" autocomplete="off" placeholder="10 / 50 / 100"></div>
+                        <div class="field"><label for="quote-name" data-i18n="form.name">Name</label><input id="quote-name" required name="name" autocomplete="name"></div>
+                        <div class="field"><label for="quote-email" data-i18n="form.workEmail">Work Email</label><input id="quote-email" required type="email" name="email" autocomplete="email"></div>
+                        <div class="field"><label for="quote-company" data-i18n="form.company">Company</label><input id="quote-company" name="company" autocomplete="organization"></div>
+                        <div class="field"><label for="quote-country" data-i18n="form.country">Country / Region</label><input id="quote-country" name="country" autocomplete="country-name"></div>
+                        <div class="field"><label for="quote-timeline" data-i18n="form.buyingTimeline">Buying Timeline</label><select id="quote-timeline" name="timeline"><option value="asap" data-i18n="timeline.asap">As soon as possible</option><option value="within-30-days" data-i18n="timeline.30days">Within 30 days</option><option value="this-quarter" data-i18n="timeline.quarter">This quarter</option><option value="planning" data-i18n="timeline.planning">Planning stage</option></select></div>
+                        <div class="field field-wide"><label for="quote-requirements" data-i18n="form.appRequirements">Application / Requirements</label><textarea id="quote-requirements" required minlength="12" name="requirements" data-i18n-attr="placeholder=ph.appRequirements" placeholder="Application, interface, environment, certifications, packaging, lead time, or target budget."></textarea></div>
                     </div>
                     <button class="button button-primary" type="submit" data-i18n="quote.submit">Submit Quote Request</button>
                 </form>

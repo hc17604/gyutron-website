@@ -14,22 +14,45 @@
 <body>
 {{include:shop-header}}
 
-    <main>
-        <section class="section section-soft">
+    <main id="main-content">
+        <section class="section section-soft catalog-section">
             <div class="container">
                 <div class="section-head">
                     <div>
                         <span class="eyebrow" data-i18n="products.eyebrow">Product Catalog</span>
-                        <h1 class="catalog-title" data-i18n="products.title">Shop industrial automation hardware.</h1>
+                        <h1 class="catalog-title" data-i18n="products.title">Industrial automation procurement catalog.</h1>
                     </div>
-                    <p class="catalog-copy" data-i18n="products.copy">Filter focused B2B categories. Use Buy Now for simple orders, or request a quote for configuration, documentation, stock, and lead-time confirmation.</p>
+                    <p class="catalog-copy" data-i18n="products.copy">Compare focused B2B categories. Buy Now starts an order request for a standard SKU; use a quote request for configuration, documentation, stock, and lead-time confirmation.</p>
+                </div>
+                <div class="catalog-toolbar">
+                    <form class="catalog-search" action="{{locale.base}}/shop/products.html" method="get" role="search">
+                        <label for="catalog-product-search" data-i18n="products.search.label">Search the industrial catalog</label>
+                        <div class="catalog-search__control">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                            <input id="catalog-product-search" type="search" name="q" autocomplete="off" data-i18n-attr="placeholder=products.search.placeholder" placeholder="SKU, model, series, category, or application">
+                            <button type="submit" data-i18n="products.search.action">Search catalog</button>
+                        </div>
+                    </form>
+                    <div class="catalog-entry-points" data-i18n-attr="aria-label=products.entry.label">
+                        <span data-i18n="products.entry.label">Quick entry</span>
+                        <a href="{{locale.base}}/shop/products.html" data-i18n="products.entry.category">Category</a>
+                        <a href="{{locale.base}}/shop/products.html?view=series" data-i18n="products.entry.series">Series</a>
+                        <a href="{{locale.base}}/shop/products.html?q=GY-" data-i18n="products.entry.sku">SKU / Model</a>
+                        <a href="{{locale.base}}/shop/products.html?application=inspection" data-i18n="products.entry.application">Application</a>
+                    </div>
                 </div>
                 <div class="store-layout">
                     <aside class="filter-panel">
                         <h3 data-i18n="products.filtersTitle">Categories</h3>
                         <div class="filter-list" data-filters></div>
+                        <div class="procurement-legend">
+                            <strong data-i18n="products.legend.title">Purchasing routes</strong>
+                            <p><span>01</span><span><b data-i18n="products.legend.buy">Buy Now</b><small data-i18n="products.legend.buyBody">Standard SKU or sample; checkout submits an order request.</small></span></p>
+                            <p><span>02</span><span><b data-i18n="products.legend.quote">Request Quote</b><small data-i18n="products.legend.quoteBody">Volume, lead time, documents, or customization.</small></span></p>
+                            <p><span>03</span><span><b data-i18n="products.legend.engineer">Contact Engineer</b><small data-i18n="products.legend.engineerBody">Model selection or application validation.</small></span></p>
+                        </div>
                     </aside>
-                    <div class="product-grid" data-products></div>
+                    <div class="product-grid" data-shop-grid data-products aria-live="polite"></div>
                 </div>
             </div>
         </section>

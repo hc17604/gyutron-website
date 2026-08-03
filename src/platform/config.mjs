@@ -15,6 +15,8 @@ export const TABLES = Object.freeze({
   rfqs: "rfqs",
   support_requests: "support_requests",
   download_requests: "download_requests",
+  order_intents: "order_intents",
+  order_intent_items: "order_intent_items",
   events: "events",
   api_keys: "api_keys",
 });

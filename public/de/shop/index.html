@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offizieller GYUTRON Store | Industrieautomatisierungsprodukte</title>
-    <meta name="description" content="Kaufen Sie GYUTRON Industriekameras, Sensoren, Barcodescanner, robuste PDA-Terminals, Beleuchtung, Objektive und Zubehör für die Industrieautomation.">
+    <meta name="description" content="Durchsuchen Sie GYUTRON Industriekameras, Sensoren, Barcodescanner, robuste PDA-Terminals, Beleuchtung, Objektive und Zubehör und senden Sie anschließend eine Bestell- oder Angebotsanfrage zur Prüfung.">
     <meta property="og:title" content="Offizieller GYUTRON Store | Industrieautomatisierungsprodukte">
-    <meta property="og:description" content="Kaufen Sie GYUTRON Industriekameras, Sensoren, Barcodescanner, robuste PDA-Terminals, Beleuchtung, Objektive und Zubehör für die Industrieautomation.">
+    <meta property="og:description" content="Durchsuchen Sie GYUTRON Industriekameras, Sensoren, Barcodescanner, robuste PDA-Terminals, Beleuchtung, Objektive und Zubehör und senden Sie anschließend eine Bestell- oder Angebotsanfrage zur Prüfung.">
     <meta property="og:locale" content="de_DE">
     <link rel="canonical" href="https://shop.gyutron.com/de/shop/index.html">
     <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/index.html">
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/de/shop/shop.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Zum Hauptinhalt springen</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">Offizieller industrieller Einkaufszugang von GYUTRON</span>
@@ -45,12 +46,11 @@
                 </div>
                 <form class="store-search" action="/de/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen">
-                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Suchen"><i class="fa-solid fa-arrow-right"></i></button>
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen" autocomplete="off">
                 </form>
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">Menü</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store-Aktionen">
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menü</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Sprache und Region auswählen"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Sprachoptionen">
@@ -59,35 +59,54 @@
                         <a href="/ja/shop/index.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Konto</span></a>
-                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="Konto"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Konto</span></a>
+                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-    <main>
+
+    <main id="main-content">
         <section class="hero">
             <div class="container">
                 <div class="hero-grid">
-                    <div>
+                    <div class="hero-copy">
                         <span class="eyebrow" data-i18n="hero.eyebrow">Offizieller GYUTRON Store</span>
-                        <h1 data-i18n="hero.title">Industrieautomatisierungsprodukte – sofort kaufen oder anfragen.</h1>
-                        <p data-i18n="hero.subtitle">Kaufen Sie Muster, Zubehör und eindeutige SKUs online. Für konfigurierte Systeme, Lieferzeit-Checks, Zertifizierungen oder kundenspezifische Projekte fordern Sie vor der Bestellung ein Angebot an.</p>
+                        <h1 data-i18n="hero.title">Industrieautomatisierungsprodukte, strukturiert für die Beschaffung.</h1>
+                        <p data-i18n="hero.subtitle">Wählen Sie Muster, Zubehör und eindeutige SKUs online aus; der Checkout erfasst eine Bestellanfrage zur Prüfung. Für konfigurierte Systeme, Lieferzeitprüfungen, Zertifizierungen oder kundenspezifische Projekte fordern Sie zuerst ein Angebot an.</p>
                         <div class="hero-actions">
                             <a class="button button-primary" href="/de/shop/products.html"><span data-i18n="cta.shopProducts">Produkte ansehen</span> <i class="fa-solid fa-chevron-right"></i></a>
                             <a class="button button-outline" href="/de/shop/request-quote.html" data-i18n="cta.requestQuote">Angebot anfordern</a>
                             <a class="button button-soft" href="/de/shop/contact-engineer.html" data-i18n="cta.contactEngineer">Technischen Ansprechpartner kontaktieren</a>
                         </div>
+                        <form class="hero-search" action="/de/shop/products.html" method="get" role="search">
+                            <label for="home-product-search" data-i18n="procurement.search.label">Bekanntes Produkt finden</label>
+                            <div class="hero-search__control">
+                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                                <input id="home-product-search" type="search" name="q" autocomplete="off" data-i18n-attr="placeholder=procurement.search.placeholder" placeholder="SKU, Modell, Serie oder Anwendung suchen">
+                                <button type="submit" data-i18n="procurement.search.action">Produkt finden</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="buy-panel">
-                        <h2 data-i18n="hero.panel.title">Für den B2B-Einkauf entwickelt</h2>
-                        <ul>
-                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b1">Jetzt kaufen für Muster, Zubehör und eindeutige SKUs.</span></li>
-                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b2">Angebot anfordern für Menge, Lieferzeit, Zertifizierung oder Individualisierung.</span></li>
-                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b3">Technischen Ansprechpartner kontaktieren für Parameterauswahl und Einführungsberatung.</span></li>
-                        </ul>
-                        <a class="button button-dark" href="/de/shop/payment-methods.html" style="width:100%;" data-i18n="cta.paymentInfo">Zahlungs- und Beschaffungsinformationen</a>
-                    </div>
+                    <aside class="procurement-guide" aria-labelledby="procurement-guide-title">
+                        <span class="eyebrow eyebrow-light" data-i18n="procurement.guide.eyebrow">Den richtigen Beschaffungsweg wählen</span>
+                        <h2 id="procurement-guide-title" data-i18n="hero.panel.title">Für den B2B-Einkauf entwickelt</h2>
+                        <a class="procurement-guide__row" href="/de/shop/products.html">
+                            <span class="procurement-guide__number">01</span>
+                            <span><strong data-i18n="procurement.guide.buy.title">Anfrage für eine Standard-SKU starten</strong><small data-i18n="hero.panel.b1">Bestellanfrage für Muster, Zubehör und eindeutige SKUs starten.</small></span>
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="procurement-guide__row" href="/de/shop/request-quote.html">
+                            <span class="procurement-guide__number">02</span>
+                            <span><strong data-i18n="procurement.guide.quote.title">Kaufmännische Bedingungen bestätigen</strong><small data-i18n="hero.panel.b2">Angebot anfordern für Menge, Lieferzeit, Zertifizierung oder Individualisierung.</small></span>
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="procurement-guide__row" href="/de/shop/contact-engineer.html">
+                            <span class="procurement-guide__number">03</span>
+                            <span><strong data-i18n="procurement.guide.engineer.title">Anwendung technisch prüfen</strong><small data-i18n="hero.panel.b3">Technischen Ansprechpartner kontaktieren für Parameterauswahl und Einführungsberatung.</small></span>
+                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </aside>
                 </div>
             </div>
         </section>
@@ -101,7 +120,49 @@
                     </div>
                     <p data-i18n="spotlight.subtitle">Ein angebotsorientiertes B2B-Produktfenster für schnelles Stöbern, SKU-Vergleich und technisch begleitete Beschaffung.</p>
                 </div>
-                <div class="spotlight-grid" data-spotlight></div>
+                <div class="spotlight-grid" data-spotlight aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="procurement-paths" aria-labelledby="procurement-paths-title">
+            <div class="container">
+                <div class="procurement-paths__head">
+                    <div>
+                        <span class="eyebrow" data-i18n="procurement.paths.eyebrow">Beschaffungsverzeichnis</span>
+                        <h2 id="procurement-paths-title" data-i18n="procurement.paths.title">Beginnen Sie mit den Informationen, die bereits vorliegen.</h2>
+                    </div>
+                    <p data-i18n="procurement.paths.copy">Starten Sie mit einer Kategorie, Produktserie, exakten SKU oder Modellbezeichnung oder mit der zu lösenden Anwendung.</p>
+                </div>
+                <div class="procurement-paths__grid">
+                    <a href="/de/shop/products.html">
+                        <span>01</span>
+                        <strong data-i18n="procurement.paths.category.title">Kategorien durchsuchen</strong>
+                        <small data-i18n="procurement.paths.category.body">Kameras, Beleuchtung, Sensoren, Scanner, robuste Terminals, Optik, Karten und Zubehör.</small>
+                    </a>
+                    <a href="/de/shop/products.html?view=series">
+                        <span>02</span>
+                        <strong data-i18n="procurement.paths.series.title">Produktserien vergleichen</strong>
+                        <small data-i18n="procurement.paths.series.body">Vergleichen Sie verwandte Modelle in einem kompakten, spezifikationsbasierten Katalog.</small>
+                    </a>
+                    <a href="/de/shop/products.html?q=GY-">
+                        <span>03</span>
+                        <strong data-i18n="procurement.paths.sku.title">SKU oder Modell finden</strong>
+                        <small data-i18n="procurement.paths.sku.body">Direkt zu einer bekannten Artikelnummer, Modellbezeichnung oder einem Ersatzteil wechseln.</small>
+                    </a>
+                    <a href="/de/shop/products.html?application=inspection">
+                        <span>04</span>
+                        <strong data-i18n="procurement.paths.application.title">Nach Anwendung durchsuchen</strong>
+                        <small data-i18n="procurement.paths.application.body">Beginnen Sie mit Inspektion, Führung, Rückverfolgbarkeit, Sensorik oder Feldeinsatz.</small>
+                    </a>
+                </div>
+                <div class="application-tags" data-i18n-attr="aria-label=procurement.applications.label" aria-label="Anwendungseinstiege">
+                    <span data-i18n="procurement.applications.label">Anwendungseinstiege</span>
+                    <a href="/de/shop/products.html?application=inspection" data-i18n="procurement.applications.inspection">Bildverarbeitungsprüfung</a>
+                    <a href="/de/shop/products.html?application=robotics" data-i18n="procurement.applications.robot">Roboterführung</a>
+                    <a href="/de/shop/products.html?application=traceability" data-i18n="procurement.applications.traceability">Rückverfolgbarkeit</a>
+                    <a href="/de/shop/products.html?application=warehouse" data-i18n="procurement.applications.warehouse">Lagerscanning</a>
+                    <a href="/de/shop/products.html?q=rugged" data-i18n="procurement.applications.field">Robuste Feldeinsätze</a>
+                </div>
             </div>
         </section>
 
@@ -138,8 +199,8 @@
                     </article>
                     <article class="trust-card">
                         <i class="fa-solid fa-file-circle-check"></i>
-                        <h3 data-i18n="trust.docs.title">Zertifizierte Dokumente</h3>
-                        <p data-i18n="trust.docs.body">Datenblätter, Compliance-Dokumente und Angebotsunterlagen können für Einkaufsteams bereitgestellt werden.</p>
+                        <h3 data-i18n="trust.docs.title">Beschaffungsdokumentation</h3>
+                        <p data-i18n="trust.docs.body">Datenblätter, Compliance-Dokumente und Angebotsunterlagen werden für das jeweilige Produkt und die konkrete Bestellung bestätigt.</p>
                     </article>
                 </div>
             </div>

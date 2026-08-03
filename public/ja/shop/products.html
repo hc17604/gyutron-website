@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="/ja/shop/shop.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">メインコンテンツへ移動</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">GYUTRON 公式 産業用調達窓口</span>
@@ -68,12 +69,11 @@
                 </div>
                 <form class="store-search" action="/ja/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="製品を検索" aria-label="製品を検索">
-                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="検索"><i class="fa-solid fa-arrow-right"></i></button>
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="製品を検索" aria-label="製品を検索" autocomplete="off">
                 </form>
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="ストアメニューを開く"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">メニュー</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="ストア操作">
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="ストアメニューを開く"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">メニュー</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="言語と地域を選択"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="言語オプション">
@@ -82,28 +82,52 @@
                         <a href="/ja/shop/products.html" aria-current="page">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/ja/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="アカウント作成"><i class="fa-regular fa-user"></i><span data-i18n="account.label">アカウント</span></a>
-                <a class="icon-action cart-link" href="/ja/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="カート"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">カート</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/ja/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="アカウント"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">アカウント</span></a>
+                <a class="icon-action cart-link" href="/ja/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="カート"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">カート</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-    <main>
-        <section class="section section-soft">
+
+    <main id="main-content">
+        <section class="section section-soft catalog-section">
             <div class="container">
                 <div class="section-head">
                     <div>
                         <span class="eyebrow" data-i18n="products.eyebrow">製品カタログ</span>
-                        <h1 class="catalog-title" data-i18n="products.title">産業オートメーション機器を購入。</h1>
+                        <h1 class="catalog-title" data-i18n="products.title">産業オートメーション調達カタログ。</h1>
                     </div>
-                    <p class="catalog-copy" data-i18n="products.copy">絞り込まれたB2Bカテゴリでフィルタできます。簡単な注文は「今すぐ購入」を、構成・書類・在庫・納期確認が必要な場合は見積をご依頼ください。</p>
+                    <p class="catalog-copy" data-i18n="products.copy">B2B向けカテゴリを比較できます。「今すぐ購入」は標準SKUの注文リクエストを開始します。構成、書類、在庫、納期の確認が必要な場合は見積をご依頼ください。</p>
+                </div>
+                <div class="catalog-toolbar">
+                    <form class="catalog-search" action="/ja/shop/products.html" method="get" role="search">
+                        <label for="catalog-product-search" data-i18n="products.search.label">産業用製品カタログを検索</label>
+                        <div class="catalog-search__control">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                            <input id="catalog-product-search" type="search" name="q" autocomplete="off" data-i18n-attr="placeholder=products.search.placeholder" placeholder="SKU、型式、シリーズ、カテゴリ、用途">
+                            <button type="submit" data-i18n="products.search.action">カタログを検索</button>
+                        </div>
+                    </form>
+                    <div class="catalog-entry-points" data-i18n-attr="aria-label=products.entry.label" aria-label="クイック入口">
+                        <span data-i18n="products.entry.label">クイック入口</span>
+                        <a href="/ja/shop/products.html" data-i18n="products.entry.category">カテゴリ</a>
+                        <a href="/ja/shop/products.html?view=series" data-i18n="products.entry.series">シリーズ</a>
+                        <a href="/ja/shop/products.html?q=GY-" data-i18n="products.entry.sku">SKU / 型式</a>
+                        <a href="/ja/shop/products.html?application=inspection" data-i18n="products.entry.application">用途</a>
+                    </div>
                 </div>
                 <div class="store-layout">
                     <aside class="filter-panel">
                         <h3 data-i18n="products.filtersTitle">カテゴリ</h3>
                         <div class="filter-list" data-filters></div>
+                        <div class="procurement-legend">
+                            <strong data-i18n="products.legend.title">調達方法</strong>
+                            <p><span>01</span><span><b data-i18n="products.legend.buy">今すぐ購入</b><small data-i18n="products.legend.buyBody">標準SKUまたはサンプル。購入手続きでは注文リクエストを送信します。</small></span></p>
+                            <p><span>02</span><span><b data-i18n="products.legend.quote">見積を依頼</b><small data-i18n="products.legend.quoteBody">数量、納期、書類、カスタマイズ。</small></span></p>
+                            <p><span>03</span><span><b data-i18n="products.legend.engineer">技術担当に相談</b><small data-i18n="products.legend.engineerBody">型式選定または用途適合性の確認。</small></span></p>
+                        </div>
                     </aside>
-                    <div class="product-grid" data-products></div>
+                    <div class="product-grid" data-shop-grid data-products aria-live="polite"></div>
                 </div>
             </div>
         </section>

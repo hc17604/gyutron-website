@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Registration | GYUTRON Official Store</title>
-    <meta name="description" content="Create a GYUTRON official store account for B2B purchasing, quote requests, order history, and engineering support.">
-    <meta property="og:title" content="Account Registration | GYUTRON Official Store">
-    <meta property="og:description" content="Create a GYUTRON official store account for B2B purchasing, quote requests, order history, and engineering support.">
+    <title>Account Access | GYUTRON Official Store</title>
+    <meta name="description" content="Online account sign-in and registration are not currently available in the GYUTRON Official Store.">
+    <meta property="og:title" content="Account Access | GYUTRON Official Store">
+    <meta property="og:description" content="Online account sign-in and registration are not currently available in the GYUTRON Official Store.">
     <meta property="og:locale" content="en_US">
     <link rel="canonical" href="https://shop.gyutron.com/shop/account.html">
     <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/account.html">
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/shop/shop.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Skip to main content</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">Official GYUTRON industrial purchasing entrance</span>
@@ -45,12 +46,11 @@
                 </div>
                 <form class="store-search" action="/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Search products" aria-label="Search products">
-                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Search products" aria-label="Search products" autocomplete="off">
                 </form>
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Open store menu"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">Menu</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store actions">
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Open store menu"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menu</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Language and region selector"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Language options">
@@ -59,41 +59,16 @@
                         <a href="/ja/shop/account.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Create account"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Account</span></a>
-                <a class="icon-action cart-link" href="/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="Account"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Account</span></a>
+                <a class="icon-action cart-link" href="/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Cart"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-    <main>
+
+    <main id="main-content">
         <section class="section account-section">
-            <div class="container">
-                <div class="account-layout">
-                    <div class="account-copy">
-                        <span class="eyebrow" data-i18n="account.eyebrow">Store Account</span>
-                        <h1 data-i18n="account.title">Create a purchasing account.</h1>
-                        <p data-i18n="account.copy">Use one account to prepare sample orders, request quotes, keep company purchasing details ready, and coordinate engineering support before industrial products ship.</p>
-                        <div class="account-benefits">
-                            <div><i class="fa-solid fa-file-invoice"></i><span data-i18n="account.b1">Quote and order history</span></div>
-                            <div><i class="fa-solid fa-building"></i><span data-i18n="account.b2">Company purchasing profile</span></div>
-                            <div><i class="fa-solid fa-headset"></i><span data-i18n="account.b3">Engineering support context</span></div>
-                        </div>
-                    </div>
-                    <form class="form account-card" data-demo-form>
-                        <div class="form-grid">
-                            <div class="field"><label data-i18n="form.fullName">Full Name</label><input required name="name" autocomplete="name"></div>
-                            <div class="field"><label data-i18n="form.workEmail">Work Email</label><input required type="email" name="email" autocomplete="email"></div>
-                            <div class="field"><label data-i18n="form.company">Company</label><input required name="company" autocomplete="organization"></div>
-                            <div class="field"><label data-i18n="form.phone">Phone / WhatsApp</label><input name="phone" autocomplete="tel"></div>
-                            <div class="field"><label data-i18n="form.password">Password</label><input required type="password" name="password" autocomplete="new-password"></div>
-                            <div class="field"><label data-i18n="form.primaryInterest">Primary Interest</label><select name="interest"><option data-i18n="interest.mv">Machine vision products</option><option data-i18n="interest.barcode">Barcode and RFID devices</option><option data-i18n="interest.sensors">Industrial sensors</option><option data-i18n="interest.accessories">Accessories and spare parts</option><option data-i18n="interest.project">Configured automation project</option></select></div>
-                            <div class="field field-wide"><label data-i18n="form.purchasingNotes">Purchasing Notes</label><textarea name="notes" data-i18n-attr="placeholder=ph.purchasingNotes" placeholder="Optional: target product, quantity range, country, certification, or lead-time needs."></textarea></div>
-                        </div>
-                        <button class="button button-primary" type="submit" data-i18n="account.submit">Create Account</button>
-                        <p class="notice" data-i18n="account.notice">This registration form is a front-end prototype until the commerce account system is connected.</p>
-                    </form>
-                </div>
-            </div>
+            <div class="container" data-account-root aria-live="polite"></div>
         </section>
     </main>
 

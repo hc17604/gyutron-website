@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zahlungsmethoden | Offizieller GYUTRON Store</title>
-    <meta name="description" content="Ausgelegt für Online-Zahlung und B2B-Beschaffungsbedingungen.">
-    <meta property="og:title" content="Zahlungsmethoden | Offizieller GYUTRON Store">
-    <meta property="og:description" content="Ausgelegt für Online-Zahlung und B2B-Beschaffungsbedingungen.">
+    <title>Zahlungs- und Bestellanfragestatus | Offizieller GYUTRON Store</title>
+    <meta name="description" content="Aktueller Status von Zahlung und Bestellanfrage.">
+    <meta property="og:title" content="Zahlungs- und Bestellanfragestatus | Offizieller GYUTRON Store">
+    <meta property="og:description" content="Aktueller Status von Zahlung und Bestellanfrage.">
     <meta property="og:locale" content="de_DE">
     <link rel="canonical" href="https://shop.gyutron.com/de/shop/payment-methods.html">
     <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/payment-methods.html">
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/de/shop/shop.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Zum Hauptinhalt springen</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">Offizieller industrieller Einkaufszugang von GYUTRON</span>
@@ -45,12 +46,11 @@
                 </div>
                 <form class="store-search" action="/de/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen">
-                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Suchen"><i class="fa-solid fa-arrow-right"></i></button>
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen" autocomplete="off">
                 </form>
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">Menü</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store-Aktionen">
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menü</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Sprache und Region auswählen"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Sprachoptionen">
@@ -59,22 +59,44 @@
                         <a href="/ja/shop/payment-methods.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Konto</span></a>
-                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="Konto"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Konto</span></a>
+                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-    <main>
-        <section class="section">
+
+    <main id="main-content">
+        <section class="section payment-status-section">
             <div class="container">
-                <span class="eyebrow" data-i18n="pm.eyebrow">Zahlungsmethoden</span>
-                <h1 style="color:var(--ink);font-size:48px;" data-i18n="pm.title">Ausgelegt für Online-Zahlung und B2B-Beschaffungsbedingungen.</h1>
-                <div class="policy-grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-top:28px;">
-                    <article class="policy-card"><h3 data-i18n="pm.c1.title">Kreditkarte</h3><p data-i18n="pm.c1.body">Empfohlen nach Integration der E-Commerce-Plattform.</p></article>
-                    <article class="policy-card"><h3 data-i18n="pm.c2.title">PayPal</h3><p data-i18n="pm.c2.body">Nützlich für Muster, kleines Zubehör und internationale Käufer.</p></article>
-                    <article class="policy-card"><h3 data-i18n="pm.c3.title">Überweisung</h3><p data-i18n="pm.c3.body">Geeignet für B2B-Bestellungen und Proforma-Rechnungs-Workflows.</p></article>
-                    <article class="policy-card"><h3 data-i18n="pm.c4.title">Zuerst Angebot</h3><p data-i18n="pm.c4.body">Wird verwendet, wenn Versand, Lieferzeit oder Konfiguration vor der Zahlung bestätigt werden müssen.</p></article>
+                <span class="eyebrow" data-i18n="pm.eyebrow">Zahlungs- und Beschaffungsstatus</span>
+                <h1 class="page-title" data-i18n="pm.title">Aktueller Status von Zahlung und Bestellanfrage.</h1>
+                <p class="payment-status-intro" data-i18n="pm.intro">Der Store erfasst derzeit eine Bestellanfrage. Er nimmt keine Zahlung an und zeigt keine Bankdaten an.</p>
+                <div class="policy-grid payment-status-grid">
+                    <article class="policy-card payment-status-card">
+                        <span class="status-label" data-i18n="pm.c1.status">Verfügbar — keine Abbuchung</span>
+                        <h3 data-i18n="pm.c1.title">Bestellanfrage</h3>
+                        <p data-i18n="pm.c1.body">Senden Sie Einkaufsdaten zur Prüfung. Die Anfrage belastet keine Karte und erzeugt keine bezahlte Bestellung.</p>
+                    </article>
+                    <article class="policy-card payment-status-card">
+                        <span class="status-label" data-i18n="pm.c2.status">Auf Anfrage verfügbar</span>
+                        <h3 data-i18n="pm.c2.title">Proforma-Rechnung anfordern</h3>
+                        <p data-i18n="pm.c2.body">Fordern Sie beim Vertrieb eine Proforma-Rechnung an. Verfügbarkeit, Fracht, Steuern, Konfiguration und kaufmännische Bedingungen werden vorher bestätigt.</p>
+                    </article>
+                    <article class="policy-card payment-status-card">
+                        <span class="status-label" data-i18n="pm.c3.status">Nicht konfiguriert</span>
+                        <h3 data-i18n="pm.c3.title">Gehostete Zahlung</h3>
+                        <p data-i18n="pm.c3.body">Es ist kein gehosteter Zahlungsanbieter aktiv. Eine Zahlungsoption wird erst nach sicherer Konfiguration eines Anbieters angezeigt.</p>
+                    </article>
+                    <article class="policy-card payment-status-card">
+                        <span class="status-label" data-i18n="pm.c4.status">Prüfung im Einzelfall</span>
+                        <h3 data-i18n="pm.c4.title">Bank- / PO-Bedingungen</h3>
+                        <p data-i18n="pm.c4.body">Überweisungs- oder Bestellbedingungen werden vom Vertrieb je Auftrag bestätigt. Bankverbindungen werden auf dieser öffentlichen Seite nie angezeigt.</p>
+                    </article>
+                </div>
+                <div class="payment-status-actions">
+                    <a class="button button-primary" href="/de/shop/request-quote.html" data-i18n="cta.requestQuote">Angebot anfordern</a>
+                    <a class="button button-outline" href="/de/shop/contact-us.html" data-i18n="pm.contact">Einkaufssupport kontaktieren</a>
                 </div>
             </div>
         </section>

@@ -15,10 +15,32 @@ export const STATUS_VALUES = Object.freeze({
   rfqs: ["new", "reviewing", "waiting_for_info", "quoted", "won", "lost", "spam"],
   support_requests: ["new", "reviewing", "replied", "closed", "spam"],
   download_requests: ["new", "approved", "rejected", "fulfilled", "spam"],
+  order_intents: ["pending_review", "reviewing", "waiting_for_info", "ready_for_quote", "declined", "closed", "spam"],
 });
 
 export const ISSUE_TYPES = ["defect", "how_to", "rma", "integration", "documentation", "other"];
 export const ACCESS_TYPES = ["public", "gated", "manual_review"];
+export const ORDER_INTENT_REQUEST_TYPES = ["order_request", "proforma_invoice"];
+
+/** Storefront catalog allow-list. Order intents never accept an arbitrary SKU. */
+export const ORDER_INTENT_SKUS = Object.freeze([
+  "GY-CV220-INLINE",
+  "GY-LB220",
+  "GY-PR12",
+  "GY-S240W",
+  "GY-A55-PRO",
+  "GY-R70-LONGRANGE",
+  "GY-OPT25",
+  "GY-FB200",
+  "GY-MG50",
+  "GY-CAL-GRID",
+  "GY-V240-COLOR",
+  "GY-V3D150",
+  "GY-LDOME120",
+  "GY-PS60",
+  "GY-S300-DPM",
+  "GY-A80-ULTRA",
+]);
 
 /** Honeypot field name shared by every form (matches the live contact form). */
 export const HONEYPOT_FIELD = "website";
@@ -116,6 +138,22 @@ export const TABLE_COLUMNS = Object.freeze({
     "utm_source", "utm_medium", "utm_campaign", "user_agent", "ip_hash",
     "ip_country", "status", "internal_note", "created_at", "updated_at",
   ],
+  order_intents: [
+    "public_id", "idempotency_key_hash", "request_fingerprint", "request_type",
+    "contact_name", "contact_department", "company", "email", "phone",
+    "shipping_recipient", "shipping_company", "shipping_phone",
+    "shipping_address_line1", "shipping_address_line2", "shipping_city",
+    "shipping_region", "shipping_postal_code", "shipping_country",
+    "billing_same_as_shipping", "billing_recipient", "billing_company", "billing_phone",
+    "billing_address_line1", "billing_address_line2", "billing_city",
+    "billing_region", "billing_postal_code", "billing_country",
+    "procurement_project_name", "procurement_purchase_order", "procurement_tax_id",
+    "procurement_invoice_info", "procurement_notes", "item_count", "source_page", "locale",
+    "user_agent", "ip_hash", "ip_country", "status", "internal_note", "created_at", "updated_at",
+  ],
+  order_intent_items: [
+    "order_intent_id", "line_number", "sku", "quantity", "configuration_json", "created_at",
+  ],
   events: ["event_id", "event_type", "entity_type", "entity_id", "source", "payload_json", "created_at"],
   api_keys: ["public_id", "key_hash", "name", "scope", "status", "created_at", "last_used_at"],
 });
@@ -126,6 +164,7 @@ export const UPDATABLE_COLUMNS = Object.freeze({
   rfqs: ["status", "internal_note", "updated_at"],
   support_requests: ["status", "internal_note", "updated_at"],
   download_requests: ["status", "internal_note", "access_type", "updated_at"],
+  order_intents: ["status", "internal_note", "updated_at"],
 });
 
 /* --------------------- Data API safe projections -------------------------- */

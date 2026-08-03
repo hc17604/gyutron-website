@@ -14,19 +14,19 @@
 <body>
 {{include:shop-header}}
 
-    <main>
-        <section class="section section-soft">
+    <main id="main-content">
+        <section class="section section-soft cart-section">
             <div class="container">
                 <div class="section-head">
                     <div>
                         <span class="eyebrow" data-i18n="cart.eyebrow">Cart</span>
-                        <h1 style="color:var(--ink);font-size:48px;" data-i18n="cart.title">Your purchasing cart.</h1>
+                        <h1 class="page-title" data-i18n="cart.title">Your purchasing cart.</h1>
                     </div>
                     <p data-i18n="cart.copy">Shipping, duties, payment terms, and lead time are confirmed during checkout review for industrial orders.</p>
                 </div>
                 <div class="cart-layout">
-                    <div class="cart-list" data-cart-list></div>
-                    <aside class="summary-card" data-cart-summary></aside>
+                    <div class="cart-list" data-cart-list aria-live="polite"></div>
+                    <aside class="summary-card" data-cart-summary aria-live="polite"></aside>
                 </div>
             </div>
         </section>

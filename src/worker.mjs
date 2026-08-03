@@ -2,12 +2,15 @@ import { handleContactRequest } from "./contact-handler.mjs";
 import { handleFormRequest } from "./api/forms.mjs";
 import { handleDataApi } from "./api/data.mjs";
 import { handleAdmin } from "./api/admin.mjs";
+import { handleOrderIntent } from "./api/order-intents.mjs";
 
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const pathname = url.pathname;
     const isShopHost = url.hostname === "shop.gyutron.com";
+    const isLocalOrderIntentHost = env.ORDER_INTENT_ALLOW_LOCAL_ORIGIN === "true"
+      && ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname);
 
     // Shop behavior beacon — available on BOTH hosts (the shop posts same-origin).
     if (pathname === "/api/shop-event") {
@@ -15,13 +18,21 @@ export default {
       return handleShopEvent(request, env);
     }
 
-    // Backend routes apply on the brand host only; the storefront host is
-    // handled entirely by the shop block below.
+    // Review-only storefront request. This MUST run before shop static mapping,
+    // otherwise /api/order-intents would be rewritten under /shop/.
+    if ((isShopHost || isLocalOrderIntentHost) && pathname === "/api/order-intents") {
+      return handleOrderIntent(request, env, ctx);
+    }
+
+    // Purchasing/support forms are submitted same-origin from both the brand
+    // site and shop.gyutron.com. Keep these routes before the shop asset mapper
+    // so they can never be rewritten to /shop/api/*.
+    if (pathname === "/api/contact") return handleContactRequest(request, env, ctx);
+    if (pathname === "/api/rfq") return handleFormRequest("rfq", request, env, ctx);
+    if (pathname === "/api/support") return handleFormRequest("support", request, env, ctx);
+
+    // The remaining backend routes apply on the brand host only.
     if (!isShopHost) {
-      // ---- Form submission API ----
-      if (pathname === "/api/contact") return handleContactRequest(request, env, ctx);
-      if (pathname === "/api/rfq") return handleFormRequest("rfq", request, env, ctx);
-      if (pathname === "/api/support") return handleFormRequest("support", request, env, ctx);
       if (pathname === "/api/download-request") return handleFormRequest("download", request, env, ctx);
 
       // ---- Resource center file delivery (manifest + R2; see src/api/downloads.mjs) ----

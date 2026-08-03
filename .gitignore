@@ -16,6 +16,7 @@ tmp-*.jpg
 tmp-*.png
 tmp-*.webp
 *.tmp
+artifacts/shop-qa-*/
 
 # Node deps (not committed)
 node_modules/

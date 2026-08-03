@@ -10,7 +10,8 @@
  *   POST /admin/:resource/:id        action: save (status+note) | spam | delete
  *   POST /admin/login   POST /admin/logout
  *
- * Resources: leads, rfqs, support, downloads, events (events is read-only).
+ * Resources: leads, rfqs, support, downloads, order intents, events
+ * (events is read-only).
  */
 import { adminConfigured, isAuthed, verifyPassword, createSessionCookie, clearSessionCookie } from "../platform/security/admin-auth.mjs";
 import { getDb } from "../platform/db/client.mjs";
@@ -26,6 +27,12 @@ const RESOURCES = {
   rfqs: { table: "rfqs", label: "RFQs", editable: true },
   support: { table: "support_requests", label: "Support", editable: true },
   downloads: { table: "download_requests", label: "Downloads", editable: true },
+  "order-intents": {
+    table: "order_intents",
+    label: "Order Intents",
+    editable: true,
+    freshStatus: "pending_review",
+  },
   events: { table: "events", label: "Events", editable: false, idCol: "event_id" },
 };
 
@@ -34,6 +41,7 @@ const LIST_COLUMNS = {
   rfqs: ["public_id", "created_at", "company", "email", "product_category", "quantity", "status"],
   support: ["public_id", "created_at", "company", "email", "issue_type", "status"],
   downloads: ["public_id", "created_at", "company", "email", "requested_file", "status"],
+  "order-intents": ["public_id", "created_at", "company", "email", "request_type", "item_count", "status"],
   events: ["event_id", "created_at", "event_type", "entity_type", "entity_id"],
 };
 
@@ -116,7 +124,7 @@ async function dashboard(env, db) {
     let fresh = 0;
     try {
       total = await count(db, r.table);
-      if (STATUS_VALUES[r.table]) fresh = await count(db, r.table, { status: "new" });
+      if (STATUS_VALUES[r.table]) fresh = await count(db, r.table, { status: r.freshStatus || "new" });
     } catch {
       /* ignore */
     }
@@ -124,7 +132,7 @@ async function dashboard(env, db) {
       <a class="card" href="/admin/${key}">
         <span class="card-label">${esc(r.label)}</span>
         <span class="card-total">${total}</span>
-        ${STATUS_VALUES[r.table] ? `<span class="card-sub">${fresh} new</span>` : `<span class="card-sub">stream</span>`}
+        ${STATUS_VALUES[r.table] ? `<span class="card-sub">${fresh} ${esc((r.freshStatus || "new").replace(/_/g, " "))}</span>` : `<span class="card-sub">stream</span>`}
       </a>`);
   }
   return htmlResponse(page("Dashboard", `<div class="cards">${cards.join("")}</div>`));
@@ -193,9 +201,27 @@ async function detailView(db, resourceKey, id) {
   if (!row) return htmlResponse(page("Not found", `<p class="empty">Record not found.</p>`, resourceKey), 404);
 
   const fields = Object.entries(row)
-    .filter(([k]) => k !== "id")
+    .filter(([k]) => !["id", "idempotency_key_hash", "request_fingerprint"].includes(k))
     .map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`)
     .join("");
+
+  let related = "";
+  if (resourceKey === "order-intents") {
+    const itemResult = await db.prepare(
+      `SELECT line_number, sku, quantity, configuration_json
+       FROM order_intent_items WHERE order_intent_id = ? ORDER BY line_number ASC`,
+    ).bind(row.id).all();
+    const itemRows = (itemResult.results || []).map((item) => `
+      <tr>
+        <td>${esc(item.line_number)}</td>
+        <td>${esc(item.sku)}</td>
+        <td>${esc(item.quantity)}</td>
+        <td>${configurationCell(item.configuration_json)}</td>
+      </tr>`).join("");
+    related = `<h2>Requested items</h2>
+      <table><thead><tr><th>Line</th><th>SKU</th><th>Quantity</th><th>Configuration</th></tr></thead>
+      <tbody>${itemRows || '<tr><td colspan="4">No item rows found.</td></tr>'}</tbody></table>`;
+  }
 
   let actions = "";
   if (resource.editable) {
@@ -230,11 +256,17 @@ async function detailView(db, resourceKey, id) {
   }
 
   const back = `<p><a href="/admin/${resourceKey}">← ${esc(resource.label)}</a></p>`;
-  return htmlResponse(page(`${resource.label} · ${short(id)}`, `${back}<table class="detail">${fields}</table>${actions}`, resourceKey));
+  return htmlResponse(page(`${resource.label} · ${short(id)}`, `${back}<table class="detail">${fields}</table>${related}${actions}`, resourceKey));
 }
 
 /** events.entity_type values per admin resource (matches the *.created events). */
-const EVENT_ENTITY = { leads: "lead", rfqs: "rfq", support: "support_request", downloads: "download_request" };
+const EVENT_ENTITY = {
+  leads: "lead",
+  rfqs: "rfq",
+  support: "support_request",
+  downloads: "download_request",
+  "order-intents": "order_intent",
+};
 
 async function doAction(request, db, resourceKey, id, secure, env) {
   const resource = RESOURCES[resourceKey];
@@ -306,6 +338,15 @@ function statusPill(v) {
 function short(v) {
   const s = String(v ?? "");
   return s.length > 60 ? `${s.slice(0, 57)}…` : s;
+}
+
+function configurationCell(value) {
+  if (!value) return '<span class="empty">None</span>';
+  try {
+    return `<pre>${esc(JSON.stringify(JSON.parse(value), null, 2))}</pre>`;
+  } catch {
+    return `<pre>${esc(value)}</pre>`;
+  }
 }
 
 function loginPage(env, error) {
@@ -388,6 +429,7 @@ a:hover{text-decoration:underline}
 .adminnav .logout button{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;padding:6px 12px;cursor:pointer}
 .wrap{max-width:1080px;margin:0 auto;padding:24px 20px 64px}
 h1{font-size:22px;margin:8px 0 18px}
+h2{font-size:17px;margin:24px 0 10px}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
 .card{display:flex;flex-direction:column;gap:4px;border:1px solid var(--line);background:#fff;padding:18px}
 .card-label{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
@@ -412,8 +454,10 @@ select,input,textarea{font:inherit;padding:8px;border:1px solid var(--line);back
 .error{color:#b3261e}
 .pill{display:inline-block;padding:2px 8px;font-size:12px;border:1px solid var(--line);background:#f3eefb}
 .pill-new{background:#e7f0ff;border-color:#bcd4ff}
+.pill-pending_review{background:#fff4d6;border-color:#e8cf82}
 .pill-spam{background:#fde7e7;border-color:#f3b4b4}
 .pill-closed,.pill-lost,.pill-rejected{background:#eee;color:var(--muted)}
 .pill-won,.pill-fulfilled,.pill-replied,.pill-quoted{background:#e7f7ee;border-color:#b4e3c6}
 code{background:#f3eefb;padding:1px 5px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font:12px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace}
 `;
