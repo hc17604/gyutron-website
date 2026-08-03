@@ -14,37 +14,16 @@
 <body>
 {{include:shop-header}}
 
-    <main id="main-content">
-        <section class="section payment-status-section">
+    <main>
+        <section class="section">
             <div class="container">
                 <span class="eyebrow" data-i18n="pm.eyebrow">Payment Methods</span>
-                <h1 class="page-title" data-i18n="pm.title">Current payment and order-request status.</h1>
-                <p class="payment-status-intro" data-i18n="pm.intro">The storefront currently records an order request. It does not collect payment or expose bank details.</p>
-                <div class="policy-grid payment-status-grid">
-                    <article class="policy-card payment-status-card">
-                        <span class="status-label" data-i18n="pm.c1.status">Available — no charge</span>
-                        <h3 data-i18n="pm.c1.title">Order Request</h3>
-                        <p data-i18n="pm.c1.body">Submit purchasing details for review. Sending the request does not charge a card or create a paid order.</p>
-                    </article>
-                    <article class="policy-card payment-status-card">
-                        <span class="status-label" data-i18n="pm.c2.status">Available by request</span>
-                        <h3 data-i18n="pm.c2.title">Request Proforma Invoice</h3>
-                        <p data-i18n="pm.c2.body">Ask sales for a proforma invoice. Availability, freight, taxes, configuration, and commercial terms are confirmed first.</p>
-                    </article>
-                    <article class="policy-card payment-status-card">
-                        <span class="status-label" data-i18n="pm.c3.status">Not configured</span>
-                        <h3 data-i18n="pm.c3.title">Hosted Payment</h3>
-                        <p data-i18n="pm.c3.body">No hosted payment provider is active. A payment option will be shown only after a provider is securely configured.</p>
-                    </article>
-                    <article class="policy-card payment-status-card">
-                        <span class="status-label" data-i18n="pm.c4.status">Case-by-case review</span>
-                        <h3 data-i18n="pm.c4.title">Bank / PO Terms</h3>
-                        <p data-i18n="pm.c4.body">Bank-transfer or purchase-order terms are confirmed by sales for each order. Bank instructions are never displayed on this public page.</p>
-                    </article>
-                </div>
-                <div class="payment-status-actions">
-                    <a class="button button-primary" href="{{locale.base}}/shop/request-quote.html" data-i18n="cta.requestQuote">Request a Quote</a>
-                    <a class="button button-outline" href="{{locale.base}}/shop/contact-us.html" data-i18n="pm.contact">Contact purchasing support</a>
+                <h1 style="color:var(--ink);font-size:48px;" data-i18n="pm.title">Designed for online payment and B2B procurement terms.</h1>
+                <div class="policy-grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-top:28px;">
+                    <article class="policy-card"><h3 data-i18n="pm.c1.title">Credit Card</h3><p data-i18n="pm.c1.body">Recommended after ecommerce platform integration.</p></article>
+                    <article class="policy-card"><h3 data-i18n="pm.c2.title">PayPal</h3><p data-i18n="pm.c2.body">Useful for samples, small accessories, and international buyers.</p></article>
+                    <article class="policy-card"><h3 data-i18n="pm.c3.title">Wire Transfer</h3><p data-i18n="pm.c3.body">Suitable for B2B orders and proforma invoice workflows.</p></article>
+                    <article class="policy-card"><h3 data-i18n="pm.c4.title">Quote First</h3><p data-i18n="pm.c4.body">Used when shipping, lead time, or configuration must be confirmed before payment.</p></article>
                 </div>
             </div>
         </section>

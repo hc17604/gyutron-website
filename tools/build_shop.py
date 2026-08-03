@@ -30,7 +30,7 @@ from build_i18n import (
 
 
 SHOP_TEMPLATES = TEMPLATES / "shop"
-SHOP_ASSETS = ("shop.css", "shop.js", "shop-i18n.js")
+SHOP_ASSETS = ("shop.css", "shop.js", "shop-i18n.js", "checkout.css", "checkout.js")
 
 
 def iter_shop_templates() -> list[Path]:
@@ -55,11 +55,17 @@ def audit_keys(templates: list[Path], locales: dict[str, dict[str, str]]) -> lis
     return report
 
 
-def copy_asset(source: Path, destination: Path) -> bool:
+def copy_asset(source: Path, destination: Path, locale: str, asset_name: str) -> bool:
     if source.resolve() == destination.resolve():
         return False
     destination.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(source, destination)
+    if asset_name == "shop.js" and locale in {"de", "ja"}:
+        localized = source.read_text(encoding="utf-8").replace(
+            "/shop/", f"/{locale}/shop/"
+        )
+        destination.write_text(localized, encoding="utf-8", newline="")
+    else:
+        shutil.copyfile(source, destination)
     return True
 
 
@@ -116,8 +122,8 @@ def build(check_only: bool = False) -> int:
             if not asset_source.exists():
                 print(f"Missing canonical shop asset: {asset_source}")
                 return 1
-            asset_copies += int(copy_asset(asset_source, source_out_dir / asset_name))
-            asset_copies += int(copy_asset(asset_source, public_out_dir / asset_name))
+            asset_copies += int(copy_asset(asset_source, source_out_dir / asset_name, locale, asset_name))
+            asset_copies += int(copy_asset(asset_source, public_out_dir / asset_name, locale, asset_name))
 
     missing = sorted(set(item for item in render_report if "missing key" in item))
     if missing:

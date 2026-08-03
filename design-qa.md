@@ -1,53 +1,78 @@
-# GYUTRON Official Store — Design QA
+# GYUTRON Official Store — checkout isolation design QA
 
 Date: 2026-08-03
-Result: **PASS**
 
-## Visual target and boundaries
+## Scope and restoration boundary
 
-- Hyconext was used only as a structural reference for the four-stage checkout, persistent order summary, and enterprise purchasing hierarchy.
-- The implementation retains GYUTRON branding, the existing logo, product catalog, static multi-page architecture, Cloudflare Worker, cart key, clean URLs, and English/German/Japanese paths.
-- Visible styling uses the GYUTRON purple system (`#4b2e83`, `#8a63d2`, `#efe8ff`) with neutral surfaces, square corners, explicit borders, and no copied Hyconext assets, text, icons, colors, or code.
-- Payment remains explicitly unavailable. The final step submits a review-only order request or proforma-invoice request and never collects card, CVC, PayPal, bank, or purchase-order payment data.
+- Hyconext was used only for checkout information hierarchy, step progression, the persistent desktop summary, and the compact mobile summary.
+- The GYUTRON logo, purple palette, square industrial surfaces, original header/footer, catalog, URLs, SKUs, cart key, static multi-page architecture, Worker routes, and en/de/ja paths were retained.
+- Fifteen non-checkout templates, 90 generated non-checkout HTML files, five shared partials, all six `shop.css` copies, all six `shop.js` copies, three locale JSON files, and `public/shop-analytics.js` were verified against `d5315f9` with no diff.
+- New visual and interaction code is isolated to `checkout.css`, `checkout.js`, and the checkout template. Every checkout selector is scoped by `.checkout-page`, and only checkout HTML loads those assets.
+- The only intentional shared-file exception is the appended `window.GYUTRON_CHECKOUT_I18N` dictionary in `shop-i18n.js`; the original store dictionary is unchanged and non-checkout pages do not read the checkout dictionary.
 
-## Screenshot comparison
+## Source and implementation comparison
 
-Reference captures and final captures are stored in `artifacts/shop-qa-20260803/` on the project D: drive.
+All evidence is stored under `artifacts/shop-qa-20260803/` on the project D: drive.
 
-- Reference: `reference-hyconext-customer.png`, `reference-hyconext-address.png`, `reference-hyconext-shipping.png`, `reference-hyconext-payment.png`
-- Final: `final-checkout-en-1440.jpg`, `final-checkout-en-390.jpg`, `final-checkout-de-430.jpg`, `final-product-en-1024.jpg`, `final-product-en-390.jpg`, `final-home-en-1440.jpg`, `final-products-ja-768.jpg`
+- Source captures: `reference-hyconext-customer.png`, `reference-hyconext-address.png`, `reference-hyconext-shipping.png`, `reference-hyconext-payment.png`.
+- Final implementation: `corrected-checkout-en-1440.png`, `corrected-checkout-en-step4-1440.png`, `corrected-checkout-en-1024.png`, `corrected-checkout-en-768.png`, `corrected-checkout-en-430.png`, `corrected-checkout-en-390.png`, `corrected-checkout-de-390.png`, `corrected-checkout-ja-390.png`.
+- Combined side-by-side evidence: `checkout-visual-comparison.png` and its source `checkout-visual-comparison.html`.
 
-The final checkout was compared side-by-side with the reference. It preserves the useful information hierarchy while replacing the reference's rounded cards, green completion states, free-shipping claim, discount control, account creation, gender title, newsletter default, payment fields, and review claims with GYUTRON's hard-edged purchasing flow and fact-bounded content.
+The final comparison confirms the same enterprise-checkout hierarchy: numbered collapsible steps on the left, an order summary on the right, clear completed/edit states, and a dedicated final confirmation stage. GYUTRON intentionally differs in brand chrome, purple states, square corners, denser typography, and fact-bounded trust content. Hyconext's blue/green palette, rounded cards, review claims, free-shipping claim, discount UI, gender title, account creation, marketing opt-in, and direct card/bank/PayPal controls were not copied.
 
-## Responsive and interaction checks
+Comparison iterations:
 
-| Width | Pages checked | Result |
+1. The first responsive pass found an English mobile singular/plural defect (`1 items`); the copy was changed to a count-neutral order-summary label.
+2. The first final-step full-page capture inherited the browser's scrolled position; the capture procedure was corrected to return to the top before screenshotting. This was a QA artifact, not a page-layout defect.
+3. The final combined comparison found no remaining hierarchy, spacing, typography, color, icon, content, or responsive issue requiring a code change.
+
+## Responsive, visual, and accessibility checks
+
+| Width | Result | Key observation |
 | --- | --- | --- |
-| 1440 | Home, catalog, product, cart, checkout, account, DE/JA checkout | PASS |
-| 1024 | Home, catalog, product, cart, checkout, account, DE/JA checkout | PASS |
-| 768 | Home, catalog, product, cart, checkout, account, DE/JA checkout | PASS |
-| 430 | Home, catalog, product, cart, checkout, account, DE/JA checkout | PASS |
-| 390 | Home, catalog, product, cart, checkout, account, DE/JA checkout | PASS |
+| 1440 | passed | Left workflow and sticky right summary remain aligned; no overflow. |
+| 1024 | passed | Desktop summary remains usable without clipping or collision. |
+| 768 | passed | Compact top summary replaces the side rail; long content wraps. |
+| 430 | passed | Summary starts collapsed, expands, and closes without horizontal scroll. |
+| 390 | passed | Original two-row mobile header, full-width form controls, and primary action remain usable. |
 
-- 40 browser page/viewport combinations had no document-level horizontal overflow.
-- Desktop/tablet checkout keeps a sticky right-side order summary; 430/390 use a 62px collapsed top summary that expands and collapses without page overflow.
-- Mobile checkout progress uses a 2x2 grid, so all four steps remain visible without horizontal scrolling.
-- Mobile product detail shows the name, SKU, series, applications, availability status, estimated price, configuration, quantity, and Add to Cart within the first 900px; the product image no longer dominates the first screen.
-- Required-field errors provide text, `aria-invalid`, and focus the first invalid field. Separate billing-address validation was exercised.
-- Completed steps can be opened for editing, and entered values persist when continuing again.
-- Search suggestions expose a combobox/listbox relationship; Escape closes suggestions and restores focus. Mobile navigation and language menus also close with Escape and restore focus.
-- At 768px the compact header exposes the menu trigger; the panel opens, contains all navigation links, and closes with Escape while returning to its collapsed state.
-- Locale-independent application filters return non-empty product sets for inspection, robotics, traceability, and warehouse in English, German, and Japanese (12 routes checked).
-- Request Quote, Contact Engineer, and Contact Us use associated labels, POST fallbacks, Turnstile-enhanced same-origin endpoints, and never place contact details in the page URL.
-- Local end-to-end submission returned `pending_review` with intent `OI-20260803-6PP7HK`; D1 stored the request and item without price, total, or payment fields.
-- Order-intent DLP tests reject payment/pricing keys, valid PANs supplied as text or JSON numbers, valid IBANs, and nested configuration/source-page values while accepting benign phone, PO, and checksum-invalid references.
-- Browser console log after the responsive and interaction pass: no errors.
+- English, German, and Japanese were exercised at 390px; there were no `????` or replacement-character failures.
+- Form controls use associated labels, appropriate input types and autocomplete values, text errors, `aria-invalid`, first-error focus, and visible focus styling.
+- The active/completed step treatment uses GYUTRON purple rather than green. Errors are conveyed by icon and text, not color alone.
+- Motion is limited to transform/opacity/scroll behavior and respects `prefers-reduced-motion`.
+- Font Awesome provides the visible UI icons; no fabricated logo, CSS illustration, inline SVG substitute, or placeholder product image was introduced.
+- Browser console errors: 0.
+
+## Primary interaction and data-boundary checks
+
+An isolated headless Chrome run completed 77 assertions:
+
+- Add one real catalog SKU through the original Buy Now control and verify the original cart badge.
+- Trigger required-field validation, verify five readable errors, and verify focus moves to the first invalid field.
+- Complete customer/company data, reveal and collapse the separate billing address, and advance through shipping and procurement.
+- Return from step 4, re-enter the completed step, and preserve entered values.
+- Select the proforma-invoice outcome and exercise the success UI through a local intercepted API response with a trackable request ID.
+- Confirm mobile order-summary expand/collapse behavior.
+- Confirm there are no password, card-number, CVC, CVV, bank-account, PayPal, or hosted-payment impostor fields.
+- Confirm the request payload sends SKU, quantity, approved configuration data, contact/address/procurement fields, request type, locale, and idempotency key—never client price, subtotal, tax, shipping total, card, or bank fields. Nested configuration price/payment keys are removed client-side and rejected again by the Worker boundary.
+
+The real local Worker clean paths returned 200 for en/de/ja checkout pages and all six checkout CSS/JS locale assets. A validly shaped order-intent containing `items[0].price` returned 400 with `Client-submitted prices and totals are not accepted.` No fake production order was submitted.
 
 ## Automated gates
 
-- `npm run shop:verify`: 121 passed, 0 failed.
+- `npm run shop:verify`: 120 passed, 0 failed (16 pages × 3 locales; original-store baseline, checkout isolation, mirrors, payload safety, i18n, and JavaScript syntax).
 - `node scripts/smoke-platform.mjs`: 34 passed, 0 failed.
-- `npm run i18n:gate`: English/German/Japanese shop wiring passed.
-- `npm run i18n:audit`: no residual English in generated German/Japanese shop pages.
-- `astro/npm run build` then `astro/npm run verify:all`: passed.
-- Wrangler asset/Worker dry run: passed.
+- `npm run i18n:gate`: passed for de/ja.
+- `npm run i18n:audit`: 0 residual-English shop segments in de/ja.
+- `astro/npm run build`: 132 pages built.
+- `astro/npm run verify:all`: passed all header, sitemap, route, SEO, accessibility-lite, and i18n report gates.
+- `npx wrangler deploy --dry-run --config wrangler.toml --assets ./public/`: passed; 523 assets read and all DB/KV/R2/ASSETS bindings resolved.
+- `git diff --check`: passed.
+
+## Commercial status
+
+- Payment: not connected. No charge is created and no payment credential is collected.
+- Order: the Worker/D1 boundary creates a `pending_review` purchasing request, not a paid order or inventory reservation.
+- Logistics: carrier, freight mode, dispatch, arrival, duties, taxes, and destination surcharges remain subject to review and formal quotation.
+
+Final result: passed

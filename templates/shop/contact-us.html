@@ -14,7 +14,7 @@
 <body>
 {{include:shop-header}}
 
-    <main id="main-content">
+    <main>
         <section class="section section-soft">
             <div class="container">
                 <div class="section-head">
@@ -24,13 +24,13 @@
                     </div>
                     <p data-i18n="cus.copy">Email info@gyutron.com or use WhatsApp +852 69509801 for order, quote, and product questions.</p>
                 </div>
-                <form class="form" method="post" action="/api/contact" data-demo-form>
+                <form class="form" data-demo-form>
                     <div class="form-grid">
-                        <div class="field"><label for="contact-name" data-i18n="form.name">Name</label><input id="contact-name" required name="name" autocomplete="name"></div>
-                        <div class="field"><label for="contact-email" data-i18n="form.workEmail">Work Email</label><input id="contact-email" required type="email" name="email" autocomplete="email"></div>
-                        <div class="field"><label for="contact-company" data-i18n="form.company">Company</label><input id="contact-company" required name="company" autocomplete="organization"></div>
-                        <div class="field"><label for="contact-topic" data-i18n="form.topic">Topic</label><select id="contact-topic" name="topic"><option value="order" data-i18n="topic.order">Order question</option><option value="quote" data-i18n="topic.quote">Quote request</option><option value="technical-support" data-i18n="topic.support">Technical support</option><option value="warranty" data-i18n="topic.warranty">Warranty</option></select></div>
-                        <div class="field field-wide"><label for="contact-message" data-i18n="form.message">Message</label><textarea id="contact-message" required minlength="12" name="message"></textarea></div>
+                        <div class="field"><label data-i18n="form.name">Name</label><input required name="name"></div>
+                        <div class="field"><label data-i18n="form.workEmail">Work Email</label><input required type="email" name="email"></div>
+                        <div class="field"><label data-i18n="form.company">Company</label><input name="company"></div>
+                        <div class="field"><label data-i18n="form.topic">Topic</label><select name="topic"><option data-i18n="topic.order">Order question</option><option data-i18n="topic.quote">Quote request</option><option data-i18n="topic.support">Technical support</option><option data-i18n="topic.warranty">Warranty</option></select></div>
+                        <div class="field field-wide"><label data-i18n="form.message">Message</label><textarea required name="message"></textarea></div>
                     </div>
                     <button class="button button-primary" type="submit" data-i18n="cus.submit">Send Message</button>
                 </form>

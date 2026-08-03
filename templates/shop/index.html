@@ -14,47 +14,29 @@
 <body>
 {{include:shop-header}}
 
-    <main id="main-content">
+    <main>
         <section class="hero">
             <div class="container">
                 <div class="hero-grid">
-                    <div class="hero-copy">
+                    <div>
                         <span class="eyebrow" data-i18n="hero.eyebrow">GYUTRON Official Store</span>
-                        <h1 data-i18n="hero.title">Industrial automation products, structured for procurement.</h1>
-                        <p data-i18n="hero.subtitle">Select samples, accessories, and clear SKUs online; checkout records an order request for review. For configured systems, lead-time checks, certifications, or custom projects, request a quote first.</p>
+                        <h1 data-i18n="hero.title">Industrial automation products, ready to buy or quote.</h1>
+                        <p data-i18n="hero.subtitle">Buy samples, accessories, and clear SKUs online. For configured systems, lead-time checks, certifications, or custom projects, request a quote before ordering.</p>
                         <div class="hero-actions">
                             <a class="button button-primary" href="{{locale.base}}/shop/products.html"><span data-i18n="cta.shopProducts">Shop Products</span> <i class="fa-solid fa-chevron-right"></i></a>
                             <a class="button button-outline" href="{{locale.base}}/shop/request-quote.html" data-i18n="cta.requestQuote">Request a Quote</a>
                             <a class="button button-soft" href="{{locale.base}}/shop/contact-engineer.html" data-i18n="cta.contactEngineer">Contact Engineer</a>
                         </div>
-                        <form class="hero-search" action="{{locale.base}}/shop/products.html" method="get" role="search">
-                            <label for="home-product-search" data-i18n="procurement.search.label">Find a known product</label>
-                            <div class="hero-search__control">
-                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                <input id="home-product-search" type="search" name="q" autocomplete="off" data-i18n-attr="placeholder=procurement.search.placeholder" placeholder="Search SKU, model, series, or application">
-                                <button type="submit" data-i18n="procurement.search.action">Find product</button>
-                            </div>
-                        </form>
                     </div>
-                    <aside class="procurement-guide" aria-labelledby="procurement-guide-title">
-                        <span class="eyebrow eyebrow-light" data-i18n="procurement.guide.eyebrow">Choose the right purchasing path</span>
-                        <h2 id="procurement-guide-title" data-i18n="hero.panel.title">Built for B2B purchasing</h2>
-                        <a class="procurement-guide__row" href="{{locale.base}}/shop/products.html">
-                            <span class="procurement-guide__number">01</span>
-                            <span><strong data-i18n="procurement.guide.buy.title">Start a standard SKU request</strong><small data-i18n="hero.panel.b1">Start an order request for samples, accessories, and clear SKUs.</small></span>
-                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                        <a class="procurement-guide__row" href="{{locale.base}}/shop/request-quote.html">
-                            <span class="procurement-guide__number">02</span>
-                            <span><strong data-i18n="procurement.guide.quote.title">Confirm commercial terms</strong><small data-i18n="hero.panel.b2">Request a Quote for volume, lead time, certification, or customization.</small></span>
-                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                        <a class="procurement-guide__row" href="{{locale.base}}/shop/contact-engineer.html">
-                            <span class="procurement-guide__number">03</span>
-                            <span><strong data-i18n="procurement.guide.engineer.title">Validate the application</strong><small data-i18n="hero.panel.b3">Contact Engineer for parameter selection and deployment guidance.</small></span>
-                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </aside>
+                    <div class="buy-panel">
+                        <h2 data-i18n="hero.panel.title">Built for B2B purchasing</h2>
+                        <ul>
+                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b1">Buy Now for samples, accessories, and clear SKUs.</span></li>
+                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b2">Request a Quote for volume, lead time, certification, or customization.</span></li>
+                            <li><i class="fa-solid fa-check"></i><span data-i18n="hero.panel.b3">Contact Engineer for parameter selection and deployment guidance.</span></li>
+                        </ul>
+                        <a class="button button-dark" href="{{locale.base}}/shop/payment-methods.html" style="width:100%;" data-i18n="cta.paymentInfo">Payment & Procurement Info</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -68,49 +50,7 @@
                     </div>
                     <p data-i18n="spotlight.subtitle">A quote-first B2B product window for fast browsing, SKU comparison, and engineer-supported procurement.</p>
                 </div>
-                <div class="spotlight-grid" data-spotlight aria-live="polite"></div>
-            </div>
-        </section>
-
-        <section class="procurement-paths" aria-labelledby="procurement-paths-title">
-            <div class="container">
-                <div class="procurement-paths__head">
-                    <div>
-                        <span class="eyebrow" data-i18n="procurement.paths.eyebrow">Procurement directory</span>
-                        <h2 id="procurement-paths-title" data-i18n="procurement.paths.title">Start with the information you already have.</h2>
-                    </div>
-                    <p data-i18n="procurement.paths.copy">Move from a category, product series, exact SKU or model, or the application your team needs to solve.</p>
-                </div>
-                <div class="procurement-paths__grid">
-                    <a href="{{locale.base}}/shop/products.html">
-                        <span>01</span>
-                        <strong data-i18n="procurement.paths.category.title">Browse categories</strong>
-                        <small data-i18n="procurement.paths.category.body">Cameras, lighting, sensors, scanning, rugged terminals, optics, cards, and accessories.</small>
-                    </a>
-                    <a href="{{locale.base}}/shop/products.html?view=series">
-                        <span>02</span>
-                        <strong data-i18n="procurement.paths.series.title">Compare product series</strong>
-                        <small data-i18n="procurement.paths.series.body">Review closely related models in a compact, specification-led catalog.</small>
-                    </a>
-                    <a href="{{locale.base}}/shop/products.html?q=GY-">
-                        <span>03</span>
-                        <strong data-i18n="procurement.paths.sku.title">Find an SKU or model</strong>
-                        <small data-i18n="procurement.paths.sku.body">Go directly to a known part number, model name, or replacement item.</small>
-                    </a>
-                    <a href="{{locale.base}}/shop/products.html?application=inspection">
-                        <span>04</span>
-                        <strong data-i18n="procurement.paths.application.title">Browse by application</strong>
-                        <small data-i18n="procurement.paths.application.body">Start from inspection, guidance, traceability, sensing, or field operations.</small>
-                    </a>
-                </div>
-                <div class="application-tags" data-i18n-attr="aria-label=procurement.applications.label">
-                    <span data-i18n="procurement.applications.label">Application entry points</span>
-                    <a href="{{locale.base}}/shop/products.html?application=inspection" data-i18n="procurement.applications.inspection">Vision inspection</a>
-                    <a href="{{locale.base}}/shop/products.html?application=robotics" data-i18n="procurement.applications.robot">Robot guidance</a>
-                    <a href="{{locale.base}}/shop/products.html?application=traceability" data-i18n="procurement.applications.traceability">Traceability</a>
-                    <a href="{{locale.base}}/shop/products.html?application=warehouse" data-i18n="procurement.applications.warehouse">Warehouse scanning</a>
-                    <a href="{{locale.base}}/shop/products.html?q=rugged" data-i18n="procurement.applications.field">Rugged field operations</a>
-                </div>
+                <div class="spotlight-grid" data-spotlight></div>
             </div>
         </section>
 
@@ -147,8 +87,8 @@
                     </article>
                     <article class="trust-card">
                         <i class="fa-solid fa-file-circle-check"></i>
-                        <h3 data-i18n="trust.docs.title">Procurement Documentation</h3>
-                        <p data-i18n="trust.docs.body">Datasheets, compliance documents, and quotation records are confirmed for the applicable product and order.</p>
+                        <h3 data-i18n="trust.docs.title">Certified Documents</h3>
+                        <p data-i18n="trust.docs.body">Datasheets, compliance documents, and quote records can be prepared for procurement teams.</p>
                     </article>
                 </div>
             </div>

@@ -10,7 +10,7 @@
     "i18n:sync": "python tools/generate_localized_site.py && python tools/build_i18n.py && python tools/i18n_gate.py",
     "i18n:check": "python tools/i18n_validate.py",
     "i18n:check:strict": "python tools/i18n_validate.py --strict",
-    "shop:check": "python tools/build_shop.py --check && node --check shop/shop.js && node --check shop/shop-i18n.js",
+    "shop:check": "python tools/build_shop.py --check && node --check shop/shop.js && node --check shop/shop-i18n.js && node --check shop/checkout.js",
     "shop:build": "python tools/build_shop.py",
     "shop:verify": "npm run shop:check && node scripts/smoke-shop.mjs"
   },

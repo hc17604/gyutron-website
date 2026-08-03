@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="/de/shop/shop.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Zum Hauptinhalt springen</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">Offizieller industrieller Einkaufszugang von GYUTRON</span>
@@ -46,11 +45,12 @@
                 </div>
                 <form class="store-search" action="/de/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen" autocomplete="off">
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Suchen"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">Menü</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store-Aktionen">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menü</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Sprache und Region auswählen"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Sprachoptionen">
@@ -59,14 +59,13 @@
                         <a href="/ja/shop/request-quote.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="Konto"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Konto</span></a>
-                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Konto</span></a>
+                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-
-    <main id="main-content">
+    <main>
         <section class="section section-soft">
             <div class="container">
                 <div class="section-head">
@@ -76,16 +75,15 @@
                     </div>
                     <p data-i18n="quote.copy">Nutzen Sie dies für Mengenkäufe, unklare Modellauswahl, Compliance-Dokumente, Zubehör und Versandprüfung.</p>
                 </div>
-                <form class="form" method="post" action="/api/rfq" data-demo-form>
+                <form class="form" data-demo-form>
                     <div class="form-grid">
-                        <div class="field"><label for="quote-sku" data-i18n="form.productSku">Produkt-SKU</label><input id="quote-sku" name="sku" autocomplete="off" data-prefill-sku data-i18n-attr="placeholder=ph.optional" placeholder="Optional"></div>
-                        <div class="field"><label for="quote-quantity" data-i18n="form.estQuantity">Geschätzte Menge</label><input id="quote-quantity" name="quantity" inputmode="numeric" autocomplete="off" placeholder="10 / 50 / 100"></div>
-                        <div class="field"><label for="quote-name" data-i18n="form.name">Name</label><input id="quote-name" required name="name" autocomplete="name"></div>
-                        <div class="field"><label for="quote-email" data-i18n="form.workEmail">Geschäftliche E-Mail</label><input id="quote-email" required type="email" name="email" autocomplete="email"></div>
-                        <div class="field"><label for="quote-company" data-i18n="form.company">Unternehmen</label><input id="quote-company" name="company" autocomplete="organization"></div>
-                        <div class="field"><label for="quote-country" data-i18n="form.country">Land / Region</label><input id="quote-country" name="country" autocomplete="country-name"></div>
-                        <div class="field"><label for="quote-timeline" data-i18n="form.buyingTimeline">Beschaffungszeitraum</label><select id="quote-timeline" name="timeline"><option value="asap" data-i18n="timeline.asap">So bald wie möglich</option><option value="within-30-days" data-i18n="timeline.30days">Innerhalb von 30 Tagen</option><option value="this-quarter" data-i18n="timeline.quarter">Dieses Quartal</option><option value="planning" data-i18n="timeline.planning">Planungsphase</option></select></div>
-                        <div class="field field-wide"><label for="quote-requirements" data-i18n="form.appRequirements">Anwendung / Anforderungen</label><textarea id="quote-requirements" required minlength="12" name="requirements" data-i18n-attr="placeholder=ph.appRequirements" placeholder="Anwendung, Schnittstelle, Umgebung, Zertifizierungen, Verpackung, Lieferzeit oder Zielbudget."></textarea></div>
+                        <div class="field"><label data-i18n="form.productSku">Produkt-SKU</label><input name="sku" data-prefill-sku data-i18n-attr="placeholder=ph.optional" placeholder="Optional"></div>
+                        <div class="field"><label data-i18n="form.estQuantity">Geschätzte Menge</label><input name="quantity" placeholder="10 / 50 / 100"></div>
+                        <div class="field"><label data-i18n="form.workEmail">Geschäftliche E-Mail</label><input required type="email" name="email"></div>
+                        <div class="field"><label data-i18n="form.company">Unternehmen</label><input name="company"></div>
+                        <div class="field"><label data-i18n="form.country">Land / Region</label><input name="country"></div>
+                        <div class="field"><label data-i18n="form.buyingTimeline">Beschaffungszeitraum</label><select name="timeline"><option data-i18n="timeline.asap">So bald wie möglich</option><option data-i18n="timeline.30days">Innerhalb von 30 Tagen</option><option data-i18n="timeline.quarter">Dieses Quartal</option><option data-i18n="timeline.planning">Planungsphase</option></select></div>
+                        <div class="field field-wide"><label data-i18n="form.appRequirements">Anwendung / Anforderungen</label><textarea required name="requirements" data-i18n-attr="placeholder=ph.appRequirements" placeholder="Anwendung, Schnittstelle, Umgebung, Zertifizierungen, Verpackung, Lieferzeit oder Zielbudget."></textarea></div>
                     </div>
                     <button class="button button-primary" type="submit" data-i18n="quote.submit">Angebotsanfrage senden</button>
                 </form>

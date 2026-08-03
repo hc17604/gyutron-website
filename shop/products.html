@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="/shop/shop.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Skip to main content</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">Official GYUTRON industrial purchasing entrance</span>
@@ -46,11 +45,12 @@
                 </div>
                 <form class="store-search" action="/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Search products" aria-label="Search products" autocomplete="off">
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Search products" aria-label="Search products">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Open store menu"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">Menu</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store actions">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Open store menu"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menu</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Language and region selector"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Language options">
@@ -59,52 +59,28 @@
                         <a href="/ja/shop/products.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="Account"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Account</span></a>
-                <a class="icon-action cart-link" href="/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Cart"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Create account"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Account</span></a>
+                <a class="icon-action cart-link" href="/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-
-    <main id="main-content">
-        <section class="section section-soft catalog-section">
+    <main>
+        <section class="section section-soft">
             <div class="container">
                 <div class="section-head">
                     <div>
                         <span class="eyebrow" data-i18n="products.eyebrow">Product Catalog</span>
-                        <h1 class="catalog-title" data-i18n="products.title">Industrial automation procurement catalog.</h1>
+                        <h1 class="catalog-title" data-i18n="products.title">Shop industrial automation hardware.</h1>
                     </div>
-                    <p class="catalog-copy" data-i18n="products.copy">Compare focused B2B categories. Buy Now starts an order request for a standard SKU; use a quote request for configuration, documentation, stock, and lead-time confirmation.</p>
-                </div>
-                <div class="catalog-toolbar">
-                    <form class="catalog-search" action="/shop/products.html" method="get" role="search">
-                        <label for="catalog-product-search" data-i18n="products.search.label">Search the industrial catalog</label>
-                        <div class="catalog-search__control">
-                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                            <input id="catalog-product-search" type="search" name="q" autocomplete="off" data-i18n-attr="placeholder=products.search.placeholder" placeholder="SKU, model, series, category, or application">
-                            <button type="submit" data-i18n="products.search.action">Search catalog</button>
-                        </div>
-                    </form>
-                    <div class="catalog-entry-points" data-i18n-attr="aria-label=products.entry.label" aria-label="Quick entry">
-                        <span data-i18n="products.entry.label">Quick entry</span>
-                        <a href="/shop/products.html" data-i18n="products.entry.category">Category</a>
-                        <a href="/shop/products.html?view=series" data-i18n="products.entry.series">Series</a>
-                        <a href="/shop/products.html?q=GY-" data-i18n="products.entry.sku">SKU / Model</a>
-                        <a href="/shop/products.html?application=inspection" data-i18n="products.entry.application">Application</a>
-                    </div>
+                    <p class="catalog-copy" data-i18n="products.copy">Filter focused B2B categories. Use Buy Now for simple orders, or request a quote for configuration, documentation, stock, and lead-time confirmation.</p>
                 </div>
                 <div class="store-layout">
                     <aside class="filter-panel">
                         <h3 data-i18n="products.filtersTitle">Categories</h3>
                         <div class="filter-list" data-filters></div>
-                        <div class="procurement-legend">
-                            <strong data-i18n="products.legend.title">Purchasing routes</strong>
-                            <p><span>01</span><span><b data-i18n="products.legend.buy">Buy Now</b><small data-i18n="products.legend.buyBody">Standard SKU or sample; checkout submits an order request.</small></span></p>
-                            <p><span>02</span><span><b data-i18n="products.legend.quote">Request Quote</b><small data-i18n="products.legend.quoteBody">Volume, lead time, documents, or customization.</small></span></p>
-                            <p><span>03</span><span><b data-i18n="products.legend.engineer">Contact Engineer</b><small data-i18n="products.legend.engineerBody">Model selection or application validation.</small></span></p>
-                        </div>
                     </aside>
-                    <div class="product-grid" data-shop-grid data-products aria-live="polite"></div>
+                    <div class="product-grid" data-products></div>
                 </div>
             </div>
         </section>

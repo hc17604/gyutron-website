@@ -10,29 +10,23 @@
     <meta property="og:locale" content="{{locale.og}}">
     {{locale.alternates}}
 {{include:shop-head-tail}}
+    <link rel="stylesheet" href="{{locale.base}}/shop/checkout.css">
 </head>
 <body class="checkout-page">
-    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Skip to main content</a>
-    <header class="checkout-header">
-        <div class="checkout-header__inner">
-            <a class="checkout-brand" href="{{locale.base}}/shop/index.html">
-                <img src="/gyutron-logo-purple.png" alt="GYUTRON">
-            </a>
-            <nav class="checkout-header__nav" data-i18n-attr="aria-label=checkout.nav.label">
-                <a href="{{locale.base}}/shop/index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span data-i18n="checkout.nav.return">Return to Store</span></a>
-                <a href="{{locale.base}}/shop/account.html"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Account</span></a>
-                <a class="cart-link" href="{{locale.base}}/shop/cart.html"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
-                <a href="{{locale.base}}/shop/contact-us.html"><i class="fa-regular fa-life-ring" aria-hidden="true"></i><span data-i18n="checkout.nav.support">Support</span></a>
-            </nav>
-        </div>
-    </header>
+{{include:shop-header}}
 
-    <main id="main-content" class="checkout-page__main">
-        <div class="checkout-mount" data-checkout-root></div>
+    <main id="main-content">
+        <section class="section checkout-page__section">
+            <div class="container">
+                <div data-checkout-root></div>
+            </div>
+        </section>
     </main>
 
+{{include:shop-footer}}
     <script>window.GYUTRON_SHOP_LOCALE="{{locale.lang}}";</script>
     <script src="{{locale.base}}/shop/shop-i18n.js"></script>
     <script src="{{locale.base}}/shop/shop.js"></script>
+    <script src="{{locale.base}}/shop/checkout.js"></script>
 </body>
 </html>

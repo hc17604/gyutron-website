@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="/shop/shop.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Skip to main content</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">Official GYUTRON industrial purchasing entrance</span>
@@ -46,11 +45,12 @@
                 </div>
                 <form class="store-search" action="/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Search products" aria-label="Search products" autocomplete="off">
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Search products" aria-label="Search products">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Open store menu"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">Menu</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store actions">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Open store menu"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menu</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Language and region selector"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Language options">
@@ -59,14 +59,13 @@
                         <a href="/ja/shop/about-us.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="Account"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Account</span></a>
-                <a class="icon-action cart-link" href="/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Cart"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Create account"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Account</span></a>
+                <a class="icon-action cart-link" href="/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-
-    <main id="main-content">
+    <main>
         <section class="section">
             <div class="container">
                 <span class="eyebrow" data-i18n="about.eyebrow">About Us</span>

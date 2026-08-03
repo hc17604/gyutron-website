@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="/de/shop/shop.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Zum Hauptinhalt springen</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">Offizieller industrieller Einkaufszugang von GYUTRON</span>
@@ -46,11 +45,12 @@
                 </div>
                 <form class="store-search" action="/de/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen" autocomplete="off">
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Suchen"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">Menü</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store-Aktionen">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menü</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Sprache und Region auswählen"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Sprachoptionen">
@@ -59,14 +59,13 @@
                         <a href="/ja/shop/contact-us.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="Konto"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Konto</span></a>
-                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Konto</span></a>
+                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-
-    <main id="main-content">
+    <main>
         <section class="section section-soft">
             <div class="container">
                 <div class="section-head">
@@ -76,13 +75,13 @@
                     </div>
                     <p data-i18n="cus.copy">Schreiben Sie an info@gyutron.com oder nutzen Sie WhatsApp +852 69509801 für Fragen zu Bestellung, Angebot und Produkten.</p>
                 </div>
-                <form class="form" method="post" action="/api/contact" data-demo-form>
+                <form class="form" data-demo-form>
                     <div class="form-grid">
-                        <div class="field"><label for="contact-name" data-i18n="form.name">Name</label><input id="contact-name" required name="name" autocomplete="name"></div>
-                        <div class="field"><label for="contact-email" data-i18n="form.workEmail">Geschäftliche E-Mail</label><input id="contact-email" required type="email" name="email" autocomplete="email"></div>
-                        <div class="field"><label for="contact-company" data-i18n="form.company">Unternehmen</label><input id="contact-company" required name="company" autocomplete="organization"></div>
-                        <div class="field"><label for="contact-topic" data-i18n="form.topic">Thema</label><select id="contact-topic" name="topic"><option value="order" data-i18n="topic.order">Frage zur Bestellung</option><option value="quote" data-i18n="topic.quote">Angebotsanfrage</option><option value="technical-support" data-i18n="topic.support">Technischer Support</option><option value="warranty" data-i18n="topic.warranty">Garantie</option></select></div>
-                        <div class="field field-wide"><label for="contact-message" data-i18n="form.message">Nachricht</label><textarea id="contact-message" required minlength="12" name="message"></textarea></div>
+                        <div class="field"><label data-i18n="form.name">Name</label><input required name="name"></div>
+                        <div class="field"><label data-i18n="form.workEmail">Geschäftliche E-Mail</label><input required type="email" name="email"></div>
+                        <div class="field"><label data-i18n="form.company">Unternehmen</label><input name="company"></div>
+                        <div class="field"><label data-i18n="form.topic">Thema</label><select name="topic"><option data-i18n="topic.order">Frage zur Bestellung</option><option data-i18n="topic.quote">Angebotsanfrage</option><option data-i18n="topic.support">Technischer Support</option><option data-i18n="topic.warranty">Garantie</option></select></div>
+                        <div class="field field-wide"><label data-i18n="form.message">Nachricht</label><textarea required name="message"></textarea></div>
                     </div>
                     <button class="button button-primary" type="submit" data-i18n="cus.submit">Nachricht senden</button>
                 </form>

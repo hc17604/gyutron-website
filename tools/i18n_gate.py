@@ -9,9 +9,9 @@ non-source locale, verifies ALL of:
      switchAria/menuAria/currency{code,rate,symbol,intlLocale,decimals}).
   2. locales/i18n/<code>.json exists and mirrors every key in the source locale
      (the build-time key dictionary) — no missing/extra keys.
-  3. shop-i18n.js has a block for <code> with currency, categories,
-     product/spec translations and UI copy, with every catalog SKU
-     represented — i.e. the catalog is fully localizable, not half.
+  3. shop-i18n.js has a block for <code> with: currency, tag, category,
+     categoryText, leadTime, products(name+summary for every SKU), specKey,
+     specVal, ui — i.e. the catalog is fully localizable, not half.
   4. generated pages exist for the locale (main site + shop) and contain no
      leftover {{ }} template directives.
   5. no residual English in generated pages (delegates to i18n_audit).
@@ -39,8 +39,8 @@ SHOP_I18N = ROOT / "shop" / "shop-i18n.js"
 REQUIRED_LOCALE_FIELDS = ["code", "dir", "htmlLang", "ogLocale", "label", "short",
                           "switchAria", "menuAria", "currency"]
 REQUIRED_CURRENCY_FIELDS = ["code", "rate", "symbol", "intlLocale", "decimals"]
-REQUIRED_SHOP_BLOCKS = ["currency", "categories", "productText",
-                        "specKeys", "specValues", "ui"]
+REQUIRED_SHOP_BLOCKS = ["currency", "tag", "category", "categoryText", "leadTime",
+                        "products", "specKey", "specVal", "ui"]
 
 
 def load_registry() -> dict:
@@ -54,9 +54,9 @@ def flat_keys(path: Path) -> set[str]:
 
 
 def shop_skus() -> list[str]:
-    """SKUs declared in the canonical catalog inside shop-i18n.js."""
-    js = SHOP_I18N.read_text(encoding="utf-8")
-    return re.findall(r'\bsku:\s*"([^"]+)"', js)
+    """SKUs declared in shop.js (the source product list)."""
+    js = (ROOT / "shop" / "shop.js").read_text(encoding="utf-8")
+    return re.findall(r'sku:\s*"([^"]+)"', js)
 
 
 def parse_shop_i18n_block(code: str) -> dict | None:
@@ -64,7 +64,7 @@ def parse_shop_i18n_block(code: str) -> dict | None:
     locale? We don't fully JS-parse; we confirm the locale key exists and each
     required sub-block name appears within its slice."""
     js = SHOP_I18N.read_text(encoding="utf-8")
-    m = re.search(rf'\bconst\s+{re.escape(code)}\s*=\s*\{{', js)
+    m = re.search(rf'\n  {re.escape(code)}:\s*\{{', js)
     if not m:
         return None
     start = m.end()
@@ -79,7 +79,7 @@ def parse_shop_i18n_block(code: str) -> dict | None:
         i += 1
     block = js[start:i]
     present = {b: (re.search(rf'\b{b}:\s*\{{', block) is not None) for b in REQUIRED_SHOP_BLOCKS}
-    # Product coverage: every canonical SKU must appear in productText.
+    # product coverage: each SKU should appear in the products sub-block
     prod_ok = all(f'"{sku}"' in block for sku in shop_skus())
     present["_products_all_skus"] = prod_ok
     return present
@@ -126,9 +126,8 @@ def gate_locale(code: str, reg: dict, source: str, fails: list[str]) -> None:
     # 3b. currency rate in shop-i18n.js must match registry (no silent drift)
     if entry.get("currency", {}).get("rate") is not None:
         js = SHOP_I18N.read_text(encoding="utf-8")
-        block = parse_shop_i18n_block(code)
-        bm = re.search(rf'\bconst\s+{re.escape(code)}\s*=\s*\{{\s*currency:\s*\{{([^}}]*)\}}', js, re.DOTALL)
-        if block is not None and bm:
+        bm = re.search(rf'\n  {re.escape(code)}:\s*\{{.*?currency:\s*\{{([^}}]*)\}}', js, re.DOTALL)
+        if bm:
             rm = re.search(r'rate:\s*([\d.]+)', bm.group(1))
             if rm and rm.group(1) != str(entry["currency"]["rate"]):
                 fails.append(f"{code}: currency rate drift — registry={entry['currency']['rate']} "

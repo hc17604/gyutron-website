@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>アカウントアクセス | GYUTRON 公式ストア</title>
-    <meta name="description" content="GYUTRON公式ストアでは、オンラインアカウントのログインと登録は現在利用できません。">
-    <meta property="og:title" content="アカウントアクセス | GYUTRON 公式ストア">
-    <meta property="og:description" content="GYUTRON公式ストアでは、オンラインアカウントのログインと登録は現在利用できません。">
+    <title>アカウント登録 | GYUTRON 公式ストア</title>
+    <meta name="description" content="B2B調達、見積依頼、注文履歴、エンジニアリング支援のためのGYUTRON公式ストアアカウントを作成します。">
+    <meta property="og:title" content="アカウント登録 | GYUTRON 公式ストア">
+    <meta property="og:description" content="B2B調達、見積依頼、注文履歴、エンジニアリング支援のためのGYUTRON公式ストアアカウントを作成します。">
     <meta property="og:locale" content="ja_JP">
     <link rel="canonical" href="https://shop.gyutron.com/ja/shop/account.html">
     <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/account.html">
@@ -45,7 +45,6 @@
     <link rel="stylesheet" href="/ja/shop/shop.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">メインコンテンツへ移動</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">GYUTRON 公式 産業用調達窓口</span>
@@ -69,11 +68,12 @@
                 </div>
                 <form class="store-search" action="/ja/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="製品を検索" aria-label="製品を検索" autocomplete="off">
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="製品を検索" aria-label="製品を検索">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="検索"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="ストアメニューを開く"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">メニュー</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="ストア操作">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="ストアメニューを開く"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">メニュー</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="言語と地域を選択"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="言語オプション">
@@ -82,16 +82,41 @@
                         <a href="/ja/shop/account.html" aria-current="page">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/ja/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="アカウント"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">アカウント</span></a>
-                <a class="icon-action cart-link" href="/ja/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="カート"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">カート</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/ja/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="アカウント作成"><i class="fa-regular fa-user"></i><span data-i18n="account.label">アカウント</span></a>
+                <a class="icon-action cart-link" href="/ja/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="カート"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">カート</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-
-    <main id="main-content">
+    <main>
         <section class="section account-section">
-            <div class="container" data-account-root aria-live="polite"></div>
+            <div class="container">
+                <div class="account-layout">
+                    <div class="account-copy">
+                        <span class="eyebrow" data-i18n="account.eyebrow">ストアアカウント</span>
+                        <h1 data-i18n="account.title">調達用アカウントを作成。</h1>
+                        <p data-i18n="account.copy">1つのアカウントで、サンプル注文の準備、見積依頼、会社の調達情報の保持、産業製品出荷前のエンジニアリング支援の調整ができます。</p>
+                        <div class="account-benefits">
+                            <div><i class="fa-solid fa-file-invoice"></i><span data-i18n="account.b1">見積・注文履歴</span></div>
+                            <div><i class="fa-solid fa-building"></i><span data-i18n="account.b2">会社の調達プロフィール</span></div>
+                            <div><i class="fa-solid fa-headset"></i><span data-i18n="account.b3">エンジニアリング支援の背景情報</span></div>
+                        </div>
+                    </div>
+                    <form class="form account-card" data-demo-form>
+                        <div class="form-grid">
+                            <div class="field"><label data-i18n="form.fullName">氏名</label><input required name="name" autocomplete="name"></div>
+                            <div class="field"><label data-i18n="form.workEmail">勤務先メール</label><input required type="email" name="email" autocomplete="email"></div>
+                            <div class="field"><label data-i18n="form.company">会社名</label><input required name="company" autocomplete="organization"></div>
+                            <div class="field"><label data-i18n="form.phone">電話 / WhatsApp</label><input name="phone" autocomplete="tel"></div>
+                            <div class="field"><label data-i18n="form.password">パスワード</label><input required type="password" name="password" autocomplete="new-password"></div>
+                            <div class="field"><label data-i18n="form.primaryInterest">主な関心分野</label><select name="interest"><option data-i18n="interest.mv">マシンビジョン製品</option><option data-i18n="interest.barcode">バーコード・RFID機器</option><option data-i18n="interest.sensors">産業用センサー</option><option data-i18n="interest.accessories">アクセサリ・交換部品</option><option data-i18n="interest.project">構成済み自動化案件</option></select></div>
+                            <div class="field field-wide"><label data-i18n="form.purchasingNotes">調達メモ</label><textarea name="notes" data-i18n-attr="placeholder=ph.purchasingNotes" placeholder="任意: 対象製品、数量範囲、国、認証、納期のご要望など。"></textarea></div>
+                        </div>
+                        <button class="button button-primary" type="submit" data-i18n="account.submit">アカウントを作成</button>
+                        <p class="notice" data-i18n="account.notice">この登録フォームは、コマースアカウントシステムが接続されるまではフロントエンドのプロトタイプです。</p>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
 

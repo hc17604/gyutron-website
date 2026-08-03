@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="/de/shop/shop.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Zum Hauptinhalt springen</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">Offizieller industrieller Einkaufszugang von GYUTRON</span>
@@ -46,11 +45,12 @@
                 </div>
                 <form class="store-search" action="/de/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen" autocomplete="off">
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Suchen"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">Menü</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store-Aktionen">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menü</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Sprache und Region auswählen"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Sprachoptionen">
@@ -59,52 +59,28 @@
                         <a href="/ja/shop/products.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="Konto"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Konto</span></a>
-                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Konto</span></a>
+                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-
-    <main id="main-content">
-        <section class="section section-soft catalog-section">
+    <main>
+        <section class="section section-soft">
             <div class="container">
                 <div class="section-head">
                     <div>
                         <span class="eyebrow" data-i18n="products.eyebrow">Produktkatalog</span>
-                        <h1 class="catalog-title" data-i18n="products.title">Beschaffungskatalog für Industrieautomation.</h1>
+                        <h1 class="catalog-title" data-i18n="products.title">Industrieautomatisierungs-Hardware kaufen.</h1>
                     </div>
-                    <p class="catalog-copy" data-i18n="products.copy">Vergleichen Sie fokussierte B2B-Kategorien. „Jetzt kaufen“ startet eine Bestellanfrage für eine Standard-SKU; für Konfiguration, Dokumentation, Bestand und Lieferzeitbestätigung nutzen Sie die Angebotsanfrage.</p>
-                </div>
-                <div class="catalog-toolbar">
-                    <form class="catalog-search" action="/de/shop/products.html" method="get" role="search">
-                        <label for="catalog-product-search" data-i18n="products.search.label">Industriekatalog durchsuchen</label>
-                        <div class="catalog-search__control">
-                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                            <input id="catalog-product-search" type="search" name="q" autocomplete="off" data-i18n-attr="placeholder=products.search.placeholder" placeholder="SKU, Modell, Serie, Kategorie oder Anwendung">
-                            <button type="submit" data-i18n="products.search.action">Katalog durchsuchen</button>
-                        </div>
-                    </form>
-                    <div class="catalog-entry-points" data-i18n-attr="aria-label=products.entry.label" aria-label="Schnelleinstieg">
-                        <span data-i18n="products.entry.label">Schnelleinstieg</span>
-                        <a href="/de/shop/products.html" data-i18n="products.entry.category">Kategorie</a>
-                        <a href="/de/shop/products.html?view=series" data-i18n="products.entry.series">Serie</a>
-                        <a href="/de/shop/products.html?q=GY-" data-i18n="products.entry.sku">SKU / Modell</a>
-                        <a href="/de/shop/products.html?application=inspection" data-i18n="products.entry.application">Anwendung</a>
-                    </div>
+                    <p class="catalog-copy" data-i18n="products.copy">Filtern Sie fokussierte B2B-Kategorien. Nutzen Sie „Jetzt kaufen“ für einfache Bestellungen oder fordern Sie ein Angebot für Konfiguration, Dokumentation, Bestand und Lieferzeitbestätigung an.</p>
                 </div>
                 <div class="store-layout">
                     <aside class="filter-panel">
                         <h3 data-i18n="products.filtersTitle">Kategorien</h3>
                         <div class="filter-list" data-filters></div>
-                        <div class="procurement-legend">
-                            <strong data-i18n="products.legend.title">Beschaffungswege</strong>
-                            <p><span>01</span><span><b data-i18n="products.legend.buy">Jetzt kaufen</b><small data-i18n="products.legend.buyBody">Standard-SKU oder Muster; der Checkout sendet eine Bestellanfrage.</small></span></p>
-                            <p><span>02</span><span><b data-i18n="products.legend.quote">Angebot anfordern</b><small data-i18n="products.legend.quoteBody">Menge, Lieferzeit, Dokumente oder Individualisierung.</small></span></p>
-                            <p><span>03</span><span><b data-i18n="products.legend.engineer">Technischen Ansprechpartner kontaktieren</b><small data-i18n="products.legend.engineerBody">Modellauswahl oder Anwendungsprüfung.</small></span></p>
-                        </div>
                     </aside>
-                    <div class="product-grid" data-shop-grid data-products aria-live="polite"></div>
+                    <div class="product-grid" data-products></div>
                 </div>
             </div>
         </section>

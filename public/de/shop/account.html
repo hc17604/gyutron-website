@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontozugang | Offizieller GYUTRON Store</title>
-    <meta name="description" content="Online-Anmeldung und -Registrierung sind im offiziellen GYUTRON Store derzeit nicht verfügbar.">
-    <meta property="og:title" content="Kontozugang | Offizieller GYUTRON Store">
-    <meta property="og:description" content="Online-Anmeldung und -Registrierung sind im offiziellen GYUTRON Store derzeit nicht verfügbar.">
+    <title>Kontoregistrierung | Offizieller GYUTRON Store</title>
+    <meta name="description" content="Erstellen Sie ein Konto im offiziellen GYUTRON Store für B2B-Einkauf, Angebotsanfragen, Bestellhistorie und Engineering-Support.">
+    <meta property="og:title" content="Kontoregistrierung | Offizieller GYUTRON Store">
+    <meta property="og:description" content="Erstellen Sie ein Konto im offiziellen GYUTRON Store für B2B-Einkauf, Angebotsanfragen, Bestellhistorie und Engineering-Support.">
     <meta property="og:locale" content="de_DE">
     <link rel="canonical" href="https://shop.gyutron.com/de/shop/account.html">
     <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/account.html">
@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="/de/shop/shop.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Zum Hauptinhalt springen</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">Offizieller industrieller Einkaufszugang von GYUTRON</span>
@@ -46,11 +45,12 @@
                 </div>
                 <form class="store-search" action="/de/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen" autocomplete="off">
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Produkte suchen" aria-label="Produkte suchen">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Suchen"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">Menü</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store-Aktionen">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Store-Menü öffnen"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menü</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Sprache und Region auswählen"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Sprachoptionen">
@@ -59,16 +59,41 @@
                         <a href="/ja/shop/account.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="Konto"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Konto</span></a>
-                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/de/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Konto erstellen"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Konto</span></a>
+                <a class="icon-action cart-link" href="/de/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Warenkorb"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Warenkorb</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-
-    <main id="main-content">
+    <main>
         <section class="section account-section">
-            <div class="container" data-account-root aria-live="polite"></div>
+            <div class="container">
+                <div class="account-layout">
+                    <div class="account-copy">
+                        <span class="eyebrow" data-i18n="account.eyebrow">Store-Konto</span>
+                        <h1 data-i18n="account.title">Ein Einkaufskonto erstellen.</h1>
+                        <p data-i18n="account.copy">Mit einem Konto bereiten Sie Musterbestellungen vor, fordern Angebote an, halten Einkaufsdaten Ihres Unternehmens bereit und koordinieren den Engineering-Support, bevor Industrieprodukte versandt werden.</p>
+                        <div class="account-benefits">
+                            <div><i class="fa-solid fa-file-invoice"></i><span data-i18n="account.b1">Angebots- und Bestellhistorie</span></div>
+                            <div><i class="fa-solid fa-building"></i><span data-i18n="account.b2">Einkaufsprofil des Unternehmens</span></div>
+                            <div><i class="fa-solid fa-headset"></i><span data-i18n="account.b3">Kontext für Engineering-Support</span></div>
+                        </div>
+                    </div>
+                    <form class="form account-card" data-demo-form>
+                        <div class="form-grid">
+                            <div class="field"><label data-i18n="form.fullName">Vollständiger Name</label><input required name="name" autocomplete="name"></div>
+                            <div class="field"><label data-i18n="form.workEmail">Geschäftliche E-Mail</label><input required type="email" name="email" autocomplete="email"></div>
+                            <div class="field"><label data-i18n="form.company">Unternehmen</label><input required name="company" autocomplete="organization"></div>
+                            <div class="field"><label data-i18n="form.phone">Telefon / WhatsApp</label><input name="phone" autocomplete="tel"></div>
+                            <div class="field"><label data-i18n="form.password">Passwort</label><input required type="password" name="password" autocomplete="new-password"></div>
+                            <div class="field"><label data-i18n="form.primaryInterest">Hauptinteresse</label><select name="interest"><option data-i18n="interest.mv">Machine-Vision-Produkte</option><option data-i18n="interest.barcode">Barcode- und RFID-Geräte</option><option data-i18n="interest.sensors">Industriesensoren</option><option data-i18n="interest.accessories">Zubehör und Ersatzteile</option><option data-i18n="interest.project">Konfiguriertes Automatisierungsprojekt</option></select></div>
+                            <div class="field field-wide"><label data-i18n="form.purchasingNotes">Einkaufsnotizen</label><textarea name="notes" data-i18n-attr="placeholder=ph.purchasingNotes" placeholder="Optional: Zielprodukt, Mengenbereich, Land, Zertifizierung oder Lieferzeitbedarf."></textarea></div>
+                        </div>
+                        <button class="button button-primary" type="submit" data-i18n="account.submit">Konto erstellen</button>
+                        <p class="notice" data-i18n="account.notice">Dieses Registrierungsformular ist ein Frontend-Prototyp, bis das Commerce-Kontosystem angebunden ist.</p>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
 

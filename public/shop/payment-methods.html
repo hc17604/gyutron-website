@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment & Order Request Status | GYUTRON Official Store</title>
-    <meta name="description" content="Current payment and order-request status.">
-    <meta property="og:title" content="Payment & Order Request Status | GYUTRON Official Store">
-    <meta property="og:description" content="Current payment and order-request status.">
+    <title>Payment Methods | GYUTRON Official Store</title>
+    <meta name="description" content="Designed for online payment and B2B procurement terms.">
+    <meta property="og:title" content="Payment Methods | GYUTRON Official Store">
+    <meta property="og:description" content="Designed for online payment and B2B procurement terms.">
     <meta property="og:locale" content="en_US">
     <link rel="canonical" href="https://shop.gyutron.com/shop/payment-methods.html">
     <link rel="alternate" hreflang="en" href="https://shop.gyutron.com/shop/payment-methods.html">
@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="/shop/shop.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content" data-i18n="a11y.skipMain">Skip to main content</a>
     <div class="top-strip">
         <div class="container">
             <span data-i18n="shop.topstrip.entrance">Official GYUTRON industrial purchasing entrance</span>
@@ -46,11 +45,12 @@
                 </div>
                 <form class="store-search" action="/shop/products.html" method="get" role="search">
                     <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Search products" aria-label="Search products" autocomplete="off">
+                    <input type="search" name="q" data-i18n-attr="placeholder=search.placeholder;aria-label=search.placeholder" placeholder="Search products" aria-label="Search products">
+                    <button type="submit" data-i18n-attr="aria-label=search.label" aria-label="Search"><i class="fa-solid fa-arrow-right"></i></button>
                 </form>
-                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Open store menu"><i class="fa-solid fa-bars" aria-hidden="true"></i><span data-i18n="store.menu.label">Menu</span></button>
             </nav>
             <div class="header-actions" data-i18n-attr="aria-label=nav.storeActions" aria-label="Store actions">
+                <button class="store-menu-toggle" type="button" aria-expanded="false" data-i18n-attr="aria-label=store.menu.open" aria-label="Open store menu"><i class="fa-solid fa-bars"></i><span data-i18n="store.menu.label">Menu</span></button>
                 <div class="store-language-switch">
                     <button class="language-icon store-language" type="button" data-i18n-attr="aria-label=lang.selector" aria-haspopup="true" aria-label="Language and region selector"><i class="fa-solid fa-globe"></i></button>
                     <div class="store-language-menu" data-i18n-attr="aria-label=lang.options" aria-label="Language options">
@@ -59,44 +59,22 @@
                         <a href="/ja/shop/payment-methods.html">日本語 <span>JA</span></a>
                     </div>
                 </div>
-                <a class="icon-action account-link" href="/shop/account.html" data-i18n-attr="aria-label=account.label" aria-label="Account"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n="account.label">Account</span></a>
-                <a class="icon-action cart-link" href="/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Cart"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="cart-label" data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
+                <a class="icon-action account-link" href="/shop/account.html" data-i18n-attr="aria-label=account.create" aria-label="Create account"><i class="fa-regular fa-user"></i><span data-i18n="account.label">Account</span></a>
+                <a class="icon-action cart-link" href="/shop/cart.html" data-i18n-attr="aria-label=cart.view" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i><span class="cart-label" data-i18n="cart.label">Cart</span><span class="cart-count" data-cart-count>0</span></a>
             </div>
         </div>
     </header>
 
-
-    <main id="main-content">
-        <section class="section payment-status-section">
+    <main>
+        <section class="section">
             <div class="container">
-                <span class="eyebrow" data-i18n="pm.eyebrow">Payment & Procurement Status</span>
-                <h1 class="page-title" data-i18n="pm.title">Current payment and order-request status.</h1>
-                <p class="payment-status-intro" data-i18n="pm.intro">The storefront currently records an order request. It does not collect payment or expose bank details.</p>
-                <div class="policy-grid payment-status-grid">
-                    <article class="policy-card payment-status-card">
-                        <span class="status-label" data-i18n="pm.c1.status">Available — no charge</span>
-                        <h3 data-i18n="pm.c1.title">Order Request</h3>
-                        <p data-i18n="pm.c1.body">Submit purchasing details for review. Sending the request does not charge a card or create a paid order.</p>
-                    </article>
-                    <article class="policy-card payment-status-card">
-                        <span class="status-label" data-i18n="pm.c2.status">Available by request</span>
-                        <h3 data-i18n="pm.c2.title">Request Proforma Invoice</h3>
-                        <p data-i18n="pm.c2.body">Ask sales for a proforma invoice. Availability, freight, taxes, configuration, and commercial terms are confirmed first.</p>
-                    </article>
-                    <article class="policy-card payment-status-card">
-                        <span class="status-label" data-i18n="pm.c3.status">Not configured</span>
-                        <h3 data-i18n="pm.c3.title">Hosted Payment</h3>
-                        <p data-i18n="pm.c3.body">No hosted payment provider is active. A payment option will be shown only after a provider is securely configured.</p>
-                    </article>
-                    <article class="policy-card payment-status-card">
-                        <span class="status-label" data-i18n="pm.c4.status">Case-by-case review</span>
-                        <h3 data-i18n="pm.c4.title">Bank / PO Terms</h3>
-                        <p data-i18n="pm.c4.body">Bank-transfer or purchase-order terms are confirmed by sales for each order. Bank instructions are never displayed on this public page.</p>
-                    </article>
-                </div>
-                <div class="payment-status-actions">
-                    <a class="button button-primary" href="/shop/request-quote.html" data-i18n="cta.requestQuote">Request a Quote</a>
-                    <a class="button button-outline" href="/shop/contact-us.html" data-i18n="pm.contact">Contact purchasing support</a>
+                <span class="eyebrow" data-i18n="pm.eyebrow">Payment Methods</span>
+                <h1 style="color:var(--ink);font-size:48px;" data-i18n="pm.title">Designed for online payment and B2B procurement terms.</h1>
+                <div class="policy-grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-top:28px;">
+                    <article class="policy-card"><h3 data-i18n="pm.c1.title">Credit Card</h3><p data-i18n="pm.c1.body">Recommended after ecommerce platform integration.</p></article>
+                    <article class="policy-card"><h3 data-i18n="pm.c2.title">PayPal</h3><p data-i18n="pm.c2.body">Useful for samples, small accessories, and international buyers.</p></article>
+                    <article class="policy-card"><h3 data-i18n="pm.c3.title">Wire Transfer</h3><p data-i18n="pm.c3.body">Suitable for B2B orders and proforma invoice workflows.</p></article>
+                    <article class="policy-card"><h3 data-i18n="pm.c4.title">Quote First</h3><p data-i18n="pm.c4.body">Used when shipping, lead time, or configuration must be confirmed before payment.</p></article>
                 </div>
             </div>
         </section>
