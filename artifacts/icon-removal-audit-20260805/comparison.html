@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GYUTRON content icon removal comparison</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f2f2f4; color: #17121f; font: 14px/1.45 Arial, sans-serif; }
+    main { width: min(100% - 48px, 1440px); margin: 0 auto; padding: 32px 0 56px; }
+    h1 { margin: 0 0 8px; font-size: 28px; }
+    p { margin: 0 0 28px; color: #625c68; }
+    section { margin-top: 32px; }
+    h2 { margin: 0 0 12px; font-size: 18px; }
+    .pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    figure { margin: 0; background: #fff; border: 1px solid #d9d9df; }
+    figcaption { padding: 10px 12px; border-bottom: 1px solid #d9d9df; font-weight: 700; }
+    img { display: block; width: 100%; height: auto; }
+    @media (max-width: 760px) { main { width: min(100% - 24px, 1440px); } .pair { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Decorative content icon removal</h1>
+    <p>Same local pages and desktop viewport before and after. Functional navigation, search, cart, language, editing, disclosure, and error controls remain.</p>
+
+    <section>
+      <h2>Brand site — Core capabilities</h2>
+      <div class="pair">
+        <figure><figcaption>Before</figcaption><img src="01-brand-before.png" alt="Brand site before icon removal"></figure>
+        <figure><figcaption>After</figcaption><img src="04-brand-after.png" alt="Brand site after icon removal"></figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>Shop — purchasing entry</h2>
+      <div class="pair">
+        <figure><figcaption>Before</figcaption><img src="02-shop-before.png" alt="Shop before icon removal"></figure>
+        <figure><figcaption>After</figcaption><img src="05-shop-after.png" alt="Shop after icon removal"></figure>
+      </div>
+    </section>
+
+    <section>
+      <h2>Checkout — request flow</h2>
+      <div class="pair">
+        <figure><figcaption>Before</figcaption><img src="03-checkout-before.png" alt="Checkout before icon removal"></figure>
+        <figure><figcaption>After</figcaption><img src="06-checkout-after.png" alt="Checkout after icon removal"></figure>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

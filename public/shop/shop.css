@@ -707,17 +707,6 @@ h1 {
     padding: 0;
 }
 
-.buy-panel li {
-    align-items: flex-start;
-    display: flex;
-    gap: 10px;
-}
-
-.buy-panel i {
-    color: var(--purple);
-    margin-top: 3px;
-}
-
 .section {
     padding: 78px 0;
 }
@@ -978,12 +967,6 @@ h1 {
 .policy-card,
 .summary-card {
     padding: 22px;
-}
-
-.trust-card i {
-    color: var(--ink);
-    font-size: 25px;
-    margin-bottom: 16px;
 }
 
 .store-layout {
@@ -1411,18 +1394,11 @@ h1 {
 }
 
 .account-benefits div {
-    align-items: center;
     background: var(--white);
     border: 1px solid var(--line);
     box-shadow: var(--shadow-card);
-    display: flex;
     font-weight: 900;
-    gap: 12px;
     padding: 16px;
-}
-
-.account-benefits i {
-    color: var(--ink);
 }
 
 .account-card {
@@ -2224,7 +2200,6 @@ h1 {
 
     .account-benefits div {
         font-size: 12px;
-        gap: 8px;
         padding: 10px 12px;
     }
 

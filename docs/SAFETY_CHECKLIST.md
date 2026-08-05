@@ -37,6 +37,15 @@ because it looks close enough. Create a separately named file for that placement
 placement's data/component reference. Shared baseline UI assets such as the logo, favicon, payment marks,
 social/share image, and icon libraries are the exceptions.
 
+## Content icons are a deliberate exception, not decoration
+
+Brand and Shop content surfaces use typography, spacing, product imagery, and state styling instead of
+small decorative pictograms. Do not add Font Awesome/emoji/checkmark/square icons back to capability
+cards, benefit lists, process steps, trust blocks, contact channels, or ordinary CTA labels. Essential
+controls remain allowed: search, language, menu hierarchy, account/cart, removal/edit/error feedback,
+disclosure state, and directional back navigation. Run `node scripts/smoke-content-icons.mjs --scope all`
+after changing shared components, Shop templates, checkout runtime, icon-related data, or pseudo-content CSS.
+
 ## Header is a hard contract
 
 The rendered header DOM (classes / nesting / order) is depended on by the desktop CSS, the inline nav

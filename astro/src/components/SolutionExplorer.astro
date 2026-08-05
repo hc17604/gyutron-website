@@ -8,23 +8,23 @@ import { t, localizeUrl, type Locale } from '../i18n';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 
-type Item = { icon: string; t: string; d: string; img: string; href: string };
+type Item = { t: string; d: string; img: string; href: string };
 
 const apps: Item[] = [
-  { icon: 'fa-clipboard-check',        t: 'home.exp.app1.t', d: 'home.exp.app1.d', img: '/product-vision-cell.png',                    href: '/automated-vision-inspection.html' },
-  { icon: 'fa-magnifying-glass-chart', t: 'home.exp.app2.t', d: 'home.exp.app2.d', img: '/product-hero-surface-inspection-matrix.png', href: '/automated-vision-inspection.html' },
-  { icon: 'fa-barcode',                t: 'home.exp.app3.t', d: 'home.exp.app3.d', img: '/product-hero-code-reading-cameras-matrix.png', href: '/identification-traceability.html' },
-  { icon: 'fa-ruler-combined',         t: 'home.exp.app4.t', d: 'home.exp.app4.d', img: '/product-hero-dimensional-gauges-matrix.png',  href: '/measurement-3d-profiling.html' },
-  { icon: 'fa-robot',                  t: 'home.exp.app5.t', d: 'home.exp.app5.d', img: '/product-hero-robot-workcells-stage.png',      href: '/vision-guided-robotics.html' },
-  { icon: 'fa-shuffle',                t: 'home.exp.app6.t', d: 'home.exp.app6.d', img: '/home-smart-camera-platform-line.png',         href: '/warehouse-logistics.html' },
+  { t: 'home.exp.app1.t', d: 'home.exp.app1.d', img: '/product-vision-cell.png',                    href: '/automated-vision-inspection.html' },
+  { t: 'home.exp.app2.t', d: 'home.exp.app2.d', img: '/product-hero-surface-inspection-matrix.png', href: '/automated-vision-inspection.html' },
+  { t: 'home.exp.app3.t', d: 'home.exp.app3.d', img: '/product-hero-code-reading-cameras-matrix.png', href: '/identification-traceability.html' },
+  { t: 'home.exp.app4.t', d: 'home.exp.app4.d', img: '/product-hero-dimensional-gauges-matrix.png',  href: '/measurement-3d-profiling.html' },
+  { t: 'home.exp.app5.t', d: 'home.exp.app5.d', img: '/product-hero-robot-workcells-stage.png',      href: '/vision-guided-robotics.html' },
+  { t: 'home.exp.app6.t', d: 'home.exp.app6.d', img: '/home-smart-camera-platform-line.png',         href: '/warehouse-logistics.html' },
 ];
 
 const inds: Item[] = [
-  { icon: 'fa-microchip',   t: 'home.exp.ind1.t', d: 'home.exp.ind1.d', img: '/hero-industry-electronics.jpg',          href: '/electronics-semiconductor.html' },
-  { icon: 'fa-layer-group', t: 'home.exp.ind2.t', d: 'home.exp.ind2.d', img: '/hero-industry-semiconductor.jpg',        href: '/electronics-semiconductor.html' },
-  { icon: 'fa-car-battery', t: 'home.exp.ind3.t', d: 'home.exp.ind3.d', img: '/hero-industry-automotive-ev.jpg',        href: '#solutions' },
-  { icon: 'fa-warehouse',   t: 'home.exp.ind4.t', d: 'home.exp.ind4.d', img: '/hero-industry-logistics.jpg',           href: '/warehouse-logistics.html' },
-  { icon: 'fa-industry',    t: 'home.exp.ind5.t', d: 'home.exp.ind5.d', img: '/product-hero-robot-workcells-stage.png', href: '#solutions' },
+  { t: 'home.exp.ind1.t', d: 'home.exp.ind1.d', img: '/hero-industry-electronics.jpg',          href: '/electronics-semiconductor.html' },
+  { t: 'home.exp.ind2.t', d: 'home.exp.ind2.d', img: '/hero-industry-semiconductor.jpg',        href: '/electronics-semiconductor.html' },
+  { t: 'home.exp.ind3.t', d: 'home.exp.ind3.d', img: '/hero-industry-automotive-ev.jpg',        href: '#solutions' },
+  { t: 'home.exp.ind4.t', d: 'home.exp.ind4.d', img: '/hero-industry-logistics.jpg',           href: '/warehouse-logistics.html' },
+  { t: 'home.exp.ind5.t', d: 'home.exp.ind5.d', img: '/product-hero-robot-workcells-stage.png', href: '#solutions' },
 ];
 
 const groups = [
@@ -48,7 +48,6 @@ const resolve = (href: string) => (href.charAt(0) === '#' ? href : localizeUrl(l
           <div class={`hx-explore__chiprow${gi === 0 ? ' is-active' : ''}`} data-list={g.key} role="tablist" aria-label={t(locale, g.labelKey)}>
             {g.items.map((it, i) => (
               <button type="button" class={`hx-explore__chip${gi === 0 && i === 0 ? ' is-active' : ''}`} role="tab" aria-selected={gi === 0 && i === 0 ? 'true' : 'false'} data-tab={g.key} data-i={String(i)}>
-                <i class={`fa-solid ${it.icon}`} aria-hidden="true"></i>
                 <span>{t(locale, it.t)}</span>
               </button>
             ))}
@@ -63,7 +62,7 @@ const resolve = (href: string) => (href.charAt(0) === '#' ? href : localizeUrl(l
             <div class="hx-explore__copy">
               <h3>{t(locale, it.t)}</h3>
               <p>{t(locale, it.d)}</p>
-              <a class="link-arrow" href={resolve(it.href)}>{t(locale, 'home.exp.cta')} <i class="fa-solid fa-arrow-right"></i></a>
+              <a class="link-arrow" href={resolve(it.href)}>{t(locale, 'home.exp.cta')}</a>
             </div>
           </article>
         )))}

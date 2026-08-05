@@ -55,7 +55,6 @@
         '<span class="nav-search-feature-title">' + escapeHtml(r.t) + "</span>" +
         (r.d ? '<span class="nav-search-feature-desc">' + escapeHtml(r.d) + "</span>" : "") +
         "</span>" +
-        '<span class="nav-search-feature-go" aria-hidden="true">&rarr;</span>' +
         "</a>"
       );
     }

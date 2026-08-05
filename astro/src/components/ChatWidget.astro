@@ -31,17 +31,14 @@ const supportUrl = localizeUrl(locale, '/support.html');
   <div class="cw-rail" data-cw-rail>
     <button type="button" class="cw-launcher" data-cw-open aria-label={t(locale, 'cw.open')}>
       <span class="cw-launcher-label">{t(locale, 'cw.launcher')}</span>
-      <span class="cw-launcher-icon" aria-hidden="true"><i class="fa-solid fa-headset"></i></span>
     </button>
     <a class="cw-launcher cw-launcher--contact" href={supportUrl} aria-label={t(locale, 'cw.contact')}>
       <span class="cw-launcher-label">{t(locale, 'cw.contact')}</span>
-      <span class="cw-launcher-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
     </a>
   </div>
 
   <section class="cw-panel" role="dialog" aria-label={t(locale, 'cw.title')} hidden data-cw-panel>
     <header class="cw-head">
-      <span class="cw-avatar" aria-hidden="true"><i class="fa-solid fa-headset"></i></span>
       <div class="cw-head-text">
         <strong>{t(locale, 'cw.title')}</strong>
         <span>{t(locale, 'cw.subtitle')}</span>
@@ -67,7 +64,7 @@ const supportUrl = localizeUrl(locale, '/support.html');
 
     <footer class="cw-foot">
       <span>{t(locale, 'cw.cta.text')}</span>
-      <a class="cw-foot-cta" href={contactUrl}>{t(locale, 'cw.cta.button')} <i class="fa-solid fa-arrow-right"></i></a>
+      <a class="cw-foot-cta" href={contactUrl}>{t(locale, 'cw.cta.button')}</a>
     </footer>
 
     <script type="application/json" data-cw-faq set:html={faqJson}></script>

@@ -39,6 +39,17 @@ function baselineEqual(relative, ref = baselineRef) {
   assert.equal(worktreeBlob(relative), gitBlob(ref, relative), `${relative} drifted from ${ref}`);
 }
 
+const intentionallyRemovedTemplateIcons = /<i class="fa-solid fa-(?:chevron-right|check|truck-fast|shield-halved|rotate-left|file-circle-check|file-invoice|building|headset)"><\/i>/g;
+function baselineHtmlEqual(relative, page, ref = baselineRef) {
+  if (!['index.html', 'account.html'].includes(page)) return baselineEqual(relative, ref);
+  const normalize = (text) => text
+    .replaceAll('\r\n', '\n')
+    .replace(intentionallyRemovedTemplateIcons, '')
+    .replace(/>\s+</g, '><')
+    .trim();
+  assert.equal(normalize(read(relative)), normalize(gitText(ref, relative)), `${relative} drifted beyond the approved icon removal`);
+}
+
 function occurrences(text, needle) {
   return text.split(needle).length - 1;
 }
@@ -92,12 +103,12 @@ for (const [locale, localeRoot] of Object.entries(localeRoots)) {
 }
 
 check("non-checkout templates match the original baseline", () => {
-  for (const page of nonCheckoutTemplates) baselineEqual(`templates/shop/${page}`);
+  for (const page of nonCheckoutTemplates) baselineHtmlEqual(`templates/shop/${page}`, page);
 });
 
 check("non-checkout generated HTML matches the original baseline", () => {
   for (const outputRoot of allOutputRoots) {
-    for (const page of nonCheckoutTemplates) baselineEqual(`${outputRoot}/${page}`);
+    for (const page of nonCheckoutTemplates) baselineHtmlEqual(`${outputRoot}/${page}`, page);
   }
 });
 

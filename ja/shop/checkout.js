@@ -184,7 +184,6 @@
                 <h3 class="checkout-section-title">${safe(copy("shippingMethod.title"))}</h3>
                 <label class="checkout-method">
                     <input type="radio" name="shippingReview" value="sales_confirmed" checked>
-                    <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
                     <span><strong>${safe(copy("shippingMethod.reviewTitle"))}</strong><span>${safe(copy("shippingMethod.reviewText"))}</span></span>
                 </label>
                 <div class="checkout-notice"><strong>${safe(copy("shippingMethod.costTitle"))}</strong><br>${safe(copy("shippingMethod.costText"))}</div>
@@ -264,10 +263,10 @@
             <div class="checkout-summary__total"><span>${safe(copy("summary.estimatedTotal"))}</span><strong>${safe(displayMoney(subtotal))}</strong></div>
             <p class="checkout-summary__note">${safe(copy("summary.notice"))}</p>
             <div class="checkout-trust">
-                <div class="checkout-trust__item"><i class="fa-solid fa-globe" aria-hidden="true"></i><strong>${safe(copy("trust.shippingTitle"))}</strong><span>${safe(copy("trust.shippingText"))}</span></div>
-                <div class="checkout-trust__item"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><strong>${safe(copy("trust.supportTitle"))}</strong><span>${safe(copy("trust.supportText"))}</span></div>
-                <div class="checkout-trust__item"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><strong>${safe(copy("trust.warrantyTitle"))}</strong><span>${safe(copy("trust.warrantyText"))}</span></div>
-                <div class="checkout-trust__item"><i class="fa-solid fa-file-invoice" aria-hidden="true"></i><strong>${safe(copy("trust.quoteTitle"))}</strong><span>${safe(copy("trust.quoteText"))}</span></div>
+                <div class="checkout-trust__item"><strong>${safe(copy("trust.shippingTitle"))}</strong><span>${safe(copy("trust.shippingText"))}</span></div>
+                <div class="checkout-trust__item"><strong>${safe(copy("trust.supportTitle"))}</strong><span>${safe(copy("trust.supportText"))}</span></div>
+                <div class="checkout-trust__item"><strong>${safe(copy("trust.warrantyTitle"))}</strong><span>${safe(copy("trust.warrantyText"))}</span></div>
+                <div class="checkout-trust__item"><strong>${safe(copy("trust.quoteTitle"))}</strong><span>${safe(copy("trust.quoteText"))}</span></div>
             </div>`;
     }
 
@@ -275,7 +274,6 @@
         const base = locale === "en" ? "" : `/${locale}`;
         return `
             <section class="checkout-empty">
-                <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
                 <h1>${safe(copy("empty.title"))}</h1>
                 <p>${safe(copy("empty.text"))}</p>
                 <a class="button button-primary" href="${base}/shop/products.html">${safe(copy("empty.products"))}</a>
@@ -287,7 +285,6 @@
         const base = locale === "en" ? "" : `/${locale}`;
         return `
             <section class="checkout-success" tabindex="-1" data-checkout-success>
-                <i class="fa-solid fa-file-circle-check" aria-hidden="true"></i>
                 <span class="eyebrow">${safe(copy("success.eyebrow"))}</span>
                 <h1>${safe(copy("success.title"))}</h1>
                 <p>${safe(copy("success.text"))}</p>
@@ -311,7 +308,7 @@
                     <h1>${safe(copy("page.title"))}</h1>
                     <p>${safe(copy("page.intro"))}</p>
                 </div>
-                <div class="checkout-intro__secure"><i class="fa-solid fa-lock" aria-hidden="true"></i><span>${safe(copy("page.secure"))}</span></div>
+                <div class="checkout-intro__secure"><span>${safe(copy("page.secure"))}</span></div>
             </header>
             <div class="checkout-grid">
                 <div class="checkout-main-column">

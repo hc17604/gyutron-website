@@ -222,3 +222,51 @@ The combined comparison confirms the selected logic survived production constrai
 - Account: remains guest checkout; no login or account backend was introduced.
 
 Final result: passed
+
+---
+
+# GYUTRON decorative content icon removal QA
+
+Date: 2026-08-05
+
+## Scope and design decision
+
+- Removed decorative small pictograms from brand-site content, Shop purchasing content, account benefits, and checkout trust/state content.
+- Removed CTA arrows, checklist/square pseudo-icons, icon data fields, footer social placeholders, chat launcher/avatar pictograms, and the greeting emoji.
+- Kept only controls that communicate or operate real behavior: search, language, navigation hierarchy, account/cart, cart removal, checkout edit/error feedback, mobile disclosure state, and news back navigation.
+- Rebalanced every affected grid, gap, padding, and reserved icon column; no replacement icon set was introduced.
+
+## Before/after evidence
+
+- Combined comparison: `artifacts/icon-removal-audit-20260805/10-comparison.png` and `comparison.html`.
+- Brand: `01-brand-before.png` → `04-brand-after.png`; 390px implementation: `07-brand-mobile-after.png`.
+- Shop: `02-shop-before.png` → `05-shop-after.png`; 390px implementation: `08-shop-mobile-after.png`.
+- Checkout: `03-checkout-before.png` → `06-checkout-after.png`; 390px implementation: `09-checkout-mobile-after.png`.
+- All accepted screenshots were opened and visually inspected; the comparison board has six loaded images and no broken asset.
+
+## Responsive and localization results
+
+| Width | Brand | Shop | Checkout |
+| --- | --- | --- | --- |
+| 1440 | no content icons or overflow | no content icons or overflow | no decorative checkout icons or overflow |
+| 1024 | no content icons or overflow | desktop navigation stable | desktop summary mode stable |
+| 768 | no content icons or overflow | layout remains contained | compact mobile summary active |
+| 430 | text-only support launchers contained | two-row mobile header/menu active | compact summary and step form contained |
+| 390 | Core capabilities remains readable | mobile Shop content remains readable | primary checkout step remains readable |
+
+- German Shop at 390px: 0 root overflow, 0 heading text overflow, mobile menu active.
+- English/German/Japanese generation and UTF-8 scans passed; no `????` or replacement characters were introduced.
+- Fresh local browser console entries across the audited brand, Shop, checkout, and German mobile states: 0.
+
+## Automated gates
+
+- Brand decorative-content icon policy: 171 passed, 0 failed.
+- Shop decorative-content icon policy: 20 passed, 0 failed.
+- `npm run shop:verify`: 120 passed, 0 failed.
+- Astro build: 132 pages; `npm run verify:all`: passed.
+- Platform smoke: 34 passed, 0 failed.
+- i18n gate/audit and UTF-8 scan: passed.
+- Wrangler deploy dry-run: 523 assets read; Worker bindings resolved.
+- `git diff --check`: passed.
+
+Final result: passed

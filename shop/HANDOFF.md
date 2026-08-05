@@ -17,6 +17,17 @@
 
 ## §2 当前状态
 
+### 2026-08-05 内容区装饰小图标全站清理
+
+- **清理范围**：商城首页采购要点/信任模块、账户页利益点、checkout 安全提示/配送方式/信任信息/空购物车/提交成功状态中的装饰小图标均已移除；按钮文案、采购信息、URL、SKU、购物车和四步流程不变。
+- **保留的必要控件**：Header 的搜索、菜单、语言、账户、购物车；移动目录层级提示；购物车删除；checkout 字段/提交错误、已完成步骤编辑和移动摘要 `+ / −` 均保留，以免损害可用性与无障碍反馈。
+- **布局处理**：同步删除图标预留的网格列、gap、margin 与废弃选择器，不用新图标或字符替代；首页和账户页继续沿用原商城结构，checkout 样式继续严格隔离在 `.checkout-page`。
+- **回归门禁**：新增 `scripts/smoke-content-icons.mjs --scope shop`，已接入 `npm run shop:verify`；`smoke-shop.mjs` 只规范化本次明确删除的首页/账户图标后继续严格锁定旧商城基线，其余结构没有放宽。
+- **三语生成**：只运行 `npm run shop:build`，同步 canonical Shop 源与 en/de/ja、`public` 镜像；没有运行旧 `i18n:build`、`i18n:sync` 或 `tools/generate_localized_site.py`。
+- **验证**：Shop smoke 120/120、Shop 内容图标门禁 20/20、Platform smoke 34/34、i18n gate/audit 与 UTF-8 扫描通过；1440/1024/768/430/390 浏览器检查无横向溢出，390px 德语标题无截断，新控制台错误为 0。证据见 `artifacts/icon-removal-audit-20260805/` 与 `design-qa.md`。
+- **业务状态不变**：支付仍未接通；订单仍为 `pending_review` order intent；物流仍由销售审核确认；账户仍无真实登录后端、checkout 继续 Guest checkout。
+- **回滚**：执行 `git revert <本次 style(web-shop) 提交 SHA>` 并 push `main`；无需回滚 D1 数据。
+
 ### 2026-08-05 极简企业视觉上线（商城公共界面 + checkout）
 
 - **商城公共视觉**：在不改 HTML、URL、SKU、购物车、搜索、三语和账户占位逻辑的前提下，将 `shop/shop.css` 的结构线从浅紫改为中性灰，移除产品卡、摘要卡、信任卡等非交互大容器的紫色 hover 整框、上浮和重阴影；CTA、搜索焦点、当前筛选、购物车角标和当前语言仍保留 GYUTRON 紫色。首页采购要点和交期状态不再使用绿色。

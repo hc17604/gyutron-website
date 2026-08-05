@@ -143,8 +143,7 @@
   border-radius: 8px;
   padding: 20px;
 }
-.support-channel i { color: var(--purple-500, #8a63d2); font-size: 22px; }
-.support-channel h3 { margin: 12px 0 6px; }
+.support-channel h3 { margin: 0 0 6px; }
 .support-channel p { margin: 0 0 6px; font-size: 14px; line-height: 1.6; }
 
 @media (max-width: 860px) {

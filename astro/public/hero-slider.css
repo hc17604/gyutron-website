@@ -104,24 +104,12 @@ html[lang="de"] .hsl-title { font-size: clamp(32px, 3.6vw, 52px); hyphens: auto;
   max-width: 58ch;
 }
 .hsl-category-list li {
-  position: relative;
-  padding-left: 18px;
   color: rgba(255,255,255,0.86);
   font-size: 13px;
   font-weight: 850;
   line-height: 1.35;
   letter-spacing: 0.045em;
   text-transform: uppercase;
-}
-.hsl-category-list li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.48em;
-  width: 7px;
-  height: 7px;
-  background: var(--accent, #8a63d2);
-  box-shadow: 0 0 16px rgba(138,99,210,0.85);
 }
 .hsl-pgrid {
   display: grid;
@@ -171,8 +159,7 @@ html[lang="de"] .hsl-title { font-size: clamp(32px, 3.6vw, 52px); hyphens: auto;
 .hsl-prod-img { max-width: 100%; max-height: 580px; object-fit: contain; filter: drop-shadow(0 30px 52px rgba(0,0,0,0.6)); }
 .hsl-copy--product { align-self: center; }
 .hsl-specs { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 11px; }
-.hsl-specs li { position: relative; padding-left: 22px; color: rgba(255,255,255,0.88); font-size: 15px; font-weight: 600; line-height: 1.35; }
-.hsl-specs li::before { content: ''; position: absolute; left: 0; top: 7px; width: 9px; height: 9px; background: var(--accent, #8a63d2); }
+.hsl-specs li { color: rgba(255,255,255,0.88); font-size: 15px; font-weight: 600; line-height: 1.35; }
 .hsl-ptags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
 .hsl-ptags span { display: inline-flex; align-items: center; min-height: 28px; padding: 0 11px; border: 1px solid rgba(255,255,255,0.22); color: rgba(255,255,255,0.8); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
 

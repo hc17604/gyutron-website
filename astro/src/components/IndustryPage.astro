@@ -159,7 +159,6 @@ const structuredData = [
               <div class="workflow-grid">
                 {sec.cards.map((c) => (
                   <article class="workflow-step">
-                    {c.icon && <i class={c.icon}></i>}
                     <h3>{t(locale, c.titleKey)}</h3>
                     <p>{t(locale, c.descKey)}</p>
                   </article>
@@ -182,7 +181,6 @@ const structuredData = [
             <div class="capability-grid">
               {sec.cards.map((c) => (
                 <article class="capability-card">
-                  {c.icon && <i class={c.icon}></i>}
                   <h3>{t(locale, c.titleKey)}</h3>
                   <p>{t(locale, c.descKey)}</p>
                 </article>
@@ -271,7 +269,6 @@ const structuredData = [
                 <span class="solution-product-media"><img src={p.image} alt="" loading="lazy" /></span>
                 <span class="solution-product-body">
                   <span class="solution-product-title">{p.title}</span>
-                  <span class="solution-product-go" aria-hidden="true">&rarr;</span>
                 </span>
               </a>
             ))}
@@ -296,7 +293,6 @@ const structuredData = [
                 <span class="solution-product-media"><img src={p.image} alt="" loading="lazy" /></span>
                 <span class="solution-product-body">
                   <span class="solution-product-title">{p.title}</span>
-                  <span class="solution-product-go" aria-hidden="true">&rarr;</span>
                 </span>
               </a>
             ))}
@@ -312,7 +308,7 @@ const structuredData = [
             <h2>{t(locale, cta.titleKey)}</h2>
             <p>{t(locale, cta.descKey)}</p>
           </div>
-          <a class="button button-primary" href={localizeUrl(locale, cta.href)}>{t(locale, cta.buttonKey)} <i class="fa-solid fa-arrow-right"></i></a>
+          <a class="button button-primary" href={localizeUrl(locale, cta.href)}>{t(locale, cta.buttonKey)}</a>
         </div>
       </div>
     </section>

@@ -160,13 +160,6 @@
     padding: 22px;
 }
 
-.capability-card i,
-.workflow-step i {
-    color: var(--purple-600);
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
 .capability-card h3,
 .architecture-card h3,
 .workflow-step h3 {
@@ -354,17 +347,6 @@
     font-size: 15px;
     font-weight: 800;
     line-height: 1.2;
-}
-
-.solution-product-go {
-    color: var(--purple-600);
-    font-size: 17px;
-    font-weight: 800;
-    transition: transform var(--motion);
-}
-
-.solution-product-card:hover .solution-product-go {
-    transform: translateX(3px);
 }
 
 @media (max-width: 640px) {

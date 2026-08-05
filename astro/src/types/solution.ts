@@ -10,8 +10,6 @@
 
 /** A card inside a solution section. */
 export interface SolutionCard {
-  /** Font Awesome icon class, e.g. "fa-solid fa-camera-retro". Omitted for architecture cards. */
-  icon?: string;
   titleKey: string;
   descKey: string;
 }

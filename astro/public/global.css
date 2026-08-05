@@ -1292,16 +1292,10 @@
         .spec-list li {
             align-items: center;
             display: flex;
-            gap: 12px;
             list-style: none;
             color: var(--text);
             font-size: 14px;
             font-weight: 650;
-        }
-
-        .spec-list i {
-            color: var(--purple-600);
-            width: 18px;
         }
 
         .compact-stack {
@@ -1337,13 +1331,8 @@
             display: inline-flex;
             font-size: 14px;
             font-weight: 850;
-            gap: 8px;
             margin-top: 6px;
             transition: color var(--motion-fast), transform var(--motion);
-        }
-
-        .link-arrow i {
-            transition: transform var(--motion);
         }
 
         .solutions {
@@ -1375,21 +1364,6 @@
 
         .solution-card p {
             color: rgba(255, 255, 255, 0.68);
-        }
-
-        .solution-icon {
-            align-items: center;
-            background: rgba(138, 99, 210, 0.22);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 8px;
-            color: var(--signal);
-            display: flex;
-            font-size: 22px;
-            height: 54px;
-            justify-content: center;
-            margin-bottom: 34px;
-            transition: background var(--motion), border-color var(--motion), color var(--motion), transform var(--motion);
-            width: 54px;
         }
 
         .proof-band {
@@ -1500,20 +1474,8 @@
         .capability-list li {
             align-items: flex-start;
             display: grid;
-            gap: 14px;
-            grid-template-columns: 34px 1fr;
+            grid-template-columns: minmax(0, 1fr);
             list-style: none;
-        }
-
-        .capability-list i {
-            align-items: center;
-            background: var(--violet-soft);
-            border-radius: 6px;
-            color: var(--purple-700);
-            display: flex;
-            height: 34px;
-            justify-content: center;
-            width: 34px;
         }
 
         .capability-list strong {
@@ -1554,10 +1516,6 @@
         .link-arrow:hover {
             color: var(--purple-600);
             transform: translateX(3px);
-        }
-
-        .link-arrow:hover i {
-            transform: translateX(4px);
         }
 
         .resource-image {
@@ -1640,9 +1598,7 @@
             border: 1px solid rgba(255, 255, 255, 0.22);
             border-radius: 8px;
             color: var(--white);
-            display: grid;
-            gap: 12px;
-            grid-template-columns: 38px 1fr;
+            display: block;
             padding: 13px 15px;
             transition: background 160ms ease, transform 160ms ease;
         }
@@ -1650,17 +1606,6 @@
         .contact-link:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
-        }
-
-        .contact-link i {
-            align-items: center;
-            background: var(--white);
-            border-radius: 7px;
-            color: var(--purple-700);
-            display: flex;
-            height: 38px;
-            justify-content: center;
-            width: 38px;
         }
 
         .contact-link strong,
@@ -1737,8 +1682,6 @@
             justify-content: space-between;
             padding-top: 24px;
         }
-
-        /* .socials styling centralized in nav-chrome.css (shared across all pages) */
 
         @media (prefers-reduced-motion: reduce) {
             *,
@@ -1912,8 +1855,7 @@
             .top-strip,
             .header-quick,
             .header-actions,
-            .header-actions .button-outline,
-            .site-header .button-primary i {
+            .header-actions .button-outline {
                 display: none;
             }
 

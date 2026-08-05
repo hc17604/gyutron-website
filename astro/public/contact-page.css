@@ -646,20 +646,8 @@
         .contact-method {
             align-items: center;
             border: 1px solid var(--line);
-            display: grid;
-            gap: 14px;
-            grid-template-columns: 42px minmax(0, 1fr);
+            display: block;
             padding: 16px;
-        }
-
-        .contact-method i {
-            align-items: center;
-            background: var(--violet-soft);
-            color: var(--purple-600);
-            display: inline-flex;
-            height: 42px;
-            justify-content: center;
-            width: 42px;
         }
 
         .contact-method strong {
@@ -862,8 +850,6 @@
             padding-top: 22px;
         }
 
-        /* .socials styling centralized in nav-chrome.css (shared across all pages) */
-
         @media (min-width: 1181px) and (max-width: 1380px) {
             body {
                 padding-top: 100px;
@@ -1035,16 +1021,6 @@
 
             .contact-hero h1 {
                 font-size: 32px;
-            }
-
-            .contact-method {
-                align-items: start;
-                grid-template-columns: 1fr;
-            }
-
-            .contact-method i {
-                height: 38px;
-                width: 38px;
             }
 
             .button {

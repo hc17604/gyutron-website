@@ -63,11 +63,9 @@ const STATUS = ({
         <p>{t(locale, "dlr.info.text")}</p>
         <div class="contact-methods">
           <a class="contact-method" href="mailto:info@gyutron.com">
-            <i class="fa-solid fa-envelope"></i>
             <span><strong>{t(locale, "main.410")}</strong><span>info@gyutron.com</span></span>
           </a>
           <a class="contact-method" href={localizeUrl(locale, '/support/contact.html')}>
-            <i class="fa-solid fa-headset"></i>
             <span><strong>{t(locale, "supc.title")}</strong><span>{t(locale, "main.255")}</span></span>
           </a>
         </div>
@@ -130,7 +128,7 @@ const STATUS = ({
           )}
           <div class="form-status" id="downloadStatus" role="status" aria-live="polite"></div>
           <div class="form-footer">
-            <button class="button button-primary" type="submit">{t(locale, "dlr.submit")} <i class="fa-solid fa-arrow-right"></i></button>
+            <button class="button button-primary" type="submit">{t(locale, "dlr.submit")}</button>
             <p class="form-disclaimer">{t(locale, "main.323")}</p>
           </div>
         </form>

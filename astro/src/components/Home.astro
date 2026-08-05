@@ -15,16 +15,16 @@ const industries = [
   'home.tc.pharma.label', 'home.x.ind.energy', 'home.x.ind.food', 'home.x.ind.oem',
 ];
 const procSteps = [
-  { n: '01', t: 'home.x.proc.s1.t', d: 'home.x.proc.s1.d', icon: 'fa-comments' },
-  { n: '02', t: 'home.x.proc.s2.t', d: 'home.x.proc.s2.d', icon: 'fa-drafting-compass' },
-  { n: '03', t: 'home.x.proc.s3.t', d: 'home.x.proc.s3.d', icon: 'fa-plug-circle-check' },
-  { n: '04', t: 'home.x.proc.s4.t', d: 'home.x.proc.s4.d', icon: 'fa-arrow-trend-up' },
+  { n: '01', t: 'home.x.proc.s1.t', d: 'home.x.proc.s1.d' },
+  { n: '02', t: 'home.x.proc.s2.t', d: 'home.x.proc.s2.d' },
+  { n: '03', t: 'home.x.proc.s3.t', d: 'home.x.proc.s3.d' },
+  { n: '04', t: 'home.x.proc.s4.t', d: 'home.x.proc.s4.d' },
 ];
 const values = [
-  { icon: 'fa-compass-drafting', t: 'home.x.val1.t', d: 'home.x.val1.d' },
-  { icon: 'fa-certificate', t: 'home.x.val2.t', d: 'home.x.val2.d' },
-  { icon: 'fa-earth-asia', t: 'home.x.val3.t', d: 'home.x.val3.d' },
-  { icon: 'fa-handshake', t: 'home.x.val4.t', d: 'home.x.val4.d' },
+  { t: 'home.x.val1.t', d: 'home.x.val1.d' },
+  { t: 'home.x.val2.t', d: 'home.x.val2.d' },
+  { t: 'home.x.val3.t', d: 'home.x.val3.d' },
+  { t: 'home.x.val4.t', d: 'home.x.val4.d' },
 ];
 const aboutImages = [
 	'/home-about-headquarters-building.png',
@@ -43,8 +43,8 @@ const news = getLatestNews(3);
                 <p class="hx-trust__label">{t(locale, "home.x.trust.label")}</p>
                 <div class="hx-marquee">
                     <ul class="hx-marquee__track">
-                        {industries.map((k) => (<li class="hx-chip"><span class="hx-chip__tick"></span>{t(locale, k)}</li>))}
-                        {industries.map((k) => (<li class="hx-chip" aria-hidden="true"><span class="hx-chip__tick"></span>{t(locale, k)}</li>))}
+                        {industries.map((k) => (<li class="hx-chip">{t(locale, k)}</li>))}
+                        {industries.map((k) => (<li class="hx-chip" aria-hidden="true">{t(locale, k)}</li>))}
                     </ul>
                 </div>
             </div>
@@ -59,7 +59,7 @@ const news = getLatestNews(3);
                     </div>
                     <div class="section-copy">
                         <p>{t(locale, "home.feat.sub")}</p>
-                        <a class="button button-primary section-copy__cta" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "home.feat.cta")} <i class="fa-solid fa-arrow-right"></i></a>
+                        <a class="button button-primary section-copy__cta" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "home.feat.cta")}</a>
                     </div>
                 </div>
 
@@ -69,15 +69,15 @@ const news = getLatestNews(3);
                             <img src="/product-vision-cell.png" alt="Robot vision workcell on a production line">
                         </div>
                         <div class="product-body">
-                            <span class="badge"><i class="fa-solid fa-robot"></i> {t(locale, "home.feat.f.badge")}</span>
+                            <span class="badge">{t(locale, "home.feat.f.badge")}</span>
                             <h3>{t(locale, "home.feat.f.title")}</h3>
                             <p>{t(locale, "home.feat.f.desc")}</p>
                             <ul class="spec-list">
-                                <li><i class="fa-solid fa-gauge-high"></i> {t(locale, "home.feat.f.b1")}</li>
-                                <li><i class="fa-solid fa-plug-circle-bolt"></i> {t(locale, "home.feat.f.b2")}</li>
-                                <li><i class="fa-solid fa-shield-halved"></i> {t(locale, "home.feat.f.b3")}</li>
+                                <li>{t(locale, "home.feat.f.b1")}</li>
+                                <li>{t(locale, "home.feat.f.b2")}</li>
+                                <li>{t(locale, "home.feat.f.b3")}</li>
                             </ul>
-                            <a class="link-arrow" href={localizeUrl(locale, "/vision-guided-robotics.html")}>{t(locale, "home.feat.f.cta")} <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="link-arrow" href={localizeUrl(locale, "/vision-guided-robotics.html")}>{t(locale, "home.feat.f.cta")}</a>
                         </div>
                     </article>
 
@@ -87,10 +87,10 @@ const news = getLatestNews(3);
                                 <img src="/home-smart-camera-platform-line.png" alt={t(locale, "main.357")}>
                             </div>
                             <div class="product-body">
-                                <span class="badge"><i class="fa-solid fa-eye"></i> {t(locale, "home.feat.c1.badge")}</span>
+                                <span class="badge">{t(locale, "home.feat.c1.badge")}</span>
                                 <h3>{t(locale, "home.feat.c1.title")}</h3>
                                 <p>{t(locale, "home.feat.c1.desc")}</p>
-                                <a class="link-arrow" href={localizeUrl(locale, "/automated-vision-inspection.html")}>{t(locale, "home.feat.c1.cta")} <i class="fa-solid fa-arrow-right"></i></a>
+                                <a class="link-arrow" href={localizeUrl(locale, "/automated-vision-inspection.html")}>{t(locale, "home.feat.c1.cta")}</a>
                             </div>
                         </article>
 
@@ -99,10 +99,10 @@ const news = getLatestNews(3);
                                 <img src="/home-data-capture-traceability.png" alt={t(locale, "main.359")}>
                             </div>
                             <div class="product-body">
-                                <span class="badge"><i class="fa-solid fa-mobile-screen-button"></i> {t(locale, "home.feat.c2.badge")}</span>
+                                <span class="badge">{t(locale, "home.feat.c2.badge")}</span>
                                 <h3>{t(locale, "home.feat.c2.title")}</h3>
                                 <p>{t(locale, "home.feat.c2.desc")}</p>
-                                <a class="link-arrow" href={localizeUrl(locale, "/identification-traceability.html")}>{t(locale, "home.feat.c2.cta")} <i class="fa-solid fa-arrow-right"></i></a>
+                                <a class="link-arrow" href={localizeUrl(locale, "/identification-traceability.html")}>{t(locale, "home.feat.c2.cta")}</a>
                             </div>
                         </article>
                     </div>
@@ -145,7 +145,6 @@ const news = getLatestNews(3);
                         <ul class="hx-values">
                             {values.map((v) => (
                                 <li class="hx-value">
-                                    <i class={`fa-solid ${v.icon}`}></i>
                                     <div><strong>{t(locale, v.t)}</strong><span>{t(locale, v.d)}</span></div>
                                 </li>
                             ))}
@@ -169,32 +168,26 @@ const news = getLatestNews(3);
                 </div>
                 <div class="solutions-grid">
                     <article class="solution-card" data-reveal>
-                        <div class="solution-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                         <h3>{t(locale, "main.447")}</h3>
                         <p>{t(locale, "main.365")}</p>
                     </article>
                     <article class="solution-card" data-reveal>
-                        <div class="solution-icon"><i class="fa-solid fa-barcode"></i></div>
                         <h3>{t(locale, "main.366")}</h3>
                         <p>{t(locale, "main.367")}</p>
                     </article>
                     <article class="solution-card" data-reveal>
-                        <div class="solution-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
                         <h3>{t(locale, "main.448")}</h3>
                         <p>{t(locale, "main.368")}</p>
                     </article>
                     <article class="solution-card" data-reveal>
-                        <div class="solution-icon"><i class="fa-solid fa-ruler-combined"></i></div>
                         <h3>{t(locale, "main.369")}</h3>
                         <p>{t(locale, "main.370")}</p>
                     </article>
                     <article class="solution-card" data-reveal>
-                        <div class="solution-icon"><i class="fa-solid fa-warehouse"></i></div>
                         <h3>{t(locale, "main.371")}</h3>
                         <p>{t(locale, "main.372")}</p>
                     </article>
                     <article class="solution-card" data-reveal>
-                        <div class="solution-icon"><i class="fa-solid fa-network-wired"></i></div>
                         <h3>{t(locale, "main.449")}</h3>
                         <p>{t(locale, "main.373")}</p>
                     </article>
@@ -209,13 +202,7 @@ const news = getLatestNews(3);
                         <span class="eyebrow">{t(locale, "home.x.oem.label")}</span>
                         <h2>{t(locale, "home.x.oem.title")}</h2>
                         <p>{t(locale, "home.x.oem.desc")}</p>
-                        <a class="button button-primary" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "home.x.oem.cta")} <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                    <div class="hx-oem__marks" aria-hidden="true">
-                        <span class="hx-oem__mark"><i class="fa-solid fa-microchip"></i></span>
-                        <span class="hx-oem__mark"><i class="fa-solid fa-screwdriver-wrench"></i></span>
-                        <span class="hx-oem__mark"><i class="fa-solid fa-cube"></i></span>
-                        <span class="hx-oem__mark"><i class="fa-solid fa-tags"></i></span>
+                        <a class="button button-primary" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "home.x.oem.cta")}</a>
                     </div>
                 </div>
             </div>
@@ -249,28 +236,25 @@ const news = getLatestNews(3);
                         <p>{t(locale, "main.376")}</p>
                         <ul class="capability-list">
                             <li>
-                                <i class="fa-solid fa-network-wired"></i>
                                 <div>
                                     <strong>{t(locale, "main.377")}</strong>
                                     <span>{t(locale, "main.378")}</span>
                                 </div>
                             </li>
                             <li>
-                                <i class="fa-solid fa-screwdriver-wrench"></i>
                                 <div>
                                     <strong>{t(locale, "main.379")}</strong>
                                     <span>{t(locale, "main.380")}</span>
                                 </div>
                             </li>
                             <li>
-                                <i class="fa-solid fa-headset"></i>
                                 <div>
                                     <strong>{t(locale, "main.456")}</strong>
                                     <span>{t(locale, "main.381")}</span>
                                 </div>
                             </li>
                         </ul>
-                        <a class="button button-primary" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "main.457")} <i class="fa-solid fa-arrow-right"></i></a>
+                        <a class="button button-primary" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "main.457")}</a>
                     </div>
                 </div>
             </div>
@@ -290,7 +274,6 @@ const news = getLatestNews(3);
                         <li class="hx-step" data-reveal>
                             <div class="hx-step__top">
                                 <span class="hx-step__num">{s.n}</span>
-                                <i class={`fa-solid ${s.icon}`}></i>
                             </div>
                             <h3>{t(locale, s.t)}</h3>
                             <p>{t(locale, s.d)}</p>
@@ -355,7 +338,7 @@ const news = getLatestNews(3);
                         </article>
                     ))}
                 </div>
-                <div class="hx-news-more"><a class="link-arrow" href={localizeUrl(locale, "/news.html")}>{t(locale, "home.x.news.all")} <i class="fa-solid fa-arrow-right"></i></a></div>
+                <div class="hx-news-more"><a class="link-arrow" href={localizeUrl(locale, "/news.html")}>{t(locale, "home.x.news.all")}</a></div>
             </div>
         </section>
 
@@ -373,19 +356,15 @@ const news = getLatestNews(3);
                 </div>
                 <ul class="qr-points">
                     <li class="qr-point" data-reveal>
-                        <i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i>
                         <div><h3>{t(locale, "home.qr.p1.t")}</h3><p>{t(locale, "home.qr.p1.d")}</p></div>
                     </li>
                     <li class="qr-point" data-reveal>
-                        <i class="fa-solid fa-helmet-safety" aria-hidden="true"></i>
                         <div><h3>{t(locale, "home.qr.p2.t")}</h3><p>{t(locale, "home.qr.p2.d")}</p></div>
                     </li>
                     <li class="qr-point" data-reveal>
-                        <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
                         <div><h3>{t(locale, "home.qr.p3.t")}</h3><p>{t(locale, "home.qr.p3.d")}</p></div>
                     </li>
                     <li class="qr-point" data-reveal>
-                        <i class="fa-solid fa-file-shield" aria-hidden="true"></i>
                         <div><h3>{t(locale, "home.qr.p4.t")}</h3><p>{t(locale, "home.qr.p4.d")}</p></div>
                     </li>
                 </ul>
@@ -402,15 +381,12 @@ const news = getLatestNews(3);
                     </div>
                     <div class="contact-actions" aria-label="GYUTRON contact channels">
                         <a class="contact-link" href="mailto:info@gyutron.com">
-                            <i class="fa-solid fa-envelope"></i>
                             <span><strong>{t(locale, "main.410")}</strong><span>info@gyutron.com</span></span>
                         </a>
                         <a class="contact-link" href="https://wa.me/85269509801">
-                            <i class="fa-brands fa-whatsapp"></i>
                             <span><strong>WhatsApp</strong><span>+852 69509801</span></span>
                         </a>
                         <a class="contact-link" href="https://www.linkedin.com/company/gyutron/" target="_blank" rel="noopener">
-                            <i class="fa-brands fa-linkedin-in"></i>
                             <span><strong>LinkedIn</strong><span>linkedin.com/company/gyutron</span></span>
                         </a>
                     </div>

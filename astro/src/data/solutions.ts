@@ -58,10 +58,10 @@ export const SOLUTIONS: Solution[] = [
         titleKey: 'main.278',
         introKey: 'main.279',
         cards: [
-          { icon: 'fa-solid fa-camera-retro', titleKey: 'main.057', descKey: 'main.280' },
-          { icon: 'fa-solid fa-barcode', titleKey: 'main.030', descKey: 'main.281' },
-          { icon: 'fa-solid fa-ruler-combined', titleKey: 'main.061', descKey: 'main.282' },
-          { icon: 'fa-solid fa-robot', titleKey: 'main.063', descKey: 'main.283' },
+          { titleKey: 'main.057', descKey: 'main.280' },
+          { titleKey: 'main.030', descKey: 'main.281' },
+          { titleKey: 'main.061', descKey: 'main.282' },
+          { titleKey: 'main.063', descKey: 'main.283' },
         ],
       },
       {
@@ -87,9 +87,9 @@ export const SOLUTIONS: Solution[] = [
         titleKey: 'main.297',
         introKey: 'main.298',
         cards: [
-          { icon: 'fa-solid fa-list-check', titleKey: 'main.299', descKey: 'main.300' },
-          { icon: 'fa-solid fa-sitemap', titleKey: 'main.409', descKey: 'main.301' },
-          { icon: 'fa-solid fa-chart-line', titleKey: 'main.302', descKey: 'main.303' },
+          { titleKey: 'main.299', descKey: 'main.300' },
+          { titleKey: 'main.409', descKey: 'main.301' },
+          { titleKey: 'main.302', descKey: 'main.303' },
         ],
       },
     ],

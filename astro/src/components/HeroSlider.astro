@@ -67,7 +67,7 @@ const slides = HERO_SLIDES.map((s) => {
                 <h1 class="hsl-title" data-layer style={ls(SEQ.title)}>{t(locale, s.titleKey)}</h1>
                 <p class="hsl-sub" data-layer style={ls(SEQ.sub)}>{t(locale, s.subKey)}</p>
                 <div class="hsl-ctarow" data-layer style={ls(SEQ.cta)}>
-                  <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
+                  <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)}</a>
                   {s.cta2Key && <a class="hsl-cta hsl-cta--ghost" href={href(s.cta2Href)}>{t(locale, s.cta2Key)}</a>}
                 </div>
               </div>
@@ -94,7 +94,7 @@ const slides = HERO_SLIDES.map((s) => {
                   </ul>
                 )}
                 <div class="hsl-ctarow" data-layer style={ls(SEQ.cta)}>
-                  <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
+                  <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)}</a>
                 </div>
               </div>
               <div class="hsl-pgrid" aria-hidden="true">
@@ -125,7 +125,7 @@ const slides = HERO_SLIDES.map((s) => {
                   {(s._tags || []).map((tg: any) => (<span>{tg}</span>))}
                 </div>
                 <div class="hsl-ctarow" data-layer style={ls(PSEQ.cta)}>
-                  <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)} <i class="fa-solid fa-arrow-right"></i></a>
+                  <a class="hsl-cta" href={href(s.ctaHref)}>{t(locale, s.ctaKey)}</a>
                 </div>
               </div>
             </Fragment>
