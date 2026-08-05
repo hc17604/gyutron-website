@@ -8,4 +8,5 @@ Scope: shared brand-site Support page, with Shop explicitly excluded.
 - Button appears after the scroll threshold, returns to `scrollY=0`, restores the Header, and becomes unfocusable again.
 - Opening Support hides and disables the standalone button.
 - Root horizontal overflow: 0px. Browser console errors: 0.
-- Evidence: `desktop-1440.png`, `mobile-390.png`.
+- Mobile follow-up: touch hover/focus keeps the back-to-top background at `--purple-600`, matching Support; the standalone back-to-top shadow and glyph shadow/filter are disabled on narrow/short viewports.
+- Evidence: `desktop-1440.png`, `mobile-390.png`, `mobile-390-color-shadow-fixed.png`.

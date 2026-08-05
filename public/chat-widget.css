@@ -172,7 +172,14 @@ body.mobile-nav-open .cw-launcher--back-to-top {
 @media (max-width: 520px), (max-height: 420px) {
   .cw-panel { width: 100vw; max-height: min(80vh, 580px); }
   .cw-rail { top: auto; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
-  .cw-launcher--back-to-top { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+  .cw-launcher--back-to-top,
+  .cw-launcher--back-to-top:hover,
+  .cw-launcher--back-to-top:focus-visible {
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    background: var(--purple-600);
+    box-shadow: none;
+  }
+  .cw-launcher--back-to-top .cw-launcher-icon i { text-shadow: none; filter: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .cw-rail, .cw-launcher-label, .cw-panel,
