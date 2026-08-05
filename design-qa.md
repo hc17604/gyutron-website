@@ -87,8 +87,8 @@ Date: 2026-08-05
 
 - Root cause: `Layout.astro` already emitted the scroll-direction listener on 123 brand content pages, but the transform rules lived only in homepage-only `global.css`; the other 120 subpages changed `body.nav-hidden` without moving the Header.
 - The Header transform/transition contract now lives in shared `nav-chrome.css`, loaded after every page-specific stylesheet. Homepage duplication was removed from `global.css`.
-- `Layout.astro` owns the shared scroll controller; `ChatWidget.astro` renders the localized, icon-only native back-to-top button as the third item in the existing Support rail. It appears after 320px, is 50×50, hard-edged purple, and returns to the top while restoring the Header.
-- Product and solution sticky rails switch to `top: 0` while the Header is hidden. Support, Contact, and back-to-top remain one aligned right-edge rail with 4px gaps; the hidden third slot prevents the rail from jumping when the control appears.
+- `Layout.astro` owns the shared scroll controller; `ChatWidget.astro` renders a localized, icon-only native back-to-top button independently from the existing two-item Support/Contact rail. It appears after 320px, is 50×50, hard-edged purple, and returns to the top while restoring the Header.
+- Product and solution sticky rails switch to `top: 0` while the Header is hidden. Support and Contact keep their established right-edge rail position; back-to-top is independently fixed to the viewport bottom-right (`18px` desktop, `16px` narrow/short viewport plus safe area) and has no expandable visible label.
 - A new `verify:scroll-chrome` hard gate checks every non-redirect built HTML page, shared CSS, locale labels, focus state, and reduced-motion rules. Future content pages must render `Layout.astro`.
 
 ## Responsive and interaction evidence

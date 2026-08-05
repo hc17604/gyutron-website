@@ -68,8 +68,8 @@ for (const file of htmlFiles) {
   }
 
   if (!html.includes("classList.add('nav-hidden')") || !html.includes("classList.remove('nav-hidden')")) fail(name, 'missing directional header scroll controller');
-  if (!/<div\b[^>]*class=["'][^"']*\bcw-rail\b[^>]*>[\s\S]*?<button\b[^>]*\bdata-back-to-top\b[\s\S]*?<\/button>\s*<\/div>/i.test(html)) fail(name, 'back-to-top button is not inside the support rail');
-  if (!new RegExp(`<button\\b[^>]*\\bdata-back-to-top\\b[\\s\\S]*?<span\\b[^>]*class=["']cw-launcher-label["'][^>]*>${labelFor(name)}<\\/span>`, 'i').test(html)) fail(name, 'back-to-top button is missing its localized hover label');
+  if (!/<div\b[^>]*class=["'][^"']*\bcw-rail\b[^>]*>[\s\S]*?<\/div>\s*<button\b[^>]*\bdata-back-to-top\b/i.test(html)) fail(name, 'back-to-top button is not separate from the support rail');
+  if (/<button\b[^>]*\bdata-back-to-top\b[^>]*>[\s\S]*?\bcw-launcher-label\b[\s\S]*?<\/button>/i.test(html)) fail(name, 'back-to-top button must remain icon-only');
   if (!/<span\b[^>]*class=["']cw-launcher-icon["'][^>]*aria-hidden=["']true["'][^>]*>\s*<i\b[^>]*class=["']fa-solid fa-angles-up["']/i.test(html)) fail(name, 'missing decorative-hidden double-up icon');
 }
 
@@ -97,6 +97,7 @@ if (!existsSync(widgetCssPath)) {
   const css = readFileSync(widgetCssPath, 'utf8');
   for (const selector of [
     '.cw-launcher--back-to-top.is-visible',
+    '.cw.is-open .cw-launcher--back-to-top',
     'body.mobile-nav-open .cw-launcher--back-to-top',
     '.cw-launcher--back-to-top .cw-launcher-icon',
   ]) {

@@ -1,14 +1,15 @@
 /* ============================================================================
  * GYUTRON support chat widget — industrial / hard-edged (no rounded corners).
- * Right-edge rail (Support + Contact + Back to top) hugs the viewport; hover reveals the
- * label, clicking Support opens the FAQ panel. Tokens from global.css. The
+ * Right-edge rail (Support + Contact) hugs the viewport; hover reveals the label,
+ * while the icon-only Back to top control stays at the viewport bottom. Clicking
+ * Support opens the FAQ panel. Tokens from global.css. The
  * scroll areas use the menu-bar scrollbar look (light purple, thin, NO arrows)
  * — also applied to the site search (.nav-search-results) at the bottom.
  * ========================================================================== */
 
 .cw { position: fixed; z-index: 900; }
 
-/* ---- Right-edge rail: Support + Contact + Back to top ------------------- */
+/* ---- Right-edge rail: Support + Contact -------------------------------- */
 .cw-rail {
   position: fixed; right: 0; top: 56%;
   display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
@@ -29,6 +30,10 @@
 .cw-launcher--contact:hover { background: var(--purple-900); }
 .cw-launcher-icon { display: grid; place-items: center; width: 50px; height: 50px; font-size: 19px; flex: 0 0 auto; }
 .cw-launcher--back-to-top {
+  position: fixed;
+  right: 0;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  width: 50px;
   opacity: 0;
   pointer-events: none;
   transform: translateX(100%);
@@ -47,6 +52,7 @@
 .cw-launcher--back-to-top:focus-visible .cw-launcher-icon i { transform: translateY(-2px); }
 .cw-launcher--back-to-top:active { transform: translateX(0) translateY(1px); }
 .cw-launcher--back-to-top:focus-visible { outline: 3px solid var(--violet-soft); outline-offset: -3px; }
+.cw.is-open .cw-launcher--back-to-top,
 body.mobile-nav-open .cw-launcher--back-to-top {
   opacity: 0;
   pointer-events: none;
@@ -57,7 +63,7 @@ body.mobile-nav-open .cw-launcher--back-to-top {
   font-size: 13.5px; font-weight: 800; letter-spacing: 0.02em;
   transition: width var(--motion), opacity var(--motion-fast), padding var(--motion);
 }
-/* Keep all launchers compact; reveal equal-length labels on hover or keyboard focus. */
+/* Reveal labels only for the Support and Contact rail controls. */
 .cw-launcher:hover .cw-launcher-label,
 .cw-launcher:focus-visible .cw-launcher-label { width: 92px; opacity: 1; padding: 0 6px 0 16px; }
 
@@ -165,7 +171,8 @@ body.mobile-nav-open .cw-launcher--back-to-top {
 
 @media (max-width: 520px), (max-height: 420px) {
   .cw-panel { width: 100vw; max-height: min(80vh, 580px); }
-  .cw-rail { top: auto; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+  .cw-rail { top: auto; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+  .cw-launcher--back-to-top { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
 }
 @media (prefers-reduced-motion: reduce) {
   .cw-rail, .cw-launcher-label, .cw-panel,

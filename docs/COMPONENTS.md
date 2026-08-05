@@ -59,9 +59,10 @@ Until then existing components stay where they are.
 
 ## Shared scroll controls
 
-`Layout.astro` owns the site-wide scroll-direction controller. `ChatWidget.astro` owns the localized
-back-to-top button as the third item in the shared right-edge launcher rail. Header rules live in
-`public/nav-chrome.css`; rail and button rules live in `public/chat-widget.css`. Keep new brand content
+`Layout.astro` owns the site-wide scroll-direction controller. `ChatWidget.astro` owns the localized,
+icon-only back-to-top button as a standalone bottom-right control, separate from the two-item Support
+and Contact rail. Header rules live in `public/nav-chrome.css`; rail and button rules live in
+`public/chat-widget.css`. Keep new brand content
 pages inside `Layout.astro`; do not copy the controller into individual pages or move its rules back
 into homepage-only `global.css`. `npm run verify:scroll-chrome` scans the built site and fails if a
 non-redirect HTML page no longer inherits this contract.
