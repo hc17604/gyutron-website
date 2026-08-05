@@ -77,8 +77,6 @@ The real local Worker clean paths returned 200 for en/de/ja checkout pages and a
 
 Final result: passed
 
----
-
 # GYUTRON checkout step shadow-separation QA
 
 Date: 2026-08-05
@@ -268,5 +266,48 @@ Date: 2026-08-05
 - i18n gate/audit and UTF-8 scan: passed.
 - Wrangler deploy dry-run: 523 assets read; Worker bindings resolved.
 - `git diff --check`: passed.
+
+Final result: passed
+
+---
+
+# GYUTRON functional contact icon restoration QA
+
+Date: 2026-08-05
+
+## Scope and visual target
+
+- User feedback identified two over-corrected surfaces: the homepage Email / WhatsApp / LinkedIn contact band and the fixed right-edge Support / Contact rail.
+- The exact target was the pre-`24c51d2` structure for those surfaces only: channel-identification tiles and compact 50×50 launcher buttons with labels revealed on hover or keyboard focus.
+- The support-panel interior, emoji greeting, CTA arrow, ordinary content cards, Shop, and Checkout remained unchanged.
+
+## Visual and interaction comparison
+
+- Homepage contact band renders three white channel tiles with envelope, WhatsApp, and LinkedIn identifiers; the text grid and original spacing are restored.
+- Support / Contact launchers render as two 50×50 icon controls by default. Keyboard focus expands the active label to 92px at full opacity without horizontal overflow.
+- Support opens the existing FAQ dialog and Close returns to the compact rail; Contact keeps its localized `/support.html` destination.
+- English, German, and Japanese render the same component structure; launcher labels remain `Support / Contact`, `Support / Kontakt`, and `サポート / 連絡先`.
+
+## Responsive results
+
+| Requested width | Result |
+| --- | --- |
+| 1440 | three contact icons, two 50px launchers, no root or card overflow |
+| 1024 | restored grid remains contained; launchers remain compact |
+| 768 | restored grid remains contained; launchers remain compact |
+| 430 | contact text and icon columns fit; no horizontal overflow |
+| 390 | contact cards stack cleanly; link overflow 0; launcher width 50px |
+
+- Japanese keyboard-focus state at 390px expanded to the intended 92px label width with 0 root overflow.
+- Browser console warning/error entries: 0.
+
+## Automated gates
+
+- Astro build: 132 pages.
+- `npm run verify:all`: passed.
+- Brand content-icon policy: 171 passed, 0 failed.
+- All-site content-icon policy: 191 passed, 0 failed.
+- Platform smoke: 34 passed, 0 failed.
+- i18n gate and `git diff --check`: passed.
 
 Final result: passed

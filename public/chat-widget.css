@@ -18,7 +18,7 @@
 
 .cw-launcher {
   display: flex; align-items: center;
-  min-height: 46px; padding: 0 18px;
+  height: 50px; padding: 0; overflow: hidden;
   background: var(--purple-600); color: #fff;
   border: none; border-radius: 0; cursor: pointer; text-decoration: none;
   box-shadow: -6px 10px 26px rgba(31, 11, 53, 0.28);
@@ -27,10 +27,15 @@
 .cw-launcher:hover { background: var(--purple-700); box-shadow: -8px 12px 32px rgba(31, 11, 53, 0.36); }
 .cw-launcher--contact { background: var(--purple-950); }
 .cw-launcher--contact:hover { background: var(--purple-900); }
+.cw-launcher-icon { display: grid; place-items: center; width: 50px; height: 50px; font-size: 19px; flex: 0 0 auto; }
 .cw-launcher-label {
-  white-space: nowrap;
+  width: 0; opacity: 0; padding: 0; white-space: nowrap; overflow: hidden;
   font-size: 13.5px; font-weight: 800; letter-spacing: 0.02em;
+  transition: width var(--motion), opacity var(--motion-fast), padding var(--motion);
 }
+/* Keep both launchers compact; reveal equal-length labels on hover or keyboard focus. */
+.cw-launcher:hover .cw-launcher-label,
+.cw-launcher:focus-visible .cw-launcher-label { width: 92px; opacity: 1; padding: 0 6px 0 16px; }
 
 /* ---- Panel -------------------------------------------------------------- */
 .cw-panel {
@@ -139,5 +144,5 @@
   .cw-rail { top: auto; bottom: 84px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .cw-rail, .cw-panel { transition-duration: 1ms !important; }
+  .cw-rail, .cw-launcher-label, .cw-panel { transition-duration: 1ms !important; }
 }

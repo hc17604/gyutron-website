@@ -78,7 +78,14 @@ function verifyBrand() {
       "fa-solid fa-xmark",
     ]],
     ["astro/src/components/LangSwitch.astro", ["fa-solid fa-globe"]],
+    ["astro/src/components/Home.astro", [
+      "fa-solid fa-envelope",
+      "fa-brands fa-whatsapp",
+      "fa-brands fa-linkedin-in",
+    ]],
     ["astro/src/components/ChatWidget.astro", [
+      "fa-solid fa-headset",
+      "fa-solid fa-envelope",
       "fa-solid fa-xmark",
       "fa-solid fa-magnifying-glass",
     ]],

@@ -1598,7 +1598,9 @@
             border: 1px solid rgba(255, 255, 255, 0.22);
             border-radius: 8px;
             color: var(--white);
-            display: block;
+            display: grid;
+            gap: 12px;
+            grid-template-columns: 38px minmax(0, 1fr);
             padding: 13px 15px;
             transition: background 160ms ease, transform 160ms ease;
         }
@@ -1606,6 +1608,17 @@
         .contact-link:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
+        }
+
+        .contact-link i {
+            align-items: center;
+            background: var(--white);
+            border-radius: 7px;
+            color: var(--purple-700);
+            display: flex;
+            height: 38px;
+            justify-content: center;
+            width: 38px;
         }
 
         .contact-link strong,

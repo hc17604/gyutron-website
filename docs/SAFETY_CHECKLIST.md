@@ -41,9 +41,11 @@ social/share image, and icon libraries are the exceptions.
 
 Brand and Shop content surfaces use typography, spacing, product imagery, and state styling instead of
 small decorative pictograms. Do not add Font Awesome/emoji/checkmark/square icons back to capability
-cards, benefit lists, process steps, trust blocks, contact channels, or ordinary CTA labels. Essential
-controls remain allowed: search, language, menu hierarchy, account/cart, removal/edit/error feedback,
-disclosure state, and directional back navigation. Run `node scripts/smoke-content-icons.mjs --scope all`
+cards, benefit lists, process steps, trust blocks, or ordinary CTA labels. Essential controls remain
+allowed: search, language, menu hierarchy, account/cart, removal/edit/error feedback, disclosure state,
+directional back navigation, the homepage contact-channel identifiers, and the compact Support/Contact
+launcher icons. These contact exceptions are restricted to the allowlisted shared components; do not
+spread them into ordinary content cards. Run `node scripts/smoke-content-icons.mjs --scope all`
 after changing shared components, Shop templates, checkout runtime, icon-related data, or pseudo-content CSS.
 
 ## Header is a hard contract
