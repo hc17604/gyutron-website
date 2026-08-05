@@ -108,6 +108,7 @@ Date: 2026-08-05
 - Desktop 1440px: all three controls compute to 50×50 with 4px gaps and share the same right edge.
 - Mobile 390px and 430px, plus 844×390 short landscape: the rail stays 158px tall, clears the viewport bottom by 16px, and produces zero horizontal overflow.
 - Hover and keyboard focus translate only the chevrons upward by 2px; the button itself stays aligned with the rail.
+- The bottom double-chevron item now reuses the same `.cw-launcher-label` contract as Support and Contact, expanding localized text leftward on hover/focus while remaining compact at rest.
 - Evidence: `desktop-1440-integrated-double-arrow.jpg` and `mobile-390-integrated-double-arrow.jpg`.
 
 - English `Back to top`, German `Nach oben`, and Japanese `ページ上部へ` accessible names passed.

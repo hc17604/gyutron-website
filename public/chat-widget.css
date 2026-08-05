@@ -57,7 +57,7 @@ body.mobile-nav-open .cw-launcher--back-to-top {
   font-size: 13.5px; font-weight: 800; letter-spacing: 0.02em;
   transition: width var(--motion), opacity var(--motion-fast), padding var(--motion);
 }
-/* Keep both launchers compact; reveal equal-length labels on hover or keyboard focus. */
+/* Keep all launchers compact; reveal equal-length labels on hover or keyboard focus. */
 .cw-launcher:hover .cw-launcher-label,
 .cw-launcher:focus-visible .cw-launcher-label { width: 92px; opacity: 1; padding: 0 6px 0 16px; }
 

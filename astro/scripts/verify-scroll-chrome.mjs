@@ -69,6 +69,7 @@ for (const file of htmlFiles) {
 
   if (!html.includes("classList.add('nav-hidden')") || !html.includes("classList.remove('nav-hidden')")) fail(name, 'missing directional header scroll controller');
   if (!/<div\b[^>]*class=["'][^"']*\bcw-rail\b[^>]*>[\s\S]*?<button\b[^>]*\bdata-back-to-top\b[\s\S]*?<\/button>\s*<\/div>/i.test(html)) fail(name, 'back-to-top button is not inside the support rail');
+  if (!new RegExp(`<button\\b[^>]*\\bdata-back-to-top\\b[\\s\\S]*?<span\\b[^>]*class=["']cw-launcher-label["'][^>]*>${labelFor(name)}<\\/span>`, 'i').test(html)) fail(name, 'back-to-top button is missing its localized hover label');
   if (!/<span\b[^>]*class=["']cw-launcher-icon["'][^>]*aria-hidden=["']true["'][^>]*>\s*<i\b[^>]*class=["']fa-solid fa-angles-up["']/i.test(html)) fail(name, 'missing decorative-hidden double-up icon');
 }
 
