@@ -17,4 +17,5 @@ Scope: GYUTRON brand site only. Shop files and behavior were excluded.
 - Activating the control returns to `scrollY = 0`, restores the Header, and removes the control from the tab order.
 - English, German, and Japanese accessible names passed.
 - Mobile menu and Support dialog states hide the back-to-top control so controls do not layer over one another.
+- Desktop search was opened on a 1536px product subpage: the results layer met the Header at exactly the same `116.8px` edge, with a 0px gap and `will-change: auto`.
 - No horizontal overflow was found. The fresh non-form console run had zero warnings/errors. The production Turnstile key produced the expected third-party hostname error on the local `127.0.0.1` contact-form check; this is unrelated to the scroll controls and is rechecked on the live hostname after deployment.

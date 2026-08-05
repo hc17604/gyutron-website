@@ -106,6 +106,7 @@ Date: 2026-08-05
 - Near the top the control computes `visibility:hidden`, `aria-hidden=true`, and `tabIndex=-1`; while visible it computes `visibility:visible`, `aria-hidden=false`, and `tabIndex=0`.
 - Pointer activation returned to `scrollY=0`, removed `nav-hidden`, restored the Header, and hid the control.
 - Opening the mobile navigation or Support dialog hides and disables the control; no fixed-control overlap was found.
+- Desktop search geometry was rechecked after removing permanent `will-change: transform`: the fixed result layer again meets the Header without the 34px containing-block gap, and the regression gate now rejects that declaration.
 - Fresh Japanese news-page console check: zero warnings/errors. Local contact-form QA recorded the expected Cloudflare Turnstile `110200` hostname error from using the production key on `127.0.0.1`; it is not emitted by this feature and is checked again on production.
 - Evidence: `artifacts/scroll-chrome-20260805/`.
 

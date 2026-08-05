@@ -370,6 +370,15 @@
       "tabIndexWhenVisible": 0,
       "hiddenFromTabOrderNearTop": true,
       "note": "Browser automation verified focusability; pointer activation was exercised end-to-end."
+    },
+    "desktopSearchGeometry": {
+      "viewport": "1536x900",
+      "route": "/barcode-scanners.html",
+      "headerBottom": 116.80000305175781,
+      "dropdownTop": 116.80000305175781,
+      "gap": 0,
+      "headerWillChange": "auto",
+      "overflowX": 0
     }
   },
   "screenshots": [

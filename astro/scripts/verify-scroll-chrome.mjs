@@ -85,6 +85,9 @@ if (!existsSync(sharedCssPath)) {
   ]) {
     if (!css.includes(selector)) fail('nav-chrome.css', `missing ${selector}`);
   }
+  if (/will-change\s*:\s*transform/i.test(css)) {
+    fail('nav-chrome.css', 'permanent will-change: transform breaks fixed desktop search geometry');
+  }
 }
 
 if (failures.length) {
