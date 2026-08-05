@@ -37,10 +37,12 @@ const heroStyle = heroImage
   <main class="support-page">
     <section class="support-hero" style={heroStyle}>
       <div class="container">
-        <nav class="support-crumbs" aria-label="Breadcrumb">
-          <a href={localizeUrl(locale, "/index.html")}>{homeLabel}</a> / <span>{crumb}</span>
-        </nav>
-        <span class="support-eyebrow">{eyebrow}</span>
+        <div class="support-hero-meta">
+          <nav class="support-crumbs" aria-label="Breadcrumb">
+            <a href={localizeUrl(locale, "/index.html")}>{homeLabel}</a> / <span>{crumb}</span>
+          </nav>
+          <span class="support-eyebrow">{eyebrow}</span>
+        </div>
         <h1>{heading}</h1>
         {intro && <p class="support-intro">{intro}</p>}
       </div>

@@ -311,3 +311,65 @@ Date: 2026-08-05
 - i18n gate and `git diff --check`: passed.
 
 Final result: passed
+
+---
+
+# GYUTRON Support hero metadata-row QA
+
+Date: 2026-08-05
+
+## Source visual truth and intended change
+
+- Source screenshot: `artifacts/support-meta-row-20260805/source-support-hero.png` (`2031 x 659` pixels).
+- User-directed delta: move the `Help & Support` eyebrow onto the first line, immediately after the `Home / Support` breadcrumb; preserve every other Support hero choice.
+- Normalized source: `source-support-hero-normalized-1001.png` (`1001 x 325`, Lanczos downsample from the supplied high-density capture).
+- Implementation screenshot: `implementation-en-1016-full.png` (`1001 x 709`) at a `1016 x 720` browser viewport; the page client width was `1001` CSS pixels because of the browser scrollbar.
+- Focused hero crop: `implementation-en-hero-1001.png` (`1001 x 305`).
+- Combined comparison, source left / implementation right: `comparison-source-left-implementation-right.png` (`2018 x 325`).
+- State: English `/support.html`, initial page state, no menu or support panel open.
+
+## Full-view and focused comparison
+
+- The supplied hero composition, background image, purple palette, heading, intro copy, and hard-edged styling remain unchanged.
+- The focused comparison confirms the requested hierarchy change: breadcrumb and eyebrow share one baseline; the heading moves upward by the space released from the removed standalone eyebrow row.
+- Focused geometry at the comparison viewport: breadcrumb top `192px`, eyebrow top `192px`, horizontal gap `28px`, row height `18.6px`, root overflow `0px`.
+- A second focused crop was sufficient because the requested change touches only the hero metadata row; body cards, header, footer, and fixed support rail were outside the requested delta and remained visually unchanged.
+
+## Required fidelity surfaces
+
+- Fonts and typography: existing family, weights, uppercase treatment, sizes, line heights, and letter spacing are unchanged.
+- Spacing and layout rhythm: the former two-row metadata stack is now one flex row with a 28px gap and 20px separation before the H1; no decorative divider was introduced.
+- Colors and visual tokens: existing white, muted white, and `--purple-500` treatments are unchanged.
+- Image quality and asset fidelity: the existing industrial hero asset and overlay are unchanged; no new or generated asset was introduced.
+- Copy and content: English, German, and Japanese strings remain unchanged and continue to come from their existing per-locale page props.
+
+## Responsive and localization evidence
+
+| Width | English | German | Japanese |
+| --- | --- | --- | --- |
+| 1440 | one line, no overflow | one line, no overflow | one line, no overflow |
+| 1024 | one line, no overflow | one line, no overflow | one line, no overflow |
+| 768 | one line, no overflow | one line, no overflow | one line, no overflow |
+| 430 | one line, no overflow | one line, no overflow | one line, no overflow |
+| 390 | one line, no overflow | one line, no overflow | one line, no overflow |
+
+- Long German shipping/legal crumbs at 390px wrap inside the same metadata group to a 47px two-line row with zero root overflow; this is an intentional responsive fallback rather than truncation.
+- Mobile implementation evidence: `implementation-en-390-full.png`.
+- Browser console warning/error entries: `0`.
+- Breadcrumb semantics remain intact: one `<nav aria-label="Breadcrumb">`, localized Home link, one main H1.
+
+## Findings and comparison history
+
+- Pass 1: no actionable P0/P1/P2 mismatch. The requested one-line metadata relationship is present at every Support landing breakpoint and all untouched visual surfaces remain consistent with the source.
+- No post-comparison visual fixes were required.
+- P3 follow-up: none required for this focused adjustment.
+
+## Automated gates
+
+- Astro build: 132 pages.
+- `npm run verify:all`: passed, including header, routes, SEO, accessibility, and brand icon policy.
+- Platform smoke: 34 passed, 0 failed.
+- i18n gate: passed.
+- `git diff --check`: passed.
+
+Final result: passed

@@ -6,13 +6,20 @@
   padding: 84px 0 60px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+.support-hero-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-bottom: 20px;
+}
 .support-crumbs {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 20px;
+  margin: 0;
 }
 .support-crumbs a { color: rgba(255, 255, 255, 0.72); }
 .support-crumbs a:hover { color: #fff; }
@@ -24,7 +31,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--purple-500, #8a63d2);
-  margin-bottom: 14px;
+  margin: 0;
 }
 .support-hero h1 {
   color: #fff;
