@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FINAL · GYUTRON Purple Frame Redesign</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    :root {
+      --purple-900: #4b2e83;
+      --purple-500: #8a63d2;
+      --purple-100: #efe8ff;
+      --ink: #15131a;
+      --ink-2: #29252f;
+      --muted: #625d68;
+      --muted-2: #7b7580;
+      --line: #d8d5dc;
+      --line-soft: #e8e5ea;
+      --surface: #ffffff;
+      --surface-soft: #f7f6f8;
+      --canvas: #f5f5f6;
+      --dark: #160b22;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--canvas); }
+    body {
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    button, input, select, textarea { font: inherit; border-radius: 0; }
+    button { cursor: default; }
+    img { display: block; }
+
+    .board {
+      width: 3200px;
+      padding: 72px 72px 96px;
+      display: grid;
+      gap: 64px;
+    }
+
+    .board-header { display: grid; gap: 16px; max-width: 2500px; }
+    .eyebrow {
+      color: var(--purple-900);
+      font-size: 16px;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .board-header h1 {
+      margin: 0;
+      font-size: 64px;
+      line-height: 1.04;
+      letter-spacing: -.045em;
+      font-weight: 900;
+    }
+    .board-header p {
+      margin: 0;
+      max-width: 2280px;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1.5;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .principle { padding: 28px 32px 30px; display: grid; gap: 12px; }
+    .principle + .principle { border-left: 1px solid var(--line); }
+    .principle-title { display: flex; align-items: baseline; gap: 18px; }
+    .principle-index {
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--purple-900);
+      border-radius: 50%;
+      color: var(--purple-900);
+      font-weight: 800;
+      font-size: 13px;
+      line-height: 1;
+    }
+    .principle h2 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.3;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .principle p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.55; }
+
+    .design-section { display: grid; gap: 30px; }
+    .section-heading { display: grid; grid-template-columns: 88px 1fr; gap: 28px; align-items: start; }
+    .section-number {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--purple-900);
+      border-radius: 50%;
+      color: var(--purple-900);
+      font-size: 25px;
+      line-height: 1;
+      font-weight: 800;
+    }
+    .section-heading h2 {
+      margin: 0 0 8px;
+      font-size: 40px;
+      line-height: 1.08;
+      letter-spacing: -.035em;
+      font-weight: 900;
+    }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.5; }
+
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .comparison-panel {
+      min-width: 0;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+    .state-label {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .state-label.proposed { color: var(--purple-900); }
+    .current-shot { width: 1460px; height: 821px; object-fit: cover; object-position: top left; }
+
+    /* Brand homepage proposal */
+    .brand-screen { width: 1460px; height: 821px; overflow: hidden; background: var(--surface); }
+    .utility-bar {
+      height: 28px;
+      padding: 0 48px;
+      background: var(--dark);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+      line-height: 1;
+      letter-spacing: .08em;
+      font-weight: 750;
+    }
+    .utility-bar span:last-child { color: #cfc6dc; }
+    .brand-nav {
+      height: 84px;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: 230px 1fr auto;
+      gap: 30px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand-nav img { width: 230px; height: auto; }
+    .brand-nav-links { display: flex; justify-content: flex-end; gap: 36px; }
+    .brand-nav-links span {
+      color: var(--ink-2);
+      font-size: 11px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: .07em;
+    }
+    .brand-nav button,
+    .primary-button {
+      border: 1px solid var(--purple-900);
+      background: var(--purple-900);
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .brand-nav button { height: 38px; padding: 0 20px; font-size: 11px; }
+    .brand-main { height: 709px; padding: 38px 48px 36px; background: var(--surface-soft); }
+    .brand-intro {
+      height: 116px;
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .brand-intro h3 {
+      margin: 8px 0 0;
+      max-width: 820px;
+      font-size: 40px;
+      line-height: 1.04;
+      letter-spacing: -.04em;
+      font-weight: 900;
+    }
+    .brand-intro-copy { display: grid; gap: 12px; }
+    .brand-intro-copy p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.5; }
+    .text-link { color: var(--purple-900); font-size: 12px; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+    .product-card {
+      height: 500px;
+      display: grid;
+      grid-template-columns: 742px 1fr;
+      background: var(--surface);
+      border: 1px solid #d6d2d9;
+    }
+    .product-card > img { width: 742px; height: 498px; object-fit: cover; object-position: 35% center; }
+    .product-copy {
+      padding: 36px 38px 34px;
+      border-left: 1px solid var(--line-soft);
+      display: grid;
+      align-content: start;
+      gap: 17px;
+    }
+    .product-badge {
+      width: max-content;
+      padding: 7px 12px 6px;
+      background: var(--purple-100);
+      color: var(--purple-900);
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .product-copy h4 {
+      margin: 0;
+      font-size: 40px;
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      font-weight: 900;
+    }
+    .product-copy > p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.5; }
+    .spec-row { border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); display: grid; grid-template-columns: repeat(3, 1fr); }
+    .spec { min-height: 74px; padding: 13px 14px 11px 0; display: grid; align-content: start; gap: 5px; }
+    .spec + .spec { padding-left: 16px; border-left: 1px solid var(--line-soft); }
+    .spec b { color: var(--muted-2); font-size: 10px; letter-spacing: .08em; }
+    .spec span { color: var(--ink-2); font-size: 12px; line-height: 1.35; font-weight: 650; }
+    .product-copy .primary-button { height: 42px; font-size: 12px; }
+
+    /* Checkout */
+    .checkout-layout { display: grid; grid-template-columns: 460px 1fr; gap: 40px; align-items: start; }
+    .current-issues { padding: 24px; background: var(--surface); border: 1px solid var(--line); display: grid; gap: 18px; }
+    .current-issues img { width: 410px; height: 1180px; object-fit: cover; object-position: top center; background: var(--surface-soft); }
+    .current-issues p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.55; }
+    .proposal-stack { display: grid; gap: 32px; }
+    .proposal-label { color: var(--purple-900); font-size: 14px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .checkout-proposals { display: grid; grid-template-columns: 2118px 438px; gap: 40px; align-items: start; }
+
+    .checkout-desktop { width: 2118px; height: 1440px; overflow: hidden; background: var(--surface-soft); border: 1px solid var(--line); }
+    .checkout-top { height: 32px; padding: 0 54px; display: flex; align-items: center; justify-content: space-between; background: var(--dark); color: #fff; font-size: 11px; letter-spacing: .06em; }
+    .checkout-nav { height: 88px; padding: 0 54px; background: #fff; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 260px 1fr auto; align-items: center; gap: 36px; }
+    .checkout-nav img { width: 250px; height: auto; }
+    .checkout-nav .return { justify-self: end; color: var(--purple-900); font-size: 13px; font-weight: 800; letter-spacing: .05em; }
+    .checkout-nav .account-links { display: flex; gap: 26px; color: var(--ink-2); font-size: 13px; font-weight: 700; }
+    .checkout-body { padding: 46px 54px 60px; display: grid; grid-template-columns: 1314px 642px; gap: 54px; align-items: start; }
+    .checkout-kicker { margin: 0 0 14px; color: var(--purple-900); font-size: 12px; line-height: 1; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .checkout-title { margin: 0 0 34px; font-size: 38px; line-height: 1.1; letter-spacing: -.035em; }
+    .steps { display: grid; gap: 14px; background: transparent; }
+    .step {
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(22, 17, 29, .055);
+    }
+    .step.active { box-shadow: 0 8px 24px rgba(22, 17, 29, .07); }
+    .step-head { min-height: 86px; padding: 19px 24px; display: grid; grid-template-columns: 54px 1fr auto; gap: 18px; align-items: center; }
+    .step-index {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--purple-900);
+      border-radius: 50%;
+      color: var(--purple-900);
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 800;
+    }
+    .step-title { display: grid; gap: 4px; }
+    .step-title strong { font-size: 18px; line-height: 1.25; }
+    .step-title span { color: var(--muted); font-size: 13px; line-height: 1.4; }
+    .step-state { color: var(--purple-900); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .step.active .step-index { background: var(--purple-900); color: #fff; }
+    .step-body { padding: 4px 24px 30px 92px; display: grid; gap: 24px; }
+    .signin-row { padding: 15px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); display: flex; justify-content: space-between; align-items: center; }
+    .signin-row span { color: var(--muted); font-size: 14px; }
+    .signin-row b { color: var(--purple-900); font-size: 13px; letter-spacing: .04em; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; }
+    .field { display: grid; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { color: var(--ink-2); font-size: 12px; line-height: 1.2; font-weight: 750; }
+    .field label span { color: var(--muted-2); font-weight: 500; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      color: var(--ink-2);
+      background: #fff;
+      border: 1px solid #c9c5cd;
+      outline: none;
+      font-size: 14px;
+    }
+    .field input:focus { border-color: var(--purple-900); outline: 2px solid var(--purple-100); outline-offset: 1px; }
+    .form-actions { display: flex; justify-content: flex-end; }
+    .form-actions button { min-width: 230px; height: 50px; padding: 0 24px; font-size: 12px; }
+    .checkout-note { margin-top: 20px; padding: 18px 20px; background: #fff; border: 1px solid var(--line); color: var(--ink-2); font-size: 13px; line-height: 1.5; }
+    .checkout-note b { color: var(--purple-900); }
+
+    .summary { position: relative; background: #fff; border: 1px solid var(--line); }
+    .summary-head { padding: 22px 24px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .summary-head h4 { margin: 0; font-size: 20px; line-height: 1.2; }
+    .summary-head span { color: var(--purple-900); font-size: 12px; font-weight: 800; }
+    .summary-product { padding: 24px; display: grid; grid-template-columns: 112px 1fr; gap: 20px; border-bottom: 1px solid var(--line); }
+    .summary-product img { width: 112px; height: 96px; object-fit: contain; background: var(--surface-soft); }
+    .summary-product h5 { margin: 0 0 6px; font-size: 15px; line-height: 1.35; }
+    .summary-product p { margin: 3px 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+    .summary-lines { padding: 20px 24px; display: grid; gap: 13px; }
+    .summary-line { display: flex; justify-content: space-between; color: var(--muted); font-size: 13px; }
+    .summary-line strong { color: var(--ink-2); }
+    .summary-total { margin-top: 5px; padding-top: 17px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: end; }
+    .summary-total span { color: var(--ink-2); font-size: 13px; font-weight: 800; }
+    .summary-total b { color: var(--purple-900); font-size: 26px; letter-spacing: -.03em; }
+    .summary-disclaimer { margin: 0; padding: 0 24px 24px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .trust-list { margin-top: 22px; padding: 22px 24px; background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 18px; }
+    .trust-item { display: grid; grid-template-columns: 168px 1fr; gap: 18px; }
+    .trust-item b { font-size: 12px; letter-spacing: .04em; }
+    .trust-item span { color: var(--muted); font-size: 12px; line-height: 1.45; }
+
+    .mobile-wrap { display: grid; gap: 16px; }
+    .checkout-mobile { width: 390px; height: 844px; overflow: hidden; background: var(--surface-soft); border: 1px solid var(--line); }
+    .mobile-head { height: 90px; padding: 17px 18px; display: grid; grid-template-columns: 178px 1fr; align-items: center; background: #fff; border-bottom: 1px solid var(--line); }
+    .mobile-head img { width: 178px; height: auto; }
+    .mobile-head span { justify-self: end; color: var(--purple-900); font-size: 11px; font-weight: 800; }
+    .mobile-summary { height: 56px; padding: 0 18px; display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid var(--line); }
+    .mobile-summary b { font-size: 12px; }
+    .mobile-summary span { color: var(--purple-900); font-size: 12px; font-weight: 800; }
+    .mobile-body { padding: 22px 18px 0; }
+    .mobile-body > p { margin: 0 0 10px; color: var(--purple-900); font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+    .mobile-body h4 { margin: 0 0 18px; font-size: 22px; line-height: 1.15; letter-spacing: -.025em; }
+    .mobile-step { margin-bottom: 10px; background: #fff; box-shadow: 0 4px 12px rgba(22, 17, 29, .06); }
+    .mobile-step-head { min-height: 66px; padding: 12px 13px; display: grid; grid-template-columns: 36px 1fr; gap: 10px; align-items: center; }
+    .mobile-step-head b:first-child,
+    .mobile-collapsed b:first-child {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--purple-900);
+      border-radius: 50%;
+      color: var(--purple-900);
+      font-size: 12px;
+      line-height: 1;
+    }
+    .mobile-step-head b:first-child { background: var(--purple-900); color: #fff; }
+    .mobile-step-head strong { display: block; font-size: 14px; line-height: 1.25; }
+    .mobile-step-head span { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; line-height: 1.35; }
+    .mobile-form { padding: 16px 14px 18px 49px; display: grid; gap: 12px; }
+    .mobile-form .field { gap: 6px; }
+    .mobile-form .field label { font-size: 10px; }
+    .mobile-form .field input { min-height: 42px; font-size: 12px; padding: 9px 10px; }
+    .mobile-form button { height: 46px; font-size: 11px; margin-top: 2px; }
+    .mobile-collapsed { height: 62px; margin-bottom: 10px; padding: 0 13px; display: grid; grid-template-columns: 36px 1fr; gap: 10px; align-items: center; background: #fff; box-shadow: 0 4px 12px rgba(22, 17, 29, .055); }
+    .mobile-collapsed strong { font-size: 13px; }
+    .mobile-note { padding: 15px 18px; color: var(--muted); font-size: 10px; line-height: 1.45; }
+
+    .decision-rules {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .decision-rule { padding: 24px 28px; display: grid; gap: 8px; }
+    .decision-rule + .decision-rule { border-left: 1px solid var(--line); }
+    .decision-rule b { font-size: 14px; line-height: 1.3; }
+    .decision-rule span { color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+    .board-footer { padding-top: 26px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--muted); font-size: 14px; }
+    .board-footer b { color: var(--purple-900); }
+  </style>
+</head>
+<body>
+  <main class="board">
+    <header class="board-header">
+      <div class="eyebrow">GYUTRON · UI DIRECTION · 5 AUG 2026</div>
+      <h1>Purple as signal, not structure.</h1>
+      <p>A restrained enterprise redesign for the brand homepage and the four-step industrial checkout. Purple stays on decisions and active states; layout is carried by typography, neutral lines, spacing and real product evidence.</p>
+    </header>
+
+    <section class="principles">
+      <article class="principle">
+        <div class="principle-title"><span class="principle-index">1</span><h2>Neutral structure</h2></div>
+        <p>Cards, form fields and tables use graphite and warm-gray lines — never decorative purple outlines.</p>
+      </article>
+      <article class="principle">
+        <div class="principle-title"><span class="principle-index">2</span><h2>Purple for decisions</h2></div>
+        <p>Primary actions, links, focus and the current step keep the GYUTRON purple system.</p>
+      </article>
+      <article class="principle">
+        <div class="principle-title"><span class="principle-index">3</span><h2>Density with calm</h2></div>
+        <p>Compact industrial information, stronger whitespace rhythm and no floating shadows or rounded SaaS tiles.</p>
+      </article>
+    </section>
+
+    <section class="design-section">
+      <header class="section-heading">
+        <div class="section-number">1</div>
+        <div>
+          <h2>Brand homepage product storytelling</h2>
+          <p>Remove the full purple hover frame. Keep the card architectural, product-led and easy to scan.</p>
+        </div>
+      </header>
+
+      <div class="comparison-grid">
+        <article class="comparison-panel">
+          <div class="state-label">Current · production</div>
+          <img class="current-shot" src="../purple-frame-audit-20260803/live-brand-products-viewport.png" alt="Current GYUTRON brand homepage product section">
+        </article>
+
+        <article class="comparison-panel">
+          <div class="state-label proposed">Proposed · restrained industrial</div>
+          <div class="brand-screen">
+            <div class="utility-bar">
+              <span>OFFICIAL GYUTRON INDUSTRIAL PURCHASING ENTRY</span>
+              <span>TECHNICAL SALES · GLOBAL SUPPORT</span>
+            </div>
+            <nav class="brand-nav">
+              <img src="http://127.0.0.1:4180/astro/public/gyutron-logo-purple.png" alt="GYUTRON">
+              <div class="brand-nav-links"><span>PRODUCTS</span><span>SOLUTIONS</span><span>INDUSTRIES</span><span>SUPPORT</span></div>
+              <button type="button">Official Store</button>
+            </nav>
+            <div class="brand-main">
+              <header class="brand-intro">
+                <div>
+                  <div class="eyebrow" style="font-size:12px">Core capabilities</div>
+                  <h3>Automation, vision &amp; data capture</h3>
+                </div>
+                <div class="brand-intro-copy">
+                  <p>Deploy complete industrial systems — not a parts list. Compare applications, technical scope and the right path to purchase.</p>
+                  <span class="text-link">Talk to an automation engineer</span>
+                </div>
+              </header>
+              <article class="product-card">
+                <img src="http://127.0.0.1:4180/astro/public/product-vision-cell.png" alt="Robot Vision Workcells">
+                <div class="product-copy">
+                  <span class="product-badge">Robot vision cells</span>
+                  <h4>Robot Vision Workcells</h4>
+                  <p>Vision-guided robot cells for inspection, sorting, pick-and-place, positioning and assembly — engineered for production duty cycles.</p>
+                  <div class="spec-row">
+                    <div class="spec"><b>APPLICATION</b><span>Inspection + handling</span></div>
+                    <div class="spec"><b>INTEGRATION</b><span>PLC · MES · WMS</span></div>
+                    <div class="spec"><b>SUPPORT</b><span>Engineer configured</span></div>
+                  </div>
+                  <button class="primary-button" type="button">Explore workcell system</button>
+                </div>
+              </article>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="design-section">
+      <header class="section-heading">
+        <div class="section-number">2</div>
+        <div>
+          <h2>Four-step enterprise checkout</h2>
+          <p>Replace stacked purple boxes and framed numerals with a clear editorial sequence, honest order status and a persistent procurement summary.</p>
+        </div>
+      </header>
+
+      <div class="checkout-layout">
+        <aside class="current-issues">
+          <div class="state-label">Current · observed issue</div>
+          <img src="../purple-frame-audit-20260803/user-number-boxes.png" alt="Current boxed checkout step numbers">
+          <p>The full card border and the second square around each number create two competing frames. The sequence feels like a template rather than a controlled procurement flow.</p>
+        </aside>
+
+        <div class="proposal-stack">
+          <div class="proposal-label">Proposed · desktop 1440 + mobile 390</div>
+          <div class="checkout-proposals">
+            <div class="checkout-desktop">
+              <div class="checkout-top"><span>OFFICIAL GYUTRON INDUSTRIAL PURCHASING ENTRY</span><span>SUPPORT · info@gyutron.com</span></div>
+              <nav class="checkout-nav">
+                <img src="http://127.0.0.1:4180/astro/public/gyutron-logo-purple.png" alt="GYUTRON">
+                <span class="return">RETURN TO STORE</span>
+                <span class="account-links"><span>ACCOUNT</span><span>CART · 1</span><span>SUPPORT</span></span>
+              </nav>
+              <div class="checkout-body">
+                <section>
+                  <p class="checkout-kicker">Industrial order request</p>
+                  <h3 class="checkout-title">Checkout &amp; procurement details</h3>
+                  <div class="steps">
+                    <article class="step active">
+                      <header class="step-head">
+                        <span class="step-index">1</span>
+                        <span class="step-title"><strong>Customer / Company Information</strong><span>Business contact and company details</span></span>
+                        <span class="step-state">Current step</span>
+                      </header>
+                      <div class="step-body">
+                        <div class="signin-row"><span>Continue as a guest, or use an existing GYUTRON account.</span><b>SIGN IN</b></div>
+                        <div class="form-grid">
+                          <div class="field"><label>First name *</label><input value="Connor" aria-label="First name"></div>
+                          <div class="field"><label>Last name *</label><input value="Chen" aria-label="Last name"></div>
+                          <div class="field"><label>Business email *</label><input value="procurement@company.com" aria-label="Business email"></div>
+                          <div class="field"><label>Phone *</label><input value="+65 0000 0000" aria-label="Phone"></div>
+                          <div class="field"><label>Company name *</label><input value="Company name" aria-label="Company name"></div>
+                          <div class="field"><label>Tax / VAT ID <span>Optional</span></label><input value="" aria-label="Tax or VAT ID"></div>
+                          <div class="field full"><label>Purchasing department <span>Optional</span></label><input value="Automation procurement" aria-label="Purchasing department"></div>
+                        </div>
+                        <div class="form-actions"><button class="primary-button" type="button">Continue to address</button></div>
+                      </div>
+                    </article>
+                    <article class="step">
+                      <header class="step-head"><span class="step-index">2</span><span class="step-title"><strong>Shipping &amp; Billing Address</strong><span>Delivery destination and invoice address</span></span><span></span></header>
+                    </article>
+                    <article class="step">
+                      <header class="step-head"><span class="step-index">3</span><span class="step-title"><strong>Shipping Method &amp; Procurement</strong><span>Logistics review and purchasing references</span></span><span></span></header>
+                    </article>
+                    <article class="step">
+                      <header class="step-head"><span class="step-index">4</span><span class="step-title"><strong>Payment / Order Confirmation</strong><span>Choose the request outcome and submit</span></span><span></span></header>
+                    </article>
+                  </div>
+                  <div class="checkout-note"><b>Payment boundary:</b> no card number or CVC fields appear until a compliant hosted payment provider is connected. The current outcome remains Submit Order Request / Request Proforma Invoice.</div>
+                </section>
+
+                <aside>
+                  <div class="summary">
+                    <header class="summary-head"><h4>Order request summary</h4><span>EDIT CART</span></header>
+                    <div class="summary-product">
+                      <img src="http://127.0.0.1:4180/public/product-images/gy-cv220-inline.png" alt="GY-CV220 industrial camera">
+                      <div><h5>GY-CV220 Industrial Vision Camera</h5><p>SKU: GY-CV220</p><p>Configuration: To be confirmed</p><p>Quantity: 1</p></div>
+                    </div>
+                    <div class="summary-lines">
+                      <div class="summary-line"><span>Items (1)</span><strong>US$ 0.00</strong></div>
+                      <div class="summary-line"><span>Shipping</span><strong>To be confirmed</strong></div>
+                      <div class="summary-line"><span>Taxes &amp; duties</span><strong>To be confirmed</strong></div>
+                      <div class="summary-total"><span>Estimated merchandise total</span><b>US$ 0.00</b></div>
+                    </div>
+                    <p class="summary-disclaimer">Displayed prices are non-binding estimates. The formal quotation confirms availability, configuration, shipping, taxes, duties, payment terms, and the final total.</p>
+                  </div>
+                  <div class="trust-list">
+                    <div class="trust-item"><b>TECHNICAL CONFIGURATION</b><span>Engineer review before formal quotation.</span></div>
+                    <div class="trust-item"><b>GLOBAL SHIPPING</b><span>Method and import costs confirmed by destination.</span></div>
+                    <div class="trust-item"><b>WARRANTY &amp; RMA</b><span>Terms confirmed against the selected product and region.</span></div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+
+            <div class="mobile-wrap">
+              <div class="state-label proposed">Mobile · 390 × 844</div>
+              <div class="checkout-mobile">
+                <header class="mobile-head"><img src="http://127.0.0.1:4180/astro/public/gyutron-logo-purple.png" alt="GYUTRON"><span>RETURN TO STORE</span></header>
+                <div class="mobile-summary"><b>View order summary (1)</b><span>US$ 0.00 estimated</span></div>
+                <main class="mobile-body">
+                  <p>INDUSTRIAL ORDER REQUEST</p>
+                  <h4>Checkout details</h4>
+                  <section class="mobile-step">
+                    <header class="mobile-step-head"><b>1</b><div><strong>Customer / Company</strong><span>Business contact and company details</span></div></header>
+                    <div class="mobile-form">
+                      <div class="field"><label>First name *</label><input value="Connor"></div>
+                      <div class="field"><label>Last name *</label><input value="Chen"></div>
+                      <div class="field"><label>Business email *</label><input value="procurement@company.com"></div>
+                      <div class="field"><label>Company name *</label><input value="Company name"></div>
+                      <button class="primary-button" type="button">Continue to address</button>
+                    </div>
+                  </section>
+                  <div class="mobile-collapsed"><b>2</b><strong>Shipping &amp; Billing Address</strong></div>
+                  <div class="mobile-collapsed"><b>3</b><strong>Shipping Method &amp; Procurement</strong></div>
+                  <div class="mobile-note">No horizontal scrolling. Order summary stays compact. The primary action remains visible without a second decorative frame.</div>
+                </main>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="decision-rules">
+      <article class="decision-rule"><b>Use purple</b><span>Primary CTA, active step marker, focused field, links and small product-category labels.</span></article>
+      <article class="decision-rule"><b>Use quiet elevation</b><span>Separate checkout steps with whitespace and a restrained neutral shadow; keep lines for fields, tables and data structure.</span></article>
+      <article class="decision-rule"><b>Do not use</b><span>Full purple hover boxes, a square around every number, neon effects, gradients, green completion states or generic SaaS cards.</span></article>
+    </section>
+
+    <footer class="board-footer"><span><b>Design review only</b> · No production files changed</span><span>Desktop and mobile concepts · English source copy · GYUTRON visual system</span></footer>
+  </main>
+</body>
+</html>

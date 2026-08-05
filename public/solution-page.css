@@ -38,9 +38,8 @@
 .solution-panel {
     background: rgba(255, 255, 255, 0.10);
     border: 1px solid rgba(255, 255, 255, 0.20);
-    border-radius: 2px;
+    border-radius: 0;
     padding: 24px;
-    transition: background var(--motion), border-color var(--motion), box-shadow var(--motion), transform var(--motion);
 }
 
 .solution-panel span {
@@ -67,7 +66,7 @@
 
 .solution-tabs {
     background: var(--white);
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid #d9dce1;
     position: sticky;
     top: 116px;
     z-index: 30;
@@ -108,7 +107,7 @@
 
 .solution-section.alt {
     background: var(--white);
-    border-block: 1px solid var(--line);
+    border-block: 1px solid #d9dce1;
 }
 
 .solution-section.dark {
@@ -156,10 +155,9 @@
 .architecture-card,
 .workflow-step {
     background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 2px;
+    border: 1px solid #d9dce1;
+    border-radius: 0;
     padding: 22px;
-    transition: background var(--motion), border-color var(--motion), box-shadow var(--motion), transform var(--motion);
 }
 
 .capability-card i,
@@ -167,7 +165,6 @@
     color: var(--purple-600);
     font-size: 22px;
     margin-bottom: 20px;
-    transition: color var(--motion-fast), transform var(--motion);
 }
 
 .capability-card h3,
@@ -221,10 +218,9 @@
         linear-gradient(180deg, rgba(18, 5, 31, 0.05), rgba(18, 5, 31, 0.20)),
         var(--sol-arch-img, url("product-smart-camera-detail.png")) center / cover;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 2px;
+    border-radius: 0;
     min-height: 420px;
     overflow: hidden;
-    transition: filter var(--motion), transform var(--motion-slow);
 }
 
 .solution-section.dark .architecture-card {
@@ -252,49 +248,18 @@
 .solution-cta-inner {
     align-items: center;
     background: var(--purple-950);
-    border-radius: 2px;
+    border-radius: 0;
     color: var(--white);
     display: grid;
     gap: 28px;
     grid-template-columns: minmax(0, 1fr) max-content;
     padding: 34px;
-    transition: box-shadow var(--motion), transform var(--motion);
 }
 
 .solution-cta .cta-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
-}
-
-.solution-panel:hover,
-.capability-card:hover,
-.architecture-card:hover,
-.workflow-step:hover {
-    border-color: var(--purple-500);
-    box-shadow: 0 8px 18px rgba(31, 11, 53, 0.10);
-    transform: translateY(-2px);
-}
-
-.solution-panel:hover {
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(255, 255, 255, 0.34);
-}
-
-.capability-card:hover i,
-.workflow-step:hover i {
-    color: var(--signal);
-    transform: translateY(-2px) scale(1.06);
-}
-
-.architecture-visual:hover {
-    filter: saturate(1.08) contrast(1.04);
-    transform: scale(1.012);
-}
-
-.solution-cta-inner:hover {
-    box-shadow: 0 24px 58px rgba(31, 11, 53, 0.20);
-    transform: translateY(-3px);
 }
 
 .solution-cta h2 {
@@ -347,26 +312,19 @@
 
 .solution-product-card {
     background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 2px;
+    border: 1px solid #d9dce1;
+    border-radius: 0;
     color: var(--ink);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     text-decoration: none;
-    transition: border-color var(--motion), box-shadow var(--motion), transform var(--motion);
-}
-
-.solution-product-card:hover {
-    border-color: rgba(111, 45, 189, 0.34);
-    box-shadow: 0 18px 40px rgba(31, 11, 53, 0.12);
-    transform: translateY(-3px);
 }
 
 .solution-product-media {
     aspect-ratio: 16 / 10;
     background: #fff;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid #d9dce1;
     display: block;
     overflow: hidden;
 }
@@ -376,7 +334,12 @@
     /* category hero banners are dark on the LEFT — crop right (same standard as the nav-search cards) */
     object-fit: cover;
     object-position: 100% 50%;
+    transition: transform var(--motion-slow);
     width: 100%;
+}
+
+.solution-product-card:hover .solution-product-media img {
+    transform: scale(1.025);
 }
 
 .solution-product-body {
@@ -397,6 +360,11 @@
     color: var(--purple-600);
     font-size: 17px;
     font-weight: 800;
+    transition: transform var(--motion);
+}
+
+.solution-product-card:hover .solution-product-go {
+    transform: translateX(3px);
 }
 
 @media (max-width: 640px) {
@@ -419,8 +387,8 @@
 .solution-shot-frame {
     aspect-ratio: 4 / 3;
     background: #0d0a14;
-    border: 1px solid var(--line);
-    border-radius: 2px;
+    border: 1px solid #d9dce1;
+    border-radius: 0;
     overflow: hidden;
     position: relative;
 }
@@ -434,7 +402,7 @@
 .solution-shot-tag {
     background: rgba(13, 10, 20, 0.78);
     border: 1px solid rgba(138, 99, 210, 0.5);
-    border-radius: 3px;
+    border-radius: 0;
     color: #fff;
     font-size: 11px;
     font-weight: 800;
@@ -498,7 +466,7 @@
     aspect-ratio: 4 / 3;
     background: #0d0a14;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 2px;
+    border-radius: 0;
     overflow: hidden;
 }
 
@@ -557,23 +525,17 @@
 
 .solution-case-card {
     background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 2px;
+    border: 1px solid #d9dce1;
+    border-radius: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: border-color var(--motion), box-shadow var(--motion);
-}
-
-.solution-case-card:hover {
-    border-color: var(--purple-500);
-    box-shadow: 0 8px 18px rgba(31, 11, 53, 0.10);
 }
 
 .solution-case-card-media {
     aspect-ratio: 16 / 10;
     background: #0d0a14;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid #d9dce1;
     overflow: hidden;
 }
 
@@ -607,7 +569,7 @@
 }
 
 .solution-case-card-metric {
-    border-top: 1px solid var(--line);
+    border-top: 1px solid #d9dce1;
     color: var(--ink);
     font-size: 13px;
     font-weight: 900;

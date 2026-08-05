@@ -2,9 +2,9 @@
  * Offline storefront regression gate.
  *
  * Run after `python tools/build_shop.py`. The gate proves that the original
- * storefront is unchanged outside checkout, checkout assets are page-scoped,
- * locale/public mirrors are synchronized, and the order-request boundary does
- * not trust client prices or payment data.
+ * storefront structure and behavior stay pinned, intentional shared styling is
+ * mirrored exactly, checkout assets are page-scoped, and the order-request
+ * boundary does not trust client prices or payment data.
  */
 import assert from "node:assert/strict";
 import crypto from "node:crypto";
@@ -108,9 +108,10 @@ check("shared partials match the original baseline", () => {
   for (const relative of partials) baselineEqual(relative);
 });
 
-check("global storefront assets and locale dictionaries match the original baseline", () => {
+check("global storefront styling is mirrored while behavior and locale dictionaries stay pinned", () => {
+  const canonicalCss = sha256("shop/shop.css");
   for (const outputRoot of allOutputRoots) {
-    baselineEqual(`${outputRoot}/shop.css`);
+    assert.equal(sha256(`${outputRoot}/shop.css`), canonicalCss, `${outputRoot}/shop.css mirror drift`);
     baselineEqual(`${outputRoot}/shop.js`);
   }
   for (const locale of ["en", "de", "ja"]) baselineEqual(`locales/i18n/${locale}.json`);
@@ -164,7 +165,7 @@ check("checkout HTML and runtime collect no payment credentials", () => {
   assert.doesNotMatch(combined, /data-checkout-summary(?:\s|=|>)/);
 });
 
-check("checkout CSS is page-scoped, square, and avoids copied palette effects", () => {
+check("checkout CSS is page-scoped, square apart from step circles, and avoids copied palette effects", () => {
   const css = read("shop/checkout.css").replace(/\/\*[\s\S]*?\*\//g, "");
   let selectors = 0;
   for (const match of css.matchAll(/([^{}]+)\{/g)) {
@@ -176,9 +177,17 @@ check("checkout CSS is page-scoped, square, and avoids copied palette effects", 
     }
   }
   assert.ok(selectors >= 100, `too few checkout selectors: ${selectors}`);
+  let circularStepRadiusCount = 0;
   for (const match of css.matchAll(/border-radius\s*:\s*([^;]+)/gi)) {
-    assert.match(match[1].trim(), /^0(?:\s+0)*$/, `rounded checkout surface: ${match[1]}`);
+    const value = match[1].trim();
+    if (value === "50%") {
+      circularStepRadiusCount += 1;
+      continue;
+    }
+    assert.match(value, /^0(?:\s+0)*$/, `rounded checkout surface: ${match[1]}`);
   }
+  assert.equal(circularStepRadiusCount, 1, "expected exactly one circular checkout step marker rule");
+  assert.match(css, /\.checkout-page\s+\.checkout-step__number\s*\{[^}]*border-radius\s*:\s*50%/s);
   assert.doesNotMatch(css, /(?:linear|radial)-gradient|\bcyan\b|\bteal\b|\bneon\b/i);
   for (const color of ["#4b2e83", "#efe8ff"]) assert.ok(css.toLowerCase().includes(color), `missing ${color}`);
   assert.match(css, /prefers-reduced-motion/);
@@ -253,4 +262,4 @@ if (failures.length) {
   for (const failure of failures) console.error(`  FAIL ${failure}`);
   process.exit(1);
 }
-console.log("  PASS original storefront, isolated checkout, mirrors, safety, and i18n contracts\n");
+console.log("  PASS storefront structure, shared-style mirrors, isolated checkout, safety, and i18n contracts\n");

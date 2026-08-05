@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GYUTRON responsive QA harness</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #ececef; color: #17121f; font: 13px/1.4 Arial, sans-serif; }
+    .qa-bar { align-items: center; background: #fff; border-bottom: 1px solid #d8d8dc; display: flex; gap: 22px; height: 48px; padding: 0 18px; }
+    .qa-bar strong { font-size: 14px; }
+    .qa-status { color: #5e5867; }
+    .qa-stage { display: flex; justify-content: center; padding: 16px 18px 0; }
+    .qa-shell { background: #fff; box-shadow: 0 8px 28px rgba(20, 18, 24, .14); transform-origin: top center; }
+    iframe { border: 0; display: block; }
+  </style>
+</head>
+<body>
+  <header class="qa-bar">
+    <strong id="qa-name">Responsive QA</strong>
+    <span id="qa-size"></span>
+    <span class="qa-status" id="qa-status">Loading…</span>
+  </header>
+  <main class="qa-stage"><div class="qa-shell" id="qa-shell"></div></main>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const width = Math.max(320, Number(params.get('w')) || 390);
+    const height = Math.max(560, Number(params.get('h')) || 640);
+    const path = params.get('path') || '/public/shop/checkout.html';
+    const name = params.get('name') || path;
+    localStorage.setItem('gyutronShopCart', JSON.stringify([{ sku: 'GY-CV220-INLINE', qty: 1 }]));
+
+    const scale = Math.min(1, (innerWidth - 36) / width, (innerHeight - 72) / height);
+    const shell = document.getElementById('qa-shell');
+    shell.style.width = `${width}px`;
+    shell.style.height = `${height}px`;
+    shell.style.transform = `scale(${scale})`;
+    shell.style.marginBottom = `${height * (scale - 1)}px`;
+    document.getElementById('qa-name').textContent = name;
+    document.getElementById('qa-size').textContent = `${width} × ${height} CSS px · ${Math.round(scale * 100)}% preview`;
+
+    const frame = document.createElement('iframe');
+    frame.id = 'qa-frame';
+    frame.width = width;
+    frame.height = height;
+    frame.src = path;
+    frame.addEventListener('load', () => {
+      const doc = frame.contentDocument;
+      const root = doc.documentElement;
+      const overflow = Math.max(root.scrollWidth, doc.body.scrollWidth) - root.clientWidth;
+      document.getElementById('qa-status').textContent = overflow > 1
+        ? `Horizontal overflow: ${Math.round(overflow)}px`
+        : 'No horizontal overflow';
+    });
+    shell.appendChild(frame);
+  </script>
+</body>
+</html>

@@ -76,3 +76,149 @@ The real local Worker clean paths returned 200 for en/de/ja checkout pages and a
 - Logistics: carrier, freight mode, dispatch, arrival, duties, taxes, and destination surcharges remain subject to review and formal quotation.
 
 Final result: passed
+
+---
+
+# GYUTRON checkout step shadow-separation QA
+
+Date: 2026-08-05
+
+## Scope and source truth
+
+- Scoped annotation: replace the straight divider lines between checkout step surfaces with restrained shadows and whitespace; preserve numbering, copy, layout, fields, controls, colors, and responsive behavior.
+- User feedback capture: `artifacts/figma-purple-frame-redesign/feedback-step-dividers.png` (1110 × 735).
+- Same-state desktop baseline: `artifacts/figma-purple-frame-redesign/design-qa-implementation-checkout.png` (2118 × 1440).
+- Same-state mobile baseline: `artifacts/figma-purple-frame-redesign/design-qa-implementation-mobile.png` (390 × 844).
+
+## Implementation evidence
+
+- Desktop implementation: `artifacts/figma-purple-frame-redesign/design-qa-shadow-checkout-desktop.png` (2118 × 1440, CSS viewport represented at 1× density).
+- Mobile implementation: `artifacts/figma-purple-frame-redesign/design-qa-shadow-checkout-mobile.png` (390 × 844, CSS viewport represented at 1× density).
+- Focused steps 2–4: `artifacts/figma-purple-frame-redesign/design-qa-shadow-steps-focused.png` (1374 × 346).
+- Combined before/after evidence: `artifacts/figma-purple-frame-redesign/design-qa-shadow-comparison.png` (1600 × 2200), generated from the equal-size desktop and mobile captures.
+- State: checkout step 1 active; steps 2–4 collapsed on desktop, steps 2–3 visible collapsed on the 390px mobile crop.
+
+## Findings and comparison history
+
+1. Earlier P2: the continuous top/bottom borders made the collapsed stages read like spreadsheet rows and created the hard horizontal lines identified in the feedback capture.
+2. Fix: the desktop step stack now uses a 14px gap; each white surface uses a neutral shadow with 5–8px vertical offset, 18–24px blur, and 5.5–7% opacity. All step borders were removed.
+3. Fix: mobile surfaces use a 10px gap and a lighter 4px/12px shadow at 5.5–6% opacity. Mobile step borders were removed.
+4. Post-fix comparison: the stages remain easy to scan while the separation is carried by whitespace and quiet elevation rather than a continuous rule. No actionable P0/P1/P2 visual issue remains.
+
+## Required fidelity surfaces
+
+- Fonts and typography: unchanged; hierarchy, wrapping, weight, line height, and optical density match the prior approved prototype.
+- Spacing and layout rhythm: intentional 14px desktop and 10px mobile gaps replace the former zero-gap divider stack; checkout alignment and order-summary geometry are unchanged.
+- Colors and visual tokens: shadows are neutral charcoal rather than purple; purple remains limited to active state, number markers, focus, links, and actions.
+- Image quality and assets: GYUTRON logo and product image are unchanged and render without broken assets.
+- Copy and content: checkout copy and data are unchanged; only the design-board rule label was updated from neutral lines to quiet elevation.
+
+## Interaction and technical checks
+
+- Straight bottom-divider count across desktop and mobile step surfaces: 0.
+- All four desktop and three visible mobile step surfaces computed with neutral box shadows.
+- First-name input focus still uses a uniform purple border and soft external focus outline; no decorative inset stripe or shadow was introduced.
+- Horizontal layout, primary action placement, and mobile summary remain unchanged.
+- Local preview and comparison-page console warnings/errors: 0.
+- Broken comparison-page images: 0.
+
+Final result: passed
+
+---
+
+# GYUTRON minimal enterprise styling revision QA
+
+Date: 2026-08-05
+
+## Scope
+
+- Revised only the design study in `artifacts/figma-purple-frame-redesign/`; no production website or checkout source file was changed.
+- Replaced padded step labels (`01`, `02`, `03`, `04`) with single digits inside compact circular markers.
+- Removed decorative purple left bars from the product composition, desktop and mobile active steps, form focus treatment, and the payment-status note.
+- Kept purple only for clear state and action cues; structural borders remain neutral gray.
+
+## Visual truth and implementation evidence
+
+- Prior source state: `artifacts/figma-purple-frame-redesign/design-qa-source-before.png` (3200px design board before this feedback pass).
+- Revised overview: `artifacts/figma-purple-frame-redesign/final-board.png` (3200 × 1200 crop; mirrored as `final-board-minimal-preview.png`).
+- Revised brand composition: `artifacts/figma-purple-frame-redesign/design-qa-implementation-brand.png` (1460 × 821).
+- Revised desktop checkout: `artifacts/figma-purple-frame-redesign/design-qa-implementation-checkout.png` (2118 × 1440).
+- Revised mobile checkout: `artifacts/figma-purple-frame-redesign/design-qa-implementation-mobile.png` (390 × 844).
+
+## Comparison history
+
+1. The earlier study used padded numbers inside square outlines. This created a presentation-template feel and was replaced with `1–4` in circular markers.
+2. The earlier study repeated vertical purple bars on several text and state containers. All standalone purple left bars were removed.
+3. The focused form field formerly used a purple inset left stripe. It now uses a uniform border and a soft external focus outline, preserving keyboard visibility without decoration.
+4. The active step uses one filled purple circle; inactive steps use thin purple outlines. No additional colored rail is present.
+
+## Final checks
+
+- Sequence marker values: `1, 2, 3, 4`; no padded `01–04` values remain.
+- Circular marker geometry: 12 of 12 checked markers use `border-radius: 50%`.
+- Standalone purple left borders: 0.
+- Broken images: 0.
+- Local preview warnings and errors: 0.
+- Typography and copy hierarchy remain intact; only numbering and the board date format changed.
+- Desktop and 390px mobile checkout states were visually inspected after the final CSS update.
+
+Final result: passed
+
+---
+
+# GYUTRON production minimal-enterprise rollout QA
+
+Date: 2026-08-05
+
+## Production scope
+
+- Brand site source: `astro/public/global.css`, `home-sections.css`, `product-page.css`, `solution-page.css`, and `news-page.css`.
+- Shop source: `shop/shop.css`, `shop/checkout.css`, and `shop/checkout.js`, plus generated en/de/ja source and `public` mirrors.
+- Regression contract: `scripts/smoke-shop.mjs` now pins store structure/behavior to the prior baseline while explicitly permitting the intentional shared CSS source and the single circular checkout-step marker rule.
+- No HTML information architecture, visible copy, URLs, SKUs, cart storage, i18n dictionary, Worker route, order payload, payment boundary, logistics rule, or account behavior changed.
+
+## Visual comparison
+
+- Approved rule reference: `artifacts/figma-purple-frame-redesign/design-qa-shadow-steps-focused.png`.
+- Implemented desktop steps: `artifacts/enterprise-design-live-20260805/after-local-shop-checkout-steps-1280.png`.
+- Combined target-versus-implementation input: `artifacts/enterprise-design-live-20260805/target-vs-implementation.png` and `target-vs-implementation.html`.
+- Brand implementation: `after-local-brand-home-1280.png`, `after-local-brand-products-1280.png`, `responsive-brand-cards-390.png`.
+- Shop implementation: `after-local-shop-home-1280.png`, `responsive-shop-products-de-390.png`, `responsive-shop-products-de-768.png`.
+- Checkout implementation: `after-local-shop-checkout-1280.png`, `after-local-shop-checkout-step4-1280.png`, and `responsive-checkout-{1440,1024,768,430,390}.png`.
+
+The combined comparison confirms the selected logic survived production constraints: single-digit circular markers, no decorative purple rails, whitespace plus quiet elevation between steps, purple reserved for active/action/focus semantics, and the existing right-side order summary retained. The production layout is denser than the design study because it includes the real header, active form, order summary, trust facts, and footer; no corrective visual mismatch remains.
+
+## Responsive and localization results
+
+| Width | Result | Key observation |
+| --- | --- | --- |
+| 1440 | passed | Left checkout flow and sticky order summary remain aligned; no root horizontal overflow. |
+| 1024 | passed | Checkout side summary remains visible; brand header and hero retain hierarchy. |
+| 768 | passed | Checkout switches to the compact top summary; German shop header and filters wrap/scroll within their own controls. |
+| 430 | passed | Mobile two-row Shop header, compact summary, circular marker, and primary form area remain clear. |
+| 390 | passed | Brand and Shop mobile layouts have no root horizontal overflow; long German titles wrap without clipping. |
+
+- English checkout was exercised through steps 1–4 with valid test data; completed steps retained `1`, `2`, and `3`, and step 4 displayed `4`.
+- German product-list and checkout surfaces and Japanese generated mirrors were checked through build/i18n gates; no `????` or replacement-character issue was introduced.
+- Fresh direct-page console checks for brand home, German Shop products, and populated checkout returned 0 warnings/errors.
+- The mobile order summary remained collapsed by default and did not consume the first screen.
+
+## Automated gates
+
+- `npm run shop:verify`: 120 passed, 0 failed.
+- `node scripts/smoke-platform.mjs`: 34 passed, 0 failed.
+- `npm run i18n:gate`: passed for de/ja.
+- `npm run i18n:audit`: 0 residual-English Shop segments in de/ja.
+- `astro/npm run build`: 132 pages built.
+- `astro/npm run verify:all`: all hard gates passed; the existing report-only i18n heuristics remain non-blocking.
+- `npx wrangler deploy --dry-run --config wrangler.toml --assets ./public/`: passed; 523 assets read and all configured bindings resolved.
+- `git diff --check`: passed.
+
+## Commercial capability boundary
+
+- Payment: not connected; no card, CVC, bank-account, PayPal, or payment credential is collected.
+- Order: remains an order-intent / `pending_review` purchasing request, not a paid or inventory-reserved order.
+- Logistics: remains reviewed and confirmed by sales; no real-time carrier rate, fixed ETA, or free-shipping rule was introduced.
+- Account: remains guest checkout; no login or account backend was introduced.
+
+Final result: passed

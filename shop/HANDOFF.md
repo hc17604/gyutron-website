@@ -4,7 +4,7 @@
 > 与用户交流用**中文**；GYUTRON 品牌名在可见文案中保持**大写**；i18n key / URL / 文件路径保持原样。
 > 🔄 双代理协作：Claude + Codex 都可能动 shop。**开工 `git pull` 对齐 origin/main，收工更新本文件并 push。**
 
-最近更新：2026-08-03（接手时先 `git fetch && git pull`，确认 `HEAD == origin/main`）
+最近更新：2026-08-05（接手时先 `git fetch && git pull`，确认 `HEAD == origin/main`）
 
 ---
 
@@ -16,6 +16,18 @@
 - 资源：`shop.css`(样式) `shop.js`(购物车/交互) `shop-i18n.js`(`window.GYUTRON_SHOP_I18N`，三语文案 + 产品 i18n)。
 
 ## §2 当前状态
+
+### 2026-08-05 极简企业视觉上线（商城公共界面 + checkout）
+
+- **商城公共视觉**：在不改 HTML、URL、SKU、购物车、搜索、三语和账户占位逻辑的前提下，将 `shop/shop.css` 的结构线从浅紫改为中性灰，移除产品卡、摘要卡、信任卡等非交互大容器的紫色 hover 整框、上浮和重阴影；CTA、搜索焦点、当前筛选、购物车角标和当前语言仍保留 GYUTRON 紫色。首页采购要点和交期状态不再使用绿色。
+- **硬边与动效**：商城非 checkout 表面继续 `border-radius: 0`；动效只过渡 `transform` / `opacity`，按钮扫光改为 transform；`prefers-reduced-motion` 保持有效。Header、桌面搜索建议、手机双行 Header、语言切换和购物车角标结构未改变。
+- **checkout 视觉**：四步序号改为真实 DOM 文本 `1–4`，当前步骤使用实心紫色圆形标记，其余为紫色描边圆形；完成步骤仍显示原序号，不再变成对勾。步骤卡移除直线边框，以桌面 14px / 移动 10px 留白及克制中性阴影分隔；secure/notice/summary note 的紫色左竖条已移除，摘要和 trust 区的紫色结构横线改为中性细线。
+- **作用边界**：checkout 改动仍只在 `.checkout-page`、`checkout.css` 和 `checkout.js` 内；没有把 checkout 样式泄漏到普通商城页面。`templates/shop/checkout.html` 无需修改。
+- **三语生成**：仅运行 `npm run shop:build`，同步 `shop/`、`de/shop/`、`ja/shop/` 与对应 `public` 镜像中的 `shop.css`、`checkout.css`、`checkout.js`；未运行旧 `i18n:build`、`i18n:sync` 或 `tools/generate_localized_site.py`。
+- **验证**：`npm run shop:verify` 120/120、Platform smoke 34/34、`i18n:gate`、`i18n:audit`、Wrangler 523 静态资产 dry-run、`git diff --check` 均通过。浏览器验证 1440/1024/768/430/390 无横向滚动；en/de/ja 页面无新增控制台错误，长德语产品标题与筛选可用；四步流程实际推进至第 4 步，完成步骤始终显示 `1–4`。证据见 `design-qa.md` 和 `artifacts/enterprise-design-live-20260805/`。
+- **支付 / 订单 / 物流 / 账户状态**：本次纯视觉与回归门禁变更，四者的真实能力均未改变。支付仍未接通且不采集支付凭据；订单仍提交 `pending_review` order intent；物流仍由销售审核确认；账户仍无真实登录后端、checkout 继续 Guest checkout。
+- **已知限制**：真实支付、实时库存、自动税费、承运商实时报价/追踪、账户体系、自动开票和自动履约仍需供应商账户、密钥和业务规则后才能启用。
+- **回滚**：执行 `git revert <2026-08-05 style(web-shop) 提交 SHA>` 并 push `main`；该提交只包含视觉源码、生成镜像、回归门禁和交接记录，不需要回滚 D1 数据。
 
 ### 2026-08-03 商城格式恢复与 checkout 隔离重构
 

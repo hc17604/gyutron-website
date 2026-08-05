@@ -1205,11 +1205,10 @@
         .solution-card,
         .resource-card {
             background: var(--white);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
+            border: 1px solid #d9dce1;
+            border-radius: 0;
             min-width: 0;
             overflow: hidden;
-            transition: border-color var(--motion), box-shadow var(--motion), transform var(--motion);
         }
 
         .feature-product {
@@ -1231,7 +1230,7 @@
         .resource-image img {
             height: 100%;
             object-fit: cover;
-            transition: filter var(--motion), transform var(--motion-slow);
+            transition: transform var(--motion-slow);
             width: 100%;
         }
 
@@ -1283,7 +1282,7 @@
         }
 
         .spec-list {
-            border-top: 1px solid var(--line);
+            border-top: 1px solid #d9dce1;
             display: grid;
             gap: 14px;
             margin: 24px 0;
@@ -1395,7 +1394,7 @@
 
         .proof-band {
             background: var(--white);
-            border-block: 1px solid var(--line);
+            border-block: 1px solid #d9dce1;
             padding: 42px 0;
         }
 
@@ -1438,18 +1437,19 @@
             background:
                 linear-gradient(180deg, rgba(18, 5, 31, 0.08), rgba(18, 5, 31, 0.36)),
                 url("https://images.pexels.com/photos/15141543/pexels-photo-15141543.jpeg?auto=compress&cs=tinysrgb&w=1200") center / cover;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
+            border: 1px solid #d9dce1;
+            border-radius: 0;
+            box-shadow: 0 2px 8px rgba(23, 21, 29, 0.06);
             min-height: 520px;
             position: relative;
         }
 
         .orbit-panel {
             background: rgba(255, 255, 255, 0.92);
-            border: 1px solid rgba(255, 255, 255, 0.68);
-            border-radius: var(--radius);
+            border: 1px solid #d9dce1;
+            border-radius: 0;
             bottom: 24px;
-            box-shadow: var(--shadow-sm);
+            box-shadow: 0 2px 8px rgba(23, 21, 29, 0.08);
             left: 24px;
             padding: 18px;
             position: absolute;
@@ -1471,9 +1471,9 @@
         }
 
         .status-pill {
-            background: rgba(0, 194, 168, 0.14);
-            border-radius: 999px;
-            color: #008a78;
+            background: rgba(138, 99, 210, 0.14);
+            border-radius: 0;
+            color: var(--purple-700);
             padding: 5px 9px;
         }
 
@@ -1537,35 +1537,13 @@
 
         .resource-card {
             background: var(--white);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .feature-product:hover,
-        .compact-product:hover,
-        .resource-card:hover {
-            border-color: rgba(111, 45, 189, 0.36);
-            box-shadow: 0 24px 58px rgba(31, 11, 53, 0.16);
-            transform: translateY(-5px);
+            box-shadow: 0 1px 2px rgba(23, 21, 29, 0.05);
         }
 
         .feature-product:hover img,
         .compact-product:hover img,
         .resource-card:hover img {
-            filter: saturate(1.08) contrast(1.04);
-            transform: scale(1.045);
-        }
-
-        .solution-card:hover {
-            border-color: rgba(255, 255, 255, 0.28);
-            box-shadow: 0 22px 42px rgba(0, 0, 0, 0.22);
-            transform: translateY(-5px);
-        }
-
-        .solution-card:hover .solution-icon {
-            background: rgba(0, 194, 168, 0.16);
-            border-color: rgba(0, 194, 168, 0.36);
-            color: var(--white);
-            transform: translateY(-2px) scale(1.04);
+            transform: scale(1.025);
         }
 
         .proof-item:hover {

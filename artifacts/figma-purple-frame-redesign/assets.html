@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GYUTRON design assets</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 48px; background: #f4f3f6; font-family: Inter, Arial, sans-serif; }
+    main { width: 1440px; display: grid; gap: 32px; }
+    section { background: #fff; border: 1px solid #d9d6de; padding: 32px; display: grid; gap: 20px; }
+    h1, h2 { margin: 0; color: #15131a; }
+    .logo { width: 300px; height: auto; }
+    .assets { display: grid; grid-template-columns: 720px 480px; gap: 32px; align-items: start; }
+    .vision { width: 720px; height: 540px; object-fit: cover; object-position: 35% center; }
+    .camera { width: 480px; height: 360px; object-fit: contain; background: #faf9fb; }
+  </style>
+</head>
+<body>
+  <main>
+    <section>
+      <h1>GYUTRON source assets</h1>
+      <img class="logo" src="../../astro/public/gyutron-logo-purple.png" alt="GYUTRON logo">
+    </section>
+    <section>
+      <h2>Product imagery</h2>
+      <div class="assets">
+        <img class="vision" src="../../astro/public/product-vision-cell.png" alt="Robot Vision Workcells">
+        <img class="camera" src="../../public/product-images/gy-cv220-inline.png" alt="GY-CV220 industrial camera">
+      </div>
+    </section>
+  </main>
+</body>
+</html>

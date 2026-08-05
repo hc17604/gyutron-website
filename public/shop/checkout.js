@@ -94,7 +94,7 @@
         return `
             <li class="checkout-step ${className}" data-step-container="${number}">
                 <button class="checkout-step__header" type="button" data-checkout-step="${number}"${buttonDisabled} aria-current="${active ? "step" : "false"}">
-                    <span class="checkout-step__number">${complete ? '<i class="fa-solid fa-check" aria-hidden="true"></i>' : String(number).padStart(2, "0")}</span>
+                    <span class="checkout-step__number">${String(number)}</span>
                     <span class="checkout-step__heading">
                         <strong>${safe(copy(steps[index].title))}</strong>
                         <span>${safe(active ? copy(steps[index].short) : status)}</span>
