@@ -1,6 +1,6 @@
 /* ============================================================================
  * GYUTRON support chat widget — industrial / hard-edged (no rounded corners).
- * Right-edge rail (Support + Contact) hugs the viewport; hover reveals the
+ * Right-edge rail (Support + Contact + Back to top) hugs the viewport; hover reveals the
  * label, clicking Support opens the FAQ panel. Tokens from global.css. The
  * scroll areas use the menu-bar scrollbar look (light purple, thin, NO arrows)
  * — also applied to the site search (.nav-search-results) at the bottom.
@@ -8,7 +8,7 @@
 
 .cw { position: fixed; z-index: 900; }
 
-/* ---- Right-edge rail: Support launcher + Contact button ----------------- */
+/* ---- Right-edge rail: Support + Contact + Back to top ------------------- */
 .cw-rail {
   position: fixed; right: 0; top: 56%;
   display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
@@ -28,6 +28,30 @@
 .cw-launcher--contact { background: var(--purple-950); }
 .cw-launcher--contact:hover { background: var(--purple-900); }
 .cw-launcher-icon { display: grid; place-items: center; width: 50px; height: 50px; font-size: 19px; flex: 0 0 auto; }
+.cw-launcher--back-to-top {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: background var(--motion-fast), box-shadow var(--motion), opacity 180ms ease, transform 180ms ease;
+}
+.cw-launcher--back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+  visibility: visible;
+}
+.cw-launcher--back-to-top .cw-launcher-icon { font-size: 22px; }
+.cw-launcher--back-to-top .cw-launcher-icon i { transition: transform 180ms ease; }
+.cw-launcher--back-to-top:hover .cw-launcher-icon i,
+.cw-launcher--back-to-top:focus-visible .cw-launcher-icon i { transform: translateY(-2px); }
+.cw-launcher--back-to-top:active { transform: translateX(0) translateY(1px); }
+.cw-launcher--back-to-top:focus-visible { outline: 3px solid var(--violet-soft); outline-offset: -3px; }
+body.mobile-nav-open .cw-launcher--back-to-top {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
 .cw-launcher-label {
   width: 0; opacity: 0; padding: 0; white-space: nowrap; overflow: hidden;
   font-size: 13.5px; font-weight: 800; letter-spacing: 0.02em;
@@ -141,8 +165,9 @@
 
 @media (max-width: 520px), (max-height: 420px) {
   .cw-panel { width: 100vw; max-height: min(80vh, 580px); }
-  .cw-rail { top: auto; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+  .cw-rail { top: auto; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .cw-rail, .cw-launcher-label, .cw-panel { transition-duration: 1ms !important; }
+  .cw-rail, .cw-launcher-label, .cw-panel,
+  .cw-launcher--back-to-top, .cw-launcher--back-to-top .cw-launcher-icon i { transition-duration: 1ms !important; }
 }

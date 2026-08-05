@@ -383,8 +383,21 @@
   },
   "screenshots": [
     "mobile-390-support-nav-hidden.png",
-    "desktop-1440-solution-nav-hidden.png"
+    "desktop-1440-solution-nav-hidden.png",
+    "mobile-390-integrated-double-arrow.jpg",
+    "desktop-1440-integrated-double-arrow.jpg"
   ],
+  "integratedRailFollowUp": {
+    "placement": "third item in the existing right-edge Support rail",
+    "icon": "fa-solid fa-angles-up",
+    "controlSize": "50x50",
+    "gap": 4,
+    "mobileBottomOffset": 16,
+    "desktop1440": { "railHeight": 158, "controlCount": 3, "overflowX": 0 },
+    "mobile390": { "railHeight": 158, "controlCount": 3, "overflowX": 0, "clickToTopY": 0 },
+    "shortLandscape844x390": { "railHeight": 158, "bottomOffset": 16, "overflowX": 0 },
+    "localizedNames": { "en": "Back to top", "de": "Nach oben", "ja": "ページ上部へ" }
+  },
   "console": {
     "cleanNonFormPageWarningsAndErrors": [],
     "localFormExpectedExternalError": [

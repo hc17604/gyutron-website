@@ -73,7 +73,6 @@ function verifyBrand() {
     ...walk("astro/src/pages", [".astro"]),
   ];
   const allowedByFile = new Map([
-    ["astro/src/layouts/Layout.astro", ["fa-solid fa-arrow-up"]],
     ["astro/src/components/Header.astro", [
       "fa-solid fa-magnifying-glass",
       "fa-solid fa-magnifying-glass nav-search-bar-icon",
@@ -88,6 +87,7 @@ function verifyBrand() {
     ["astro/src/components/ChatWidget.astro", [
       "fa-solid fa-headset",
       "fa-solid fa-envelope",
+      "fa-solid fa-angles-up",
       "fa-solid fa-xmark",
       "fa-solid fa-magnifying-glass",
     ]],

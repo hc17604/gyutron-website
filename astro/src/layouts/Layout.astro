@@ -1,5 +1,5 @@
 ---
-import { htmlLang, t, type Locale } from '../i18n';
+import { htmlLang, type Locale } from '../i18n';
 import Header from '../components/Header.astro';
 import ChatWidget from '../components/ChatWidget.astro';
 import SeoHead from '../components/seo/SeoHead.astro';
@@ -61,17 +61,6 @@ const { locale, path, title, description, ogTitle, ogDescription, bodyClass, pag
     <slot />
     <slot name="footer" />
     <ChatWidget locale={locale} />
-    <button
-      class="back-to-top"
-      type="button"
-      data-back-to-top
-      aria-label={t(locale, 'site.backToTop')}
-      title={t(locale, 'site.backToTop')}
-      aria-hidden="true"
-      tabindex="-1"
-    >
-      <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
-    </button>
     <script src="/nav-search.js" is:inline></script>
     <script src="/mobile-navigation.js" is:inline></script>
     <script src="/chat-widget.js" is:inline></script>

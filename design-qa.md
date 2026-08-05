@@ -87,8 +87,8 @@ Date: 2026-08-05
 
 - Root cause: `Layout.astro` already emitted the scroll-direction listener on 123 brand content pages, but the transform rules lived only in homepage-only `global.css`; the other 120 subpages changed `body.nav-hidden` without moving the Header.
 - The Header transform/transition contract now lives in shared `nav-chrome.css`, loaded after every page-specific stylesheet. Homepage duplication was removed from `global.css`.
-- `Layout.astro` now renders one localized, icon-only native button on every brand content page. It appears after 320px, is 50×50, hard-edged purple, and returns to the top while restoring the Header.
-- Product and solution sticky rails switch to `top: 0` while the Header is hidden. The mobile and short-landscape Support rail keeps a 16–18px vertical gap from the new control.
+- `Layout.astro` owns the shared scroll controller; `ChatWidget.astro` renders the localized, icon-only native back-to-top button as the third item in the existing Support rail. It appears after 320px, is 50×50, hard-edged purple, and returns to the top while restoring the Header.
+- Product and solution sticky rails switch to `top: 0` while the Header is hidden. Support, Contact, and back-to-top remain one aligned right-edge rail with 4px gaps; the hidden third slot prevents the rail from jumping when the control appears.
 - A new `verify:scroll-chrome` hard gate checks every non-redirect built HTML page, shared CSS, locale labels, focus state, and reduced-motion rules. Future content pages must render `Layout.astro`.
 
 ## Responsive and interaction evidence
@@ -101,6 +101,14 @@ Date: 2026-08-05
 | German form · 430×860 | mobile Header hidden | Header top 0 | 18px gap | 0 |
 | Japanese news · 390×844 | mobile Header hidden | Header top 0 | 18px gap | 0 |
 | Industry · 844×390 | Header hidden; tabs `top:0` | Header top 34px | 16px short-landscape gap | 0 |
+
+## Final integrated-rail follow-up
+
+- Replaced the separate bottom-right button with a third Support-rail item and changed the glyph from a single arrow to `fa-angles-up`.
+- Desktop 1440px: all three controls compute to 50×50 with 4px gaps and share the same right edge.
+- Mobile 390px and 430px, plus 844×390 short landscape: the rail stays 158px tall, clears the viewport bottom by 16px, and produces zero horizontal overflow.
+- Hover and keyboard focus translate only the chevrons upward by 2px; the button itself stays aligned with the rail.
+- Evidence: `desktop-1440-integrated-double-arrow.jpg` and `mobile-390-integrated-double-arrow.jpg`.
 
 - English `Back to top`, German `Nach oben`, and Japanese `ページ上部へ` accessible names passed.
 - Near the top the control computes `visibility:hidden`, `aria-hidden=true`, and `tabIndex=-1`; while visible it computes `visibility:visible`, `aria-hidden=false`, and `tabIndex=0`.

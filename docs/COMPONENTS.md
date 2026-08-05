@@ -59,11 +59,12 @@ Until then existing components stay where they are.
 
 ## Shared scroll controls
 
-`Layout.astro` is also the single owner of the site-wide scroll-direction listener and the localized
-back-to-top button. The visible rules live in `public/nav-chrome.css`, which loads after every page's
-own CSS. Keep new brand content pages inside `Layout.astro`; do not copy this listener into individual
-pages or move the rules back into homepage-only `global.css`. `npm run verify:scroll-chrome` scans the
-built site and fails if a non-redirect HTML page no longer inherits this contract.
+`Layout.astro` owns the site-wide scroll-direction controller. `ChatWidget.astro` owns the localized
+back-to-top button as the third item in the shared right-edge launcher rail. Header rules live in
+`public/nav-chrome.css`; rail and button rules live in `public/chat-widget.css`. Keep new brand content
+pages inside `Layout.astro`; do not copy the controller into individual pages or move its rules back
+into homepage-only `global.css`. `npm run verify:scroll-chrome` scans the built site and fails if a
+non-redirect HTML page no longer inherits this contract.
 
 ## Header navigation (data-driven) — added 2026-06-07
 

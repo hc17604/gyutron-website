@@ -4,8 +4,10 @@ Scope: GYUTRON brand site only. Shop files and behavior were excluded.
 
 ## Evidence
 
-- `desktop-1440-solution-nav-hidden.png` — solution page after downward scroll; the fixed Header is hidden and the purple back-to-top control is visible.
-- `mobile-390-support-nav-hidden.png` — mobile Support page after downward scroll; the 50×50 control is separated from the two Support/Contact launchers.
+- `desktop-1440-solution-nav-hidden.png` — solution page after downward scroll; the fixed Header is hidden and the original standalone back-to-top control is visible.
+- `mobile-390-support-nav-hidden.png` — mobile Support page showing the original separate-button baseline.
+- `desktop-1440-integrated-double-arrow.jpg` — final desktop state: Support, Contact, and the double-chevron back-to-top button form one right-edge rail.
+- `mobile-390-integrated-double-arrow.jpg` — final 390px state with three aligned 50×50 controls and 4px gaps.
 - `mobile-390-support-scrolled.png` — mobile page with the Header revealed after upward scroll.
 - `qa-results.json` — computed geometry and state results for 1440, 1024, 768, 430, 390, and short-landscape cases.
 - `build.log` / `verify.log` — Astro build and full verification output.
@@ -16,6 +18,7 @@ Scope: GYUTRON brand site only. Shop files and behavior were excluded.
 - Upward scrolling reveals both rows; the back-to-top control remains available until the page returns near the top.
 - Activating the control returns to `scrollY = 0`, restores the Header, and removes the control from the tab order.
 - English, German, and Japanese accessible names passed.
+- Final placement follow-up: the back-to-top action is the third item in the existing Support rail, uses a livelier double-chevron icon, keeps the rail position stable while hidden, and moves the icon upward by 2px on hover/focus.
 - Mobile menu and Support dialog states hide the back-to-top control so controls do not layer over one another.
 - Desktop search was opened on a 1536px product subpage: the results layer met the Header at exactly the same `116.8px` edge, with a 0px gap and `will-change: auto`.
 - No horizontal overflow was found. The fresh non-form console run had zero warnings/errors. The production Turnstile key produced the expected third-party hostname error on the local `127.0.0.1` contact-form check; this is unrelated to the scroll controls and is rechecked on the live hostname after deployment.

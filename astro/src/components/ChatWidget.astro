@@ -37,6 +37,17 @@ const supportUrl = localizeUrl(locale, '/support.html');
       <span class="cw-launcher-label">{t(locale, 'cw.contact')}</span>
       <span class="cw-launcher-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
     </a>
+    <button
+      type="button"
+      class="cw-launcher cw-launcher--back-to-top back-to-top"
+      data-back-to-top
+      aria-label={t(locale, 'site.backToTop')}
+      title={t(locale, 'site.backToTop')}
+      aria-hidden="true"
+      tabindex="-1"
+    >
+      <span class="cw-launcher-icon" aria-hidden="true"><i class="fa-solid fa-angles-up"></i></span>
+    </button>
   </div>
 
   <section class="cw-panel" role="dialog" aria-label={t(locale, 'cw.title')} hidden data-cw-panel>

@@ -68,7 +68,8 @@ for (const file of htmlFiles) {
   }
 
   if (!html.includes("classList.add('nav-hidden')") || !html.includes("classList.remove('nav-hidden')")) fail(name, 'missing directional header scroll controller');
-  if (!/class=["']fa-solid fa-arrow-up["'][^>]*aria-hidden=["']true["']/i.test(html)) fail(name, 'missing decorative-hidden upward-arrow icon');
+  if (!/<div\b[^>]*class=["'][^"']*\bcw-rail\b[^>]*>[\s\S]*?<button\b[^>]*\bdata-back-to-top\b[\s\S]*?<\/button>\s*<\/div>/i.test(html)) fail(name, 'back-to-top button is not inside the support rail');
+  if (!/<span\b[^>]*class=["']cw-launcher-icon["'][^>]*aria-hidden=["']true["'][^>]*>\s*<i\b[^>]*class=["']fa-solid fa-angles-up["']/i.test(html)) fail(name, 'missing decorative-hidden double-up icon');
 }
 
 const sharedCssPath = join(dist, 'nav-chrome.css');
@@ -79,14 +80,26 @@ if (!existsSync(sharedCssPath)) {
   for (const selector of [
     'body.nav-hidden .top-strip',
     'body.nav-hidden .site-header',
-    '.back-to-top.is-visible',
-    'body.mobile-nav-open .back-to-top',
     '@media (prefers-reduced-motion: reduce)',
   ]) {
     if (!css.includes(selector)) fail('nav-chrome.css', `missing ${selector}`);
   }
   if (/will-change\s*:\s*transform/i.test(css)) {
     fail('nav-chrome.css', 'permanent will-change: transform breaks fixed desktop search geometry');
+  }
+}
+
+const widgetCssPath = join(dist, 'chat-widget.css');
+if (!existsSync(widgetCssPath)) {
+  fail('chat-widget.css', 'support rail CSS output missing');
+} else {
+  const css = readFileSync(widgetCssPath, 'utf8');
+  for (const selector of [
+    '.cw-launcher--back-to-top.is-visible',
+    'body.mobile-nav-open .cw-launcher--back-to-top',
+    '.cw-launcher--back-to-top .cw-launcher-icon',
+  ]) {
+    if (!css.includes(selector)) fail('chat-widget.css', `missing ${selector}`);
   }
 }
 
