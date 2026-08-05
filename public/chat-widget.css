@@ -139,9 +139,9 @@
 .mega-links, .mega-menu,
 .nav-search-results, .nav-search-dropdown { overscroll-behavior: contain; }
 
-@media (max-width: 520px) {
+@media (max-width: 520px), (max-height: 420px) {
   .cw-panel { width: 100vw; max-height: min(80vh, 580px); }
-  .cw-rail { top: auto; bottom: 84px; }
+  .cw-rail { top: auto; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
 }
 @media (prefers-reduced-motion: reduce) {
   .cw-rail, .cw-launcher-label, .cw-panel { transition-duration: 1ms !important; }

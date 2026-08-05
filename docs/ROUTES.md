@@ -55,8 +55,10 @@ getStaticPaths() → Object.keys(GYUTRON_PRODUCTS)
 
 ## Add a page
 
-1. Create `astro/src/pages/<slug>.astro`, wrap a component, pass `locale="en"`, `path="/<slug>.html"`,
+1. Create `astro/src/pages/<slug>.astro`, wrap a component that renders `layouts/Layout.astro`, pass `locale="en"`, `path="/<slug>.html"`,
    and SEO via i18n keys: `title={t(locale,'seo.<slug>.title')}` / `description={t(locale,'seo.<slug>.desc')}`.
+   `MetaRedirect.astro` is the only intentional exception. The Layout contract gives every future page
+   the shared Header, scroll hide/reveal behavior, and localized back-to-top control.
 2. Create `pages/de/<slug>.astro` and `pages/ja/<slug>.astro` as thin wrappers (`locale="de"|"ja"`).
 3. Add the `seo.<slug>.title` / `.desc` keys to **all three** i18n dicts (build fails on a missing key).
 4. Add the link to navigation (`Header.astro` / `Footer.astro`; canonical list in `src/data/navigation.ts`).

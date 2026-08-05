@@ -77,6 +77,48 @@ The real local Worker clean paths returned 200 for en/de/ja checkout pages and a
 
 Final result: passed
 
+---
+
+# GYUTRON shared navigation scroll + back-to-top QA
+
+Date: 2026-08-05
+
+## Scope and implementation truth
+
+- Root cause: `Layout.astro` already emitted the scroll-direction listener on 123 brand content pages, but the transform rules lived only in homepage-only `global.css`; the other 120 subpages changed `body.nav-hidden` without moving the Header.
+- The Header transform/transition contract now lives in shared `nav-chrome.css`, loaded after every page-specific stylesheet. Homepage duplication was removed from `global.css`.
+- `Layout.astro` now renders one localized, icon-only native button on every brand content page. It appears after 320px, is 50×50, hard-edged purple, and returns to the top while restoring the Header.
+- Product and solution sticky rails switch to `top: 0` while the Header is hidden. The mobile and short-landscape Support rail keeps a 16–18px vertical gap from the new control.
+- A new `verify:scroll-chrome` hard gate checks every non-redirect built HTML page, shared CSS, locale labels, focus state, and reduced-motion rules. Future content pages must render `Layout.astro`.
+
+## Responsive and interaction evidence
+
+| Case | Down scroll | Up scroll | Control / rail | Overflow |
+| --- | --- | --- | --- | --- |
+| Home · 1440×900 | Header hidden | Header top 34px | 224px vertical gap | 0 |
+| Solution · 1024×768 | Header hidden; tabs `top:0` | Header top 34px | 165.9px gap | 0 |
+| Support · 768×900 | Header hidden | Header top 34px | 224px gap | 0 |
+| German form · 430×860 | mobile Header hidden | Header top 0 | 18px gap | 0 |
+| Japanese news · 390×844 | mobile Header hidden | Header top 0 | 18px gap | 0 |
+| Industry · 844×390 | Header hidden; tabs `top:0` | Header top 34px | 16px short-landscape gap | 0 |
+
+- English `Back to top`, German `Nach oben`, and Japanese `ページ上部へ` accessible names passed.
+- Near the top the control computes `visibility:hidden`, `aria-hidden=true`, and `tabIndex=-1`; while visible it computes `visibility:visible`, `aria-hidden=false`, and `tabIndex=0`.
+- Pointer activation returned to `scrollY=0`, removed `nav-hidden`, restored the Header, and hid the control.
+- Opening the mobile navigation or Support dialog hides and disables the control; no fixed-control overlap was found.
+- Fresh Japanese news-page console check: zero warnings/errors. Local contact-form QA recorded the expected Cloudflare Turnstile `110200` hostname error from using the production key on `127.0.0.1`; it is not emitted by this feature and is checked again on production.
+- Evidence: `artifacts/scroll-chrome-20260805/`.
+
+## Automated gates
+
+- Astro build: 132 pages.
+- `npm run verify:all`: passed, including the new 123-page `verify:scroll-chrome` gate.
+- Content-icon policy: 172 brand / 192 all checks passed.
+- 9 intentional `MetaRedirect` pages remained outside the Layout contract.
+- Exactly 123 HTML and 3 shared CSS outputs were synchronized; Shop diff stayed zero.
+
+Final result: passed
+
 # GYUTRON checkout step shadow-separation QA
 
 Date: 2026-08-05

@@ -27,6 +27,7 @@ first — it lists what breaks the site.
 | Edit partners / ecosystem | `data/partners.ts` (`PARTNERS`) | CONTENT_GUIDE |
 | Edit the About / company section | `home.x.about.*` keys + `aboutImages` in `Home.astro` | CONTENT_GUIDE |
 | Edit the Header mega-menu | `data/header-navigation.ts` (then `verify:header`) | CONTENT_GUIDE, COMPONENTS |
+| Edit header scroll / back-to-top behavior | `layouts/Layout.astro` + `public/nav-chrome.css` (then `verify:scroll-chrome`) | COMPONENTS |
 | Edit the Footer | `data/navigation.ts` `FOOTER_NAV` (+ `company.ts`, `footer.*` keys) | CONTENT_GUIDE |
 | Edit multilingual copy | `src/i18n/{en,de,ja}.json` (all three) | I18N |
 | Add a language | `astro.config.mjs` + `src/i18n` + dicts + `products.<code>.js` + pages | I18N, ADD-A-LANGUAGE |

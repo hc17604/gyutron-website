@@ -7,7 +7,7 @@ All components live in `astro/src/components/` and take a `locale: Locale` prop,
 
 | Component | Role | Reusability |
 |---|---|---|
-| `Layout.astro` (in `layouts/`) | `<head>` + SEO meta + Header + slots | high |
+| `Layout.astro` (in `layouts/`) | `<head>` + SEO meta + Header + slots + shared scroll controls | high |
 | `Header.astro` | top bar, brand, search, lang switch + `<HeaderNav/>` (nav now data-driven) | singleton |
 | `navigation/HeaderNav.astro` | `<ul class="nav">` — data-driven from `HEADER_NAV` | singleton |
 | `navigation/MegaMenu.astro` | one `.mega-menu` panel (feature + sections + extra links) | **high** |
@@ -56,6 +56,14 @@ Until then existing components stay where they are.
 - `forms/InquiryForm.astro` — placeholder inquiry form (mock), not yet imported. The live contact form
   is `ContactSales.astro`, which already routes through `lib/forms/contact.ts`.
 - `common/SectionTitle.astro`, `common/CtaSection.astro` — presentational, not yet imported.
+
+## Shared scroll controls
+
+`Layout.astro` is also the single owner of the site-wide scroll-direction listener and the localized
+back-to-top button. The visible rules live in `public/nav-chrome.css`, which loads after every page's
+own CSS. Keep new brand content pages inside `Layout.astro`; do not copy this listener into individual
+pages or move the rules back into homepage-only `global.css`. `npm run verify:scroll-chrome` scans the
+built site and fails if a non-redirect HTML page no longer inherits this contract.
 
 ## Header navigation (data-driven) — added 2026-06-07
 

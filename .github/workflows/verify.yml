@@ -38,6 +38,8 @@ jobs:
       # Hard gates — deterministic, fail the run on regression.
       - name: Verify header equivalence
         run: npm run verify:header
+      - name: Verify shared scroll controls
+        run: npm run verify:scroll-chrome
       - name: Verify sitemap
         run: npm run verify:sitemap
       - name: Verify routes / nav links

@@ -69,9 +69,11 @@ function assertNoIconGlyphContent(relative, allowed = []) {
 function verifyBrand() {
   const astroFiles = [
     ...walk("astro/src/components", [".astro"]),
+    ...walk("astro/src/layouts", [".astro"]),
     ...walk("astro/src/pages", [".astro"]),
   ];
   const allowedByFile = new Map([
+    ["astro/src/layouts/Layout.astro", ["fa-solid fa-arrow-up"]],
     ["astro/src/components/Header.astro", [
       "fa-solid fa-magnifying-glass",
       "fa-solid fa-magnifying-glass nav-search-bar-icon",

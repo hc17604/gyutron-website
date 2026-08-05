@@ -1,0 +1,391 @@
+{
+  "generatedAt": "2026-08-05T14:10:48.304Z",
+  "baseUrl": "http://127.0.0.1:4181/",
+  "cases": [
+    {
+      "name": "home-1440",
+      "width": 1440,
+      "height": 900,
+      "initial": {
+        "buttonHidden": true,
+        "headerTop": 34,
+        "label": "Back to top",
+        "labelOk": true,
+        "navHidden": false,
+        "overflowX": 0,
+        "stickyTop": null,
+        "y": 0
+      },
+      "down": {
+        "buttonAriaHidden": "false",
+        "buttonRect": {
+          "bottom": 882,
+          "height": 50,
+          "left": 1356.800048828125,
+          "right": 1406.800048828125,
+          "top": 832,
+          "width": 50,
+          "x": 1356.800048828125,
+          "y": 832
+        },
+        "buttonTabIndex": 0,
+        "buttonVisible": true,
+        "headerBottom": -45.889373779296875,
+        "headerTop": -128.6893768310547,
+        "navHidden": true,
+        "overflowX": 0,
+        "overlap": false,
+        "railRect": {
+          "bottom": 608,
+          "height": 104,
+          "left": 1374.800048828125,
+          "right": 1424.800048828125,
+          "top": 504,
+          "width": 50,
+          "x": 1374.800048828125,
+          "y": 504
+        },
+        "stickyTop": null,
+        "topStripBottom": 0.023105621337890625,
+        "topStripDisplay": "block",
+        "verticalGap": 224,
+        "y": 835.2000122070312
+      },
+      "up": {
+        "buttonVisible": true,
+        "headerTop": 34,
+        "navHidden": false,
+        "overflowX": 0,
+        "y": 675.5999755859375
+      }
+    },
+    {
+      "name": "solution-1024",
+      "width": 1024,
+      "height": 768,
+      "initial": {
+        "buttonHidden": true,
+        "headerTop": 34,
+        "label": "Back to top",
+        "labelOk": true,
+        "navHidden": false,
+        "overflowX": 0,
+        "stickyTop": "116px",
+        "y": 0
+      },
+      "down": {
+        "buttonAriaHidden": "false",
+        "buttonRect": {
+          "bottom": 750,
+          "height": 50,
+          "left": 940.7999877929688,
+          "right": 990.7999877929688,
+          "top": 700,
+          "width": 50,
+          "x": 940.7999877929688,
+          "y": 700
+        },
+        "buttonTabIndex": 0,
+        "buttonVisible": true,
+        "headerBottom": -46,
+        "headerTop": -120.80000305175781,
+        "navHidden": true,
+        "overflowX": 0,
+        "overlap": false,
+        "railRect": {
+          "bottom": 534.0750122070312,
+          "height": 104,
+          "left": 958.7999877929688,
+          "right": 1008.7999877929688,
+          "top": 430.07501220703125,
+          "width": 50,
+          "x": 958.7999877929688,
+          "y": 430.07501220703125
+        },
+        "stickyTop": "0px",
+        "topStripBottom": 0,
+        "topStripDisplay": "block",
+        "verticalGap": 165.92498779296875,
+        "y": 843.5999755859375
+      },
+      "up": {
+        "buttonVisible": true,
+        "headerTop": 34,
+        "navHidden": false,
+        "overflowX": 0,
+        "y": 681.2000122070312
+      }
+    },
+    {
+      "name": "support-768",
+      "width": 768,
+      "height": 900,
+      "initial": {
+        "buttonHidden": true,
+        "headerTop": 34,
+        "label": "Back to top",
+        "labelOk": true,
+        "navHidden": false,
+        "overflowX": 0,
+        "stickyTop": null,
+        "y": 0
+      },
+      "down": {
+        "buttonAriaHidden": "false",
+        "buttonRect": {
+          "bottom": 882,
+          "height": 50,
+          "left": 684.7999877929688,
+          "right": 734.7999877929688,
+          "top": 832,
+          "width": 50,
+          "x": 684.7999877929688,
+          "y": 832
+        },
+        "buttonTabIndex": 0,
+        "buttonVisible": true,
+        "headerBottom": -46,
+        "headerTop": -120.80000305175781,
+        "navHidden": true,
+        "overflowX": 0,
+        "overlap": false,
+        "railRect": {
+          "bottom": 608,
+          "height": 104,
+          "left": 702.7999877929688,
+          "right": 752.7999877929688,
+          "top": 504,
+          "width": 50,
+          "x": 702.7999877929688,
+          "y": 504
+        },
+        "stickyTop": null,
+        "topStripBottom": 0,
+        "topStripDisplay": "block",
+        "verticalGap": 224,
+        "y": 845.5999755859375
+      },
+      "up": {
+        "buttonVisible": true,
+        "headerTop": 34,
+        "navHidden": false,
+        "overflowX": 0,
+        "y": 682.7999877929688
+      }
+    },
+    {
+      "name": "form-de-430",
+      "width": 430,
+      "height": 860,
+      "initial": {
+        "buttonHidden": true,
+        "headerTop": 0,
+        "label": "Nach oben",
+        "labelOk": true,
+        "navHidden": false,
+        "overflowX": 0,
+        "stickyTop": null,
+        "y": 0
+      },
+      "down": {
+        "buttonAriaHidden": "false",
+        "buttonRect": {
+          "bottom": 844,
+          "height": 50,
+          "left": 350.8000183105469,
+          "right": 400.8000183105469,
+          "top": 794,
+          "width": 50,
+          "x": 350.8000183105469,
+          "y": 794
+        },
+        "buttonTabIndex": 0,
+        "buttonVisible": true,
+        "headerBottom": -53.108970642089844,
+        "headerTop": -119.90897369384766,
+        "navHidden": true,
+        "overflowX": 0,
+        "overlap": false,
+        "railRect": {
+          "bottom": 776,
+          "height": 104,
+          "left": 364.8000183105469,
+          "right": 414.8000183105469,
+          "top": 672,
+          "width": 50,
+          "x": 364.8000183105469,
+          "y": 672
+        },
+        "stickyTop": null,
+        "topStripBottom": 0,
+        "topStripDisplay": "none",
+        "verticalGap": 18,
+        "y": 841.5999755859375
+      },
+      "up": {
+        "buttonVisible": true,
+        "headerTop": 0,
+        "navHidden": false,
+        "overflowX": 0,
+        "y": 679.2000122070312
+      }
+    },
+    {
+      "name": "news-ja-390",
+      "width": 390,
+      "height": 844,
+      "initial": {
+        "buttonHidden": true,
+        "headerTop": 0,
+        "label": "ページ上部へ",
+        "labelOk": true,
+        "navHidden": false,
+        "overflowX": 0,
+        "stickyTop": null,
+        "y": 0
+      },
+      "down": {
+        "buttonAriaHidden": "false",
+        "buttonRect": {
+          "bottom": 828,
+          "height": 50,
+          "left": 310.8000183105469,
+          "right": 360.8000183105469,
+          "top": 778,
+          "width": 50,
+          "x": 310.8000183105469,
+          "y": 778
+        },
+        "buttonTabIndex": 0,
+        "buttonVisible": true,
+        "headerBottom": -79.95523071289062,
+        "headerTop": -146.75523376464844,
+        "navHidden": true,
+        "overflowX": 0,
+        "overlap": false,
+        "railRect": {
+          "bottom": 760,
+          "height": 104,
+          "left": 324.8000183105469,
+          "right": 374.8000183105469,
+          "top": 656,
+          "width": 50,
+          "x": 324.8000183105469,
+          "y": 656
+        },
+        "stickyTop": null,
+        "topStripBottom": 0,
+        "topStripDisplay": "none",
+        "verticalGap": 18,
+        "y": 837.5999755859375
+      },
+      "up": {
+        "buttonVisible": true,
+        "headerTop": 0,
+        "navHidden": false,
+        "overflowX": 0,
+        "y": 675.5999755859375
+      }
+    },
+    {
+      "name": "industry-landscape",
+      "width": 844,
+      "height": 390,
+      "initial": {
+        "buttonHidden": true,
+        "headerTop": 34,
+        "label": "Back to top",
+        "labelOk": true,
+        "navHidden": false,
+        "overflowX": 0,
+        "stickyTop": "82px",
+        "y": 0
+      },
+      "down": {
+        "buttonAriaHidden": "false",
+        "buttonRect": {
+          "bottom": 372,
+          "height": 50,
+          "left": 760.7999877929688,
+          "right": 810.7999877929688,
+          "top": 322,
+          "width": 50,
+          "x": 760.7999877929688,
+          "y": 322
+        },
+        "buttonTabIndex": 0,
+        "buttonVisible": true,
+        "headerBottom": -46,
+        "headerTop": -120.80000305175781,
+        "navHidden": true,
+        "overflowX": 0,
+        "overlap": false,
+        "railRect": {
+          "bottom": 306,
+          "height": 104,
+          "left": 778.7999877929688,
+          "right": 828.7999877929688,
+          "top": 202,
+          "width": 50,
+          "x": 778.7999877929688,
+          "y": 202
+        },
+        "stickyTop": "0px",
+        "topStripBottom": 0,
+        "topStripDisplay": "block",
+        "verticalGap": 16,
+        "y": 841.5999755859375
+      },
+      "up": {
+        "buttonVisible": true,
+        "headerTop": 34,
+        "navHidden": false,
+        "overflowX": 0,
+        "y": 679.2000122070312
+      }
+    }
+  ],
+  "interactions": {
+    "menuOpen": {
+      "backPointer": "none",
+      "backVisibility": "hidden",
+      "headerTop": 0,
+      "menuOpen": true,
+      "panelDisplay": "block"
+    },
+    "chatOpen": {
+      "backPointer": "none",
+      "backVisibility": "hidden",
+      "chatOpen": true,
+      "panelHidden": false
+    },
+    "clickToTop": {
+      "y": 0,
+      "navHidden": false,
+      "buttonHidden": true
+    },
+    "keyboardSemantics": {
+      "element": "native <button type=button>",
+      "accessibleNameLocalized": true,
+      "tabIndexWhenVisible": 0,
+      "hiddenFromTabOrderNearTop": true,
+      "note": "Browser automation verified focusability; pointer activation was exercised end-to-end."
+    }
+  },
+  "screenshots": [
+    "mobile-390-support-nav-hidden.png",
+    "desktop-1440-solution-nav-hidden.png"
+  ],
+  "console": {
+    "cleanNonFormPageWarningsAndErrors": [],
+    "localFormExpectedExternalError": [
+      {
+        "level": "error",
+        "message": "Uncaught TurnstileError: [Cloudflare Turnstile] Error: 110200.",
+        "timestamp": "2026-08-05T14:07:58.910Z",
+        "url": "https://challenges.cloudflare.com/turnstile/v0/api.js"
+      }
+    ],
+    "note": "The only local matrix console error is Cloudflare Turnstile 110200 on the production-key contact form under 127.0.0.1; shared scroll controls produced no warning/error on a fresh ja/news run."
+  }
+}
