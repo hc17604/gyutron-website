@@ -4,12 +4,12 @@ The final homepage images are existing Pexels stock photographs, not generated s
 
 ## Selected commercial-use photographs
 
-1. `pexels-8101928-asian-office-meeting-alt.jpg`
-   - Source collection/page: https://www.pexels.com/photo/colleagues-sitting-by-table-at-office-8101931/
-   - Direct photograph ID: 8101928
-   - Photographer: Mikhail Nilov
+1. `pexels-4031693-east-asian-lab-team.jpg`
+   - Source page: https://www.pexels.com/photo/two-scientists-working-inside-the-laboratory-4031693/
+   - Direct photograph ID: 4031693
+   - Photographer: Edward Jenner
    - Page status at review: Free to use
-   - Final fitted asset: `../about-office-stock/east-asian-team-strategy-session.png`
+   - Final fitted asset: `../about-office-stock/east-asian-lab-research-testing.png`
 2. `pexels-7652180-office-team.jpg`
    - Source page: https://www.pexels.com/photo/7652180/
    - Photographer: Thirdman
@@ -22,5 +22,5 @@ Pexels license reviewed at https://www.pexels.com/license/ on 2026-08-06. It per
 
 Only crop, high-quality resize, and PNG encoding were applied to fit the existing 1672 x 941 (16:9) slots. No generative editing, retouching, added branding, or synthetic content was used.
 
-- `east-asian-team-strategy-session.png` -> `public/home-about-quality-bench.png`
+- `east-asian-lab-research-testing.png` -> `public/home-about-quality-bench.png`
 - `east-asian-team-workshop-meeting.png` -> `public/home-about-engineering-lab.png`
