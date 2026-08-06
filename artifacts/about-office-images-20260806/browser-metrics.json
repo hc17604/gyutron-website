@@ -1,0 +1,98 @@
+[
+  {
+    "name": "desktop-1440",
+    "viewport": [
+      1440,
+      900
+    ],
+    "scrollY": 3122,
+    "overflow": 0,
+    "images": [
+      {
+        "src": "/home-about-headquarters-building.png",
+        "loaded": true,
+        "natural": [
+          1535,
+          1024
+        ],
+        "rect": [
+          544,
+          306
+        ]
+      },
+      {
+        "src": "/home-about-quality-bench.png?v=baa468da",
+        "loaded": true,
+        "natural": [
+          1672,
+          941
+        ],
+        "rect": [
+          265,
+          149
+        ]
+      },
+      {
+        "src": "/home-about-engineering-lab.png?v=d5e5eacd",
+        "loaded": true,
+        "natural": [
+          1672,
+          941
+        ],
+        "rect": [
+          265,
+          149
+        ]
+      }
+    ],
+    "consoleErrors": []
+  },
+  {
+    "name": "mobile-390",
+    "viewport": [
+      390,
+      844
+    ],
+    "scrollY": 4849,
+    "overflow": 0,
+    "images": [
+      {
+        "src": "/home-about-headquarters-building.png",
+        "loaded": true,
+        "natural": [
+          1535,
+          1024
+        ],
+        "rect": [
+          366,
+          206
+        ]
+      },
+      {
+        "src": "/home-about-quality-bench.png?v=baa468da",
+        "loaded": true,
+        "natural": [
+          1672,
+          941
+        ],
+        "rect": [
+          176,
+          99
+        ]
+      },
+      {
+        "src": "/home-about-engineering-lab.png?v=d5e5eacd",
+        "loaded": true,
+        "natural": [
+          1672,
+          941
+        ],
+        "rect": [
+          176,
+          99
+        ]
+      }
+    ],
+    "consoleErrors": []
+  }
+]
