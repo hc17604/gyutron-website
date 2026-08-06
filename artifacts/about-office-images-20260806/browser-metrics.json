@@ -16,11 +16,11 @@
         ],
         "rect": [
           538,
-          302
+          303
         ]
       },
       {
-        "src": "/home-about-quality-bench.png?v=6f85ceee",
+        "src": "/home-about-quality-bench.png?v=77522ee9",
         "loaded": true,
         "natural": [
           1672,
@@ -32,7 +32,7 @@
         ]
       },
       {
-        "src": "/home-about-engineering-lab.png?v=dc56733d",
+        "src": "/home-about-engineering-lab.png?v=9794f2e2",
         "loaded": true,
         "natural": [
           1672,
@@ -62,32 +62,32 @@
           1024
         ],
         "rect": [
-          365,
-          206
+          346,
+          195
         ]
       },
       {
-        "src": "/home-about-quality-bench.png?v=6f85ceee",
+        "src": "/home-about-quality-bench.png?v=77522ee9",
         "loaded": true,
         "natural": [
           1672,
           941
         ],
         "rect": [
-          176,
-          99
+          166,
+          94
         ]
       },
       {
-        "src": "/home-about-engineering-lab.png?v=dc56733d",
+        "src": "/home-about-engineering-lab.png?v=9794f2e2",
         "loaded": true,
         "natural": [
           1672,
           941
         ],
         "rect": [
-          176,
-          99
+          166,
+          94
         ]
       }
     ],
