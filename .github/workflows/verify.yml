@@ -22,6 +22,9 @@ jobs:
         working-directory: astro
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Shop smoke pins protected files to historical baseline commits.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
