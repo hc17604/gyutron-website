@@ -5,8 +5,10 @@ Read before editing. These are the things that BREAK the live site, the deploy, 
 
 ## Never touch
 
-- **shop.gyutron.com / `public/shop`, `public/de/shop`, `public/ja/shop`** and any `shop.*` i18n keys —
-  out of scope, served separately. Do not edit, sync, or add to the sitemap.
+- **Shop surfaces** — `shop/`, `templates/shop/`, `templates/_partials/shop-*`, `de/shop/`, `ja/shop/`,
+  `public/{shop,de/shop,ja/shop}`, `public/shop-analytics.js`, Shop keys in `locales/i18n/`, Shop-only
+  API/migration files, and Worker host routing are out of scope for a main-site task. Do not edit, sync,
+  or add them to the brand sitemap.
 - **The legacy Python generator path** (`i18n:build` / `i18n:sync` / `generate_localized_site.py`) — it
   regenerates legacy pages into `public/` and CLOBBERS the Astro cutover. The generator still owns shop;
   just never run its main path.
@@ -62,9 +64,10 @@ TROUBLESHOOTING.md "Verify a header / nav change" + "Roll back a header / nav re
   **gitignored** and is NOT what deploys.
 - After a change that alters rendered output, sync **only the affected** `astro/dist/<page>` into
   `public/` (and the de/ja variants). **Never bulk-copy all of `dist/` into `public/`**, and never sync
-  shop. Confirm impact with `diff -rq astro/dist public` (excluding `/shop`). See DEPLOYMENT.md.
+  Shop. Confirm impact with root `npm run deploy:diff` (cross-platform and read-only). See DEPLOYMENT.md.
 - A scaffold/lib/docs-only change is deploy-neutral (no `public/` change) — verify with the diff.
-- `package-lock.json` is **gitignored by repo convention** (CI uses `npm install`). Don't commit it.
+- Root and `astro/` `package-lock.json` files are committed reproducibility contracts. Use `npm ci` in
+  CI/fresh checkouts and include intentional dependency changes in the same reviewed commit.
 - Don't commit `astro/dist/`.
 
 ## i18n
@@ -77,7 +80,8 @@ TROUBLESHOOTING.md "Verify a header / nav change" + "Roll back a header / nav re
 ## Before you commit / push
 
 1. `npm run build` (every change). 2. `npm run verify:all` (+ `verify:header` if header touched). 3.
-Confirm `public/` diff is only the pages you intended; shop untouched. 4. Check `codex.exe` count is 0
-and `git rev-parse HEAD == origin/main` (fetch first). 5. Commit per change (don't blind `git add -A`;
-add specific paths). 6. End commit messages with the Co-Authored-By line. 7. Push to `main`; re-verify
+Confirm `public/` diff is only the pages you intended; Shop untouched. 4. Update `HANDOFF.md` and run
+root `npm run agent:check`. 5. Fetch and confirm `git rev-parse HEAD == git rev-parse origin/main`;
+preserve any dirty or divergent work. 6. Commit per change (never blind `git add -A`; add specific
+paths). 7. Push to `main`; watch CI and re-verify
 `local == origin`; watch GitHub Actions (`gh run watch`) — fix red CI, don't leave it.

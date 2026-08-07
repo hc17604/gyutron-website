@@ -95,10 +95,12 @@ the static site or the existing contact flow because a backend resource is missi
 | `ADMIN_PASSWORD`                | `/admin` is disabled (login always fails)                        |
 | `RESEND_API_KEY`/from           | contact email is skipped (D1 capture still succeeds)             |
 
-This is why **`wrangler.toml` ships with the D1/R2/KV bindings commented out**: an
-uncommented binding with a placeholder id would fail the production deploy. You add
-each binding only after creating the resource (see
-[`cloudflare-deployment.md`](./cloudflare-deployment.md)).
+The current production `wrangler.toml` declares real D1, R2, and RATE_LIMIT KV
+bindings. Their resource identifiers are non-secret and intentionally committed; runtime secrets stay
+in Cloudflare Worker secrets. Graceful degradation remains a code safety contract, but it is not a
+reason to remove a healthy production binding. Never recreate, replace, rename, or comment a binding
+without explicit approval, a backup/rollback plan, and the checks in
+[`cloudflare-deployment.md`](./cloudflare-deployment.md).
 
 ## 4. Module layout — reusable core vs. site glue
 

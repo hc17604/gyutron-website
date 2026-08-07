@@ -20,6 +20,5 @@ artifacts/shop-qa-*/
 
 # Node deps (not committed)
 node_modules/
-package-lock.json
 pnpm-lock.yaml
 pnpm-workspace.yaml

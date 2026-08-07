@@ -10,6 +10,11 @@ Use the checked-in Wrangler config:
 npm run deploy
 ```
 
+As of 2026-08-07, the local Wrangler OAuth token can identify the account but deployment inspection
+returns Cloudflare API authentication error 10000. Run `npx wrangler login` and verify access before a
+manual deploy; do not describe manual deployment as available until that check passes. Push-to-main
+auto-deploy is configured outside this repository in Cloudflare and is separate from GitHub CI.
+
 `wrangler.toml` sets:
 
 ```toml
@@ -42,7 +47,11 @@ The repo also includes `.wrangler/deploy/config.json` so the plain dashboard com
 
 ## Cloudflare Pages fallback
 
-If deploying as a plain static Pages project instead of Workers, use:
+This is an **emergency static-only degradation**, not an equivalent production deployment. Plain Pages
+would not provide the Worker APIs, contact/RFQ/support/download handling, admin/Data API, D1/R2/KV
+behavior, scheduled backups, or `shop.gyutron.com` host routing.
+
+Only if the user explicitly accepts those losses, use:
 
 ```text
 Build command: 

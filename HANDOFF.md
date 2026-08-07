@@ -1,14 +1,90 @@
 # GYUTRON gyutron.com — Engineering Handoff (single source of truth)
 
-> Consolidated handoff for the agent/engineer taking over. **This supersedes the older, partly-stale rules in `AGENTS.md` where they conflict** (see §10). Last updated 2026-08-07. Current live HEAD: use `git rev-parse origin/main` after `git fetch`.
+> Consolidated handoff for the agent/engineer taking over. `AGENTS.md` is now the concise active rule set;
+> this file owns current state and decision history. Last updated 2026-08-07. Obtain the current live
+> HEAD with `git fetch origin` and `git rev-parse origin/main`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
 > 🏗️ **2026-06-06:** an **additive engineering foundation** was added — repo-root **`docs/`** + `astro/src/{config,types,data}` + `astro/src/lib/{api,forms,crm,cms,agent,logger}` (mock/placeholder) + `astro/.env.example`. See **§5b** and `docs/`.
-> 🧭 **New maintainer / employee / agent: START at `docs/MAINTENANCE.md`** (a task→doc index for every common change) and read **`docs/SAFETY_CHECKLIST.md`** (what breaks the site). Other guides: ARCHITECTURE, COMPONENTS, CONTENT_GUIDE, ROUTES, I18N, SEO, ACCESSIBILITY, PERFORMANCE, FUTURE_INTEGRATIONS, SOLUTIONS_GUIDE, DEPLOYMENT, TROUBLESHOOTING.
-> 🛰️ **2026-06-10 (Claude): Phase-1 BACKEND + Data API landed** — repo-root **`src/` worker modules** (`src/platform/*`, `src/api/*`), **`migrations/`** (D1 schema), and **`docs/{backend-architecture,data-api-contract,cloudflare-deployment,phase-roadmap}.md`**. The static site / i18n / SEO are untouched. ⚠️ **D1/R2/KV bindings are COMMENTED in `wrangler.toml` on purpose** (a placeholder id would break the auto-deploy) — read the §CODEX HANDOFF entry below before touching them.
+> 🧭 **New maintainer / employee / agent: START at `docs/AGENT_TAKEOVER.md`**, then read
+> `docs/SAFETY_CHECKLIST.md` and use `docs/MAINTENANCE.md` as the task→file index.
+> 🛰️ **Backend current state:** Phase-1 Worker/Data API lives in root `src/` with migrations in
+> `migrations/`. D1, R2, and RATE_LIMIT KV are active declarations in `wrangler.toml` with real,
+> non-secret resource identifiers; secrets stay in Cloudflare. Do not recreate, replace, or comment
+> these bindings without explicit approval and remote verification.
+
+---
+
+## Fast takeover snapshot
+
+Read this block first; use the dated entries below only for task-relevant history.
+
+- **Repository:** `D:\AI PRODUT\GYUTRON web\website\gyutron-website-repo`, branch `main`. Run
+  `git fetch origin` and `npm run agent:status`; do not trust a hard-coded HEAD in documentation.
+- **Production:** `https://www.gyutron.com/`. Authoritative main-site source is `astro/`; Cloudflare
+  serves the committed root `public/`. Build output `astro/dist/` is generated and ignored.
+- **Build/deploy asymmetry:** current `public/` has 131 non-Shop files not emitted by Astro, including
+  assets referenced by built pages. Never mirror-delete public-only files; `astro preview` is not fully
+  production-equivalent, so use Wrangler dev or live checks for final asset/routing acceptance.
+- **Current live visual state:** the homepage About lower-left slot uses the user-selected engineering
+  test-bench image (`home-about-quality-bench.png`, cache key `eef0bdb5`). Button purple is centrally
+  limited to deep `#4b2e83` and light `#efe8ff`; back-to-top is deep purple; Contact is near-black.
+- **Locales:** English root plus `/de/` and `/ja/`, all built by Astro. Never run the legacy root i18n
+  generator for a main-site task.
+- **Shop boundary:** `shop.gyutron.com` is separate. Main-site work must not touch `shop/` or
+  `public/{shop,de/shop,ja/shop}`. Read `shop/HANDOFF.md` only when Shop is explicitly in scope.
+- **Backend boundary:** Worker code is under root `src/`; D1, R2, and RATE_LIMIT KV are active
+  production binding declarations in `wrangler.toml`. Their identifiers are non-secret and committed;
+  runtime secrets remain in Cloudflare. Never recreate, replace, rename, or comment bindings without
+  explicit approval and remote-resource verification.
+- **Known operational limits (2026-08-07):** local Wrangler deployment/secret inspection returns
+  Cloudflare API authentication error 10000 and requires `npx wrangler login`; do not claim manual
+  deploy or secret state is verified until refreshed. The 12 brand form pages now build with the
+  tracked public Turnstile key and a hard regression gate, but a human browser submission is still
+  required after deployment to confirm the external Worker secret/end-to-end flow. Shop clean paths
+  without trailing slashes (`/shop`, `/de/shop`, `/ja/shop`) currently 404; see `shop/HANDOFF.md` and do
+  not fix that Worker/Shop issue during a main-site task.
+- **Open content priorities:** replace seed Newsroom posts with approved real posts; add real
+  partner/customer logos only after approval; native-language QA and product-spec translation remain
+  separate content work.
+- **Every takeover/finish:** follow `docs/AGENT_TAKEOVER.md`; run root `npm run agent:status` on entry and
+  `npm run agent:check` before commit. Repository files and Git are the handoff, not private memory.
 
 ---
 
 ## 🤝 CODEX HANDOFF — current state (2026-08-07)
+
+> **2026-08-07 (Codex) — Cross-agent takeover contract hardened; Turnstile build regression repaired.**
+> Scope: replaced the stale/conflicting active `AGENTS.md` and Claude/Codex entry prompts with one
+> repository-owned protocol; added `docs/AGENT_TAKEOVER.md`, root `agent:status`, `agent:check`,
+> cross-platform read-only `deploy:diff`/hard `deploy:check`, committed-state freshness checks, and CI
+> coverage for handoff, two-purple buttons, Turnstile, Worker smoke, Shop baseline, Wrangler dry-run,
+> deploy-output sync, and committed whitespace. Pinned Astro `5.18.2` on Node 24 and committed
+> root/`astro` lockfiles; fresh checkouts and CI now use `npm ci` rather than floating installs. Root legacy
+> `i18n:build`/`i18n:sync` now fail safely instead of overwriting the Astro site; `i18n:audit` routes to
+> the Astro product audit. Corrected current backend documentation and `wrangler.toml` comments: D1,
+> R2, and RATE_LIMIT KV are active production declarations with committed non-secret IDs; secrets remain
+> external. Turnstile's public production site key is now a tracked fallback in
+> `astro/src/config/turnstile.ts`, so clean agent/CI builds cannot silently omit the widget; synchronized
+> the 12 en/de/ja form widgets. `withVersion()` now hashes LF-normalized CSS text, eliminating
+> Windows/Linux cache-key drift. That deterministic-hash correction required one intentional sync of
+> all 123 Layout-backed brand HTML files; only CSS `?v=` keys changed outside the 12 form pages.
+> Preserved: site design/copy/routes, product data, Shop source and
+> generated trees, payment/order behavior, Worker logic, D1 data, binding IDs, and secrets.
+> Verification: Astro built 132 pages; all hard `verify:all` gates passed, including 12/12 Turnstile
+> pages and 675 normalized CSS links across all 132 pages. Report-only baselines remain explicit: 3 localized homepages have three `<h1>` elements;
+> i18n flags 42 pages/144 heuristic tokens; assets report 302.61 MB and 148 images over 1 MB. Platform
+> smoke 34/34, Shop smoke 120/120, Shop icon policy 20/20, Wrangler dry-run 525 assets with active
+> DB/R2/KV/ASSETS bindings, root and Astro `npm ci --dry-run`, `agent:check`, `deploy:check`, and
+> `git diff --check` passed; main-task Shop
+> guard is empty. `deploy:check` confirms every Astro-built file is byte-synced while preserving 131
+> intentional non-Shop public-only files. Live read-only checks found `/api/v1/health` 200 and confirmed the pre-deploy form
+> pages lacked Turnstile; the generated/committed replacements now contain the widget, site key, and
+> script. Deploy: pending push/CI/live verification in the next handoff follow-up. Limits: Wrangler OAuth
+> API error 10000 prevents current secret/deployment inspection; a human browser form submission remains
+> required. Shop's no-trailing-slash 404 is documented, not fixed. Rollback: revert this focused
+> takeover-hardening commit; restoring the old form HTML would also remove the widget and is unsafe if
+> `TURNSTILE_SECRET_KEY` remains active. Next: push, watch both CI jobs/gates, verify all four live form
+> families in en/de/ja contain Turnstile, and record final deployment status.
 
 > **2026-08-07 (Codex) - Homepage About lower-left image changed to an engineering test bench.** Replaced only `home-about-quality-bench.png`: the overhead warehouse-worker stock photo now uses the user-supplied generated image of a practical electronics/vision engineering bench with oscilloscopes, monitors, a mounted industrial camera, a multimeter, cabling, and test hardware. The canonical slot filename is unchanged; `Home.astro` now uses cache key `?v=eef0bdb5`, and the existing 16:9 `object-fit: cover` presentation crops the 1536×1024 source without a layout change. This is an illustrative generated scene, not a photograph of a GYUTRON facility or equipment. The building image, lower-right office image, copy, locale structure, Shop, and backend remain unchanged.
 
@@ -117,7 +193,7 @@ A large UI + architecture overhaul shipped this session. **Everything below is L
 - 🚫 **HONESTY — NEVER fabricate** stats, claims, client counts, founding dates, specs, or partner logos. Only true, verifiable GYUTRON facts. (A prior AI draft invented "since 2010 / 200+ clients / 18-month lead time / managed fleet" — all rejected. Don't reintroduce them.)
 - 🖼️ **IMAGE SINGLE-USE RULE (reaffirmed 2026-06-19).** Every content/marketing/product/navigation image slot must have its own purpose-named asset file. Do **not** reuse one content image in two places (homepage card + menu panel, product-page hero + nav panel, SKU + category hero, etc.). If two slots need a similar visual, create a separate file for the second slot and wire only that slot to it. Baseline UI assets such as the logo, favicon, payment marks, social/share image, and icon libraries are the only shared-asset exceptions.
 - 🌐 **i18n.** Every visible string needs en+de+ja or the build throws (`t()` gate). Never translate model names (`GY-*`). Category fields in `products.{de,ja}.js` are hand-translated (verify:i18n only scans rendered pages). Same-page language switch.
-- 📦 **Deploy = committed `public/`.** After a change: `npm run build`, then sync ONLY the changed `astro/dist/*` into `public/` (check `diff -rq astro/dist public`); **never bulk-copy dist→public, never touch `public/shop*`**. `dist/` and `package-lock.json` are gitignored (CI uses `npm install`).
+- 📦 **Deploy = committed `public/`.** After a change: `npm run build`, then use root `npm run deploy:diff` and sync ONLY the intended changed `astro/dist/*` into `public/`; **never bulk-copy dist→public, never touch `public/shop*`**. `dist/` is gitignored; root and `astro/` lockfiles are committed and CI uses `npm ci`.
 - 🧩 **Header DOM is a byte-contract** → run `npm run verify:header` after ANY header/nav change. Don't revert data-driven modules to hardcoding.
 - ✅ **Per change:** `npm run build` + `npm run verify:all`; commit per change with **specific paths** (not blind `git add -A`); before commit/push re-check no other agent is mid-push and `HEAD == origin/main`.
 
@@ -202,11 +278,14 @@ A maintainable foundation was added **additively** (new files; nothing existing 
 - **`astro/.env.example`** — `PUBLIC_SITE_*` + CRM/CMS/ANALYTICS/AGENT providers (mock). **No payment vars.** Real worker secrets (`RESEND_API_KEY`, `CONTACT_FROM_EMAIL`) stay in Cloudflare.
 
 **Run / build / verify**
-- `cd astro && npm install` (deps = `astro` only).
+- `cd astro && npm ci` (Node 24; Astro is pinned and the lockfile is committed).
 - `npm run build` — builds the site; a missing i18n key throws (the gate). Run after every change.
 - `npm run verify:header` — **header regression gate** (`scripts/verify-header-equivalence.mjs`). Run after build whenever you touch `Header.astro`, `components/navigation/*`, or `data/header-navigation.ts`: STRICT-asserts the built header (en/de/ja) is whitespace-normalized **equivalent to the deployed `public/`** and the structural/mobile-hook contract holds. Intentional nav change → `npm run verify:header -- --report` (content deltas become INFO; structural contract stays a hard gate), then sync `dist → public`. See `docs/TROUBLESHOOTING.md` "Verify a header / nav change".
 - `npm run verify:sitemap` / `verify:routes` / `verify:seo` / `verify:a11y-lite` / `verify:i18n` / `verify:assets` (and `verify:all` = header+sitemap+routes+seo+a11y-lite+i18n) — site-wide gates (all read `astro/dist`, run after build): **sitemap** invariants (every `<url>` has hreflang en/de/ja + x-default, canonical www origin, NO shop, NO redirect stubs, `<loc>` count = paths×locales); **routes** = the `config/routes` core pages exist in en/de/ja AND every Header/Footer internal link resolves to a built page (known footer placeholders are listed, not failed); **seo** = every built page's `<head>` has title/description/robots/canonical (correct locale prefix)/hreflang en/de/ja+x-default/og+twitter/≥1 valid JSON-LD (redirect stubs skipped); **i18n** = heuristic residual-English scan of de/ja pages (REPORT-only — exits 0; product-spec value translation is still deferred, so it flags those by design; `-- --strict` to gate once that's done).
-- **CI** (`.github/workflows/verify.yml`): on push/PR to `main`, runs `npm install` + `npm run build` + verify:header/sitemap/routes/seo/a11y-lite as **hard gates** (verify:i18n + verify:assets informational). It **never deploys** — Cloudflare still serves the committed `public/`.
+- **CI** (`.github/workflows/verify.yml`): on push/PR to `main`, uses Node 24 + committed lockfiles,
+  builds Astro, runs the frontend/handoff/deploy-sync gates, Worker smoke, Shop baseline, and Wrangler
+  dry-run; i18n/assets remain report steps. It **never deploys** — Cloudflare still serves committed
+  `public/` through external push-to-main configuration.
 - **No `lint` / `typecheck` scripts exist.** `npm run check` (astro check) needs `@astrojs/check`+`typescript` — NOT installed; don't add it casually. To typecheck the scaffold TS: write a temp tsconfig extending `astro/tsconfigs/strict` that includes `src/{config,types,lib,data}` and run the local `node_modules/.bin/tsc --noEmit -p <it>` (exit 0 = clean), then delete it.
 
 **Dev principles (apply on every wiring step)**
@@ -274,12 +353,12 @@ The most-iterated piece. **3 DISTINCT layouts** (field `layout` in `heroSlides.t
 - Residual English: `verify:i18n` reports **0 suspects** on rendered de/ja pages. Phase 6 (2026-06-07) corrected the earlier "= 0" claim by fixing product-DATA residuals that bypass the i18n dicts in `products.{de,ja}.js`: the rendered `calibration-tools` `panelText` (ja) + non-rendered `panelMetric`/`sectionIntro` (ja+de) — see docs/I18N.md "Residual-English status". **Still TODO: native language QA of those translations** + **DEFERRED: product SPEC translation** (~85 labels + values, de/ja still English in product cards) — user will supply a glossary or approve MT; final content pass.
 - **➡️ Current TODO list lives in the "🤝 CODEX HANDOFF" block at the top of this file.** Done since: sitemap.xml (build-time endpoint) ✅, per-page Twitter tags ✅ (SeoHead), the dead `[data-hero-carousel]` inline script in `Home.astro` ✅ removed in the 2026-06-07 homepage rebuild. Still open: CSS dedup (chrome duplicated across the per-page CSS); retire legacy root-level pages + dead `product-data.js`/`product-catalog.js`.
 
-## 10. Reconciliation with `AGENTS.md` (older; partly stale)
-`AGENTS.md` still has many **VALID** rules — navigation structure, brand/logo (`gyutron-logo-purple.png`), responsive breakpoints (1440/1024/768/430/390), store/shop conventions, product-catalog consistency, micro-interactions, Cloudflare routing. Keep following those. **SUPERSEDED items:**
-- **Lines 17–18 (run `npm run i18n:build` / `tools/generate_localized_site.py` after edits)** → OBSOLETE & DANGEROUS. That legacy generator clobbers the Astro site. de/ja are built by Astro from per-locale data now. Do NOT run it.
-- **Line 14 (hero = colored bars / old carousel structure)** → SUPERSEDED by §6 (3 Astro layouts, no colored bars).
-- **Line 16 (de is a homepage-only sample; most subpages still English)** → SUPERSEDED — all 21 pages are localized en/de/ja via Astro.
-- **`tools/update_navigation.py` / editing "root HTML pages"** → those root pages are legacy; edit `astro/src/**` (shared chrome = Header/Footer components) instead.
+## 10. Active rules vs. history
+
+`AGENTS.md` was rewritten on 2026-08-07 as the concise, current cross-agent rule set. It no longer
+contains the legacy-generator, colored-bar hero, homepage-only German, or root-HTML navigation rules.
+Follow `AGENTS.md` directly; use this file's dated material only as task-relevant decision history. If a
+historical entry conflicts with the fast snapshot or current user request, it is not active guidance.
 
 ---
 

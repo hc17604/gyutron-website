@@ -1,10 +1,10 @@
 # GYUTRON 官方商城 shop.gyutron.com — 工程交接（shop 独立站单一事实源）
 
-> 这是 **shop 独立站**的交接文档。shop 与主站 gyutron.com 在同一个仓库、同一个 Cloudflare Worker 部署，但**对主站任务 shop 是 out of scope**（主站文档反复强调"绝不碰 public/shop"）。反过来：**做 shop 时，本文件 + 仓根 `AGENTS.md` 里的「Store ...」规则是权威**。
+> 这是 **shop 独立站**的交接文档。shop 与主站 gyutron.com 在同一个仓库、同一个 Cloudflare Worker 部署，但**对主站任务 shop 是 out of scope**。反过来：**做 shop 时，本文件 + 仓根 `AGENTS.md` 是权威入口**。
 > 与用户交流用**中文**；GYUTRON 品牌名在可见文案中保持**大写**；i18n key / URL / 文件路径保持原样。
-> 🔄 双代理协作：Claude + Codex 都可能动 shop。**开工 `git pull` 对齐 origin/main，收工更新本文件并 push。**
+> 🔄 多代理协作：开工先按根 `docs/AGENT_TAKEOVER.md` 核对 Git 状态，再读本文件；收工更新本文件并 push。
 
-最近更新：2026-08-05（接手时先 `git fetch && git pull`，确认 `HEAD == origin/main`）
+最近更新：2026-08-07（接手时先 `git status -sb`、`git fetch origin`、`npm run agent:status`）
 
 ---
 
@@ -16,6 +16,13 @@
 - 资源：`shop.css`(样式) `shop.js`(购物车/交互) `shop-i18n.js`(`window.GYUTRON_SHOP_I18N`，三语文案 + 产品 i18n)。
 
 ## §2 当前状态
+
+### 2026-08-07 已知 clean-path 路由缺口（审计发现，尚未修复）
+
+- **实网现状**：`https://shop.gyutron.com/shop`、`/de/shop`、`/ja/shop`（无尾斜杠）返回 404；对应 `/shop/`、`/de/shop/`、`/ja/shop/` 返回 200。
+- **初步原因**：`src/worker.mjs` 的 Shop path 判断只覆盖 `path.startsWith('/shop/')`，裸 `/shop` 会落入后续重写并形成错误目标。该结论来自只读实网与代码检查。
+- **边界**：本次主站接手体系加固没有修改 Shop 或 Worker 路由。修复必须由用户明确把 **Shop + Worker routing** 放入范围，并同时验证三个语言前缀、根域 clean paths、静态资源放行、购物车/checkout 和既有 Custom Domain。
+- **回归要求**：修复后在 `shop/HANDOFF.md` 记录精确路由矩阵，运行 `npm run shop:verify`、Platform smoke、Wrangler dry-run，并实网确认无尾斜杠与带尾斜杠两组 URL 均正确。
 
 ### 2026-08-05 内容区装饰小图标全站清理
 

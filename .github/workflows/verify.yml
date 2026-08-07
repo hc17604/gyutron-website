@@ -25,19 +25,33 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            astro/package-lock.json
 
-      # Repo convention: package-lock.json is gitignored (deps = astro only), so there is no
-      # committed lockfile — use `npm install`, not `npm ci`, and skip lockfile-based caching.
-      - name: Install (no new deps; astro only)
-        run: npm install --no-audit --no-fund
+      - name: Install Astro dependencies (locked)
+        run: npm ci --no-audit --no-fund
+
+      - name: Install Worker dependencies (locked)
+        working-directory: ${{ github.workspace }}
+        run: npm ci --no-audit --no-fund
 
       - name: Build
         run: npm run build
 
       # Hard gates — deterministic, fail the run on regression.
+      - name: Verify agent handoff contract
+        run: npm run verify:handoff
       - name: Verify header equivalence
         run: npm run verify:header
+      - name: Verify two-purple button contract
+        run: npm run verify:button-purple
+      - name: Verify cross-platform CSS cache keys
+        run: npm run verify:css-version
+      - name: Verify Turnstile on all brand forms
+        run: npm run verify:turnstile
       - name: Verify shared scroll controls
         run: npm run verify:scroll-chrome
       - name: Verify sitemap
@@ -57,3 +71,20 @@ jobs:
         run: npm run verify:i18n
       - name: Verify assets (report)
         run: npm run verify:assets
+
+      # Repository-wide gates: Worker logic, Shop isolation, committed deploy output.
+      - name: Verify Worker platform logic
+        working-directory: ${{ github.workspace }}
+        run: node scripts/smoke-platform.mjs
+      - name: Verify Shop baseline
+        working-directory: ${{ github.workspace }}
+        run: npm run shop:verify
+      - name: Verify Worker bundle / bindings (dry run)
+        working-directory: ${{ github.workspace }}
+        run: npx wrangler deploy --dry-run --outdir .wrangler/dry-run
+      - name: Verify built brand output is committed
+        working-directory: ${{ github.workspace }}
+        run: npm run deploy:check
+      - name: Verify committed whitespace
+        working-directory: ${{ github.workspace }}
+        run: git show --check --oneline --no-renames HEAD

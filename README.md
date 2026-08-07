@@ -4,8 +4,12 @@ Brand website for GYUTRON (industrial automation, machine vision, traceability,
 PDAs, sensors, industrial control hardware). Built on **Astro** and served by a
 **Cloudflare Worker + Static Assets**.
 
-> **Single source of truth for engineers/agents:** [`HANDOFF.md`](./HANDOFF.md).
-> New here? Start at [`docs/MAINTENANCE.md`](./docs/MAINTENANCE.md) and
+Supported toolchain: **Node 24**, npm with committed root and `astro/` lockfiles, Astro **5.18.2**.
+
+> **Single source of truth for current state:** [`HANDOFF.md`](./HANDOFF.md).
+> New agent? Run `npm run agent:status`, then follow
+> [`docs/AGENT_TAKEOVER.md`](./docs/AGENT_TAKEOVER.md). Task routing and red lines live in
+> [`docs/MAINTENANCE.md`](./docs/MAINTENANCE.md) and
 > [`docs/SAFETY_CHECKLIST.md`](./docs/SAFETY_CHECKLIST.md).
 
 ## Layout
@@ -17,15 +21,24 @@ PDAs, sensors, industrial control hardware). Built on **Astro** and served by a
 | `src/`          | The **Cloudflare Worker**: router + backend (`platform/`, `api/`, `contact-handler.mjs`). |
 | `migrations/`   | Cloudflare **D1** SQL migrations.                                    |
 | `docs/`         | Frontend + backend documentation.                                   |
-| `wrangler.toml` | Worker + assets + (commented) D1/R2/KV bindings.                     |
+| `wrangler.toml` | Worker + assets + active D1/R2/KV production bindings (IDs are non-secret). |
 
 ## Frontend (Astro)
 
 ```bash
 cd astro
-npm install
+npm ci
 npm run build         # → astro/dist  (then sync changed files into ../public)
 npm run verify:all    # header / sitemap / routes / seo / a11y gates
+```
+
+Repository-level takeover checks (run from the root):
+
+```bash
+npm run agent:status  # branch, HEAD/origin relation, dirty files, recent handoff entries
+npm run agent:check   # handoff structure + committed-state freshness gate
+npm run deploy:diff   # read-only astro/dist ↔ public comparison; Shop excluded
+npm run deploy:check  # CI gate: built brand output must already be committed in public/
 ```
 
 Three locales: `en` (root), `de` (`/de/`), `ja` (`/ja/`). Deploy = commit the
@@ -51,6 +64,7 @@ Backend docs:
 - [`docs/cloudflare-deployment.md`](./docs/cloudflare-deployment.md) — create D1/R2, secrets, migrations, deploy, rollback.
 - [`docs/phase-roadmap.md`](./docs/phase-roadmap.md) — what's in/out of each phase.
 
-> The backend self-disables when its bindings/secrets are absent, so the static
-> site and contact email keep working. D1/R2/KV bindings ship **commented** in
-> `wrangler.toml` — activate them per `docs/cloudflare-deployment.md`.
+> D1, R2, and rate-limit KV are currently declared as active production bindings in
+> `wrangler.toml`; their identifiers are non-secret and intentionally committed. Runtime secrets stay
+> in Cloudflare Worker secrets. Do not recreate, replace, or comment a binding without explicit
+> approval and the checks in `docs/cloudflare-deployment.md`.

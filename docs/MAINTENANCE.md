@@ -1,8 +1,7 @@
 # Maintenance Handbook — gyutron.com
 
-Start here. This is the index for maintaining the **gyutron.com brand site** (the Astro project in
-`astro/`). It maps every common task to the doc + file that covers it. Read **SAFETY_CHECKLIST.md**
-first — it lists what breaks the site.
+This is the task-to-file index for the **gyutron.com brand site** (the Astro project in `astro/`). A new
+agent starts with **AGENT_TAKEOVER.md**, then reads **SAFETY_CHECKLIST.md** before editing.
 
 ## 30-second orientation
 
@@ -11,6 +10,8 @@ first — it lists what breaks the site.
 - Deploy = Cloudflare serves the **committed `public/`**. Build with `cd astro && npm run build`; sync
   only changed pages from `astro/dist/` → `public/` (see DEPLOYMENT.md). `dist/` is gitignored.
 - Gates: `npm run verify:all` (+ `verify:header` after header changes). CI runs them on every push.
+- Agent continuity: from the root run `npm run agent:status`; before commit run `npm run agent:check`
+  and update the newest state in `HANDOFF.md`.
 - Out of scope: **shop.gyutron.com** (never touch). No cart/payment/orders/inventory.
 
 ## How do I… (task → where)
@@ -35,7 +36,8 @@ first — it lists what breaks the site.
 | Update the sitemap | automatic (build-time `sitemap.xml.ts` from `data/pages.ts` + catalog) | ROUTES, SEO |
 | Check SEO | `verify:seo` + the new-page SEO checklist | SEO |
 | Run verification | `npm run verify:all` (+ `verify:header`/`verify:assets`/`verify:a11y-lite`) | TROUBLESHOOTING |
-| Decide if `public/` needs syncing | `diff -rq astro/dist public` (excl shop) — only changed pages | DEPLOYMENT, SAFETY_CHECKLIST |
+| Hand work to another agent | `npm run agent:status` / `agent:check` + update `HANDOFF.md` | AGENT_TAKEOVER |
+| Decide if `public/` needs syncing | root `npm run deploy:diff` (read-only; Shop excluded) | DEPLOYMENT, SAFETY_CHECKLIST |
 | Sync `public/` | copy only the changed `astro/dist/<page>` → `public/<page>` | DEPLOYMENT |
 | Roll back the Header | revert the nav commit(s), rebuild, re-sync | TROUBLESHOOTING |
 | Roll back `public/` | `git checkout <prev> -- public/<page>` (or revert the commit) | DEPLOYMENT, §Rollback below |

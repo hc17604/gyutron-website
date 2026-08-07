@@ -1,10 +1,17 @@
-# CLAUDE.md — GYUTRON 官网 gyutron.com
+# Claude / Codex entry — GYUTRON 官网
 
-> Claude Code 与 Codex 共同开发本仓。**单一事实源是 `HANDOFF.md`，先读它**（顶部「🤝 CODEX HANDOFF」块是最新状态，SUPERSEDES `AGENTS.md` 冲突旧规则）。
-> Codex 入口/红线见 `AGENTS.md`；接力提示词见 `docs/CODEX_PROMPT.md`；新任务从 `docs/MAINTENANCE.md`(任务→文件索引) + `docs/SAFETY_CHECKLIST.md` 开始。
-> shop 独立站对主站任务 **out of scope**，它的交接见 `shop/HANDOFF.md`。
+Claude、Codex 及其他开发 agent 共用同一套仓库内交接协议，不依赖任何一方的私有记忆。
 
-开工：`git pull` 对齐 origin/main → 读 `HANDOFF.md`。
-收工：`cd astro && npm run build && npm run verify:all` → 更新 `HANDOFF.md` 顶部状态块 → commit + push。
+开工按这个顺序执行：
 
-硬线：主站走 Astro（astro/），严禁旧 i18n 生成器（会 clobber Astro）；纯紫品牌、硬边工业风；de/ja 必须 UTF-8 + `python tools/i18n-audit.py`；绝不碰 public/shop*；绝不编造事实。详见 HANDOFF.md / AGENTS.md。
+```powershell
+git status -sb
+git fetch origin
+npm run agent:status
+```
+
+然后依次阅读：`HANDOFF.md` → `AGENTS.md` → `docs/AGENT_TAKEOVER.md` →
+`docs/SAFETY_CHECKLIST.md`。主站任务不碰 Shop；Shop 任务另读 `shop/HANDOFF.md`。
+
+收工必须：完成构建与验证、更新 `HANDOFF.md` 顶部状态、运行 `npm run agent:check`、只提交
+明确路径、推送并核对 CI/线上状态。完整规则以 `AGENTS.md` 为准。

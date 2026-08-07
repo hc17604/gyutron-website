@@ -1,64 +1,105 @@
-> ## ⚠️ READ `HANDOFF.md` FIRST — it is the current source of truth and SUPERSEDES rules below where they conflict.
-> The main site was migrated to **Astro** (everything in the `astro/` subdir). Most importantly:
-> - **DO NOT run `npm run i18n:build` / `npm run i18n:sync` / `tools/generate_localized_site.py`** (see lines further down) — the legacy generator regenerates legacy pages into `public/` and **CLOBBERS the Astro site**. de/ja are built by Astro now.
-> - The **homepage hero** is now **3 distinct Astro layouts with NO colored bars** (the "colored bars / old carousel" rule below is stale). Hero files: `astro/src/components/HeroSlider.astro`, `astro/src/data/heroSlides.ts`, `astro/public/hero-slider.css`.
-> - **All 21 pages are localized en/de/ja via Astro** (the "de is a homepage-only sample" rule below is stale).
-> - **Deploy** = `cd astro && npx astro build` → copy changed `astro/dist/*` into `public/` → commit `astro/`+`public/` → push (Cloudflare auto-serves `public/`).
-> - **shop.gyutron.com is out of scope** — never touch `public/shop`, `public/de/shop`, `public/ja/shop`.
-> - **Write de/ja TEXT as UTF-8.** Never write Japanese/German via a Python process without `PYTHONUTF8=1` (`PYTHONIOENCODING=utf-8`) — it silently turns the characters into `?` (mojibake). Edit `astro/src/i18n/{de,ja}.json` and `astro/src/data/products.{de,ja}.js` directly as UTF-8; after ANY de/ja data change, run `grep -nP '\?{4,}' astro/src/data/products.ja.js` (and de) — it MUST be empty.
-> - **After ANY `products.*.js` change, run `python tools/i18n-audit.py`** (exit 0 = de+ja fully localized; it catches untranslated / partial-English / mojibake fields and renamed model names). **Translate `type`/`summary` + the category fields (eyebrow/title/navLabel/panelMetric/panelText/sectionIntro) to de+ja; NEVER translate a product model NAME** — keep it brand-invariant (e.g. `GY-CR720 Conveyor` in ALL locales, and the `getProductsByName([...])` refs must match exactly).
-> - **🔄 DUAL-AGENT MD SYNC + long-term architecture:** Claude + Codex both develop this repo. **READ `HANDOFF.md` before every task; UPDATE it after** (HANDOFF.md §4). On every change, follow the **long-term architecture principles in `HANDOFF.md` §11** (componentize, data-drive, static/SEO/perf/i18n-ready, industrial visual, don't over-engineer; 9-point pre-change checklist).
-> - **🟣 PURPLE-ONLY (hard, 2026-06-07):** the brand uses ONLY purple; the accent / second color is light purple `--purple-500 #8a63d2` (paler tint `--violet-soft #efe8ff`). **NEVER green/teal/cyan** — the old teal `--signal #00c2a8` / hero-accent `#00d2be` / homepage `#18b6c9` were all removed. Functional red (errors) + amber (`--warning`) may stay. See `HANDOFF.md` §2.
-> - **🚫 HONESTY — never fabricate** stats, client counts, founding dates, specs, or partner logos; only true, verifiable GYUTRON facts. (A prior AI draft invented "since 2010 / 200+ clients / 18-month lead time / managed fleet" — all rejected; don't reintroduce.)
-> - **🧱 Hard-edged industrial** (`border-radius: 0`; heavy + tight headings). All motion is `transform`/`opacity` only + respects `prefers-reduced-motion`; the homepage **CTA / contact band must NOT animate**.
-> - **✅ Verify gates:** after every change run `cd astro && npm run build && npm run verify:all` (build-gated `verify:header`/`sitemap`/`routes`/`seo`/`a11y-lite`; `verify:i18n`+`verify:assets` report-only). GitHub Actions runs them on push (**never deploys**). Sync ONLY the changed `astro/dist/*` → `public/` (never bulk-copy, never `public/shop*`). Start at **`docs/MAINTENANCE.md`** (task→file index) + **`docs/SAFETY_CHECKLIST.md`**.
-> - **Shipped this session (LIVE — don't redo / don't revert):** the homepage was rebuilt below the hero (industries trust strip / stats / **6 distinct product-family solution cards** / OEM-ODM band / process / About / Partners / **Newsroom** / CTA, hard-edged + scroll-reveal motion); a **`/news` index + `/news/<slug>` article system** (`src/data/news.ts`); **image-card site search**; engineering layers (cms/crm/agent mocks, `data/assets.ts`, `data/pages.ts` page registry → sitemap). **Full state + current TODO: the "🤝 CODEX HANDOFF" block at the top of `HANDOFF.md`.**
->
-> **MORE STALE rules below — ignore where they conflict:** the homepage-hero **"colored bars"** rule (~"three-slide … colored bars" bullet — the hero has NO colored bars now); the **`locales/` + `npm run i18n:build` / `i18n:sync` / `tools/generate_localized_site.py`** generator rules (NEVER run it — it CLOBBERS the Astro site; de/ja are built by Astro); the **"German is a homepage-only sample"** bullet (all pages are localized en/de/ja); and the **homepage Solutions-card taxonomy** ("Electronics & Semiconductor … OEM / ODM Solution Programs") — the 6 homepage cards were re-scoped to distinct product families on 2026-06-07; the header Solutions mega-menu in `src/data/header-navigation.ts` is the nav taxonomy source. The rules below about responsive behavior, the brand/logo asset (`gyutron-logo-purple.png`), product-catalog image consistency, micro-interactions, and Cloudflare/shop routing are STILL VALID.
+# GYUTRON repository rules for every agent
 
-# GYUTRON Website Rules
+These rules apply to the whole repository. They are intentionally short and current. Do not rely on
+chat history or private agent memory as project state.
 
-- Every website change must consider desktop, iPad/tablet, and iPhone/mobile display behavior before completion.
-- All new subpages must keep the same top strip, header logo, primary navigation, dropdown structure, and Contact Sales CTA as the homepage unless the user explicitly requests a global navigation redesign.
-- Avoid desktop-only assumptions for navigation, dropdowns, fixed-width elements, multi-column grids, and large hero sections.
-- Check that header, logo, CTA buttons, hero text, product cards, ESG/resources cards, footer, and dropdown menus remain orderly at common widths: 1440px, 1024px, 768px, 430px, and 390px.
-- Prefer responsive grid/flex rules, constrained image dimensions, and earlier tablet breakpoints over simply shrinking text.
-- Keep GYUTRON brand text uppercase in visible copy, while preserving lowercase URLs, emails, and file paths.
-- Store and brand-site headers must reuse the existing main-site logo asset `gyutron-logo-purple.png` for light backgrounds. Do not substitute generated logos, rebuilt SVG wordmarks, or mismatched logo files unless the user explicitly approves a new brand asset.
-- Store top-strip and header rows should follow the main-site edge alignment: header containers use `width: calc(100% - clamp(48px, 5vw, 96px))`; the top strip aligns left text and right links to opposite edges; the navigation row aligns brand left, nav center, and cart/checkout actions right.
-- Main-site and store headers include an unframed globe icon as a reserved language / international-site switcher. Keep it as a standalone icon without a surrounding button box unless the user requests a functional language selector.
-- Main-site top strip right links should include `Official Store` before `Support Center`; the desktop globe icon should sit to the left of `Contact Sales` with a small but visible gap.
-- Do not place a separate `Shop` CTA button in the main-site white header action area. The main-site official-store entry should live in the black top strip and footer unless the user explicitly asks to restore a header CTA.
-- Main-site homepage hero is a three-slide product-launch carousel modeled after the structure and pacing of Thinklucid's homepage hero, but with original GYUTRON assets and copy. Keep the visual as a dark product stage with colored bars, short product-style titles, product/application imagery as the hero object, Learn More CTAs, restrained feature chips, autoplay/manual tabs, and `prefers-reduced-motion` support. Keep mobile compact, tabs usable, and the next section visible early. Do not restore the previous cluttered metric card/ticker version unless explicitly requested; the old static hero is archived in `hero-static-archive-65c1fe9.md`.
-- Future language/country-site work must use the `locales/` localization scaffold, not browser auto-translation or ad hoc text replacement. English source copy lives in `locales/en/`; planned market folders are `locales/zh-cn/`, `locales/de/`, `locales/es/`, `locales/ja/`, and `locales/ko/`. Keep user-visible copy, SEO metadata, alt/aria labels, placeholders, dynamic JS messages, navigation, product data, store policy text, and form messages translatable from structured locale files. Run `npm.cmd run i18n:check` for routine scaffold checks and `npm.cmd run i18n:check:strict` before launching real localized pages. `GYUTRON` is the brand name and must not be translated; keep it uppercase in visible copy. Do not bake meaningful marketing text into images; use HTML/CSS text overlays or locale-specific image variants. See `locales/README.md` and `i18n-readiness-audit.md`.
-- Main-site German sample lives at `de/index.html` and deploys to `public/de/index.html` as `/de/`. It is a homepage-level localization sample with German SEO, German hero/homepage copy, German top navigation labels, and the globe language menu. It is not a completed full-site German launch yet; most subpages still point to the existing English pages.
-- Main-site localized pages are generated with `npm.cmd run i18n:build`. Run this after changing English main-site HTML, shared navigation, product pages, product data, `mobile-navigation.*`, `product-page.css`, or `solution-page.css` so `de/`, `ja/`, `public/de/`, and `public/ja/` stay synchronized. The generator also keeps globe language-menu links page-matched across English, German, and Japanese pages.
-- German and Japanese main-site directories now include generated copies of the homepage, contact page, automated vision page, and product/category pages, plus localized `product-data.js` and `product-catalog.js`. The generator includes a production-polish replacement layer for German/Japanese navigation, product-page chrome, product cards, CTAs, SEO metadata, contact page text, and the automated-vision solution page. Keep future edits in `tools/generate_localized_site.py` and rerun `npm.cmd run i18n:build`; do not hand-edit only `de/`, `ja/`, `public/de/`, or `public/ja/`.
-- Store desktop search should default to a standalone icon immediately after `Brand Site`; on hover/focus it expands to fill the available space up to the globe/actions area. Tablet and phone layouts should keep the search input visible and usable without relying on hover.
-- Store search motion should feel steady and industrial, not twitchy. Keep the search submit square hidden across desktop/tablet/mobile; users can press Enter or click suggestion items. Product search suggestions should appear while typing and include product image, name, SKU, and category/tag path.
-- Store phone header uses a dedicated mobile search layout: first row is larger logo plus globe/account/cart icons, second row is the full mobile search field with the menu button immediately to its right. Do not place the hamburger menu between the logo and globe on phone.
-- Store mobile search should not show a purple submit square inside the input; users can press Enter/search on the keyboard. Keep the mobile search input at 16px or larger to avoid browser auto-zoom on focus. Search suggestions should show matching products with image, product name, SKU, and category/tag context.
-- Store phone layouts must include a visible mobile menu/directory entry. Cart count badges on mobile must stay inside the cart icon hit area rather than overflowing the button frame.
-- Avoid fake-looking AI people photos. The user approved the current generated people imagery used in `nav-*.png` navigation assets because it does not read as obviously AI-generated; these approved nav assets may be reused.
-- Product catalog work must look rigorous and professional. Within the same product line, product images must use consistent canvas ratio, background, camera angle, subject scale, direction, alignment, and baseline before shipping.
-- Do not mix product photos with mismatched crops, inconsistent directions, random generated angles, or misleading repeated assets. Product model names, specs, and image assignments must read like a real industrial catalog.
-- Solutions navigation should frame GYUTRON as a system-level industrial solution provider. Keep the current Solutions taxonomy unless the user requests a global redesign: Automated Vision Inspection; Electronics & Semiconductor Manufacturing; Integrated Industrial Embedded Systems; Manufacturing Intelligence & Traceability; Warehouse & Field Operations; OEM / ODM Solution Programs.
-- Navigation menu images must be unique within the full desktop nav. Run a duplicate check against `url('...')` references in the nav before finishing any header/menu update.
-- Keep regenerated `nav-*.png` URLs versioned in shared nav markup after image updates so browser/Cloudflare cache does not keep serving older blurry files.
-- Use `tools/update_navigation.py` to propagate shared header navigation changes across root HTML pages and matching `public/` pages.
-- Do not create or maintain Claude-specific handoff prompts or adaptations for future tasks unless the user explicitly asks for Claude handoff again.
-- Ecommerce direction: keep `www.gyutron.com` as the brand website and use `shop.gyutron.com` for the official store / checkout / procurement entry. Do not prioritize a separate store domain or a `gyutron.com/shop` directory unless the user changes direction.
-- Official store scope must stay industrial and B2B: cameras, lenses, lighting, sensors, barcode scanners, PDA terminals, cables, acquisition cards, robot accessories, test equipment, and industrial consumables. Do not add unrelated consumer goods.
-- Store product CTAs should include `Buy Now`, `Request a Quote`, and `Contact Engineer`; industrial buyers often need parameter, lead time, certification, stock, and customization confirmation.
-- Current store files live in `shop/` and must be mirrored to `public/shop/` before deployment. `src/worker.mjs` maps `shop.gyutron.com` root and clean paths to `/shop/` assets.
-- Store homepage hero should feel like a commerce/procurement entry, not a main-brand landing hero: keep it compact enough that featured product content appears in the first viewport on desktop, tablet, and common phone widths.
-- Store homepage `Featured industrial products` is the storefront display window. Keep it at 16 compact product cards with 8 columns x 2 rows on desktop, responsive smaller grids on tablet/mobile, and no visible prices in that featured window unless the user asks to show pricing again.
-- Store product catalog mobile/tablet layout should stay dense: compact intro copy, horizontally scrollable category chips, two-column product cards, reduced product media height, small text/tags, and short `Quote` CTA text.
-- Store mobile product detail pages must keep the main product image compact enough for product name/specs to appear early in the first viewport. Mobile/tablet category chips should behave like a solid sticky toolbar below the header, with a white background and clear shadow so product cards do not visually overlap or bleed through while scrolling. When the mobile menu is open, hide/disable the sticky chips so they never remain pinned over the menu.
-- Store mobile subpages should keep intro/description copy small and space-efficient. Avoid large explanatory paragraphs, oversized standalone `h1` text, and tall intro blocks that consume the first viewport; clamp or reduce supporting copy on phone widths.
-- Main-site and official-store interfaces should not feel static. Preserve restrained industrial micro-interactions across desktop/tablet/mobile: buttons need hover/active feedback, product and solution cards should lift subtly with image motion, menus/search/filter chips should animate smoothly, and all motion must respect `prefers-reduced-motion`.
-- Cloudflare should keep `shop.gyutron.com` as a Custom Domain on the `gyutron-website` Worker. `wrangler.toml` must keep `run_worker_first = true`, otherwise `/` is served from the brand-site `index.html` before Worker host routing can map it to `/shop/index.html`.
-- Route patterns for `shop.gyutron.com`, `shop.gyutron.com/`, and `shop.gyutron.com/*` may remain as extra coverage, but the Custom Domain is the important clean-root binding.
-- `src/worker.mjs` must let non-HTML root assets such as `/gyutron-logo-purple.png`, `/favicon.ico`, and `/product-images/*.png` pass through unchanged on `shop.gyutron.com`; only page paths should map to `/shop/`.
-- Brand HTML currently has a fallback redirect guard that sends `shop.gyutron.com` non-`/shop/` paths to `/shop/index.html`; Worker-first routing is verified live, so this guard is fallback-only and can be removed later if desired.
-- The current checkout page is an order-intent/static prototype only; do not describe it as real payment capture until a commerce/payment provider is integrated.
+## Mandatory takeover sequence
+
+1. Run `git status -sb`, then `git fetch origin`.
+2. Confirm `git rev-parse HEAD` equals `git rev-parse origin/main`. If the tree is dirty or the hashes
+   differ, preserve the existing work and resolve that state before editing; never overwrite another
+   agent's changes.
+3. Run `npm run agent:status` from the repository root.
+4. Read, in order:
+   - `HANDOFF.md` — current project state and recent decisions.
+   - `docs/AGENT_TAKEOVER.md` — start/work/finish protocol.
+   - `docs/SAFETY_CHECKLIST.md` — operations that can break production.
+   - `docs/MAINTENANCE.md` — task-to-file routing.
+5. For a Shop task, also read `shop/HANDOFF.md`. For a main-site task, Shop is out of scope.
+
+When guidance conflicts, use this priority: the user's current request → the current snapshot at the
+top of `HANDOFF.md` → this file → focused docs → Git history. Historical notes are context, not active
+instructions.
+
+## Repository map
+
+- `astro/`: authoritative source for the multilingual brand site.
+- `astro/dist/`: generated build output; ignored by Git.
+- `public/`: committed production assets served by Cloudflare.
+- `src/`: Cloudflare Worker and backend routes.
+- `shop/`, `templates/shop/`, `templates/_partials/shop-*`, locale/shop mirrors, Shop-only API/migration files, and
+  `public/{shop,de/shop,ja/shop}`: separately governed official store.
+- `HANDOFF.md`: cross-agent state ledger. Update it in the same commit as substantive work.
+
+## Non-negotiable rules
+
+- Main site locales are English, German, and Japanese. Update all affected locales and keep files UTF-8.
+- Never run the legacy root `i18n:build`, `i18n:sync`, or
+  `tools/generate_localized_site.py` for a main-site task; they can overwrite the Astro site.
+- Never bulk-copy `astro/dist/` into `public/`. Sync only intended changed build artifacts, including
+  the matching `de/` and `ja/` outputs. Never include Shop paths in a main-site sync.
+- Do not touch Shop unless the user explicitly places it in scope. This includes `shop/`,
+  `templates/shop/`, `templates/_partials/shop-*`, `de/shop/`, `ja/shop/`, Shop keys in `locales/i18n/`, all three deployed Shop
+  trees, `public/shop-analytics.js`, Shop-only API/migration files, and Worker host routing.
+- Do not invent claims, specifications, dates, customer counts, certifications, partner logos, payment
+  capability, stock, or delivery promises.
+- Buttons and interactive controls use only the two semantic tokens in
+  `astro/public/brand-tokens.css`: `--button-purple-deep` and `--button-purple-light`. Do not introduce
+  another button-purple literal.
+- Preserve the hard-edged industrial system (`border-radius: 0`), responsive behavior, indexed URLs,
+  accessibility, and `prefers-reduced-motion` support.
+- Treat the Header DOM as high risk: mobile navigation depends on its structure. Run the header gate
+  after any navigation change.
+- Never guess Cloudflare binding IDs, account values, credentials, or secrets. Keep secrets out of Git.
+- Preserve user and other-agent changes. Do not use destructive Git commands or blind `git add -A`.
+
+## Required verification
+
+For every change, from `astro/` run:
+
+```bash
+npm run build
+npm run verify:all
+```
+
+Then return to the repository root and run:
+
+```bash
+npm run agent:check
+npm run deploy:check
+git diff --check
+```
+
+Run task-specific browser/responsive checks when rendered UI changes. `verify:i18n` and
+`verify:assets` are report-oriented; review their output instead of treating a zero exit code as proof
+that every warning is resolved.
+
+## Deploy contract
+
+The production site is the committed root `public/` directory. For rendered main-site changes:
+
+1. Build first, then verify.
+2. From the root run `npm run deploy:diff`, then copy only the intended changed files.
+3. Confirm Shop has no diff.
+4. Update the top of `HANDOFF.md` with scope, verification, deploy state, limitations, rollback, and the
+   next safe action.
+5. Stage explicit paths, commit, fetch/recheck `origin/main`, push `main`, watch CI, and verify the live
+   URL or asset hash when applicable.
+
+Docs/tooling-only changes are deploy-neutral when they do not alter `astro/dist/`; do not manufacture a
+`public/` diff for them. GitHub Actions verifies the repository but does not perform the Cloudflare
+deployment.
+
+## Finish / handoff definition
+
+A task is not handed off until the repository itself contains enough information for an agent with no
+chat context to continue. The final `HANDOFF.md` entry must state:
+
+- what changed and what deliberately did not;
+- authoritative files and affected locales/routes;
+- commands and visual/live checks completed;
+- commit/deployment status and any known blocker;
+- rollback method and next safe action.
+
+Use `docs/AGENT_TAKEOVER.md` for the exact template. Run `npm run agent:check` before committing; CI
+runs the same handoff-contract gate on every push and pull request.

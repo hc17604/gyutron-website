@@ -4,42 +4,39 @@
 > Worker-assets deploy basics see the repo-root [`../CLOUDFLARE_DEPLOYMENT.md`](../CLOUDFLARE_DEPLOYMENT.md)
 > and [`../CONTACT_FORM_SETUP.md`](../CONTACT_FORM_SETUP.md).
 
-## TL;DR — what ships vs. what you activate
+## TL;DR — current production state
 
-The backend code is committed with **all D1/R2/KV bindings commented out** in
-[`../wrangler.toml`](../wrangler.toml). In that state the Worker still serves the full
-static site + the existing contact email, and the new endpoints simply report "not
-configured" (503 / 401). **Nothing breaks on deploy.** You then *activate* features by
-creating resources and uncommenting their binding. One-time setup, ~10 minutes.
+[`../wrangler.toml`](../wrangler.toml) currently declares active production bindings for D1 `DB`, R2
+`R2`, and KV `RATE_LIMIT`, using real resource identifiers. Those identifiers are non-secret and are
+intentionally tracked by Git. Runtime secrets are stored only as Cloudflare Worker secrets.
+
+Do **not** run resource-creation commands, replace IDs, or comment out a binding as routine setup. First
+verify the remote account/resource, create a backup where applicable, obtain explicit approval, and
+prepare a config rollback. The Worker degrades gracefully when a capability is absent, but removing a
+healthy binding would still disable production functionality.
 
 > **Prerequisite:** `wrangler login` (the toolchain is already in `node_modules`; run
 > commands from the repo root). Local development and `--local` migrations work
 > without login; creating remote resources and deploying require it.
 
-> **One-shot activation (Windows):** steps 1–2 + secrets + deploy + verification are
-> automated in [`../scripts/activate-backend.ps1`](../scripts/activate-backend.ps1):
-> `powershell -ExecutionPolicy Bypass -File scripts\activate-backend.ps1`
-> After it succeeds, **commit + push the patched `wrangler.toml`** (the `database_id`
-> is not a secret) — otherwise the next push redeploys with the binding commented out
-> and the backend goes dormant again.
+> **Existing production warning:** `scripts/activate-backend.ps1` is a historical first-time/bootstrap
+> tool, not a takeover command. Do not run it against the current production project unless the user
+> explicitly requests disaster recovery or a new environment and the script has been re-audited.
 
-## 1. Create the D1 database
+## 1. D1 database (active)
 
-```bash
-npx wrangler d1 create gyutron_db
-```
-
-Copy the printed `database_id` into `wrangler.toml` and **uncomment** the block:
+The tracked production binding is:
 
 ```toml
 [[d1_databases]]
 binding = "DB"
 database_name = "gyutron_db"
-database_id = "<paste-the-id>"
+database_id = "d79a8073-0d51-4a80-ab62-e18d8b305801"
 migrations_dir = "migrations"
 ```
 
-Apply the schema (local first, then production):
+Do not recreate it. For a new tracked migration, inspect the current migration state, back up first,
+then apply local and production migrations:
 
 ```bash
 npx wrangler d1 migrations apply gyutron_db --local
@@ -47,7 +44,7 @@ npx wrangler d1 migrations apply gyutron_db --remote
 ```
 
 Migrations live in [`../migrations/`](../migrations/) and are tracked in git. To add a
-table/column later, create `migrations/0002_*.sql` and re-run `apply` — **never edit
+table/column later, create the next numbered migration and re-run `apply` — **never edit
 tables ad-hoc.** D1 has no auto down-migration: to reverse, write a forward migration
 that undoes it (and keep a backup, below).
 
@@ -67,13 +64,11 @@ npx wrangler secret put CONTACT_FROM_EMAIL
 Generate strong values, e.g. `node -e "console.log(crypto.randomUUID()+crypto.randomUUID())"`.
 **Never commit secrets** — they go through `wrangler secret`, not `wrangler.toml`.
 
-## 3. (Optional) R2 — resource center (Phase 2)
+## 3. R2 resource-center binding (active declaration)
 
-```bash
-npx wrangler r2 bucket create gyutron-assets
-```
-
-Uncomment the `[[r2_buckets]]` block (binding `R2`). Suggested key layout:
+`wrangler.toml` currently binds `R2` to `gyutron-assets`. Do not create a second bucket or change the
+binding as routine maintenance. Verify the authenticated account and existing bucket before upload or
+policy changes. Suggested key layout:
 
 ```
 datasheets/   manuals/   brochures/   certificates/   application-notes/
@@ -83,29 +78,30 @@ Access tiers map to `download_requests.access_type`: `public` (direct), `gated`
 (capture a request, then a short-lived link), `manual_review` (request only — no file).
 File serving is Phase 2; Phase 1 only records the request.
 
-## 4. (Optional) KV — form rate limiting
+## 4. KV form rate limiting (active)
 
-```bash
-npx wrangler kv namespace create RATE_LIMIT
-```
+`RATE_LIMIT` is already bound to the tracked namespace ID in `wrangler.toml`. Do not recreate or replace
+it during takeover. If the binding becomes unavailable, the limiter degrades to a no-op; treat that as
+an operational incident rather than normal configuration.
 
-Uncomment `[[kv_namespaces]]` and paste the id. Without it the limiter is a no-op.
+## 5. Turnstile on forms
 
-## 5. Enable Turnstile on forms (optional)
+All four forms (contact / request-quote / support-contact / download-request) carry the widget. The
+public production site key is tracked as a fallback in `astro/src/config/turnstile.ts`, so fresh agent
+and CI builds cannot silently remove it; `npm run verify:turnstile` checks all 12 en/de/ja form pages.
+The secret key is a separate runtime Worker secret and is never committed.
 
-All four forms (contact / request-quote / support-contact / download-request) already
-carry the widget code, gated on a **BUILD-TIME** site key. Two keys, two different
-mechanics — do them in THIS order:
+For an approved environment/key migration, two keys have different mechanics — change them in this
+order:
 
 1. Create a Turnstile widget in the Cloudflare dashboard → you get a **site key**
    (public) and a **secret key**.
-2. **Site key = build-time.** Put it in `astro/.env` as
-   `PUBLIC_TURNSTILE_SITE_KEY=<site-key>`, then **rebuild + redeploy the site**
+2. **Site key = build-time.** Override it in `astro/.env` as
+   `PUBLIC_TURNSTILE_SITE_KEY=<new-site-key>`, update the tracked fallback in
+   `astro/src/config/turnstile.ts`, then **rebuild + redeploy the site**
    (`cd astro && npm run build`, sync changed `dist/*` → `public/`, commit + push).
    The key is baked into the page HTML at build time — setting it anywhere in
-   Cloudflare does NOTHING; without a rebuild the widget will never appear.
-   While the env var is empty (the default), forms render with NO widget and
-   submissions are not blocked.
+   Cloudflare does NOTHING; without a rebuild the new widget will never appear.
 3. **Secret key = runtime worker secret.** ONLY after step 2 is live:
    `npx wrangler secret put TURNSTILE_SECRET_KEY`. The worker then enforces
    verification on all four forms. If you set the secret while the widgets are not
@@ -114,6 +110,11 @@ mechanics — do them in THIS order:
 4. Verify: submit a form in the browser (should pass) and
    `curl -X POST .../api/rfq -d '{"name":"x","email":"a@b.com","applicationDescription":"twelve chars+"}'`
    without a token (should now be rejected with "Anti-spam verification failed").
+
+> **Current credential caveat (2026-08-07):** the local Wrangler OAuth token returns API error 10000
+> for deployment/secret inspection. Refresh with `npx wrangler login` before claiming the secret or
+> deployment state is verified. The public health endpoint is live, but a human browser submission is
+> still the required end-to-end form acceptance test.
 
 ## 6. Deploy
 

@@ -16,16 +16,17 @@ binding = "ASSETS"
 run_worker_first = true
 
 # ===========================================================================
-# Phase 1 backend (Data Layer + Data API). All bindings below are COMMENTED on
-# purpose: a placeholder database_id would FAIL the production deploy and take
-# the whole site down. The Worker degrades gracefully without them (the static
-# site + contact email keep working). After you create each resource (see
-# docs/cloudflare-deployment.md), uncomment the matching block and fill the id.
+# Phase 1 backend (Data Layer + Data API). D1, R2, and RATE_LIMIT KV are ACTIVE
+# production bindings with real resource identifiers. These identifiers are
+# non-secret and intentionally committed. Do not recreate, replace, comment, or
+# rename a binding without explicit approval and remote-resource verification.
+# Secrets remain in Cloudflare Worker secrets and must never be written here.
+# The Worker still degrades gracefully if an optional runtime capability is absent.
+# See docs/cloudflare-deployment.md before any backend-resource operation.
 # ===========================================================================
 
 # --- D1 (leads / rfqs / support_requests / download_requests / events / api_keys)
-#   wrangler d1 create gyutron_db        # prints database_id 鈫?paste below
-#   wrangler d1 migrations apply gyutron_db --remote
+# Apply new tracked migrations with: wrangler d1 migrations apply gyutron_db --remote
 [[d1_databases]]
 binding = "DB"
 database_name = "gyutron_db"
@@ -37,8 +38,7 @@ migrations_dir = "migrations"
 binding = "R2"
 bucket_name = "gyutron-assets"
 
-# --- KV (optional: form rate-limiting; without it the limiter is a no-op)
-#   wrangler kv namespace create RATE_LIMIT     # prints id 鈫?paste below
+# --- KV (active form rate-limiting binding)
 [[kv_namespaces]]
 binding = "RATE_LIMIT"
 id = "c3fba30b49b5451ca25f0f3983560c47"
@@ -48,7 +48,7 @@ id = "c3fba30b49b5451ca25f0f3983560c47"
 # DATA_SOURCE_ID = "gyutron-website"
 # DATA_SOURCE_NAME = "GYUTRON"
 
-# --- SECRETS (NEVER put real values here 鈥?set with `wrangler secret put NAME`):
+# --- SECRETS (NEVER put real values here - set with `wrangler secret put NAME`):
 #   DATA_API_KEY        bearer key for the read-only Data API (Agent Workspace)
 #   ADMIN_PASSWORD      enables + protects /admin
 #   ADMIN_SECRET        (optional) HMAC key for the admin session cookie

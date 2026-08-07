@@ -7,7 +7,8 @@ import { join } from 'node:path';
  * changes. The `public/` CSS is linked by a stable path with NO hash, so without this a browser that
  * cached an older stylesheet keeps using it after a deploy — and stale CSS + newly-deployed markup
  * renders broken (this is exactly what happened to the Industries flyout). The hash is derived from the
- * file's bytes, so it updates automatically on every edit — nothing to bump by hand.
+ * normalized text content, so it updates automatically on every edit — nothing to bump by hand — and
+ * stays identical across Windows/Linux checkouts with different working-tree line endings.
  *
  * External URLs (font CDNs) and any non-`.css` / missing file pass through unchanged. Computed once per
  * href (memoised) at build time.
@@ -20,8 +21,11 @@ export function withVersion(href: string): string {
   if (memo) return memo;
   let out = href;
   try {
-    const bytes = readFileSync(join(process.cwd(), 'public', href.replace(/^\//, '')));
-    out = `${href}?v=${createHash('sha1').update(bytes).digest('hex').slice(0, 8)}`;
+    const content = readFileSync(
+      join(process.cwd(), 'public', href.replace(/^\//, '')),
+      'utf8',
+    ).replace(/\r\n?/g, '\n');
+    out = `${href}?v=${createHash('sha1').update(content, 'utf8').digest('hex').slice(0, 8)}`;
   } catch {
     out = href; // file not found at build time → link as-is rather than fail the build
   }
