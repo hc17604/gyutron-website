@@ -53,6 +53,26 @@ Read this block first; use the dated entries below only for task-relevant histor
 
 ## 🤝 CODEX HANDOFF — current state (2026-08-07)
 
+> **2026-08-07 (Codex) — Cross-agent takeover hardening deployed and verified live.**
+> Scope: implementation commit `c1138cd` and CI-history fix `c11edcb` are on `main`. The first CI run
+> correctly exposed that Shop's pinned-baseline smoke needs historical Git objects; `c11edcb` added
+> `fetch-depth: 0`, and the complete rerun passed. Preserved: no Shop source/generated output, Worker
+> routing/logic, binding IDs, database data, secrets, site copy, or page design changed. Verification:
+> GitHub Actions run [`31154542911`](https://github.com/hc17604/gyutron-website/actions/runs/31154542911)
+> passed every main-site, handoff, Turnstile, CSS-version, platform,
+> Shop, Wrangler dry-run, deploy-sync, and whitespace step. Live no-cache reads returned 200 and the
+> widget, production public site key, and Turnstile script on all 12 en/de/ja form pages; the homepage
+> serves the expected `/global.css?v=ba8732de` and retained About image marker; `/api/v1/health`
+> returned 200/`status: ok`. Deploy: Cloudflare's external push-to-main deployment is confirmed by
+> those new live HTML/cache markers. Limits: no fake form was submitted; a human browser submission is
+> still required to validate the external secret and complete workflow. Local Wrangler deployment and
+> secret inspection still require re-login after API error 10000. Existing report-only baselines remain
+> 3 multi-`h1` homepages, 42 pages/144 i18n suspects, and 148 images over 1 MB. Shop clean paths without
+> trailing slashes remain a documented 404 and were not changed. Rollback: revert `c11edcb`, then
+> `c1138cd`; do not remove live Turnstile HTML while its Worker secret may be active. Next: have an
+> authorized human complete one real browser form acceptance submission; otherwise agents can start
+> from `npm run agent:status` and `docs/AGENT_TAKEOVER.md`.
+
 > **2026-08-07 (Codex) — Cross-agent takeover contract hardened; Turnstile build regression repaired.**
 > Scope: replaced the stale/conflicting active `AGENTS.md` and Claude/Codex entry prompts with one
 > repository-owned protocol; added `docs/AGENT_TAKEOVER.md`, root `agent:status`, `agent:check`,
