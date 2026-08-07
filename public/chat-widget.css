@@ -34,8 +34,8 @@
   right: 0;
   bottom: calc(18px + env(safe-area-inset-bottom, 0px));
   width: 50px;
-  background: var(--button-purple-light);
-  color: var(--button-purple-deep);
+  background: var(--button-purple-deep);
+  color: #fff;
   opacity: 0;
   pointer-events: none;
   transform: translateX(100%);
@@ -54,8 +54,8 @@
 .cw-launcher--back-to-top:focus-visible .cw-launcher-icon i { transform: translateY(-2px); }
 .cw-launcher--back-to-top:active { transform: translateX(0) translateY(1px); }
 .cw-launcher--back-to-top:hover,
-.cw-launcher--back-to-top:focus-visible { background: var(--button-purple-light); color: var(--button-purple-deep); }
-.cw-launcher--back-to-top:focus-visible { outline: 3px solid var(--button-purple-deep); outline-offset: -3px; }
+.cw-launcher--back-to-top:focus-visible { background: var(--button-purple-deep); color: #fff; }
+.cw-launcher--back-to-top:focus-visible { outline: 3px solid var(--button-purple-light); outline-offset: -3px; }
 .cw.is-open .cw-launcher--back-to-top,
 body.mobile-nav-open .cw-launcher--back-to-top {
   opacity: 0;
@@ -180,8 +180,8 @@ body.mobile-nav-open .cw-launcher--back-to-top {
   .cw-launcher--back-to-top:hover,
   .cw-launcher--back-to-top:focus-visible {
     bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-    background: var(--button-purple-light);
-    color: var(--button-purple-deep);
+    background: var(--button-purple-deep);
+    color: #fff;
     box-shadow: none;
   }
   .cw-launcher--back-to-top .cw-launcher-icon i { text-shadow: none; filter: none; }
