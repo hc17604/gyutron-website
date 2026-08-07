@@ -32,7 +32,7 @@ export const NEWS: NewsItem[] = [
       de: 'Die GYUTRON 900er-Serie ergänzt den Katalog um neue Machine-Vision-Kameras, eine 3D-Profiliereinheit und kompakte Edge-Controller für leistungsfähigere Prüfzellen. Sie nutzen dieselben gängigen industriellen Schnittstellen wie die übrige Reihe und fügen sich in bestehende GYUTRON-Vision-Aufbauten ein. Sprechen Sie mit unserem Vertriebs-Engineering, um eine Konfiguration für Ihre Linie abzustimmen.',
       ja: 'GYUTRON 900 シリーズは、高スループットの検査セル向けに、新しいマシンビジョンカメラ・3D プロファイリング機・コンパクトなエッジコントローラをカタログに追加しました。既存シリーズと同じ標準的な産業インターフェースに対応し、現行の GYUTRON ビジョン構成にそのまま組み込めます。ラインに合わせた構成は当社のセールスエンジニアリングにご相談ください。',
     },
-    image: '/product-hero-area-scan-cameras-matrix.png',
+    image: '/news-900-series-inspection-lab.jpg',
   },
   {
     id: 'news-trilingual',
