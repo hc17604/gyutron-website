@@ -26,14 +26,16 @@
   transition: background var(--motion-fast), box-shadow var(--motion);
 }
 .cw-launcher:hover { background: var(--button-purple-deep); box-shadow: -8px 12px 32px rgba(31, 11, 53, 0.36); }
-.cw-launcher--contact { background: var(--button-purple-deep); }
-.cw-launcher--contact:hover { background: var(--button-purple-deep); }
+.cw-launcher--contact { background: var(--button-neutral-dark); color: #fff; }
+.cw-launcher--contact:hover { background: var(--button-neutral-dark); }
 .cw-launcher-icon { display: grid; place-items: center; width: 50px; height: 50px; font-size: 19px; flex: 0 0 auto; }
 .cw-launcher--back-to-top {
   position: fixed;
   right: 0;
   bottom: calc(18px + env(safe-area-inset-bottom, 0px));
   width: 50px;
+  background: var(--button-purple-light);
+  color: var(--button-purple-deep);
   opacity: 0;
   pointer-events: none;
   transform: translateX(100%);
@@ -51,7 +53,9 @@
 .cw-launcher--back-to-top:hover .cw-launcher-icon i,
 .cw-launcher--back-to-top:focus-visible .cw-launcher-icon i { transform: translateY(-2px); }
 .cw-launcher--back-to-top:active { transform: translateX(0) translateY(1px); }
-.cw-launcher--back-to-top:focus-visible { outline: 3px solid var(--button-purple-light); outline-offset: -3px; }
+.cw-launcher--back-to-top:hover,
+.cw-launcher--back-to-top:focus-visible { background: var(--button-purple-light); color: var(--button-purple-deep); }
+.cw-launcher--back-to-top:focus-visible { outline: 3px solid var(--button-purple-deep); outline-offset: -3px; }
 .cw.is-open .cw-launcher--back-to-top,
 body.mobile-nav-open .cw-launcher--back-to-top {
   opacity: 0;
@@ -176,7 +180,8 @@ body.mobile-nav-open .cw-launcher--back-to-top {
   .cw-launcher--back-to-top:hover,
   .cw-launcher--back-to-top:focus-visible {
     bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-    background: var(--button-purple-deep);
+    background: var(--button-purple-light);
+    color: var(--button-purple-deep);
     box-shadow: none;
   }
   .cw-launcher--back-to-top .cw-launcher-icon i { text-shadow: none; filter: none; }
