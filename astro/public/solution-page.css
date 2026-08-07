@@ -91,10 +91,10 @@
 }
 
 .solution-tabs a:hover {
-    background: var(--violet-soft);
+    background: var(--button-purple-light);
     border-color: rgba(111, 45, 189, 0.32);
     box-shadow: 0 10px 24px rgba(31, 11, 53, 0.08);
-    color: var(--purple-700);
+    color: var(--button-purple-deep);
     transform: translateY(-1px);
 }
 

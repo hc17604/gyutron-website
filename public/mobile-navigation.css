@@ -69,8 +69,8 @@
 
 .language-menu a:hover,
 .language-menu a[aria-current="page"] {
-    background: var(--violet-soft);
-    color: var(--purple-700);
+    background: var(--button-purple-light);
+    color: var(--button-purple-deep);
 }
 
 .language-menu span {
@@ -109,15 +109,15 @@
 }
 
 .mobile-menu-icon span {
-    background: var(--purple-600);
+    background: var(--button-purple-deep);
     display: block;
     height: 2px;
     width: 18px;
 }
 
 .mobile-menu-toggle[aria-expanded="true"] {
-    background: var(--violet-soft);
-    color: var(--purple-600);
+    background: var(--button-purple-light);
+    color: var(--button-purple-deep);
 }
 
 .mobile-nav-panel {
@@ -257,8 +257,8 @@ body.mobile-nav-open .mobile-nav-panel {
 
 .mobile-nav-row:hover,
 .mobile-nav-link:hover {
-    background: var(--violet-soft);
-    color: var(--purple-600);
+    background: var(--button-purple-light);
+    color: var(--button-purple-deep);
 }
 
 .mobile-nav-label {
@@ -280,14 +280,14 @@ body.mobile-nav-open .mobile-nav-panel {
 
 .mobile-nav-row i,
 .mobile-nav-link i {
-    color: var(--purple-600);
+    color: var(--button-purple-deep);
     font-size: 12px;
     justify-self: end;
 }
 
 .mobile-nav-quick {
-    background: var(--purple-700);
-    border-color: var(--purple-700);
+    background: var(--button-purple-deep);
+    border-color: var(--button-purple-deep);
     color: var(--white);
 }
 

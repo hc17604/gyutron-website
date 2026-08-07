@@ -169,7 +169,7 @@ body.nav-is-navigating .submenu {
 /* ===== Nav search: magnifier icon -> full-width dropdown below the header (nav-search.js) ===== */
 .nav-search { position: relative; display: inline-flex; align-items: center; }
 .nav-search-toggle { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; padding: 0; background: transparent; border: 1px solid transparent; border-radius: 2px; color: var(--text, #211b2d); cursor: pointer; font-size: 15px; transition: background 160ms ease, color 160ms ease; }
-.nav-search-toggle:hover, .nav-search.is-open .nav-search-toggle { background: var(--violet-soft, #f1ecfa); color: var(--purple-600, #5a3aa6); }
+.nav-search-toggle:hover, .nav-search.is-open .nav-search-toggle { background: var(--button-purple-light); color: var(--button-purple-deep); }
 .nav-search-dropdown { position: fixed; left: 0; right: 0; top: 0; z-index: 60; background: var(--white, #fff); border-bottom: 1px solid var(--line, #e7e2ef); box-shadow: 0 20px 44px rgba(31, 11, 53, 0.14); }
 .nav-search-dropdown[hidden] { display: none; }
 .nav-search-bar { display: flex; align-items: center; gap: 12px; max-width: 1200px; margin: 0 auto; padding: 16px 24px; }
@@ -177,7 +177,7 @@ body.nav-is-navigating .submenu {
 .nav-search-input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font-size: 18px; font-weight: 600; color: var(--ink, #17121f); padding: 6px 0; font-family: inherit; }
 .nav-search-input::placeholder { color: var(--muted, #8b8397); font-weight: 500; }
 .nav-search-close { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 0; border-radius: 2px; background: transparent; color: var(--muted, #8b8397); cursor: pointer; font-size: 16px; transition: background 160ms ease, color 160ms ease; }
-.nav-search-close:hover { background: var(--violet-soft, #f1ecfa); color: var(--purple-600, #5a3aa6); }
+.nav-search-close:hover { background: var(--button-purple-light); color: var(--button-purple-deep); }
 .nav-search-results { max-width: 1200px; margin: 0 auto; max-height: min(64vh, 560px); overflow-y: auto; }
 /* Adaptive product grid: cards are as narrow as ~175px and the column count auto-fits the panel
    width (≈6 across at the 1200px max), killing the wide-card internal whitespace. Full-width rows

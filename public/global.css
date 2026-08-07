@@ -128,18 +128,18 @@
         }
 
         .button-primary {
-            background: var(--purple-600);
+            background: var(--button-purple-deep);
             box-shadow: 0 16px 28px rgba(111, 45, 189, 0.26);
             color: var(--white);
         }
 
         .button-primary:hover {
-            background: var(--purple-700);
+            background: var(--button-purple-deep);
         }
 
         .button-light {
             background: var(--white);
-            color: var(--purple-800);
+            color: var(--button-purple-deep);
         }
 
         .button-outline {
@@ -571,7 +571,7 @@
         }
 
         .header-quick:hover {
-            color: var(--purple-600);
+            color: var(--button-purple-deep);
         }
         .language-icon {
             align-items: center;
@@ -590,7 +590,7 @@
         }
 
         .language-icon:hover {
-            color: var(--purple-600);
+            color: var(--button-purple-deep);
             transform: translateY(-1px);
         }
 
@@ -651,8 +651,8 @@
 
         .language-menu a:hover,
         .language-menu a[aria-current="page"] {
-            background: var(--violet-soft);
-            color: var(--purple-700);
+            background: var(--button-purple-light);
+            color: var(--button-purple-deep);
         }
 
         .language-menu span {
@@ -676,7 +676,7 @@
         }
 
         .site-header .button-primary {
-            background: var(--brand-purple);
+            background: var(--button-purple-deep);
             border-radius: 2px;
             box-shadow: none;
             font-size: 12px;
@@ -688,7 +688,7 @@
         }
 
         .site-header .button-primary:hover {
-            background: #3f256f;
+            background: var(--button-purple-deep);
             box-shadow: 0 10px 22px rgba(75, 46, 131, 0.22);
         }
 
@@ -1130,7 +1130,7 @@
         }
 
         .hero-tab::before {
-            background: var(--signal);
+            background: var(--button-purple-deep);
             bottom: 0;
             content: "";
             height: 2px;

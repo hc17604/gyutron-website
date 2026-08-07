@@ -423,13 +423,13 @@ a {
 }
 
 .button-primary {
-    background: var(--brand-purple);
+    background: var(--button-purple-deep);
     color: var(--white);
 }
 
 .button-light {
     background: var(--white);
-    color: var(--purple-950);
+    color: var(--button-purple-deep);
 }
 
 .button-outline {
@@ -464,7 +464,7 @@ a {
 }
 
 .language-icon:hover {
-    color: var(--purple-600);
+    color: var(--button-purple-deep);
     transform: translateY(-1px);
 }
 
@@ -578,16 +578,16 @@ a {
 }
 
 .category-nav a.is-active {
-    background: var(--brand-purple);
-    border-color: var(--brand-purple);
+    background: var(--button-purple-deep);
+    border-color: var(--button-purple-deep);
     color: var(--white);
 }
 
 .category-nav a:hover {
-    background: var(--violet-soft);
-    border-color: rgba(111, 45, 189, 0.32);
+    background: var(--button-purple-light);
+    border-color: var(--button-purple-deep);
     box-shadow: 0 10px 24px rgba(31, 11, 53, 0.08);
-    color: var(--purple-700);
+    color: var(--button-purple-deep);
     transform: translateY(-1px);
 }
 
@@ -703,7 +703,7 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
     background: var(--violet-soft);
     border: 1px solid rgba(111, 45, 189, 0.16);
     border-radius: 0;
-    color: var(--purple-700);
+    color: var(--button-purple-deep);
     font-size: 11px;
     font-weight: 850;
     line-height: 1;
@@ -750,16 +750,16 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
 }
 
 .pagination button.is-active {
-    background: var(--brand-purple);
-    border-color: var(--brand-purple);
+    background: var(--button-purple-deep);
+    border-color: var(--button-purple-deep);
     color: var(--white);
 }
 
 .pagination button:hover {
-    background: var(--violet-soft);
-    border-color: rgba(111, 45, 189, 0.32);
+    background: var(--button-purple-light);
+    border-color: var(--button-purple-deep);
     box-shadow: 0 10px 24px rgba(31, 11, 53, 0.08);
-    color: var(--purple-700);
+    color: var(--button-purple-deep);
     transform: translateY(-1px);
 }
 
@@ -835,8 +835,8 @@ html[lang="de"] .spec-list div { grid-template-columns: 118px 1fr; }
 
 /* .button-outline is white-on-dark by default; the cta-band is white, so re-tint. */
 .cta-band .button-outline {
-    border-color: var(--brand-purple);
-    color: var(--brand-purple);
+    border-color: var(--button-purple-deep);
+    color: var(--button-purple-deep);
 }
 
 .footer {

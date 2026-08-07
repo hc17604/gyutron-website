@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "verify:header": "node scripts/verify-header-equivalence.mjs",
+    "verify:button-purple": "node scripts/verify-button-purple.mjs",
     "verify:scroll-chrome": "node scripts/verify-scroll-chrome.mjs",
     "verify:sitemap": "node scripts/verify-sitemap.mjs",
     "verify:routes": "node scripts/verify-routes.mjs",
@@ -17,7 +18,7 @@
     "verify:assets": "node scripts/verify-assets.mjs",
     "verify:a11y-lite": "node scripts/verify-a11y-lite.mjs",
     "verify:content-icons": "node ../scripts/smoke-content-icons.mjs --scope brand",
-    "verify:all": "npm run verify:header && npm run verify:scroll-chrome && npm run verify:sitemap && npm run verify:routes && npm run verify:seo && npm run verify:a11y-lite && npm run verify:content-icons && npm run verify:i18n"
+    "verify:all": "npm run verify:header && npm run verify:button-purple && npm run verify:scroll-chrome && npm run verify:sitemap && npm run verify:routes && npm run verify:seo && npm run verify:a11y-lite && npm run verify:content-icons && npm run verify:i18n"
   },
   "dependencies": {
     "astro": "^5"

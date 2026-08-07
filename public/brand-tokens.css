@@ -1,0 +1,13 @@
+/*
+ * GYUTRON interactive purple system
+ *
+ * Change these two values only to recolor every purple button/control:
+ * - deep: filled primary buttons, active controls, and text/icons on light purple
+ * - light: secondary/hover control surfaces
+ *
+ * Do not introduce another purple value in a button or interactive control.
+ */
+:root {
+  --button-purple-deep: #4b2e83;
+  --button-purple-light: #efe8ff;
+}
