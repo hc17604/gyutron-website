@@ -26,10 +26,11 @@ Read this block first; use the dated entries below only for task-relevant histor
   assets referenced by built pages. Never mirror-delete public-only files; `astro preview` is not fully
   production-equivalent, so use Wrangler dev or live checks for final asset/routing acceptance.
 - **Current prepared visual state:** the homepage About section is now a four-tab, full-width image story
-  (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a fixed desktop
-  background and a normal mobile background. Its active/hover controls consume only the centralized
-  deep `#4b2e83` and light `#efe8ff` button tokens. The focused implementation commit `eefbe92` is on
-  `main`; GitHub CI and Cloudflare live verification both passed.
+  (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a compact dark
+  control rail, no gaps to its neighboring dark modules, a fixed desktop background, and a normal mobile
+  background. Its active/hover controls consume only the centralized deep `#4b2e83` and light `#efe8ff`
+  button tokens. The selected rail implementation commit `ea9f71a` is on `main`; GitHub CI and Cloudflare
+  live verification both passed.
 - **Locales:** English root plus `/de/` and `/ja/`, all built by Astro. Never run the legacy root i18n
   generator for a main-site task.
 - **Shop boundary:** `shop.gyutron.com` is separate. Main-site work must not touch `shop/` or
@@ -73,9 +74,15 @@ Read this block first; use the dated entries below only for task-relevant histor
 > The final visual comparison in `design-qa.md` is `passed`. Selectively synchronized only
 > `public/home-sections.css` and the en/de/ja homepage HTML; `deploy:diff` is empty and `deploy:check`
 > passes. Existing report-only baselines remain 3 multi-H1 homepages and 42 pages / 144 heuristic i18n
-> suspects. Deploy: pending focused commit/push, CI, and no-cache live verification. Rollback: revert the
-> focused commit and rebuild/resync the same four public files. Next: push `main`, watch CI, verify the
-> live CSS hash plus desktop/mobile rail behavior, then record the final commit and production state.
+> suspects. Deploy: implementation commit `ea9f71a` was pushed to `main`; GitHub verify run
+> `31253568459` passed every job. No-cache production reads of `/`, `/de/`, and `/ja/` all returned 200
+> with `/home-sections.css?v=3098c685`, horizontal tab semantics, and the active-tab visibility logic;
+> the live CSS returned 200 with zero About padding. Live browser checks passed at desktop 1440 x 900
+> (58px rail, Lab selected, `fixed`, both neighboring gaps 0px) and mobile 390 x 844 (56px touch target,
+> Customer Trust selected and visible, `scroll`, zero page overflow); German 320 x 844 also showed the
+> full `Fertigungskompetenz` label with zero page overflow. Production console logs were empty.
+> Rollback: revert `ea9f71a` and rebuild/resync the same four public files. Next: no action required for
+> this rail; preserve the horizontal mobile behavior and Shop/backend boundaries in later work.
 
 > **2026-08-08 (Codex) — Homepage About rebuilt as a four-panel fixed-background story.**
 > Scope: replaced only the old two-column About copy/three-image mosaic in the shared en/de/ja
