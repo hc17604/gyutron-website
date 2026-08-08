@@ -27,10 +27,11 @@ Read this block first; use the dated entries below only for task-relevant histor
   production-equivalent, so use Wrangler dev or live checks for final asset/routing acceptance.
 - **Current prepared visual state:** the homepage About section is now a four-tab, full-width image story
   (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a compact dark
-  control rail, no gaps to its neighboring dark modules, a fixed desktop background, and a normal mobile
-  background. Its active/hover controls consume only the centralized deep `#4b2e83` and light `#efe8ff`
-  button tokens. The selected rail implementation commit `ea9f71a` is on `main`; GitHub CI and Cloudflare
-  live verification both passed.
+  control rail, no gaps to its neighboring dark modules, and a background that remains viewport-fixed on
+  both desktop and supported mobile/tablet viewports. Mobile uses a clipped shared fixed layer rather than
+  the unreliable iOS `background-attachment: fixed`; no-JS, unsupported-clip, and reduced-motion modes
+  retain a normal scrolling fallback. Its active/hover controls consume only the centralized deep
+  `#4b2e83` and light `#efe8ff` button tokens.
 - **Locales:** English root plus `/de/` and `/ja/`, all built by Astro. Never run the legacy root i18n
   generator for a main-site task.
 - **Shop boundary:** `shop.gyutron.com` is separate. Main-site work must not touch `shop/` or
@@ -55,6 +56,29 @@ Read this block first; use the dated entries below only for task-relevant histor
 ---
 
 ## 🤝 CODEX HANDOFF — current state (2026-08-08)
+
+> **2026-08-08 (Codex) — Mobile About background corrected to a real viewport-fixed layer.**
+> Supersedes the mobile `scroll` behavior recorded in the two About entries below after the user checked
+> the deployed phone layout and correctly reported that it did not provide the requested fixed-background
+> effect. Root cause: the prior compatibility rule explicitly kept `.hx-about-panel__image` absolute with
+> `background-attachment: scroll` below desktop. The enhanced About story now copies the active panel's
+> existing image URL/focal position to one shared `.hx-about__stage::before` layer. At viewports up to
+> 1024px that layer uses `position: fixed` and the stage uses `clip-path: inset(0)`, so the image remains
+> fixed to the viewport while tabs, copy, and neighboring modules scroll normally, without leaking beyond
+> the About stage. This avoids mobile Safari's unreliable fixed background attachment and keeps only one
+> full-screen composited image. Desktop 1025px+ hover-capable viewports retain
+> `background-attachment: fixed`. No-JS, unsupported `clip-path`, missing image data, and OS
+> reduced-motion preferences fail safely to the original per-panel scrolling image; there is no scroll or
+> VisualViewport event loop. Four-panel tab/keyboard logic, localized copy, images, tab rail, stage height,
+> forms, Worker/backend, and Shop remain unchanged. Local browser QA passed 320x640, 390x844, 768x1024,
+> and 1024x768: the stage moved through the viewport while the shared layer remained `fixed` at `top:0`,
+> all four tabs changed the fixed image one-for-one, module boundaries showed no image bleed, and root
+> overflow stayed 0. At 1025x800 and 1440x900 the desktop image remained `fixed`; console errors were 0.
+> Astro built 132 pages and `verify:all` passed every hard gate; only the existing 3 multi-H1 homepage and
+> 42-page / 144-token i18n reports remain. Selectively synchronized only `public/home-sections.css` and
+> the en/de/ja homepage HTML; `deploy:diff` is empty and `deploy:check` passes. Deploy: pending focused
+> commit/push, CI, and no-cache live phone verification. Rollback: revert this focused commit and
+> rebuild/resync the same four public files.
 
 > **2026-08-08 (Codex) — Compact dark About tab rail implemented and locally verified.**
 > Scope: replaced the four large white/filled controls with the user-selected full-width dark rail,

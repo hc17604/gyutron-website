@@ -329,8 +329,33 @@ body.home .hx-step.is-revealed::before { width: 100%; }
 .hx-about-panel__points li { padding: 11px 14px; border-left: 3px solid var(--button-purple-light); background: rgba(13,9,18,.42); color: #fff; font-size: 14.5px; font-weight: 700; line-height: 1.4; backdrop-filter: blur(4px); }
 .hx-about-panel__caption { position: absolute; right: clamp(16px, 3vw, 46px); bottom: 18px; z-index: 2; margin: 0; padding: 7px 10px; background: rgba(13,9,18,.68); color: rgba(255,255,255,.78); font-size: 11.5px; line-height: 1.35; }
 @keyframes hxAboutFade { from { opacity: .24; } to { opacity: 1; } }
-@media (min-width: 901px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+@media (min-width: 1025px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
   .hx-about-panel__image { background-attachment: fixed; }
+}
+@supports (clip-path: inset(0)) or (-webkit-clip-path: inset(0)) {
+  @media (max-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    .hx-about[data-about-enhanced][data-about-viewport-fixed] .hx-about__stage {
+      -webkit-clip-path: inset(0);
+      clip-path: inset(0);
+    }
+    .hx-about[data-about-enhanced][data-about-viewport-fixed] .hx-about__stage::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-color: #17121f;
+      background-image: var(--hx-about-fixed-image);
+      background-position: var(--hx-about-fixed-position, center);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .hx-about[data-about-enhanced][data-about-viewport-fixed] .hx-about-panel {
+      z-index: 1;
+      isolation: isolate;
+    }
+    .hx-about[data-about-enhanced][data-about-viewport-fixed] .hx-about-panel__image { display: none; }
+  }
 }
 @media (max-width: 760px) {
   .hx-about { padding-block: 0; }

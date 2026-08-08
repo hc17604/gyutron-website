@@ -152,8 +152,11 @@ partner companies by adding entries with a `logo` (drop the file in `public/` AN
 The homepage About story is a four-panel tab interface in `Home.astro` (`aboutPanels`). Each panel owns a
 tab label, kicker, title, body, two proof lines, image, focal position, and optional representative-image
 caption through `home.x.about.*` keys in all three locale dictionaries. Its layout and fixed-background
-desktop effect live in `public/home-sections.css`; mobile intentionally falls back to a normal scrolling
-background and a 2 x 2 tab grid.
+behavior live in `public/home-sections.css`: desktop uses fixed background attachment, while supported
+mobile/tablet viewports use one clipped viewport-fixed stage layer whose image variables are synchronized
+by the About helper in `Home.astro`. The mobile controls are a single horizontally scrollable tab rail,
+not a 2 x 2 grid. Preserve the normal scrolling fallback for no-JS, unsupported clipping, and visitors
+who enable reduced motion.
 
 Current panel assets are the GYUTRON building, a representative camera-product assembly line, an
 illustrative engineering test bench, and a licensed representative industrial-handshake photograph.

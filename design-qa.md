@@ -548,3 +548,30 @@ No P0/P1/P2 issue remains. The darker approved underline versus the mock's brigh
 intermediate purple is classified as an intentional token constraint, not an open visual defect.
 
 Final result: passed
+# GYUTRON Homepage — mobile viewport-fixed About background correction
+
+Date: 2026-08-08
+Scope: About image behavior only; the selected compact tab rail, copy, assets, stage sizing, and adjacent modules remain unchanged.
+
+## Root cause and correction
+
+- The deployed mobile rule explicitly kept the panel image at `background-attachment: scroll`, so the requested fixed-background effect was absent.
+- Mobile/tablet viewports up to 1024px now use one shared `position: fixed` stage pseudo-element clipped by the moving About stage.
+- The active panel image URL and focal position synchronize to that shared layer on initial enhancement, tab changes, viewport changes, and reduced-motion changes.
+- Desktop 1025px+ keeps the existing fixed background-attachment implementation.
+- No-JS, unsupported clipping, missing image data, and reduced-motion modes retain the readable scrolling fallback.
+
+## Browser QA
+
+| Viewport | Fixed mechanism | Result |
+| --- | --- | --- |
+| 320 x 640 | clipped viewport-fixed layer | Passed; no root overflow |
+| 390 x 844 | clipped viewport-fixed layer | Passed; module boundaries do not leak |
+| 768 x 1024 | clipped viewport-fixed layer | Passed; tab switching updates the background |
+| 1024 x 768 | clipped viewport-fixed layer | Passed; no root overflow |
+| 1025 x 800 | desktop fixed attachment | Passed |
+| 1440 x 900 | desktop fixed attachment | Passed |
+
+At two mobile scroll positions, the About stage moved from `top: 176px` to `top: -155px` while the shared background remained `position: fixed; top: 0`. All four English tabs produced exactly one matching visible panel and the expected background asset. The transition into the following Solutions module showed no fixed-image bleed. Console errors: 0.
+
+Final result: passed.

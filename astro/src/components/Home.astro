@@ -507,6 +507,36 @@ const news = getLatestNews(3);
                 const tabs = Array.from(story.querySelectorAll("[data-about-tab]"));
                 const panels = Array.from(story.querySelectorAll("[data-about-panel]"));
                 const tabList = story.querySelector(".hx-about__tabs");
+                const stage = story.querySelector(".hx-about__stage");
+                const fixedViewportQuery = window.matchMedia("(max-width: 1024px)");
+                const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+                const supportsFixedClip = typeof CSS !== "undefined" && (
+                    CSS.supports("clip-path", "inset(0px)") || CSS.supports("-webkit-clip-path", "inset(0px)")
+                );
+                let activeIndex = 0;
+
+                const syncViewportBackground = (index = activeIndex) => {
+                    const source = panels[index]?.querySelector(".hx-about-panel__image");
+                    const enabled = Boolean(
+                        stage && source && supportsFixedClip && fixedViewportQuery.matches && !reducedMotionQuery.matches
+                    );
+
+                    if (!enabled) {
+                        story.removeAttribute("data-about-viewport-fixed");
+                        return;
+                    }
+
+                    const image = source.style.getPropertyValue("--hx-about-image").trim();
+                    const position = source.style.getPropertyValue("--hx-about-position").trim() || "center";
+                    if (!image) {
+                        story.removeAttribute("data-about-viewport-fixed");
+                        return;
+                    }
+
+                    stage.style.setProperty("--hx-about-fixed-image", image);
+                    stage.style.setProperty("--hx-about-fixed-position", position);
+                    story.setAttribute("data-about-viewport-fixed", "");
+                };
 
                 const revealTab = (tab, forceInstant = false) => {
                     if (!tabList || tabList.scrollWidth <= tabList.clientWidth) return;
@@ -518,6 +548,9 @@ const news = getLatestNews(3);
                 };
 
                 const activate = (nextIndex, moveFocus = false, keepVisible = false) => {
+                    activeIndex = nextIndex;
+                    syncViewportBackground(nextIndex);
+
                     tabs.forEach((tab, index) => {
                         const active = index === nextIndex;
                         tab.classList.toggle("is-active", active);
@@ -537,6 +570,11 @@ const news = getLatestNews(3);
 
                 story.setAttribute("data-about-enhanced", "");
                 activate(0);
+
+                [fixedViewportQuery, reducedMotionQuery].forEach((query) => {
+                    if (typeof query.addEventListener === "function") query.addEventListener("change", () => syncViewportBackground());
+                    else if (typeof query.addListener === "function") query.addListener(() => syncViewportBackground());
+                });
 
                 tabs.forEach((tab, index) => {
                     tab.addEventListener("click", () => activate(index, false, true));
