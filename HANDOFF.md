@@ -31,7 +31,8 @@ Read this block first; use the dated entries below only for task-relevant histor
   both desktop and supported mobile/tablet viewports. Mobile uses a clipped shared fixed layer rather than
   the unreliable iOS `background-attachment: fixed`; no-JS, unsupported-clip, and reduced-motion modes
   retain a normal scrolling fallback. Its active/hover controls consume only the centralized deep
-  `#4b2e83` and light `#efe8ff` button tokens.
+  `#4b2e83` and light `#efe8ff` button tokens. Mobile correction commit `64e294e` is on `main`; GitHub CI
+  and no-cache Cloudflare live browser verification passed.
 - **Locales:** English root plus `/de/` and `/ja/`, all built by Astro. Never run the legacy root i18n
   generator for a main-site task.
 - **Shop boundary:** `shop.gyutron.com` is separate. Main-site work must not touch `shop/` or
@@ -76,9 +77,16 @@ Read this block first; use the dated entries below only for task-relevant histor
 > overflow stayed 0. At 1025x800 and 1440x900 the desktop image remained `fixed`; console errors were 0.
 > Astro built 132 pages and `verify:all` passed every hard gate; only the existing 3 multi-H1 homepage and
 > 42-page / 144-token i18n reports remain. Selectively synchronized only `public/home-sections.css` and
-> the en/de/ja homepage HTML; `deploy:diff` is empty and `deploy:check` passes. Deploy: pending focused
-> commit/push, CI, and no-cache live phone verification. Rollback: revert this focused commit and
-> rebuild/resync the same four public files.
+> the en/de/ja homepage HTML; `deploy:diff` is empty and `deploy:check` passes. Deploy: focused commit
+> `64e294e` was pushed to `main`; GitHub verify run `31255453786` passed. No-cache production reads of
+> `/`, `/de/`, `/ja/`, and `/home-sections.css` returned 200 with cache key `7e3a8917`, the shared fixed
+> layer, and the active-image helper; `/api/v1/health` remained 200/`status: ok`. Live 390x844 browser QA
+> moved the About stage from `top:177px` to `top:-145px` while the shared layer remained `fixed` at
+> `top:0`; all four English tabs selected the correct unique background. German 320x640 kept the full
+> `Fertigungskompetenz` label, fixed layer, and zero root overflow. Desktop 1440x900 retained fixed
+> attachment, zero neighboring gaps, and zero console errors. Rollback: revert `64e294e` and
+> rebuild/resync the same four public files. Next: no action required; ask the user to refresh once if a
+> phone tab was already open on the previous CSS hash.
 
 > **2026-08-08 (Codex) — Compact dark About tab rail implemented and locally verified.**
 > Scope: replaced the four large white/filled controls with the user-selected full-width dark rail,
