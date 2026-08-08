@@ -149,9 +149,19 @@ partner companies by adding entries with a `logo` (drop the file in `public/` AN
 
 ## Edit the About / company section
 
-The homepage "About GYUTRON" section uses i18n keys (`home.x.about.*`, `home.x.val1..4.*`) for copy plus a
-small facility-image list in `Home.astro` (`aboutImages`, currently `nav-company-*.png`). Edit copy in all
-three dicts; swap facility images by changing `aboutImages`.
+The homepage About story is a four-panel tab interface in `Home.astro` (`aboutPanels`). Each panel owns a
+tab label, kicker, title, body, two proof lines, image, focal position, and optional representative-image
+caption through `home.x.about.*` keys in all three locale dictionaries. Its layout and fixed-background
+desktop effect live in `public/home-sections.css`; mobile intentionally falls back to a normal scrolling
+background and a 2 x 2 tab grid.
+
+Current panel assets are the GYUTRON building, a representative camera-product assembly line, an
+illustrative engineering test bench, and a licensed representative industrial-handshake photograph.
+Source, license, processing, and claim boundaries are recorded in
+`asset-workbench/about-story-sources/README.md`. Do not describe representative imagery as a GYUTRON
+facility, employee, customer, or endorsement. When changing a panel, update its `aboutPanels` entry, all
+three locale dictionaries, the provenance record, the tracked build copy in `astro/public/`, and
+the committed deployment asset in root `public/`.
 
 ## Data layer
 

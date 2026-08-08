@@ -1,7 +1,7 @@
 # GYUTRON gyutron.com — Engineering Handoff (single source of truth)
 
 > Consolidated handoff for the agent/engineer taking over. `AGENTS.md` is now the concise active rule set;
-> this file owns current state and decision history. Last updated 2026-08-07. Obtain the current live
+> this file owns current state and decision history. Last updated 2026-08-08. Obtain the current live
 > HEAD with `git fetch origin` and `git rev-parse origin/main`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
 > 🏗️ **2026-06-06:** an **additive engineering foundation** was added — repo-root **`docs/`** + `astro/src/{config,types,data}` + `astro/src/lib/{api,forms,crm,cms,agent,logger}` (mock/placeholder) + `astro/.env.example`. See **§5b** and `docs/`.
@@ -25,9 +25,11 @@ Read this block first; use the dated entries below only for task-relevant histor
 - **Build/deploy asymmetry:** current `public/` has 131 non-Shop files not emitted by Astro, including
   assets referenced by built pages. Never mirror-delete public-only files; `astro preview` is not fully
   production-equivalent, so use Wrangler dev or live checks for final asset/routing acceptance.
-- **Current live visual state:** the homepage About lower-left slot uses the user-selected engineering
-  test-bench image (`home-about-quality-bench.png`, cache key `eef0bdb5`). Button purple is centrally
-  limited to deep `#4b2e83` and light `#efe8ff`; back-to-top is deep purple; Contact is near-black.
+- **Current prepared visual state:** the homepage About section is now a four-tab, full-width image story
+  (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a fixed desktop
+  background and a normal mobile background. Its active/hover controls consume only the centralized
+  deep `#4b2e83` and light `#efe8ff` button tokens. This change is locally built and synchronized to
+  committed `public/`, but is not live until its focused commit is pushed and Cloudflare completes.
 - **Locales:** English root plus `/de/` and `/ja/`, all built by Astro. Never run the legacy root i18n
   generator for a main-site task.
 - **Shop boundary:** `shop.gyutron.com` is separate. Main-site work must not touch `shop/` or
@@ -51,7 +53,42 @@ Read this block first; use the dated entries below only for task-relevant histor
 
 ---
 
-## 🤝 CODEX HANDOFF — current state (2026-08-07)
+## 🤝 CODEX HANDOFF — current state (2026-08-08)
+
+> **2026-08-08 (Codex) — Homepage About rebuilt as a four-panel fixed-background story.**
+> Scope: replaced only the old two-column About copy/three-image mosaic in the shared en/de/ja
+> `Home.astro` with four equal accessible tabs: Company Scale, Manufacturing Capability, Engineering Lab,
+> and Customer Trust. Each tab switches a full-width background image plus localized floating copy and
+> two short proof lines. Desktop uses CSS `background-attachment: fixed`; mobile uses a reliable normal
+> background with a 2 x 2 tab grid; reduced-motion also disables the fixed effect and transition.
+> Interaction includes click plus Arrow/Home/End keyboard navigation, `tablist`/`tabpanel` semantics,
+> focus states, plus a no-JavaScript fallback that hides the inert controls and stacks all four readable
+> panels. Active and hover controls use
+> only `--button-purple-deep` / `--button-purple-light`, retain square corners, and add no third button
+> purple. Assets: retained the existing GYUTRON building and illustrative engineering-bench images;
+> added a CC0 Wikimedia camera-product assembly-line image by Baitutai and a Pexels industrial
+> handshake photograph by Tiger Lily. The new stock images are optimized JPEG derivatives in root
+> `public/`, with explicitly tracked build mirrors in `astro/public/` so a clean clone reproduces the
+> output. Visible captions and
+> `asset-workbench/about-story-sources/README.md` preserve the critical boundary that representative
+> imagery is not a verified GYUTRON facility, employee, customer, or endorsement. Updated all
+> `home.x.about.*` copy in English, German, and Japanese; updated `CONTENT_GUIDE`, `MAINTENANCE`, and
+> `design-qa.md`. Verification: Astro built 132 pages after the final CSS pass; 2048 x 940 desktop,
+> all hard `verify:all` gates passed. The informational asset report remains 303.52 MB / 148 images
+> over 1 MB; both new optimized JPEGs are below 0.5 MB. Browser checks at 2048 x 940 desktop,
+> 1440 x 900 German/Japanese, and 390 x 844 mobile found no horizontal overflow; all
+> four panels switched, keyboard navigation selected the expected tab, desktop computed `fixed`, mobile
+> computed `scroll`, and console warnings/errors were empty. The final reference/implementation visual
+> comparison is recorded in `design-qa.md`. Selectively synchronized only the three homepage HTML files
+> and `home-sections.css`; new images were already byte-identical between build output and committed
+> public, and `deploy:check` passed with zero changed/build-only files. Preserved: every other page,
+> header/footer, forms, Worker/backend, and all Shop source/generated trees. Deployment: the user
+> explicitly authorized production deployment on 2026-08-08; this focused feature commit is prepared
+> for the required fetch/recheck, push-to-main, CI watch, and live marker verification. Rollback: restore
+> the prior `values`/`aboutImages` markup and About CSS,
+> restore the prior 11 locale keys, then remove the two new deployed JPEGs and provenance folder. Next:
+> commit the explicit paths, push `main`, watch CI, then confirm the four live About tabs and both new
+> asset URLs before recording the final deployed state.
 
 > **2026-08-07 (Accio Assistant) — Newsroom lead-card inspection image replaced.**
 > Scope: changed the first `NEWS` item (`news-900-series`) in `astro/src/data/news.ts` to use the new slot-owned image `/news-900-series-inspection-lab.jpg`. Added identical source and deploy copies in `astro/public/` and root `public/`; the image is used by the en/de/ja homepage Newsroom lead card, News indexes, and 900-series article pages. Preserved: all news copy, routes, Shop trees, header, Worker, backend, and image references for other slots. Verification: `cd astro && npm run build`, `npm run verify:all`, root `npm run deploy:diff`, `npm run agent:check`, and `npm run deploy:check` passed; image source/deploy SHA-256 values match. Independent verification returned PASS. `verify:i18n` remains report-only with its existing 42 pages / 144 heuristic suspects. Visual browser QA was not available because the browser permission request was aborted; the downloaded image was reviewed directly and static build output references the intended new file. Deploy: pushed as `45f4b33` (`feat(news): replace 900-series inspection image`); GitHub Actions run `31167445172` passed all build, handoff, brand, Shop-baseline, Worker dry-run, deploy-sync, and whitespace gates. Cloudflare's external push-to-main deployment was subsequently confirmed by no-cache live reads: both the homepage Newsroom lead card and `/news/900-series-launch.html` now reference `/news-900-series-inspection-lab.jpg`. Limits: the supplied lab image depicts a real inspection setup and must not be described as a GYUTRON facility or employee without approval. Rollback: restore `image: '/product-hero-area-scan-cameras-matrix.png'` and remove the slot-owned image files. Next: verify the live homepage and 900-series article reference `/news-900-series-inspection-lab.jpg` after Cloudflare deploys.

@@ -26,7 +26,7 @@ agent starts with **AGENT_TAKEOVER.md**, then reads **SAFETY_CHECKLIST.md** befo
 | Add / edit a FAQ | `data/faq.ts` | CONTENT_GUIDE |
 | Add a news post | `data/news.ts` (`NEWS`), homepage Newsroom | CONTENT_GUIDE |
 | Edit partners / ecosystem | `data/partners.ts` (`PARTNERS`) | CONTENT_GUIDE |
-| Edit the About / company section | `home.x.about.*` keys + `aboutImages` in `Home.astro` | CONTENT_GUIDE |
+| Edit the About / company section | `home.x.about.*` keys + `aboutPanels` in `Home.astro` + `home-sections.css` | CONTENT_GUIDE, asset-workbench/about-story-sources/README |
 | Edit the Header mega-menu | `data/header-navigation.ts` (then `verify:header`) | CONTENT_GUIDE, COMPONENTS |
 | Edit header scroll / back-to-top behavior | `layouts/Layout.astro` + `public/nav-chrome.css` (then `verify:scroll-chrome`) | COMPONENTS |
 | Edit the Footer | `data/navigation.ts` `FOOTER_NAV` (+ `company.ts`, `footer.*` keys) | CONTENT_GUIDE |

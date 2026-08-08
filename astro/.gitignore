@@ -8,4 +8,6 @@ public/*.png
 public/*.jpg
 public/*.jpeg
 public/*.webp
+!public/home-about-production-line.jpg
+!public/home-about-customer-trust.jpg
 public/product-images/

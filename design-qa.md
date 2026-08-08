@@ -425,3 +425,31 @@ Date: 2026-08-05
 - `git diff --check`: passed.
 
 Final result: passed
+
+---
+
+# GYUTRON Homepage — About story design QA
+
+Date: 2026-08-08
+
+## Target
+
+- Reference: user-provided `ygf-tech.com` screenshot with four equal tabs, a large image stage, fixed-background scroll behavior, and floating white copy.
+- Implementation: GYUTRON homepage About module shared by English, German, and Japanese routes.
+- Reference evidence: `C:\Users\ADMINI~1\AppData\Local\Temp\codex-clipboard-7f60194b-3d32-4cb6-a8a4-9fe851a92824.png`.
+- Final evidence: `D:\AI PRODUT\GYUTRON web\.codex-tmp\design-qa\gyutron-about-final.png`.
+
+## Checks
+
+- The final 2048 x 940 comparison preserves the reference hierarchy: neutral spacing, four equal controls, one active filled control, full-width image stage, dark readability layer, and left-aligned floating copy.
+- The active control uses the centralized deep-purple token; hover uses the centralized light-purple token. No new purple value or rounded control was introduced.
+- Desktop computed style reports `background-attachment: fixed`; mobile intentionally reports `scroll` for browser reliability and reduced-motion compatibility.
+- All four tabs switch their image and copy, expose correct `aria-selected` state, and support Arrow, Home, and End keyboard navigation.
+- Without JavaScript, the inert tab controls are hidden and all four story panels remain readable in a stacked fallback.
+- Desktop 2048 x 940 and 1440 x 900 checks, plus mobile 390 x 844, show no horizontal page overflow. German and Japanese tab labels fit their control widths.
+- Browser console warning/error count was zero during the English interaction pass.
+- Representative stock and illustrative images carry visible neutral captions and repository provenance so the imagery is not presented as verified GYUTRON personnel or facilities.
+- The production panel is deliberately titled `Manufacturing Capability`, and its caption identifies the image as a representative third-party camera-assembly environment rather than a GYUTRON facility.
+- Both new deploy images have explicitly tracked `astro/public/` build mirrors, so a clean clone can reproduce the checked `dist` output.
+
+Final result: passed

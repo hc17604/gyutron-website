@@ -20,16 +20,51 @@ const procSteps = [
   { n: '03', t: 'home.x.proc.s3.t', d: 'home.x.proc.s3.d' },
   { n: '04', t: 'home.x.proc.s4.t', d: 'home.x.proc.s4.d' },
 ];
-const values = [
-  { t: 'home.x.val1.t', d: 'home.x.val1.d' },
-  { t: 'home.x.val2.t', d: 'home.x.val2.d' },
-  { t: 'home.x.val3.t', d: 'home.x.val3.d' },
-  { t: 'home.x.val4.t', d: 'home.x.val4.d' },
-];
-const aboutImages = [
-	'/home-about-headquarters-building.png',
-	'/home-about-quality-bench.png?v=eef0bdb5',
-	'/home-about-engineering-lab.png?v=9794f2e2',
+const aboutPanels = [
+  {
+    id: 'scale',
+    image: '/home-about-headquarters-building.png',
+    position: 'center 52%',
+    tab: 'home.x.about.scale.tab',
+    kicker: 'home.x.about.scale.kicker',
+    title: 'home.x.about.scale.title',
+    body: 'home.x.about.scale.body',
+    points: ['home.x.about.scale.p1', 'home.x.about.scale.p2'],
+    caption: null,
+  },
+  {
+    id: 'production',
+    image: '/home-about-production-line.jpg',
+    position: 'center 50%',
+    tab: 'home.x.about.production.tab',
+    kicker: 'home.x.about.production.kicker',
+    title: 'home.x.about.production.title',
+    body: 'home.x.about.production.body',
+    points: ['home.x.about.production.p1', 'home.x.about.production.p2'],
+    caption: 'home.x.about.production.caption',
+  },
+  {
+    id: 'lab',
+    image: '/home-about-quality-bench.png?v=eef0bdb5',
+    position: 'center 50%',
+    tab: 'home.x.about.lab.tab',
+    kicker: 'home.x.about.lab.kicker',
+    title: 'home.x.about.lab.title',
+    body: 'home.x.about.lab.body',
+    points: ['home.x.about.lab.p1', 'home.x.about.lab.p2'],
+    caption: 'home.x.about.lab.caption',
+  },
+  {
+    id: 'trust',
+    image: '/home-about-customer-trust.jpg',
+    position: 'center 54%',
+    tab: 'home.x.about.trust.tab',
+    kicker: 'home.x.about.trust.kicker',
+    title: 'home.x.about.trust.title',
+    body: 'home.x.about.trust.body',
+    points: ['home.x.about.trust.p1', 'home.x.about.trust.p2'],
+    caption: 'home.x.about.trust.caption',
+  },
 ];
 const news = getLatestNews(3);
 ---
@@ -135,25 +170,52 @@ const news = getLatestNews(3);
             </div>
         </section>
 
-        <section class="section hx-about" id="about" data-reveal>
-            <div class="container">
-                <div class="hx-about__grid">
-                    <div class="hx-about__copy">
-                        <span class="eyebrow">{t(locale, "home.x.about.label")}</span>
-                        <h2>{t(locale, "home.x.about.title")}</h2>
-                        <p>{t(locale, "home.x.about.body")}</p>
-                        <ul class="hx-values">
-                            {values.map((v) => (
-                                <li class="hx-value">
-                                    <div><strong>{t(locale, v.t)}</strong><span>{t(locale, v.d)}</span></div>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div class="hx-about__media" aria-hidden="true">
-                        {aboutImages.map((src) => (<div class="hx-about__img"><img src={src} alt="" loading="lazy" /></div>))}
-                    </div>
-                </div>
+        <section class="hx-about" id="about" data-about-story>
+            <div class="hx-about__tabs" role="tablist" aria-label={t(locale, 'home.x.about.tabs.label')}>
+                {aboutPanels.map((panel, index) => (
+                    <button
+                        class:list={['hx-about__tab', { 'is-active': index === 0 }]}
+                        type="button"
+                        role="tab"
+                        id={`about-tab-${panel.id}`}
+                        aria-controls={`about-panel-${panel.id}`}
+                        aria-selected={index === 0 ? 'true' : 'false'}
+                        tabindex={index === 0 ? 0 : -1}
+                        data-about-tab
+                    >
+                        {t(locale, panel.tab)}
+                    </button>
+                ))}
+            </div>
+            <div class="hx-about__stage">
+                {aboutPanels.map((panel, index) => (
+                    <article
+                        class:list={['hx-about-panel', { 'is-active': index === 0 }]}
+                        id={`about-panel-${panel.id}`}
+                        role="tabpanel"
+                        aria-labelledby={`about-tab-${panel.id}`}
+                        tabindex="0"
+                        data-about-panel
+                    >
+                        <div
+                            class="hx-about-panel__image"
+                            style={`--hx-about-image: url("${panel.image}"); --hx-about-position: ${panel.position};`}
+                            aria-hidden="true"
+                        ></div>
+                        <div class="hx-about-panel__shade" aria-hidden="true"></div>
+                        <div class="container hx-about-panel__inner">
+                            <div class="hx-about-panel__copy">
+                                <p class="hx-about-panel__kicker">{t(locale, panel.kicker)}</p>
+                                <h2>{t(locale, panel.title)}</h2>
+                                <p class="hx-about-panel__body">{t(locale, panel.body)}</p>
+                                <ul class="hx-about-panel__points">
+                                    {panel.points.map((point) => (<li>{t(locale, point)}</li>))}
+                                </ul>
+                            </div>
+                        </div>
+                        {panel.caption && <p class="hx-about-panel__caption">{t(locale, panel.caption)}</p>}
+                    </article>
+                ))}
             </div>
         </section>
 
@@ -439,6 +501,46 @@ const news = getLatestNews(3);
                     counters.forEach((el) => co.observe(el));
                 }
             }
+
+            // ---- About story tabs ----
+            document.querySelectorAll("[data-about-story]").forEach((story) => {
+                const tabs = Array.from(story.querySelectorAll("[data-about-tab]"));
+                const panels = Array.from(story.querySelectorAll("[data-about-panel]"));
+
+                const activate = (nextIndex, moveFocus = false) => {
+                    tabs.forEach((tab, index) => {
+                        const active = index === nextIndex;
+                        tab.classList.toggle("is-active", active);
+                        tab.setAttribute("aria-selected", String(active));
+                        tab.tabIndex = active ? 0 : -1;
+                        if (moveFocus && active) tab.focus();
+                    });
+
+                    panels.forEach((panel, index) => {
+                        const active = index === nextIndex;
+                        panel.hidden = !active;
+                        panel.classList.toggle("is-active", active);
+                    });
+                };
+
+                story.setAttribute("data-about-enhanced", "");
+                activate(0);
+
+                tabs.forEach((tab, index) => {
+                    tab.addEventListener("click", () => activate(index));
+                    tab.addEventListener("keydown", (event) => {
+                        let nextIndex = index;
+                        if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (index + 1) % tabs.length;
+                        else if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (index - 1 + tabs.length) % tabs.length;
+                        else if (event.key === "Home") nextIndex = 0;
+                        else if (event.key === "End") nextIndex = tabs.length - 1;
+                        else return;
+
+                        event.preventDefault();
+                        activate(nextIndex, true);
+                    });
+                });
+            });
 
             // ---- Desktop mega-menu nav (unchanged) ----
             const navItems = Array.from(document.querySelectorAll(".nav-item"));
