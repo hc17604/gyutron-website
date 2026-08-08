@@ -28,8 +28,8 @@ Read this block first; use the dated entries below only for task-relevant histor
 - **Current prepared visual state:** the homepage About section is now a four-tab, full-width image story
   (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a fixed desktop
   background and a normal mobile background. Its active/hover controls consume only the centralized
-  deep `#4b2e83` and light `#efe8ff` button tokens. This change is locally built and synchronized to
-  committed `public/`, but is not live until its focused commit is pushed and Cloudflare completes.
+  deep `#4b2e83` and light `#efe8ff` button tokens. The focused implementation commit `eefbe92` is on
+  `main`; GitHub CI and Cloudflare live verification both passed.
 - **Locales:** English root plus `/de/` and `/ja/`, all built by Astro. Never run the legacy root i18n
   generator for a main-site task.
 - **Shop boundary:** `shop.gyutron.com` is separate. Main-site work must not touch `shop/` or
@@ -82,13 +82,16 @@ Read this block first; use the dated entries below only for task-relevant histor
 > comparison is recorded in `design-qa.md`. Selectively synchronized only the three homepage HTML files
 > and `home-sections.css`; new images were already byte-identical between build output and committed
 > public, and `deploy:check` passed with zero changed/build-only files. Preserved: every other page,
-> header/footer, forms, Worker/backend, and all Shop source/generated trees. Deployment: the user
-> explicitly authorized production deployment on 2026-08-08; this focused feature commit is prepared
-> for the required fetch/recheck, push-to-main, CI watch, and live marker verification. Rollback: restore
-> the prior `values`/`aboutImages` markup and About CSS,
+> header/footer, forms, Worker/backend, and all Shop source/generated trees. Deployment: pushed to
+> `main` as `eefbe92`; GitHub Actions run `31246500958` passed. No-cache live reads confirmed `/`,
+> `/de/`, and `/ja/` all contain `data-about-story`, their localized first-tab labels, and
+> `/home-sections.css?v=55969b14`; both new JPEG URLs return 200 and `/api/v1/health` remains
+> 200/`status: ok`. Live browser QA switched all four English tabs, found no horizontal overflow,
+> computed desktop `background-attachment: fixed`, and computed mobile `scroll` with a 2 x 2 tab grid.
+> Rollback: revert `eefbe92`; this restores the prior `values`/`aboutImages` markup and About CSS,
 > restore the prior 11 locale keys, then remove the two new deployed JPEGs and provenance folder. Next:
-> commit the explicit paths, push `main`, watch CI, then confirm the four live About tabs and both new
-> asset URLs before recording the final deployed state.
+> none; replace representative imagery with verified GYUTRON facility/customer photography when such
+> approved assets become available.
 
 > **2026-08-07 (Accio Assistant) — Newsroom lead-card inspection image replaced.**
 > Scope: changed the first `NEWS` item (`news-900-series`) in `astro/src/data/news.ts` to use the new slot-owned image `/news-900-series-inspection-lab.jpg`. Added identical source and deploy copies in `astro/public/` and root `public/`; the image is used by the en/de/ja homepage Newsroom lead card, News indexes, and 900-series article pages. Preserved: all news copy, routes, Shop trees, header, Worker, backend, and image references for other slots. Verification: `cd astro && npm run build`, `npm run verify:all`, root `npm run deploy:diff`, `npm run agent:check`, and `npm run deploy:check` passed; image source/deploy SHA-256 values match. Independent verification returned PASS. `verify:i18n` remains report-only with its existing 42 pages / 144 heuristic suspects. Visual browser QA was not available because the browser permission request was aborted; the downloaded image was reviewed directly and static build output references the intended new file. Deploy: pushed as `45f4b33` (`feat(news): replace 900-series inspection image`); GitHub Actions run `31167445172` passed all build, handoff, brand, Shop-baseline, Worker dry-run, deploy-sync, and whitespace gates. Cloudflare's external push-to-main deployment was subsequently confirmed by no-cache live reads: both the homepage Newsroom lead card and `/news/900-series-launch.html` now reference `/news-900-series-inspection-lab.jpg`. Limits: the supplied lab image depicts a real inspection setup and must not be described as a GYUTRON facility or employee without approval. Rollback: restore `image: '/product-hero-area-scan-cameras-matrix.png'` and remove the slot-owned image files. Next: verify the live homepage and 900-series article reference `/news-900-series-inspection-lab.jpg` after Cloudflare deploys.
