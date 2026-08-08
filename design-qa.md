@@ -453,3 +453,98 @@ Date: 2026-08-08
 - Both new deploy images have explicitly tracked `astro/public/` build mirrors, so a clean clone can reproduce the checked `dist` output.
 
 Final result: passed
+
+---
+
+# GYUTRON Homepage — compact About tab rail design QA
+
+Date: 2026-08-08
+
+## Source visual truth and implementation evidence
+
+- Selected reference: `artifacts/about-tabs-20260808/reference-selected.png` (`1850 x 845`), the first
+  generated redesign chosen by the user: a dark full-width rail, quiet inactive labels, white active
+  label, centered purple underline, and no white section bands.
+- Browser implementation: `artifacts/about-tabs-20260808/implementation-desktop-1440.png`
+  (`1425 x 900` captured pixels from a `1440 x 900` CSS viewport; the scrollbar accounts for the
+  1425px client width), with `Engineering Lab` active.
+- Normalized module crop: `artifacts/about-tabs-20260808/implementation-desktop-about.png`
+  (`1425 x 706`). The source was downsampled without distortion to `1425 x 651` only inside the
+  comparison board.
+- Full combined comparison: `artifacts/about-tabs-20260808/comparison-desktop-full.png`.
+- Focused rail comparison: `artifacts/about-tabs-20260808/comparison-tab-rail.png`.
+- Responsive evidence: `artifacts/about-tabs-20260808/implementation-mobile-390.png` and
+  `artifacts/about-tabs-20260808/implementation-mobile-de-320.png`.
+- Capture density: the in-app browser screenshots were saved at CSS-pixel dimensions; no density
+  resampling was applied to the implementation captures. The source/implementation comparison aligns
+  by client width and preserves each image's original aspect ratio.
+
+## Findings and comparison history
+
+- Pass 1 found no actionable P0/P1/P2 mismatch. The production rail reproduces the selected hierarchy,
+  active/inactive contrast, hard-edged geometry, full-width alignment, and seamless join to the image.
+- The production rail is intentionally more compact than the generated mock (`58.4px` at 1440 CSS px,
+  `56.8px` on mobile). This directly addresses the user's complaint that the original controls were
+  too large, while preserving a practical 56px touch target.
+- The generated mock depicts a brighter intermediate-purple underline. Production intentionally uses
+  the approved centralized `--button-purple-deep` token rather than inventing a third purple. The
+  active state remains visible against `--button-neutral-dark`; focus uses the approved light token.
+- Existing GYUTRON copy, image assets, image positions, stage height, captions, and dark readability
+  overlay were preserved. Apparent copy/crop differences in the generated mock were not treated as a
+  production requirement because the selected delta was the tab styling and section spacing.
+- Post-implementation focused comparison confirmed the inactive labels remain subordinate, the active
+  label and underline remain immediately scannable, and no white band or tile border remains.
+
+## Required fidelity surfaces
+
+- Fonts and typography: the existing site family is preserved; tabs use `13–16px`, weight 700, compact
+  line height, and no wrapping on the mobile rail. English, German, and Japanese labels remain sourced
+  from the existing dictionaries.
+- Spacing and layout rhythm: About padding computes to `0px` above and below. The measured gaps from the
+  proof band to About and from About to Solutions are both `0px`. Desktop rail height is `58.4px` at
+  1440; mobile is `56.8px`.
+- Colors and tokens: the rail uses existing `--button-neutral-dark`; the underline uses
+  `--button-purple-deep`; keyboard focus and hover consume the existing light token. The hard
+  two-purple gate passes and no third interactive purple was added.
+- Image quality and asset fidelity: all four existing background assets, positions, overlays, and
+  captions are unchanged. No generated replacement, CSS illustration, inline SVG, icon, or placeholder
+  was introduced.
+- Copy and content: all four English/German/Japanese tab names, headings, bodies, evidence lines, and
+  representative-image notices are unchanged.
+
+## Responsive, interaction, and accessibility checks
+
+| Viewport | Result | Evidence |
+| --- | --- | --- |
+| 1440 x 900 | passed | Four equal tabs, 58.4px rail, fixed desktop background, root overflow 0. |
+| 768 x 1024 | passed | Four tabs fit in one row; background attachment is `scroll`, avoiding iPad fixed-background jitter. |
+| 760 x 900 | passed | Mobile rail rules active, four labels still fit, root overflow 0. |
+| 390 x 844 | passed | Customer Trust auto-centers in the native horizontal rail; rail `scrollLeft=278.8`, page overflow 0. |
+| 320 x 844 (de) | passed | `Fertigungskompetenz` is fully contained (`scrollWidth=clientWidth=176`); page overflow 0. |
+
+- All four English tabs were selected in sequence; each state produced exactly one
+  `aria-selected="true"` tab and exactly one visible matching panel.
+- German keyboard checks moved `Fertigungskompetenz` to `Engineering-Labor` with ArrowRight and to
+  `Kundenvertrauen` with End; the active tab remained visible as the rail scrolled.
+- The horizontal tablist declares `aria-orientation="horizontal"`; only Left/Right/Home/End are
+  intercepted, leaving Up/Down available for page scrolling.
+- Resize/orientation handling re-centers the active tab without vertical page jumps; reduced motion
+  switches the horizontal adjustment to instant behavior and disables tab/underline transitions.
+- At 901px and above on hover-capable devices the image remains fixed; touch/tablet and reduced-motion
+  states use the reliable scrolling background.
+- The existing no-JavaScript fallback remains intact: inert tabs stay hidden and all four panels remain
+  readable in source order.
+- Browser console warnings/errors during the final interaction pass: 0.
+
+## Automated gates
+
+- Astro build: 132 pages.
+- `npm run verify:all`: all hard gates passed; existing report-only baselines remain 3 localized
+  homepages with multiple H1 elements and 42 pages / 144 heuristic i18n suspects.
+- Button-purple token gate, CSS-version gate, Turnstile gate, Header equivalence, route, SEO,
+  accessibility-lite, and content-icon policy all passed.
+
+No P0/P1/P2 issue remains. The darker approved underline versus the mock's brighter unapproved
+intermediate purple is classified as an intentional token constraint, not an open visual defect.
+
+Final result: passed

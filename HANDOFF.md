@@ -55,6 +55,28 @@ Read this block first; use the dated entries below only for task-relevant histor
 
 ## 🤝 CODEX HANDOFF — current state (2026-08-08)
 
+> **2026-08-08 (Codex) — Compact dark About tab rail implemented and locally verified.**
+> Scope: replaced the four large white/filled controls with the user-selected full-width dark rail,
+> quiet inactive labels, white active text, and a centered deep-purple underline; removed the About
+> section's upper/lower white bands. Mobile now uses a native single-row horizontal rail with a 56px
+> touch target, keeps the active item visible after click/keyboard/resize, and leaves Up/Down available
+> for page scrolling. Tablet/touch backgrounds use `scroll`; fixed backgrounds now require a
+> hover-capable viewport at least 901px wide. Authoritative edits are
+> `astro/public/home-sections.css` and the About tab interaction in
+> `astro/src/components/Home.astro`; `design-qa.md` and `artifacts/about-tabs-20260808/` preserve the
+> selected reference and comparison evidence. Preserved: all four existing images, localized copy,
+> captions, stage height, every other homepage module, forms, Worker/backend, and every Shop path.
+> Verification: Astro built 132 pages and `npm run verify:all` passed every hard gate. Browser checks at
+> 1440, 768, 760, 390, and German 320px found zero root overflow; both neighboring module gaps compute
+> to 0px; all four English panels switch one-for-one; ArrowRight/End, active-tab auto-scroll, desktop
+> `fixed`, tablet/mobile `scroll`, and the German long label passed; console warnings/errors were zero.
+> The final visual comparison in `design-qa.md` is `passed`. Selectively synchronized only
+> `public/home-sections.css` and the en/de/ja homepage HTML; `deploy:diff` is empty and `deploy:check`
+> passes. Existing report-only baselines remain 3 multi-H1 homepages and 42 pages / 144 heuristic i18n
+> suspects. Deploy: pending focused commit/push, CI, and no-cache live verification. Rollback: revert the
+> focused commit and rebuild/resync the same four public files. Next: push `main`, watch CI, verify the
+> live CSS hash plus desktop/mobile rail behavior, then record the final commit and production state.
+
 > **2026-08-08 (Codex) — Homepage About rebuilt as a four-panel fixed-background story.**
 > Scope: replaced only the old two-column About copy/three-image mosaic in the shared en/de/ja
 > `Home.astro` with four equal accessible tabs: Company Scale, Manufacturing Capability, Engineering Lab,

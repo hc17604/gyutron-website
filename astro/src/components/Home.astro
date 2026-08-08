@@ -171,7 +171,7 @@ const news = getLatestNews(3);
         </section>
 
         <section class="hx-about" id="about" data-about-story>
-            <div class="hx-about__tabs" role="tablist" aria-label={t(locale, 'home.x.about.tabs.label')}>
+            <div class="hx-about__tabs" role="tablist" aria-orientation="horizontal" aria-label={t(locale, 'home.x.about.tabs.label')}>
                 {aboutPanels.map((panel, index) => (
                     <button
                         class:list={['hx-about__tab', { 'is-active': index === 0 }]}
@@ -506,8 +506,18 @@ const news = getLatestNews(3);
             document.querySelectorAll("[data-about-story]").forEach((story) => {
                 const tabs = Array.from(story.querySelectorAll("[data-about-tab]"));
                 const panels = Array.from(story.querySelectorAll("[data-about-panel]"));
+                const tabList = story.querySelector(".hx-about__tabs");
 
-                const activate = (nextIndex, moveFocus = false) => {
+                const revealTab = (tab, forceInstant = false) => {
+                    if (!tabList || tabList.scrollWidth <= tabList.clientWidth) return;
+                    const maxLeft = tabList.scrollWidth - tabList.clientWidth;
+                    const centeredLeft = tab.offsetLeft - (tabList.clientWidth - tab.offsetWidth) / 2;
+                    const nextLeft = Math.max(0, Math.min(centeredLeft, maxLeft));
+                    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                    tabList.scrollTo({ left: nextLeft, behavior: forceInstant || reduceMotion ? "auto" : "smooth" });
+                };
+
+                const activate = (nextIndex, moveFocus = false, keepVisible = false) => {
                     tabs.forEach((tab, index) => {
                         const active = index === nextIndex;
                         tab.classList.toggle("is-active", active);
@@ -521,23 +531,34 @@ const news = getLatestNews(3);
                         panel.hidden = !active;
                         panel.classList.toggle("is-active", active);
                     });
+
+                    if (keepVisible && tabs[nextIndex]) revealTab(tabs[nextIndex]);
                 };
 
                 story.setAttribute("data-about-enhanced", "");
                 activate(0);
 
                 tabs.forEach((tab, index) => {
-                    tab.addEventListener("click", () => activate(index));
+                    tab.addEventListener("click", () => activate(index, false, true));
                     tab.addEventListener("keydown", (event) => {
                         let nextIndex = index;
-                        if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (index + 1) % tabs.length;
-                        else if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (index - 1 + tabs.length) % tabs.length;
+                        if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+                        else if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
                         else if (event.key === "Home") nextIndex = 0;
                         else if (event.key === "End") nextIndex = tabs.length - 1;
                         else return;
 
                         event.preventDefault();
-                        activate(nextIndex, true);
+                        activate(nextIndex, true, true);
+                    });
+                });
+
+                let resizeFrame = 0;
+                window.addEventListener("resize", () => {
+                    window.cancelAnimationFrame(resizeFrame);
+                    resizeFrame = window.requestAnimationFrame(() => {
+                        const activeTab = tabs.find((tab) => tab.classList.contains("is-active"));
+                        if (activeTab) revealTab(activeTab, true);
                     });
                 });
             });
