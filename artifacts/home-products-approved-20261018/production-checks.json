@@ -1,0 +1,473 @@
+{
+  "release": "034aca11bfa97c7794012d707c05fdffa4fd5d34",
+  "baseUrl": "https://www.gyutron.com",
+  "localBaseline": "Current committed root public/",
+  "extraction": "Balanced nested div scan from exact hx-products root; no full-page HTML equality assumed",
+  "userAgent": "Mozilla/5.0",
+  "cacheRequest": "Cache-Control/Pragma no-cache plus release/timestamp query",
+  "passed": true,
+  "attempts": [
+    {
+      "startedAt": "2026-10-18T14:06:19.9022761+00:00",
+      "completedAt": "2026-10-18T14:06:26.8635781+00:00",
+      "requestCount": 43,
+      "passed": true,
+      "checks": [
+        {
+          "kind": "homepage",
+          "path": "/",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT",
+          "exactProductModuleMatch": true,
+          "primaryCardCount": 9,
+          "uniquePrimaryCategoryCount": 9,
+          "imageTagCount": 11,
+          "allProductsLinkCount": 18,
+          "productModuleSha256": "62fbf87136c20ab1d4350c3f05c46076621c0c7c49fc634ab735e6a7357666c8"
+        },
+        {
+          "kind": "category",
+          "path": "/vision-lighting.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/vision-lighting.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/area-scan-cameras.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/area-scan-cameras.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "MISS"
+        },
+        {
+          "kind": "category",
+          "path": "/barcode-scanners.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/barcode-scanners.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/smart-vision-sensors.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/smart-vision-sensors.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/proximity-sensors.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/proximity-sensors.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/code-reading-cameras.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/code-reading-cameras.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/android-pda.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/android-pda.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/edge-controllers.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/edge-controllers.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/robot-workcells.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/robot-workcells.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "homepage",
+          "path": "/de/",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/de/?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "MISS",
+          "exactProductModuleMatch": true,
+          "primaryCardCount": 9,
+          "uniquePrimaryCategoryCount": 9,
+          "imageTagCount": 11,
+          "allProductsLinkCount": 18,
+          "productModuleSha256": "a047451b1f80b5e0152a04135c62f8c8c57f97ccadd4223ee831b8a6b5f72bf8"
+        },
+        {
+          "kind": "category",
+          "path": "/de/smart-vision-sensors.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/de/smart-vision-sensors.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/de/barcode-scanners.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/de/barcode-scanners.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/de/area-scan-cameras.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/de/area-scan-cameras.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/de/vision-lighting.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/de/vision-lighting.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/de/proximity-sensors.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/de/proximity-sensors.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/de/code-reading-cameras.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/de/code-reading-cameras.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "MISS"
+        },
+        {
+          "kind": "category",
+          "path": "/de/android-pda.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/de/android-pda.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "homepage",
+          "path": "/ja/",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/ja/?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "MISS",
+          "exactProductModuleMatch": true,
+          "primaryCardCount": 9,
+          "uniquePrimaryCategoryCount": 9,
+          "imageTagCount": 11,
+          "allProductsLinkCount": 18,
+          "productModuleSha256": "4e7fd35d0038167c421a6a21a8280db87d39ad2e850d97edd09d95c211a0875f"
+        },
+        {
+          "kind": "category",
+          "path": "/de/robot-workcells.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/de/robot-workcells.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/ja/area-scan-cameras.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/ja/area-scan-cameras.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/de/edge-controllers.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/de/edge-controllers.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/ja/smart-vision-sensors.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/ja/smart-vision-sensors.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/ja/barcode-scanners.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/ja/barcode-scanners.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "MISS"
+        },
+        {
+          "kind": "category",
+          "path": "/ja/proximity-sensors.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/ja/proximity-sensors.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/ja/code-reading-cameras.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/ja/code-reading-cameras.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/ja/android-pda.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/ja/android-pda.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/ja/vision-lighting.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/ja/vision-lighting.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "category",
+          "path": "/ja/robot-workcells.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/ja/robot-workcells.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/area-scan-cameras.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/area-scan-cameras.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "4f66d3826f96da41ef419027d5c4b2298922db2f5f4c2ff6625c4b49246abec3",
+          "localSha256": "4f66d3826f96da41ef419027d5c4b2298922db2f5f4c2ff6625c4b49246abec3",
+          "bytes": 27846,
+          "hashMatches": true
+        },
+        {
+          "kind": "category",
+          "path": "/ja/edge-controllers.html",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/ja/edge-controllers.html?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/html",
+          "cacheStatus": "HIT"
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/smart-vision-sensors.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/smart-vision-sensors.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "86619c610e7f95c24b7f894ce415f026598bc4927f4a41ce459cf0e344b497af",
+          "localSha256": "86619c610e7f95c24b7f894ce415f026598bc4927f4a41ce459cf0e344b497af",
+          "bytes": 23534,
+          "hashMatches": true
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/industrial-sensors.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/industrial-sensors.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "03ec10730a08cc7a6dd2329a9327b49d37ef827266638b84c01d9ae866333ac1",
+          "localSha256": "03ec10730a08cc7a6dd2329a9327b49d37ef827266638b84c01d9ae866333ac1",
+          "bytes": 35768,
+          "hashMatches": true
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/vision-lighting.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/vision-lighting.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "bcbe320cb801b59f9777310dedfa975f9ae9221d249f2661c96cf9ce564d1335",
+          "localSha256": "bcbe320cb801b59f9777310dedfa975f9ae9221d249f2661c96cf9ce564d1335",
+          "bytes": 29336,
+          "hashMatches": true
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/barcode-scanners.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/barcode-scanners.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "ab6c17dd5345cc619d9a3518b06826bbeb44722478037808bc077a99cf37ac99",
+          "localSha256": "ab6c17dd5345cc619d9a3518b06826bbeb44722478037808bc077a99cf37ac99",
+          "bytes": 82086,
+          "hashMatches": true
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/android-pda.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/android-pda.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "d7fe41a5866fbc1879495bace0ceb84fc5e342c977ca5cf19f58051212863bf2",
+          "localSha256": "d7fe41a5866fbc1879495bace0ceb84fc5e342c977ca5cf19f58051212863bf2",
+          "bytes": 22432,
+          "hashMatches": true
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/code-reading-cameras-secondary.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/code-reading-cameras-secondary.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "6e8a8be0d3a134024e20f2185c51a395b387dc83f4aefd4bb45991debbdc8b06",
+          "localSha256": "6e8a8be0d3a134024e20f2185c51a395b387dc83f4aefd4bb45991debbdc8b06",
+          "bytes": 49728,
+          "hashMatches": true
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/robot-workcells.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/robot-workcells.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "9ebcd5fb5053d465386dc3099d056fd8871056960fe2d72bface04b2b17cf709",
+          "localSha256": "9ebcd5fb5053d465386dc3099d056fd8871056960fe2d72bface04b2b17cf709",
+          "bytes": 57338,
+          "hashMatches": true
+        },
+        {
+          "kind": "css",
+          "path": "/home-sections.css",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-sections.css?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "text/css",
+          "cacheStatus": "HIT",
+          "normalization": "LF",
+          "remoteSha256": "c27a40d15e574e6445afd983fa5c2f3fd68ae6a728d7352fc837cceaf6fddaa3",
+          "localSha256": "c27a40d15e574e6445afd983fa5c2f3fd68ae6a728d7352fc837cceaf6fddaa3",
+          "hashMatches": true
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/edge-controllers.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/edge-controllers.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "18c62b9cd57c44120b65240f5595882f48ed98f6629a3610b0ca15f478561da7",
+          "localSha256": "18c62b9cd57c44120b65240f5595882f48ed98f6629a3610b0ca15f478561da7",
+          "bytes": 55482,
+          "hashMatches": true
+        },
+        {
+          "kind": "health",
+          "path": "/api/v1/health",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/api/v1/health?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "application/json; charset=utf-8",
+          "cacheStatus": "",
+          "healthStatus": "ok"
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/code-reading-cameras.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/code-reading-cameras.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "1f1910e45611ec694c2c1ace7850316f0b032dc1b775819c90f4fc408a844b29",
+          "localSha256": "1f1910e45611ec694c2c1ace7850316f0b032dc1b775819c90f4fc408a844b29",
+          "bytes": 74474,
+          "hashMatches": true
+        },
+        {
+          "kind": "image",
+          "path": "/home-products/edge-controllers-secondary.webp",
+          "status": 200,
+          "requestUrl": "https://www.gyutron.com/home-products/edge-controllers-secondary.webp?release=034aca11bfa97c7794012d707c05fdffa4fd5d34&check=1792332379902",
+          "passed": true,
+          "contentType": "image/webp",
+          "cacheStatus": "HIT",
+          "remoteSha256": "346c3abaa8b80215b14ae68753fffa7aac112381e7b06d05d1c9615349f20357",
+          "localSha256": "346c3abaa8b80215b14ae68753fffa7aac112381e7b06d05d1c9615349f20357",
+          "bytes": 70874,
+          "hashMatches": true
+        }
+      ]
+    }
+  ]
+}

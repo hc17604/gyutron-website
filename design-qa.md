@@ -65,4 +65,16 @@ no browser/header context, while the final native capture includes the existing 
 Existing advisory reports remain three multi-H1 homepages, 615 JS navigation triggers,
 and 42 pages/143 heuristic i18n tokens outside this module. Three homepages/CSS and four
 new assets selectively synced; 131 public-only files preserved. Shop/backend/header untouched.
-Production publication was explicitly authorized earlier; deployment evidence follows after release.
+Production publication was explicitly authorized earlier. Released 034aca11bfa97c7794012d707c05fdffa4fd5d34.
+GitHub verification run 39134283453 completed successfully:
+https://github.com/hc17604/gyutron-website/actions/runs/39134283453
+
+Production 2026-10-18 22:06 Singapore: 43/43 HTTP/content/hash checks pass. All three balanced
+product modules exactly equal local public files (9 cards / 11 images / 18 index links each).
+All 27 localized card destinations are 200; CSS normalized-LF and all 11 image hashes match;
+/api/v1/health is 200/status ok. Evidence: production-checks.json and check-production.ps1.
+Live desktop browser has nine cards, eleven loaded images and working native disclosure;
+390px mobile has nine cards, eleven loaded images and no page/product-text overflow. Console
+warnings/errors remain zero. Initial asynchronous images were allowed to finish before the
+final loaded-image check and production-mobile.jpg. The selected section is visible in
+production-desktop.jpg. Browser viewport override was reset after testing.

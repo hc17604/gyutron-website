@@ -30,8 +30,8 @@ Read this block first; use the dated entries below only for task-relevant histor
   wide paired Fixed Readers / PDA / Robot Workcells / wide paired Edge Controllers. Neutral media,
   compact white captions, square corners and purple links replace the earlier diagonal design.
   Eleven slot-owned catalog images preserve hardware accuracy and comfortable silhouette clearances.
-  Existing whole-card hover and reduced-motion support are retained. Local verification passed;
-  production release is being completed. Preview: `http://127.0.0.1:8788/#products`.
+  Existing whole-card hover and reduced-motion support are retained. Released `034aca1`; GitHub CI
+  `39134283453` and production browser/content/hash checks pass. Preview: `http://127.0.0.1:8788/#products`.
 - **Existing About visual state:** the homepage About section is now a four-tab, full-width image story
   (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a compact dark
   control rail, no gaps to its neighboring dark modules, and a background that remains viewport-fixed on
@@ -65,7 +65,7 @@ Read this block first; use the dated entries below only for task-relevant histor
 
 ## 🤝 CODEX HANDOFF — current state (2026-10-18)
 
-> **2026-10-18 (Codex) — Approved nine-family compact industrial product mosaic implemented.**
+> **2026-10-18 (Codex) — Approved nine-family compact industrial product mosaic published and verified.**
 > User selected attachment `codex-clipboard-6a43d565-42d8-443b-a168-f34946f6d83e.png`
 > (local design target `05-staggered-mosaic-controllers.png`). Supersedes the six-card diagonal layout.
 > Prior explicit publication authorization remains in scope. Baseline HEAD/origin main: `e29ed30`.
@@ -95,8 +95,17 @@ Read this block first; use the dated entries below only for task-relevant histor
 > Selectively synced public/{index.html,de/index.html,ja/index.html,home-sections.css} plus four new
 > public/home-products WebPs. All 131 public-only brand files preserved. No Shop/backend/header/
 > catalog-source changes; unrelated untracked artifacts/content-audit-20260808/ preserved and unstaged.
-> Next: push authorized release, verify CI and live three-locale product markup, CSS/image hashes,
-> health and browser; append deployment evidence. Rollback only task-owned files and selectively sync.
+> Release: `034aca11bfa97c7794012d707c05fdffa4fd5d34` pushed to main. GitHub verify run
+> `39134283453` completed successfully. At 2026-10-18 22:06 Singapore, 43/43 production checks pass:
+> three homepages return 200 and their exact balanced hx-products markup equals public/; each has
+> nine unique cards, eleven image tags and eighteen catalog entries. All 27 localized card URLs
+> return 200. LF-normalized CSS SHA256 and all eleven binary WebP hashes match. Health200/statusok.
+> Evidence: production-checks.json and reproducible check-production.ps1 in the task artifact folder.
+> Live browser confirms nine cards/eleven loaded images, catalog keyboard expansion and zero console
+> errors. At 390px, no page/product-text overflow. Initial asynchronous image loads were allowed to
+> finish before the final mobile screenshot/loaded-image check. production-desktop.jpg and
+> production-mobile.jpg capture the release. Existing fixed contact rail phone overlap remains out
+> of scope. Rollback only task-owned source/public files, rebuild and selectively sync.
 
 > **2026-10-18 (Codex) — Homepage product mosaic published and verified.**
 > Replaced the long featured-capabilities copy/three panels with six product-family category cards.
