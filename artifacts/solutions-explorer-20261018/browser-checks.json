@@ -1,0 +1,38 @@
+{
+  "desktopViewports": [
+    1920,
+    1440,
+    1280,
+    1024
+  ],
+  "compactViewports": [
+    900,
+    768,
+    430,
+    390,
+    360,
+    320
+  ],
+  "locales": [
+    "en",
+    "de",
+    "ja"
+  ],
+  "desktopAllElevenScenesLoaded": true,
+  "allElevenMobileSelectionsShowOneEntry": true,
+  "desktopArrowHomeKeysAndModeArrowTested": true,
+  "directIndustriesHashTested": true,
+  "horizontalOverflow": false,
+  "consoleWarnings": 0,
+  "consoleErrors": 0,
+  "nativeJavaScriptDisabledTestPerformed": false,
+  "noJsFallback": "Source inspection: both groups and all11native details/CTA destinations remain in unenhanced HTML",
+  "reducedMotion": "Animation only exists inside prefers-reduced-motion:no-preference; OS preference was not emulated",
+  "selectedReference": "selected-reference.png",
+  "desktopCapture": "desktop-final.jpg",
+  "mobileCaptures": [
+    "mobile-en-390.jpg",
+    "mobile-de-320.jpg",
+    "mobile-ja-320.jpg"
+  ]
+}

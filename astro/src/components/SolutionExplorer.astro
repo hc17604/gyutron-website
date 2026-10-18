@@ -1,99 +1,129 @@
 ---
-// Interactive "by application / by industry" solution explorer (homepage).
-// Reformatted away from the Cognex left-list/right-detail layout: the mode
-// toggle and the item labels sit as horizontal rows on TOP; the active item
-// then shows as image (lower-left) + a short copy block (lower-right).
-// Purple/hard-edged brand, real imagery, honest copy, vanilla inline JS.
 import { t, localizeUrl, type Locale } from '../i18n';
-interface Props { locale: Locale }
+import { HOME_SOLUTION_GROUPS } from '../data/homeSolutions';
+interface Props { locale: Locale; }
 const { locale } = Astro.props;
-
-type Item = { t: string; d: string; img: string; href: string };
-
-const apps: Item[] = [
-  { t: 'home.exp.app1.t', d: 'home.exp.app1.d', img: '/home-assembly-inspection-verification.png?v=58ebc4dc', href: '/automated-vision-inspection.html' },
-  { t: 'home.exp.app2.t', d: 'home.exp.app2.d', img: '/product-hero-surface-inspection-matrix.png', href: '/automated-vision-inspection.html' },
-  { t: 'home.exp.app3.t', d: 'home.exp.app3.d', img: '/product-hero-code-reading-cameras-matrix.png', href: '/identification-traceability.html' },
-  { t: 'home.exp.app4.t', d: 'home.exp.app4.d', img: '/product-hero-dimensional-gauges-matrix.png',  href: '/measurement-3d-profiling.html' },
-  { t: 'home.exp.app5.t', d: 'home.exp.app5.d', img: '/product-hero-robot-workcells-stage.png',      href: '/vision-guided-robotics.html' },
-  { t: 'home.exp.app6.t', d: 'home.exp.app6.d', img: '/home-smart-camera-platform-line.png',         href: '/warehouse-logistics.html' },
-];
-
-const inds: Item[] = [
-  { t: 'home.exp.ind1.t', d: 'home.exp.ind1.d', img: '/hero-industry-electronics.jpg',          href: '/electronics-semiconductor.html' },
-  { t: 'home.exp.ind2.t', d: 'home.exp.ind2.d', img: '/hero-industry-semiconductor.jpg',        href: '/electronics-semiconductor.html' },
-  { t: 'home.exp.ind3.t', d: 'home.exp.ind3.d', img: '/hero-industry-automotive-ev.jpg',        href: '#solutions' },
-  { t: 'home.exp.ind4.t', d: 'home.exp.ind4.d', img: '/hero-industry-logistics.jpg',           href: '/warehouse-logistics.html' },
-  { t: 'home.exp.ind5.t', d: 'home.exp.ind5.d', img: '/product-hero-robot-workcells-stage.png', href: '#solutions' },
-];
-
-const groups = [
-  { key: 'app', labelKey: 'home.exp.tab.app', items: apps },
-  { key: 'ind', labelKey: 'home.exp.tab.ind', items: inds },
-];
-const resolve = (href: string) => (href.charAt(0) === '#' ? href : localizeUrl(locale, href));
 ---
-<section class="hx-explore" id="explore" aria-label={t(locale, 'home.exp.eyebrow')}>
-    <div class="hx-explore__panel-wrap" data-reveal>
-      <div class="hx-explore__tabs" role="tablist" aria-label={t(locale, 'home.exp.eyebrow')}>
-        {groups.map((g, gi) => (
-          <button type="button" class={`hx-explore__tab${gi === 0 ? ' is-active' : ''}`} role="tab" aria-selected={gi === 0 ? 'true' : 'false'} data-tab={g.key}>
-            {t(locale, g.labelKey)}
-          </button>
-        ))}
-      </div>
-
-      <div class="hx-explore__chips">
-        {groups.map((g, gi) => (
-          <div class={`hx-explore__chiprow${gi === 0 ? ' is-active' : ''}`} data-list={g.key} role="tablist" aria-label={t(locale, g.labelKey)}>
-            {g.items.map((it, i) => (
-              <button type="button" class={`hx-explore__chip${gi === 0 && i === 0 ? ' is-active' : ''}`} role="tab" aria-selected={gi === 0 && i === 0 ? 'true' : 'false'} data-tab={g.key} data-i={String(i)}>
-                <span>{t(locale, it.t)}</span>
-              </button>
-            ))}
-          </div>
-        ))}
-      </div>
-
-      <div class="hx-explore__stage">
-        {groups.map((g) => g.items.map((it, i) => (
-          <article class={`hx-explore__card${g.key === 'app' && i === 0 ? ' is-active' : ''}`} data-tab={g.key} data-i={String(i)}>
-            <div class="hx-explore__media"><img src={it.img} alt="" loading="lazy" /></div>
-            <div class="hx-explore__copy">
-              <h3>{t(locale, it.t)}</h3>
-              <p>{t(locale, it.d)}</p>
-              <a class="link-arrow" href={resolve(it.href)}>{t(locale, 'home.exp.cta')}</a>
-            </div>
-          </article>
-        )))}
-      </div>
+<section class="hx-explore" id="explore" aria-labelledby="explore-heading">
+  <div class="hx-explore__head">
+    <div>
+      <span class="hx-explore__brand" aria-hidden="true">GYUTRON</span>
+      <h2 id="explore-heading">{t(locale, 'home.exp.title')}</h2>
     </div>
-
+    <div class="hx-explore__tabs" aria-label={t(locale, 'home.exp.eyebrow')}>
+      {HOME_SOLUTION_GROUPS.map((group, index) => (
+        <a class:list={['hx-explore__tab', { 'is-active': index === 0 }]} id={`hx-mode-${group.key}`} href={`#hx-explore-${group.key}`} data-mode={group.key}>
+          {t(locale, group.label)}
+        </a>
+      ))}
+    </div>
+  </div>
+  {HOME_SOLUTION_GROUPS.map((group) => (
+    <section class="hx-explore__group" id={`hx-explore-${group.key}`} data-group={group.key} aria-labelledby={`hx-mode-${group.key}`}>
+      <div class="hx-explore__picker">
+        <select aria-label={t(locale, group.label)} data-picker={group.key}>
+          {group.items.map((item) => <option value={item.key}>{t(locale, item.nav || `home.exp.${item.key}.t`)}</option>)}
+        </select>
+      </div>
+      <div class="hx-explore__choices">
+        {group.items.map((item, index) => (
+          <details class="hx-solution" name={`hx-solutions-${group.key}`} data-solution={item.key} open={index === 0}>
+            <summary aria-controls={`hx-solution-body-${item.key}`}>
+              <span class="hx-solution__name">{t(locale, `home.exp.${item.key}.t`)}</span>
+              <span class="fa-solid fa-plus hx-solution__plus" aria-hidden="true"></span>
+              <span class="fa-solid fa-minus hx-solution__minus" aria-hidden="true"></span>
+            </summary>
+            <div class="hx-solution__body" id={`hx-solution-body-${item.key}`}>
+              <div class="hx-solution__copy">
+                <h3 class="hx-solution__mobile-title">{t(locale, `home.exp.${item.key}.t`)}</h3>
+                <p>{t(locale, `home.exp.${item.key}.d`)}</p>
+                <a class="hx-solution__cta" href={localizeUrl(locale, item.href)}>{t(locale, 'home.exp.cta')}<span class="fa-solid fa-arrow-right" aria-hidden="true"></span></a>
+              </div>
+              <figure class="hx-solution__media">
+                <img src={`/home-solutions/${item.image}.webp`} alt={t(locale, `home.exp.${item.key}.alt`)} width="1200" height="800" loading="lazy" decoding="async" />
+                <figcaption>{t(locale, 'home.exp.media.caption')}</figcaption>
+              </figure>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+  ))}
   <script is:inline>
     (() => {
       const root = document.getElementById('explore');
       if (!root) return;
-      const tabs = Array.from(root.querySelectorAll('.hx-explore__tab'));
-      const rows = Array.from(root.querySelectorAll('.hx-explore__chiprow'));
-      const chips = Array.from(root.querySelectorAll('.hx-explore__chip'));
-      const cards = Array.from(root.querySelectorAll('.hx-explore__card'));
-      const show = (tab, i) => {
-        const si = String(i);
-        rows.forEach((r) => r.classList.toggle('is-active', r.getAttribute('data-list') === tab));
-        tabs.forEach((t) => {
-          const on = t.getAttribute('data-tab') === tab;
-          t.classList.toggle('is-active', on);
-          t.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        chips.forEach((c) => {
-          const on = c.getAttribute('data-tab') === tab && c.getAttribute('data-i') === si;
-          c.classList.toggle('is-active', on);
-          c.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        cards.forEach((c) => c.classList.toggle('is-active', c.getAttribute('data-tab') === tab && c.getAttribute('data-i') === si));
+      const modes = Array.from(root.querySelectorAll('[data-mode]'));
+      const groups = Array.from(root.querySelectorAll('[data-group]'));
+      const mobile = window.matchMedia('(max-width: 900px)');
+      let current = location.hash === '#hx-explore-ind' ? 'ind' : 'app';
+      const select = (group, key) => {
+        const details = Array.from(group.querySelectorAll('[data-solution]'));
+        const chosen = details.find((entry) => entry.dataset.solution === key) || details[0];
+        details.forEach((entry) => { if (entry !== chosen) entry.open = false; });
+        chosen.open = true;
+        group.querySelector('select').value = chosen.dataset.solution;
       };
-      tabs.forEach((t) => t.addEventListener('click', () => show(t.getAttribute('data-tab'), 0)));
-      chips.forEach((c) => c.addEventListener('click', () => show(c.getAttribute('data-tab'), parseInt(c.getAttribute('data-i'), 10))));
+      const show = (key, updateAddress = false) => {
+        current = key;
+        if (updateAddress) history.replaceState(history.state, '', `#hx-explore-${key}`);
+        groups.forEach((group) => { group.hidden = group.dataset.group !== key; });
+        modes.forEach((mode) => {
+          const active = mode.dataset.mode === key;
+          mode.classList.toggle('is-active', active);
+          mode.setAttribute('aria-selected', String(active));
+          mode.tabIndex = active ? 0 : -1;
+        });
+      };
+      root.querySelector('.hx-explore__tabs').setAttribute('role', 'tablist');
+      modes.forEach((mode, index) => {
+        mode.setAttribute('role', 'tab');
+        mode.setAttribute('aria-controls', `hx-explore-${mode.dataset.mode}`);
+        mode.addEventListener('click', (event) => { event.preventDefault(); show(mode.dataset.mode, true); });
+        mode.addEventListener('keydown', (event) => {
+          let next = index;
+          if (event.key === 'ArrowRight') next = (index + 1) % modes.length;
+          else if (event.key === 'ArrowLeft') next = (index + modes.length - 1) % modes.length;
+          else if (event.key === 'Home') next = 0;
+          else if (event.key === 'End') next = modes.length - 1;
+          else if (event.key === ' ' || event.key === 'Enter') { event.preventDefault(); show(mode.dataset.mode, true); return; }
+          else return;
+          event.preventDefault(); show(modes[next].dataset.mode, true); modes[next].focus();
+        });
+      });
+      groups.forEach((group) => {
+        group.setAttribute('role', 'tabpanel');
+        const entries = Array.from(group.querySelectorAll('[data-solution]'));
+        const picker = group.querySelector('select');
+        picker.addEventListener('change', () => select(group, picker.value));
+        entries.forEach((entry, index) => {
+          const summary = entry.querySelector('summary');
+          summary.addEventListener('click', (event) => {
+            event.preventDefault(); select(group, entry.dataset.solution);
+          });
+          summary.addEventListener('keydown', (event) => {
+            let next = index;
+            if (event.key === 'ArrowDown') next = (index + 1) % entries.length;
+            else if (event.key === 'ArrowUp') next = (index + entries.length - 1) % entries.length;
+            else if (event.key === 'Home') next = 0;
+            else if (event.key === 'End') next = entries.length - 1;
+            else return;
+            event.preventDefault(); select(group, entries[next].dataset.solution); entries[next].querySelector('summary').focus();
+          });
+        });
+      });
+      root.dataset.ready = 'true';
+      show(current);
+      window.addEventListener('hashchange', () => {
+        if (location.hash === '#hx-explore-app') show('app');
+        else if (location.hash === '#hx-explore-ind') show('ind');
+      });
+      mobile.addEventListener('change', () => {
+        const focused = document.activeElement;
+        const group = groups.find((entry) => entry.dataset.group === current);
+        if (mobile.matches && focused?.tagName === 'SUMMARY' && root.contains(focused)) group.querySelector('select').focus({ preventScroll: true });
+        else if (!mobile.matches && focused?.tagName === 'SELECT' && root.contains(focused)) group.querySelector('details[open] summary').focus({ preventScroll: true });
+      });
     })();
   </script>
 </section>

@@ -1,0 +1,53 @@
+{
+  "asset": "sorting",
+  "generated_with": "built-in image_gen__imagegen",
+  "mode": "reference-guided generation",
+  "user_direction": "Standalone illustrative sorting system using the selected mock's matte technical CG style. Camera upstream of a realistic downstream side pusher, two supported exit routes, no UI, text, logos, claims or factory photo.",
+  "input_reference_path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+  "generated_source_path": "D:/Codex/.codex/generated_images/01a14ee8-edf3-7041-b2c4-3e985b8e92c6/exec-3b16ceac-9b1e-4c86-b9cf-cfff360d61e5.png",
+  "raw_source_path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/sorting.png",
+  "webp_path": "D:/AI PRODUT/GYUTRON web/website/gyutron-website-repo/astro/public/home-solutions/sorting.webp",
+  "prompt": "Use case: stylized-concept.\nAsset type: standalone engineering illustration for an industrial website solution explorer. Landscape 3:2 canvas, requested 1200 x 800.\nReference image: the attached selected website mock is only a style reference for its right-side matte engineering rig. Create a NEW independent sorting/classification conveyor system asset in that exact restrained silver/gray/black CG model language, not a website screenshot. Do not reproduce any reference text or branding.\nSubject and mechanically intelligible layout: a short silver extrusion main conveyor with a black belt runs left to right. Show three spaced neutral industrial components physically resting on the belt. At the LEFT upstream inspection station, one overhead black industrial camera points vertically down through the central aperture of one open white ring light toward a passing part. At the RIGHT downstream routing station, AFTER the camera, mount one realistic horizontal pneumatic SIDE PUSHER on the FAR side of the belt. Show its cylinder, supported linear slide and flat pusher paddle, directed toward the viewer across the main belt. At this same routing station, a SHORT PERPENDICULAR EXIT CHUTE or second belt branches from the NEAR side of the main conveyor toward the foreground. It is level with the main belt and has support legs and short side guide rails. Its mouth aligns exactly opposite the pusher. Show one part fully supported on this side exit chute. Keep the main conveyor continuing past this junction to the right as the straight-through exit. There must be exactly two physically clear exits: straight right, and perpendicular toward foreground. The pusher must be outside the belt except its paddle entering the diversion zone. All objects rest on their belt, fixture or chute: no floating parts. Make the two routes understandable from hardware alone.\nMount one compact black finned controller to the outside of the frame, with plausible cable runs linking the camera and actuator. No other sensors, laser beams or light rays.\nStyle: full orthographic three-quarter-view industrial CG engineering model, deliberately illustrative/rendered rather than a real factory photo. Matte silver extrusions and metal, black belts, gray neutral parts, black camera/controller. Tiny restrained purple #4b2e83 hardware seams only. Soft neutral studio illumination and restrained contact shadow beneath feet.\nBackground: plain graphite #1c2026 filling the full canvas, no scenery, no horizon, no gradient, no bokeh, no glow or holograms.\nComposition: show the ENTIRE apparatus including all belt ends, side chute, feet, pusher cylinder, camera and cables. Center it with comfortable at least 6% clear silhouette margin on EVERY edge. Keep the full canvas and complete apparatus visible.\nAbsolutely NO text, letters, numbers, logos, printed port labels, metrics, claims, callouts, leader lines, arrows, UI, play button, watermarks, decorative grids or additional parts.",
+  "revision_prompts": [],
+  "technical_export": {
+    "width": 1200,
+    "height": 800,
+    "mode": "RGB",
+    "format": "WebP",
+    "quality": 87,
+    "method": 6,
+    "operation": "Full canvas proportional downscale from 1536x1024 using Lanczos; no crop, padding, compositing or subject editing."
+  },
+  "qa": {
+    "visual_inspection": true,
+    "full_apparatus_visible": true,
+    "approximate_clearance": "Approximately 5-7% at closest silhouette edges; full cable loop, belt ends and support feet remain comfortably visible.",
+    "no_readable_text_logos_or_ui": true,
+    "camera_upstream_of_diverter": true,
+    "two_clear_supported_exits": true,
+    "parts_supported": true,
+    "scene": "Left upstream overhead camera/ring-light gantry; downstream mechanical side pusher opposite a supported perpendicular exit conveyor; main belt continues to the right.",
+    "style": "Matte illustrative silver/gray/black CG engineering model, restrained purple seams, graphite studio background.",
+    "repairs": "None; first render has coherent apparatus geometry and no clipped component."
+  },
+  "created_at": "2026-10-18T15:29:13.207996+00:00",
+  "raw_source": {
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "bytes": 1717704,
+    "sha256": "336de3a9187d40f1f45f44f92df89b406abf2b03b1156120b92fe00970ea2611"
+  },
+  "webp": {
+    "dimensions": [
+      1200,
+      800
+    ],
+    "mode": "RGB",
+    "bytes": 56672,
+    "sha256": "d9b6dbeeabae37cee5d237d9534acc9de910c11f5147ec350e6bad9961c19835"
+  },
+  "input_reference_sha256": "9514d3121bf38eccfaa6aab136bd8f96ae5025eb9e44299781faf04e84df4ec1"
+}

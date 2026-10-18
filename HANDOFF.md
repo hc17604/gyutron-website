@@ -32,6 +32,10 @@ Read this block first; use the dated entries below only for task-relevant histor
   Eleven slot-owned catalog images preserve hardware accuracy and comfortable silhouette clearances.
   Existing whole-card hover and reduced-motion support are retained. Released `034aca1`; GitHub CI
   `39134283453` and production browser/content/hash checks pass. Preview: `http://127.0.0.1:8788/#products`.
+- **Solution explorer (2026-10-18):** selected option3 uses gray/white layered accordion choices and
+  charcoal isolated engineering models. Six applications/five industries; compact native selector with one
+  model/copy panel at900px and below. Eleven generated illustrations replace faux factory photography.
+  Implementation/visual/functional gates passed; authorized production release is being completed.
 - **Existing About visual state:** the homepage About section is now a four-tab, full-width image story
   (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a compact dark
   control rail, no gaps to its neighboring dark modules, and a background that remains viewport-fixed on
@@ -64,6 +68,40 @@ Read this block first; use the dated entries below only for task-relevant histor
 ---
 
 ## 🤝 CODEX HANDOFF — current state (2026-10-18)
+
+> **2026-10-18 (Codex) — Selected solution explorer option3 implemented; ready for authorized release.**
+> User explicitly selected option3, requested fewer separator/model leader lines and background-tone
+> layering, authorized direct publication and compact phone adaptation. Revised target is
+> artifacts/solutions-explorer-20261018/selected-reference.png. Baseline HEAD/origin main:c4782a0.
+> Scope: SolutionExplorer.astro, new data/homeSolutions.ts, scoped home-sections.css, home.exp.* in
+> en/de/ja,11slot-owned home-solutions WebPs/provenance, matching built homepages/CSS and QA.
+> Desktop:36percent gray accordion rail with white active content,64percent charcoal engineering model.
+> Removed divider wall, outer border/shadow, fake factory scenes and callout lines. At900px and below,
+> native44px selector replaces closed choices; one integrated model/copy panel is shown, not six rows.
+>11distinct1200x800RGB WebPs total607,364bytes. Built-in imagegen prompts/edits/refs/raw+output hashes
+> are in asset-workbench/home-solutions/*.json; raw PNGs persist under project design-drafts outside Git.
+> Images explicitly captioned as illustrative configurations, not installation photos or validated CAD.
+> Controls: native exclusive details, linked mode tabs with keyboard/roving focus, synchronized native
+> mobile selector, remembered choice per mode, valid hash initialization/update, reduced-motion-safe fade.
+> Before enhancement both groups/native details and all11destinations remain available. All33localized
+> CTA paths/fragments are real; replaced two generic homepage anchors and corrected sorting destination.
+> Short descriptions remove unsupported full-speed/precision promises; localized alt/caption included.
+> Existing Font Awesome disclosure icons are essential controls; CTA arrows are user-selected visual's
+> narrow exception to prior CTA-icon rule. No new dependencies, custom icons or global navigation edits.
+> Verification:132-page build and verify:all hard gates PASS; agent:check/deploy:check/diff checks PASS.
+> Existing advisory reports:3multi-H1 homepages,615JS nav triggers,42pages/143suspect i18n tokens.
+> Browser EN1920/1440/1280/1024/900/768/430/390/360/320,DE320,JA320: no horizontal overflow;
+> all11desktop scenes load; all11compact selections show one item. Mode/summary keyboard and direct
+> Industries hash work; console0warn/error. Native1280module547px; EN390module519px. Design QA passed
+> full/reference and focused comparisons after spacing, hash and JP orphan fixes. Evidence design-qa.md,
+> browser-checks.json/local-checks.json and desktop/mobile captures in the task artifact folder.
+> Independent source/HTTP checks verify11unique image hashes/provenance and33CTA files/fragments200.
+> Preserved: exact9-card product markup in all3locales, otherhome modules/header/footer/catalog source,
+> Shop/backend/routing; unrelated untracked artifacts/content-audit-20260808/ unstaged. All131public-only
+> brand files preserved. Selectively synced public/{index.html,de/index.html,ja/index.html,home-sections.css}
+> plus public/home-solutions/*.webp. No rollout claimed yet. Next: authorized push, CI and live module/hash/
+> browser checks. Limits: no physical touchscreen/screenreader/OS reduced-motion emulation; no-JS fallback
+> inspected from source/native semantics. Rollback only task-owned source/public files, rebuild/selectively sync.
 
 > **2026-10-18 (Codex) — Approved nine-family compact industrial product mosaic published and verified.**
 > User selected attachment `codex-clipboard-6a43d565-42d8-443b-a168-f34946f6d83e.png`

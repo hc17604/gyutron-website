@@ -1,0 +1,47 @@
+{
+  "asset": "home-solutions/automotive.webp",
+  "mode": "built-in image_gen",
+  "intent": "generate, then one framing repair",
+  "reference": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+    "role": "visual style reference inspected; graphite neutral engineering CGI matched"
+  },
+  "prompts": {
+    "generation": "Use case: stylized-concept.\nAsset type: one standalone automotive EV battery module assembly-presence inspection apparatus render for an engineering website, landscape 3:2 canvas.\nPrimary request: credible compact stationary gantry inspection station, with an open-top aluminum BATTERY MODULE MOCK-UP on a flat locating pallet. The module contains an orderly rectangular bank of sealed prismatic cells: only their solid metallic top lids and external terminal/connector/busbar features are visible. Show a believable overall rectangular metal housing and a few restrained insulated busbar/connector features on top, no opened cells, no exploded views, no transparent parts, no internal battery anatomy. This is a static de-energized assembly mock-up for visually checking component arrangement and presence.\nThe pallet is rigidly located by silver stops and pins on a compact matte silver aluminum extrusion machine table. A short overhead aluminum portal carries ONE matte black industrial camera with a small restrained purple seam, lens pointing vertically down at the unobstructed visible top of the battery module. A physically open-center white diffuse aperture/ring light sits around the downward lens, mechanically mounted and with a clear optical opening. An outside black finned edge controller stands on a supported small base to the right with safely routed black cables along the rigid frame. No dangling probes or active electrical test leads. Include complete portal, table, little leveling feet and controller.\nStyle/medium: precise understated engineering 3D CG, orthographic 30-degree elevated three-quarter view, credible machined parts, extrusion brackets and fasteners. Neutral matte white/silver structure, black hardware, tiny restrained deep-purple seams only. Serious industrial catalog solid-model render, not a toy and not a factory photograph.\nScene/backdrop: plain consistent graphite background and ground intended #1c2026, soft contact shadows, neutral studio illumination, no visible room, factory, bokeh or cinematic environment.\nComposition/framing: entire isolated apparatus centered on landscape 3:2 canvas, whole silhouette including highest cable loop and outside controller occupies at most 80 percent of canvas width and height, at least 6 percent clear margin on every side. All feet/legs and workpiece remain fully visible and nothing is cropped. Battery mock-up clearly differs from an ordinary electronics enclosure.\nText: none.\nConstraints: NO text, NO brand/model names, NO logos, NO labels, NO leader lines, NO UI, NO arrows, NO metrics, NO precision or performance claims, NO glowing optical beams or cones, NO welding sparks, NO arcs, NO active electricity, NO smoke, NO exposed cutaway cell internals, NO exploded cells, NO workers, NO purple lighting wash. Output only one standalone complete apparatus.",
+    "framingEdit": "Framing-only edit: keep this same complete stationary battery-module inspection gantry and workpiece, all geometry, camera/ring light, tray, controller, materials, neutral graphite lighting, and tiny purple detail. The current top cable loop and bottom front foot sit too close to the canvas edges. Pull the orthographic view back enough that the ENTIRE complete model including that top cable loop and bottom foot fits in the central seventy-five percent of the 3:2 canvas height and central seventy-five percent of its width. At least 8 percent clear graphite margin on every side, centered. Preserve whole silhouette and all parts; no cropping. Background/ground intended#1c2026, soft contact shadows. Do not change or add objects. No text, logos, labels, arrows, UI, leader lines, optical beams, sparks or performance claims."
+  },
+  "generationSource": "D:/Codex/.codex/generated_images/01a14f35-85d4-7741-92b3-f11bc78a77af/exec-3d571727-7b6d-4044-9206-a0d354d2b14e.png",
+  "selectedSource": "D:/Codex/.codex/generated_images/01a14f35-85d4-7741-92b3-f11bc78a77af/exec-a4c38db0-4c35-4309-b90d-32ef773aa84f.png",
+  "rawPath": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/automotive.png",
+  "outputPath": "D:/AI PRODUT/GYUTRON web/website/gyutron-website-repo/astro/public/home-solutions/automotive.webp",
+  "processing": {
+    "mode": "technical resize only",
+    "method": "Pillow LANCZOS full canvas resize to 1200x800; RGB WebP quality87 method6",
+    "crop": false,
+    "composite": false
+  },
+  "inspection": {
+    "status": "passed",
+    "notes": "Complete stationary aluminum gantry including cable loop, all feet and supported outside controller. Open-top battery module mock-up shows ordered sealed prismatic-cell tops and external insulated busbar/connector features; no cell internals or active electrical test. Downward camera and open ring/diffuse light have clear top viewing path. No text/logos/UI/labels/optical beams/sparks/performance claims. Graphite background and clear perimeter margins."
+  },
+  "raw": {
+    "sha256": "83680a304906a0a11a5a81c6d338a41e7f52e790da81005611b49b8eb58d46ae",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "bytes": 1784229,
+    "format": "PNG",
+    "mode": "RGB"
+  },
+  "output": {
+    "sha256": "0e76e8e172de544da24bfbc23906ef0a49c559e59279af672cfbf6e53bd141e5",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bytes": 55098,
+    "format": "WEBP",
+    "mode": "RGB"
+  }
+}

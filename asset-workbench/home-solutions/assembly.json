@@ -1,0 +1,58 @@
+{
+  "asset": "assembly",
+  "generated_with": "built-in image_gen__imagegen",
+  "mode": "reference-guided generation, followed by two targeted built-in image edits",
+  "user_direction": "Recreate only the right engineering rig in the selected approved mock as a standalone illustrative system asset, with no UI, text, logos, labels, callouts, metrics or specific model/precision claims.",
+  "input_reference_path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+  "generated_source_path": "D:/Codex/.codex/generated_images/01a14ee8-edf3-7041-b2c4-3e985b8e92c6/exec-4b2aa50d-1c51-44af-8190-0a803306dca8.png",
+  "raw_source_path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/assembly.png",
+  "webp_path": "D:/AI PRODUT/GYUTRON web/website/gyutron-website-repo/astro/public/home-solutions/assembly.webp",
+  "prompt": "Use case: stylized-concept.\nAsset type: a standalone 3:2 landscape engineering illustration for a website solution explorer media panel. Requested canvas 1200 x 800.\nReference input: the attached selected website mock is a visual reference ONLY for the engineering rig on its right. Recreate that rig as a new independent full-canvas asset. Do not reproduce or crop the web page; remove all UI and all lettering.\nPrimary subject: one complete orthographic three-quarter-view assembly inspection gantry. It has a short twin-belt conveyor on a silver aluminum frame with feet; one single assembly housing positively located in a fixture at the conveyor center; one black industrial camera mounted on the upper cross-member and aimed vertically down THROUGH the unobstructed central opening of an open white annular ring light toward the housing. Make the ring light's open central aperture physically clear, not a solid luminous disc. Put one black finned edge controller on the OUTSIDE of the right upright, with mechanically plausible black cable routing back to camera and controller. Keep the whole conveyor, frame, feet, camera, cable loops, controller, and light within frame.\nStyle: restrained CG engineering model / product visualization, visibly an illustrative model, not a photograph of a real factory. Matte silver, gray and black materials, only tiny GYUTRON purple seams (#4b2e83) on hardware. Fine plausible machined and extrusion detail, no invented specific models or precision claims.\nBackground: plain consistent graphite #1c2026 filling the canvas, no horizon, no gradient, no vignette; only a soft studio contact shadow below the apparatus. Soft neutral studio illumination on the objects.\nComposition: center the complete standalone apparatus in a 3:2 landscape frame. Comfortable approximately 6 percent silhouette clearance at EVERY canvas edge including top cable loop, side controller, left conveyor end and bottom feet. Preserve full silhouette; do not crop or zoom in.\nAbsolutely no text, logo, brand mark, letter, number, labels, callout, leader line, UI, play button, metrics, decorative grid, glow, bokeh, extra factory scenery, extra parts, people or transparent background.",
+  "revision_prompts": [
+    "Edit this existing standalone engineering render only. Keep the exact same apparatus, materials, component arrangement, geometry, orthographic three-quarter view, palette, single assembly housing, downward camera, open ring light, conveyor, right-side edge controller and realistic cable routing. Two precise corrections: (1) reframe the COMPLETE apparatus slightly smaller on a 3:2 landscape canvas so that every silhouette edge has at least 6% clear background margin, especially the TOP cable loop which currently nearly touches the top. Keep the apparatus centered and all feet visible. (2) remove all tiny white port printing/symbols/numbers/lettering from the controller; keep real physical ports, screws and hardware. Absolutely no text, logos, labels or UI anywhere. Background should be plain consistent solid graphite #1c2026 with only a subtle soft contact shadow directly beneath the feet; no gradient, no vignette, no decorative effects. Do not add or remove any physical component. Requested output 1200x800.",
+    "Make one tightly localized correction to this exact engineering render: erase ALL white printed markings and tiny icons on the black front panel of the edge controller mounted on the outside right upright. The controller front should be plain matte black with real open connector sockets and their thin metal rims and corner screws only. No printed symbols, text, numbers, port outlines, label strokes, logo or lettering. Preserve every other pixel's composition and engineering arrangement as closely as possible: same complete rig, same camera, lens, open ring light, assembly fixture, cables, colors, margins, studio model lighting, graphite background. Do not crop. Do not add anything."
+  ],
+  "technical_export": {
+    "width": 1200,
+    "height": 800,
+    "mode": "RGB",
+    "format": "WebP",
+    "quality": 87,
+    "method": 6,
+    "operation": "Full canvas proportional downscale from 1536x1024 using Lanczos; no crop, compositing or subject editing."
+  },
+  "qa": {
+    "visual_inspection": true,
+    "full_apparatus_visible": true,
+    "approximate_clearance": {
+      "top": "7%",
+      "bottom": "9%",
+      "left": "13%",
+      "right": "14%"
+    },
+    "no_readable_text_logos_or_ui": true,
+    "scene": "Complete silver/black inspection gantry with single located assembly housing, downward camera and ring light, externally mounted right controller and routed cables.",
+    "style": "Illustrative CG engineering render with restrained purple hardware seams.",
+    "background": "Graphite studio background with subtle contact shadow; no added factory or UI."
+  },
+  "created_at": "2026-10-18T15:26:42.265668+00:00",
+  "raw_source": {
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "bytes": 1679763,
+    "sha256": "6220fb8854f7e65dc1a9c3708b3ce22527087fc48187a005f815f06805de65fc"
+  },
+  "webp": {
+    "dimensions": [
+      1200,
+      800
+    ],
+    "mode": "RGB",
+    "bytes": 46064,
+    "sha256": "fbeaabfade29b2bdbfcc61e2dc2646e5791ef9364539636c7ffe2f50b07038f8"
+  },
+  "input_reference_sha256": "9514d3121bf38eccfaa6aab136bd8f96ae5025eb9e44299781faf04e84df4ec1"
+}

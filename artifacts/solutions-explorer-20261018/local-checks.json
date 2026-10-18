@@ -1,0 +1,1197 @@
+{
+  "started_at": "2026-10-18T23:41:46.460916+08:00",
+  "baseline": "c4782a0",
+  "source_assets": {
+    "count": 11,
+    "total_bytes": 607364,
+    "unique_hashes": 11,
+    "all_passed": true,
+    "items": [
+      {
+        "name": "assembly.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\assembly.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 46064,
+        "sha256": "fbeaabfade29b2bdbfcc61e2dc2646e5791ef9364539636c7ffe2f50b07038f8",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\assembly.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\assembly.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      },
+      {
+        "name": "automotive.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\automotive.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 55098,
+        "sha256": "0e76e8e172de544da24bfbc23906ef0a49c559e59279af672cfbf6e53bd141e5",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\automotive.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\automotive.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      },
+      {
+        "name": "electronics.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\electronics.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 61960,
+        "sha256": "c113d0753e7f759fd4699fa72efb4bc06218dc84e0cd5ccc282276fdedb03c16",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\electronics.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\electronics.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      },
+      {
+        "name": "identification.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\identification.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 46298,
+        "sha256": "ac94bee9b510b440d291951c1de59fcb123800c7248ee4cafefc4a02f07e0e63",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\identification.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\identification.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      },
+      {
+        "name": "logistics.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\logistics.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 56600,
+        "sha256": "55738ff6213c5ad70ec24b38271d893b8726fc67bedc93dc2bbc96d8e8991b38",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\logistics.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\logistics.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      },
+      {
+        "name": "manufacturing.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\manufacturing.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 57982,
+        "sha256": "d50727d0e356fe4b70fadd52af3593b86d155f8128b43b549a9ff43995d99e7e",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\manufacturing.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\manufacturing.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      },
+      {
+        "name": "measurement.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\measurement.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 64988,
+        "sha256": "340bf80aceb3441b61eab718ca486e5506cfa664001d43024efd7ce421576772",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\measurement.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\measurement.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      },
+      {
+        "name": "robot-guidance.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\robot-guidance.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 51240,
+        "sha256": "c9cd455c0ebd63362f4401ad244f50759885b628b886d7c76c9c8d0a0d72dde2",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\robot-guidance.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\robot-guidance.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      },
+      {
+        "name": "semiconductor.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\semiconductor.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 58280,
+        "sha256": "a87241566abb853abb1a931a07fdf863c01687150f749eae71a786e872fe9c90",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\semiconductor.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\semiconductor.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      },
+      {
+        "name": "sorting.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\sorting.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 56672,
+        "sha256": "d9b6dbeeabae37cee5d237d9534acc9de910c11f5147ec350e6bad9961c19835",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\sorting.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\sorting.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      },
+      {
+        "name": "surface.webp",
+        "path": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\astro\\public\\home-solutions\\surface.webp",
+        "dimensions": [
+          1200,
+          800
+        ],
+        "mode": "RGB",
+        "bytes": 52182,
+        "sha256": "1ed9caf84c39b8318538e91bee9c80149a539e55b6ad43d86c132b6892194063",
+        "provenance": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\asset-workbench\\home-solutions\\surface.json",
+        "raw_path": "D:\\AI PRODUT\\GYUTRON web\\design-drafts\\2026-10-18-solution-explorer\\scene-sources\\surface.png",
+        "checks": {
+          "dimensions_1200x800": true,
+          "rgb": true,
+          "webp": true,
+          "provenance_output_path": true,
+          "provenance_output_hash": true,
+          "provenance_output_bytes": true,
+          "provenance_output_dimensions": true,
+          "raw_path_exists": true,
+          "provenance_raw_hash": true,
+          "provenance_raw_bytes": true,
+          "provenance_raw_dimensions": true
+        },
+        "passed": true
+      }
+    ]
+  },
+  "locales": [
+    {
+      "locale": "en",
+      "homepage": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\index.html",
+      "cta_count": 11,
+      "solution_image_count": 11,
+      "solution_image_sources": [
+        "/home-solutions/assembly.webp",
+        "/home-solutions/surface.webp",
+        "/home-solutions/identification.webp",
+        "/home-solutions/measurement.webp",
+        "/home-solutions/robot-guidance.webp",
+        "/home-solutions/sorting.webp",
+        "/home-solutions/electronics.webp",
+        "/home-solutions/semiconductor.webp",
+        "/home-solutions/automotive.webp",
+        "/home-solutions/logistics.webp",
+        "/home-solutions/manufacturing.webp"
+      ],
+      "product_card_count": 9,
+      "unique_product_categories": 9,
+      "product_module_exact_baseline_match": true,
+      "product_module_sha256": "62fbf87136c20ab1d4350c3f05c46076621c0c7c49fc634ab735e6a7357666c8",
+      "baseline_product_module_sha256": "62fbf87136c20ab1d4350c3f05c46076621c0c7c49fc634ab735e6a7357666c8"
+    },
+    {
+      "locale": "de",
+      "homepage": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\index.html",
+      "cta_count": 11,
+      "solution_image_count": 11,
+      "solution_image_sources": [
+        "/home-solutions/assembly.webp",
+        "/home-solutions/surface.webp",
+        "/home-solutions/identification.webp",
+        "/home-solutions/measurement.webp",
+        "/home-solutions/robot-guidance.webp",
+        "/home-solutions/sorting.webp",
+        "/home-solutions/electronics.webp",
+        "/home-solutions/semiconductor.webp",
+        "/home-solutions/automotive.webp",
+        "/home-solutions/logistics.webp",
+        "/home-solutions/manufacturing.webp"
+      ],
+      "product_card_count": 9,
+      "unique_product_categories": 9,
+      "product_module_exact_baseline_match": true,
+      "product_module_sha256": "a047451b1f80b5e0152a04135c62f8c8c57f97ccadd4223ee831b8a6b5f72bf8",
+      "baseline_product_module_sha256": "a047451b1f80b5e0152a04135c62f8c8c57f97ccadd4223ee831b8a6b5f72bf8"
+    },
+    {
+      "locale": "ja",
+      "homepage": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\index.html",
+      "cta_count": 11,
+      "solution_image_count": 11,
+      "solution_image_sources": [
+        "/home-solutions/assembly.webp",
+        "/home-solutions/surface.webp",
+        "/home-solutions/identification.webp",
+        "/home-solutions/measurement.webp",
+        "/home-solutions/robot-guidance.webp",
+        "/home-solutions/sorting.webp",
+        "/home-solutions/electronics.webp",
+        "/home-solutions/semiconductor.webp",
+        "/home-solutions/automotive.webp",
+        "/home-solutions/logistics.webp",
+        "/home-solutions/manufacturing.webp"
+      ],
+      "product_card_count": 9,
+      "unique_product_categories": 9,
+      "product_module_exact_baseline_match": true,
+      "product_module_sha256": "4e7fd35d0038167c421a6a21a8280db87d39ad2e850d97edd09d95c211a0875f",
+      "baseline_product_module_sha256": "4e7fd35d0038167c421a6a21a8280db87d39ad2e850d97edd09d95c211a0875f"
+    }
+  ],
+  "cta_links": [
+    {
+      "locale": "en",
+      "index": 1,
+      "href": "/automated-vision-inspection.html#capabilities",
+      "path": "/automated-vision-inspection.html",
+      "fragment": "capabilities",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "en",
+      "index": 2,
+      "href": "/automated-vision-inspection.html#capabilities",
+      "path": "/automated-vision-inspection.html",
+      "fragment": "capabilities",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "en",
+      "index": 3,
+      "href": "/identification-traceability.html",
+      "path": "/identification-traceability.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\identification-traceability.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "en",
+      "index": 4,
+      "href": "/measurement-3d-profiling.html",
+      "path": "/measurement-3d-profiling.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\measurement-3d-profiling.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "en",
+      "index": 5,
+      "href": "/vision-guided-robotics.html",
+      "path": "/vision-guided-robotics.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\vision-guided-robotics.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "en",
+      "index": 6,
+      "href": "/automated-vision-inspection.html#architecture",
+      "path": "/automated-vision-inspection.html",
+      "fragment": "architecture",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "en",
+      "index": 7,
+      "href": "/electronics-semiconductor.html",
+      "path": "/electronics-semiconductor.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\electronics-semiconductor.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "en",
+      "index": 8,
+      "href": "/electronics-semiconductor.html#semiconductor",
+      "path": "/electronics-semiconductor.html",
+      "fragment": "semiconductor",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\electronics-semiconductor.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "en",
+      "index": 9,
+      "href": "/automated-vision-inspection.html#cases",
+      "path": "/automated-vision-inspection.html",
+      "fragment": "cases",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "en",
+      "index": 10,
+      "href": "/warehouse-logistics.html",
+      "path": "/warehouse-logistics.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\warehouse-logistics.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "en",
+      "index": 11,
+      "href": "/automated-vision-inspection.html#capabilities",
+      "path": "/automated-vision-inspection.html",
+      "fragment": "capabilities",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 1,
+      "href": "/de/automated-vision-inspection.html#capabilities",
+      "path": "/de/automated-vision-inspection.html",
+      "fragment": "capabilities",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 2,
+      "href": "/de/automated-vision-inspection.html#capabilities",
+      "path": "/de/automated-vision-inspection.html",
+      "fragment": "capabilities",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 3,
+      "href": "/de/identification-traceability.html",
+      "path": "/de/identification-traceability.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\identification-traceability.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 4,
+      "href": "/de/measurement-3d-profiling.html",
+      "path": "/de/measurement-3d-profiling.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\measurement-3d-profiling.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 5,
+      "href": "/de/vision-guided-robotics.html",
+      "path": "/de/vision-guided-robotics.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\vision-guided-robotics.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 6,
+      "href": "/de/automated-vision-inspection.html#architecture",
+      "path": "/de/automated-vision-inspection.html",
+      "fragment": "architecture",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 7,
+      "href": "/de/electronics-semiconductor.html",
+      "path": "/de/electronics-semiconductor.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\electronics-semiconductor.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 8,
+      "href": "/de/electronics-semiconductor.html#semiconductor",
+      "path": "/de/electronics-semiconductor.html",
+      "fragment": "semiconductor",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\electronics-semiconductor.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 9,
+      "href": "/de/automated-vision-inspection.html#cases",
+      "path": "/de/automated-vision-inspection.html",
+      "fragment": "cases",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 10,
+      "href": "/de/warehouse-logistics.html",
+      "path": "/de/warehouse-logistics.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\warehouse-logistics.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "de",
+      "index": 11,
+      "href": "/de/automated-vision-inspection.html#capabilities",
+      "path": "/de/automated-vision-inspection.html",
+      "fragment": "capabilities",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\de\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 1,
+      "href": "/ja/automated-vision-inspection.html#capabilities",
+      "path": "/ja/automated-vision-inspection.html",
+      "fragment": "capabilities",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 2,
+      "href": "/ja/automated-vision-inspection.html#capabilities",
+      "path": "/ja/automated-vision-inspection.html",
+      "fragment": "capabilities",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 3,
+      "href": "/ja/identification-traceability.html",
+      "path": "/ja/identification-traceability.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\identification-traceability.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 4,
+      "href": "/ja/measurement-3d-profiling.html",
+      "path": "/ja/measurement-3d-profiling.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\measurement-3d-profiling.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 5,
+      "href": "/ja/vision-guided-robotics.html",
+      "path": "/ja/vision-guided-robotics.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\vision-guided-robotics.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 6,
+      "href": "/ja/automated-vision-inspection.html#architecture",
+      "path": "/ja/automated-vision-inspection.html",
+      "fragment": "architecture",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 7,
+      "href": "/ja/electronics-semiconductor.html",
+      "path": "/ja/electronics-semiconductor.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\electronics-semiconductor.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 8,
+      "href": "/ja/electronics-semiconductor.html#semiconductor",
+      "path": "/ja/electronics-semiconductor.html",
+      "fragment": "semiconductor",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\electronics-semiconductor.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 9,
+      "href": "/ja/automated-vision-inspection.html#cases",
+      "path": "/ja/automated-vision-inspection.html",
+      "fragment": "cases",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 10,
+      "href": "/ja/warehouse-logistics.html",
+      "path": "/ja/warehouse-logistics.html",
+      "fragment": "",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\warehouse-logistics.html",
+      "local_file_exists": true,
+      "fragment_exists": null,
+      "local_passed": true
+    },
+    {
+      "locale": "ja",
+      "index": 11,
+      "href": "/ja/automated-vision-inspection.html#capabilities",
+      "path": "/ja/automated-vision-inspection.html",
+      "fragment": "capabilities",
+      "local_file": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\public\\ja\\automated-vision-inspection.html",
+      "local_file_exists": true,
+      "fragment_exists": true,
+      "local_passed": true
+    }
+  ],
+  "all_local_fragments_passed": true,
+  "scope": {
+    "changed_files": [
+      "HANDOFF.md",
+      "astro/public/home-sections.css",
+      "astro/src/components/SolutionExplorer.astro",
+      "astro/src/i18n/de.json",
+      "astro/src/i18n/en.json",
+      "astro/src/i18n/ja.json",
+      "public/de/index.html",
+      "public/home-sections.css",
+      "public/index.html",
+      "public/ja/index.html"
+    ],
+    "shop_or_backend_diff": [],
+    "shop_status_entries": []
+  },
+  "http": {
+    "origin": "http://127.0.0.1:8788",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/132.0.0.0 Safari/537.36",
+    "public_image_count": 11,
+    "cta_count": 33,
+    "image_count": 11,
+    "all_ctas_passed": true,
+    "all_images_passed": true,
+    "cta_links": [
+      {
+        "locale": "en",
+        "href": "/automated-vision-inspection.html#capabilities",
+        "request_url": "http://127.0.0.1:8788/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "capabilities",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "en",
+        "href": "/automated-vision-inspection.html#capabilities",
+        "request_url": "http://127.0.0.1:8788/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "capabilities",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "en",
+        "href": "/identification-traceability.html",
+        "request_url": "http://127.0.0.1:8788/identification-traceability.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "en",
+        "href": "/measurement-3d-profiling.html",
+        "request_url": "http://127.0.0.1:8788/measurement-3d-profiling.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "en",
+        "href": "/vision-guided-robotics.html",
+        "request_url": "http://127.0.0.1:8788/vision-guided-robotics.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "en",
+        "href": "/automated-vision-inspection.html#architecture",
+        "request_url": "http://127.0.0.1:8788/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "architecture",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "en",
+        "href": "/electronics-semiconductor.html",
+        "request_url": "http://127.0.0.1:8788/electronics-semiconductor.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "en",
+        "href": "/electronics-semiconductor.html#semiconductor",
+        "request_url": "http://127.0.0.1:8788/electronics-semiconductor.html",
+        "status": 200,
+        "fragment": "semiconductor",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "en",
+        "href": "/automated-vision-inspection.html#cases",
+        "request_url": "http://127.0.0.1:8788/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "cases",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "en",
+        "href": "/warehouse-logistics.html",
+        "request_url": "http://127.0.0.1:8788/warehouse-logistics.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "en",
+        "href": "/automated-vision-inspection.html#capabilities",
+        "request_url": "http://127.0.0.1:8788/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "capabilities",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/automated-vision-inspection.html#capabilities",
+        "request_url": "http://127.0.0.1:8788/de/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "capabilities",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/automated-vision-inspection.html#capabilities",
+        "request_url": "http://127.0.0.1:8788/de/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "capabilities",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/identification-traceability.html",
+        "request_url": "http://127.0.0.1:8788/de/identification-traceability.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/measurement-3d-profiling.html",
+        "request_url": "http://127.0.0.1:8788/de/measurement-3d-profiling.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/vision-guided-robotics.html",
+        "request_url": "http://127.0.0.1:8788/de/vision-guided-robotics.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/automated-vision-inspection.html#architecture",
+        "request_url": "http://127.0.0.1:8788/de/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "architecture",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/electronics-semiconductor.html",
+        "request_url": "http://127.0.0.1:8788/de/electronics-semiconductor.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/electronics-semiconductor.html#semiconductor",
+        "request_url": "http://127.0.0.1:8788/de/electronics-semiconductor.html",
+        "status": 200,
+        "fragment": "semiconductor",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/automated-vision-inspection.html#cases",
+        "request_url": "http://127.0.0.1:8788/de/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "cases",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/warehouse-logistics.html",
+        "request_url": "http://127.0.0.1:8788/de/warehouse-logistics.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "de",
+        "href": "/de/automated-vision-inspection.html#capabilities",
+        "request_url": "http://127.0.0.1:8788/de/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "capabilities",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/automated-vision-inspection.html#capabilities",
+        "request_url": "http://127.0.0.1:8788/ja/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "capabilities",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/automated-vision-inspection.html#capabilities",
+        "request_url": "http://127.0.0.1:8788/ja/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "capabilities",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/identification-traceability.html",
+        "request_url": "http://127.0.0.1:8788/ja/identification-traceability.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/measurement-3d-profiling.html",
+        "request_url": "http://127.0.0.1:8788/ja/measurement-3d-profiling.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/vision-guided-robotics.html",
+        "request_url": "http://127.0.0.1:8788/ja/vision-guided-robotics.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/automated-vision-inspection.html#architecture",
+        "request_url": "http://127.0.0.1:8788/ja/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "architecture",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/electronics-semiconductor.html",
+        "request_url": "http://127.0.0.1:8788/ja/electronics-semiconductor.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/electronics-semiconductor.html#semiconductor",
+        "request_url": "http://127.0.0.1:8788/ja/electronics-semiconductor.html",
+        "status": 200,
+        "fragment": "semiconductor",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/automated-vision-inspection.html#cases",
+        "request_url": "http://127.0.0.1:8788/ja/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "cases",
+        "http_fragment_exists": true,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/warehouse-logistics.html",
+        "request_url": "http://127.0.0.1:8788/ja/warehouse-logistics.html",
+        "status": 200,
+        "fragment": "",
+        "http_fragment_exists": null,
+        "passed": true
+      },
+      {
+        "locale": "ja",
+        "href": "/ja/automated-vision-inspection.html#capabilities",
+        "request_url": "http://127.0.0.1:8788/ja/automated-vision-inspection.html",
+        "status": 200,
+        "fragment": "capabilities",
+        "http_fragment_exists": true,
+        "passed": true
+      }
+    ],
+    "images": [
+      {
+        "name": "assembly.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/assembly.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 46064,
+        "sha256": "fbeaabfade29b2bdbfcc61e2dc2646e5791ef9364539636c7ffe2f50b07038f8",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      },
+      {
+        "name": "automotive.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/automotive.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 55098,
+        "sha256": "0e76e8e172de544da24bfbc23906ef0a49c559e59279af672cfbf6e53bd141e5",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      },
+      {
+        "name": "electronics.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/electronics.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 61960,
+        "sha256": "c113d0753e7f759fd4699fa72efb4bc06218dc84e0cd5ccc282276fdedb03c16",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      },
+      {
+        "name": "identification.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/identification.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 46298,
+        "sha256": "ac94bee9b510b440d291951c1de59fcb123800c7248ee4cafefc4a02f07e0e63",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      },
+      {
+        "name": "logistics.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/logistics.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 56600,
+        "sha256": "55738ff6213c5ad70ec24b38271d893b8726fc67bedc93dc2bbc96d8e8991b38",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      },
+      {
+        "name": "manufacturing.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/manufacturing.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 57982,
+        "sha256": "d50727d0e356fe4b70fadd52af3593b86d155f8128b43b549a9ff43995d99e7e",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      },
+      {
+        "name": "measurement.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/measurement.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 64988,
+        "sha256": "340bf80aceb3441b61eab718ca486e5506cfa664001d43024efd7ce421576772",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      },
+      {
+        "name": "robot-guidance.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/robot-guidance.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 51240,
+        "sha256": "c9cd455c0ebd63362f4401ad244f50759885b628b886d7c76c9c8d0a0d72dde2",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      },
+      {
+        "name": "semiconductor.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/semiconductor.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 58280,
+        "sha256": "a87241566abb853abb1a931a07fdf863c01687150f749eae71a786e872fe9c90",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      },
+      {
+        "name": "sorting.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/sorting.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 56672,
+        "sha256": "d9b6dbeeabae37cee5d237d9534acc9de910c11f5147ec350e6bad9961c19835",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      },
+      {
+        "name": "surface.webp",
+        "request_url": "http://127.0.0.1:8788/home-solutions/surface.webp",
+        "status": 200,
+        "content_type": "image/webp",
+        "bytes": 52182,
+        "sha256": "1ed9caf84c39b8318538e91bee9c80149a539e55b6ad43d86c132b6892194063",
+        "source_hash_match": true,
+        "public_mirror_hash_match": true,
+        "passed": true
+      }
+    ],
+    "completed_at": "2026-10-18T15:42:37.3688437+00:00"
+  }
+}

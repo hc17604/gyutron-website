@@ -1,0 +1,52 @@
+{
+  "asset": "astro/public/home-solutions/manufacturing.webp",
+  "createdDate": "2026-10-18",
+  "generationMode": "built-in image_gen__imagegen",
+  "intent": "New CG engineering stationary bracket inspection illustration.",
+  "styleReference": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+    "role": "Visually inspected for style; not passed to the generation call.",
+    "sha256": "9514d3121bf38eccfaa6aab136bd8f96ae5025eb9e44299781faf04e84df4ec1"
+  },
+  "calls": [
+    {
+      "type": "generate",
+      "tool": "image_gen__imagegen",
+      "prompt": "Use case: stylized-concept.\nAsset type: one standalone landscape 3:2 website solution illustration, not a webpage.\nPrimary request: a compact stationary industrial inspection bench as a precise CG mechanical engineering model. The inspected workpiece is exactly ONE machined aluminum mounting bracket/flange: a simple silver L-shaped mechanical bracket with a flat base, short vertical flange, clearly visible machined edges, a few circular mounting holes and a locating slot. It is not an electronics housing, PCB, battery, robot or loose pile of parts. The bracket is seated in a proper locating fixture with sensible datum stops/dowel pins and TWO small mechanical toggle clamps gripping its base firmly without hiding all the holes. A single black industrial inspection camera is mounted directly overhead on a small silver aluminum-extrusion gantry, its lens optical axis aimed straight DOWN at the bracket. Beneath the lens is one open-aperture diffuse ring light; the lens looks through its unobstructed center opening toward the workpiece. The camera, ring and bracket must line up mechanically. A compact black edge controller stands outside the bench frame, connected by practical black cables. Include normal brackets, mounting plates, fixture fasteners, cross braces and supported leveling feet.\nComposition/framing: full isolated coherent inspection rig, orthographic 30-degree three-quarter view, clearly show the workpiece and clamps on the bench. Entire camera, gantry top, bench feet, controller and cables fully visible. Center the scene on a broad 3:2 canvas. Scene group uses at most 80 percent of canvas width and 82 percent of height, leaving at least 8 percent clear plain graphite margin on all edges. No cropping.\nStyle/medium: sober visibly computer-generated mechanical engineering/CAD product visualization, crisp credible geometry and muted materials. Matte silver/white extrusion frame and workpiece, black camera/controller, restrained small purple housing seams. Not a factory photograph.\nScene/backdrop: plain consistent charcoal graphite #1c2026 background and matching ground, soft contact shadows, no room or environmental props.\nLighting/mood: broad soft studio light, serious and restrained. The diffuse ring is a normal white illumination surface, not a neon glow.\nText: none.\nAvoid: humans, conveyor, extra camera, complex electronics housing, unrealistic floating clamps, obscured part, camera aimed sideways, closed ring blocking the lens, optical cones, laser beams, rulers, measurement scales, coordinate triads, human-readable text, logos, watermarks, UI, play button, annotations, leader lines, callouts, neon, performance metrics or micron-accuracy claims.",
+      "transparent_background": false,
+      "referenced_image_paths": [],
+      "output": "D:/Codex/.codex/generated_images/01a14f35-3f73-7e13-bfcd-939790e740d1/exec-34dc7659-958d-48ef-9432-2ccc0c4d7bf3.png",
+      "outputSha256": "12f9eb3528a7eaddb8a711f6accedf3774e2dbe29463ce41ea46a1ac5da11560"
+    }
+  ],
+  "raw": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/manufacturing.png",
+    "sha256": "12f9eb3528a7eaddb8a711f6accedf3774e2dbe29463ce41ea46a1ac5da11560",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1861195
+  },
+  "export": {
+    "path": "astro/public/home-solutions/manufacturing.webp",
+    "format": "WebP",
+    "mode": "RGB",
+    "width": 1200,
+    "height": 800,
+    "quality": 87,
+    "method": 6,
+    "operation": "Full-canvas proportional Lanczos resize only; no crop, recoloring, compositing or padding.",
+    "bytes": 57982,
+    "sha256": "d50727d0e356fe4b70fadd52af3593b86d155f8128b43b549a9ff43995d99e7e"
+  },
+  "visualInspection": {
+    "passed": true,
+    "notes": [
+      "One machined silver L-shaped mounting bracket, visible holes/slot/edges, locating fixture and two toggle clamps.",
+      "Single overhead camera faces downward through a centered open diffuse ring-light aperture.",
+      "Stationary extrusion workbench, complete feet and separate controller with sensible black cables.",
+      "Entire rig is uncropped against plain charcoal; source loop cable is relatively near the top edge.",
+      "No text, logos, optical cones, rulers, metrics, callouts, neon, UI or factory environment.",
+      "Illustrative system configuration; no installed-system or measurement-accuracy claim."
+    ]
+  }
+}

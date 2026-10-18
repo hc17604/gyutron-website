@@ -1,0 +1,43 @@
+{
+  "asset": "home-solutions/measurement.webp",
+  "mode": "built-in image_gen",
+  "intent": "generate",
+  "reference": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+    "role": "visual style reference inspected; matched graphite engineering CGI style"
+  },
+  "prompt": "Use case: stylized-concept.\nAsset type: one standalone industrial laser-profile dimensional measurement system render for an engineering website, landscape 3:2 image.\nPrimary request: precise technical 3D CG of a mechanically credible compact conveyor measurement rig. A single stepped machined aluminum calibration-like part rides on the black belt, with two or three visible top levels. An aluminum extrusion portal crossbeam carries ONE overhead LASER LINE PROFILE SENSOR looking vertically down toward the part. The sensor must have an elongated rectangular black industrial housing with a small purple trim seam and a horizontal optical aperture with separate laser/emitter and receiver features, NOT an ordinary single-lens cylindrical 2D camera. Its scanning axis spans ACROSS the belt, transverse to belt travel.\nShow one thin restrained red laser scan line lying directly on the VISIBLE TOP step surfaces of the machined part, perpendicular to travel. The red line is only a fine surface trace: no floating beam, no large cone, no line passing through solid material, no neon glow. Keep the part visible around the scanning line.\nA small side-mounted roller encoder is mechanically coupled to the belt or end roller through a credible contact wheel/shaft. A compact black finned controller stands immediately OUTSIDE the conveyor frame on a small supported base, with neatly routed black cables connecting sensor and encoder. Complete compact conveyor, visible rollers, aluminum frame, all feet, clean fasteners. No extra products.\nStyle/medium: understated accurate-looking engineering CGI, orthographic 30-degree elevated three-quarter view, matte silver/white structural extrusions, matte black devices and belt, restrained deep-purple seams only. Neutral solid-model catalog rendering with modest material detail. Similar scale and visual discipline to a compact surface-inspection workstation.\nScene/backdrop: plain consistent graphite background and ground intended #1c2026, soft restrained contact shadows, neutral studio lighting. No visible room or factory, no photographic production line, no cinematic scene.\nComposition/framing: entire isolated apparatus centered, total silhouette occupies no more than 84 percent of width and height, at least 6 percent clear background margin on all sides. Include all legs/feet, complete portal, controller and encoder without cropping. Wide 3:2 full canvas.\nText: none.\nConstraints: NO text, NO logos, NO brand/model names, NO labels, NO annotation, NO dimensions or rulers, NO arrows or leader lines, NO UI, NO metrics or performance claims, NO holograms, NO giant laser cone, NO glowing purple wash, NO humans. Output only this one standalone complete apparatus.",
+  "selectedSource": "D:/Codex/.codex/generated_images/01a14f35-85d4-7741-92b3-f11bc78a77af/exec-5cbab168-6748-450a-b5f1-a635c53dfcfa.png",
+  "rawPath": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/measurement.png",
+  "outputPath": "D:/AI PRODUT/GYUTRON web/website/gyutron-website-repo/astro/public/home-solutions/measurement.webp",
+  "processing": {
+    "mode": "technical resize only",
+    "method": "Pillow LANCZOS full canvas resize to 1200x800; RGB WebP quality87 method6",
+    "crop": false,
+    "composite": false
+  },
+  "inspection": {
+    "status": "passed with framing caveat",
+    "notes": "Complete conveyor, portal, stepped aluminum part, roller encoder, separate finned controller and feet. Rectangular optical profiler has distinct red/dark aperture features; thin red scan line follows visible stepped surfaces, no floating cone. No text, logos, UI, annotations or performance claims. Upper cable loop has about2% canvas margin; silhouette is complete and no framing repair was made per one-repair-only-if-clipped constraint."
+  },
+  "raw": {
+    "sha256": "765b2376ee1c0f34cf4b7dda458e7d7b3718b375c658b12a9559c0bfe350a185",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "bytes": 1953612,
+    "format": "PNG",
+    "mode": "RGB"
+  },
+  "output": {
+    "sha256": "340bf80aceb3441b61eab718ca486e5506cfa664001d43024efd7ce421576772",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bytes": 64988,
+    "format": "WEBP",
+    "mode": "RGB"
+  }
+}

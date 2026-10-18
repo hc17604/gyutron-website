@@ -1,0 +1,47 @@
+{
+  "asset": "home-solutions/surface.webp",
+  "mode": "built-in image_gen",
+  "intent": "generate, then targeted framing edit",
+  "reference": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+    "role": "visual style reference inspected; no UI copied into asset"
+  },
+  "prompts": {
+    "generation": "Use case: stylized-concept.\nAsset type: standalone industrial surface-inspection apparatus render for an engineering website, landscape 3:2 canvas.\nPrimary request: Generate exactly one clean technical 3D CG model of a credible compact surface-inspection workstation. Show one flat brushed-metal rectangular plate held by simple locating pins in a low fixture on a compact silver aluminum machine table. A small black industrial camera is rigidly mounted on an overhead aluminum extrusion crossbeam, looking vertically down at the TOP surface of the plate. Mount a small narrow linear BAR LIGHT at ONE side of the plate at a low angle, illuminating across the top surface. This is a low-angle bar light, NOT a ring light or scanning laser. A compact black finned industrial controller with subtle purple seam accents sits outside the table footprint on the right, mechanically supported, with neatly routed physical cables. A single subtle shallow scratch may be visible on the plate, without any overlay.\nStyle/medium: precise neutral engineering CGI, high quality solid-model rendering, realistic mechanical fasteners and extrusion structure, modest material definition. Match a serious catalog illustration: matte white/silver structural parts, black camera and controller, tiny restrained deep-purple device seams, clean construction, restrained soft lighting.\nScene/backdrop: plain consistent dark graphite background, exact intended color #1c2026, same graphite ground plane with soft restrained contact shadows. No visible room, no factory, no warehouse, no bokeh, no cinematic environment, no spotlight halo.\nComposition/framing: orthographic 30-degree elevated three-quarter view, complete isolated apparatus centered. Show the complete overhead beam, all table legs/feet, plate, camera, light and outside controller. Maintain at least 6 percent clear margin on every canvas edge. Whole silhouette must fit inside the landscape frame, nothing cropped. Camera lens clearly faces downward toward the unobstructed top of the plate; no looking through solid metal, no impossible occlusion. Compact tabletop apparatus, not a full enclosure or large production line.\nText: none.\nConstraints: NO text, NO logos, NO model names, NO labels, NO leader lines, NO UI, NO measurements, NO metrics, NO icons, NO arrows, NO glowing optical cones, NO holograms, NO visible laser beam, NO humans, NO extra workpieces. No purple lighting wash. Do not include website design or navigation. Output only the standalone apparatus image.",
+    "framingEdit": "Edit this standalone surface-inspection engineering CGI only to improve its framing. Keep the exact same mechanical apparatus, camera pointing vertically at the plate, one low-angle side linear bar light, brushed-metal plate with subtle scratch, locating fixture, compact silver machine table and complete feet, black finned outside controller, cables, materials, neutral studio lighting and restrained purple seams. Pull the orthographic camera back slightly so the complete apparatus occupies only about 84 percent of canvas width and 84 percent of canvas height, centered with at least 6 percent clear background on all four sides. Preserve the 3:2 landscape canvas. Plain graphite background and ground intended #1c2026, very soft contact shadow, no room. NO text, logos, labels, UI, arrows, leader lines, overlays, glow or performance claims. Do not crop any part. Output only one apparatus render."
+  },
+  "generationSource": "D:/Codex/.codex/generated_images/01a14f35-85d4-7741-92b3-f11bc78a77af/exec-102f38fb-614d-431c-ae35-84e1dd67cc39.png",
+  "selectedSource": "D:/Codex/.codex/generated_images/01a14f35-85d4-7741-92b3-f11bc78a77af/exec-927672f9-a2d1-4627-b13f-509eb186c0b8.png",
+  "rawPath": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/surface.png",
+  "outputPath": "D:/AI PRODUT/GYUTRON web/website/gyutron-website-repo/astro/public/home-solutions/surface.webp",
+  "processing": {
+    "mode": "technical resize only",
+    "method": "Pillow LANCZOS full canvas resize to 1200x800; RGB WebP quality87 method6",
+    "crop": false,
+    "composite": false
+  },
+  "inspection": {
+    "status": "passed",
+    "notes": "Complete model and all feet visible with clear edge margin. Camera lens points down at unobstructed top surface of locating-fixture metal plate. One side bar light and outside finned controller. No text, logos, UI, arrows, optical beams or performance claims. Background is graphite with soft contact shadows."
+  },
+  "raw": {
+    "sha256": "fc8e2c1ad97b5a594c901be9f54220ac2b8cc73c897372e0088a52d0f321d1ce",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "bytes": 1808951,
+    "format": "PNG",
+    "mode": "RGB"
+  },
+  "output": {
+    "sha256": "1ed9caf84c39b8318538e91bee9c80149a539e55b6ad43d86c132b6892194063",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bytes": 52182,
+    "format": "WEBP",
+    "mode": "RGB"
+  }
+}

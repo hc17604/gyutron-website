@@ -1,0 +1,47 @@
+{
+  "asset": "home-solutions/semiconductor.webp",
+  "mode": "built-in image_gen",
+  "intent": "generate, then one framing repair",
+  "reference": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+    "role": "visual style reference inspected; graphite engineering CGI visual discipline matched"
+  },
+  "prompts": {
+    "generation": "Use case: stylized-concept.\nAsset type: one standalone packaged-semiconductor visual-inspection workstation render for an engineering website, landscape 3:2 canvas.\nPrimary request: generate a compact TABLETOP visual-inspection station for visible IC package orientation and surface marking checks. A single black JEDEC tray holds an orderly matrix of small dark packaged ICs, each with a tiny simple pin-one corner dot. The tray lies flat in a silver indexed locating fixture with side stops on a compact silver machine table. No loose chips or wafers. A short rigid aluminum extrusion portal carries one matte black industrial camera that looks VERTICALLY DOWN at the top of the whole tray. Its downward-facing lens is surrounded by a white diffuse circular aperture light/ring light with a physically OPEN center, so the optical path from lens through the open aperture to tray is unobstructed. Ring light mounted below the camera body, modestly bright white face, not a holographic ring. All hardware has credible clamps, small fasteners and restrained physical cables.\nA small black finned industrial controller is mounted outside the tray/table footprint on the right with a supported base. Camera cable physically routes along stand to controller. Include the whole compact tabletop structure and complete little leveling feet.\nStyle/medium: serious precise neutral engineering CGI, solid-model catalog rendering, matte silver/white structural aluminum, matte black hardware and tray, restrained tiny deep-purple device seam accents only. Realistic mechanical construction, not a toy, not a photo of a factory.\nScene/backdrop: plain consistent graphite background and ground intended #1c2026, soft contact shadows, neutral studio lighting. No room, no factory environment, no cleanroom background, no cinematic bokeh.\nComposition/framing: orthographic 30-degree elevated three-quarter view, the isolated complete apparatus centered, silhouette occupying at most 82 percent of canvas width and height. At least 6 percent clear margin on all four edges. Entire portal, top cable loop, tray, controller and ALL feet remain inside canvas without cropping. Landscape 3:2 framing with unobstructed tray view.\nText: none.\nConstraints: show visible PACKAGED IC orientation/marking inspection only. NOT wafer fabrication, NOT bare silicon wafer inspection, NOT X-ray, NOT scanning buried wires, NO nanometer-inspection implication. NO text, NO logos, NO model names, NO letters or numbers on chips, NO UI, NO labels, NO leader lines, NO arrows, NO measurement lines, NO metrics/performance claims. NO optical cones or frusta, NO laser beams, NO holograms, NO purple scene glow, NO humans. Output only one standalone complete engineering apparatus.",
+    "framingEdit": "Framing-only edit of this semiconductor package inspection engineering CGI. Keep the exact same tabletop rig, flat black JEDEC tray of packaged ICs, locating fixture, silver portal, downward camera with open-center white ring light, outside finned controller, cables and feet. Pull the orthographic camera back so the entire complete model including the TOP CABLE LOOP and RIGHT CONTROLLER has at least 8 percent clear graphite background margin on all four sides. Total silhouette no more than 82 percent canvas width and height, centered on a landscape3:2 canvas. Keep all materials, technical CGI style, neutral lighting and soft shadows. Plain graphite ground/background intended#1c2026. No new text, logos, UI, labels, annotations, optical lines or performance claims. Do not change the apparatus or crop anything."
+  },
+  "generationSource": "D:/Codex/.codex/generated_images/01a14f35-85d4-7741-92b3-f11bc78a77af/exec-a56b395f-38e7-4278-a1f9-a1788dc30ba8.png",
+  "selectedSource": "D:/Codex/.codex/generated_images/01a14f35-85d4-7741-92b3-f11bc78a77af/exec-bb996ddb-765c-40e8-aa39-1626590a38b8.png",
+  "rawPath": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/semiconductor.png",
+  "outputPath": "D:/AI PRODUT/GYUTRON web/website/gyutron-website-repo/astro/public/home-solutions/semiconductor.webp",
+  "processing": {
+    "mode": "technical resize only",
+    "method": "Pillow LANCZOS full canvas resize to 1200x800; RGB WebP quality87 method6",
+    "crop": false,
+    "composite": false
+  },
+  "inspection": {
+    "status": "passed",
+    "notes": "Whole compact tabletop model including cable loop and all feet within clear margins. Flat JEDEC-style black tray with ordered packaged ICs in locating fixture. Downward top camera looks through open-center white ring light at visible package tops. Separate supported finned controller. No wafers, cleanroom/factory, optical frustum, buried-wire/X-ray imagery, text, logos, UI, labels, lines or metrics."
+  },
+  "raw": {
+    "sha256": "8347f531ef94a03efe33012cc12233145faae42c8eb7892f92c38acddfe73b51",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "bytes": 1773674,
+    "format": "PNG",
+    "mode": "RGB"
+  },
+  "output": {
+    "sha256": "a87241566abb853abb1a931a07fdf863c01687150f749eae71a786e872fe9c90",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bytes": 58280,
+    "format": "WEBP",
+    "mode": "RGB"
+  }
+}

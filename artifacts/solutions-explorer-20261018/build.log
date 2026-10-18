@@ -1,0 +1,240 @@
+
+> gyutron-web@0.1.0 build
+> astro build
+
+23:51:58 [content] Syncing content
+23:51:58 [content] Synced content
+23:51:58 [types] Generated 24ms
+23:51:58 [build] output: "static"
+23:51:58 [build] mode: "static"
+23:51:58 [build] directory: D:\AI PRODUT\GYUTRON web\website\gyutron-website-repo\astro\dist\
+23:51:58 [build] Collecting build info...
+23:51:58 [build] ✓ Completed in 42ms.
+23:51:58 [build] Building static entrypoints...
+23:51:59 [vite] ✓ built in 1.17s
+23:51:59 [build] ✓ Completed in 1.19s.
+
+ building client (vite)
+23:51:59 [vite] transforming...
+23:51:59 [vite] ✓ 14 modules transformed.
+23:51:59 [vite] rendering chunks...
+23:51:59 [vite] computing gzip size...
+23:51:59 [vite] dist/_astro/meta.D7o8qNDE.js                                                  0.53 kB │ gzip: 0.34 kB
+23:51:59 [vite] dist/_astro/index.DK-WyxdT.js                                                 0.73 kB │ gzip: 0.45 kB
+23:51:59 [vite] dist/_astro/ContactSales.astro_astro_type_script_index_0_lang.DFl2Jrkz.js     1.22 kB │ gzip: 0.69 kB
+23:51:59 [vite] dist/_astro/SupportContact.astro_astro_type_script_index_0_lang.DzAAWpxQ.js   1.39 kB │ gzip: 0.76 kB
+23:51:59 [vite] dist/_astro/RequestQuote.astro_astro_type_script_index_0_lang.Ddou9uzX.js     1.52 kB │ gzip: 0.80 kB
+23:51:59 [vite] dist/_astro/DownloadRequest.astro_astro_type_script_index_0_lang.fVJTXc-w.js  1.90 kB │ gzip: 0.96 kB
+23:51:59 [vite] ✓ built in 35ms
+
+ generating static routes
+23:51:59 ▶ src/pages/[category].astro
+23:51:59   ├─ /android-pda.html (+11ms)
+23:51:59   ├─ /rfid-handhelds.html (+3ms)
+23:51:59   ├─ /barcode-scanners.html (+2ms)
+23:51:59   ├─ /request-specification.html (+2ms)
+23:51:59   ├─ /industrial-sensors.html (+1ms)
+23:51:59   ├─ /smart-cameras.html (+1ms)
+23:51:59   ├─ /inspection-instruments.html (+1ms)
+23:51:59   ├─ /proximity-sensors.html (+2ms)
+23:51:59   ├─ /laser-measurement.html (+2ms)
+23:51:59   ├─ /environmental-sensing.html (+2ms)
+23:51:59   ├─ /area-scan-cameras.html (+2ms)
+23:51:59   ├─ /smart-vision-sensors.html (+3ms)
+23:51:59   ├─ /code-reading-cameras.html (+2ms)
+23:51:59   ├─ /vision-lighting.html (+2ms)
+23:51:59   ├─ /dimensional-gauges.html (+2ms)
+23:51:59   ├─ /surface-inspection.html (+4ms)
+23:51:59   ├─ /portable-testers.html (+2ms)
+23:51:59   ├─ /calibration-tools.html (+2ms)
+23:51:59   ├─ /robot-workcells.html (+2ms)
+23:51:59   ├─ /edge-controllers.html (+2ms)
+23:51:59   └─ /accessories.html (+2ms)
+23:51:59 ▶ src/pages/automated-vision-inspection.astro
+23:51:59   └─ /automated-vision-inspection.html (+3ms)
+23:51:59 ▶ src/pages/composite-mobile-robots.astro
+23:51:59   └─ /composite-mobile-robots.html (+2ms)
+23:51:59 ▶ src/pages/contact-sales.astro
+23:51:59   └─ /contact-sales.html (+3ms)
+23:51:59 ▶ src/pages/de/[category].astro
+23:51:59   ├─ /de/android-pda.html (+2ms)
+23:51:59   ├─ /de/rfid-handhelds.html (+2ms)
+23:51:59   ├─ /de/barcode-scanners.html (+2ms)
+23:51:59   ├─ /de/request-specification.html (+2ms)
+23:51:59   ├─ /de/industrial-sensors.html (+1ms)
+23:51:59   ├─ /de/smart-cameras.html (+1ms)
+23:51:59   ├─ /de/inspection-instruments.html (+1ms)
+23:51:59   ├─ /de/proximity-sensors.html (+2ms)
+23:51:59   ├─ /de/laser-measurement.html (+2ms)
+23:51:59   ├─ /de/environmental-sensing.html (+3ms)
+23:51:59   ├─ /de/area-scan-cameras.html (+2ms)
+23:51:59   ├─ /de/smart-vision-sensors.html (+2ms)
+23:51:59   ├─ /de/code-reading-cameras.html (+2ms)
+23:51:59   ├─ /de/vision-lighting.html (+2ms)
+23:51:59   ├─ /de/dimensional-gauges.html (+2ms)
+23:51:59   ├─ /de/surface-inspection.html (+1ms)
+23:51:59   ├─ /de/portable-testers.html (+1ms)
+23:51:59   ├─ /de/calibration-tools.html (+1ms)
+23:51:59   ├─ /de/robot-workcells.html (+2ms)
+23:51:59   ├─ /de/edge-controllers.html (+2ms)
+23:51:59   └─ /de/accessories.html (+2ms)
+23:51:59 ▶ src/pages/de/automated-vision-inspection.astro
+23:51:59   └─ /de/automated-vision-inspection.html (+2ms)
+23:51:59 ▶ src/pages/de/composite-mobile-robots.astro
+23:51:59   └─ /de/composite-mobile-robots.html (+2ms)
+23:51:59 ▶ src/pages/de/contact-sales.astro
+23:51:59   └─ /de/contact-sales.html (+2ms)
+23:51:59 ▶ src/pages/de/electronics-semiconductor.astro
+23:51:59   └─ /de/electronics-semiconductor.html (+2ms)
+23:51:59 ▶ src/pages/de/identification-traceability.astro
+23:51:59   └─ /de/identification-traceability.html (+2ms)
+23:51:59 ▶ src/pages/de/index.astro
+23:51:59   └─ /de/index.html (+8ms)
+23:51:59 ▶ src/pages/de/industrial-sensing.astro
+23:51:59   └─ /de/industrial-sensing.html (+2ms)
+23:51:59 ▶ src/pages/de/measurement-3d-profiling.astro
+23:51:59   └─ /de/measurement-3d-profiling.html (+2ms)
+23:52:00 ▶ src/pages/de/news/[slug].astro
+23:52:00   ├─ /de/news/900-series-launch.html (+2ms)
+23:52:00   ├─ /de/news/site-en-de-ja.html (+1ms)
+23:52:00   └─ /de/news/oem-odm-program.html (+2ms)
+23:52:00 ▶ src/pages/de/news.astro
+23:52:00   └─ /de/news.html (+2ms)
+23:52:00 ▶ src/pages/de/privacy-policy.astro
+23:52:00   └─ /de/privacy-policy.html (+3ms)
+23:52:00 ▶ src/pages/de/request-quote.astro
+23:52:00   └─ /de/request-quote.html (+2ms)
+23:52:00 ▶ src/pages/de/resources/download-request.astro
+23:52:00   └─ /de/resources/download-request.html (+2ms)
+23:52:00 λ src/pages/de/search-index.json.ts
+23:52:00   └─ /de/search-index.json (+1ms)
+23:52:00 ▶ src/pages/de/support/contact.astro
+23:52:00   └─ /de/support/contact.html (+2ms)
+23:52:00 ▶ src/pages/de/support/faq.astro
+23:52:00   └─ /de/support/faq.html (+2ms)
+23:52:00 ▶ src/pages/de/support/shipping-delivery.astro
+23:52:00   └─ /de/support/shipping-delivery.html (+2ms)
+23:52:00 ▶ src/pages/de/support/warranty.astro
+23:52:00   └─ /de/support/warranty.html (+2ms)
+23:52:00 ▶ src/pages/de/support.astro
+23:52:00   └─ /de/support.html (+2ms)
+23:52:00 ▶ src/pages/de/terms-and-conditions.astro
+23:52:00   └─ /de/terms-and-conditions.html (+2ms)
+23:52:00 ▶ src/pages/de/vision-guided-robotics.astro
+23:52:00   └─ /de/vision-guided-robotics.html (+2ms)
+23:52:00 ▶ src/pages/de/warehouse-logistics.astro
+23:52:00   └─ /de/warehouse-logistics.html (+2ms)
+23:52:00 ▶ src/pages/electronics-semiconductor.astro
+23:52:00   └─ /electronics-semiconductor.html (+2ms)
+23:52:00 ▶ src/pages/identification-traceability.astro
+23:52:00   └─ /identification-traceability.html (+2ms)
+23:52:00 ▶ src/pages/index.astro
+23:52:00   └─ /index.html (+3ms)
+23:52:00 ▶ src/pages/industrial-sensing.astro
+23:52:00   └─ /industrial-sensing.html (+2ms)
+23:52:00 ▶ src/pages/ja/[category].astro
+23:52:00   ├─ /ja/android-pda.html (+3ms)
+23:52:00   ├─ /ja/rfid-handhelds.html (+2ms)
+23:52:00   ├─ /ja/barcode-scanners.html (+2ms)
+23:52:00   ├─ /ja/request-specification.html (+2ms)
+23:52:00   ├─ /ja/industrial-sensors.html (+1ms)
+23:52:00   ├─ /ja/smart-cameras.html (+1ms)
+23:52:00   ├─ /ja/inspection-instruments.html (+1ms)
+23:52:00   ├─ /ja/proximity-sensors.html (+2ms)
+23:52:00   ├─ /ja/laser-measurement.html (+2ms)
+23:52:00   ├─ /ja/environmental-sensing.html (+2ms)
+23:52:00   ├─ /ja/area-scan-cameras.html (+2ms)
+23:52:00   ├─ /ja/smart-vision-sensors.html (+2ms)
+23:52:00   ├─ /ja/code-reading-cameras.html (+2ms)
+23:52:00   ├─ /ja/vision-lighting.html (+1ms)
+23:52:00   ├─ /ja/dimensional-gauges.html (+3ms)
+23:52:00   ├─ /ja/surface-inspection.html (+2ms)
+23:52:00   ├─ /ja/portable-testers.html (+2ms)
+23:52:00   ├─ /ja/calibration-tools.html (+1ms)
+23:52:00   ├─ /ja/robot-workcells.html (+1ms)
+23:52:00   ├─ /ja/edge-controllers.html (+1ms)
+23:52:00   └─ /ja/accessories.html (+1ms)
+23:52:00 ▶ src/pages/ja/automated-vision-inspection.astro
+23:52:00   └─ /ja/automated-vision-inspection.html (+1ms)
+23:52:00 ▶ src/pages/ja/composite-mobile-robots.astro
+23:52:00   └─ /ja/composite-mobile-robots.html (+2ms)
+23:52:00 ▶ src/pages/ja/contact-sales.astro
+23:52:00   └─ /ja/contact-sales.html (+1ms)
+23:52:00 ▶ src/pages/ja/electronics-semiconductor.astro
+23:52:00   └─ /ja/electronics-semiconductor.html (+2ms)
+23:52:00 ▶ src/pages/ja/identification-traceability.astro
+23:52:00   └─ /ja/identification-traceability.html (+2ms)
+23:52:00 ▶ src/pages/ja/index.astro
+23:52:00   └─ /ja/index.html (+2ms)
+23:52:00 ▶ src/pages/ja/industrial-sensing.astro
+23:52:00   └─ /ja/industrial-sensing.html (+2ms)
+23:52:00 ▶ src/pages/ja/measurement-3d-profiling.astro
+23:52:00   └─ /ja/measurement-3d-profiling.html (+2ms)
+23:52:00 ▶ src/pages/ja/news/[slug].astro
+23:52:00   ├─ /ja/news/900-series-launch.html (+2ms)
+23:52:00   ├─ /ja/news/site-en-de-ja.html (+1ms)
+23:52:00   └─ /ja/news/oem-odm-program.html (+2ms)
+23:52:00 ▶ src/pages/ja/news.astro
+23:52:00   └─ /ja/news.html (+1ms)
+23:52:00 ▶ src/pages/ja/privacy-policy.astro
+23:52:00   └─ /ja/privacy-policy.html (+2ms)
+23:52:00 ▶ src/pages/ja/request-quote.astro
+23:52:00   └─ /ja/request-quote.html (+2ms)
+23:52:00 ▶ src/pages/ja/resources/download-request.astro
+23:52:00   └─ /ja/resources/download-request.html (+1ms)
+23:52:00 λ src/pages/ja/search-index.json.ts
+23:52:00   └─ /ja/search-index.json (+1ms)
+23:52:00 ▶ src/pages/ja/support/contact.astro
+23:52:00   └─ /ja/support/contact.html (+1ms)
+23:52:00 ▶ src/pages/ja/support/faq.astro
+23:52:00   └─ /ja/support/faq.html (+2ms)
+23:52:00 ▶ src/pages/ja/support/shipping-delivery.astro
+23:52:00   └─ /ja/support/shipping-delivery.html (+1ms)
+23:52:00 ▶ src/pages/ja/support/warranty.astro
+23:52:00   └─ /ja/support/warranty.html (+1ms)
+23:52:00 ▶ src/pages/ja/support.astro
+23:52:00   └─ /ja/support.html (+1ms)
+23:52:00 ▶ src/pages/ja/terms-and-conditions.astro
+23:52:00   └─ /ja/terms-and-conditions.html (+2ms)
+23:52:00 ▶ src/pages/ja/vision-guided-robotics.astro
+23:52:00   └─ /ja/vision-guided-robotics.html (+2ms)
+23:52:00 ▶ src/pages/ja/warehouse-logistics.astro
+23:52:00   └─ /ja/warehouse-logistics.html (+2ms)
+23:52:00 ▶ src/pages/measurement-3d-profiling.astro
+23:52:00   └─ /measurement-3d-profiling.html (+2ms)
+23:52:00 ▶ src/pages/news/[slug].astro
+23:52:00   ├─ /news/900-series-launch.html (+2ms)
+23:52:00   ├─ /news/site-en-de-ja.html (+1ms)
+23:52:00   └─ /news/oem-odm-program.html (+1ms)
+23:52:00 ▶ src/pages/news.astro
+23:52:00   └─ /news.html (+3ms)
+23:52:00 ▶ src/pages/privacy-policy.astro
+23:52:00   └─ /privacy-policy.html (+1ms)
+23:52:00 ▶ src/pages/request-quote.astro
+23:52:00   └─ /request-quote.html (+2ms)
+23:52:00 ▶ src/pages/resources/download-request.astro
+23:52:00   └─ /resources/download-request.html (+1ms)
+23:52:00 λ src/pages/search-index.json.ts
+23:52:00   └─ /search-index.json (+1ms)
+23:52:00 λ src/pages/sitemap.xml.ts
+23:52:00   └─ /sitemap.xml (+1ms)
+23:52:00 ▶ src/pages/support/contact.astro
+23:52:00   └─ /support/contact.html (+2ms)
+23:52:00 ▶ src/pages/support/faq.astro
+23:52:00   └─ /support/faq.html (+2ms)
+23:52:00 ▶ src/pages/support/shipping-delivery.astro
+23:52:00   └─ /support/shipping-delivery.html (+2ms)
+23:52:00 ▶ src/pages/support/warranty.astro
+23:52:00   └─ /support/warranty.html (+2ms)
+23:52:00 ▶ src/pages/support.astro
+23:52:00   └─ /support.html (+1ms)
+23:52:00 ▶ src/pages/terms-and-conditions.astro
+23:52:00   └─ /terms-and-conditions.html (+2ms)
+23:52:00 ▶ src/pages/vision-guided-robotics.astro
+23:52:00   └─ /vision-guided-robotics.html (+2ms)
+23:52:00 ▶ src/pages/warehouse-logistics.astro
+23:52:00   └─ /warehouse-logistics.html (+2ms)
+23:52:00 ✓ Completed in 349ms.
+
+23:52:00 [build] 132 page(s) built in 1.67s
+23:52:00 [build] Complete!

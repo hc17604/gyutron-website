@@ -1,0 +1,60 @@
+{
+  "asset": "astro/public/home-solutions/identification.webp",
+  "createdDate": "2026-10-18",
+  "generationMode": "built-in image_gen__imagegen",
+  "intent": "new CG engineering asset, followed by a framing-only image edit",
+  "styleReference": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+    "role": "Visually inspected for style; not passed to the initial generation call.",
+    "sha256": "9514d3121bf38eccfaa6aab136bd8f96ae5025eb9e44299781faf04e84df4ec1"
+  },
+  "calls": [
+    {
+      "type": "generate",
+      "tool": "image_gen__imagegen",
+      "prompt": "Use case: stylized-concept.\nAsset type: a single website solution-scene illustration, landscape 3:2 canvas, standalone image rather than a webpage.\nPrimary request: precise, sober CG engineering render of a compact industrial carton code-reading rig. A short twin-belt conveyor holds one brown cardboard carton. The carton SIDE facing the viewer has a single simple square DataMatrix-like black-and-white label patch. A black fixed-mount barcode reader on an adjustable SIDE bracket is at the same height as this visible carton side label; the reader's optical face is aimed DIRECTLY at that label across a sensible short clear working distance. The camera must read the side label, never look downward from above. Place one small upstream photoelectric trigger sensor along the side rail before the carton. Place one compact black industrial controller outside the conveyor frame. Show practical mounting hardware and a few normal black cables connecting reader, sensor and controller. No other sensing heads.\nComposition/framing: entire isolated mechanical assembly, orthographic 30-degree three-quarter view, all feet, conveyor, carton, reader bracket and controller fully visible; exactly one coherent machine, centered and balanced. At least 6 percent clear margin on every side. No cropping. Broad landscape 3:2 framing.\nStyle/medium: visibly computer-generated mechanical engineering model, like a precise CAD product visualization, not a fake factory photograph. Matte white and silver aluminum extrusion frame, black belts, black reader and controller housings, restrained small purple seam accents. Realistic functional geometry, crisp edges, muted surfaces.\nScene/backdrop: plain consistent charcoal #1c2026 background and matching ground, soft contact shadows. No factory, no room, no horizon details, no environmental props.\nLighting/mood: soft broad studio illumination; serious, restrained, practical industrial tone.\nText: none. The square code patch is abstract and need not encode data.\nConstraints: reader optical axis must intersect the visible side label; sensible bracket placement and cable routing; complete machine silhouette. No overhead camera, no people, no human-readable text, logos, watermark, annotations, callout lines, leader lines, dimensional markings, diagram arrows, play button, user interface, neon, laser beam, speed claims or decorative glow.",
+      "transparent_background": false,
+      "referenced_image_paths": [],
+      "output": "D:/Codex/.codex/generated_images/01a14f35-3f73-7e13-bfcd-939790e740d1/exec-90312187-177d-4c7a-8151-91df2c379bc5.png",
+      "outputSha256": "4d9b186a1ce424e35198915f28e5c34a7db6d103cd4deeb8b875d0de653e0411"
+    },
+    {
+      "type": "edit",
+      "tool": "image_gen__imagegen",
+      "prompt": "Edit only the overall framing of this generated engineering render. Uniformly reduce the complete machine and every object together so the whole group occupies at most 84 percent of canvas width, centered, giving at least 8 percent plain charcoal margin at both left and right; keep at least 6 percent margin top and bottom. Preserve the full 3:2 canvas, the same camera angle, every machine detail, the carton side label, the side-mounted reader aimed at that label, upstream trigger, external controller, cables, restrained black/silver/purple palette, charcoal #1c2026 background and contact shadows. Do not crop, redesign any object, add any text or logos, or add leader lines. This is solely a slight zoom-out with the entire mechanical scene unchanged.",
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "D:/Codex/.codex/generated_images/01a14f35-3f73-7e13-bfcd-939790e740d1/exec-90312187-177d-4c7a-8151-91df2c379bc5.png"
+      ],
+      "output": "D:/Codex/.codex/generated_images/01a14f35-3f73-7e13-bfcd-939790e740d1/exec-4341af59-24e4-4075-ab0c-5082b8c6ba93.png"
+    }
+  ],
+  "raw": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/identification.png",
+    "sha256": "6181df2994a0df18649a3fb5334ba391c367ab55f45bfa0d568df29c0718c440",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1727014
+  },
+  "export": {
+    "path": "astro/public/home-solutions/identification.webp",
+    "format": "WebP",
+    "mode": "RGB",
+    "width": 1200,
+    "height": 800,
+    "quality": 87,
+    "method": 6,
+    "operation": "Full-canvas proportional Lanczos resize only; no crop, recoloring, compositing or padding.",
+    "bytes": 46298,
+    "sha256": "ac94bee9b510b440d291951c1de59fcb123800c7248ee4cafefc4a02f07e0e63"
+  },
+  "visualInspection": {
+    "passed": true,
+    "notes": [
+      "Side-mounted fixed reader faces the visible side code label, with an upstream trigger and an external controller.",
+      "Mechanical assembly fully visible against charcoal, with clear margins after a targeted zoom-out.",
+      "No human-readable text, logo, leader lines, UI, play button or glowing laser.",
+      "Illustrative engineering configuration; not a factory photograph or verified installed system."
+    ]
+  }
+}

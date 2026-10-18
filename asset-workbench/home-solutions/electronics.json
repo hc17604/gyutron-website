@@ -1,0 +1,54 @@
+{
+  "asset": "electronics",
+  "generated_with": "built-in image_gen__imagegen",
+  "mode": "reference-guided generation",
+  "user_direction": "Standalone tabletop PCBA assembly visual-inspection station with one green board and locating carrier, aligned overhead camera and open-center ring illumination. Selected mock's matte technical CG style, no UI, text, logos, fake factory setting or performance claims.",
+  "input_reference_path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+  "generated_source_path": "D:/Codex/.codex/generated_images/01a14ee8-edf3-7041-b2c4-3e985b8e92c6/exec-74c65087-5896-497e-96fa-383eb2bb90f7.png",
+  "raw_source_path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/electronics.png",
+  "webp_path": "D:/AI PRODUT/GYUTRON web/website/gyutron-website-repo/astro/public/home-solutions/electronics.webp",
+  "prompt": "Use case: stylized-concept.\nAsset type: standalone 3:2 landscape technical engineering illustration for an industrial website solution explorer. Requested canvas 1200 x 800.\nReference: attached selected website mock, using ONLY the right-hand engineering rig's restrained matte silver/gray/black rendered-model visual style. Create an independent NEW tabletop electronics inspection station, not a screenshot and not the same conveyor/housing apparatus.\nSubject: one complete compact tabletop PCBA assembly visual-inspection station. A SINGLE rectangular green printed circuit board assembly rests flat and fully supported on a precise neutral-gray locating carrier on a small silver baseplate. Include physically plausible clearly visible top-side components: black integrated circuits, two modest connectors, a few cylindrical capacitors and smaller discrete surface components, with visible green PCB areas and copper traces. The carrier has four edge locating points and unobtrusive clamps leaving components visible. This must clearly be ONE populated PCB, not a tray of chips, not a JEDEC semiconductor tray, not a boxed assembly housing, and not multiple boards.\nA compact silver aluminum extrusion frame rises at the rear of the base. One black industrial vision camera is mounted above the board, looking vertically DOWN through the clearly OPEN central aperture of one white annular diffuse ring illumination unit at the board. The lens points toward the exposed top-side components; keep the mechanical/optical alignment plausible. It illustrates only component presence and placement, not X-ray or hidden/buried solder-joint inspection. No beams or detection overlays. One small finned black controller mounts on the OUTSIDE of the right rear upright, with plausible routed black cables and tiny restrained purple #4b2e83 hardware seams. No conveyor is needed. Complete baseplate, short leveling feet, rear frame, camera, open ring light, cable loops and controller visible.\nStyle/materials: clean orthographic three-quarter-view CG engineering model, visibly an illustrative technical render rather than a real factory photograph. White-gray/silver mechanical structures, matte black camera/controller, green PCB, natural gray/black component details, tiny purple seams only. Restrained soft neutral studio lighting.\nBackground: consistent plain graphite #1c2026, no horizon or factory, no gradients, glow, bokeh, holograms or decorative grid; subtle contact shadow immediately under the feet only.\nFraming: center the ENTIRE independent station, with comfortable minimum 6% silhouette clearance at EVERY edge. Do not crop the camera cabling, controller, base corners or feet. Landscape 3:2 full canvas.\nAbsolutely NO text, logo, letters, numbers, printed board or port labels, silkscreen writing, callouts, leader lines, arrows, UI, play buttons, charts, metrics, performance claims, watermark, extra boards or extra scenery.",
+  "revision_prompts": [],
+  "technical_export": {
+    "width": 1200,
+    "height": 800,
+    "mode": "RGB",
+    "format": "WebP",
+    "quality": 87,
+    "method": 6,
+    "operation": "Full canvas proportional downscale from 1536x1024 using Lanczos; no crop, padding, compositing or subject editing."
+  },
+  "qa": {
+    "visual_inspection": true,
+    "full_apparatus_visible": true,
+    "no_readable_text_logos_or_ui": true,
+    "single_supported_green_pcba": true,
+    "top_side_components_visible": true,
+    "camera_aligned_over_ring_light_and_board": true,
+    "no_xray_or_buried_joint_claims": true,
+    "scene": "One populated green PCB with chips, connectors and capacitors on a supported locating carrier; compact rear gantry with downward camera/ring light and externally mounted controller.",
+    "style": "Matte illustrative silver/gray/black CG engineering model, tiny purple seams, graphite studio background.",
+    "framing_note": "Full silhouette visible without clipping. Top cable and bottom foot have approximately 2-3% clearance, less than the 6% prompt target; side clearance approximately 12%. No additional framing polish performed because only major clipping/geometry repair was authorized.",
+    "repairs": "None; coherent apparatus geometry and no clipped component."
+  },
+  "created_at": "2026-10-18T15:34:09.694634+00:00",
+  "raw_source": {
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGB",
+    "bytes": 1782427,
+    "sha256": "89186504efc3e821fd6dd0ae37ef38fa49458ceb3a6d6130a2ecc62fea4568c4"
+  },
+  "webp": {
+    "dimensions": [
+      1200,
+      800
+    ],
+    "mode": "RGB",
+    "bytes": 61960,
+    "sha256": "c113d0753e7f759fd4699fa72efb4bc06218dc84e0cd5ccc282276fdedb03c16"
+  },
+  "input_reference_sha256": "9514d3121bf38eccfaa6aab136bd8f96ae5025eb9e44299781faf04e84df4ec1"
+}

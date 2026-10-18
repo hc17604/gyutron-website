@@ -1,0 +1,61 @@
+{
+  "asset": "astro/public/home-solutions/robot-guidance.webp",
+  "createdDate": "2026-10-18",
+  "generationMode": "built-in image_gen__imagegen",
+  "intent": "New CG engineering model with one corrective edit for overhead-camera geometry and full-scene margins.",
+  "styleReference": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+    "role": "Visually inspected for style; not passed to the initial generation call.",
+    "sha256": "9514d3121bf38eccfaa6aab136bd8f96ae5025eb9e44299781faf04e84df4ec1"
+  },
+  "calls": [
+    {
+      "type": "generate",
+      "tool": "image_gen__imagegen",
+      "prompt": "Use case: stylized-concept.\nAsset type: one standalone landscape 3:2 website solution illustration, not a webpage.\nPrimary request: a mechanically credible compact robot pick-guidance bench cell, rendered as a precise CG engineering model. ONE white six-axis industrial robot arm with black joint housings is mounted beside a shallow rectangular parts tray on a compact silver aluminum-extrusion workbench. The tray contains several clearly visible regular machined metal blocks, neatly spaced rather than jumbled. The arm uses one simple two-finger parallel gripper positioned just above one visible block. A single fixed overhead 3D camera with a wide black dual-aperture housing and restrained purple seam accents is mounted on a SEPARATE silver gantry behind the tray. The overhead camera is aimed down at the tray, with an unobstructed useful view of the parts. Place the arm beside the tray; its forearm and gripper must not cover the entire camera view. A compact black edge controller stands outside the bench frame. Include sensible black camera/robot/controller cables and practical mounts. The assembly is a coherent small industrial cell.\nComposition/framing: complete machine in an orthographic 30-degree three-quarter view, centered on a broad 3:2 canvas. The complete silhouette including all robot links, overhead gantry, workbench feet, controller and cables must be visible. Scene group occupies about 78 percent of the canvas width and at most 85 percent of canvas height, leaving at least 6 percent clear plain background on ALL edges. No crop.\nStyle/medium: sober visibly computer-generated mechanical engineering/CAD product visualization, not a fake factory photo. Matte white robot, silver aluminum extrusion workbench and gantry, black joints and devices, subtle small purple seams. Crisp functional geometry and muted realistic materials.\nScene/backdrop: plain consistent graphite charcoal #1c2026 background and matching ground, soft studio contact shadows. No room, factory scenery or environmental props.\nLighting/mood: broad soft studio light, practical, serious and restrained industrial presentation.\nText: none.\nAvoid: humans, second robot, conveyor, oversized gripper, optical cones, laser beams, floating coordinate triads, grid overlays, human-readable text, logos, watermarks, labels, annotations, callout or leader lines, play buttons, UI, neon, speed or accuracy claims. Do not hide the parts tray behind the robot or camera gantry.",
+      "transparent_background": false,
+      "referenced_image_paths": [],
+      "output": "D:/Codex/.codex/generated_images/01a14f35-3f73-7e13-bfcd-939790e740d1/exec-411c823e-c6de-4422-ae5b-7c3630564752.png",
+      "outputSha256": "5596e0dee07283757d4e159ad780fa728fc9799ee9b21ac8eda1dc95404ec581"
+    },
+    {
+      "type": "edit",
+      "tool": "image_gen__imagegen",
+      "prompt": "Refine this engineering model in exactly two ways. First, rotate the overhead wide black dual-aperture 3D camera on its mount so BOTH optical apertures are on its downward-facing underside and point directly down at the visible metal-parts tray. It is an overhead robot-guidance camera, not a camera looking sideways toward the viewer. Show the sensible tilting mounting bracket; keep the tray view unobstructed, keep the same camera housing. Second, zoom out the ENTIRE scene uniformly to leave at least 8 percent plain charcoal margin at top and bottom and at least 6 percent on both sides; no part may be cropped. Preserve the same complete white six-axis robot, two-finger gripper, visible blocks/tray, gantry, bench, external controller, practical cables, orthographic three-quarter camera view, 3:2 landscape canvas, #1c2026 charcoal background, muted silver/white/black materials and subtle purple seams. No text, logos, labels, coordinate triads, cones, laser beams, annotations, UI or decorative additions. Change nothing else.",
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "D:/Codex/.codex/generated_images/01a14f35-3f73-7e13-bfcd-939790e740d1/exec-411c823e-c6de-4422-ae5b-7c3630564752.png"
+      ],
+      "output": "D:/Codex/.codex/generated_images/01a14f35-3f73-7e13-bfcd-939790e740d1/exec-5cc02d33-4d6f-452e-8e35-f0c77e22a091.png"
+    }
+  ],
+  "raw": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/robot-guidance.png",
+    "sha256": "2d0d12d7779f375bea6f086f3b6587f5670c3714df94118809f32147706dad3a",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1796737
+  },
+  "export": {
+    "path": "astro/public/home-solutions/robot-guidance.webp",
+    "format": "WebP",
+    "mode": "RGB",
+    "width": 1200,
+    "height": 800,
+    "quality": 87,
+    "method": 6,
+    "operation": "Full-canvas proportional Lanczos resize only; no crop, recoloring, compositing or padding.",
+    "bytes": 51240,
+    "sha256": "c9cd455c0ebd63362f4401ad244f50759885b628b886d7c76c9c8d0a0d72dde2"
+  },
+  "visualInspection": {
+    "passed": true,
+    "notes": [
+      "Single white arm with two-finger gripper above a visible regular part in a tray.",
+      "Separate gantry carries a wide dual-aperture 3D camera facing down toward the parts tray.",
+      "Compact controller sits outside the bench frame with sensible cables; complete silhouette has clear margins.",
+      "No text, logos, callout lines, coordinate triads, optical cones, laser beams, neon, UI or factory scenery.",
+      "Illustrative engineering configuration; not a verified installation or performance claim."
+    ]
+  }
+}

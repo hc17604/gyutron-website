@@ -1,0 +1,52 @@
+{
+  "asset": "astro/public/home-solutions/logistics.webp",
+  "createdDate": "2026-10-18",
+  "generationMode": "built-in image_gen__imagegen",
+  "intent": "New CG engineering parcel identification and dimensioning illustration.",
+  "styleReference": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/04-selected-system-backgrounds.png",
+    "role": "Visually inspected for style; not passed to the generation call.",
+    "sha256": "9514d3121bf38eccfaa6aab136bd8f96ae5025eb9e44299781faf04e84df4ec1"
+  },
+  "calls": [
+    {
+      "type": "generate",
+      "tool": "image_gen__imagegen",
+      "prompt": "Use case: stylized-concept.\nAsset type: one standalone landscape 3:2 website solution illustration, not a webpage.\nPrimary request: precise CG mechanical engineering model of a compact logistics parcel identification and dimensioning rig. A short supported roller conveyor carries exactly THREE spaced brown cardboard parcels of visibly different sizes. Every parcel rests firmly on the conveyor rollers, no floating or overhanging boxes. A silver gantry above the conveyor supports ONE wide black 3D/vision sensing head; its optical apertures are on the DOWNWARD-FACING underside, aimed straight down at the packages to measure their outlines, never pointed sideways at the viewer. One fixed black barcode reader is mounted beside the conveyor on a sensible adjustable bracket at the height of a visible carton SIDE label. The central parcel's viewer-facing side has one simple square DataMatrix-like black-and-white label patch, and the SIDE reader optical axis points directly toward that code patch across a short clear working distance. Add one small upstream photoelectric trigger sensor. A compact black industrial controller stands outside the conveyor frame with practical black cables to the two sensing devices and trigger. Include normal mounts, silver cross braces and supported leveling feet. This is an identification/dimensioning station, not a sorter.\nComposition/framing: entire coherent mechanical rig in orthographic 30-degree three-quarter view; all three parcels, complete gantry, roller conveyor, every foot and separate controller fully visible. Center the scene on a broad 3:2 canvas; scene group uses about 80 percent of canvas width and at most 82 percent of height, with at least 8 percent plain graphite margin on every side. No crop.\nStyle/medium: visibly computer-generated CAD-style mechanical product visualization with crisp practical geometry; sober industrial rendering, not a fake factory photo. Matte silver/white aluminum frame, gray steel rollers, black sensor housings/controller, restrained small purple housing seams. Ordinary brown cardboard parcels.\nScene/backdrop: plain consistent graphite charcoal #1c2026 background and matching ground, soft studio contact shadows, no room or factory environment.\nLighting/mood: broad soft studio illumination, serious restrained engineering presentation.\nText: none; code patch may be abstract and need not encode data.\nAvoid: humans, handheld PDA, sorting diverter, robot, unsupported parcels, floating boxes, extra sensing heads, camera aimed in wrong direction, optical cones, laser beams, floating coordinate triads, human-readable text, printed packaging words, logos, watermarks, callouts, annotation or leader lines, UI, play buttons, neon, speed or accuracy claims.",
+      "transparent_background": false,
+      "referenced_image_paths": [],
+      "output": "D:/Codex/.codex/generated_images/01a14f35-3f73-7e13-bfcd-939790e740d1/exec-92e05c80-57a1-4a17-9678-b4221f390318.png",
+      "outputSha256": "24930c28bb6e4a6818a26fa4ba7f6c089b1944af7f81e041d0997f4739665ca7"
+    }
+  ],
+  "raw": {
+    "path": "D:/AI PRODUT/GYUTRON web/design-drafts/2026-10-18-solution-explorer/scene-sources/logistics.png",
+    "sha256": "24930c28bb6e4a6818a26fa4ba7f6c089b1944af7f81e041d0997f4739665ca7",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 1849416
+  },
+  "export": {
+    "path": "astro/public/home-solutions/logistics.webp",
+    "format": "WebP",
+    "mode": "RGB",
+    "width": 1200,
+    "height": 800,
+    "quality": 87,
+    "method": 6,
+    "operation": "Full-canvas proportional Lanczos resize only; no crop, recoloring, compositing or padding.",
+    "bytes": 56600,
+    "sha256": "55738ff6213c5ad70ec24b38271d893b8726fc67bedc93dc2bbc96d8e8991b38"
+  },
+  "visualInspection": {
+    "passed": true,
+    "notes": [
+      "Exactly three differently sized parcels are spaced and supported on the roller conveyor.",
+      "One overhead wide sensing head faces down; a separate side reader faces the middle parcel side code patch.",
+      "Upstream photoelectric trigger and external controller have plausible mounting/cables.",
+      "Full machine silhouette visible against charcoal with plain margins and no cropping.",
+      "No handheld PDA, people, sorter diverter, human-readable text, logos, callout lines, neon or factory scenery.",
+      "Illustrative engineering configuration; no installation or performance claim."
+    ]
+  }
+}
