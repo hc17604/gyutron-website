@@ -1,7 +1,7 @@
 # GYUTRON gyutron.com — Engineering Handoff (single source of truth)
 
 > Consolidated handoff for the agent/engineer taking over. `AGENTS.md` is now the concise active rule set;
-> this file owns current state and decision history. Last updated 2026-10-18. Obtain the current live
+> this file owns current state and decision history. Last updated 2026-10-19. Obtain the current live
 > HEAD with `git fetch origin` and `git rev-parse origin/main`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
 > 🏗️ **2026-06-06:** an **additive engineering foundation** was added — repo-root **`docs/`** + `astro/src/{config,types,data}` + `astro/src/lib/{api,forms,crm,cms,agent,logger}` (mock/placeholder) + `astro/.env.example`. See **§5b** and `docs/`.
@@ -35,7 +35,7 @@ Read this block first; use the dated entries below only for task-relevant histor
 - **Solution explorer (2026-10-18):** selected option3 uses gray/white layered accordion choices and
   charcoal isolated engineering models. Six applications/five industries; compact native selector with one
   model/copy panel at900px and below. Eleven generated illustrations replace faux factory photography.
-  Implementation/visual/functional gates passed; authorized production release is being completed.
+  Released7b44f55; GitHub CI39142761021 and49/49production content/hash/HTTP checks pass.
 - **Existing About visual state:** the homepage About section is now a four-tab, full-width image story
   (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a compact dark
   control rail, no gaps to its neighboring dark modules, and a background that remains viewport-fixed on
@@ -67,9 +67,9 @@ Read this block first; use the dated entries below only for task-relevant histor
 
 ---
 
-## 🤝 CODEX HANDOFF — current state (2026-10-18)
+## 🤝 CODEX HANDOFF — current state (2026-10-19)
 
-> **2026-10-18 (Codex) — Selected solution explorer option3 implemented; ready for authorized release.**
+> **2026-10-19 (Codex) — Selected solution explorer option3 published and verified.**
 > User explicitly selected option3, requested fewer separator/model leader lines and background-tone
 > layering, authorized direct publication and compact phone adaptation. Revised target is
 > artifacts/solutions-explorer-20261018/selected-reference.png. Baseline HEAD/origin main:c4782a0.
@@ -99,9 +99,18 @@ Read this block first; use the dated entries below only for task-relevant histor
 > Preserved: exact9-card product markup in all3locales, otherhome modules/header/footer/catalog source,
 > Shop/backend/routing; unrelated untracked artifacts/content-audit-20260808/ unstaged. All131public-only
 > brand files preserved. Selectively synced public/{index.html,de/index.html,ja/index.html,home-sections.css}
-> plus public/home-solutions/*.webp. No rollout claimed yet. Next: authorized push, CI and live module/hash/
-> browser checks. Limits: no physical touchscreen/screenreader/OS reduced-motion emulation; no-JS fallback
-> inspected from source/native semantics. Rollback only task-owned source/public files, rebuild/selectively sync.
+> plus public/home-solutions/*.webp. Released7b44f55af9f357beb6c61a08176d0d6bf83670de to main.
+> GitHub verify run39142761021 completed successfully. At2026-10-18 23:59 Singapore, first-attempt
+> production49/49checks passed:3homepages with exact full balanced explorer markup,11details/images/
+> CTAs and6+5options each; exact existing product-module match;33CTA responses200 and18fragments
+> present; normalized-LF CSS and all11binary image hashes match; health200/statusok. Evidence:
+> artifacts/solutions-explorer-20261018/{check-production.ps1,production-checks.json}.
+> Live browser: desktop application2then1switch works and images load;390px mobile selectionapp3
+> has exactlyone visible entry, loaded identification model, no page/header overflow, total495pxmodule.
+> Console0warnings/errors. Native production-desktop.jpg and production-mobile.jpg capture the release;
+> temporary browser viewport overrides reset. Finished after midnight2026-10-19. Next:none.
+> Limits:no physical touchscreen/screenreader/OS reduced-motion emulation; no-JS fallback inspected
+> from source/native semantics. Rollback only task-owned source/public files, rebuild/selectively sync.
 
 > **2026-10-18 (Codex) — Approved nine-family compact industrial product mosaic published and verified.**
 > User selected attachment `codex-clipboard-6a43d565-42d8-443b-a168-f34946f6d83e.png`

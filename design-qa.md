@@ -82,7 +82,18 @@ visual. No custom SVG, pseudo-art or new dependency. Images are generated assets
 132-page Astro build and verify:all hard gates PASS. Existing reports remain3multi-H1 homepages,
 615JS navigation triggers and42pages/143heuristic i18n tokens outside this work. Root deploy:check PASS,
 131public-only files preserved. Only three homepages, matching CSS and11new media files synced.
-User explicitly authorized production publication. Release/CI/live evidence follows after push.
+User explicitly authorized production publication. Released7b44f55af9f357beb6c61a08176d0d6bf83670de.
+GitHub verify run39142761021 completed successfully:
+https://github.com/hc17604/gyutron-website/actions/runs/39142761021
+
+Production2026-10-18 23:59 Singapore:first-attempt49/49checks passed. Three complete balanced
+explorer modules exactly equal current public/ (11items/images/CTA and6+5options each), as do the
+unchanged product modules. All33CTA URLs200 and18fragments present. LF-normalized CSS and all11
+image binary hashes match. Health200/statusok. production-checks.json and check-production.ps1
+record reproducible evidence. Live desktop switches applications with loaded model;390px mobile
+selects identification, shows exactlyone entry with a loaded image, no page/header overflow and a
+495px module. Console0warnings/errors. production-desktop.jpg and production-mobile.jpg capture
+those actual states. Browser viewport override reset. Final records completed2026-10-19.
 
 ## Follow-up polish
 
