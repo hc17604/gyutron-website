@@ -63,4 +63,8 @@ chat overlays are excluded from fidelity scoring because the user requested GYUT
 No remaining P0/P1/P2 issue in the changed product module. The existing fixed Support/Contact
 rail may overlap right-column phone content; this is an unchanged global control already noted
 in the prior QA. Native-language editorial review remains separate. Publication is explicitly
-authorized by the user; CI and production results are recorded in HANDOFF.md after release.
+authorized by the user. Released as d58d9f5; CI run 39128909368 passed. All three live product
+sections match the release, CSS and all seven images match hashes, and the health endpoint is 200.
+Live 1440px desktop and 390px mobile browser checks pass. See production-checks.json and
+production-desktop.jpg / production-mobile.jpg. Cloudflare email obfuscation changes whole-page
+HTML bytes outside the module; product-section markup equality is exact.

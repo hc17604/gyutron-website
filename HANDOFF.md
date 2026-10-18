@@ -28,7 +28,7 @@ Read this block first; use the dated entries below only for task-relevant histor
 - **Current product visual state (2026-10-18):** the homepage uses a CYCODE-style two-row
   product mosaic: 1+1+2 / 2+1+1, four regular cards and two featured cards with pale-purple diagonal
   surfaces. Seven GYUTRON matrix images, concise en/de/ja copy and source-matched whole-card hover.
-  Build/verification/selective sync pass. User authorized publication; release checks are in progress.
+  Published as `d58d9f5`; GitHub CI and production content/asset checks pass.
   Preview: `http://127.0.0.1:8788/#products`.
 - **Existing About visual state:** the homepage About section is now a four-tab, full-width image story
   (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a compact dark
@@ -63,7 +63,7 @@ Read this block first; use the dated entries below only for task-relevant histor
 
 ## 🤝 CODEX HANDOFF — current state (2026-10-18)
 
-> **2026-10-18 (Codex) — Homepage product mosaic prepared for authorized publication.**
+> **2026-10-18 (Codex) — Homepage product mosaic published and verified.**
 > Replaced the long featured-capabilities copy/three panels with six product-family category cards.
 > The user's latest correction selects CYCODE's two-row 1+1+2 / 2+1+1 arrangement, superseding the
 > initial equal-card row. Handheld Scanners and Fixed-Mount Code Readers are wide featured cards;
@@ -85,7 +85,14 @@ Read this block first; use the dated entries below only for task-relevant histor
 > Design QA and screenshots: `design-qa.md`, `artifacts/home-products-20261018/mosaic-*`.
 > Deploy: only `public/{index.html,de/index.html,ja/index.html,home-sections.css}` and seven new
 > `public/home-products/*.webp` were selectively synced. User explicitly authorized production
-> publication. Commit/push, CI and production verification are in progress.
+> publication. Released `d58d9f5` to main; GitHub verify run `39128909368` completed successfully.
+> Production `/`, `/de/`, `/ja/` return 200 with six cards/two featured cards, product markup matching
+> the release and CSS key `576e4dbb`. The stylesheet and all seven WebPs match normalized/byte hashes.
+> Whole HTML hashes differ because Cloudflare transforms email links; product-section equality is exact.
+> `/api/v1/health` stays 200/status ok. Live browser confirms six cards, two featured and seven loaded
+> images at desktop; 390px mobile has no product/page overflow. Evidence: `production-checks.json`,
+> `production-desktop.jpg` and `production-mobile.jpg` in the task artifact folder. Initial browser
+> navigation cached the old page; reload after deployment confirmed the released version.
 > Limits: unchanged fixed Support/Contact rail may overlap right-column phone content; native-language
 > editorial review remains separate. Previous QA is archived as `one-row-design-qa.md` and
 > `prior-design-qa.md`. Baseline: `87ccafd`. Rollback only task-owned source/public files, then rebuild

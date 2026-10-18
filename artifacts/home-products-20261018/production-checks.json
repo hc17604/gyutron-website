@@ -1,0 +1,102 @@
+{
+  "time": "2026-10-18T12:52:12.1062372Z",
+  "commit": "d58d9f5",
+  "checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "hashMatches": false,
+      "productSectionMatches": true,
+      "cards": 6,
+      "featured": 2,
+      "cssKey": "576e4dbb",
+      "emailObfuscation": false
+    },
+    {
+      "path": "/de/",
+      "status": 200,
+      "hashMatches": false,
+      "productSectionMatches": true,
+      "cards": 6,
+      "featured": 2,
+      "cssKey": "576e4dbb",
+      "emailObfuscation": false
+    },
+    {
+      "path": "/ja/",
+      "status": 200,
+      "hashMatches": false,
+      "productSectionMatches": true,
+      "cards": 6,
+      "featured": 2,
+      "cssKey": "576e4dbb",
+      "emailObfuscation": false
+    },
+    {
+      "path": "/home-sections.css",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "path": "/home-products/android-pda.webp",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "path": "/home-products/area-scan-cameras.webp",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "path": "/home-products/barcode-scanners.webp",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "path": "/home-products/code-reading-cameras-secondary.webp",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "path": "/home-products/code-reading-cameras.webp",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "path": "/home-products/robot-workcells.webp",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "path": "/home-products/smart-vision-sensors.webp",
+      "status": 200,
+      "hashMatches": true
+    },
+    {
+      "path": "/api/v1/health",
+      "status": 200,
+      "body": "{\"status\":\"ok\",\"api_version\":\"v1\",\"source\":\"gyutron-website\",\"time\":\"2026-10-18T12:52:13.270Z\"}"
+    }
+  ],
+  "ci": {
+    "run": 39128909368,
+    "url": "https://github.com/hc17604/gyutron-website/actions/runs/39128909368",
+    "conclusion": "success"
+  },
+  "browser": {
+    "desktop": {
+      "viewport": 1440,
+      "cards": 6,
+      "featured": 2,
+      "imagesLoaded": 7,
+      "screenshot": "production-desktop.jpg"
+    },
+    "mobile": {
+      "viewport": 390,
+      "overflow": false,
+      "allCardsFit": true,
+      "imagesLoaded": 7,
+      "screenshot": "production-mobile.jpg"
+    }
+  }
+}
