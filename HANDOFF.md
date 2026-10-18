@@ -1,7 +1,7 @@
 # GYUTRON gyutron.com — Engineering Handoff (single source of truth)
 
 > Consolidated handoff for the agent/engineer taking over. `AGENTS.md` is now the concise active rule set;
-> this file owns current state and decision history. Last updated 2026-08-08. Obtain the current live
+> this file owns current state and decision history. Last updated 2026-10-18. Obtain the current live
 > HEAD with `git fetch origin` and `git rev-parse origin/main`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
 > 🏗️ **2026-06-06:** an **additive engineering foundation** was added — repo-root **`docs/`** + `astro/src/{config,types,data}` + `astro/src/lib/{api,forms,crm,cms,agent,logger}` (mock/placeholder) + `astro/.env.example`. See **§5b** and `docs/`.
@@ -25,7 +25,12 @@ Read this block first; use the dated entries below only for task-relevant histor
 - **Build/deploy asymmetry:** current `public/` has 131 non-Shop files not emitted by Astro, including
   assets referenced by built pages. Never mirror-delete public-only files; `astro preview` is not fully
   production-equivalent, so use Wrangler dev or live checks for final asset/routing acceptance.
-- **Current prepared visual state:** the homepage About section is now a four-tab, full-width image story
+- **Current product visual state (2026-10-18):** the homepage uses a CYCODE-style two-row
+  product mosaic: 1+1+2 / 2+1+1, four regular cards and two featured cards with pale-purple diagonal
+  surfaces. Seven GYUTRON matrix images, concise en/de/ja copy and source-matched whole-card hover.
+  Build/verification/selective sync pass. User authorized publication; release checks are in progress.
+  Preview: `http://127.0.0.1:8788/#products`.
+- **Existing About visual state:** the homepage About section is now a four-tab, full-width image story
   (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a compact dark
   control rail, no gaps to its neighboring dark modules, and a background that remains viewport-fixed on
   both desktop and supported mobile/tablet viewports. Mobile uses a clipped shared fixed layer rather than
@@ -56,7 +61,35 @@ Read this block first; use the dated entries below only for task-relevant histor
 
 ---
 
-## 🤝 CODEX HANDOFF — current state (2026-08-08)
+## 🤝 CODEX HANDOFF — current state (2026-10-18)
+
+> **2026-10-18 (Codex) — Homepage product mosaic prepared for authorized publication.**
+> Replaced the long featured-capabilities copy/three panels with six product-family category cards.
+> The user's latest correction selects CYCODE's two-row 1+1+2 / 2+1+1 arrangement, superseding the
+> initial equal-card row. Handheld Scanners and Fixed-Mount Code Readers are wide featured cards;
+> Smart & Area Scan Cameras, 3D Vision Systems, Rugged Android PDAs and Robot Workcells are regular.
+> Reference source: `D:/CYCODE/redesign-v2/editable-modules/categories/index.html`; adapted the real
+> CSS diagonal to #efe8ff and retained GYUTRON #4b2e83, square corners and typography. Whole-card
+> hover matches translateY(-4px)/scale(1.018), .36s cubic-bezier(.22,1,.36,1); reduced motion disables it.
+> Files: `HomeProducts.astro`, its `Home.astro` integration, `data/homeProducts.ts`, `home.products.*`
+> en/de/ja keys and `astro/public/home-sections.css`. Seven slot-owned transparent WebPs total
+> 337,438 bytes; existing GY-CR120 is the secondary fixed reader. Asset provenance:
+> `asset-workbench/home-products/README.md`. Short descriptors avoid unsupported specifications.
+> Preserved: SolutionExplorer, other home modules, header/footer, catalog source assets, forms,
+> Worker/backend, Shop and unrelated untracked `artifacts/content-audit-20260808/`.
+> Verification: 132-page build and `verify:all` hard gates pass. Legacy reports remain three multi-H1
+> homepages, 615 JS-driven nav triggers and 42 pages/143 suspect i18n tokens. Browser checks cover
+> EN 1920/1440/1024/768/390, DE 1440/320, JA 320; product titles fit, images load, page overflow zero.
+> Source review and loaded hover/reduced-motion CSS inspection pass; automation has no documented
+> pointer-move API, so actual hover-frame playback was not recorded. Console warnings/errors: zero.
+> Design QA and screenshots: `design-qa.md`, `artifacts/home-products-20261018/mosaic-*`.
+> Deploy: only `public/{index.html,de/index.html,ja/index.html,home-sections.css}` and seven new
+> `public/home-products/*.webp` were selectively synced. User explicitly authorized production
+> publication. Commit/push, CI and production verification are in progress.
+> Limits: unchanged fixed Support/Contact rail may overlap right-column phone content; native-language
+> editorial review remains separate. Previous QA is archived as `one-row-design-qa.md` and
+> `prior-design-qa.md`. Baseline: `87ccafd`. Rollback only task-owned source/public files, then rebuild
+> and selectively sync; preserve unrelated audit files.
 
 > **2026-08-08 (Codex) — Mobile About background corrected to a real viewport-fixed layer.**
 > Supersedes the mobile `scroll` behavior recorded in the two About entries below after the user checked

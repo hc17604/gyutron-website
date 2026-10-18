@@ -21,6 +21,7 @@ agent starts with **AGENT_TAKEOVER.md**, then reads **SAFETY_CHECKLIST.md** befo
 | Add a product category | `data/products.{en,de,ja}.js` (+ `seo.<cat>` keys, nav link) | CONTENT_GUIDE |
 | Add a product card | `data/products.{en,de,ja}.js` (+ image, `i18n-audit.py`) | CONTENT_GUIDE |
 | Edit homepage hero/carousel | `data/heroSlides.ts` (+ i18n keys) | CONTENT_GUIDE, HANDOFF §6 |
+| Edit homepage product-family cards | `data/homeProducts.ts`, `components/HomeProducts.astro`, `home.products.*` keys, `public/home-products/` and `home-sections.css` | asset-workbench/home-products/README, design-qa |
 | Edit contact-form product options | `CONTACT_PRODUCT_OPTIONS` in `data/products.ts` | CONTENT_GUIDE, COMPONENTS |
 | Add / edit a solution | `data/solutions.ts` (+ i18n keys, page wrappers) | SOLUTIONS_GUIDE |
 | Add / edit a FAQ | `data/faq.ts` | CONTENT_GUIDE |

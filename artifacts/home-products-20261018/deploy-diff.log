@@ -1,0 +1,150 @@
+
+> gyutron-website@1.0.0 deploy:diff
+> node scripts/public-sync-diff.mjs
+
+Read-only Astro build ↔ committed public comparison
+Excluded: shop/, de/shop/, ja/shop/
+
+Changed bytes (candidate selective sync) (4)
+  de/index.html
+  home-sections.css
+  index.html
+  ja/index.html
+
+Build-only files (candidate additions) (0)
+  none
+
+Public-only files (review; do not delete automatically) (131)
+  .assetsignore
+  business-operations-meeting.jpeg
+  contact-sales-hero.png
+  cta-industrial-control.png
+  de/product-catalog.js
+  de/product-data.js
+  governance-documentation.png
+  hero-industrial-automation.png
+  hero-industry-automotive-ev.jpg
+  hero-industry-electronics.jpg
+  hero-industry-logistics.jpg
+  hero-industry-semiconductor.jpg
+  ja/product-catalog.js
+  ja/product-data.js
+  mega-industrial-products.png
+  nav-company-engineering-lab.png
+  nav-company-overview.png
+  nav-company-quality-bench.png
+  nav-company-supply-chain.png
+  nav-customer-integration.png
+  nav-customer-lifecycle-support.png
+  nav-customer-pilot-lab.png
+  nav-customer-training.png
+  nav-customers-overview.png
+  nav-industries-overview.png
+  nav-industry-automotive-ev.png
+  nav-industry-electronics-smt.png
+  nav-industry-energy-field.png
+  nav-industry-food-beverage.png
+  nav-industry-logistics-rfid.png
+  nav-industry-oem-machine-builders.png
+  nav-industry-pharma-medical.png
+  nav-industry-semiconductor.png
+  nav-resources-overview.png
+  nav-resources-technical-library.png
+  office-team-discussion.jpeg
+  product-catalog.js
+  product-data.js
+  product-hero-android-pda-matrix.png
+  product-hero-area-scan-cameras-matrix.png
+  product-hero-barcode-scanners-matrix.png
+  product-hero-calibration-tools-matrix.png
+  product-hero-code-reading-cameras-matrix.png
+  product-hero-dimensional-gauges-matrix.png
+  product-hero-environmental-sensing-matrix.png
+  product-hero-industrial-sensors-matrix.png
+  product-hero-inspection-instruments-matrix.png
+  product-hero-laser-measurement-matrix.png
+  product-hero-portable-testers-matrix.png
+  product-hero-proximity-sensors-matrix.png
+  product-hero-request-specification-matrix.png
+  product-hero-rfid-handhelds-matrix.png
+  product-hero-smart-cameras-matrix.png
+  product-hero-smart-vision-sensors-matrix.png
+  product-hero-surface-inspection-matrix.png
+  product-hero-vision-lighting-matrix.png
+  product-images/gy-a50.png
+  product-images/gy-a55-pro.png
+  product-images/gy-a60-max.png
+  product-images/gy-a62k.png
+  product-images/gy-a70-cold.png
+  product-images/gy-a80-ultra.png
+  product-images/gy-cal-block.png
+  product-images/gy-cal-grid.png
+  product-images/gy-cal-light.png
+  product-images/gy-conf-dpm.png
+  product-images/gy-conf-rfid.png
+  product-images/gy-conf-scan.png
+  product-images/gy-cr120.png
+  product-images/gy-cr390.png
+  product-images/gy-cr520-dpm.png
+  product-images/gy-cr720-conveyor.png
+  product-images/gy-ct45.png
+  product-images/gy-cv100.png
+  product-images/gy-cv220-inline.png
+  product-images/gy-env32.png
+  product-images/gy-et75.png
+  product-images/gy-fb200.png
+  product-images/gy-gl20.png
+  product-images/gy-lb220.png
+  product-images/gy-lbl150.png
+  product-images/gy-lc4.png
+  product-images/gy-lcx60.png
+  product-images/gy-ld40.png
+  product-images/gy-ldome120.png
+  product-images/gy-ll300.png
+  product-images/gy-lr70.png
+  product-images/gy-lt40.png
+  product-images/gy-mg50.png
+  product-images/gy-net8.png
+  product-images/gy-opt25.png
+  product-images/gy-pr12.png
+  product-images/gy-ps60.png
+  product-images/gy-px18.png
+  product-images/gy-r52-compact.png
+  product-images/gy-r60-grip.png
+  product-images/gy-r70-longrange.png
+  product-images/gy-r86-5g.png
+  product-images/gy-rt800.png
+  product-images/gy-s210.png
+  product-images/gy-s240w.png
+  product-images/gy-s300-dpm.png
+  product-images/gy-s330-cold.png
+  product-images/gy-s360-xr.png
+  product-images/gy-s410-base.png
+  product-images/gy-s520-wear.png
+  product-images/gy-s680-dock.png
+  product-images/gy-safe24.png
+  product-images/gy-sf30.png
+  product-images/gy-th90.png
+  product-images/gy-ul80.png
+  product-images/gy-v120.png
+  product-images/gy-v160-compact.png
+  product-images/gy-v240-color.png
+  product-images/gy-v280-ai.png
+  product-images/gy-v320-mono.png
+  product-images/gy-v380-pro.png
+  product-images/gy-v3d150.png
+  product-images/gy-v3d90.png
+  product-images/gy-v500-hr.png
+  product-images/gy-v640-hs.png
+  product-images/gy-vc8.png
+  product-images/gy-vfg4.png
+  product-images/gy-vio16.png
+  product-images/gy-vl2048.png
+  product-images/gy-vm200.png
+  product-images/gy-vrg200.png
+  product-images/gy-vx12.png
+  product-menu-machine-vision-systems.png
+  shop-analytics.js
+  tmp-mobile-home-delay.png
+
+This command never copies or deletes files. Review task scope before syncing.

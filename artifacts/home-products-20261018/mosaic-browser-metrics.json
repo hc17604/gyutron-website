@@ -1,0 +1,450 @@
+[
+  {
+    "cards": [
+      {
+        "height": 538,
+        "images": true,
+        "overflow": false,
+        "title": "Smart & Area Scan Cameras",
+        "titleOverflow": false,
+        "width": 384
+      },
+      {
+        "height": 538,
+        "images": true,
+        "overflow": false,
+        "title": "3D Vision Systems",
+        "titleOverflow": false,
+        "width": 384
+      },
+      {
+        "height": 538,
+        "images": true,
+        "overflow": false,
+        "title": "Handheld Barcode Scanners",
+        "titleOverflow": false,
+        "width": 789
+      },
+      {
+        "height": 505,
+        "images": true,
+        "overflow": false,
+        "title": "Fixed-Mount Code Readers",
+        "titleOverflow": false,
+        "width": 789
+      },
+      {
+        "height": 505,
+        "images": true,
+        "overflow": false,
+        "title": "Rugged Android PDAs",
+        "titleOverflow": false,
+        "width": 384
+      },
+      {
+        "height": 505,
+        "images": true,
+        "overflow": false,
+        "title": "Robot Workcells",
+        "titleOverflow": false,
+        "width": 384
+      }
+    ],
+    "columns": "383.506px 383.506px 383.506px 383.513px",
+    "overflow": false,
+    "url": "http://127.0.0.1:8788/#products",
+    "width": 1920
+  },
+  {
+    "cards": [
+      {
+        "height": 443,
+        "images": true,
+        "overflow": false,
+        "title": "Smart & Area Scan Cameras",
+        "titleOverflow": false,
+        "width": 287
+      },
+      {
+        "height": 443,
+        "images": true,
+        "overflow": false,
+        "title": "3D Vision Systems",
+        "titleOverflow": false,
+        "width": 287
+      },
+      {
+        "height": 443,
+        "images": true,
+        "overflow": false,
+        "title": "Handheld Barcode Scanners",
+        "titleOverflow": false,
+        "width": 590
+      },
+      {
+        "height": 418,
+        "images": true,
+        "overflow": false,
+        "title": "Fixed-Mount Code Readers",
+        "titleOverflow": false,
+        "width": 590
+      },
+      {
+        "height": 418,
+        "images": true,
+        "overflow": false,
+        "title": "Rugged Android PDAs",
+        "titleOverflow": false,
+        "width": 287
+      },
+      {
+        "height": 418,
+        "images": true,
+        "overflow": false,
+        "title": "Robot Workcells",
+        "titleOverflow": false,
+        "width": 287
+      }
+    ],
+    "columns": "286.788px 286.794px 286.788px 286.794px",
+    "overflow": false,
+    "url": "http://127.0.0.1:8788/#products",
+    "width": 1440
+  },
+  {
+    "cards": [
+      {
+        "height": 404,
+        "images": true,
+        "overflow": false,
+        "title": "Smart & Area Scan Cameras",
+        "titleOverflow": false,
+        "width": 416
+      },
+      {
+        "height": 404,
+        "images": true,
+        "overflow": false,
+        "title": "3D Vision Systems",
+        "titleOverflow": false,
+        "width": 416
+      },
+      {
+        "height": 370,
+        "images": true,
+        "overflow": false,
+        "title": "Handheld Barcode Scanners",
+        "titleOverflow": false,
+        "width": 847
+      },
+      {
+        "height": 370,
+        "images": true,
+        "overflow": false,
+        "title": "Fixed-Mount Code Readers",
+        "titleOverflow": false,
+        "width": 847
+      },
+      {
+        "height": 404,
+        "images": true,
+        "overflow": false,
+        "title": "Rugged Android PDAs",
+        "titleOverflow": false,
+        "width": 416
+      },
+      {
+        "height": 404,
+        "images": true,
+        "overflow": false,
+        "title": "Robot Workcells",
+        "titleOverflow": false,
+        "width": 416
+      }
+    ],
+    "columns": "415.694px 415.694px",
+    "overflow": false,
+    "url": "http://127.0.0.1:8788/#products",
+    "width": 1024
+  },
+  {
+    "cards": [
+      {
+        "height": 433,
+        "images": true,
+        "overflow": false,
+        "title": "Smart & Area Scan Cameras",
+        "titleOverflow": false,
+        "width": 308
+      },
+      {
+        "height": 433,
+        "images": true,
+        "overflow": false,
+        "title": "3D Vision Systems",
+        "titleOverflow": false,
+        "width": 308
+      },
+      {
+        "height": 370,
+        "images": true,
+        "overflow": false,
+        "title": "Handheld Barcode Scanners",
+        "titleOverflow": false,
+        "width": 632
+      },
+      {
+        "height": 370,
+        "images": true,
+        "overflow": false,
+        "title": "Fixed-Mount Code Readers",
+        "titleOverflow": false,
+        "width": 632
+      },
+      {
+        "height": 404,
+        "images": true,
+        "overflow": false,
+        "title": "Rugged Android PDAs",
+        "titleOverflow": false,
+        "width": 308
+      },
+      {
+        "height": 404,
+        "images": true,
+        "overflow": false,
+        "title": "Robot Workcells",
+        "titleOverflow": false,
+        "width": 308
+      }
+    ],
+    "columns": "308.175px 308.175px",
+    "overflow": false,
+    "url": "http://127.0.0.1:8788/#products",
+    "width": 768
+  },
+  {
+    "cards": [
+      {
+        "height": 344,
+        "images": true,
+        "overflow": false,
+        "title": "Smart & Area Scan Cameras",
+        "titleOverflow": false,
+        "width": 170
+      },
+      {
+        "height": 344,
+        "images": true,
+        "overflow": false,
+        "title": "3D Vision Systems",
+        "titleOverflow": false,
+        "width": 170
+      },
+      {
+        "height": 320,
+        "images": true,
+        "overflow": false,
+        "title": "Handheld Barcode Scanners",
+        "titleOverflow": false,
+        "width": 353
+      },
+      {
+        "height": 320,
+        "images": true,
+        "overflow": false,
+        "title": "Fixed-Mount Code Readers",
+        "titleOverflow": false,
+        "width": 353
+      },
+      {
+        "height": 326,
+        "images": true,
+        "overflow": false,
+        "title": "Rugged Android PDAs",
+        "titleOverflow": false,
+        "width": 170
+      },
+      {
+        "height": 326,
+        "images": true,
+        "overflow": false,
+        "title": "Robot Workcells",
+        "titleOverflow": false,
+        "width": 170
+      }
+    ],
+    "columns": "170.4px 170.4px",
+    "overflow": false,
+    "url": "http://127.0.0.1:8788/#products",
+    "width": 390
+  },
+  {
+    "cards": [
+      {
+        "height": 443,
+        "images": true,
+        "overflow": false,
+        "title": "Smart- & Flächenkameras",
+        "titleOverflow": false,
+        "width": 287
+      },
+      {
+        "height": 443,
+        "images": true,
+        "overflow": false,
+        "title": "3D-Bildverarbeitung",
+        "titleOverflow": false,
+        "width": 287
+      },
+      {
+        "height": 443,
+        "images": true,
+        "overflow": false,
+        "title": "Hand-Barcodescanner",
+        "titleOverflow": false,
+        "width": 590
+      },
+      {
+        "height": 443,
+        "images": true,
+        "overflow": false,
+        "title": "Stationäre Codeleser",
+        "titleOverflow": false,
+        "width": 590
+      },
+      {
+        "height": 443,
+        "images": true,
+        "overflow": false,
+        "title": "Robuste Android-PDAs",
+        "titleOverflow": false,
+        "width": 287
+      },
+      {
+        "height": 443,
+        "images": true,
+        "overflow": false,
+        "title": "Roboterzellen",
+        "titleOverflow": false,
+        "width": 287
+      }
+    ],
+    "columns": "286.788px 286.794px 286.788px 286.794px",
+    "overflow": false,
+    "url": "http://127.0.0.1:8788/de/#products",
+    "width": 1440
+  },
+  {
+    "cards": [
+      {
+        "height": 346,
+        "images": true,
+        "overflow": false,
+        "title": "Smart- & Flächenkameras",
+        "titleOverflow": false,
+        "width": 135
+      },
+      {
+        "height": 346,
+        "images": true,
+        "overflow": false,
+        "title": "3D-Bildverarbeitung",
+        "titleOverflow": false,
+        "width": 135
+      },
+      {
+        "height": 320,
+        "images": true,
+        "overflow": false,
+        "title": "Hand-Barcodescanner",
+        "titleOverflow": false,
+        "width": 283
+      },
+      {
+        "height": 320,
+        "images": true,
+        "overflow": false,
+        "title": "Stationäre Codeleser",
+        "titleOverflow": false,
+        "width": 283
+      },
+      {
+        "height": 328,
+        "images": true,
+        "overflow": false,
+        "title": "Robuste Android-PDAs",
+        "titleOverflow": false,
+        "width": 135
+      },
+      {
+        "height": 328,
+        "images": true,
+        "overflow": false,
+        "title": "Roboterzellen",
+        "titleOverflow": false,
+        "width": 135
+      }
+    ],
+    "columns": "135.4px 135.4px",
+    "overflow": false,
+    "url": "http://127.0.0.1:8788/de/#products",
+    "width": 320
+  },
+  {
+    "cards": [
+      {
+        "height": 322,
+        "images": true,
+        "overflow": false,
+        "title": "スマート・エリアスキャンカメラ",
+        "titleOverflow": false,
+        "width": 135
+      },
+      {
+        "height": 322,
+        "images": true,
+        "overflow": false,
+        "title": "3Dビジョン",
+        "titleOverflow": false,
+        "width": 135
+      },
+      {
+        "height": 320,
+        "images": true,
+        "overflow": false,
+        "title": "ハンディスキャナー",
+        "titleOverflow": false,
+        "width": 283
+      },
+      {
+        "height": 320,
+        "images": true,
+        "overflow": false,
+        "title": "固定式コードリーダー",
+        "titleOverflow": false,
+        "width": 283
+      },
+      {
+        "height": 303,
+        "images": true,
+        "overflow": false,
+        "title": "堅牢型Android端末",
+        "titleOverflow": false,
+        "width": 135
+      },
+      {
+        "height": 303,
+        "images": true,
+        "overflow": false,
+        "title": "ロボットワークセル",
+        "titleOverflow": false,
+        "width": 135
+      }
+    ],
+    "columns": "135.4px 135.4px",
+    "overflow": false,
+    "url": "http://127.0.0.1:8788/ja/#products",
+    "width": 320
+  }
+]

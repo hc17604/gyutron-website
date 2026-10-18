@@ -1,0 +1,255 @@
+
+> gyutron-web@0.1.0 verify:all
+> npm run verify:handoff && npm run verify:header && npm run verify:button-purple && npm run verify:css-version && npm run verify:turnstile && npm run verify:scroll-chrome && npm run verify:sitemap && npm run verify:routes && npm run verify:seo && npm run verify:a11y-lite && npm run verify:content-icons && npm run verify:i18n
+
+
+> gyutron-web@0.1.0 verify:handoff
+> node ../scripts/agent-handoff.mjs --check
+
+WARN: implementation files are dirty; update HANDOFF.md before the final commit
+Agent handoff contract: PASS (9 required files, structural + freshness gates)
+
+> gyutron-web@0.1.0 verify:header
+> node scripts/verify-header-equivalence.mjs
+
+
+Header equivalence gate — mode: STRICT (must be equivalent)
+
+[en]
+  ✓ structural contract intact (nav-item=5, link-group==mega-link==submenu=26, intro=3, bare=1)
+  ✓ EQUIVALENT to reference (normalized header byte-identical; 94 links, 31 panel images)
+
+[de]
+  ✓ structural contract intact (nav-item=5, link-group==mega-link==submenu=26, intro=3, bare=1)
+  ✓ EQUIVALENT to reference (normalized header byte-identical; 94 links, 31 panel images)
+
+[ja]
+  ✓ structural contract intact (nav-item=5, link-group==mega-link==submenu=26, intro=3, bare=1)
+  ✓ EQUIVALENT to reference (normalized header byte-identical; 94 links, 31 panel images)
+
+[cross-locale structure]
+  ✓ en/de/ja render identical structure (navItem=5, megaMenu=5, megaCompact=3, megaFeature=2, megaLinks=5, sectionLabel=6, linkGroup=26, megaLink=26, submenu=26, submenuIntro=3, bareLink=1)
+
+
+RESULT: PASS ✓
+
+
+> gyutron-web@0.1.0 verify:button-purple
+> node scripts/verify-button-purple.mjs
+
+
+Button purple token gate
+
+  ✓ deep #4b2e83 and light #efe8ff are centrally defined
+  ✓ Layout loads the shared tokens on every brand page
+  ✓ interactive selectors do not use legacy purple shades
+
+RESULT: PASS ✓
+
+
+> gyutron-web@0.1.0 verify:css-version
+> node scripts/verify-css-version.mjs
+
+CSS version gate: PASS (675 local stylesheet links across 132 pages use normalized content hashes)
+
+> gyutron-web@0.1.0 verify:turnstile
+> node scripts/verify-turnstile.mjs
+
+Turnstile gate: PASS (12 en/de/ja form pages include widget, site key, and script)
+
+> gyutron-web@0.1.0 verify:scroll-chrome
+> node scripts/verify-scroll-chrome.mjs
+
+
+Shared scroll chrome gate
+
+  ✓ 123 content pages inherit Layout scroll controls
+  ✓ 9 intentional meta redirects excluded
+  ✓ localized labels, initial focus state, shared CSS, and reduced-motion rules present
+
+RESULT: PASS ✓
+
+
+> gyutron-web@0.1.0 verify:sitemap
+> node scripts/verify-sitemap.mjs
+
+
+Sitemap gate
+
+  • 123 <url> blocks, 123 <loc> entries
+  ✓ every <url> has 1 <loc> + hreflang en/de/ja + x-default
+  ✓ all 615 URLs use canonical origin https://www.gyutron.com
+  ✓ no shop URLs
+  ✓ no redirect-stub pages (smart-cameras, industrial-sensors, inspection-instruments)
+  ✓ <loc> count 123 = 41 paths × 3 locales
+
+RESULT: PASS ✓
+
+
+> gyutron-web@0.1.0 verify:routes
+> node scripts/verify-routes.mjs
+
+
+Routes / nav-link gate
+
+  ✓ all 12 core routes present in en/de/ja (36 files)
+  ✓ all 41 resolvable Header/Footer links point to a built page
+    (3 known placeholder link(s) skipped: /about, /certifications, /downloads, /solutions/electronics-manufacturing, /solutions/robotics-automation)
+
+RESULT: PASS ✓
+
+
+> gyutron-web@0.1.0 verify:seo
+> node scripts/verify-seo.mjs
+
+
+SEO head gate
+
+
+  scanned 123 page(s) · skipped 9 redirect stub(s)
+  ✓ all 123 pages have complete SEO head (title, description, robots, canonical, hreflang en/de/ja+x-default, og/twitter, valid JSON-LD)
+
+RESULT: PASS ✓
+
+
+> gyutron-web@0.1.0 verify:a11y-lite
+> node scripts/verify-a11y-lite.mjs
+
+
+Accessibility (a11y-lite) gate
+
+  ✓ every <img> has an alt attribute
+  ✓ no empty href=""
+  ✓ every page <html> has lang
+
+  [report] icon-only <a>/<button> with no accessible name: 0
+  [report] pages with duplicate id(s): 0
+  [report] pages with >1 <h1>: 3
+      de/index.html: 3 <h1>
+      index.html: 3 <h1>
+      ja/index.html: 3 <h1>
+  [report] .nav-trigger without aria-expanded: 615  (known — disclosure state is JS-driven; see docs/ACCESSIBILITY.md)
+
+  scanned 132 page(s)
+
+RESULT: PASS ✓ (hard checks; review [report] items)
+
+
+> gyutron-web@0.1.0 verify:content-icons
+> node ../scripts/smoke-content-icons.mjs --scope brand
+
+
+  content icon policy: 176 passed, 0 failed
+  PASS brand decorative-content icon gate
+
+
+> gyutron-web@0.1.0 verify:i18n
+> node scripts/verify-i18n.mjs
+
+
+Residual-English scan (de/ja) — mode: report
+
+  ⚠ de/accessories.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/android-pda.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/area-scan-cameras.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/automated-vision-inspection.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/barcode-scanners.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/calibration-tools.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/code-reading-cameras.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/composite-mobile-robots.html — 5 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+      "and" …siger Arm führt das Pick-and-Place aus; ±0,02 mm Wied…
+      "and" …rt ans MES, 8 s pro Pick-and-Place Halbleiter FOUP- u…
+      "and" …tralogistik Mobiles Pick-and-Place für Kitting und li…
+      "and" …en Anlagen, 8 s pro Pick-and-Place, 99,5 % First-Pass…
+  ⚠ de/contact-sales.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/dimensional-gauges.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/edge-controllers.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/electronics-semiconductor.html — 49 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+      "What" …ungsfälle Sample results What the inspection sees Repr…
+      "the" …älle Sample results What the inspection sees Represen…
+      "the" …entative captures across the line — schematic placeho…
+      "with" …aceholders here, swapped with real production frames b…
+      "and" …ags insufficient deposit and bridging for closed-loop…
+  ⚠ de/environmental-sensing.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/identification-traceability.html — 3 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+      "and" …I-/regulatorisches Track-and-Trace-Compliance. Logist…
+  ⚠ de/index.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/industrial-sensing.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/laser-measurement.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/measurement-3d-profiling.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/news/900-series-launch.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/news/oem-odm-program.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/news/site-en-de-ja.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/news.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/portable-testers.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/privacy-policy.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/proximity-sensors.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/request-quote.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/request-specification.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/resources/download-request.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/rfid-handhelds.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/robot-workcells.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/smart-vision-sensors.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/support/contact.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/support/faq.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/support/shipping-delivery.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/support/warranty.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/support.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/surface-inspection.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/terms-and-conditions.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/vision-guided-robotics.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/vision-lighting.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ de/warehouse-logistics.html — 1 suspect(s)
+      "and" …inem durchgängigen Track-and-Trace-Datensatz vom Rohm…
+  ⚠ ja/electronics-semiconductor.html — 48 suspect(s)
+      "What" …れる理由 導入事例 Sample results What the inspection sees Repr…
+      "the" …導入事例 Sample results What the inspection sees Represen…
+      "the" …entative captures across the line — schematic placeho…
+      "with" …aceholders here, swapped with real production frames b…
+      "and" …ags insufficient deposit and bridging for closed-loop…
+      "for" …ent deposit and bridging for closed-loop print contro…
+
+  scanned 88 de/ja pages · 42 flagged · 143 suspect token(s)
+
+RESULT: REPORT (suspects above are heuristic — judge each; brand/model/technical terms are excluded by design)

@@ -1,0 +1,331 @@
+{
+  "checkedAt": "2026-10-18T20:47:34.056279+08:00",
+  "baseUrl": "http://localhost:8788",
+  "scope": "18 localized category destination responses, 7 homepage product image responses, tracked/untracked path scope audit",
+  "http": {
+    "total": 25,
+    "categoryCount": 18,
+    "imageCount": 7,
+    "passed": true,
+    "results": [
+      {
+        "kind": "category",
+        "path": "/area-scan-cameras.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/area-scan-cameras",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 74928,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/smart-vision-sensors.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/smart-vision-sensors",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 74965,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/barcode-scanners.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/barcode-scanners",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 72135,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/code-reading-cameras.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/code-reading-cameras",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 73694,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/android-pda.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/android-pda",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 69582,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/robot-workcells.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/robot-workcells",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 67942,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/de/area-scan-cameras.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/de/area-scan-cameras",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 79116,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/de/smart-vision-sensors.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/de/smart-vision-sensors",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 79098,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/de/barcode-scanners.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/de/barcode-scanners",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 76023,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/de/code-reading-cameras.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/de/code-reading-cameras",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 77832,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/de/android-pda.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/de/android-pda",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 73101,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/de/robot-workcells.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/de/robot-workcells",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 71593,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/ja/area-scan-cameras.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/ja/area-scan-cameras",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 85130,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/ja/smart-vision-sensors.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/ja/smart-vision-sensors",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 85431,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/ja/barcode-scanners.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/ja/barcode-scanners",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 82015,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/ja/code-reading-cameras.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/ja/code-reading-cameras",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 83392,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/ja/android-pda.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/ja/android-pda",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 78424,
+        "passed": true
+      },
+      {
+        "kind": "category",
+        "path": "/ja/robot-workcells.html",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/ja/robot-workcells",
+        "contentType": "text/html; charset=utf-8",
+        "bytes": 76525,
+        "passed": true
+      },
+      {
+        "kind": "image",
+        "path": "/home-products/area-scan-cameras.webp",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/home-products/area-scan-cameras.webp",
+        "contentType": "image/webp",
+        "bytes": 27846,
+        "passed": true
+      },
+      {
+        "kind": "image",
+        "path": "/home-products/smart-vision-sensors.webp",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/home-products/smart-vision-sensors.webp",
+        "contentType": "image/webp",
+        "bytes": 23534,
+        "passed": true
+      },
+      {
+        "kind": "image",
+        "path": "/home-products/barcode-scanners.webp",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/home-products/barcode-scanners.webp",
+        "contentType": "image/webp",
+        "bytes": 82086,
+        "passed": true
+      },
+      {
+        "kind": "image",
+        "path": "/home-products/code-reading-cameras.webp",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/home-products/code-reading-cameras.webp",
+        "contentType": "image/webp",
+        "bytes": 74474,
+        "passed": true
+      },
+      {
+        "kind": "image",
+        "path": "/home-products/code-reading-cameras-secondary.webp",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/home-products/code-reading-cameras-secondary.webp",
+        "contentType": "image/webp",
+        "bytes": 49728,
+        "passed": true
+      },
+      {
+        "kind": "image",
+        "path": "/home-products/android-pda.webp",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/home-products/android-pda.webp",
+        "contentType": "image/webp",
+        "bytes": 22432,
+        "passed": true
+      },
+      {
+        "kind": "image",
+        "path": "/home-products/robot-workcells.webp",
+        "status": 200,
+        "finalUrl": "http://localhost:8788/home-products/robot-workcells.webp",
+        "contentType": "image/webp",
+        "bytes": 57338,
+        "passed": true
+      }
+    ]
+  },
+  "scopeAudit": {
+    "trackedDiffComparedWith": "HEAD",
+    "changedTrackedPaths": [
+      "HANDOFF.md",
+      "astro/public/home-sections.css",
+      "astro/src/components/Home.astro",
+      "astro/src/i18n/de.json",
+      "astro/src/i18n/en.json",
+      "astro/src/i18n/ja.json",
+      "design-qa.md",
+      "docs/MAINTENANCE.md",
+      "public/de/index.html",
+      "public/home-sections.css",
+      "public/index.html",
+      "public/ja/index.html"
+    ],
+    "untrackedPaths": [
+      "artifacts/content-audit-20260808/01-home.png",
+      "artifacts/content-audit-20260808/02-product-category.png",
+      "artifacts/content-audit-20260808/02b-product-list.png",
+      "artifacts/content-audit-20260808/03-solution.png",
+      "artifacts/content-audit-20260808/04-support.png",
+      "artifacts/content-audit-20260808/05-download-request.png",
+      "artifacts/content-audit-20260808/06-company-story.png",
+      "artifacts/content-audit-20260808/report.md",
+      "artifacts/home-products-20261018/browser-metrics.json",
+      "artifacts/home-products-20261018/build.log",
+      "artifacts/home-products-20261018/de-desktop-1440.jpg",
+      "artifacts/home-products-20261018/de-mobile-320.jpg",
+      "artifacts/home-products-20261018/deploy-diff.log",
+      "artifacts/home-products-20261018/desktop-1440.png",
+      "artifacts/home-products-20261018/desktop-1920.png",
+      "artifacts/home-products-20261018/desktop-initial.png",
+      "artifacts/home-products-20261018/ja-mobile-320.jpg",
+      "artifacts/home-products-20261018/link-checks.json",
+      "artifacts/home-products-20261018/mobile-390.jpg",
+      "artifacts/home-products-20261018/mosaic-browser-metrics.json",
+      "artifacts/home-products-20261018/mosaic-build.log",
+      "artifacts/home-products-20261018/mosaic-desktop-1440.jpg",
+      "artifacts/home-products-20261018/mosaic-mobile-390.jpg",
+      "artifacts/home-products-20261018/mosaic-verify-all.log",
+      "artifacts/home-products-20261018/prior-design-qa.md",
+      "artifacts/home-products-20261018/products-desktop.jpg",
+      "artifacts/home-products-20261018/reference-before.png",
+      "artifacts/home-products-20261018/reference-cognex.png",
+      "artifacts/home-products-20261018/reference-cycode-selected.png",
+      "artifacts/home-products-20261018/reference-cycode.png",
+      "artifacts/home-products-20261018/tablet-1024.jpg",
+      "artifacts/home-products-20261018/tablet-768.jpg",
+      "artifacts/home-products-20261018/verify-all.log",
+      "artifacts/home-products-20261018/verify-assets.log",
+      "asset-workbench/home-products/README.md",
+      "astro/public/home-products/android-pda.webp",
+      "astro/public/home-products/area-scan-cameras.webp",
+      "astro/public/home-products/barcode-scanners.webp",
+      "astro/public/home-products/code-reading-cameras-secondary.webp",
+      "astro/public/home-products/code-reading-cameras.webp",
+      "astro/public/home-products/robot-workcells.webp",
+      "astro/public/home-products/smart-vision-sensors.webp",
+      "astro/src/components/HomeProducts.astro",
+      "astro/src/data/homeProducts.ts",
+      "public/home-products/android-pda.webp",
+      "public/home-products/area-scan-cameras.webp",
+      "public/home-products/barcode-scanners.webp",
+      "public/home-products/code-reading-cameras-secondary.webp",
+      "public/home-products/code-reading-cameras.webp",
+      "public/home-products/robot-workcells.webp",
+      "public/home-products/smart-vision-sensors.webp"
+    ],
+    "protectedChanges": [],
+    "passed": true,
+    "notes": "Checked Shop surfaces, root backend src and migrations, wrangler config, Shop shared templates, legacy locale dictionaries, and header/navigation paths. Main-site generated index HTML naturally includes unchanged shared header markup.",
+    "generatedHeaderMarkup": [
+      {
+        "path": "public/index.html",
+        "baselineHeaderBlocks": 2,
+        "currentHeaderBlocks": 2,
+        "unchanged": true
+      },
+      {
+        "path": "public/de/index.html",
+        "baselineHeaderBlocks": 2,
+        "currentHeaderBlocks": 2,
+        "unchanged": true
+      },
+      {
+        "path": "public/ja/index.html",
+        "baselineHeaderBlocks": 2,
+        "currentHeaderBlocks": 2,
+        "unchanged": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+
+> gyutron-web@0.1.0 verify:assets
+> node scripts/verify-assets.mjs
+
+
+Asset maintenance report (informational)
+
+  • 280 image(s) under ../public · 303.71 MB total · shop excluded (63 file(s))
+
+  Large images (> 1 MB): 148
+        2.95 MB  home-about-engineering-lab.png
+        2.62 MB  home-smart-camera-platform-line.png
+        2.46 MB  home-data-capture-traceability.png
+        2.22 MB  nav-customer-lifecycle-support.png
+        2.22 MB  home-assembly-inspection-verification.png
+        2.20 MB  mega-industrial-products.png
+        2.17 MB  home-about-quality-bench.png
+        2.16 MB  nav-industry-automotive-ev.png
+        2.15 MB  nav-customers-overview.png
+        2.13 MB  nav-customer-pilot-lab.png
+        2.12 MB  nav-industry-pharma-medical.png
+        2.10 MB  nav-company-engineering-lab.png
+        2.09 MB  nav-industry-oem-machine-builders.png
+        2.08 MB  nav-company-quality-bench.png
+        2.07 MB  nav-resources-overview.png
+        2.06 MB  product-menu-accessories-stage.png
+        2.05 MB  home-about-headquarters-building.png
+        2.05 MB  nav-customer-training.png
+        2.03 MB  nav-customer-integration.png
+        2.01 MB  nav-industry-electronics-smt.png
+        1.98 MB  nav-company-supply-chain.png
+        1.98 MB  nav-company-overview.png
+        1.98 MB  nav-industry-semiconductor.png
+        1.97 MB  product-hero-inspection-instruments-matrix.png
+        1.96 MB  nav-industries-overview.png
+        1.95 MB  product-hero-industrial-sensors-matrix.png
+        1.95 MB  nav-resources-technical-library.png
+        1.94 MB  product-vision-cell.png
+        1.93 MB  nav-industry-energy-field.png
+        1.93 MB  product-intelligent-hardware.png
+        1.91 MB  nav-industry-food-beverage.png
+        1.90 MB  product-images/gy-conf-dpm.png
+        1.90 MB  product-hero-accessories-stage.png
+        1.86 MB  product-menu-robot-workcells-stage.png
+        1.85 MB  product-smart-camera-detail.png
+        1.85 MB  product-hero-code-reading-cameras-matrix.png
+        1.85 MB  product-hero-request-specification-matrix.png
+        1.84 MB  product-hero-smart-vision-sensors-matrix.png
+        1.84 MB  nav-industry-logistics-rfid.png
+        1.83 MB  product-menu-edge-controllers-stage.png
+        1.83 MB  product-hero-portable-testers-matrix.png
+        1.82 MB  product-hero-barcode-scanners-matrix.png
+        1.80 MB  product-hero-calibration-tools-matrix.png
+        1.80 MB  product-hero-dimensional-gauges-matrix.png
+        1.78 MB  product-images/gy-cal-grid.png
+        1.77 MB  product-hero-edge-controllers-stage.png
+        1.76 MB  cta-industrial-control.png
+        1.75 MB  product-images/gy-cal-light.png
+        1.75 MB  product-library/transparent/gy-cal-block.png
+        1.75 MB  product-hero-laser-measurement-matrix.png
+        1.74 MB  product-menu-machine-vision-systems.png
+        1.74 MB  product-hero-area-scan-cameras-matrix.png
+        1.74 MB  support-terms-conditions-hero.png
+        1.74 MB  product-hero-vision-lighting-matrix.png
+        1.73 MB  governance-documentation.png
+        1.73 MB  product-hero-environmental-sensing-matrix.png
+        1.73 MB  product-hero-rfid-handhelds-matrix.png
+        1.73 MB  hero-industrial-automation.png
+        1.72 MB  product-hero-proximity-sensors-matrix.png
+        1.69 MB  product-hero-smart-cameras-matrix.png
+     … and 88 more
+
+  Duplicate image content (identical bytes): 0 group(s)
+
+  <img> missing alt attribute (in 132 dist pages): 0
+  <img> decorative alt="" (expected for hero layers): 252
+
+RESULT: REPORT (informational — review large/duplicate images & missing alt; nothing was changed)

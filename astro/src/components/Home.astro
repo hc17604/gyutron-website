@@ -4,6 +4,7 @@ import { t, localizeUrl, type Locale } from '../i18n';
 import TabCarousel from './TabCarousel.astro';
 import SolutionExplorer from './SolutionExplorer.astro';
 import HeroSlider from './HeroSlider.astro';
+import HomeProducts from './HomeProducts.astro';
 import Footer from './Footer.astro';
 import { getLatestNews } from '../data/news';
 import { PARTNERS } from '../data/partners';
@@ -85,63 +86,9 @@ const news = getLatestNews(3);
             </div>
         </section>
 
-        <section class="section section-alt section-products" id="products">
+        <section class="section section-alt section-products" id="products" aria-labelledby="products-heading">
             <div class="container">
-                <div class="section-head">
-                    <div>
-                        <span class="eyebrow">{t(locale, "home.feat.eyebrow")}</span>
-                        <h2>{t(locale, "home.feat.title")}</h2>
-                    </div>
-                    <div class="section-copy">
-                        <p>{t(locale, "home.feat.sub")}</p>
-                        <a class="button button-primary section-copy__cta" href={localizeUrl(locale, "/contact-sales.html")}>{t(locale, "home.feat.cta")}</a>
-                    </div>
-                </div>
-
-                <div class="product-showcase">
-                    <article class="feature-product" data-reveal>
-                        <div class="feature-image">
-                            <img src="/product-vision-cell.png" alt="Robot vision workcell on a production line">
-                        </div>
-                        <div class="product-body">
-                            <span class="badge">{t(locale, "home.feat.f.badge")}</span>
-                            <h3>{t(locale, "home.feat.f.title")}</h3>
-                            <p>{t(locale, "home.feat.f.desc")}</p>
-                            <ul class="spec-list">
-                                <li>{t(locale, "home.feat.f.b1")}</li>
-                                <li>{t(locale, "home.feat.f.b2")}</li>
-                                <li>{t(locale, "home.feat.f.b3")}</li>
-                            </ul>
-                            <a class="link-arrow" href={localizeUrl(locale, "/vision-guided-robotics.html")}>{t(locale, "home.feat.f.cta")}</a>
-                        </div>
-                    </article>
-
-                    <div class="compact-stack">
-                        <article class="compact-product" data-reveal>
-                            <div class="compact-image compact-image--vision">
-                                <img src="/home-smart-camera-platform-line.png" alt={t(locale, "main.357")}>
-                            </div>
-                            <div class="product-body">
-                                <span class="badge">{t(locale, "home.feat.c1.badge")}</span>
-                                <h3>{t(locale, "home.feat.c1.title")}</h3>
-                                <p>{t(locale, "home.feat.c1.desc")}</p>
-                                <a class="link-arrow" href={localizeUrl(locale, "/automated-vision-inspection.html")}>{t(locale, "home.feat.c1.cta")}</a>
-                            </div>
-                        </article>
-
-                        <article class="compact-product" data-reveal>
-                            <div class="compact-image compact-image--data">
-                                <img src="/home-data-capture-traceability.png" alt={t(locale, "main.359")}>
-                            </div>
-                            <div class="product-body">
-                                <span class="badge">{t(locale, "home.feat.c2.badge")}</span>
-                                <h3>{t(locale, "home.feat.c2.title")}</h3>
-                                <p>{t(locale, "home.feat.c2.desc")}</p>
-                                <a class="link-arrow" href={localizeUrl(locale, "/identification-traceability.html")}>{t(locale, "home.feat.c2.cta")}</a>
-                            </div>
-                        </article>
-                    </div>
-                </div>
+                <HomeProducts locale={locale} />
 
                 <SolutionExplorer locale={locale} />
             </div>
