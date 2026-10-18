@@ -25,11 +25,13 @@ Read this block first; use the dated entries below only for task-relevant histor
 - **Build/deploy asymmetry:** current `public/` has 131 non-Shop files not emitted by Astro, including
   assets referenced by built pages. Never mirror-delete public-only files; `astro preview` is not fully
   production-equivalent, so use Wrangler dev or live checks for final asset/routing acceptance.
-- **Current product visual state (2026-10-18):** the homepage uses a CYCODE-style two-row
-  product mosaic: 1+1+2 / 2+1+1, four regular cards and two featured cards with pale-purple diagonal
-  surfaces. Seven GYUTRON matrix images, concise en/de/ja copy and source-matched whole-card hover.
-  Published as `d58d9f5`; GitHub CI and production content/asset checks pass.
-  Preview: `http://127.0.0.1:8788/#products`.
+- **Current product visual state (2026-10-18):** the approved compact industrial mosaic has nine
+  product families with staggered seams: Cameras / 3D / wide Handheld / Lighting / Sensors above
+  wide paired Fixed Readers / PDA / Robot Workcells / wide paired Edge Controllers. Neutral media,
+  compact white captions, square corners and purple links replace the earlier diagonal design.
+  Eleven slot-owned catalog images preserve hardware accuracy and comfortable silhouette clearances.
+  Existing whole-card hover and reduced-motion support are retained. Local verification passed;
+  production release is being completed. Preview: `http://127.0.0.1:8788/#products`.
 - **Existing About visual state:** the homepage About section is now a four-tab, full-width image story
   (Company Scale / Manufacturing Capability / Engineering Lab / Customer Trust) with a compact dark
   control rail, no gaps to its neighboring dark modules, and a background that remains viewport-fixed on
@@ -62,6 +64,39 @@ Read this block first; use the dated entries below only for task-relevant histor
 ---
 
 ## 🤝 CODEX HANDOFF — current state (2026-10-18)
+
+> **2026-10-18 (Codex) — Approved nine-family compact industrial product mosaic implemented.**
+> User selected attachment `codex-clipboard-6a43d565-42d8-443b-a168-f34946f6d83e.png`
+> (local design target `05-staggered-mosaic-controllers.png`). Supersedes the six-card diagonal layout.
+> Prior explicit publication authorization remains in scope. Baseline HEAD/origin main: `e29ed30`.
+> Final nine unique families: Smart Cameras, 3D Vision Systems, Handheld Scanners, Vision Lighting,
+> Industrial Sensors, Fixed-Mount Readers, Rugged Android PDAs, Robot Workcells, Edge Controllers.
+> No duplicate RFID/PDA card. Paired reader and controller cards each show two distinct real models.
+> Scoped 56-track desktop grid uses 10/10/16/10/10 above 16/10/10/20 spans with 8px gutters;
+> four-column tablet and two-column phone layouts retain wide cards. Gray media/white captions,
+> black titles, no radius/shadow/diagonals/badges. Per-slot contain scaling preserves image clearance.
+> Existing hover remains translateY(-4px)/scale(1.018), 360ms cubic-bezier(.22,1,.36,1).
+> Reduced motion removes transform/transition. Keyboard focus uses the shared purple token.
+> All products is now a native details disclosure containing 18 actual localized category links;
+> no new route, JavaScript, dependency or self-link. Existing Font Awesome arrows are a narrow
+> user-directed exception to the older CTA-icon prohibition because arrows are in the selected design.
+> Modified scope: HomeProducts.astro, homeProducts.ts, home.products.* en/de/ja keys, scoped CSS,
+> four new slot-owned WebPs + provenance, three built homepages/public CSS, QA and handoff.
+> Eleven WebPs total 528,898 bytes; new Lighting/Sensor/EC800/EC200 images total 191,460 bytes.
+> Verification: 132-page build and verify:all hard gates PASS; agent:check/deploy:check/diff checks PASS.
+> Existing reports remain 3 multi-H1 homepages, 615 JS nav triggers, 42 pages/143 suspect i18n tokens.
+> Browser: EN 1920/1440/1280/1024/768/390, DE 1440/320, JA 320: nine cards, no page/title overflow,
+> 11 loaded images. Enter opens 18-entry catalog, Tab reaches links with visible focus; JA camera
+> card navigation verified. DE long category wrapping and JA handheld orphan were fixed and rechecked.
+> Independent read-only checks: all 54 localized category URLs and 11 image URLs return 200;
+> intrinsic image sizes match markup. Console warns/errors: zero. Native hover state was captured.
+> Source/selected screenshot and final native desktop capture were compared in the same input.
+> Evidence and limits: design-qa.md and artifacts/home-products-approved-20261018/.
+> Selectively synced public/{index.html,de/index.html,ja/index.html,home-sections.css} plus four new
+> public/home-products WebPs. All 131 public-only brand files preserved. No Shop/backend/header/
+> catalog-source changes; unrelated untracked artifacts/content-audit-20260808/ preserved and unstaged.
+> Next: push authorized release, verify CI and live three-locale product markup, CSS/image hashes,
+> health and browser; append deployment evidence. Rollback only task-owned files and selectively sync.
 
 > **2026-10-18 (Codex) — Homepage product mosaic published and verified.**
 > Replaced the long featured-capabilities copy/three panels with six product-family category cards.

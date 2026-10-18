@@ -1,24 +1,40 @@
 ---
 import { t, localizeUrl, type Locale } from '../i18n';
 import { HOME_PRODUCTS } from '../data/homeProducts';
+import { getCatalog } from '../data/products';
 interface Props { locale: Locale; }
 const { locale } = Astro.props;
+const categories = Object.entries(getCatalog(locale)).filter(([, category]) => !category.redirectTo && category.products?.length);
 ---
 <div class="hx-products">
-  <h2 class="hx-products__heading" id="products-heading">{t(locale, 'home.products.title')}</h2>
+  <div class="hx-products__head">
+    <div>
+      <span class="hx-products__brand" aria-hidden="true">GYUTRON</span>
+      <h2 class="hx-products__heading" id="products-heading">{t(locale, 'home.products.title')}</h2>
+    </div>
+    <details class="hx-products__catalog">
+      <summary>{t(locale, 'home.products.all')}<span class="fa-solid fa-arrow-right" aria-hidden="true"></span></summary>
+      <ul class="hx-products__catalog-list" aria-label={t(locale, 'home.products.all')}>
+        {categories.map(([slug, category]) => <li><a href={localizeUrl(locale, `/${slug}.html`)}>{category.navLabel || category.title}</a></li>)}
+      </ul>
+    </details>
+  </div>
   <ul class="hx-products__grid">
     {HOME_PRODUCTS.map((product) => (
-      <li class:list={{ 'hx-products__featured': product.featured }}>
-        <a class:list={['hx-product', { 'hx-product--wide': product.featured }]} href={localizeUrl(locale, `/${product.category}.html`)}>
-          {product.tagKey && <span class="hx-product__tag">{t(locale, product.tagKey)}</span>}
+      <li class:list={['hx-products__item', product.layout && `hx-products__item--${product.layout}`]}>
+        <a class:list={['hx-product', { 'hx-product--feature': product.layout === 'feature' }]} href={localizeUrl(locale, `/${product.category}.html`)}>
           <div class:list={['hx-product__image', { 'hx-product__image--pair': product.secondary }]}>
-            <img src={product.image} alt="" width={product.width} height={product.height} loading="lazy" decoding="async" />
-            {product.secondary && <img src={product.secondary.image} alt="" width={product.secondary.width} height={product.secondary.height} loading="lazy" decoding="async" />}
+            <div class="hx-product__visual" style={`--image-scale: ${product.imageScale || 1}`}>
+              <img src={product.image} alt="" width={product.width} height={product.height} loading="lazy" decoding="async" />
+            </div>
+            {product.secondary && <div class="hx-product__visual" style={`--image-scale: ${product.secondary.imageScale || 1}`}>
+              <img src={product.secondary.image} alt="" width={product.secondary.width} height={product.secondary.height} loading="lazy" decoding="async" />
+            </div>}
           </div>
           <div class="hx-product__copy">
             <h3>{t(locale, product.labelKey)}</h3>
             <p>{t(locale, `${product.labelKey}.description`)}</p>
-            <span class="hx-product__link">{t(locale, 'home.products.view')}</span>
+            <span class="hx-product__link">{t(locale, 'home.products.view')}<span class="fa-solid fa-arrow-right" aria-hidden="true"></span></span>
           </div>
         </a>
       </li>

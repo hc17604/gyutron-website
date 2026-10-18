@@ -30,3 +30,21 @@ The existing `code-reading-cameras` catalog contains GY-CR120, described as a Co
 | `robot-workcells.webp` | `astro/public/product-library/secondary/gy-rc6-inspect.png` | 1402 x 1122 | 640 x 512 | 57,338 | `de53415438f86fc390e30b9ce5b0081e03cfcfac50dff154e345c070612e5f5e` |
 
 These are existing product illustrations, not newly verified product photographs or independent evidence of product specifications. Category labels and links are owned by the homepage data/component implementation. Production copies under root `public/` are produced only through the normal selective build/sync workflow.
+
+## Approved compact mosaic extension - 2026-10-18
+
+The user selected the final nine-family compact mosaic design and authorized implementation. The revision moves Vision Lighting into the upper row, adds Industrial Sensors, and replaces the duplicate-looking RFID card and separate lower-right cells with one wide Edge Controllers card containing two actual catalog models. No RFID asset is added. These four new files belong only to their corresponding homepage slots and do not modify any original product-library image.
+
+- `vision-lighting.webp` and `industrial-sensors.webp` fit within 640 x 640 pixels.
+- `edge-controllers.webp` and `edge-controllers-secondary.webp` fit within 900 x 900 pixels.
+- All four use the same technical-only full-canvas RGBA conversion, Lanczos resize, and WebP quality 90 / method 6 procedure above; no cropping, enlargement, subject editing, or creative generation.
+- Output mode, limits, and transparent corners were checked; each output was visually inspected.
+- Industrial Sensors uses GY-PX90 from the actual `proximity-sensors` category. The older `industrial-sensors` catalog entry redirects to `proximity-sensors`.
+- The second controller is GY-EC200 DIN, a DIN-rail edge I/O controller with a slender body and visible mounting rail, paired with the wider GY-EC800 Motion real-time motion controller. Both are present in `edge-controllers`; no EC500 model was introduced.
+
+| Homepage output in `astro/public/home-products/` | Existing model | Existing catalog category | Source image | Source pixels | Output pixels | Output bytes | Source SHA-256 |
+|---|---|---|---|---|---|---:|---|
+| `vision-lighting.webp` | GY-LR70 | Vision Lighting | `astro/public/product-library/transparent/gy-lr70.png` | 1402 x 1122 | 640 x 512 | 29,336 | `946a97668651341b6173485c36ec7461d56dddc1e4f00b160bf5ba896145b87e` |
+| `industrial-sensors.webp` | GY-PX90 | Presence & Object Detection / proximity-sensors | `astro/public/product-library/transparent/gy-px90.png` | 1254 x 1254 | 640 x 640 | 35,768 | `9541895e2f9085309454a2cdac8c5ccb61e4eb0284b6d3e843d4f311435f9c78` |
+| `edge-controllers.webp` | GY-EC800 Motion | Edge Controllers | `astro/public/product-library/secondary/gy-ec800-motion.png` | 1402 x 1122 | 900 x 720 | 55,482 | `86561a9611c1060b843221ef0f2e295baa948dbf0c78a36214837c2c1319274b` |
+| `edge-controllers-secondary.webp` | GY-EC200 DIN | Edge Controllers | `astro/public/product-library/secondary/gy-ec200-din.png` | 1149 x 1369 | 755 x 900 | 70,874 | `3ec4ef38e5589f77222516a195ae5a86f3241b4609ec1229cb7055c17393a3a5` |

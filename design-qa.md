@@ -1,70 +1,68 @@
-# GYUTRON homepage product mosaic — design QA
+# GYUTRON approved compact product mosaic — design QA
 
 Date: 2026-10-18
-Status: PASS for the changed product module.
+Final result: passed
+Scope: homepage product module in EN/DE/JA.
 
-## Selected reference and scope
+## Exact selected target
 
-The user superseded the one-row Cognex direction with the CYCODE composition in
-`artifacts/home-products-20261018/reference-cycode-selected.png` (2635 x 1612).
-The exact original module was found at
-`D:/CYCODE/redesign-v2/editable-modules/categories/index.html` and `online-source.html`.
-It uses four columns with 1+1+2 / 2+1+1 spans, two featured diagonal surfaces,
-and whole-card hover: translateY(-4px), scale(1.018), .36s cubic-bezier(.22,1,.36,1).
-The newer Alibaba inline version exports the same diagonal as a PNG; the original CSS
-surface is appropriate here. GYUTRON retains its approved purple tokens, hard edges,
-font system, actual matrix imagery, category destinations and concise localized copy.
+User attachment codex-clipboard-6a43d565-42d8-443b-a168-f34946f6d83e.png,
+archived as artifacts/home-products-approved-20261018/selected-reference.png.
+This supersedes the prior six-card CYCODE diagonal composition. Previous QA is archived
+in the same evidence folder as previous-design-qa.md.
 
-## Comparison and evidence
+## Comparison
 
-The selected reference and `mosaic-desktop-1440.jpg` were viewed together in the same
-comparison input. Content regions were aligned by width; the reference viewport/DPR is
-unknown. Header/browser chrome, competitor products, blue colors, rounded corners and
-chat overlays are excluded from fidelity scoring because the user requested GYUTRON styling.
+The exact selected screenshot and final desktop-final.jpg were viewed together in the
+same comparison input. Compare the product regions by width; the supplied design has
+no browser/header context, while the final native capture includes the existing site header.
 
-- Structure: matched four small + two wide cards, with wide handheld top-right and paired
-  fixed readers bottom-left. Two-column tablet/mobile adaptation retains full-width featured cards.
-- Imagery: seven distinct slot-owned WebP exports from existing GYUTRON catalog sources;
-  complete silhouettes, transparent backgrounds, contain-fit and no distorted proportions.
-  Fixed readers show GY-CR900 and the catalog's distinct GY-CR120. Total 337,438 bytes.
-  Product-specific aspect ratios differ intentionally from CYCODE's products.
-- Typography/copy: short title, one concise descriptor, one product entry. Wide badges and
-  larger titles follow the reference hierarchy. All three locales have complete keys.
-- Colors/surfaces: white cards, quiet borders, fixed soft shadow, square corners, #4b2e83
-  labels/CTA/badges and #efe8ff diagonal. Diagonal is the source's real CSS technique.
-- Motion: exact original whole-card transform/duration/easing under fine-pointer hover.
-  No automatic product floating or carousel. Reduced-motion CSS removes transform/transition.
-  Loaded browser CSS and matching desktop media queries were inspected. Browser automation
-  did not expose a pointer-move/hover operation; synthetic right-click did not establish
-  :hover, so no claim of recorded hover-frame playback is made.
+- Structure: nine entries in the approved order, with staggered seams and 8px gutters.
+  Top spans 10+10+16+10+10, bottom spans 16+10+10+20 on a 56-track desktop grid.
+  Handheld stays a wide text-left/image-right card. Fixed readers and controllers each
+  show two real distinct models above one shared caption. No duplicate RFID/PDA entry.
+- Surface: square corners, quiet gray media, white compact captions, near-black headings,
+  shared brand purple links. Removed the old diagonals, badges and card shadows.
+- Images: 11 real catalog-derived slot-owned WebPs, 528,898 bytes total. Contain-fit,
+  transparent canvases and measured per-slot sizing preserve silhouette clearance.
+  Lighting was reduced after initial inspection. Real product angles differ from the
+  generated concept; hardware accuracy takes precedence over inventing product geometry.
+- Type: existing Inter / Noto Sans JP, brief localized names and one descriptor.
+  Desktop title and caption sizes scale responsively. Wider localization copy wraps
+  inside its card; phone layouts have two columns and full-row wide cards.
+- Interaction: entire card remains the category link. Native All products disclosure
+  exposes 18 actual catalog categories rather than linking back to the same section.
+  Font Awesome arrows use the existing dependency and are explicitly authorized by
+  the arrow-bearing selected visual, a local exception to the older CTA-icon guideline.
+- Motion: existing fine-pointer whole-card translateY(-4px)/scale(1.018), 360ms
+  cubic-bezier(.22,1,.36,1), preserved. hover-card.jpg records the purple border,
+  raised/scaled handheld card and link underline after native pointer placement during
+  scrolling. No new automatic or image-only animation. Reduced-motion CSS disables
+  transform/transition; OS preference playback was not emulated by the browser tool.
 
-## Checks and iterations
+## Browser and functional QA
 
-- Initial one-row implementation was rejected by the user; archived in `one-row-design-qa.md`.
-- The mosaic supersedes it. Added two featured cards, paired reader imagery, brief descriptions,
-  labels, localized links and exact source hover. Removed added scroll-reveal to retain the
-  source behavior and keep mobile content continuously visible.
-- An oversized paired-image experiment caused internal image-box overflow; reverted to
-  57% widths with a 14% transparent-canvas overlap. Final desktop card scrollWidth==clientWidth.
-- Rendered checks: English 1920/1440/1024/768/390, German 1440/320, Japanese 320.
-  Titles wrap without truncation, all seven images load, page overflow is zero.
-  See `mosaic-browser-metrics.json`, `mosaic-mobile-390.jpg`, and final desktop capture.
-  Mobile full-section captures can include fixed header/Support controls at their viewport
-  position; these are existing site-wide overlays, not product layout content.
-- Semantic h2/h3 structure and one anchor per card are retained. Decorative images have
-  empty alt to avoid duplicate linked names. Purple focus-visible outline is retained.
-- Astro build: 132 pages. `verify:all` passes hard gates; informational legacy reports remain
-  3 multi-H1 homepages, 615 JS-driven nav triggers and 42 pages/143 suspect i18n tokens.
-- Independent source review found no substantive issues. Link/image HTTP results are in
-  `mosaic-link-checks.json`. Shop, Worker, catalog source illustrations and navigation unchanged.
+- EN viewport checks: 1920, 1440, 1280, 1024, 768, 390; DE: 1440, 320; JA: 320.
+  Nine cards and 11 loaded images, no horizontal page/card/title overflow.
+- Enter toggles native disclosure; 18 links are present. Tab reaches a category with a
+  visible purple outline and reaches the next card. Japanese Smart Cameras navigation
+  opens the localized category page with the correct H1.
+- Fixed after first pass: German long category labels overlapped adjacent index columns;
+  overflow-wrap/hyphenation now yields zero overflowing index links. Japanese handheld
+  title now has two lines at 320px rather than an orphan final character.
+- Console warnings/errors: zero.
+- Independent HTTP check: 54 category destinations across three locales and all 11 images
+  return 200. Image dimensions all match markup; nine primary categories are unique.
+- Screenshot tool viewport overrides have inconsistent crop/physical sizing; the final
+  desktop capture uses the reset native viewport. Wider breakpoint results are DOM checks
+  plus earlier captures, not claimed to be pixel-identical physical screenshots.
+- Existing fixed support/contact rail can cover part of right-column phone content.
+  It predates this task and was not changed. No product text itself overflows.
 
-## Known limits and verdict
+## Verification and release
 
-No remaining P0/P1/P2 issue in the changed product module. The existing fixed Support/Contact
-rail may overlap right-column phone content; this is an unchanged global control already noted
-in the prior QA. Native-language editorial review remains separate. Publication is explicitly
-authorized by the user. Released as d58d9f5; CI run 39128909368 passed. All three live product
-sections match the release, CSS and all seven images match hashes, and the health endpoint is 200.
-Live 1440px desktop and 390px mobile browser checks pass. See production-checks.json and
-production-desktop.jpg / production-mobile.jpg. Whole-page HTML bytes differ outside the changed module; the cause was not isolated.
-Product-section markup equality is exact and all changed static asset hashes match.
+132-page Astro build, verify:all hard gates, agent:check, deploy:check and git diff --check pass.
+Existing advisory reports remain three multi-H1 homepages, 615 JS navigation triggers,
+and 42 pages/143 heuristic i18n tokens outside this module. Three homepages/CSS and four
+new assets selectively synced; 131 public-only files preserved. Shop/backend/header untouched.
+Production publication was explicitly authorized earlier; deployment evidence follows after release.
