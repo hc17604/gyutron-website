@@ -88,7 +88,8 @@ Read this block first; use the dated entries below only for task-relevant histor
 > publication. Released `d58d9f5` to main; GitHub verify run `39128909368` completed successfully.
 > Production `/`, `/de/`, `/ja/` return 200 with six cards/two featured cards, product markup matching
 > the release and CSS key `576e4dbb`. The stylesheet and all seven WebPs match normalized/byte hashes.
-> Whole HTML hashes differ because Cloudflare transforms email links; product-section equality is exact.
+> Whole HTML bytes differ outside the changed module; the exact cause was not isolated. Product-section
+> equality is exact and all changed static asset hashes match.
 > `/api/v1/health` stays 200/status ok. Live browser confirms six cards, two featured and seven loaded
 > images at desktop; 390px mobile has no product/page overflow. Evidence: `production-checks.json`,
 > `production-desktop.jpg` and `production-mobile.jpg` in the task artifact folder. Initial browser

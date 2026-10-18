@@ -66,5 +66,5 @@ in the prior QA. Native-language editorial review remains separate. Publication 
 authorized by the user. Released as d58d9f5; CI run 39128909368 passed. All three live product
 sections match the release, CSS and all seven images match hashes, and the health endpoint is 200.
 Live 1440px desktop and 390px mobile browser checks pass. See production-checks.json and
-production-desktop.jpg / production-mobile.jpg. Cloudflare email obfuscation changes whole-page
-HTML bytes outside the module; product-section markup equality is exact.
+production-desktop.jpg / production-mobile.jpg. Whole-page HTML bytes differ outside the changed module; the cause was not isolated.
+Product-section markup equality is exact and all changed static asset hashes match.
