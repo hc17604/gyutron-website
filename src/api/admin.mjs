@@ -4,6 +4,10 @@ import { handleAdminApi, workspaceJson } from './admin-api.mjs';
 import { handleAdminTeam } from './admin-team.mjs';
 import { handleAdminSystem } from './admin-system.mjs';
 import { handleAdminQuotes, handleQuoteDocument } from './admin-quotes.mjs';
+import { handleWorkspaceExperience } from './workspace-experience.mjs';
+import { handleWorkspaceNotifications } from './workspace-notifications.mjs';
+import { handleOperationsApi } from './operations-api.mjs';
+import { handleIntelligenceApi } from './intelligence-api.mjs';
 import { adminConfigured, verifyPassword } from '../platform/security/admin-auth.mjs';
 import {
   randomToken, cookieValue, getWorkspacePrincipal, createWorkspaceSession, revokeWorkspaceSession,
@@ -11,7 +15,7 @@ import {
 } from '../platform/security/workspace-auth.mjs';
 import { timingSafeEqual } from '../platform/security/hash.mjs';
 
-const BUILD = '2026.11.03.2';
+const BUILD = '2026.11.03.3';
 const LOGIN_COOKIE = 'gy_workspace_login';
 const READ = new Set(['GET', 'HEAD']);
 const SECURITY_HEADERS = {
@@ -138,8 +142,12 @@ async function route(request, env, ctx, url) {
     return redirect('/admin', [clearWorkspaceCookie(secure)]);
   }
   if (path === '/admin/api/team' || path.startsWith('/admin/api/team/')) return handleAdminTeam(request, env, principal, url);
-  if (path === '/admin/api/system' || path === '/admin/api/system/backup') return handleAdminSystem(request, env, principal, BUILD);
+  if (path === '/admin/api/system' || path.startsWith('/admin/api/system/')) return handleAdminSystem(request, env, principal, BUILD);
   if (path === '/admin/api/quotes' || path.startsWith('/admin/api/quotes/')) return handleAdminQuotes(request, env, ctx, url, principal);
+  if (path === '/admin/api/workspace/notifications' || path.startsWith('/admin/api/workspace/notifications/')) return handleWorkspaceNotifications(request, env, principal, url);
+  if (path === '/admin/api/workspace' || path.startsWith('/admin/api/workspace/')) return handleWorkspaceExperience(request, env, principal, url);
+  if (path === '/admin/api/operations' || path.startsWith('/admin/api/operations/')) return handleOperationsApi(request, env, principal, url);
+  if (path === '/admin/api/intelligence' || path.startsWith('/admin/api/intelligence/')) return handleIntelligenceApi(request, env, principal, url, { version: BUILD });
   if (path.startsWith('/admin/quotes/')) return handleQuoteDocument(request, env, ctx, url, principal);
   if (path === '/admin/api/assignees') {
     if (request.method !== 'GET') return fail(405, 'METHOD_NOT_ALLOWED', 'This directory is read-only.');

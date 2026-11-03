@@ -1,7 +1,7 @@
 import { eventId } from '../ids.mjs';
 import { API_FIELDS, STATUS_VALUES, ACCESS_TYPES } from '../schemas.mjs';
 import { WorkspaceError, requirePermission, resourceSpec, validatePayload, STAGES, CURRENCIES } from './schema.mjs';
-import { workspaceDate } from './time.mjs';
+import { workspaceDate, workspaceDayStart } from './time.mjs';
 
 const INTAKE = Object.freeze({ leads: 'leads', rfqs: 'rfqs', support: 'support_requests', downloads: 'download_requests' });
 const MAX_PAGE_SIZE = 100;
@@ -21,7 +21,7 @@ function intakeTable(resource) {
   return INTAKE[resource];
 }
 function selectColumns(spec, alias = 'r') { return spec.columns.map(c => `${alias}.${c}`).join(', '); }
-function likePattern(value) { return `%${value.replace(/[\\%_]/g, '\\$&')}%`; }
+function likePattern(value) { return value; }
 function buildFilters(resource, options = {}, { includeArchived = true } = {}) {
   const spec = resourceSpec(resource), where = [], binds = [];
   if (spec.mutable) {
@@ -31,8 +31,10 @@ function buildFilters(resource, options = {}, { includeArchived = true } = {}) {
   }
   const q = nonempty(options.q);
   if (q) {
-    where.push(`(${spec.search.map(c => `r.${c} LIKE ? ESCAPE '\\'`).join(' OR ')})`);
+    const contacts=resource==='customers'&&options.with_contacts==='true';
+    where.push(`(${spec.search.map(c => `instr(lower(r.${c}),lower(?))>0`).join(' OR ')}${contacts?" OR EXISTS(SELECT 1 FROM crm_contacts contact WHERE contact.customer_id=r.public_id AND contact.archived_at IS NULL AND (instr(lower(contact.name),lower(?))>0 OR instr(lower(contact.email),lower(?))>0))":''})`);
     binds.push(...spec.search.map(() => likePattern(q)));
+    if(contacts)binds.push(likePattern(q),likePattern(q));
   }
   for (const key of spec.filters) {
     if (options[key] == null || options[key] === '') continue;
@@ -44,6 +46,24 @@ function buildFilters(resource, options = {}, { includeArchived = true } = {}) {
   if (resource === 'tasks' && options.overdue === 'true') {
     where.push("r.status != 'done' AND r.due_date != '' AND r.due_date < ?");
     binds.push(workspaceDate(options._timeZone));
+  }
+  for (const field of ['created_at', 'updated_at']) {
+    if (!spec.columns.includes(field)) continue;
+    for (const [suffix, operator] of [['from', '>='], ['to', '<']]) {
+      const value = options[field.replace('_at','')+'_'+suffix];
+      if (!value) continue;
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(value) || !Number.isFinite(Date.parse(value+'T00:00:00Z')) || new Date(value+'T00:00:00Z').toISOString().slice(0,10)!==value) throw new WorkspaceError(422,'INVALID_DATE','Select a valid date range.');
+      const day=suffix==='to'?new Date(Date.parse(value+'T00:00:00Z')+86400000).toISOString().slice(0,10):value;
+      where.push(`r.${field} ${operator} ?`); binds.push(workspaceDayStart(day,options._timeZone));
+    }
+  }
+  if (resource === 'opportunities') {
+    if (['amount_min','amount_max'].some(key=>options[key]!==undefined&&options[key]!=='')&&!options.currency) throw new WorkspaceError(422,'CURRENCY_REQUIRED','Select a currency before filtering by value.');
+    if (options.closed === 'false') where.push("r.stage NOT IN ('won','lost')");
+    for (const [key,operator] of [['amount_min','>='],['amount_max','<=']]) if (options[key] !== undefined && options[key] !== '') {
+      const value=Number(options[key]);if (!Number.isSafeInteger(value)||value<0||value>1000000000000) throw new WorkspaceError(422,'INVALID_AMOUNT','Use a valid amount in minor units.');
+      where.push(`r.amount_minor ${operator} ?`);binds.push(value);
+    }
   }
   return { whereSql: where.length ? ` WHERE ${where.join(' AND ')}` : '', binds };
 }
@@ -63,7 +83,10 @@ export async function listWorkspaceRecords(db, resource, options = {}, principal
   const spec = resourceSpec(resource), { page, limit } = pageOptions(options);
   const { whereSql, binds } = buildFilters(resource, options);
   const totalRow = await db.prepare(`SELECT COUNT(*) AS total FROM ${spec.table} r${whereSql}`).bind(...binds).first();
-  const result = await db.prepare(`SELECT ${selectColumns(spec)}${extraColumns(resource)} FROM ${spec.table} r${joinsFor(resource)}${whereSql} ORDER BY r.id DESC LIMIT ? OFFSET ?`).bind(...binds, limit, (page - 1) * limit).all();
+  const sort=options.sort||'id',direction=(options.dir||'desc').toLowerCase();
+  if (!['id',...spec.columns].includes(sort) || !['asc','desc'].includes(direction)) throw new WorkspaceError(422,'INVALID_SORT','Select a supported column and sort order.');
+  const contactColumns=resource==='customers'&&options.with_contacts==='true'?",(SELECT name FROM crm_contacts contact WHERE contact.customer_id=r.public_id AND contact.archived_at IS NULL ORDER BY is_primary DESC,id LIMIT 1) primary_contact_name,(SELECT email FROM crm_contacts contact WHERE contact.customer_id=r.public_id AND contact.archived_at IS NULL ORDER BY is_primary DESC,id LIMIT 1) primary_contact_email,(SELECT COUNT(*) FROM crm_contacts contact WHERE contact.customer_id=r.public_id AND contact.archived_at IS NULL) contacts_count":'';
+  const result = await db.prepare(`SELECT ${selectColumns(spec)}${extraColumns(resource)}${contactColumns} FROM ${spec.table} r${joinsFor(resource)}${whereSql} ORDER BY r.${sort} ${direction}${sort==='id'?'':', r.id DESC'} LIMIT ? OFFSET ?`).bind(...binds, limit, (page - 1) * limit).all();
   const total = Number(totalRow?.total || 0);
   return { data: result.results || [], meta: { total, page, limit, pages: Math.ceil(total / limit) } };
 }
@@ -176,7 +199,7 @@ export async function updateWorkspaceRecord(db, resource, id, input, principal) 
   const columns = Object.keys(payload), stamp = now();
   const statements = [
     db.prepare(`UPDATE ${spec.table} SET ${columns.map(c => `${c} = ?`).join(', ')}, updated_at = ?, version = version + 1 WHERE public_id = ? AND version = ? AND archived_at IS NULL`).bind(...columns.map(c => payload[c]), stamp, id, input.version),
-    auditStatement(db, principal, 'updated', resource, id, `Updated ${resource.slice(0, -1)}`, { fields: columns, previous_version: input.version }, { conditional: true }),
+    auditStatement(db, principal, 'updated', resource, id, `Updated ${resource.slice(0, -1)}`, { fields: columns, previous_version: input.version, before: Object.fromEntries(columns.map(key=>[key,existing[key]])), after: payload }, { conditional: true }),
     eventStatement(db, principal, 'updated', resource, id, true),
   ];
   const results = await batch(db, statements); assertChanged(results[0]);
@@ -246,7 +269,7 @@ export async function readWorkspaceDashboard(db, principal, { timeZone } = {}) {
 function intakeSelect(table) { return [...API_FIELDS[table], 'internal_note', ...(table === 'download_requests' ? ['access_type'] : [])].filter((v, i, a) => a.indexOf(v) === i); }
 function intakeFilters(table, options) {
   const where = [], binds = [], q = nonempty(options.q);
-  if (q) { where.push("(name LIKE ? ESCAPE '\\' OR company LIKE ? ESCAPE '\\' OR email LIKE ? ESCAPE '\\' OR public_id LIKE ? ESCAPE '\\')"); binds.push(...Array(4).fill(likePattern(q))); }
+  if (q) { where.push("(instr(lower(name),lower(?))>0 OR instr(lower(company),lower(?))>0 OR instr(lower(email),lower(?))>0 OR instr(lower(public_id),lower(?))>0)"); binds.push(...Array(4).fill(likePattern(q))); }
   if (options.status) {
     if (!STATUS_VALUES[table].includes(options.status)) throw new WorkspaceError(422, 'INVALID_FILTER', 'Unsupported inbox status.');
     where.push('status = ?'); binds.push(options.status);

@@ -1,0 +1,40 @@
+{
+  "actualCases": [
+    {
+      "page": "sources",
+      "body": 1005,
+      "heading": "数据源",
+      "root": 1005,
+      "sidebarInert": true,
+      "width": 1024
+    },
+    {
+      "page": "agent",
+      "body": 1005,
+      "heading": "智能体工作区",
+      "root": 1005,
+      "sidebarInert": true,
+      "width": 1024
+    },
+    {
+      "page": "agent",
+      "body": 749,
+      "heading": "智能体工作区",
+      "root": 748,
+      "sidebarInert": true,
+      "width": 767
+    },
+    {
+      "page": "sources",
+      "body": 749,
+      "heading": "数据源",
+      "root": 748,
+      "sidebarInert": true,
+      "width": 767
+    }
+  ],
+  "exact768": false,
+  "reason": "At existing browser zoom, integer width614 -> CSS767 and width615 -> CSS769. Fractional width614.4 is rejected by the viewport tool; zoom was preserved.",
+  "exact1024": true,
+  "viewportRestored": true
+}

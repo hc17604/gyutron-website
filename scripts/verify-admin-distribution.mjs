@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const TOOL_ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const PORTABLE_SUITES=['smoke-admin-api.mjs','smoke-admin-auth.mjs','smoke-admin-quotes.mjs','smoke-admin-backup.mjs','smoke-admin-aggregation.mjs','test-workspace-experience.mjs','test-operations-core.mjs','test-intelligence.mjs','test-intelligence-cross-review.mjs','test-intelligence-crm-controller.mjs','test-operations-intelligence-review.mjs','test-notifications.mjs','test-operations-bulk-ui.mjs','test-operations-license-issuer.mjs','check-admin-frontend.mjs','check-admin-routes.mjs'];
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const crcTable=Array.from({length:256},(_,index)=>{let value=index;for(let bit=0;bit<8;bit++)value=value&1?0xedb88320^(value>>>1):value>>>1;return value>>>0;});
 function crc32(bytes){let value=0xffffffff;for(const byte of bytes)value=crcTable[(value^byte)&255]^(value>>>8);return(value^0xffffffff)>>>0;}
@@ -52,6 +53,8 @@ async function main(){
  for(const [file,digest]of expected)if(file!=='FILE-SHA256SUMS.txt'&&checksumMap.get(file)!==digest)throw Error('Checksum list differs from manifest: '+file);
  const pkg=JSON.parse(await readFile(path.join(root,'package.json'),'utf8')),lock=JSON.parse(await readFile(path.join(root,'package-lock.json'),'utf8'));
  if(pkg.devDependencies.wrangler!=='4.93.1'||lock.packages?.['node_modules/wrangler']?.version!=='4.93.1'||pkg.name!==lock.name||pkg.version!==lock.version||pkg.engines.node!=='>=24 <25'||JSON.stringify(pkg.devDependencies)!==JSON.stringify(lock.packages[''].devDependencies))throw Error('Package and complete lock do not match the accepted runtime.');
+ if(pkg.scripts?.test!==PORTABLE_SUITES.map(script=>'node scripts/'+script).join(' && '))throw Error('The portable npm test command differs from the accepted validation suite.');
+ for(const script of [...PORTABLE_SUITES,'issue-instance-license.mjs'])if(!expected.has('scripts/'+script))throw Error('Required portable validation or operator tool is missing: '+script);
  const config=await readFile(path.join(root,'wrangler.example.toml'),'utf8');for(const marker of ['REPLACE_WORKER_NAME','REPLACE_DATABASE_NAME','REPLACE_D1_DATABASE_ID','REPLACE_KV_NAMESPACE_ID','REPLACE_R2_BUCKET_NAME'])if(!config.includes(marker))throw Error('Configuration must retain obvious resource placeholders.');
  if(/database_id\s*=\s*"[a-f0-9-]{36}"|\bid\s*=\s*"[a-f0-9]{32}"/i.test(config))throw Error('Real-looking resource IDs must not be preconfigured.');
  const upstreamConfig=path.join(TOOL_ROOT,'wrangler.toml');if(await exists(upstreamConfig)){
@@ -68,7 +71,7 @@ async function main(){
   await writeFile(path.join(local,'empty.npmrc'),'');
   if(options['--install'])execute(process.execPath,[await npmCli(),'ci','--no-audit','--no-fund','--userconfig',path.join(local,'empty.npmrc'),'--registry','https://registry.npmjs.org'],scratch,childEnv);
   execute(process.execPath,['scripts/verify-instance.mjs'],scratch,childEnv);
-  if(options['--test'])for(const script of ['smoke-admin-api.mjs','smoke-admin-auth.mjs','smoke-admin-quotes.mjs','smoke-admin-backup.mjs','smoke-admin-aggregation.mjs'])execute(process.execPath,['scripts/'+script],scratch,childEnv);
+  if(options['--test'])for(const script of PORTABLE_SUITES)execute(process.execPath,['scripts/'+script],scratch,childEnv);
   if(options['--build']){
    const quote=value=>JSON.stringify(value),localConfig=path.join(local,'wrangler.local.toml');
    await writeFile(localConfig,`# LOCAL-ONLY dummy IDs; no remote commands are used.\nname="operations-distribution-local-check"\nmain=${quote(path.join(scratch,'src','worker.mjs'))}\ncompatibility_date="2026-05-18"\ncompatibility_flags=["nodejs_compat"]\n[assets]\ndirectory=${quote(path.join(scratch,'public'))}\nbinding="ASSETS"\nrun_worker_first=true\n[[d1_databases]]\nbinding="DB"\ndatabase_name="local_distribution_check"\ndatabase_id="00000000-0000-4000-8000-000000000000"\nmigrations_dir=${quote(path.join(scratch,'migrations'))}\n[[r2_buckets]]\nbinding="R2"\nbucket_name="local-distribution-check"\n[[kv_namespaces]]\nbinding="RATE_LIMIT"\nid="00000000000000000000000000000000"\n`);

@@ -1,6 +1,7 @@
 /** Dedicated Operations instance. No brand-site, Shop or public submission routes. */
 import { handleAdmin } from './api/admin.mjs';
 import { runBackup } from './api/backup.mjs';
+import { runOperationsScheduled } from './platform/operations/scheduler.mjs';
 
 const ASSETS = new Set(['/brand-tokens.css','/gyutron-logo-light.svg','/gyutron-logo.svg','/favicon.ico','/favicon-32x32.png']);
 export default {
@@ -12,5 +13,5 @@ export default {
     if(read && ASSETS.has(url.pathname)) return env.ASSETS.fetch(request);
     return new Response(request.method==='HEAD'?null:'Not found',{status:404,headers:{'content-type':'text/plain; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff'}});
   },
-  async scheduled(event,env,ctx) { ctx.waitUntil(runBackup(env)); },
+  async scheduled(event,env,ctx) { if(!event?.cron||event.cron==='0 18 * * *'){ctx.waitUntil(runBackup(env));return;}ctx.waitUntil(runOperationsScheduled(env)); },
 };

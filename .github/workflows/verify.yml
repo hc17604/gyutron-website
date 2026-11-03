@@ -94,6 +94,36 @@ jobs:
       - name: Verify Operations backup and isolated recovery
         working-directory: ${{ github.workspace }}
         run: node scripts/smoke-admin-backup.mjs
+      - name: Verify customer workspaces, saved views and batch results
+        working-directory: ${{ github.workspace }}
+        run: node scripts/test-workspace-experience.mjs
+      - name: Verify commerce imports, reports, rules and durable automation
+        working-directory: ${{ github.workspace }}
+        run: node scripts/test-operations-core.mjs
+      - name: Verify knowledge, model security and commercial license signatures
+        working-directory: ${{ github.workspace }}
+        run: node scripts/test-intelligence.mjs
+      - name: Verify independent cross-module failure and controller checks
+        working-directory: ${{ github.workspace }}
+        run: |
+          node scripts/test-intelligence-cross-review.mjs
+          node scripts/test-intelligence-crm-controller.mjs
+          node scripts/test-operations-intelligence-review.mjs
+          node scripts/test-notifications.mjs
+      - name: Prepare portable test scratch directory
+        working-directory: ${{ github.workspace }}
+        run: node -e "require('node:fs').mkdirSync('.wrangler',{recursive:true})"
+      - name: Verify independent bounded bulk UI outcomes
+        working-directory: ${{ github.workspace }}
+        run: node scripts/test-operations-bulk-ui.mjs
+      - name: Verify offline per-instance license issuance
+        working-directory: ${{ github.workspace }}
+        run: node scripts/test-operations-license-issuer.mjs
+      - name: Verify emitted admin frontend, locale and routing contracts
+        working-directory: ${{ github.workspace }}
+        run: |
+          node scripts/check-admin-frontend.mjs
+          node scripts/check-admin-routes.mjs
       - name: Verify Shop baseline
         working-directory: ${{ github.workspace }}
         run: npm run shop:verify

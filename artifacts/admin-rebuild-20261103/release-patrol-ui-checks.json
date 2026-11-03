@@ -1,0 +1,156 @@
+{
+  "scope": "Additional independent pre-release UI patrol on fresh local 8796 only; frontend source remained frozen.",
+  "local_origin": "http://127.0.0.1:8796",
+  "new_blockers": [],
+  "synthetic_local_fixtures": {
+    "customer": "CUS-20261103-6FCCAB587FF2482A8212B713C1CC7D56",
+    "contact": "CON-4946878c-ff75-4f76-94fe-6f243a47faa9",
+    "task": "TSK-20261103-7AD1BFE2AF944159B1C5E77DF69A6A47"
+  },
+  "crm_flows": [
+    {
+      "flow": "Create customer -> linked primary contact -> edit contact -> refresh",
+      "result": "Customer FINAL UI QA · Release patrol 20261103-2039 saved; primary contact FINAL UI QA Contact saved; edited job title Local acceptance reviewer · verified retained after reload."
+    },
+    {
+      "flow": "Customer detail -> linked new task -> complete -> refresh",
+      "result": "Own synthetic customer automatically preselected; task retained customer, priority high and due date 2026-11-04; completed status persisted after reload."
+    },
+    {
+      "flow": "Keyboard Escape dirty guard -> cancel discard",
+      "result": "Unsaved title FINAL UI QA · UNSAVED keyboard patrol retained after Escape and cancel; task URL unchanged. Original title restored before intended status update."
+    }
+  ],
+  "boundaries": {
+    "actualCases": [
+      {
+        "page": "sources",
+        "body": 1005,
+        "heading": "数据源",
+        "root": 1005,
+        "sidebarInert": true,
+        "width": 1024
+      },
+      {
+        "page": "agent",
+        "body": 1005,
+        "heading": "智能体工作区",
+        "root": 1005,
+        "sidebarInert": true,
+        "width": 1024
+      },
+      {
+        "page": "agent",
+        "body": 749,
+        "heading": "智能体工作区",
+        "root": 748,
+        "sidebarInert": true,
+        "width": 767
+      },
+      {
+        "page": "sources",
+        "body": 749,
+        "heading": "数据源",
+        "root": 748,
+        "sidebarInert": true,
+        "width": 767
+      }
+    ],
+    "exact768": false,
+    "reason": "At existing browser zoom, integer width614 -> CSS767 and width615 -> CSS769. Fractional width614.4 is rejected by the viewport tool; zoom was preserved.",
+    "exact1024": true,
+    "viewportRestored": true
+  },
+  "old_feature_entries": [
+    {
+      "name": "报告中心",
+      "url": "http://127.0.0.1:8796/admin?lang=zh#reports",
+      "heading": "报告中心",
+      "textCharacters": 195,
+      "visibleErrors": []
+    },
+    {
+      "name": "自动化",
+      "url": "http://127.0.0.1:8796/admin?lang=zh#automations",
+      "heading": "自动化",
+      "textCharacters": 141,
+      "visibleErrors": []
+    },
+    {
+      "name": "业务规则",
+      "url": "http://127.0.0.1:8796/admin?lang=zh#rules",
+      "heading": "业务规则",
+      "textCharacters": 1086,
+      "visibleErrors": []
+    },
+    {
+      "name": "业务记忆",
+      "url": "http://127.0.0.1:8796/admin?lang=zh#memory",
+      "heading": "业务记忆",
+      "textCharacters": 151,
+      "visibleErrors": []
+    },
+    {
+      "name": "模型设置",
+      "url": "http://127.0.0.1:8796/admin?lang=zh#models",
+      "heading": "模型设置",
+      "textCharacters": 259,
+      "visibleErrors": []
+    },
+    {
+      "name": "安全中心",
+      "url": "http://127.0.0.1:8796/admin?lang=zh#security",
+      "heading": "安全中心",
+      "textCharacters": 131,
+      "visibleErrors": []
+    },
+    {
+      "name": "备份与恢复",
+      "url": "http://127.0.0.1:8796/admin?lang=zh#backup",
+      "heading": "备份与恢复",
+      "textCharacters": 184,
+      "visibleErrors": []
+    },
+    {
+      "name": "许可",
+      "url": "http://127.0.0.1:8796/admin?lang=zh#license",
+      "heading": "许可",
+      "textCharacters": 148,
+      "visibleErrors": []
+    },
+    {
+      "name": "系统健康",
+      "url": "http://127.0.0.1:8796/admin?lang=zh#health",
+      "heading": "系统健康",
+      "textCharacters": 245,
+      "visibleErrors": []
+    },
+    {
+      "name": "用户与权限",
+      "url": "http://127.0.0.1:8796/admin?lang=zh#users",
+      "heading": "用户与权限",
+      "textCharacters": 56,
+      "visibleErrors": []
+    }
+  ],
+  "legacy_order_entry": {
+    "from": "#settings",
+    "href": "/admin/order-intents",
+    "result": "Authenticated Order requests page, status filters, Export CSV and true empty list with 0 records; no export or mutation performed."
+  },
+  "application_console_errors": 0,
+  "screenshots": [
+    "release-patrol-task-completed.png",
+    "release-patrol-legacy-order-entry.png"
+  ],
+  "cleanup": {
+    "independent_tab": "918581659 closed",
+    "viewport": "reset",
+    "logout": false
+  },
+  "data_boundary": "Only new synthetic fixtures changed on localhost8796. No other fixtures edited/deleted, production writes, external messages, provider calls or source edits.",
+  "limits": [
+    "CSS768 was not precisely set; actual CSS767 and CSS769 are not called768. Sources/Agent completed at CSS767 and exact CSS1024. Existing browser zoom preserved.",
+    "Management pages were read/render checks only. This patrol does not claim backup generation/restore, license activation, provider testing or user permission changes; root owns final D1 recovery and release."
+  ]
+}

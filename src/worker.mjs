@@ -101,7 +101,12 @@ export default {
 
   // Daily D1 → R2 backup (see src/api/backup.mjs; [triggers] in wrangler.toml).
   async scheduled(event, env, ctx) {
-    const { runBackup } = await import("./api/backup.mjs");
-    ctx.waitUntil(runBackup(env));
+    if (!event?.cron || event.cron === '0 18 * * *') {
+      const { runBackup } = await import("./api/backup.mjs");
+      ctx.waitUntil(runBackup(env));
+      return;
+    }
+    const { runOperationsScheduled } = await import('./platform/operations/scheduler.mjs');
+    ctx.waitUntil(runOperationsScheduled(env));
   },
 };

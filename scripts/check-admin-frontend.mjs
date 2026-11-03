@@ -1,0 +1,44 @@
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import fs from 'node:fs/promises';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { WORKBENCH_COPY } from '../src/admin/extension-locales.mjs';
+import { WORKBENCH_ERRORS } from '../src/admin/extension-errors.mjs';
+import { WORKBENCH_CLIENT, WORKBENCH_STYLES } from '../src/admin/workbench-ui.mjs';
+import { OPERATIONS_CLIENT } from '../src/admin/operations-client.mjs';
+import { INTELLIGENCE_CLIENT } from '../src/admin/intelligence-client.mjs';
+import { ADMIN_CLIENT } from '../src/admin/client.mjs';
+import { CRM_EXPERIENCE_CLIENT } from '../src/admin/crm-experience-client.mjs';
+import { NOTIFICATIONS_CLIENT } from '../src/admin/notifications-client.mjs';
+import { renderAdminLogin, getAdminAsset } from '../src/admin/shell.mjs';
+
+const outputDir=new URL('../artifacts/admin-rebuild-20261103/',import.meta.url);await fs.mkdir(outputDir,{recursive:true});
+const results=[];
+const check=(name,run)=>{run();results.push({name,ok:true});};
+for(const [name,source] of Object.entries({workbench:WORKBENCH_CLIENT,operations:OPERATIONS_CLIENT,intelligence:INTELLIGENCE_CLIENT,core:ADMIN_CLIENT,crm:CRM_EXPERIENCE_CLIENT,notifications:NOTIFICATIONS_CLIENT})){
+  const file=new URL(name+'-emitted.mjs',outputDir);await fs.writeFile(file,source);
+  check(name+' emitted ESM syntax',()=>assert.equal(spawnSync(process.execPath,['--check',fileURLToPath(file)],{encoding:'utf8'}).status,0));
+  check(name+' strict CSP templates',()=>{assert.doesNotMatch(source,/\bstyle\s*=\s*["']/i);assert.doesNotMatch(source,/\bon\w+\s*=\s*["']/i);assert.ok(!source.includes('window.confirm('));});
+}
+check('four-language shared copy',()=>{for(const values of Object.values(WORKBENCH_COPY)){assert.equal(values.length,4);assert.ok(values.every(v=>typeof v==='string'&&v.length));}});
+check('four-language service errors',()=>{for(const values of Object.values(WORKBENCH_ERRORS)){assert.deepEqual(Object.keys(values),['en','zh','de','ja']);assert.ok(Object.values(values).every(v=>typeof v==='string'&&v.length));}});
+for(const lang of ['en','zh','de','ja'])check(lang+' default password-only login',()=>{const html=renderAdminLogin({lang});assert.equal((html.match(/name="password"/g)||[]).length,1);assert.equal((html.match(/name="email"/g)||[]).length,0);assert.equal((renderAdminLogin({lang,teamLogin:true}).match(/name="email"/g)||[]).length,1);});
+for(const file of ['workbench.js','operations.js','intelligence.js','notifications.js','crm-experience.js','local-source-sync.mjs'])check(file+' real shell asset',()=>assert.equal(getAdminAsset('/admin/assets/'+file)?.status,200));
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shared=vm.createContext({Intl});vm.runInContext(WORKBENCH_CLIENT.replace('export function','function'),shared);const ui=shared.createWorkbench({state:{lang:'de'},esc});
+check('unique accessible labels and escaped form values',()=>{const a=ui.field('<Title>','title','"><script>x</script>',{required:true});const b=ui.field('Title','title');assert.notEqual(a.match(/id="([^"]+)/)[1],b.match(/id="([^"]+)/)[1]);assert.match(a,/label for="wb-title-/);assert.match(a,/&lt;Title&gt;/);assert.ok(!a.includes('<script>'));});
+check('reports escape embedded HTML',()=>{const html=ui.reportText('# Header\n<script>alert(1)</script>\n- Item');assert.match(html,/<h1>Header<\/h1>/);assert.match(html,/&lt;script&gt;/);assert.ok(!html.includes('<script>'));});
+const funcs=vm.createContext({});
+for(const name of ['csvHeaders','automationConfig'])vm.runInContext(OPERATIONS_CLIENT.split('\n').find(line=>line.includes('function '+name+'(')),funcs);
+for(const [input,expected] of [['\ufeffA,B\r\n1,2',['A','B']],['"Company, Legal",Amount\nA,2',['Company, Legal','Amount']],['"Quote ""name""",Value',['Quote "name"','Value']],['"Multi\nline",B\n1,2',['Multi\nline','B']],['A,B,\n1,2,3',['A','B','']],['',[]]])check('CSV header '+JSON.stringify(input),()=>assert.deepEqual(Array.from(funcs.csvHeaders(input)),expected));
+check('daily schedule keeps provenance and removes irrelevant fields',()=>{const cfg=funcs.automationConfig({kind:'rules',schedule_mode:'daily',daily_at:'08:00',source_id:'s'}, {config:{exclude_tests:true,from:'2026-11-01',report_type:'daily',language:'ja'}});assert.equal(cfg.daily_at,'08:00');assert.equal(cfg.exclude_tests,true);assert.equal(cfg.from,'2026-11-01');assert.ok(!('language'in cfg));});
+check('interval schedule removes daily setting',()=>assert.ok(!('daily_at'in funcs.automationConfig({kind:'native_sync',schedule_mode:'interval'},{config:{daily_at:'08:00',currency:'USD'}}))));
+check('documents fetch full body before editing summary row',()=>assert.match(INTELLIGENCE_CLIENT,/full=isDocument\?\(await get\('documents\/'\+encodeURIComponent\(id\)\)\)\.data:row/));
+check('document limits and explicit model version',()=>{assert.match(INTELLIGENCE_CLIENT,/length>8/);assert.match(INTELLIGENCE_CLIENT,/file\.size>204800/);assert.match(INTELLIGENCE_CLIENT,/isDocument\?204800:12000/);assert.match(INTELLIGENCE_CLIENT,/byteLength>204800/);assert.match(INTELLIGENCE_CLIENT,/maxlength="6000"/);assert.match(INTELLIGENCE_CLIENT,/model_version:status\.model_target\?\.version/);});
+check('exact analytics amount source and honest accounting captions',()=>{assert.match(OPERATIONS_CLIENT,/money\(r\.amount_minor_exact\?\?r\.amount_minor/);assert.match(OPERATIONS_CLIENT,/Paid order value \(before refunds\)/);assert.match(OPERATIONS_CLIENT,/Net imported payment movement/);assert.match(OPERATIONS_CLIENT,/refunded_minor_exact/);});
+const moneyScope=vm.createContext({Intl,state:{lang:'en'},localeCode:()=> 'en-US',t:()=> 'Unavailable'});vm.runInContext(ADMIN_CLIENT.slice(ADMIN_CLIENT.indexOf('  const minorDigits ='),ADMIN_CLIENT.indexOf('  const owner ='))+'\nthis.formatMoney=money;',moneyScope);
+for(const [amount,currency,expected] of [['9010000000004004','USD','$90,100,000,000,040.04'],['-1','USD','-$0.01'],['-7000','USD','-$70.00'],['125000','JPY','¥125,000'],['125000','KRW','₩125,000']])check('exact money '+amount+' '+currency,()=>assert.equal(moneyScope.formatMoney(amount,currency),expected));
+check('single desktop layout model and tablet drawer boundary',()=>{assert.match(WORKBENCH_STYLES,/margin-left:0/);assert.match(WORKBENCH_STYLES,/min-width:1025px/);assert.match(ADMIN_CLIENT,/max-width:\s*1024px/);});
+await fs.writeFile(new URL('frontend-rework-static-checks.json',outputDir),JSON.stringify({at:new Date().toISOString(),checks:results.length,results},null,2)+'\n');
+console.log(JSON.stringify({checks:results.length,passed:results.length}));

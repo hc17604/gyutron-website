@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "actual_d1_import": true,
+  "tables": 44,
+  "all_counts_match": true,
+  "foreign_key_violations": 0,
+  "integrity": "ok",
+  "documents": [
+    {
+      "bytes": 54,
+      "sha256": "d6c1562ee44bf0bd5f96cc9518d8451511729b299c1dc5f6f911c26aedc43d6a"
+    },
+    {
+      "bytes": 204800,
+      "sha256": "6d5f7bc5cbcd388d5a14a92423cb96479ed952e7f16d8ad0ee3532756bcdab7a"
+    },
+    {
+      "bytes": 17,
+      "sha256": "3c6a0c1f4c141771bd0022b72bdb1f70c12960c462753766826dd9a120f983c8"
+    },
+    {
+      "bytes": 17,
+      "sha256": "dcfdb6f78e07864ba7676893557fda54977095f3e57a8a4292d4523569c3c15b"
+    },
+    {
+      "bytes": 17,
+      "sha256": "fc12c8bd4a856354ed7bf3cef8559fd5ab26d95c199da4f095b9b5b724dc7045"
+    },
+    {
+      "bytes": 17,
+      "sha256": "0f19bcb44d9ad59d68a45815685445f0a97a30efec31a7fae50c12b5b1411de5"
+    },
+    {
+      "bytes": 17,
+      "sha256": "229ec806890448fdf65819ebef6d2ecf52a87c05109aa37ccc1a3e290ac67328"
+    },
+    {
+      "bytes": 17,
+      "sha256": "b90eca9a8c3cb0e7b7c3625f7bf37166c7bd5bb1fbfef810ed0e74b8ad0f8808"
+    }
+  ],
+  "staging_table_remaining": 0
+}

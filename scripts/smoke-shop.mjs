@@ -135,9 +135,17 @@ check("backend-safe order-intent files remain pinned", () => {
     // reads/writes/exports are exercised by smoke-admin-api and smoke-admin-auth.
     // Storefront submission, schema and routing contracts remain pinned here.
     "src/api/order-intents.mjs", "src/platform/config.mjs",
-    "src/platform/ids.mjs", "src/platform/schemas.mjs", "src/worker.mjs",
+    "src/platform/ids.mjs", "src/platform/schemas.mjs",
     "scripts/smoke-platform.mjs",
   ]) baselineEqual(relative, backendRef);
+  // Operations adds a separate cron executor. Pin the complete fetch/Shop routing
+  // prefix byte-for-byte; its unrelated scheduled handler has dedicated tests.
+  const routingPrefix = source => {
+    const normalized=source.replace(/\r\n/g,'\n'),marker='  // Daily D1 → R2 backup';
+    assert.equal(normalized.split(marker).length,2,'Worker scheduled boundary must stay unambiguous');
+    return normalized.slice(0,normalized.indexOf(marker));
+  };
+  assert.equal(routingPrefix(read('src/worker.mjs')),routingPrefix(gitText(backendRef,'src/worker.mjs')),'Worker fetch and storefront routing changed');
 });
 
 for (const asset of ["checkout.css", "checkout.js"]) {

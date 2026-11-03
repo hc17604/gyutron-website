@@ -1,0 +1,230 @@
+{
+  "format": 1,
+  "reviewer": "backend_core",
+  "checked_at": "2026-11-03T12:44:38.991Z",
+  "scope": "Independent local SQLite migration/additive-data compatibility and offline backup recovery; package/CI preview check",
+  "production_reads": false,
+  "production_writes": false,
+  "remote_commands": false,
+  "source_hashes": [
+    {
+      "path": "migrations/0001_init.sql",
+      "bytes": 7680,
+      "sha256": "aa9ce15172dfbb9221035636ae0e3f6c52360d41ef5232550d214e01645fcd03"
+    },
+    {
+      "path": "migrations/0002_order_intents.sql",
+      "bytes": 4217,
+      "sha256": "5136a595b1505ddcf1081a26ecc8a42795e461cfd0f4bf6fc24021b640e270ed"
+    },
+    {
+      "path": "migrations/0003_admin_workspace.sql",
+      "bytes": 9455,
+      "sha256": "ab85cf522766f9c0420564a65f40499b20bbe8b6c9b5bd205fa063601c94e2f8"
+    },
+    {
+      "path": "migrations/0004_admin_identity.sql",
+      "bytes": 1651,
+      "sha256": "53e10f6830235841679207ec60436a320d4531f89886e9e03e337704ccfe15e6"
+    },
+    {
+      "path": "migrations/0005_crm_relation_guards.sql",
+      "bytes": 1164,
+      "sha256": "701e790476b7b58b4dbf1dcd805c9e53e40b1dc8bd4e806efc38e2abc03e8369"
+    },
+    {
+      "path": "migrations/0006_operations_quotes.sql",
+      "bytes": 7712,
+      "sha256": "2470786811f35e2bb91ef6f317a60bcb0d9b92f1186ef1371f7668b58d34ea86"
+    },
+    {
+      "path": "migrations/0007_operations.sql",
+      "bytes": 9788,
+      "sha256": "3cc5f4451e1e320a248f6fe2aaa63e34546618528b5a88412c54c7287adc13bd"
+    },
+    {
+      "path": "migrations/0008_intelligence.sql",
+      "bytes": 4948,
+      "sha256": "3faf9422dc6d266061453ad89f27ac2c25f3aaddfec30937c428f8e71f05e640"
+    },
+    {
+      "path": "migrations/0009_workspace_experience.sql",
+      "bytes": 1853,
+      "sha256": "9710ae94b7798f3a7d2bcaf5d06b708ecbfbb58231fe8d29494fabd9493ebe99"
+    },
+    {
+      "path": "migrations/0010_workspace_notifications.sql",
+      "bytes": 512,
+      "sha256": "8dd1f194e1e9d261ecc0d27c324bf3f40222b8c113ea27ae9365a85e88538351"
+    },
+    {
+      "path": "src/api/backup.mjs",
+      "bytes": 18951,
+      "sha256": "a43a82bc83f8427646d8cd273d0d316015b508dc51b17a1a2abdd33c13acafd5"
+    },
+    {
+      "path": "scripts/recover-workspace.mjs",
+      "bytes": 2676,
+      "sha256": "6fd0cb0fb8354549ca4b26412800be77a18a92021b95f2e1800dbc5420aa971e"
+    },
+    {
+      "path": "scripts/smoke-admin-backup.mjs",
+      "bytes": 28611,
+      "sha256": "0ecb580cd7cb8a93388bb55d85b573462fc1aebebf173bc7f1662679ecbdbec1"
+    },
+    {
+      "path": "scripts/package-admin-workspace.mjs",
+      "bytes": 14546,
+      "sha256": "93dcff6a380cd62d5f295f2969054a38cb9d6e3efaf1b2214a32f51e63db0045"
+    },
+    {
+      "path": "scripts/verify-admin-distribution.mjs",
+      "bytes": 12752,
+      "sha256": "75a682a8f5b685c56129954767badd0da80230fe95bdbf5e0d97bead7ed40b2a"
+    },
+    {
+      "path": "template/operations-workspace/package.json",
+      "bytes": 1491,
+      "sha256": "7a6348e51953e162f2f960cf50f4dd6a42081f3976e188634298577d91bc1b90"
+    },
+    {
+      "path": ".github/workflows/verify.yml",
+      "bytes": 5902,
+      "sha256": "89e7e55f50a9f736a52ca8f8ac52a53ce0de252db4192da44daa4a4c0365a530"
+    }
+  ],
+  "migrations": {
+    "passed": true,
+    "baseline": "0001 through 0006",
+    "applied": [
+      "0007_operations.sql",
+      "0008_intelligence.sql",
+      "0009_workspace_experience.sql",
+      "0010_workspace_notifications.sql"
+    ],
+    "legacy_tables_ddl_and_rows_unchanged": 20,
+    "new_tables": 26,
+    "new_tables_exactly_match_extended_backup_list": true,
+    "backup_tables": 43,
+    "excluded_session_and_throttle_tables": 3,
+    "final_application_table_list_exact": true
+  },
+  "backup_recovery": {
+    "passed": true,
+    "engine": "Node 24 node:sqlite / in-memory SQLite",
+    "synthetic_only": true,
+    "unicode_and_controls": [
+      "Chinese",
+      "emoji",
+      "apostrophe",
+      "NUL",
+      "CRLF",
+      "backslash"
+    ],
+    "long_text_utf8_bytes": 210000,
+    "long_text_sha256": "1e27b007c9297fcd23287dfb41890e45cdca77be85287070857bf61043a6ba64",
+    "snapshot_bytes": 384190,
+    "restore_sql_bytes": 470269,
+    "largest_snapshot_statement_bytes": 37631,
+    "restored_text_exact": true,
+    "integrity": "ok",
+    "foreign_key_errors": 0,
+    "active_sessions_restored": false,
+    "source_review": [
+      "Long text is staged in bounded 3072 UTF-16-unit chunks without splitting valid surrogate pairs, then inserted as a complete value.",
+      "Historical data restores before secondary indexes and active-relation triggers.",
+      "Schema hash, table list and row counts reject inconsistent snapshots.",
+      "R2 payload readback precedes commit marker creation and verified-date retention."
+    ]
+  },
+  "distribution": {
+    "self_check_passed": true,
+    "preview_only": true,
+    "files": 110,
+    "stage": ".wrangler/distribution-self-check/.staging-d627e2c0-bb63-4249-9546-c3d40ea0d2ae",
+    "portable_suites": [
+      {
+        "name": "smoke-admin-api",
+        "passed": 41
+      },
+      {
+        "name": "smoke-admin-auth",
+        "passed": 29
+      },
+      {
+        "name": "smoke-admin-quotes",
+        "passed": 26
+      },
+      {
+        "name": "smoke-admin-backup",
+        "passed": 20
+      },
+      {
+        "name": "smoke-admin-aggregation",
+        "passed": 5
+      },
+      {
+        "name": "test-workspace-experience",
+        "passed": 15
+      },
+      {
+        "name": "test-operations-core",
+        "passed": 45
+      },
+      {
+        "name": "test-intelligence",
+        "passed": 53
+      },
+      {
+        "name": "test-intelligence-cross-review",
+        "passed": 5
+      },
+      {
+        "name": "test-intelligence-crm-controller",
+        "passed": 5
+      },
+      {
+        "name": "test-operations-intelligence-review",
+        "passed": true
+      },
+      {
+        "name": "test-notifications",
+        "passed": 20
+      },
+      {
+        "name": "test-operations-bulk-ui",
+        "passed": 4
+      },
+      {
+        "name": "test-operations-license-issuer",
+        "passed": 6
+      },
+      {
+        "name": "check-admin-frontend",
+        "passed": 43
+      },
+      {
+        "name": "check-admin-routes",
+        "passed": 5
+      }
+    ],
+    "wrangler": "4.93.1",
+    "dry_run_passed": true,
+    "bundle_kib": 959.78,
+    "gzip_kib": 263.35,
+    "manifest_reverification_passed": true,
+    "source_directory_unchanged": true,
+    "archive_created": false,
+    "provisioned_resources": false,
+    "deployed": false
+  },
+  "conclusion": {
+    "blockers_found": 0,
+    "remote_migration_authorized_by_this_review": false,
+    "limitations": [
+      "No production data was inspected and no remote migration was executed.",
+      "SQLite compatibility is independent logical evidence; actual workerd/D1 recovery was separately exercised by root.",
+      "Preview contains uncommitted reviewed source; final archive requires a clean committed source freeze and its own final verification."
+    ]
+  }
+}

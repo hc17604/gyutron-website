@@ -57,7 +57,7 @@ export async function listQuotes(db, options, principal) {
     if ((field === 'status' && !QUOTE_STATUSES.includes(options[field])) || (field === 'currency' && !QUOTE_CURRENCIES.includes(options[field]))) throw quoteError('INVALID_FILTER','Select a supported quotation filter.');
     where.push(`${field} = ?`); binds.push(String(options[field]).slice(0,100));
   }
-  if (options.q) { const q = '%' + String(options.q).slice(0,200).replace(/[\\%_]/g,'\\$&') + '%'; where.push("(quote_number LIKE ? ESCAPE '\\' OR title LIKE ? ESCAPE '\\' OR recipient_company LIKE ? ESCAPE '\\' OR recipient_name LIKE ? ESCAPE '\\')"); binds.push(q,q,q,q); }
+  if (options.q) { const q = String(options.q).slice(0,200); where.push("(instr(lower(quote_number),lower(?))>0 OR instr(lower(title),lower(?))>0 OR instr(lower(recipient_company),lower(?))>0 OR instr(lower(recipient_name),lower(?))>0)"); binds.push(q,q,q,q); }
   const whereSql = ' WHERE ' + where.join(' AND ');
   const total = Number((await db.prepare('SELECT COUNT(*) AS n FROM ops_quotes' + whereSql).bind(...binds).first())?.n || 0);
   const rows = (await db.prepare(`SELECT ${HEADER_COLUMNS.join(',')} FROM ops_quotes${whereSql} ORDER BY id DESC LIMIT ? OFFSET ?`).bind(...binds,limit,(page-1)*limit).all()).results || [];

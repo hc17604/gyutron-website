@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-03T12:21:03.351Z",
+  "base": "http://127.0.0.1:8796",
+  "checks": [
+    {
+      "name": "password-only login and authenticated real Worker",
+      "ok": true
+    },
+    {
+      "name": "system probes and verified format-four private R2 recovery",
+      "ok": true
+    }
+  ],
+  "ids": {
+    "recovery": {
+      "ok": true,
+      "sha256": "40510b501553dc3f83a43b0ca76d5f5f45c7c27cfdc920896023893c6b49c543",
+      "format": 4,
+      "migration": "0010_workspace_notifications.sql",
+      "verified_tables": 44,
+      "active_sessions_restored": false,
+      "database": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\final-qa\\synthetic-recovery-1793708463259.sqlite",
+      "sql": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\final-qa\\synthetic-recovery-1793708463259.sql",
+      "production_writes": false
+    }
+  },
+  "production_writes": false
+}

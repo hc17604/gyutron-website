@@ -9,8 +9,9 @@ import { build } from 'esbuild';
 
 const REPO=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const TEMPLATE='template/operations-workspace';
-const SMOKES=['smoke-admin-api.mjs','smoke-admin-auth.mjs','smoke-admin-quotes.mjs','smoke-admin-backup.mjs','smoke-admin-aggregation.mjs'];
-const MIGRATIONS=['0001_init.sql','0002_order_intents.sql','0003_admin_workspace.sql','0004_admin_identity.sql','0005_crm_relation_guards.sql','0006_operations_quotes.sql'];
+const SMOKES=['smoke-admin-api.mjs','smoke-admin-auth.mjs','smoke-admin-quotes.mjs','smoke-admin-backup.mjs','smoke-admin-aggregation.mjs','test-workspace-experience.mjs','test-operations-core.mjs','test-intelligence.mjs','test-intelligence-cross-review.mjs','test-intelligence-crm-controller.mjs','test-operations-intelligence-review.mjs','test-notifications.mjs','test-operations-bulk-ui.mjs','test-operations-license-issuer.mjs','check-admin-frontend.mjs','check-admin-routes.mjs'];
+const TOOLS=['recover-workspace.mjs','local-source-sync.mjs','issue-instance-license.mjs'];
+const MIGRATIONS=['0001_init.sql','0002_order_intents.sql','0003_admin_workspace.sql','0004_admin_identity.sql','0005_crm_relation_guards.sql','0006_operations_quotes.sql','0007_operations.sql','0008_intelligence.sql','0009_workspace_experience.sql','0010_workspace_notifications.sql'];
 const ASSETS=['brand-tokens.css','gyutron-logo-light.svg','gyutron-logo.svg','favicon.ico','favicon-32x32.png'];
 const DOCS=['admin-commercial-deployment.md','admin-backup-recovery.md','admin-technology-notices.md'];
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
@@ -22,19 +23,20 @@ function runNode(script,args){const result=spawnSync(process.execPath,[script,..
 
 async function sourceMap(){
   const entry=await readFile(path.join(REPO,TEMPLATE,'worker.mjs'),'utf8');
-  const graph=await build({absWorkingDir:REPO,stdin:{contents:entry,resolveDir:path.join(REPO,'src'),sourcefile:'__operations_distribution_entry__.mjs'},entryPoints:[...SMOKES.map(name=>'scripts/'+name),'src/api/admin-quotes.mjs'],outdir:'.wrangler/distribution-graph',bundle:true,write:false,metafile:true,platform:'node',format:'esm',target:'es2024',external:['node:*'],logLevel:'silent'});
+  const graph=await build({absWorkingDir:REPO,stdin:{contents:entry,resolveDir:path.join(REPO,'src'),sourcefile:'__operations_distribution_entry__.mjs'},entryPoints:[...[...SMOKES,...TOOLS].map(name=>'scripts/'+name),'src/api/admin-quotes.mjs'],outdir:'.wrangler/distribution-graph',bundle:true,write:false,metafile:true,platform:'node',format:'esm',target:'es2024',external:['node:*'],logLevel:'silent'});
   const mapping=new Map();
   for(const input of Object.keys(graph.metafile.inputs)){
     if(path.basename(input)==='__operations_distribution_entry__.mjs'||input==='<stdin>')continue;
     const absolute=path.resolve(REPO,input),relative=slash(path.relative(REPO,absolute));safeRelative(relative);
     if(relative.startsWith('node_modules/'))throw Error('A bundled runtime package requires an explicit distribution/license review: '+relative);
-    if(!relative.startsWith('src/')&&!SMOKES.some(name=>relative==='scripts/'+name))throw Error('Unexpected dependency outside the Operations source boundary: '+relative);
+    if(!relative.startsWith('src/')&&![...SMOKES,...TOOLS].some(name=>relative==='scripts/'+name))throw Error('Unexpected dependency outside the Operations source boundary: '+relative);
     mapping.set(relative,relative);
   }
   mapping.delete('src/worker.mjs');mapping.set('src/worker.mjs',TEMPLATE+'/worker.mjs');
   for(const name of ['package.json','package-lock.json','wrangler.example.toml','.gitignore','.node-version','APPLICATION-LICENSE.md','README.md'])mapping.set(name,TEMPLATE+'/'+name);
   mapping.set('scripts/configure-instance.mjs',TEMPLATE+'/configure-instance.mjs');mapping.set('scripts/verify-instance.mjs',TEMPLATE+'/verify-instance.mjs');
   mapping.set('scripts/verify-distribution.mjs','scripts/verify-admin-distribution.mjs');
+  for(const name of TOOLS)mapping.set('scripts/'+name,'scripts/'+name);
   for(const name of MIGRATIONS)mapping.set('migrations/'+name,'migrations/'+name);
   for(const name of ASSETS)mapping.set('public/'+name,'public/'+name);
   for(const name of DOCS)mapping.set('docs/'+name,'docs/'+name);
@@ -50,7 +52,7 @@ async function verifyTemplateLock(){
   if(lock.name!==pkg.name||lock.version!==pkg.version||lock.packages[''].name!==pkg.name||lock.packages[''].version!==pkg.version)throw Error('Package and lock identity differ.');
 }
 function dirtySources(sources){
-  const relevant=[...new Set([...sources,'package.json','package-lock.json','wrangler.toml','scripts/package-admin-workspace.mjs','scripts/verify-admin-distribution.mjs'])];
+  const relevant=[...new Set([...sources,'package.json','package-lock.json','wrangler.toml','scripts/package-admin-workspace.mjs','scripts/verify-admin-distribution.mjs','.github/workflows/verify.yml'])];
   return{relevant,dirty:git(['status','--porcelain=v1','--untracked-files=all','--',...relevant])};
 }
 function assertCommitted(relevant){
@@ -69,7 +71,7 @@ async function assemble(stage,mapping,sourceCommit,preview){
   const lock=JSON.parse(await readFile(path.join(stage,'package-lock.json'),'utf8'));
   const dependencies=Object.entries(lock.packages).filter(([name])=>name).map(([location,item])=>({location,version:item.version,license:item.license||'Inspect installed package license',integrity:item.integrity||null,resolved:item.resolved||null,optional:Boolean(item.optional)}));
   const dependencyBytes=Buffer.from(JSON.stringify({format:1,nodeMajor:24,wrangler:'4.93.1',includesInstalledDependencies:false,packages:dependencies},null,2)+'\n');await writeFile(path.join(stage,'DEPENDENCY-MANIFEST.json'),dependencyBytes,{flag:'wx'});records.push({path:'DEPENDENCY-MANIFEST.json',bytes:dependencyBytes.length,sha256:sha(dependencyBytes),source:'generated from accepted package-lock.json'});
-  const manifest={format:1,product:'GYUTRON Operations',source_commit:sourceCommit,generated_at:new Date().toISOString(),preview_only:preview,node_major:24,wrangler:'4.93.1',migration_max:'0006_operations_quotes.sql',entry:'src/worker.mjs',scope:'dedicated Operations instance; no public forms, Data API or Shop host routing',files:records.sort((a,b)=>a.path.localeCompare(b.path)),source_files:[...new Map(sourceRecords.map(record=>[record.path,record])).values()].sort((a,b)=>a.path.localeCompare(b.path))};
+  const manifest={format:1,product:'GYUTRON Operations',source_commit:sourceCommit,generated_at:new Date().toISOString(),preview_only:preview,node_major:24,wrangler:'4.93.1',migration_max:'0010_workspace_notifications.sql',entry:'src/worker.mjs',scope:'dedicated Operations instance; no public forms, Data API or Shop host routing',files:records.sort((a,b)=>a.path.localeCompare(b.path)),source_files:[...new Map(sourceRecords.map(record=>[record.path,record])).values()].sort((a,b)=>a.path.localeCompare(b.path))};
   const manifestBytes=Buffer.from(JSON.stringify(manifest,null,2)+'\n');await writeFile(path.join(stage,'SOURCE-MANIFEST.json'),manifestBytes,{flag:'wx'});
   const checksums=[...manifest.files.map(record=>record.sha256+'  '+record.path),sha(manifestBytes)+'  SOURCE-MANIFEST.json'].sort().join('\n')+'\n';await writeFile(path.join(stage,'FILE-SHA256SUMS.txt'),checksums,{flag:'wx'});
   return manifest;
@@ -94,7 +96,7 @@ async function main(){
   const preview=args.includes('--self-check'),mapping=await sourceMap();await verifyTemplateLock();
   const {relevant,dirty}=dirtySources([...mapping.values()]);if(!preview)assertCommitted(relevant);
   const sourceCommit=git(['rev-parse','HEAD']),name='gyutron-operations-'+new Date().toISOString().replace(/[^0-9]/g,'').slice(0,14)+'-'+sourceCommit.slice(0,12);
-  const outputRoot=preview?path.join(REPO,'.wrangler','distribution-self-check'):path.resolve(REPO,'..','..','outputs','admin-saas-20261103');await mkdir(outputRoot,{recursive:true});
+  const outputRoot=preview?path.join(REPO,'.wrangler','distribution-self-check'):path.resolve(REPO,'..','..','outputs','admin-rebuild-20261103');await mkdir(outputRoot,{recursive:true});
   const stage=path.join(outputRoot,'.staging-'+randomUUID()),manifest=await assemble(stage,mapping,sourceCommit,preview);
   runNode(path.join(REPO,'scripts/verify-admin-distribution.mjs'),['--dir',stage,...(preview?['--allow-preview']:[]),...(!args.includes('--skip-tests')?['--test']:[]),'--build',...(args.includes('--install')?['--install']:[])]);
   if(preview){console.log(JSON.stringify({preview_only:true,source_commit:sourceCommit,relevant_dirty:Boolean(dirty),directory:stage,archive_created:false,provisioned_resources:false,deployed:false},null,2));return;}

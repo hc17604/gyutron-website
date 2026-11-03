@@ -8,7 +8,7 @@ enabled = true
 
 # Daily D1 backup -> R2 backups/ (02:00 Beijing = 18:00 UTC). src/api/backup.mjs.
 [triggers]
-crons = ["0 18 * * *"]
+crons = ["*/5 * * * *", "0 18 * * *"]
 
 [assets]
 directory = "./public"
@@ -44,6 +44,9 @@ binding = "RATE_LIMIT"
 id = "c3fba30b49b5451ca25f0f3983560c47"
 
 # --- Non-secret config (safe to commit). Override to re-skin for a new customer.
+[vars]
+INTELLIGENCE_OWNED_DEPLOYMENT = "true"
+
 # [vars]
 # DATA_SOURCE_ID = "gyutron-website"
 # DATA_SOURCE_NAME = "GYUTRON"
@@ -52,6 +55,7 @@ id = "c3fba30b49b5451ca25f0f3983560c47"
 #   DATA_API_KEY        bearer key for the read-only Data API (Agent Workspace)
 #   ADMIN_PASSWORD      enables + protects /admin
 #   ADMIN_SECRET        (optional) HMAC key for the admin session cookie
+#   WORKSPACE_ENCRYPTION_KEY  AES-GCM master for optional model API keys; keep a private recovery copy
 #   IP_HASH_SALT        salt for hashing client IPs
 #   TURNSTILE_SECRET_KEY  enables server-side Turnstile verification on forms
 #   RESEND_API_KEY / CONTACT_FROM_EMAIL / CONTACT_TO_EMAIL  (existing contact email)

@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-03T12:40:38.996Z",
+  "checks": 5,
+  "results": [
+    {
+      "name": "delayed customer close cannot overwrite related pipeline navigation",
+      "ok": true
+    },
+    {
+      "name": "delayed close cannot clear a new command-search deep link already parsed by router",
+      "ok": true
+    },
+    {
+      "name": "plain close clears its own record while preserving list filters",
+      "ok": true
+    },
+    {
+      "name": "old event does not clear a newly reopened dialog",
+      "ok": true
+    },
+    {
+      "name": "router-owned close leaves its new URL intact",
+      "ok": true
+    }
+  ]
+}

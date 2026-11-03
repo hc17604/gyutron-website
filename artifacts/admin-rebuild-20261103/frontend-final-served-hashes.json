@@ -1,0 +1,17 @@
+{
+  "crm-experience.js": {
+    "status": 200,
+    "servedEqualsDisk": true,
+    "sha256": "cfe187211ec7ffd8f8e9256398eb9d84637a3eb3e061e102fe75626aa7265715"
+  },
+  "workspace.js": {
+    "status": 200,
+    "servedEqualsDisk": true,
+    "sha256": "28b13f6c02dad5cca968abfc660e748f2b0ac61b05ba4dac3c1f835a4dbef637"
+  },
+  "locales.js": {
+    "status": 200,
+    "servedEqualsDisk": true,
+    "sha256": "fdc9189e4ec29e178062279ea8ed71a1b59ff24b01ce70e9394853ded22e097f"
+  }
+}

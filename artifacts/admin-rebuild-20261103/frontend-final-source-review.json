@@ -1,0 +1,110 @@
+{
+  "scope": "Final fresh-state 8796 independent frontend UI and served-source review. Earlier 8795 report remains a separate checkpoint.",
+  "local_origin": "http://127.0.0.1:8796",
+  "production_writes": false,
+  "external_transmissions": false,
+  "final_owned_changes": [
+    "src/admin/client.mjs: capture dialog recordRoute and avoid stale close clearing a new navigation target; update renderedHash after normal close",
+    "src/admin/extension-locales.mjs: existing four-language operating status/kind mappings exposed to core Overview",
+    "scripts/check-admin-frontend.mjs: same existing 43 checks, portable script entrypoint",
+    "scripts/check-admin-routes.mjs: five actual delayed-close event regressions"
+  ],
+  "served_assets": {
+    "crm-experience.js": {
+      "status": 200,
+      "servedEqualsDisk": true,
+      "sha256": "cfe187211ec7ffd8f8e9256398eb9d84637a3eb3e061e102fe75626aa7265715"
+    },
+    "workspace.js": {
+      "status": 200,
+      "servedEqualsDisk": true,
+      "sha256": "28b13f6c02dad5cca968abfc660e748f2b0ac61b05ba4dac3c1f835a4dbef637"
+    },
+    "locales.js": {
+      "status": 200,
+      "servedEqualsDisk": true,
+      "sha256": "fdc9189e4ec29e178062279ea8ed71a1b59ff24b01ce70e9394853ded22e097f"
+    }
+  },
+  "actual_ui": [
+    {
+      "flow": "Fresh password-only login",
+      "result": "One password, no email or login-mode selector; local test instance only"
+    },
+    {
+      "flow": "Customer wide detail",
+      "customer": "CUS-20261103-74999694110A4629B9B7EFBD719C98E3",
+      "result": {
+        "viewport": 1920,
+        "dialog_width": 1040,
+        "detail_columns": 4,
+        "empty_legacy_wrappers_hidden": 3,
+        "order": [
+          "record actionbar",
+          "detail-grid",
+          "contacts and related work",
+          "activity timeline"
+        ]
+      }
+    },
+    {
+      "flow": "Contact HTML archive confirmation -> archived list -> restore -> active list -> refresh",
+      "contact": "CON-21f74c8f-9f95-42c6-a19d-272fc1d8e553",
+      "result": "Jamie Chen restored; original primary status explicitly restored through UI after archiving cleared it; refresh retained Jamie and Morgan. These are synthetic local fixtures."
+    },
+    {
+      "flow": "Saved server view -> refresh",
+      "view": "VIEW-1b7dfde4-afba-4851-8791-c0652c28c53b",
+      "result": "status=active, sort=name, dir=asc, selected shared view and configured visible columns persisted"
+    },
+    {
+      "flow": "Related opportunities View all -> back to saved-view context",
+      "url": "#pipeline?customer_id=CUS-20261103-74999694110A4629B9B7EFBD719C98E3",
+      "result": "Stable new list URL after old dialog close; browser Back retained original saved-view/filter context"
+    },
+    {
+      "flow": "Related quote opens actual quote",
+      "url": "#quotes?id=QUO-ddb5eff4-2a46-4181-bff2-310616a1d7a2",
+      "result": "Correct draft QT-20261103-4C2F02CA188041F3-R01, USD3600.00; no issue or price mutation"
+    },
+    {
+      "flow": "Global command search from open customer dialog -> task deep link",
+      "query": "Confirm application",
+      "url": "#tasks?record=TSK-20261103-8ABE22B979234CD39944D74A2E114537&record_type=tasks",
+      "result": "Correct Confirm application sample task detail retained; previous customer close event did not clear the new record"
+    },
+    {
+      "flow": "Dirty edit -> command search another record -> cancel discard",
+      "result": "Task URL unchanged and title Confirm application sample · UNSAVED UI QA preserved. Then explicitly discarded; no task update submitted."
+    },
+    {
+      "flow": "Overview run/report labels EN/zh/DE/JA",
+      "report": "final-8796-overview-locales.json",
+      "result": "Ready/Business rules/Completed, 已就绪/业务规则/已完成, Bereit/Geschäftsregeln/Abgeschlossen, 準備完了/業務ルール/完了 all actual DOM. Saved Chinese report title is business content and remains unchanged."
+    }
+  ],
+  "static_checks": {
+    "frontend": {
+      "script": "scripts/check-admin-frontend.mjs",
+      "passed": 43
+    },
+    "routes": {
+      "script": "scripts/check-admin-routes.mjs",
+      "passed": 5
+    },
+    "diff_check": "passed"
+  },
+  "screenshots": [
+    "final-8796-customer-detail.png",
+    "final-8796-overview.png"
+  ],
+  "console_errors": 0,
+  "viewport_override": "none; unchanged default 1920",
+  "known_nonblocking_observation": "Advanced opportunity/task sort UI does not offer created_at although default is created_at; selecting Apply can select the first listed title option. Reported to root; left outside the final two permitted functional fixes.",
+  "not_claimed": [
+    "Backup UI or isolated restore after current root backend fix",
+    "Production deployment or live visual review",
+    "A new exhaustive four-language full-flow matrix on final source; this report explicitly names the final checks performed"
+  ],
+  "state": "Frontend frozen after final local checks; root owns remaining backend backup fix, CI, packaging and release."
+}

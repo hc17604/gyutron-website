@@ -2,15 +2,16 @@
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
-import { BACKUP_TABLES, EXCLUDED_BACKUP_TABLES, MAX_BACKUP_ROWS, MAX_BACKUP_BYTES, createBackupSnapshot, runBackup, backupToSql } from '../src/api/backup.mjs';
+import { BACKUP_TABLES, EXTENDED_BACKUP_TABLES, EXCLUDED_BACKUP_TABLES, MAX_BACKUP_ROWS, MAX_BACKUP_BYTES, createBackupSnapshot, runBackup, backupToSql } from '../src/api/backup.mjs';
 import { hashStaffPassword, verifyStaffPassword } from '../src/platform/security/workspace-auth.mjs';
 import { sha256Hex } from '../src/platform/security/hash.mjs';
 import { createHash } from 'node:crypto';
 import { CONTENT_FIELDS } from '../src/platform/quotes/schema.mjs';
 import { quoteSnapshot } from '../src/platform/quotes/repository.mjs';
 import { renderQuoteDocument } from '../src/platform/quotes/document.mjs';
+import { handleAdminSystem } from '../src/api/admin-system.mjs';
 
-const migrations = ['0001_init.sql', '0002_order_intents.sql', '0003_admin_workspace.sql', '0004_admin_identity.sql', '0005_crm_relation_guards.sql', '0006_operations_quotes.sql'];
+const migrations = ['0001_init.sql', '0002_order_intents.sql', '0003_admin_workspace.sql', '0004_admin_identity.sql', '0005_crm_relation_guards.sql', '0006_operations_quotes.sql','0007_operations.sql','0008_intelligence.sql','0009_workspace_experience.sql','0010_workspace_notifications.sql'];
 const stamp = '2026-11-03T05:00:00.000Z';
 const staffPassword = 'Recovery-test-password-only';
 const staffHash = await hashStaffPassword(staffPassword);
@@ -95,8 +96,8 @@ function makeBucket({ pageSize = 1000, putFailure = false, corruptRead = false, 
 await test('explicit snapshot covers all persistent tables, tracking and schema in one transaction', async () => {
   const fixture = makeDatabase(); const snapshot = await createBackupSnapshot(fixture.db);
   assert.deepEqual(Object.keys(snapshot.tables), [...BACKUP_TABLES, 'd1_migrations']);
-  for (const table of BACKUP_TABLES) assert.equal(snapshot.manifest.counts[table], 1);
-  assert.equal(snapshot.manifest.migrations.length, 6); assert.equal(snapshot.manifest.schema_version, 3);
+  for (const table of BACKUP_TABLES) assert.equal(snapshot.manifest.counts[table], fixture.sqlite.prepare(`SELECT COUNT(*) n FROM ${table}`).get().n);
+  assert.equal(snapshot.manifest.migrations.length, 10); assert.equal(snapshot.manifest.schema_version, 4);
   for (const table of EXCLUDED_BACKUP_TABLES) { assert.equal(snapshot.tables[table], undefined); assert.ok(snapshot.schema.some(row => row.name === table)); }
   assert.equal(fixture.trace.batches.length, 2); assert.ok(fixture.trace.batches[0].every(sql => sql.startsWith('PRAGMA table_info'))); assert.ok(fixture.trace.batches[1][0].includes('sqlite_master'));
   assert.equal(fixture.trace.individualReads.length, 2);
@@ -226,12 +227,12 @@ await test('core format-2 snapshots remain restorable after quote format-3 relea
   const { db } = makeDatabase(), snapshot = await createBackupSnapshot(db);
   const legacy = structuredClone(snapshot);
   legacy.manifest.schema_version = 2; legacy.manifest.application_schema_baseline = 'admin-workspace-0005';
-  const quoteTables = ['ops_quotes', 'ops_quote_items'];
+  const quoteTables = ['ops_quotes', 'ops_quote_items',...EXTENDED_BACKUP_TABLES];
   for (const table of quoteTables) { delete legacy.tables[table]; delete legacy.manifest.counts[table]; }
   legacy.manifest.table_names = legacy.manifest.table_names.filter(table => !quoteTables.includes(table));
   legacy.schema = legacy.schema.filter(row => !quoteTables.includes(row.tbl_name) && !row.name.startsWith('ops_quote_'));
   legacy.sequences = legacy.sequences.filter(row => !quoteTables.includes(row.name));
-  legacy.tables.d1_migrations = legacy.tables.d1_migrations.filter(row => row.name !== '0006_operations_quotes.sql');
+  legacy.tables.d1_migrations = legacy.tables.d1_migrations.filter(row => row.name < '0006');
   legacy.manifest.counts.d1_migrations = legacy.tables.d1_migrations.length;
   legacy.manifest.migrations = legacy.tables.d1_migrations; legacy.manifest.migration_version = '0005_crm_relation_guards.sql';
   legacy.manifest.schema_sha256 = await sha256Hex(JSON.stringify(legacy.schema));
@@ -254,6 +255,36 @@ await test('retention failure remains visible without invalidating a verified ne
 });
 await test('missing storage bindings cannot report success', async () => {
   assert.equal((await runBackup({})).ok, false);
+});
+
+await test('owner recovery history and SQL downloads verify committed payloads and deny managers',async()=>{
+ const {db}=makeDatabase(),bucket=makeBucket(),env={DB:db,R2:bucket,ADMIN_PASSWORD:'recovery-fixture-password'},owner={id:'owner',name:'Recovery owner',role:'owner'};
+ const result=await runBackup(env);assert.equal(result.ok,true);
+ const filename=result.key.split('/').at(-1),base='https://test.example/admin/api/system/backups';
+ const history=await handleAdminSystem(new Request(base),env,owner,'test');assert.equal(history.status,200);assert.equal((await history.json()).data[0].filename,filename);
+ const verify=await handleAdminSystem(new Request(base+'/'+filename+'/verify',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({password:env.ADMIN_PASSWORD})}),env,owner,'test');assert.equal(verify.status,200);assert.equal((await verify.json()).data.verified,true);
+ const download=await handleAdminSystem(new Request(base+'/'+filename+'/sql'),env,owner,'test');assert.equal(download.status,200);assert.ok((await download.text()).includes('CREATE TABLE'));
+ const denied=await handleAdminSystem(new Request(base+'/'+filename+'/json'),env,{id:'manager',role:'manager'},'test');assert.equal(denied.status,403);
+ bucket.faults.corruptRead=true;assert.equal((await handleAdminSystem(new Request(base+'/'+filename+'/sql'),env,owner,'test')).status,409);
+});
+
+await test('long Unicode and JSON values restore intact through bounded D1 statements',async()=>{
+  const fixture=makeDatabase();
+  const text=("中'文😀\0".repeat(14000)).slice(0,100000);
+  fixture.sqlite.prepare('UPDATE leads SET message=? WHERE public_id=?').run(text,'LEAD-recovery');
+  const payload=JSON.stringify({text,valid:true});
+  fixture.sqlite.prepare('UPDATE events SET payload_json=? WHERE event_id=?').run(payload,'EVT-recovery');
+  const snapshot=await createBackupSnapshot(fixture.db),sql=await backupToSql(snapshot);
+  assert.ok(sql.includes('CREATE TABLE "__gyutron_restore_text"'));
+  // Every generated text chunk is below the platform statement limit, even
+  // when NUL encoding doubles the UTF-8 representation.
+  for(const line of sql.split('\n').filter(line=>line.startsWith('INSERT INTO')))assert.ok(Buffer.byteLength(line)<48000);
+  const restored=new DatabaseSync(':memory:');restored.exec('PRAGMA foreign_keys=ON;BEGIN');restored.exec(sql);restored.exec('COMMIT');
+  assert.equal(restored.prepare('SELECT message FROM leads WHERE public_id=?').get('LEAD-recovery').message,text);
+  assert.deepEqual(JSON.parse(restored.prepare('SELECT payload_json FROM events WHERE event_id=?').get('EVT-recovery').payload_json),{text,valid:true});
+  assert.equal(restored.prepare("SELECT COUNT(*) n FROM sqlite_master WHERE name='__gyutron_restore_text'").get().n,0);
+  assert.deepEqual(restored.prepare('PRAGMA foreign_key_check').all(),[]);
+  restored.close();fixture.sqlite.close();
 });
 
 console.log(JSON.stringify({ passed, failed: failures.length, checks: passed + failures.length, storage: 'real SQLite; R2 failure behavior tested with an in-memory mock', productionWrites: false, ...(failures.length ? { failures } : {}) }, null, 2));

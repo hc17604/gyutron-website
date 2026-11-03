@@ -1,0 +1,85 @@
+{
+  "at": "2026-11-03T12:17:58.975Z",
+  "base": "http://127.0.0.1:8796",
+  "checks": [
+    {
+      "name": "password-only login and authenticated real Worker",
+      "ok": true
+    },
+    {
+      "name": "multi-contact account, opportunities, activities and actual saved view",
+      "ok": true
+    },
+    {
+      "name": "quotation remains integrated with CRM relationships",
+      "ok": true
+    },
+    {
+      "name": "CSV preview, real validation and resumable canonical import",
+      "ok": true
+    },
+    {
+      "name": "analytics and generated report use real data and exact currency groups",
+      "ok": true
+    },
+    {
+      "name": "business rule runs produce traceable tasks and safe repeat execution",
+      "ok": true
+    },
+    {
+      "name": "real memory and knowledge are cited in an actual local analysis run",
+      "ok": true
+    },
+    {
+      "name": "real D1 notification projection and read receipts remain consistent",
+      "ok": true
+    },
+    {
+      "name": "200KiB document, eight selections and focused large-file retrieval work on actual D1",
+      "ok": true
+    },
+    {
+      "name": "long Chinese literal record search works without D1 LIKE pattern limits",
+      "ok": true
+    },
+    {
+      "name": "actual five-minute scheduled handler progresses durable work",
+      "ok": true
+    },
+    {
+      "name": "system probes and verified format-four private R2 recovery",
+      "ok": false,
+      "error": "/admin/api/system/backup BACKUP_FAILED\n\n503 !== 200\n"
+    }
+  ],
+  "ids": {
+    "customer": "CUS-20261103-74999694110A4629B9B7EFBD719C98E3",
+    "contact": "CON-21f74c8f-9f95-42c6-a19d-272fc1d8e553",
+    "opportunity": "OPP-20261103-5A5CD20F832444BA8103E47652466CD6",
+    "view": "VIEW-1b7dfde4-afba-4851-8791-c0652c28c53b",
+    "quote": "QUO-ddb5eff4-2a46-4181-bff2-310616a1d7a2",
+    "source": "SRC-6bf682db-1878-41ad-a02a-e431741ed974",
+    "batch": "IMP-a1bb4d4f-514a-4192-abe0-178a63752f4d",
+    "report": "REP-2736e0ab-8f8a-41dd-a828-b8310c627edd",
+    "run": "RUN-6f3c58b8-2537-4a89-b1ce-66d56d436e3e",
+    "memory": "MEM-f17b372d-cdbd-4127-8e0d-8e5b7945b5b4",
+    "document": "DOC-a43bfbc7-4ac4-4a28-88d8-c3c522315c15",
+    "conversation": "CON-3e6b50ac-823e-4817-8748-3db3ecf4e557",
+    "notifications": {
+      "total": 3,
+      "unread": 2
+    },
+    "largeDocument": "DOC-3eb67d8c-2062-4f76-ba20-4d7e74621528",
+    "largeContextBudget": {
+      "facts_max_characters": 120000,
+      "facts_characters": 15481,
+      "selected_documents_max": 8,
+      "document_excerpt_max_characters": 12000,
+      "history_max_characters": 12000,
+      "question_max_characters": 6000,
+      "provider_request_max_bytes": 524288,
+      "history_characters": 0
+    }
+  },
+  "production_writes": false
+}

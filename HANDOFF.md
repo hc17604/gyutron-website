@@ -16,14 +16,30 @@
 
 ## Fast takeover snapshot
 
+- **2026-11-03 rebuild candidate 2026.11.03.3:** the old Local Agent's actual business functions
+  are implemented alongside CRM: native website source, mapped commerce CSV, currency-safe
+  analytics/reports, 13 rules, durable interval/calendar automation, knowledge/memory and selectable
+  AI context. Multi-contact customer workspaces, saved views, column controls, bulk per-record
+  outcomes, search and scoped notifications complete the daily workflow. Source is in `src/admin/`,
+  `src/api/{operations-api,intelligence-api,workspace-experience,workspace-notifications}.mjs` and
+  `src/platform/{operations,intelligence,workspace}/`. Additive migrations 0007–0010 are required.
+  Password-only entry and the user-selected password remain. The original local database, .env
+  and API keys have NOT been imported into production. Source checks: 17/17 suites at
+  `artifacts/admin-rebuild-20261103/final-source-checks.json`; actual isolated D1 accepted a full
+  format-4 recovery including a 200KiB document, 44 table counts and zero foreign-key violations.
+  Production migrations 0007–0010 were applied at 2026-11-03 12:46 UTC after a fresh private SQL
+  export (SHA-256 2895d83faaafc16a7cb0bcf60aaca5480896ea1ef380e451f99c036c1a7ed7a1),
+  isolated integrity/FK validation and independent additive-compatibility review. New code is awaiting
+  the release commit; production verification will be recorded separately. Do not infer live from this block.
+
 Read this block first; use the dated entries below only for task-relevant history.
 
-- **Operations release (2026-11-03):** `/admin` has an industrial four-language workspace in
+- **Earlier Operations release (2026-11-03, historical):** `/admin` has an industrial four-language workspace in
   `src/admin/`, CRM under `src/platform/crm/`, immutable quotations under `src/platform/quotes/`,
   and revocable sessions in `workspace-auth.mjs`. The current GYUTRON login is deliberately
   password-only, following the user's explicit choice; do not add an account field or rotate it.
   Production additive migrations 0003–0006 have been applied after verified private SQL exports.
-  Release 2026.11.03.2 is live and passed 12/12 production checks; use the newest dated entry,
+  Release 2026.11.03.2 passed 12/12 production checks; use the newest dated entry,
   `docs/admin-saas-project-plan.md` and the production evidence JSON files for actual live status.
   Final sustained checks passed: core 9601 seconds / 21203 requests and quotations 5400 seconds /
   12660 requests, with no failed workload assertions. The source-only independent-instance ZIP and

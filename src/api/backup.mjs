@@ -10,9 +10,18 @@ const CORE_BACKUP_TABLES = Object.freeze([
   'crm_customers', 'crm_opportunities', 'crm_tasks', 'crm_activities',
   'crm_audit', 'crm_intake_links', 'admin_users',
 ]);
-export const BACKUP_TABLES = Object.freeze([...CORE_BACKUP_TABLES, 'ops_quotes', 'ops_quote_items']);
+const QUOTES_BACKUP_TABLES = Object.freeze([...CORE_BACKUP_TABLES, 'ops_quotes', 'ops_quote_items']);
+export const EXTENDED_BACKUP_TABLES = Object.freeze([
+  'ops_data_sources','ops_sync_runs','ops_import_batches','ops_import_rows',
+  'ops_commerce_customers','ops_commerce_orders','ops_commerce_order_items','ops_commerce_payments',
+  'ops_reports','ops_rules','ops_rule_versions','ops_automations','ops_automation_runs','ops_rule_findings',
+  'intel_model_settings','intel_model_usage','intel_conversations','intel_messages','intel_runs',
+  'intel_memory','intel_documents','intel_license_events','intel_instance_state',
+  'crm_contacts','workspace_views','workspace_notification_receipts',
+]);
+export const BACKUP_TABLES = Object.freeze([...QUOTES_BACKUP_TABLES, ...EXTENDED_BACKUP_TABLES]);
 export const EXCLUDED_BACKUP_TABLES = Object.freeze(['admin_sessions', 'admin_owner_sessions', 'admin_login_attempts']);
-export const BACKUP_SCHEMA_VERSION = 3;
+export const BACKUP_SCHEMA_VERSION = 4;
 export const MAX_BACKUP_ROWS = 25000;
 export const MAX_BACKUP_BYTES = 8 * 1024 * 1024;
 const MAX_DATA_BYTES = MAX_BACKUP_BYTES - 256 * 1024;
@@ -24,6 +33,7 @@ const requiredSchemaTables = [...BACKUP_TABLES, ...EXCLUDED_BACKUP_TABLES];
 const identifier = name => '"' + name.replaceAll('"', '""') + '"';
 const isApplicationTable = name => !name.startsWith('sqlite_') && !name.startsWith('_cf_');
 const fail = code => Object.assign(new Error(code), { backupCode: code });
+function sumSql(terms){if(!terms.length)return '0';if(terms.length===1)return terms[0];const middle=Math.floor(terms.length/2);return '('+sumSql(terms.slice(0,middle))+'+'+sumSql(terms.slice(middle))+')';}
 
 /** Schema, row-count and data reads in this batch share one D1 transaction. */
 export async function createBackupSnapshot(db, { exportedAt = new Date().toISOString(), backupId = crypto.randomUUID() } = {}) {
@@ -38,10 +48,13 @@ export async function createBackupSnapshot(db, { exportedAt = new Date().toISOSt
   const bytesSql = tableNames.map((table, index) => {
     const columns = (columnInfo[index].results || []).map(row => row.name);
     if (!columns.length || columns.some(column => !/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(column))) throw fail('BACKUP_UNSUPPORTED_COLUMN');
-    const object = `json_object(${columns.flatMap(column => [`'${column}'`, identifier(column)]).join(',')})`;
-    return `(SELECT COALESCE(SUM(length(CAST(${object} AS BLOB)) + 1),0) FROM ${identifier(table)})`;
+    // Each function call stays under D1's argument bound, even for wide quotes.
+    // json_quote accounts for UTF-8 and escaping; key/colon/comma/braces are
+    // added explicitly. An extra comma per row is a conservative upper bound.
+    const rowBytes = sumSql([...columns.map(column=>`(${encoder.encode(column).length+4}+length(CAST(json_quote(${identifier(column)}) AS BLOB)))`),'2']);
+    return `(SELECT COALESCE(SUM(${rowBytes} + 1),0) FROM ${identifier(table)})`;
   });
-  const rowsExpression = countsSql.join(' + '), bytesExpression = bytesSql.join(' + ');
+  const rowsExpression = sumSql(countsSql), bytesExpression = sumSql(bytesSql);
   const statsSql = `SELECT ${rowsExpression} AS row_count, ${bytesExpression} AS byte_count, ${countsSql.map((sql, index) => `${sql} AS ${identifier('count_' + tableNames[index])}`).join(',')}`;
   const estimate = await db.prepare(statsSql).first();
   if (Number(estimate?.row_count) > MAX_BACKUP_ROWS) throw fail('BACKUP_ROW_LIMIT');
@@ -76,7 +89,7 @@ export async function createBackupSnapshot(db, { exportedAt = new Date().toISOSt
   const sequences = names.has('sqlite_sequence') ? (result[sequenceIndex].results || []).filter(row => tableNames.includes(row.name)) : [];
   const snapshot = {
     manifest: {
-      schema_version: BACKUP_SCHEMA_VERSION, application_schema_baseline: 'operations-quotes-0006',
+      schema_version: BACKUP_SCHEMA_VERSION, application_schema_baseline: 'operations-workspace-0010',
       backup_id: backupId, exported_at: exportedAt, date: exportedAt.slice(0, 10), timezone: 'UTC',
       table_names: tableNames, excluded_tables: [...EXCLUDED_BACKUP_TABLES], counts,
       migration_tracking_table: names.has('d1_migrations') ? 'd1_migrations' : null,
@@ -181,10 +194,12 @@ function sqlValue(value) {
   return `'${value.replaceAll("'", "''")}'`;
 }
 
+function textParts(value){const parts=[];for(let start=0;start<value.length;){let end=Math.min(value.length,start+3072);if(end<value.length&&/[\uD800-\uDBFF]/.test(value[end-1])&&/[\uDC00-\uDFFF]/.test(value[end]))end--;parts.push(value.slice(start,end));start=end;}return parts;}
+
 /** Offline recovery helper. Output is for a NEW isolated DB, never an HTTP route. */
 export async function backupToSql(snapshot) {
   const manifest = snapshot?.manifest;
-  const formatTables = manifest?.schema_version === 2 ? CORE_BACKUP_TABLES : manifest?.schema_version === BACKUP_SCHEMA_VERSION ? BACKUP_TABLES : null;
+  const formatTables = manifest?.schema_version === 2 ? CORE_BACKUP_TABLES : manifest?.schema_version === 3 ? QUOTES_BACKUP_TABLES : manifest?.schema_version === BACKUP_SCHEMA_VERSION ? BACKUP_TABLES : null;
   if (!formatTables || !Array.isArray(snapshot.schema) || !snapshot.tables || typeof snapshot.tables !== 'object') throw fail('RESTORE_UNSUPPORTED_FORMAT');
   const restorePermitted = new Set([...formatTables, ...EXCLUDED_BACKUP_TABLES, ...optionalTables]);
   if (await sha256Hex(JSON.stringify(snapshot.schema)) !== manifest.schema_sha256) throw fail('RESTORE_SCHEMA_CHECKSUM');
@@ -199,11 +214,24 @@ export async function backupToSql(snapshot) {
   const strictDdl = row => row.sql.replace(/^(CREATE\s+(?:UNIQUE\s+)?(?:TABLE|INDEX|TRIGGER|VIEW))\s+IF\s+NOT\s+EXISTS\s+/i, '$1 ') + ';';
   const lines = ['-- Sensitive recovery SQL: contains customer records and password hashes.', '-- Restore only into a NEW isolated database. Existing tables cause a failure.', 'PRAGMA defer_foreign_keys = ON;'];
   lines.push(...snapshot.schema.filter(row => row.type === 'table').map(strictDdl));
+  // A valid D1 row may exceed the 100KB SQL statement limit. Stage long text in
+  // bounded statements, then insert the COMPLETE value in one statement so JSON,
+  // length and other CHECK constraints see the real row from the beginning.
+  let stagedText=false,stagingId=0;
   for (const table of tableNames) {
     for (const row of snapshot.tables[table]) {
       const columns = Object.keys(row);
       if (!columns.length || columns.some(column => !/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(column))) throw fail('RESTORE_COLUMN_INVALID');
-      lines.push(`INSERT INTO ${identifier(table)} (${columns.map(identifier).join(',')}) VALUES (${columns.map(column => sqlValue(row[column])).join(',')});`);
+      const values=Object.fromEntries(columns.map(column=>[column,sqlValue(row[column])])),statement=()=>`INSERT INTO ${identifier(table)} (${columns.map(identifier).join(',')}) VALUES (${columns.map(column => values[column]).join(',')});`;
+      const candidates=columns.filter(column=>typeof row[column]==='string'&&row[column].length).sort((a,b)=>encoder.encode(values[b]).byteLength-encoder.encode(values[a]).byteLength);
+      while(encoder.encode(statement()).byteLength>48000){
+        const column=candidates.shift();if(!column)throw fail('RESTORE_STATEMENT_LIMIT');
+        if(!stagedText){lines.push('CREATE TABLE "__gyutron_restore_text"(group_id INTEGER NOT NULL,part INTEGER NOT NULL,value TEXT NOT NULL,PRIMARY KEY(group_id,part));');stagedText=true;}
+        const group=++stagingId,parts=textParts(row[column]);
+        parts.forEach((part,index)=>lines.push(`INSERT INTO "__gyutron_restore_text"(group_id,part,value) VALUES(${group},${index},${sqlValue(part)});`));
+        values[column]=`(SELECT group_concat(value,'') FROM(SELECT value FROM "__gyutron_restore_text" WHERE group_id=${group} ORDER BY part))`;
+      }
+      lines.push(statement());
     }
   }
   for (const sequence of snapshot.sequences || []) {
@@ -211,6 +239,7 @@ export async function backupToSql(snapshot) {
     lines.push(`UPDATE sqlite_sequence SET seq = MAX(seq, ${sequence.seq}) WHERE name = ${sqlValue(sequence.name)};`);
     lines.push(`INSERT INTO sqlite_sequence (name,seq) SELECT ${sqlValue(sequence.name)},${sequence.seq} WHERE NOT EXISTS(SELECT 1 FROM sqlite_sequence WHERE name = ${sqlValue(sequence.name)});`);
   }
+  if(stagedText)lines.push('DROP TABLE "__gyutron_restore_text";');
   // Install guards AFTER restoring valid historical rows: closed opportunities
   // may legitimately belong to archived customers in the source snapshot.
   lines.push(...snapshot.schema.filter(row => row.type !== 'table').map(strictDdl));

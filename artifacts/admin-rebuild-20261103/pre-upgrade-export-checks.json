@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-03T12:46:28.796Z",
+  "private_sql_export": true,
+  "bytes": 122010,
+  "sha256": "2895d83faaafc16a7cb0bcf60aaca5480896ea1ef380e451f99c036c1a7ed7a1",
+  "integrity": "ok",
+  "foreign_key_violations": 0,
+  "migrations": [
+    "0001_init.sql",
+    "0002_order_intents.sql",
+    "0003_admin_workspace.sql",
+    "0004_admin_identity.sql",
+    "0005_crm_relation_guards.sql",
+    "0006_operations_quotes.sql"
+  ],
+  "production_data_logged": false
+}
