@@ -1,0 +1,78 @@
+{
+  "at": "2026-11-03T08:16:19.641Z",
+  "origin": "https://www.gyutron.com",
+  "sourceRef": "eca97d0b9be901ea531afeffe6852135c3098a11",
+  "observations": {
+    "version": "2026.11.03.2",
+    "system": {
+      "migration": "0006_operations_quotes.sql",
+      "backup": "unverified",
+      "ownerCredentialStrong": false
+    },
+    "backupVerified": true
+  },
+  "results": [
+    {
+      "name": "Production denies unauthenticated business APIs and old cookies",
+      "ok": true,
+      "ms": 1967
+    },
+    {
+      "name": "Production core, quotation and locale assets exactly match the committed source",
+      "ok": true,
+      "ms": 1778
+    },
+    {
+      "name": "Four live language forms have exactly one password input and no account field",
+      "ok": true,
+      "ms": 765
+    },
+    {
+      "name": "Production owner sign-in creates a secure revocable session",
+      "ok": true,
+      "ms": 911
+    },
+    {
+      "name": "Production quotation lists and protected print assets load without creating records",
+      "ok": true,
+      "ms": 1413
+    },
+    {
+      "name": "Production bootstrap, actual dashboard and operational metadata load",
+      "ok": true,
+      "ms": 1039
+    },
+    {
+      "name": "Live CSP and no-store protect authenticated HTML",
+      "ok": true,
+      "ms": 255
+    },
+    {
+      "name": "Live missing-CSRF and cross-origin writes are rejected",
+      "ok": true,
+      "ms": 446
+    },
+    {
+      "name": "Preserved order intake/events and filtered CSV remain protected and usable",
+      "ok": true,
+      "ms": 1434
+    },
+    {
+      "name": "Production manual backup completes and passes actual private R2 verification",
+      "ok": true,
+      "ms": 5564
+    },
+    {
+      "name": "Production logout rejects replay of the just-issued session",
+      "ok": true,
+      "ms": 628
+    },
+    {
+      "name": "Brand and storefront remain available",
+      "ok": true,
+      "ms": 4753
+    }
+  ],
+  "passed": 12,
+  "total": 12
+}

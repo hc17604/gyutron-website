@@ -103,7 +103,7 @@
 | 发布 | 本地全门槛、备份、部署、CI | 生产版本、回归、读写检查 | 新版实际在线，回退可执行 |
 | 发布后 | 监控/日志/问题修复 | 回归/故障与能力声明复查 | 已知限制真实披露 |
 
-## C2. 工业报价阶段验收（0006，本地验收；生产另验）
+## C2. 工业报价阶段验收（0006，本地与生产分别记录）
 
 金额使用单一币种的minor-unit整数。折扣、税费、运费为手填固定金额，不计算税率、不声称税务合规。quantity最终合同为1至Number.MAX_SAFE_INTEGER的正安全整数；每行extended、subtotal与final均独立限制不超过1e12。不能用巨额折扣抵消已溢出的subtotal。
 
@@ -125,10 +125,10 @@
 | QUOTE-14 | 50行、长SKU/中文/长条款A4分页；表头与合计可读；无文本裁切或横向溢出 | 通过：v3四语各6页，50 SKU/40条款无缺失；每页reference/page counter，正文间距至少44.46pt |
 | QUOTE-15 | owner/manager归档恢复与active依赖规则明确；不永久删除issued历史 | 通过：API/SQL与本地workerd恢复 |
 | QUOTE-16 | 两张ops报价表进入格式3备份，snapshot/hash/items完整恢复；格式2仍可恢复并升级0006 | 通过：18项SQLite；真实workerd18表/92schema对象及R2回读 |
-| QUOTE-17 | 新版迁移前备份，0006应用、本地真实Worker、CI、生产hash/API/私有备份验证 | 待执行：发布负责人 |
+| QUOTE-17 | 新版迁移前备份，0006应用、本地真实Worker、CI、生产hash/API/私有备份验证 | 通过：108352-byte SQL隔离恢复；eca97d0/CI41601647771；生产12/12与格式3 R2回读 |
 | QUOTE-18 | 商业包不含秘密/生产资源ID/数据，迁移/依赖/源码manifest与实际功能一致 | 待执行：独立包检查 |
 
-证据范围：`smoke-admin-quotes.mjs`最新26/26已独立复跑；`local-quotes-checks.json`为实际workerd+D1/R2的15/15。最新四语离线打印制品在 `artifacts/admin-saas-20261103/quote-print-qa-v3/`，仅含合成资料；旧v1与失败v2明确分别保存。报价德/日词典与English各153key精确对应，四语打印固定label与locale数字均已支持，用户录入的正文不自动翻译。语言文本检查不替代四语窄屏浏览器验收。当前报价生产发布、0006远程迁移与最终包另由发布证据确认。
+证据范围：`smoke-admin-quotes.mjs`最新26/26已独立复跑；`local-quotes-checks.json`为实际workerd+D1/R2的15/15。最新四语离线打印制品在 `artifacts/admin-saas-20261103/quote-print-qa-v3/`，仅含合成资料；旧v1与失败v2明确分别保存。报价德/日词典与English各153key精确对应，四语打印固定label与locale数字均已支持，用户录入的正文不自动翻译。四语16尺寸总览及窄屏/JPY等真实浏览器证据见frontend-qa.md和locale-responsive-checks.json；主agent独立关联快选、任务/活动/CSV及报价修订检查见root-ui-workflow-checks.json。生产2026.11.03.2/0006与12/12核查见production-core-quotes-checks.json；最终包另验。
 
 ## C3. 大额总览聚合
 

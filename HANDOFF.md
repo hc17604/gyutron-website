@@ -23,7 +23,7 @@ Read this block first; use the dated entries below only for task-relevant histor
   and revocable sessions in `workspace-auth.mjs`. The current GYUTRON login is deliberately
   password-only, following the user's explicit choice; do not add an account field or rotate it.
   Production additive migrations 0003–0006 have been applied after verified private SQL exports.
-  Release 2026.11.03.2 is undergoing final deployment verification; use the newest dated entry,
+  Release 2026.11.03.2 is live and passed 12/12 production checks; use the newest dated entry,
   `docs/admin-saas-project-plan.md` and the production evidence JSON files for actual live status.
 
 - **Repository:** `D:\AI PRODUT\GYUTRON web\website\gyutron-website-repo`, branch `main`. Run
@@ -76,6 +76,21 @@ Read this block first; use the dated entries below only for task-relevant histor
 ---
 
 ## 🤝 CODEX HANDOFF — current state (2026-11-03)
+
+> **2026-11-03 16:20 SGT (Codex) — Quotations production release verified; sustained QA continues.**
+> Source `eca97d0b9be901ea531afeffe6852135c3098a11`, GitHub CI `41601647771` succeeded. Actual
+> live release `2026.11.03.2` passed 12/12 checks, including exact core/quote/locale asset equality,
+> four-language password-only login, protected quotation reads/print assets, migration 0006,
+> real format-3 private R2 backup verification, CSRF/session replay and brand/Shop availability.
+> Native Windows screen interaction successfully signed in with the user-selected password; the
+> Chinese production overview was visually verified and captured as `production-final-zh-desktop.png`.
+> The first rollout probe reached the still-serving prior Worker before propagation; the subsequent
+> release-header check and complete fresh production run confirmed the new version. Do not treat
+> CI alone as deployment proof. No production customer/quotation test records were created.
+> Frontend final QA fixed JPY zero-decimal defaults and customer/opportunity asynchronous selection
+> loss; implementer tests and independent actual UI revalidation passed. Core soak remains pinned
+> fa373c7; an additional 5400-second quotation soak is pinned to eca97d0 in separate local resources.
+> Both reports must reach final=true before sustained-run acceptance. Four-hour window remains active.
 
 > **2026-11-03 (Codex) — Four-language quotations and distribution release candidate.**
 > Release 2026.11.03.2 adds EN/zh/DE/JA, exact BigInt dashboard aggregation, quotation draft/issue/

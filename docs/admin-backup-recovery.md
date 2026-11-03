@@ -81,7 +81,7 @@ R2失败测试采用内存mock，覆盖空写入、回读损坏、分页retentio
 
 **额外实际运行验证（2026-11-03）**：使用独立 `.wrangler/backup-verification/state`、8794端口的本地workerd及真实本地D1/R2，实际完成16表（含迁移跟踪）/74个schema对象snapshot、R2写入与回读、commit marker及retention。随后在隔离库加入1000个客户、每条notes 10000字符（约10MB），runBackup明确返回 `BACKUP_BYTE_LIMIT`，Worker继续正常工作；清理仅该测试prefix后再次备份成功。自有测试服务随后停止。
 
-上述8794演练证明本地workerd契约与隔离恢复。另2026-11-03 14:48核心版本生产检查已完成实际私有R2手动备份与回读verified，见 `production-core-checks.json`。这不证明远程数据库恢复或实际cron调度已经执行，也不证明尚未发布的报价格式3已在生产运行。所有隔离fixture测试没有访问生产业务数据或发送外部消息。
+上述8794演练证明本地workerd契约与隔离恢复。另2026-11-03 14:48核心版本生产检查已完成实际私有R2手动备份与回读verified，见 `production-core-checks.json`。16:16的`2026.11.03.2`生产检查又在0006迁移后完成格式3真实私有R2手动备份与回读，见`production-core-quotes-checks.json`的`backupVerified:true`。这不证明远程数据库恢复或实际cron调度已经执行。所有隔离fixture测试没有访问生产业务数据或发送外部消息。
 
 **报价0006联动本地运行**：同一隔离persist目录前向应用0006后，真实workerd+D1/R2再次完成18表（含报价两表与migration tracking）、92个schema对象snapshot，完整回读、commit marker与retention通过。该自有8794服务随后停止。18项SQLite检查同时验证恢复后的quoteSnapshot完整性和中文打印HTML金额，格式2仍可恢复并继续应用0006。
 
