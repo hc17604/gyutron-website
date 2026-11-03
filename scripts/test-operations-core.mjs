@@ -87,4 +87,18 @@ await test('report automation strictly validates exclusion booleans and executes
   assert.equal((await api('analytics?source_id=native-website&from='+date+'&to='+date+'&exclude_tests=false')).data.counts.inquiries,2);
  }finally{await patchRule('exclude_internal_tests',{enabled:previous.enabled,config:previous.config});}
 });
+await test('new report languages are bilingual and legacy reports stay readable while old schedules resume in English',async()=>{
+ for(const language of ['de','ja']){assert.equal((await api('reports',{method:'POST',body:{type:'daily',language}})).response.status,422);assert.equal((await api('automations',{method:'POST',body:{name:'Unsupported report language',kind:'report',enabled:false,interval_minutes:60,config:{language}}})).response.status,422);}
+ const at=new Date().toISOString(),content='Historischer Bericht — 過去の業務レポート';
+ sqlite.prepare("INSERT INTO ops_reports(id,type,title,language,filters_json,summary_json,content_markdown,rules_snapshot_json,created_by,created_at) VALUES(?,'daily',?,'de','{}','{}',?,'[]',?,?)").run('REP-history-locale','Historical report',content,owner.id,at);
+ const old=(await api('reports/REP-history-locale')).data;assert.equal(old.language,'de');assert.equal(old.content_markdown,content);
+ sqlite.prepare("INSERT INTO ops_automations(id,name,kind,enabled,interval_minutes,config_json,next_run_at,created_at,updated_at) VALUES(?,'Historical Japanese schedule','report',0,60,?,?,?,?)").run('AUTO-history-locale',JSON.stringify({language:'ja',source_id:'native-website'}),at,at,at);
+ assert.equal((await api('automations/AUTO-history-locale')).data.config.language,'en');
+ const {enqueueRun}=await import('../src/platform/operations/scheduler.mjs'),raw=sqlite.prepare('SELECT * FROM ops_automations WHERE id=?').get('AUTO-history-locale');
+ const run=await enqueueRun(db,{automation:raw,trigger:'manual'},owner);assert.equal(run.snapshot.language,'en');
+ // A checkpoint queued by the old release may still contain its original locale.
+ sqlite.prepare('UPDATE ops_automation_runs SET snapshot_json=? WHERE id=?').run(JSON.stringify({...run.snapshot,language:'ja'}),run.id);
+ const outcome=await processRun(env,run.id);assert.equal(outcome.run.status,'completed',outcome.run.error);assert.equal(outcome.report.language,'en');
+ assert.equal(sqlite.prepare('SELECT content_markdown FROM ops_reports WHERE id=?').get('REP-history-locale').content_markdown,content);
+});
 console.log(JSON.stringify({passed,total:passed+failures.length,failures},null,2));if(failures.length)process.exitCode=1;

@@ -4,10 +4,18 @@ The Operations domain, authentication integration and interface were authored in
 No Salesforce, HubSpot, Linear, Odoo, ERPNext, Frappe CRM or Twenty application source was imported.
 Those products informed the product research; their names do not imply affiliation or compatibility.
 
-The interface uses standard browser HTML/CSS/JavaScript and application-owned geometric SVG controls.
-There is no newly bundled icon, chart, browser-framework or font package. Existing GYUTRON logos and
-brand assets retain their project ownership and branding restrictions; they are not licensed by a
-third-party runtime license. The system font stack does not distribute Inter font binaries.
+The interface uses standard browser HTML/CSS/JavaScript. The 2026-11-03 UI redesign distributes
+the official Inter variable font from https://rsms.me/inter/font-files/InterVariable.woff2, unchanged,
+at `public/workspace-assets/fonts/inter-latin.woff2`. Its SIL Open Font License 1.1 is included as
+`public/workspace-assets/fonts/OFL.txt`; Chinese glyphs use the operating system's CJK fallback.
+The same files live under `astro/public/` so normal brand builds preserve these workspace assets.
+
+Navigation icons use the official Lucide SVG paths pinned to revision
+`aa0b77386c07630e5f1a9f877fd3ba4b2a4a1558` of https://github.com/lucide-icons/lucide.
+The full upstream copyright/license text is embedded in `src/admin/icons.mjs`, including the
+Lucide ISC notice and Feather-derived MIT notice. No third-party browser framework or chart library
+was added. Existing GYUTRON logos retain project ownership and branding restrictions. The admin now
+uses the same original purple PNG wordmark as the official homepage, rather than a reconstructed SVG.
 
 The deployed service uses the existing Cloudflare Worker/D1/R2/KV environment. Open source technology
 underlies that environment (including workerd and SQLite), but Cloudflare's managed services are not

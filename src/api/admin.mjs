@@ -14,8 +14,9 @@ import {
   workspaceCookie, clearWorkspaceCookie, sameOrigin, checkCsrf, allowLoginAttempt, verifyStaffPassword,
 } from '../platform/security/workspace-auth.mjs';
 import { timingSafeEqual } from '../platform/security/hash.mjs';
+import { normalizeWorkspaceLanguage } from '../admin/locale-policy.mjs';
 
-const BUILD = '2026.11.03.4';
+const BUILD = '2026.11.03.5';
 const LOGIN_COOKIE = 'gy_workspace_login';
 const READ = new Set(['GET', 'HEAD']);
 const SECURITY_HEADERS = {
@@ -41,7 +42,7 @@ function redirect(location, cookies = []) {
   return new Response(null, { status: 303, headers });
 }
 function fail(status, code, message) { return workspaceJson({ error: { code, message } }, status); }
-function langOf(url) { const lang = url.searchParams.get('lang'); return ['en', 'zh', 'de', 'ja'].includes(lang) ? lang : 'en'; }
+function langOf(url) { return normalizeWorkspaceLanguage(url.searchParams.get('lang')); }
 function loginPage(env, url, secure, error = '', status = 200) {
   const token = randomToken();
   return html(renderAdminLogin({ error, lang: langOf(url), csrfToken: token, configured: adminConfigured(env), teamLogin: env.ADMIN_LOGIN_MODE === 'team' }), status,
@@ -104,7 +105,7 @@ async function login(request, env, url, secure) {
   const operations = [loginAudit(env.DB, principal, true)];
   if (user) operations.push(env.DB.prepare('UPDATE admin_users SET last_login_at = ? WHERE id = ?').bind(new Date().toISOString(), user.id));
   await env.DB.batch(operations);
-  const lang = ['en', 'zh', 'de', 'ja'].includes(form.get('lang')) ? form.get('lang') : 'en';
+  const lang = normalizeWorkspaceLanguage(form.get('lang'));
   return redirect(`/admin${lang !== 'en' ? `?lang=${lang}` : ''}`, [workspaceCookie(session.token, secure),
     `${LOGIN_COOKIE}=; Path=/admin; HttpOnly; ${secure ? 'Secure; ' : ''}SameSite=Strict; Max-Age=0`]);
 }

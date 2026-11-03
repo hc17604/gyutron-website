@@ -3,7 +3,7 @@ import { handleAdmin } from './api/admin.mjs';
 import { runBackup } from './api/backup.mjs';
 import { runOperationsScheduled } from './platform/operations/scheduler.mjs';
 
-const ASSETS = new Set(['/brand-tokens.css','/gyutron-logo-light.svg','/gyutron-logo.svg','/favicon.ico','/favicon-32x32.png']);
+const ASSETS = new Set(['/brand-tokens.css','/gyutron-logo-light.svg','/gyutron-logo.svg','/favicon.ico','/favicon-32x32.png','/gyutron-logo-purple.png','/workspace-assets/gyutron-mark.png','/workspace-assets/fonts/inter-latin.woff2','/workspace-assets/fonts/OFL.txt']);
 export default {
   async fetch(request,env,ctx) {
     const url = new URL(request.url), read = ['GET','HEAD'].includes(request.method);

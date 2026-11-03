@@ -2,6 +2,7 @@
 import {spawn} from 'node:child_process';
 import {readFile,mkdir,writeFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
+import path from 'node:path';
 const suites=[
   'smoke-platform.mjs','smoke-admin-api.mjs','smoke-admin-auth.mjs',
   'smoke-admin-quotes.mjs','smoke-admin-aggregation.mjs','smoke-admin-backup.mjs',
@@ -25,5 +26,5 @@ const source_hashes={};
 async function hashTree(dir){for(const entry of await readdir(dir,{withFileTypes:true})){const file=dir+'/'+entry.name;if(entry.isDirectory())await hashTree(file);else if(/\.(mjs|sql)$/.test(file))source_hashes[file]=createHash('sha256').update(await readFile(file)).digest('hex');}}
 for(const dir of ['src','migrations'])await hashTree(dir);
 const report={at:new Date().toISOString(),passed:results.filter(row=>row.ok).length,failed:results.filter(row=>!row.ok).length,suites:results.sort((a,b)=>suites.indexOf(a.file)-suites.indexOf(b.file)),source_hashes,production_writes:false};
-await mkdir('artifacts/admin-rebuild-20261103',{recursive:true});await writeFile('artifacts/admin-rebuild-20261103/final-source-checks.json',JSON.stringify(report,null,2)+'\n');
+const output=process.argv[2]||'artifacts/admin-rebuild-20261103/final-source-checks.json';await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');
 process.stdout.write(JSON.stringify({passed:report.passed,failed:report.failed})+'\n');if(report.failed)process.exitCode=1;

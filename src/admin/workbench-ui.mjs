@@ -3,10 +3,10 @@ import { WORKBENCH_COPY } from './extension-locales.mjs';
 export const WORKBENCH_CLIENT = `const COPY=${JSON.stringify(WORKBENCH_COPY).replace(/</g,'\\u003c')};\n` + String.raw`
 let fieldSequence=0;
 export function createWorkbench(deps){
-  const {state,esc}=deps;const languages=['en','zh','de','ja'];
+  const {state,esc}=deps;const languages=['en','zh'];
   const l=(key)=>COPY[key]?.[Math.max(0,languages.indexOf(state.lang))]||key;
-  const text=(en,zh,de,ja)=>[en,zh,de,ja][Math.max(0,languages.indexOf(state.lang))];
-  const locale=()=>({en:'en-GB',zh:'zh-CN',de:'de-DE',ja:'ja-JP'}[state.lang]);
+  const text=(en,zh)=>[en,zh][Math.max(0,languages.indexOf(state.lang))];
+  const locale=()=>({en:'en-GB',zh:'zh-CN'}[state.lang]||'en-GB');
   const num=(value)=>new Intl.NumberFormat(locale()).format(typeof value==='bigint'?value:Number(value||0));
   const button=(label,action,primary=false,disabled=false)=>'<button type="button" class="button'+(primary?' button-primary':'')+'" '+action+(disabled?' disabled':'')+'>'+esc(label)+'</button>';
   const badge=(value)=>'<span class="badge badge-'+esc(String(value||'').replace(/[^a-z_]/g,''))+'">'+esc(COPY[value]?l(value):value||'—')+'</span>';

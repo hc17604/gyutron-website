@@ -11,19 +11,36 @@ import { INTELLIGENCE_CLIENT } from '../src/admin/intelligence-client.mjs';
 import { ADMIN_CLIENT } from '../src/admin/client.mjs';
 import { CRM_EXPERIENCE_CLIENT } from '../src/admin/crm-experience-client.mjs';
 import { NOTIFICATIONS_CLIENT } from '../src/admin/notifications-client.mjs';
+import { QUOTES_CLIENT } from '../src/admin/quotes-client.mjs';
+import { ADMIN_LOCALE_CLIENT } from '../src/admin/locale-assets.mjs';
+import { LAYOUT_CLIENT } from '../src/admin/layout-client.mjs';
 import { renderAdminLogin, getAdminAsset } from '../src/admin/shell.mjs';
+import { WORKSPACE_LANGUAGES,WORKSPACE_LANGUAGE_STORAGE_KEY,normalizeWorkspaceLanguage,selectWorkspaceLanguage } from '../src/admin/locale-policy.mjs';
 
 const outputDir=new URL('../artifacts/admin-rebuild-20261103/',import.meta.url);await fs.mkdir(outputDir,{recursive:true});
 const results=[];
 const check=(name,run)=>{run();results.push({name,ok:true});};
-for(const [name,source] of Object.entries({workbench:WORKBENCH_CLIENT,operations:OPERATIONS_CLIENT,intelligence:INTELLIGENCE_CLIENT,core:ADMIN_CLIENT,crm:CRM_EXPERIENCE_CLIENT,notifications:NOTIFICATIONS_CLIENT})){
+for(const [name,source] of Object.entries({workbench:WORKBENCH_CLIENT,operations:OPERATIONS_CLIENT,intelligence:INTELLIGENCE_CLIENT,core:ADMIN_CLIENT,crm:CRM_EXPERIENCE_CLIENT,notifications:NOTIFICATIONS_CLIENT,quotes:QUOTES_CLIENT,locales:ADMIN_LOCALE_CLIENT,layout:LAYOUT_CLIENT})){
   const file=new URL(name+'-emitted.mjs',outputDir);await fs.writeFile(file,source);
   check(name+' emitted ESM syntax',()=>assert.equal(spawnSync(process.execPath,['--check',fileURLToPath(file)],{encoding:'utf8'}).status,0));
   check(name+' strict CSP templates',()=>{assert.doesNotMatch(source,/\bstyle\s*=\s*["']/i);assert.doesNotMatch(source,/\bon\w+\s*=\s*["']/i);assert.ok(!source.includes('window.confirm('));});
+  check(name+' serves only bilingual workspace copy',()=>assert.doesNotMatch(source,/['"](?:de|ja|de-DE|ja-JP|Deutsch|日本語)['"]|[\u3040-\u30ff]/u));
 }
-check('four-language shared copy',()=>{for(const values of Object.values(WORKBENCH_COPY)){assert.equal(values.length,4);assert.ok(values.every(v=>typeof v==='string'&&v.length));}});
-check('four-language service errors',()=>{for(const values of Object.values(WORKBENCH_ERRORS)){assert.deepEqual(Object.keys(values),['en','zh','de','ja']);assert.ok(Object.values(values).every(v=>typeof v==='string'&&v.length));}});
-for(const lang of ['en','zh','de','ja'])check(lang+' default password-only login',()=>{const html=renderAdminLogin({lang});assert.equal((html.match(/name="password"/g)||[]).length,1);assert.equal((html.match(/name="email"/g)||[]).length,0);assert.equal((renderAdminLogin({lang,teamLogin:true}).match(/name="email"/g)||[]).length,1);});
+check('English and Chinese shared copy',()=>{for(const values of Object.values(WORKBENCH_COPY)){assert.equal(values.length,2);assert.ok(values.every(v=>typeof v==='string'&&v.length));}});
+check('English and Chinese service errors',()=>{for(const values of Object.values(WORKBENCH_ERRORS)){assert.deepEqual(Object.keys(values),['en','zh']);assert.ok(Object.values(values).every(v=>typeof v==='string'&&v.length));}});
+check('workspace language policy supports exactly English and Chinese',()=>{assert.deepEqual(WORKSPACE_LANGUAGES,['en','zh']);for(const value of ['de','ja','constructor','__proto__','',null,undefined])assert.equal(normalizeWorkspaceLanguage(value),'en');assert.equal(normalizeWorkspaceLanguage('zh'),'zh');});
+const languageInitialization=ADMIN_CLIENT.slice(ADMIN_CLIENT.indexOf('  let storedLang;'),ADMIN_CLIENT.indexOf('  const stages ='));
+function initialLanguage({query='',saved={},bootLang='en'}={}){const reads=[];const scope=vm.createContext({URL,URLSearchParams,selectWorkspaceLanguage,boot:{lang:bootLang},location:{href:'https://ops.example.test/admin'+query},navigator:{language:'zh-CN'},localStorage:{getItem:key=>{reads.push(key);return saved[key]??null;}}});vm.runInContext(languageInitialization+'\nthis.actualLanguage=state.lang;',scope);assert.deepEqual(reads,[WORKSPACE_LANGUAGE_STORAGE_KEY]);return scope.actualLanguage;}
+check('fresh browser defaults to English even with a Chinese browser locale',()=>assert.equal(initialLanguage(),'en'));
+for(const legacy of ['zh','de','ja'])check('old '+legacy+' browser cache does not override the new English default',()=>assert.equal(initialLanguage({saved:{'gyutron-workspace-language':legacy}}),'en'));
+check('new explicit Chinese preference is remembered',()=>assert.equal(initialLanguage({saved:{[WORKSPACE_LANGUAGE_STORAGE_KEY]:'zh'}}),'zh'));
+for(const invalid of ['de','ja','constructor','__proto__'])check('invalid query '+invalid+' falls back to English before a saved preference',()=>assert.equal(initialLanguage({query:'?lang='+invalid,saved:{[WORKSPACE_LANGUAGE_STORAGE_KEY]:'zh'}}),'en'));
+check('explicit query Chinese and English override remembered language',()=>{assert.equal(initialLanguage({query:'?lang=zh'}),'zh');assert.equal(initialLanguage({query:'?lang=en',saved:{[WORKSPACE_LANGUAGE_STORAGE_KEY]:'zh'}}),'en');});
+check('unsupported new stored language falls back to English',()=>assert.equal(initialLanguage({saved:{[WORKSPACE_LANGUAGE_STORAGE_KEY]:'de'},bootLang:'zh'}),'en'));
+const remembered={};const languageActions=vm.createContext({URL,SUPPORTED_LANGUAGES:WORKSPACE_LANGUAGES,state:{lang:'en',tab:'overview'},location:{href:'https://ops.example.test/admin'},history:{replaceState(){}},localStorage:{setItem:(key,value)=>{remembered[key]=value;}},document:{getElementById:()=>({value:'en',textContent:''})},quotesController:null,extensionControllers:{},crmController:null,dialog:{open:false},translateShell(){},notificationsController:null,t:key=>key,loadPage(){}});
+vm.runInContext(ADMIN_CLIENT.split('\n').find(line=>line.includes('async function setLanguage(')),languageActions);await languageActions.setLanguage('zh');
+check('the actual language action persists only the versioned Chinese preference',()=>{assert.equal(remembered[WORKSPACE_LANGUAGE_STORAGE_KEY],'zh');assert.ok(!Object.hasOwn(remembered,'gyutron-workspace-language'));});
+for(const lang of ['en','zh'])check(lang+' default password-only login',()=>{const html=renderAdminLogin({lang});assert.equal((html.match(/name="password"/g)||[]).length,1);assert.equal((html.match(/name="email"/g)||[]).length,0);assert.equal((renderAdminLogin({lang,teamLogin:true}).match(/name="email"/g)||[]).length,1);});
 for(const file of ['workbench.js','operations.js','intelligence.js','notifications.js','crm-experience.js','local-source-sync.mjs'])check(file+' real shell asset',()=>assert.equal(getAdminAsset('/admin/assets/'+file)?.status,200));
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const shared=vm.createContext({Intl});vm.runInContext(WORKBENCH_CLIENT.replace('export function','function'),shared);const ui=shared.createWorkbench({state:{lang:'de'},esc});

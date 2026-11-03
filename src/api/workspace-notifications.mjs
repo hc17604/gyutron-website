@@ -8,8 +8,6 @@ const fail=(status,code,message)=>{throw new WorkspaceError(status,code,message)
 const COPY={
  en:{task_overdue:'Overdue task',task_followup:'Task awaiting follow-up',intake_new:'New website enquiry',automation_failed:'Automation failed',automation_queued:'Queued automation needs review',agent_failed:'Your analysis failed',due:'Due',no_due:'No due date is set.',followup:'This unfinished task is assigned to your signed-in identity.',intake:'A new website submission is waiting for review.',failed:'Open the execution history to review the failure.',queued:'This run is queued and was created more than 30 minutes ago.',agent:'Open your private conversation to review this failed analysis.'},
  zh:{task_overdue:'逾期任务',task_followup:'待跟进任务',intake_new:'网站新询盘',automation_failed:'自动化运行失败',automation_queued:'排队运行待检查',agent_failed:'你的分析运行失败',due:'截止日期',no_due:'尚未设置截止日期。',followup:'此未完成任务分配给当前登录身份。',intake:'有新的网站提交等待处理。',failed:'请打开执行历史查看失败详情。',queued:'此运行当前处于排队状态，创建时间已超过 30 分钟。',agent:'请打开仅本人可见的会话查看本次失败分析。'},
- de:{task_overdue:'Überfällige Aufgabe',task_followup:'Aufgabe zur Nachverfolgung',intake_new:'Neue Website-Anfrage',automation_failed:'Automatisierung fehlgeschlagen',automation_queued:'Wartender Lauf benötigt Prüfung',agent_failed:'Ihre Analyse ist fehlgeschlagen',due:'Fällig am',no_due:'Kein Fälligkeitsdatum festgelegt.',followup:'Diese offene Aufgabe ist Ihrer angemeldeten Identität zugewiesen.',intake:'Eine neue Website-Anfrage wartet auf Prüfung.',failed:'Öffnen Sie den Ausführungsverlauf, um den Fehler zu prüfen.',queued:'Dieser Lauf ist eingereiht und wurde vor mehr als 30 Minuten erstellt.',agent:'Öffnen Sie Ihr privates Gespräch, um die fehlgeschlagene Analyse zu prüfen.'},
- ja:{task_overdue:'期限超過タスク',task_followup:'フォローアップ待ちタスク',intake_new:'ウェブサイトの新規問い合わせ',automation_failed:'自動化の実行に失敗',automation_queued:'待機中の実行を確認',agent_failed:'分析の実行に失敗しました',due:'期限',no_due:'期限は設定されていません。',followup:'この未完了タスクは現在のログイン主体に割り当てられています。',intake:'ウェブサイトからの新規送信が確認待ちです。',failed:'実行履歴で失敗の詳細を確認してください。',queued:'この実行は現在待機中で、作成から30分以上経過しています。',agent:'本人のみ閲覧できる会話を開き、失敗した分析を確認してください。'}
 };
 function notificationQueries(principal,env,at){
  const today=workspaceDate(workspaceTimeZone(env),new Date(at)),cutoff=new Date(Date.parse(at)-30*60000).toISOString();
@@ -58,7 +56,7 @@ export async function handleWorkspaceNotifications(request,env,principal,url=new
    return json({data:{marked_read:marked,ids}});
   }
   if(request.method!=='GET')fail(405,'METHOD_NOT_ALLOWED','Read notifications using GET.');
-  const limit=Number(url.searchParams.get('limit')||50);if(!Number.isSafeInteger(limit)||limit<1||limit>100)fail(422,'INVALID_LIMIT','Use a notification limit between 1 and 100.');const language=url.searchParams.get('lang')||'en';if(!Object.hasOwn(COPY,language))fail(422,'INVALID_LANGUAGE','Select a supported language.');
+  const limit=Number(url.searchParams.get('limit')||50);if(!Number.isSafeInteger(limit)||limit<1||limit>100)fail(422,'INVALID_LIMIT','Use a notification limit between 1 and 100.');const language=url.searchParams.get('lang')==='zh'?'zh':'en';
   // D1 restricts compound SELECT terms more tightly than desktop SQLite. Each
   // source is queried independently in the same transaction; at most 9*limit
   // small projections are merged, never full source records or message bodies.

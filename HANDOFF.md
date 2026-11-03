@@ -16,6 +16,31 @@
 
 ## Fast takeover snapshot
 
+- **UI release .5 — implementation reviewed; deployment verification pending (2026-11-03):**
+  Workspace language is English/Chinese only, first visit defaults English; the new v2 preference
+  ignores old locale caches and unsupported language links fall back to English. Historical content
+  and printable quote compatibility remain; brand-site/Shop language routes are unchanged.
+  Root replaced the malformed reconstructed admin SVG with the original homepage PNG wordmark,
+  added the original GYUTRON mark, self-hosted official Inter/OFL and licensed Lucide paths, a
+  light unified design system, grouped/collapsible navigation and an accessible workspace menu.
+  Customer/opportunity previews are right drawers with Overview/Activity/Contacts & related tabs;
+  contact refresh preserves the tab and restores lost focus. Independent review found and fixed a
+  delayed-contact-restore race that could replace another customer's related panel (five new cases).
+  UI uses 232px navigation,56px topbar,14px body/table text,6px controls/8px cards and160ms motion
+  with reduced-motion support. Mobile search remains reachable; navigation/search/notifications
+  use44px touch areas. The new UI requirement supersedes the legacy zero-radius admin style.
+  Existing functional styles are kept in a legacy cascade layer; the new design system applies to
+  core CRM, quotes, operations, intelligence, notifications and management. No schema, secrets,
+  storage bindings or password changes. Password-only123 remains the explicit user choice.
+  Source19/19 suites passed; independent CRM controller10/10 and offline Chrome layout13/13 passed;
+  browser visual/responsive results and official references are in
+  `docs/admin-ui-benchmark-20261103.md` and `artifacts/admin-ui-benchmark-20261103/`.
+  Astro build/verify:all and deploy:check pass (0 changed,131 public-only preserved); Worker dry run
+  gzip about311KiB. Root owns release, admin_experience the design system, backend_core bilingual and
+  context-race review, research_quality the independent SaaS/visual acceptance. Final source commit,
+  live hashes, CI/deployment IDs and refreshed standalone ZIP will be appended after verification.
+  Baseline7d886a4 and pre-existing untracked QA/content-audit files were preserved.
+
 - **Final interaction release .4 LIVE AND VERIFIED:** production .3 history below remains valid.
   Candidate .4 adds continuous bounded rule-run advancement with visible progress, navigation-safe
   interruption and explicit waiting/failure states; operations cron changes from5min to1min to keep

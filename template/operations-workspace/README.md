@@ -1,6 +1,6 @@
 # GYUTRON Operations — independent instance starter
 
-Source application **2026.11.03.4**, migrations **0001–0010**, backup **format 4**.
+Source application **2026.11.03.5**, migrations **0001–0010**, backup **format 4**.
 The manifest and release evidence identify the delivered commit and actual checks.
 This README does not claim the new production release or a second customer
 instance has passed acceptance.
@@ -9,8 +9,11 @@ Includes CRM/contacts/saved views, preserved enquiry/event operations, customer
 work and immutable quotations; sources/CSV imports/commerce analytics; reports,
 13 rules/policies and scheduled automations; real Agent conversations, Memory,
 text documents and model settings; notifications, users, audit, security,
-backup, health and instance/license state. Fixed labels support English,
-Chinese, German and Japanese. User content is not automatically translated.
+backup, health and instance/license state. Fixed workspace labels support English and Chinese only; English is the default.
+Older interface-language preferences are reset to English for this release. New
+explicit Chinese preferences are remembered in the browser. Unsupported language
+settings fall back to English. Historical German/Japanese reports, conversations and
+quotation print records remain readable; user content is not automatically translated.
 
 `/` redirects to protected `/admin`; `/health` returns only `{ "status": "ok" }`.
 Only necessary brand assets are allowlisted. No public website forms, public Data

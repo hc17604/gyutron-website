@@ -1,6 +1,6 @@
 # GYUTRON Operations — 独立实例商业交付手册
 
-更新：2026-11-03。适用源码版本 `2026.11.03.4`、迁移0001–0010、备份格式4。本文记录实现与交付要求，不表示新版已通过生产验收。实际commit、制品hash、部署及检查结果以随包manifest、发布记录和 `HANDOFF.md` 为准。
+更新：2026-11-03。适用源码版本 `2026.11.03.5`、迁移0001–0010、备份格式4。本文记录实现与交付要求，不表示新版已通过生产验收。实际commit、制品hash、部署及检查结果以随包manifest、发布记录和 `HANDOFF.md` 为准。
 
 ## 1. 产品与交付边界
 
@@ -15,7 +15,7 @@
 | Agent/Memory/资料 | 真实私有会话、消息、运行、记忆及文本资料；可选CRM/近30天经营摘要、规则、记忆与资料片段，保留来源；默认本地确定性回答，外部模型须另行配置并逐次同意 |
 | 通知/管理 | 真实任务/新询盘/自动化失败/本人Agent失败通知和独立已读回执；用户、审计、安全、备份、健康、实例与许可证状态；不向外发送通知 |
 
-旧Agent的Agent Chat、Ecommerce Dashboard、Data Sources、Reports、Automations、Tasks、Memory、Business Rules、Audit Logs、Security、Backup、License、Health、Users对应以上实际功能，不以菜单存在冒充集成完成。固定文案支持中文、English、Deutsch、日本語，用户正文不自动翻译。
+旧Agent的Agent Chat、Ecommerce Dashboard、Data Sources、Reports、Automations、Tasks、Memory、Business Rules、Audit Logs、Security、Backup、License、Health、Users对应以上实际功能，不以菜单存在冒充集成完成。工作台固定文案仅支持English与中文，首次访问默认English；旧德语/日语界面链接回落English。用户正文与历史报告/打印不自动翻译或删除。
 
 独立starter只提供受保护 `/admin`、必要品牌静态资源及最小 `/health`，根路径跳转 `/admin`。不提供官网公共表单、公共Data API、Shop主机映射/下单或支付路由。收件箱表存在不表示客户官网已接通；主站可读取自身已有提交，独立客户须另行接入验收。
 
