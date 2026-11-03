@@ -1,0 +1,36 @@
+{
+  "version": "2026.11.03.8",
+  "reviewers": [
+    {
+      "agent": "official_header_reference",
+      "scope": "Official header background, canonical PNG and scroll state",
+      "result": "passed",
+      "background": "#FFFFFF",
+      "native_logo": [
+        1550,
+        260
+      ],
+      "browser_control": false
+    },
+    {
+      "agent": "admin_experience",
+      "scope": "Logo-only structure, removed menu listeners, preserved links, responsive source arithmetic, radius policy and site/Shop scope",
+      "static_assertions_passed": 15,
+      "result": "passed",
+      "browser_control": false
+    },
+    {
+      "agent": "backend_core",
+      "scope": "Source commit, ZIP CRC, exact member set, per-file hashes, manifest/checksum/directory equality and Git source provenance",
+      "result": "passed",
+      "zip_members": 121,
+      "source_files": 118,
+      "unexpected_source_changes": 0,
+      "browser_control": false,
+      "production_requests": false
+    }
+  ],
+  "css_sha256": "d89285fd192b80515a087b102686b8561145e2a1addfa98a946054bf45866591",
+  "dynamic_click_focus_retested": false,
+  "limitations": "Source and integration review only. Physical Escape stop remains; no browser/native/headless control performed."
+}

@@ -1,0 +1,28 @@
+{
+  "at": "2026-11-03T16:01:56.755Z",
+  "version": "2026.11.03.8",
+  "source_commit": "300edb8ae2a9ee5286b9da1d45b5ec4ef0b05ef6",
+  "samples": [
+    {
+      "lang": "en",
+      "module": "<a class=\"workspace-brand\" href=\"#overview\" aria-label=\"GYUTRON\"><img src=\"/gyutron-logo-purple.png\" width=\"1550\" height=\"260\" alt=\"GYUTRON\"></a>",
+      "former_switch_and_menu_absent": true
+    },
+    {
+      "lang": "zh",
+      "module": "<a class=\"workspace-brand\" href=\"#overview\" aria-label=\"GYUTRON\"><img src=\"/gyutron-logo-purple.png\" width=\"1550\" height=\"260\" alt=\"GYUTRON\"></a>",
+      "former_switch_and_menu_absent": true
+    }
+  ],
+  "browser_control_performed": false,
+  "computed_browser_styles_measured": false,
+  "production_business_records_created": false,
+  "design_css_sha256": "d89285fd192b80515a087b102686b8561145e2a1addfa98a946054bf45866591",
+  "deployed_brand_css": "display:flex;align-items:center;justify-content:center;flex-shrink:0;width:calc(100% - 24px);min-height:56px;margin:12px 12px 14px;padding:12px;border:0;border-radius:0;background:#fff;text-decoration:none",
+  "static_asset_sha256": {
+    "/gyutron-logo-purple.png": "15478e8ed4dc3ae6da14fc3b547a357ac9c4985f2598ae55d447462749ae386f",
+    "/global.css": "ca3a038a7954c02dc010d63174a95bfb3225a9cb4465246ce1412e01341b5dc4"
+  },
+  "passed": true,
+  "logout_status": 303
+}

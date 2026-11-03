@@ -1,7 +1,7 @@
 # GYUTRON gyutron.com — Engineering Handoff (single source of truth)
 
 > Consolidated handoff for the agent/engineer taking over. `AGENTS.md` is now the concise active rule set;
-> this file owns current state and decision history. Last updated 2026-11-03. Obtain the current live
+> this file owns current state and decision history. Last updated 2026-11-04. Obtain the current live
 > HEAD with `git fetch origin` and `git rev-parse origin/main`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
 > 🏗️ **2026-06-06:** an **additive engineering foundation** was added — repo-root **`docs/`** + `astro/src/{config,types,data}` + `astro/src/lib/{api,forms,crm,cms,agent,logger}` (mock/placeholder) + `astro/.env.example`. See **§5b** and `docs/`.
@@ -16,14 +16,13 @@
 
 ## Fast takeover snapshot
 
-- **Logo-only sidebar .8 IN PROGRESS (2026-11-03):** current user supersedes the workspace-switch
+- **Logo-only sidebar .8 LIVE AND VERIFIED (2026-11-04 SGT):** current user supersedes the workspace-switch
   design: replace its mark/name/subtitle/chevron and duplicate menu with only the canonical official
   full PNG logo. Module background must match the official navigation's opaque #FFFFFF; all square
   corners and the .7 neutral frame/search remain. Root owns shell/layout/CSS/version and deployment;
   official_header_reference independently verifies header/logo source and admin_experience reviews
   integration. No site/Shop/data/credential changes. Browser control remains stopped by user Escape;
-  do not reconnect or use another browser-control path. Run source/build/asset checks and record the
-  absence of a new browser visual pass explicitly.
+  do not reconnect or use another browser-control path. There was no new browser visual pass.
   Source now passes19/19 suites and69 frontend checks, plus independent15/15 static integration
   assertions. Astro build/verify:all, agent:check, deploy:check (0 changed/131 public-only retained)
   and diff checks passed; i18n reports retain unrelated existing main-site heuristic suspects.
@@ -31,8 +30,21 @@
   from global.css's official .site-header. Old menu DOM/listeners are removed; Preferences/Open website
   remain in their original navigation/footer. Frozen CSS SHA256
   `d89285fd192b80515a087b102686b8561145e2a1addfa98a946054bf45866591`.
-  Evidence: artifacts/admin-logo-only-20261103/. Next: commit/push, wait for Cloudflare .8, compare
-  all14 dynamic assets against the compiled commit and inspect authenticated EN/zh logo markup.
+  Runtime commit `300edb8ae2a9ee5286b9da1d45b5ec4ef0b05ef6` passed CI41668152747. Cloudflare .8
+  was confirmed at00:00:44SGT; production12/12 passed at00:01:56SGT, all14 dynamic assets matching a
+  real Wrangler4.93.1 build of111 verified Git blobs. Dedicated authenticated EN/zh HTTP checks passed:
+  module only contains the full official image, removed switch/menu absent, deployed module CSS#FFF
+  and0 corners. Original logo and official global.css both equal committed Git bytes. Existing44-table
+  backup reverified; no new snapshot, production business rows, external messages or model calls.
+  Final standalone package is
+  `D:\AI PRODUT\GYUTRON web\outputs\admin-rebuild-20261103\gyutron-operations-20261103155129-300edb8ae2a9.zip`
+  (1190144B,121 members, SHA256
+  `d4e293be4b7624088d55c78e964d21189abf641bb73c76871881002d9e13d2c0`). Fresh installation with
+  lifecycle scripts,18 portable suites, dummy Wrangler build and independent per-file/CRC/Git-source
+  archive review passed. No second-customer infrastructure provisioned. Evidence and package descriptor:
+  artifacts/admin-logo-only-20261103/. This task is complete; review live .8. If rollback is requested,
+  revert the scoped .8 source change with a new commit; .7 source3f27d66 remains historical. The prior
+  320px browser cleanup limitation and isolated8799 preview described below remain unchanged.
 
 - **Industrial UI .7 LIVE AND VERIFIED, explicit user steering (2026-11-03):** user rejected all rounded
   corners. The user subsequently withdrew the request for increased purple: restore the prior .6
