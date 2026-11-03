@@ -1,0 +1,489 @@
+{
+  "record": {
+    "public_id": "QUO-PRINT-QA",
+    "status": "issued",
+    "archived_at": null,
+    "outcome_note": "INTERNAL-ONLY-QA-SENTINEL — internal negotiation feedback; never customer print content."
+  },
+  "document": {
+    "quote_number": "QT-PRINT-QA-R01",
+    "revision": 1,
+    "title": "工业检测系统报价 / Industrial Inspection Quotation",
+    "currency": "USD",
+    "currency_minor_digits": 2,
+    "timezone": "Asia/Singapore",
+    "created_date": "2026-11-03",
+    "issued_date": "2026-11-03",
+    "valid_until": "2026-12-31",
+    "seller_name": "GYUTRON · PRINT QA",
+    "seller_address": "隔离测试地址 / Isolated fixture address\nSingapore",
+    "seller_email": "qa@example.test",
+    "seller_phone": "+65 0000 0000",
+    "recipient_company": "PRINT QA CUSTOMER",
+    "recipient_name": "Testing only",
+    "recipient_email": "customer@example.test",
+    "recipient_phone": "+86 0000 0000",
+    "billing_address": "测试账单地址 / Fixture billing address",
+    "shipping_address": "测试收货地址 / Fixture shipping address",
+    "terms": "TERM-001 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-002 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-003 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-004 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-005 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-006 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-007 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-008 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-009 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-010 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-011 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-012 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-013 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-014 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-015 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-016 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-017 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-018 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-019 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-020 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-021 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-022 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-023 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-024 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-025 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-026 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-027 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-028 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-029 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-030 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-031 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-032 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-033 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-034 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-035 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-036 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-037 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-038 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-039 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.\nTERM-040 付款、交付、验收和支持条件应由双方确认。Payment, delivery, acceptance and support conditions require agreement.",
+    "notes": "PRINT QA ONLY — NOT A CUSTOMER OFFER.\n验证长表格、中文、金额与分页；此文件不构成真实商业报价。",
+    "items": [
+      {
+        "line_number": 1,
+        "sku": "QAREF-001",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 1",
+        "quantity": 1,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 123456
+      },
+      {
+        "line_number": 2,
+        "sku": "QAREF-002",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 2",
+        "quantity": 2,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 246912
+      },
+      {
+        "line_number": 3,
+        "sku": "QAREF-003",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 3",
+        "quantity": 3,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 370368
+      },
+      {
+        "line_number": 4,
+        "sku": "QAREF-004",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 4",
+        "quantity": 4,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 493824
+      },
+      {
+        "line_number": 5,
+        "sku": "QAREF-005",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 5",
+        "quantity": 5,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 617280
+      },
+      {
+        "line_number": 6,
+        "sku": "QAREF-006",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 6",
+        "quantity": 6,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 740736
+      },
+      {
+        "line_number": 7,
+        "sku": "QAREF-007",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 7",
+        "quantity": 7,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 864192
+      },
+      {
+        "line_number": 8,
+        "sku": "QAREF-008",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 8",
+        "quantity": 8,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 987648
+      },
+      {
+        "line_number": 9,
+        "sku": "QAREF-009",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 9",
+        "quantity": 9,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 1111104
+      },
+      {
+        "line_number": 10,
+        "sku": "QAREF-010",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 10",
+        "quantity": 10,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 1234560
+      },
+      {
+        "line_number": 11,
+        "sku": "QAREF-011",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 11",
+        "quantity": 11,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 1358016
+      },
+      {
+        "line_number": 12,
+        "sku": "QAREF-012",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 12",
+        "quantity": 12,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 1481472
+      },
+      {
+        "line_number": 13,
+        "sku": "QAREF-013",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 13",
+        "quantity": 13,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 1604928
+      },
+      {
+        "line_number": 14,
+        "sku": "QAREF-014",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 14",
+        "quantity": 14,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 1728384
+      },
+      {
+        "line_number": 15,
+        "sku": "QAREF-015",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 15",
+        "quantity": 15,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 1851840
+      },
+      {
+        "line_number": 16,
+        "sku": "QAREF-016",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 16",
+        "quantity": 16,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 1975296
+      },
+      {
+        "line_number": 17,
+        "sku": "QAREF-017",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 17",
+        "quantity": 17,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 2098752
+      },
+      {
+        "line_number": 18,
+        "sku": "QAREF-018",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 18",
+        "quantity": 18,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 2222208
+      },
+      {
+        "line_number": 19,
+        "sku": "QAREF-019",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 19",
+        "quantity": 19,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 2345664
+      },
+      {
+        "line_number": 20,
+        "sku": "QAREF-020",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 20",
+        "quantity": 20,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 2469120
+      },
+      {
+        "line_number": 21,
+        "sku": "QAREF-021",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 21",
+        "quantity": 21,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 2592576
+      },
+      {
+        "line_number": 22,
+        "sku": "QAREF-022",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 22",
+        "quantity": 22,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 2716032
+      },
+      {
+        "line_number": 23,
+        "sku": "QAREF-023",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 23",
+        "quantity": 23,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 2839488
+      },
+      {
+        "line_number": 24,
+        "sku": "QAREF-024",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 24",
+        "quantity": 24,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 2962944
+      },
+      {
+        "line_number": 25,
+        "sku": "QAREF-025",
+        "description": "多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n多行配置说明 / Multiline configuration.\n25",
+        "quantity": 25,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 3086400
+      },
+      {
+        "line_number": 26,
+        "sku": "QAREF-026",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 26",
+        "quantity": 26,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 3209856
+      },
+      {
+        "line_number": 27,
+        "sku": "QAREF-027",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 27",
+        "quantity": 27,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 3333312
+      },
+      {
+        "line_number": 28,
+        "sku": "QAREF-028",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 28",
+        "quantity": 28,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 3456768
+      },
+      {
+        "line_number": 29,
+        "sku": "QAREF-029",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 29",
+        "quantity": 29,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 3580224
+      },
+      {
+        "line_number": 30,
+        "sku": "QAREF-030",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 30",
+        "quantity": 30,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 3703680
+      },
+      {
+        "line_number": 31,
+        "sku": "QAREF-031",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 31",
+        "quantity": 31,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 3827136
+      },
+      {
+        "line_number": 32,
+        "sku": "QAREF-032",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 32",
+        "quantity": 32,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 3950592
+      },
+      {
+        "line_number": 33,
+        "sku": "QAREF-033",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 33",
+        "quantity": 33,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 4074048
+      },
+      {
+        "line_number": 34,
+        "sku": "QAREF-034",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 34",
+        "quantity": 34,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 4197504
+      },
+      {
+        "line_number": 35,
+        "sku": "QAREF-035",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 35",
+        "quantity": 35,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 4320960
+      },
+      {
+        "line_number": 36,
+        "sku": "QAREF-036",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 36",
+        "quantity": 36,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 4444416
+      },
+      {
+        "line_number": 37,
+        "sku": "QAREF-037",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 37",
+        "quantity": 37,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 4567872
+      },
+      {
+        "line_number": 38,
+        "sku": "QAREF-038",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 38",
+        "quantity": 38,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 4691328
+      },
+      {
+        "line_number": 39,
+        "sku": "QAREF-039",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 39",
+        "quantity": 39,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 4814784
+      },
+      {
+        "line_number": 40,
+        "sku": "QAREF-040",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 40",
+        "quantity": 40,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 4938240
+      },
+      {
+        "line_number": 41,
+        "sku": "QAREF-041",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 41",
+        "quantity": 41,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 5061696
+      },
+      {
+        "line_number": 42,
+        "sku": "QAREF-042",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 42",
+        "quantity": 42,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 5185152
+      },
+      {
+        "line_number": 43,
+        "sku": "QAREF-043",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 43",
+        "quantity": 43,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 5308608
+      },
+      {
+        "line_number": 44,
+        "sku": "QAREF-044",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 44",
+        "quantity": 44,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 5432064
+      },
+      {
+        "line_number": 45,
+        "sku": "QAREF-045",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 45",
+        "quantity": 45,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 5555520
+      },
+      {
+        "line_number": 46,
+        "sku": "QAREF-046",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 46",
+        "quantity": 46,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 5678976
+      },
+      {
+        "line_number": 47,
+        "sku": "QAREF-047",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 47",
+        "quantity": 47,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 5802432
+      },
+      {
+        "line_number": 48,
+        "sku": "QAREF-048",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 48",
+        "quantity": 48,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 5925888
+      },
+      {
+        "line_number": 49,
+        "sku": "QAREF-049",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 49",
+        "quantity": 49,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 6049344
+      },
+      {
+        "line_number": 50,
+        "sku": "QAREF-050",
+        "description": "工业视觉检测系统及配套配置 / Industrial vision inspection configuration. 50",
+        "quantity": 50,
+        "unit": "set / 套",
+        "unit_price_minor": 123456,
+        "line_total_minor": 6172800
+      }
+    ],
+    "subtotal_minor": 157406400,
+    "discount_minor": 6789,
+    "tax_minor": 12345,
+    "shipping_minor": 8900,
+    "total_minor": 157420856
+  },
+  "source_fixture_html_sha256": "d868ffd1ca0e7f3067cdc5811cd0cd857ff434d1f7f1bfd0808b601be5a98f0f"
+}

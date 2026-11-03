@@ -18,11 +18,13 @@
 
 Read this block first; use the dated entries below only for task-relevant history.
 
-- **Operations upgrade in progress (2026-11-03):** `/admin` now has an independent industrial
-  workspace in `src/admin/`, CRM APIs/domain under `src/api/admin-*` and `src/platform/crm/`, and
-  revocable named-member sessions in `workspace-auth.mjs`. Production additive migrations 0003–0005
-  have been applied after a verified SQL backup. Worker release and final browser acceptance are
-  still being completed; use the newest dated entry and `docs/admin-saas-project-plan.md`.
+- **Operations release (2026-11-03):** `/admin` has an industrial four-language workspace in
+  `src/admin/`, CRM under `src/platform/crm/`, immutable quotations under `src/platform/quotes/`,
+  and revocable sessions in `workspace-auth.mjs`. The current GYUTRON login is deliberately
+  password-only, following the user's explicit choice; do not add an account field or rotate it.
+  Production additive migrations 0003–0006 have been applied after verified private SQL exports.
+  Release 2026.11.03.2 is undergoing final deployment verification; use the newest dated entry,
+  `docs/admin-saas-project-plan.md` and the production evidence JSON files for actual live status.
 
 - **Repository:** `D:\AI PRODUT\GYUTRON web\website\gyutron-website-repo`, branch `main`. Run
   `git fetch origin` and `npm run agent:status`; do not trust a hard-coded HEAD in documentation.
@@ -74,6 +76,26 @@ Read this block first; use the dated entries below only for task-relevant histor
 ---
 
 ## 🤝 CODEX HANDOFF — current state (2026-11-03)
+
+> **2026-11-03 (Codex) — Four-language quotations and distribution release candidate.**
+> Release 2026.11.03.2 adds EN/zh/DE/JA, exact BigInt dashboard aggregation, quotation draft/issue/
+> revision/outcome/archive flows, immutable signed snapshots and authenticated A4 print/PDF views.
+> Four languages each passed a six-page 50-item/40-term document check; reference/page counters
+> use authenticated document-specific CSS margin boxes. Internal outcome notes are excluded.
+> Backup format 3 covers both quotation tables; format 2 remains recoverable and forward-migratable.
+> Fresh checks: CRM/legacy 41, auth/system 29, quotes 26, backup 18, aggregation 5; actual local
+> workerd quotation checks 15. Astro 132-page build, verify:all, platform 34, Shop 120+20 and Worker
+> dry-run pass; committed public remains byte-identical to the build and 131 public-only files stay.
+> Production migration 0006 applied after private 108352-byte SQL export, SHA-256
+> `55700d93da5a2dea47e4d5c0013712c7d810875bb5860d7974290697b2e085e4`, isolated integrity=ok,
+> no foreign-key failures. No customer business fixtures were created in production for this stage.
+> Independent-instance starter sources and reproducible verifier live under
+> `template/operations-workspace/` and `scripts/package-admin-workspace.mjs`; final archive must
+> identify a clean committed source and pass independent verification before delivery.
+> Core-only soak is pinned to fa373c7 in an isolated local Worker and never sends production traffic;
+> its report records actual duration, error count and final status. The four-hour task window ends
+> at 17:50 Asia/Singapore. Final publication/CI/production and soak evidence are recorded separately
+> after execution, rather than treating a push or an unfinished soak as passed.
 
 > **2026-11-03 (Codex) — User-directed password-only access.**
 > User explicitly requested no account field and a specific simple shared password. The production

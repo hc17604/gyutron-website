@@ -1,0 +1,78 @@
+{
+  "at": "2026-11-03T06:48:46.997Z",
+  "origin": "https://www.gyutron.com",
+  "sourceRef": "fa373c7",
+  "observations": {
+    "version": "2026.11.03.1",
+    "system": {
+      "migration": "0005_crm_relation_guards.sql",
+      "backup": "unverified",
+      "ownerCredentialStrong": false
+    },
+    "disabledRuntimeAccount": {
+      "id": "USR-6281ae04-8e67-4cef-b1bf-9e8147e65ad6",
+      "email": "runtime-verification-50239fe5-2f5d-4e7b-9323-3d93ca6dea7a@example.test",
+      "active": 0
+    },
+    "backupVerified": true
+  },
+  "results": [
+    {
+      "name": "Production denies unauthenticated business APIs and old cookies",
+      "ok": true,
+      "ms": 1823
+    },
+    {
+      "name": "Production assets exactly match the committed core",
+      "ok": true,
+      "ms": 715
+    },
+    {
+      "name": "Production owner sign-in creates a secure revocable session",
+      "ok": true,
+      "ms": 991
+    },
+    {
+      "name": "Production bootstrap, actual dashboard and operational metadata load",
+      "ok": true,
+      "ms": 1123
+    },
+    {
+      "name": "Live CSP and no-store protect authenticated HTML",
+      "ok": true,
+      "ms": 260
+    },
+    {
+      "name": "Live missing-CSRF and cross-origin writes are rejected",
+      "ok": true,
+      "ms": 485
+    },
+    {
+      "name": "Preserved order intake/events and filtered CSV remain protected and usable",
+      "ok": true,
+      "ms": 1448
+    },
+    {
+      "name": "Production staff password hashing, login and viewer RBAC work",
+      "ok": true,
+      "ms": 4016
+    },
+    {
+      "name": "Production manual backup completes and passes actual private R2 verification",
+      "ok": true,
+      "ms": 3737
+    },
+    {
+      "name": "Production logout rejects replay of the just-issued session",
+      "ok": true,
+      "ms": 576
+    },
+    {
+      "name": "Brand and storefront remain available",
+      "ok": true,
+      "ms": 3534
+    }
+  ],
+  "passed": 11,
+  "total": 11
+}

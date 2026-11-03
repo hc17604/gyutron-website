@@ -4,8 +4,13 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 import { BACKUP_TABLES, EXCLUDED_BACKUP_TABLES, MAX_BACKUP_ROWS, MAX_BACKUP_BYTES, createBackupSnapshot, runBackup, backupToSql } from '../src/api/backup.mjs';
 import { hashStaffPassword, verifyStaffPassword } from '../src/platform/security/workspace-auth.mjs';
+import { sha256Hex } from '../src/platform/security/hash.mjs';
+import { createHash } from 'node:crypto';
+import { CONTENT_FIELDS } from '../src/platform/quotes/schema.mjs';
+import { quoteSnapshot } from '../src/platform/quotes/repository.mjs';
+import { renderQuoteDocument } from '../src/platform/quotes/document.mjs';
 
-const migrations = ['0001_init.sql', '0002_order_intents.sql', '0003_admin_workspace.sql', '0004_admin_identity.sql', '0005_crm_relation_guards.sql'];
+const migrations = ['0001_init.sql', '0002_order_intents.sql', '0003_admin_workspace.sql', '0004_admin_identity.sql', '0005_crm_relation_guards.sql', '0006_operations_quotes.sql'];
 const stamp = '2026-11-03T05:00:00.000Z';
 const staffPassword = 'Recovery-test-password-only';
 const staffHash = await hashStaffPassword(staffPassword);
@@ -39,6 +44,17 @@ function makeDatabase({ withTracking = true } = {}) {
   sqlite.prepare('INSERT INTO crm_activities(public_id,customer_id,opportunity_id,type,subject,actor_id,actor_name,occurred_at,created_at) VALUES(?,?,?,?,?,?,?,?,?)').run('ACT-recovery', 'CUS-recovery', 'OPP-recovery', 'note', 'Fixture history', 'USR-recovery', 'Recovery staff', stamp, stamp);
   sqlite.prepare('INSERT INTO crm_audit(public_id,actor_id,actor_name,actor_role,action,entity_type,entity_id,summary,created_at) VALUES(?,?,?,?,?,?,?,?,?)').run('AUD-recovery', 'USR-recovery', 'Recovery staff', 'sales', 'created', 'customers', 'CUS-recovery', 'Fixture audit', stamp);
   sqlite.prepare('INSERT INTO crm_intake_links(public_id,source_resource,source_id,customer_id,opportunity_id,created_by,created_at) VALUES(?,?,?,?,?,?,?)').run('LINK-recovery', 'leads', 'LEAD-recovery', 'CUS-recovery', 'OPP-recovery', 'USR-recovery', stamp);
+  sqlite.prepare(`INSERT INTO ops_quotes(public_id,quote_number,family_id,revision,customer_id,opportunity_id,owner_id,title,currency,seller_name,recipient_company,subtotal_minor,discount_minor,tax_minor,shipping_minor,total_minor,mutation_token,created_at,updated_at)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run('QTE-recovery', 'QT-RECOVERY-R1', 'QTE-recovery', 1, 'CUS-recovery', 'OPP-recovery', 'USR-recovery', 'Historical quote', 'USD', 'Recovery seller', 'Recovery company', 2468, 68, 100, 200, 2700, 'recovery-mutation', stamp, stamp);
+  sqlite.prepare('INSERT INTO ops_quote_items(public_id,quote_id,line_number,description,quantity,unit_price_minor,line_total_minor) VALUES(?,?,1,?,2,1234,2468)').run('QTI-recovery', 'QTE-recovery', 'Historical item');
+  const draft = sqlite.prepare('SELECT * FROM ops_quotes WHERE public_id=?').get('QTE-recovery');
+  const items = sqlite.prepare('SELECT line_number,sku,description,unit,quantity,unit_price_minor,line_total_minor FROM ops_quote_items WHERE quote_id=? ORDER BY line_number').all('QTE-recovery');
+  const quotationSnapshot = JSON.stringify({ schema_version: 1, quote_id: draft.public_id, quote_number: draft.quote_number, family_id: draft.family_id, revision: draft.revision, revision_of: draft.revision_of,
+    ...Object.fromEntries(CONTENT_FIELDS.map(field => [field, draft[field]])), subtotal_minor: draft.subtotal_minor, total_minor: draft.total_minor, currency_minor_digits: 2,
+    items, issuer: { id: 'owner', name: 'Recovery owner' }, issued_at: stamp, timezone: 'Asia/Singapore', issued_date: '2026-11-03', created_date: '2026-11-03' });
+  const quotationSha256 = createHash('sha256').update(quotationSnapshot).digest('hex');
+  sqlite.prepare("UPDATE ops_quotes SET status='issued',snapshot_json=?,snapshot_sha256=?,issued_at=?,issued_by=? WHERE public_id=?").run(quotationSnapshot, quotationSha256, stamp, 'owner', 'QTE-recovery');
+  sqlite.prepare("UPDATE ops_quotes SET status='accepted',outcome_note=?,outcome_recorded_at=?,outcome_recorded_by=? WHERE public_id=?").run('Manual recorded outcome', stamp, 'owner', 'QTE-recovery');
   sqlite.prepare('UPDATE crm_customers SET archived_at=? WHERE public_id=?').run(stamp, 'CUS-recovery');
   const trace = { batches: [], individualReads: [] };
   const db = {
@@ -58,7 +74,7 @@ function makeDatabase({ withTracking = true } = {}) {
       } catch (error) { sqlite.exec('ROLLBACK'); throw error; }
     },
   };
-  return { sqlite, db, trace };
+  return { sqlite, db, trace, quotationSnapshot, quotationSha256 };
 }
 
 function makeBucket({ pageSize = 1000, putFailure = false, corruptRead = false, listFailure = false, deleteFailure = false } = {}) {
@@ -80,7 +96,7 @@ await test('explicit snapshot covers all persistent tables, tracking and schema 
   const fixture = makeDatabase(); const snapshot = await createBackupSnapshot(fixture.db);
   assert.deepEqual(Object.keys(snapshot.tables), [...BACKUP_TABLES, 'd1_migrations']);
   for (const table of BACKUP_TABLES) assert.equal(snapshot.manifest.counts[table], 1);
-  assert.equal(snapshot.manifest.migrations.length, 5); assert.equal(snapshot.manifest.schema_version, 2);
+  assert.equal(snapshot.manifest.migrations.length, 6); assert.equal(snapshot.manifest.schema_version, 3);
   for (const table of EXCLUDED_BACKUP_TABLES) { assert.equal(snapshot.tables[table], undefined); assert.ok(snapshot.schema.some(row => row.name === table)); }
   assert.equal(fixture.trace.batches.length, 2); assert.ok(fixture.trace.batches[0].every(sql => sql.startsWith('PRAGMA table_info'))); assert.ok(fixture.trace.batches[1][0].includes('sqlite_master'));
   assert.equal(fixture.trace.individualReads.length, 2);
@@ -96,6 +112,13 @@ await test('restore into isolated SQLite preserves every row, historical links, 
   assert.ok(await verifyStaffPassword(staffPassword, restored.prepare('SELECT password_hash FROM admin_users').get().password_hash));
   assert.throws(() => restored.exec("UPDATE crm_audit SET summary='tampered'"), /append-only/);
   assert.throws(() => restored.exec("UPDATE crm_opportunities SET stage='negotiation'"), /active customer/);
+  assert.equal(restored.prepare('SELECT snapshot_json FROM ops_quotes').get().snapshot_json, fixture.quotationSnapshot);
+  assert.equal(restored.prepare('SELECT snapshot_sha256 FROM ops_quotes').get().snapshot_sha256, fixture.quotationSha256);
+  const readDb = { prepare(sql) { return { sql, values: [], bind(...values) { this.values = values; return this; } }; }, async batch(statements) { return statements.map(statement => ({ success: true, results: restored.prepare(statement.sql).all(...statement.values) })); } };
+  const printable = await quoteSnapshot(readDb, 'QTE-recovery', { id: 'owner', role: 'owner' });
+  assert.equal(printable.document.total_minor, 2700); assert.ok(renderQuoteDocument(printable, { lang: 'zh' }).includes('27.00'));
+  assert.throws(() => restored.exec("UPDATE ops_quotes SET terms='tampered'"), /immutable/);
+  assert.throws(() => restored.exec("DELETE FROM ops_quote_items"), /immutable/);
   assert.equal(restored.prepare("SELECT seq FROM sqlite_sequence WHERE name='events'").get().seq, 999);
   assert.throws(() => restored.exec(restoreSql), /already exists/);
 });
@@ -198,6 +221,28 @@ await test('restore rejects schema tampering, missing rows, session data and leg
 await test('optional migration tracking is accurately identified', async () => {
   const { db } = makeDatabase({ withTracking: false }), snapshot = await createBackupSnapshot(db);
   assert.equal(snapshot.manifest.migration_tracking_table, null); assert.deepEqual(snapshot.manifest.migrations, []); assert.equal(snapshot.tables.d1_migrations, undefined);
+});
+await test('core format-2 snapshots remain restorable after quote format-3 release', async () => {
+  const { db } = makeDatabase(), snapshot = await createBackupSnapshot(db);
+  const legacy = structuredClone(snapshot);
+  legacy.manifest.schema_version = 2; legacy.manifest.application_schema_baseline = 'admin-workspace-0005';
+  const quoteTables = ['ops_quotes', 'ops_quote_items'];
+  for (const table of quoteTables) { delete legacy.tables[table]; delete legacy.manifest.counts[table]; }
+  legacy.manifest.table_names = legacy.manifest.table_names.filter(table => !quoteTables.includes(table));
+  legacy.schema = legacy.schema.filter(row => !quoteTables.includes(row.tbl_name) && !row.name.startsWith('ops_quote_'));
+  legacy.sequences = legacy.sequences.filter(row => !quoteTables.includes(row.name));
+  legacy.tables.d1_migrations = legacy.tables.d1_migrations.filter(row => row.name !== '0006_operations_quotes.sql');
+  legacy.manifest.counts.d1_migrations = legacy.tables.d1_migrations.length;
+  legacy.manifest.migrations = legacy.tables.d1_migrations; legacy.manifest.migration_version = '0005_crm_relation_guards.sql';
+  legacy.manifest.schema_sha256 = await sha256Hex(JSON.stringify(legacy.schema));
+  const restored = new DatabaseSync(':memory:'); restored.exec('PRAGMA foreign_keys=ON; BEGIN IMMEDIATE');
+  restored.exec(await backupToSql(legacy)); restored.exec('COMMIT');
+  assert.deepEqual(restored.prepare('PRAGMA foreign_key_check').all(), []);
+  assert.equal(restored.prepare('SELECT COUNT(*) AS n FROM crm_customers').get().n, 1);
+  assert.equal(restored.prepare("SELECT COUNT(*) AS n FROM sqlite_master WHERE name='ops_quotes'").get().n, 0);
+  assert.equal(restored.prepare('SELECT COUNT(*) AS n FROM admin_sessions').get().n, 0);
+  restored.exec(readFileSync(new URL('../migrations/0006_operations_quotes.sql', import.meta.url), 'utf8'));
+  assert.equal(restored.prepare('SELECT COUNT(*) AS n FROM ops_quotes').get().n, 0);
 });
 await test('session table schema is required even though its live rows are excluded', async () => {
   const { db, sqlite } = makeDatabase(); sqlite.exec('DROP TABLE admin_owner_sessions');

@@ -4,16 +4,19 @@
 
 ## 1. 备份内容与一致性
 
-备份显式包含15张持久业务表：
+报价0006版本的格式3备份显式包含17张持久业务表：
 
 ```text
 leads, rfqs, support_requests, download_requests,
 order_intents, order_intent_items, events, api_keys,
 crm_customers, crm_opportunities, crm_tasks, crm_activities,
-crm_audit, crm_intake_links, admin_users
+crm_audit, crm_intake_links, admin_users,
+ops_quotes, ops_quote_items
 ```
 
 存在 `d1_migrations` 时同时保存其结构与所有记录，manifest列出真实迁移记录和最新迁移文件名。`application_schema_baseline` 表示本实现支持的最低应用结构，不冒充远程迁移执行证明。
+
+首个已部署核心版本使用格式2、15张持久表（不含两张ops报价表）。当前恢复helper同时接受格式2和3；格式2恢复到0005结构后，应运行对应核心版本，或先前向应用0006再启动含报价的版本。不能因为新版增加报价表就拒绝恢复旧的可信核心备份。格式1不受此helper支持。
 
 `admin_sessions`、`admin_owner_sessions`、`admin_login_attempts`仅保存表结构，不保存内容。恢复数据库后全部会话为空，所有人必须重新登录；不会把旧的有效或已撤销token恢复为登录凭据。Worker环境秘密（ADMIN_PASSWORD、ADMIN_SECRET、API密钥原文等）不在D1备份中，也不会由这个工具导出。`api_keys`原有表中的key hash与用户密码hash属于敏感数据。
 
@@ -45,11 +48,11 @@ backups/committed/weekly/<same filename>.json
 
 格式1旧 `YYYY-MM-DD.json` 备份和其他没有marker的对象不会自动清理，也不计入verified保留日期；需要维护者核实后再迁移或清理。这避免把未经当前完整校验的旧文件误当成已验证快照。Retention分页遍历marker；清理失败单独标记，不把已验证的新快照说成丢失，也不把清理失败隐藏为通过。
 
-**2026-11-03已只读核实的生产配置**：`gyutron-assets` 的r2.dev公开访问关闭，未连接R2自定义域名。核实命令：
+**2026-11-03已只读核实的GYUTRON生产事实**：当前生产资源桶的r2.dev公开访问关闭，未连接R2自定义域名。这不代表新客户资源已验收。对独立实例，替换下面的占位名为该客户已核实的私有R2桶名后检查：
 
 ```powershell
-npx wrangler r2 bucket dev-url get gyutron-assets
-npx wrangler r2 bucket domain list gyutron-assets
+npx wrangler r2 bucket dev-url get REPLACE_PRIVATE_R2_BUCKET
+npx wrangler r2 bucket domain list REPLACE_PRIVATE_R2_BUCKET
 ```
 
 应用资源下载路由仅访问已登记的资源manifest，备份不登记为public/gated下载，也不提供管理端HTTP下载接口。以后启用桶级公开域名会暴露同桶对象，不能把随机文件名当作访问控制。备份JSON、恢复SQL、用户hash均不得进入Git、公开artifact、邮件、截图或聊天输出。
@@ -72,13 +75,15 @@ npx wrangler r2 bucket domain list gyutron-assets
 node scripts/smoke-admin-backup.mjs
 ```
 
-测试在Node真实SQLite内存库中建立0001–0005结构，写入所有领域、真实算法的测试用户hash、会话、审计、线索转换、已归档客户及其合法关闭历史，然后生成snapshot并恢复到新的隔离SQLite库。验证所有表行和关联、外键、中文/引号/NUL文本、密码验证、自增序列、审计不可改写、业务guard仍生效，三个会话/限流表为空。
+测试在Node真实SQLite内存库中建立0001–0006结构，写入所有领域、真实算法的测试用户hash、会话、审计、线索转换、已归档客户及其合法关闭历史、签发后记录accepted的报价及items，然后生成snapshot并恢复到新的隔离SQLite库。验证所有表行和关联、外键、中文/引号/NUL文本、密码验证、自增序列、审计不可改写、业务guard仍生效，三个会话/限流表为空；issued报价snapshot字节/hash与header/items冻结guard保留。
 
-R2失败测试采用内存mock，覆盖空写入、回读损坏、分页retention、周日副本、清理失败，以及5个失败日期的孤儿不挤占30个verified日期。数据测试验证预检查超限时不物化行、预检查后并发增长时同事务data SELECT返回0行。当前17项均通过，并由非实现者独立复跑。
+R2失败测试采用内存mock，覆盖空写入、回读损坏、分页retention、周日副本、清理失败，以及5个失败日期的孤儿不挤占30个verified日期。数据测试验证预检查超限时不物化行、预检查后并发增长时同事务data SELECT返回0行。核心17项已由非实现者独立复跑；报价联动后18项通过，新增格式2恢复及随后前向应用0006的兼容性检查。
 
 **额外实际运行验证（2026-11-03）**：使用独立 `.wrangler/backup-verification/state`、8794端口的本地workerd及真实本地D1/R2，实际完成16表（含迁移跟踪）/74个schema对象snapshot、R2写入与回读、commit marker及retention。随后在隔离库加入1000个客户、每条notes 10000字符（约10MB），runBackup明确返回 `BACKUP_BYTE_LIMIT`，Worker继续正常工作；清理仅该测试prefix后再次备份成功。自有测试服务随后停止。
 
-这些证明本地workerd契约与隔离恢复；不证明生产R2写入、远程数据库恢复或实际cron调度已经执行。生产部署负责人应补充真实scheduled执行与R2对象核对证据。测试没有访问生产业务数据或发送外部消息。
+上述8794演练证明本地workerd契约与隔离恢复。另2026-11-03 14:48核心版本生产检查已完成实际私有R2手动备份与回读verified，见 `production-core-checks.json`。这不证明远程数据库恢复或实际cron调度已经执行，也不证明尚未发布的报价格式3已在生产运行。所有隔离fixture测试没有访问生产业务数据或发送外部消息。
+
+**报价0006联动本地运行**：同一隔离persist目录前向应用0006后，真实workerd+D1/R2再次完成18表（含报价两表与migration tracking）、92个schema对象snapshot，完整回读、commit marker与retention通过。该自有8794服务随后停止。18项SQLite检查同时验证恢复后的quoteSnapshot完整性和中文打印HTML金额，格式2仍可恢复并继续应用0006。
 
 ## 5. 取得可信备份
 
@@ -90,7 +95,7 @@ R2失败测试采用内存mock，覆盖空写入、回读损坏、分页retentio
 Get-FileHash -LiteralPath '.wrangler\private-recovery\snapshot.json' -Algorithm SHA256
 ```
 
-结果必须与R2 metadata及成功事件/受控运行记录的checksum一致。只核对JSON内部schema hash不能替代整个文件的可信来源与完整性核对。格式1旧备份缺少当前身份/CRM结构，不能用格式2恢复helper冒充完整恢复；旧版本需按对应旧schema另行处理。
+结果必须与R2 metadata及成功事件/受控运行记录的checksum一致。只核对JSON内部schema hash不能替代整个文件的可信来源与完整性核对。格式1旧备份缺少当前身份/CRM结构，不能用当前helper冒充完整恢复；旧版本需按对应旧schema另行处理。格式2的核心备份与格式3的报价备份均由当前helper按各自表清单验证。
 
 ## 6. 生成恢复SQL并在隔离本地D1演练
 
@@ -111,11 +116,13 @@ console.log('Recovery SQL generated locally. Contents withheld.');
 先确认 `.wrangler/admin-recovery-isolated` 是一个新隔离目录。以下命令使用 `--local` 与独立persist目录，只写本地恢复环境，不要将其改为remote生产命令：
 
 ```powershell
-npx wrangler d1 execute gyutron_db --local --persist-to .wrangler/admin-recovery-isolated --file .wrangler/private-recovery/restore.sql
-npx wrangler d1 execute gyutron_db --local --persist-to .wrangler/admin-recovery-isolated --command "PRAGMA foreign_key_check; SELECT COUNT(*) AS users FROM admin_users; SELECT COUNT(*) AS live_sessions FROM admin_sessions; SELECT COUNT(*) AS owner_sessions FROM admin_owner_sessions;"
+npx wrangler d1 execute DB --local --persist-to .wrangler/admin-recovery-isolated --file .wrangler/private-recovery/restore.sql
+npx wrangler d1 execute DB --local --persist-to .wrangler/admin-recovery-isolated --command "PRAGMA foreign_key_check; SELECT COUNT(*) AS users FROM admin_users; SELECT COUNT(*) AS live_sessions FROM admin_sessions; SELECT COUNT(*) AS owner_sessions FROM admin_owner_sessions;"
 ```
 
 外键检查应无错误、各表计数与manifest一致、live_sessions与owner_sessions均为0。随后在同一隔离persist目录运行Worker，使用隔离环境的owner秘密/测试账号检查列表、详情、角色限制和新写入。不要复用生产会话或给恢复环境接通生产外发邮箱。上面的Wrangler命令是操作步骤；是否已实际运行由发布证据记录，不能凭命令存在宣称通过。
+
+命令使用 `DB` binding名称，因此同时适用于根项目和配置了不同实际数据库名称的独立客户包；执行前核实当前配置确实把DB指向预期实例。
 
 ## 7. 生产恢复与代码回退
 

@@ -3,6 +3,7 @@ import { renderAdminWorkspace, renderAdminLogin, getAdminAsset } from '../admin/
 import { handleAdminApi, workspaceJson } from './admin-api.mjs';
 import { handleAdminTeam } from './admin-team.mjs';
 import { handleAdminSystem } from './admin-system.mjs';
+import { handleAdminQuotes, handleQuoteDocument } from './admin-quotes.mjs';
 import { adminConfigured, verifyPassword } from '../platform/security/admin-auth.mjs';
 import {
   randomToken, cookieValue, getWorkspacePrincipal, createWorkspaceSession, revokeWorkspaceSession,
@@ -10,7 +11,7 @@ import {
 } from '../platform/security/workspace-auth.mjs';
 import { timingSafeEqual } from '../platform/security/hash.mjs';
 
-const BUILD = '2026.11.03.1';
+const BUILD = '2026.11.03.2';
 const LOGIN_COOKIE = 'gy_workspace_login';
 const READ = new Set(['GET', 'HEAD']);
 const SECURITY_HEADERS = {
@@ -36,10 +37,10 @@ function redirect(location, cookies = []) {
   return new Response(null, { status: 303, headers });
 }
 function fail(status, code, message) { return workspaceJson({ error: { code, message } }, status); }
-function langOf(url) { return url.searchParams.get('lang') === 'zh' ? 'zh' : 'en'; }
+function langOf(url) { const lang = url.searchParams.get('lang'); return ['en', 'zh', 'de', 'ja'].includes(lang) ? lang : 'en'; }
 function loginPage(env, url, secure, error = '', status = 200) {
   const token = randomToken();
-  return html(renderAdminLogin({ error, lang: langOf(url), csrfToken: token, configured: adminConfigured(env) }), status,
+  return html(renderAdminLogin({ error, lang: langOf(url), csrfToken: token, configured: adminConfigured(env), teamLogin: env.ADMIN_LOGIN_MODE === 'team' }), status,
     [`${LOGIN_COOKIE}=${token}; Path=/admin; HttpOnly; ${secure ? 'Secure; ' : ''}SameSite=Strict; Max-Age=900`]);
 }
 async function boundedText(request, limit = 8192) {
@@ -82,7 +83,7 @@ async function login(request, env, url, secure) {
     response.headers.set('retry-after', String(throttle.retryAfter)); return response;
   }
   const email = (form.get('email') || '').trim().toLowerCase(), password = form.get('password') || '';
-  if (new TextEncoder().encode(password).length > 256 || email.length > 254) return loginPage(env, url, secure, 'The email or password is incorrect.', 401);
+  if (new TextEncoder().encode(password).length > 256 || email.length > 254) return loginPage(env, url, secure, 'Incorrect password.', 401);
   let user = null, ok = false;
   if (!email) ok = await verifyPassword(env, password);
   else {
@@ -92,14 +93,15 @@ async function login(request, env, url, secure) {
   }
   if (!ok) {
     await loginAudit(env.DB, null, false).run();
-    return loginPage(env, url, secure, 'The email or password is incorrect.', 401);
+    return loginPage(env, url, secure, 'Incorrect password.', 401);
   }
   const principal = user ? { id: user.id, name: user.name, role: user.role } : { id: 'owner', name: 'Workspace owner', role: 'owner' };
   const session = await createWorkspaceSession(env.DB, env, user);
   const operations = [loginAudit(env.DB, principal, true)];
   if (user) operations.push(env.DB.prepare('UPDATE admin_users SET last_login_at = ? WHERE id = ?').bind(new Date().toISOString(), user.id));
   await env.DB.batch(operations);
-  return redirect(`/admin${form.get('lang') === 'zh' ? '?lang=zh' : ''}`, [workspaceCookie(session.token, secure),
+  const lang = ['en', 'zh', 'de', 'ja'].includes(form.get('lang')) ? form.get('lang') : 'en';
+  return redirect(`/admin${lang !== 'en' ? `?lang=${lang}` : ''}`, [workspaceCookie(session.token, secure),
     `${LOGIN_COOKIE}=; Path=/admin; HttpOnly; ${secure ? 'Secure; ' : ''}SameSite=Strict; Max-Age=0`]);
 }
 async function route(request, env, ctx, url) {
@@ -110,7 +112,7 @@ async function route(request, env, ctx, url) {
   }
   if (path === '/admin/auth/login' || path === '/admin/login') {
     if (request.method === 'POST') return login(request, env, url, secure);
-    if (READ.has(request.method)) return redirect(`/admin${langOf(url) === 'zh' ? '?lang=zh' : ''}`);
+    if (READ.has(request.method)) return redirect(`/admin${langOf(url) === 'en' ? '' : `?lang=${langOf(url)}`}`);
     return fail(405, 'METHOD_NOT_ALLOWED', 'Use the sign-in form.');
   }
   const principal = await getWorkspacePrincipal(request, env, env.DB);
@@ -137,6 +139,8 @@ async function route(request, env, ctx, url) {
   }
   if (path === '/admin/api/team' || path.startsWith('/admin/api/team/')) return handleAdminTeam(request, env, principal, url);
   if (path === '/admin/api/system' || path === '/admin/api/system/backup') return handleAdminSystem(request, env, principal, BUILD);
+  if (path === '/admin/api/quotes' || path.startsWith('/admin/api/quotes/')) return handleAdminQuotes(request, env, ctx, url, principal);
+  if (path.startsWith('/admin/quotes/')) return handleQuoteDocument(request, env, ctx, url, principal);
   if (path === '/admin/api/assignees') {
     if (request.method !== 'GET') return fail(405, 'METHOD_NOT_ALLOWED', 'This directory is read-only.');
     const result = await env.DB.prepare('SELECT id,name FROM admin_users WHERE active = 1 ORDER BY name LIMIT 500').all();

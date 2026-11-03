@@ -1,0 +1,211 @@
+{
+  "fixtureSource": "Same synthetic body as v1; nonempty internal response deliberately supplied and excluded",
+  "cjkExtractor": "MuPDF; pypdf maps some Japanese glyphs to compatibility radicals",
+  "rendererSHA256": "3f6e5826b74183e7c65447e8cdef4e2aeb8528882c6547e03f5f19e32772f42e",
+  "checks": [
+    {
+      "lang": "en",
+      "pages": 6,
+      "bytes": 250986,
+      "missingMarkers": [],
+      "marginReferenceEveryPage": true,
+      "pageCounterEveryPage": true,
+      "expectedTotalPresent": true,
+      "hasChinese": true,
+      "hasLanguageLabel": true,
+      "replacementGlyph": false,
+      "internalOutcomeExcluded": true,
+      "positions": [
+        {
+          "page": 1,
+          "footerTop": 814.32,
+          "bodyBottom": 749.44,
+          "clearance": 64.87
+        },
+        {
+          "page": 2,
+          "footerTop": 814.32,
+          "bodyBottom": 743.44,
+          "clearance": 70.87
+        },
+        {
+          "page": 3,
+          "footerTop": 814.32,
+          "bodyBottom": 755.44,
+          "clearance": 58.87
+        },
+        {
+          "page": 4,
+          "footerTop": 814.32,
+          "bodyBottom": 743.44,
+          "clearance": 70.87
+        },
+        {
+          "page": 5,
+          "footerTop": 814.32,
+          "bodyBottom": 769.63,
+          "clearance": 44.68
+        },
+        {
+          "page": 6,
+          "footerTop": 814.32,
+          "bodyBottom": 609.46,
+          "clearance": 204.86
+        }
+      ]
+    },
+    {
+      "lang": "zh",
+      "pages": 6,
+      "bytes": 268856,
+      "missingMarkers": [],
+      "marginReferenceEveryPage": true,
+      "pageCounterEveryPage": true,
+      "expectedTotalPresent": true,
+      "hasChinese": true,
+      "hasLanguageLabel": true,
+      "replacementGlyph": false,
+      "internalOutcomeExcluded": true,
+      "positions": [
+        {
+          "page": 1,
+          "footerTop": 815.07,
+          "bodyBottom": 749.44,
+          "clearance": 65.62
+        },
+        {
+          "page": 2,
+          "footerTop": 815.07,
+          "bodyBottom": 743.44,
+          "clearance": 71.62
+        },
+        {
+          "page": 3,
+          "footerTop": 815.07,
+          "bodyBottom": 755.44,
+          "clearance": 59.62
+        },
+        {
+          "page": 4,
+          "footerTop": 815.07,
+          "bodyBottom": 743.44,
+          "clearance": 71.62
+        },
+        {
+          "page": 5,
+          "footerTop": 815.07,
+          "bodyBottom": 770.19,
+          "clearance": 44.87
+        },
+        {
+          "page": 6,
+          "footerTop": 815.07,
+          "bodyBottom": 609.46,
+          "clearance": 205.61
+        }
+      ]
+    },
+    {
+      "lang": "de",
+      "pages": 6,
+      "bytes": 255031,
+      "missingMarkers": [],
+      "marginReferenceEveryPage": true,
+      "pageCounterEveryPage": true,
+      "expectedTotalPresent": true,
+      "hasChinese": true,
+      "hasLanguageLabel": true,
+      "replacementGlyph": false,
+      "internalOutcomeExcluded": true,
+      "positions": [
+        {
+          "page": 1,
+          "footerTop": 814.32,
+          "bodyBottom": 749.44,
+          "clearance": 64.87
+        },
+        {
+          "page": 2,
+          "footerTop": 814.32,
+          "bodyBottom": 743.44,
+          "clearance": 70.87
+        },
+        {
+          "page": 3,
+          "footerTop": 814.32,
+          "bodyBottom": 755.44,
+          "clearance": 58.87
+        },
+        {
+          "page": 4,
+          "footerTop": 814.32,
+          "bodyBottom": 743.44,
+          "clearance": 70.87
+        },
+        {
+          "page": 5,
+          "footerTop": 814.32,
+          "bodyBottom": 769.63,
+          "clearance": 44.68
+        },
+        {
+          "page": 6,
+          "footerTop": 814.32,
+          "bodyBottom": 609.46,
+          "clearance": 204.86
+        }
+      ]
+    },
+    {
+      "lang": "ja",
+      "pages": 6,
+      "bytes": 279625,
+      "missingMarkers": [],
+      "marginReferenceEveryPage": true,
+      "pageCounterEveryPage": true,
+      "expectedTotalPresent": true,
+      "hasChinese": true,
+      "hasLanguageLabel": true,
+      "replacementGlyph": false,
+      "internalOutcomeExcluded": true,
+      "positions": [
+        {
+          "page": 1,
+          "footerTop": 815.07,
+          "bodyBottom": 749.18,
+          "clearance": 65.89
+        },
+        {
+          "page": 2,
+          "footerTop": 815.07,
+          "bodyBottom": 743.18,
+          "clearance": 71.89
+        },
+        {
+          "page": 3,
+          "footerTop": 815.07,
+          "bodyBottom": 755.18,
+          "clearance": 59.89
+        },
+        {
+          "page": 4,
+          "footerTop": 815.07,
+          "bodyBottom": 743.18,
+          "clearance": 71.89
+        },
+        {
+          "page": 5,
+          "footerTop": 815.07,
+          "bodyBottom": 770.61,
+          "clearance": 44.46
+        },
+        {
+          "page": 6,
+          "footerTop": 815.07,
+          "bodyBottom": 609.77,
+          "clearance": 205.3
+        }
+      ]
+    }
+  ]
+}

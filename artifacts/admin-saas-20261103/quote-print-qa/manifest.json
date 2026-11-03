@@ -1,0 +1,75 @@
+{
+  "purpose": "Offline quotation print QA; synthetic fixture only; not a real customer offer",
+  "createdAt": "2026-11-03T07:09:21.829Z",
+  "rendererSha256": "c98d32e3c6cd9814a7123d49edc088236b4bf0362e5d765d695b65dce1895b8c",
+  "engine": "Google Chrome headless, Windows",
+  "render": "A4, browser headers and footers disabled",
+  "result": {
+    "pages": 6,
+    "allSkuMarkers": 50,
+    "allTermsMarkers": 40,
+    "totalMinor": 157420856,
+    "currency": "USD",
+    "missingMarkers": [],
+    "hasExpectedTotal": true,
+    "hasChinese": true
+  },
+  "scope": "Actual quote renderer HTML/CSS offline print test. Does not prove authenticated application UI, remote PDF service, or production quote deployment.",
+  "files": [
+    {
+      "name": "quotation-50lines.html",
+      "bytes": 30910,
+      "sha256": "d868ffd1ca0e7f3067cdc5811cd0cd857ff434d1f7f1bfd0808b601be5a98f0f"
+    },
+    {
+      "name": "quotation-50lines.pdf",
+      "bytes": 268454,
+      "sha256": "353eaeeac53f037efee0adf9841a26261d31213b98dcf6130914ba1db43def6d"
+    },
+    {
+      "name": "expected.json",
+      "bytes": 1580,
+      "sha256": "0a3e07dcaceaa1001175cfb8f93ec8887606fa49e01838ea2960caecb2ee8895"
+    },
+    {
+      "name": "pdf-checks.json",
+      "bytes": 452,
+      "sha256": "c0d333347f966864d06546ae7d995aa5d6bc1ea2186c8f52bb328585c0df32b8"
+    },
+    {
+      "name": "contact-sheet.jpg",
+      "bytes": 237026,
+      "sha256": "f7755be9752155b527bef5008f5aa94a4c91d8fc4013ad60844b0a3266229e05"
+    },
+    {
+      "name": "page-1.png",
+      "bytes": 118240,
+      "sha256": "fc27e4db2d098fda65c4233255824d8a4717605e6410aa4a535ff9c68982adf4"
+    },
+    {
+      "name": "page-2.png",
+      "bytes": 136367,
+      "sha256": "8aece159d814a34ea7606c1a60e483d325deeab05b743718b92a6de6cd4a1644"
+    },
+    {
+      "name": "page-3.png",
+      "bytes": 169678,
+      "sha256": "d42ced67853a85f5170bd18bec77f354f5aac547df5519ba851a1b8d2bfc95cf"
+    },
+    {
+      "name": "page-4.png",
+      "bytes": 140326,
+      "sha256": "0827e110d3e31cd411f15875713e646b7c6e13cd9f61e872774dbd79a5015ef8"
+    },
+    {
+      "name": "page-5.png",
+      "bytes": 134217,
+      "sha256": "b5df6724b047921d7ff8988796fca3f5608e9033254ba8882a1c5be4907c9049"
+    },
+    {
+      "name": "page-6.png",
+      "bytes": 364804,
+      "sha256": "88a1e2ba616082c36a207195637d28e513e641ba942c932783795ade557f1a53"
+    }
+  ]
+}

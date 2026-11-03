@@ -120,7 +120,17 @@ function eventStatement(db, principal, action, resource, id, conditional = false
 }
 async function batch(db, statements) {
   if (!db || typeof db.batch !== 'function') throw new WorkspaceError(503, 'DATABASE_UNAVAILABLE', 'Transactional storage is unavailable. Please try again later.');
-  const results = await db.batch(statements);
+  let results;
+  try { results = await db.batch(statements); }
+  catch (error) {
+    if (/Active quotations prevent (?:customer|opportunity) archiving/.test(error?.message || '')) {
+      throw new WorkspaceError(409, 'ACTIVE_DEPENDENCIES', 'Archive the active quotations linked to this record before archiving it.');
+    }
+    if (/Quotation history prevents opportunity customer reassignment/.test(error?.message || '')) {
+      throw new WorkspaceError(409, 'RELATED_RECORDS', 'This opportunity has quotation history. Its customer cannot be reassigned.');
+    }
+    throw error;
+  }
   if (results.some(result => result.success === false)) throw new WorkspaceError(503, 'DATABASE_ERROR', 'The change was not saved. Please try again.');
   return results;
 }
@@ -206,16 +216,27 @@ export async function readWorkspaceDashboard(db, principal, { timeZone } = {}) {
     db.prepare("SELECT COUNT(*) AS n FROM crm_tasks WHERE archived_at IS NULL AND status != 'done'"),
     db.prepare("SELECT COUNT(*) AS n FROM crm_tasks WHERE archived_at IS NULL AND status != 'done' AND due_date != '' AND due_date < ?").bind(today),
     db.prepare("SELECT (SELECT COUNT(*) FROM leads WHERE status = 'new') + (SELECT COUNT(*) FROM rfqs WHERE status = 'new') + (SELECT COUNT(*) FROM support_requests WHERE status = 'new') + (SELECT COUNT(*) FROM download_requests WHERE status = 'new') AS n"),
-    db.prepare('SELECT stage, currency, COUNT(*) AS count, COALESCE(SUM(amount_minor),0) AS amount_minor FROM crm_opportunities WHERE archived_at IS NULL GROUP BY stage,currency'),
+    // Sum integer blocks and remainders independently. Casting inside SQL keeps
+    // the driver from rounding a large integer before JavaScript sees it, while
+    // the smaller sums avoid the much earlier overflow of SUM(amount_minor).
+    db.prepare(`SELECT stage, currency, COUNT(*) AS count,
+      CAST(COALESCE(SUM(amount_minor / 1000000),0) AS TEXT) AS amount_minor_blocks,
+      CAST(COALESCE(SUM(amount_minor % 1000000),0) AS TEXT) AS amount_minor_remainder
+      FROM crm_opportunities WHERE archived_at IS NULL GROUP BY stage,currency`),
     db.prepare('SELECT public_id, subject, type, actor_id, actor_name, customer_id, opportunity_id, occurred_at, created_at FROM crm_activities ORDER BY id DESC LIMIT 8'),
     db.prepare("SELECT public_id, title, status, priority, due_date, owner_id, version FROM crm_tasks WHERE archived_at IS NULL AND status != 'done' ORDER BY CASE WHEN due_date = '' THEN 1 ELSE 0 END, due_date, id DESC LIMIT 8"),
     db.prepare("SELECT 'leads' AS resource, COUNT(*) AS total, SUM(CASE WHEN status='new' THEN 1 ELSE 0 END) AS fresh FROM leads UNION ALL SELECT 'rfqs', COUNT(*), SUM(CASE WHEN status='new' THEN 1 ELSE 0 END) FROM rfqs UNION ALL SELECT 'support', COUNT(*), SUM(CASE WHEN status='new' THEN 1 ELSE 0 END) FROM support_requests UNION ALL SELECT 'downloads', COUNT(*), SUM(CASE WHEN status='new' THEN 1 ELSE 0 END) FROM download_requests"),
   ];
   const results = await batch(db, statements);
   const n = i => Number(results[i].results?.[0]?.n || 0);
+  const pipeline = (results[5].results || []).map(row => {
+    const exact = BigInt(row.amount_minor_blocks) * 1000000n + BigInt(row.amount_minor_remainder);
+    return { stage: row.stage, currency: row.currency, count: Number(row.count),
+      amount_minor_exact: exact.toString(), amount_minor: exact <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(exact) : null };
+  });
   return {
     counts: { customers: n(0), open_opportunities: n(1), open_tasks: n(2), overdue_tasks: n(3), unread_intake: n(4) },
-    pipeline: results[5].results || [], stages: STAGES,
+    pipeline, stages: STAGES,
     recentActivities: results[6].results || [], upcomingTasks: results[7].results || [],
     intake: (results[8].results || []).map(r => ({ ...r, total: Number(r.total || 0), fresh: Number(r.fresh || 0) })),
     generated_at: now(),

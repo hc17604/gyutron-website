@@ -1,0 +1,49 @@
+{
+  "sqlite": {
+    "passed": 5,
+    "checks": 5,
+    "fixtureOpportunities": 18030,
+    "unsafeGroupMinor": "9010000000000001",
+    "crossStageUsdMinor": "9010000000004004",
+    "maxSafeLegacyNumber": 9007199254740991,
+    "sourceRowsMaterialized": false
+  },
+  "localD1": {
+    "readOnlyRecursiveFixtureRows": 9011,
+    "amount_minor_blocks": "9010000000",
+    "amount_minor_remainder": "1",
+    "exactMinor": "9010000000000001",
+    "success": true,
+    "productionWrites": false
+  },
+  "actualFrontendFormatter": [
+    {
+      "lang": "en",
+      "usd": "$90,100,000,000,040.04",
+      "largeInputType": "exact decimal string",
+      "unsafeNumberRefused": true,
+      "jpyZeroFraction": true
+    },
+    {
+      "lang": "zh",
+      "usd": "US$90,100,000,000,040.04",
+      "largeInputType": "exact decimal string",
+      "unsafeNumberRefused": true,
+      "jpyZeroFraction": true
+    },
+    {
+      "lang": "de",
+      "usd": "90.100.000.000.040,04 $",
+      "largeInputType": "exact decimal string",
+      "unsafeNumberRefused": true,
+      "jpyZeroFraction": true
+    },
+    {
+      "lang": "ja",
+      "usd": "$90,100,000,000,040.04",
+      "largeInputType": "exact decimal string",
+      "unsafeNumberRefused": true,
+      "jpyZeroFraction": true
+    }
+  ]
+}

@@ -108,7 +108,8 @@ await test('staff, disabled staff and unknown emails use explicit login results'
   assert.equal((await login('staff-disabled@example.test', staffPassword)).response.status, 401);
   const unknown = await login('unknown@example.test', staffPassword), wrong = await login('staff-sales@example.test', 'wrong-password');
   assert.equal(unknown.response.status, 401); assert.equal(wrong.response.status, 401);
-  assert.ok(unknown.text.includes('The email or password is incorrect.')); assert.ok(wrong.text.includes('The email or password is incorrect.'));
+  assert.ok(unknown.text.includes('Incorrect password.')); assert.ok(wrong.text.includes('Incorrect password.'));
+  assert.ok(!unknown.text.includes('unknown@example.test'));assert.ok(!wrong.text.includes('staff-sales@example.test'));
 });
 await test('login throttling is atomic and counts attempts without recording raw IP', async () => {
   const request = new Request('https://www.gyutron.test/admin/auth/login', { headers: { 'cf-connecting-ip': '192.0.2.77' } });

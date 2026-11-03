@@ -1,0 +1,16 @@
+{
+  "name": "gyutron-operations-instance",
+  "private": true,
+  "version": "2026.11.3",
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "check": "node scripts/verify-instance.mjs",
+    "test": "node scripts/smoke-admin-api.mjs && node scripts/smoke-admin-auth.mjs && node scripts/smoke-admin-quotes.mjs && node scripts/smoke-admin-backup.mjs && node scripts/smoke-admin-aggregation.mjs",
+    "build": "wrangler deploy --config wrangler.toml --dry-run --outdir .wrangler/build",
+    "dev": "wrangler dev --config wrangler.toml --local --persist-to .wrangler/state",
+    "migrate:local": "wrangler d1 migrations apply DB --config wrangler.toml --local --persist-to .wrangler/state",
+    "migrate:remote": "wrangler d1 migrations apply DB --config wrangler.toml --remote",
+    "deploy": "wrangler deploy --config wrangler.toml"
+  },
+  "devDependencies": { "wrangler": "4.93.1" }
+}

@@ -1,0 +1,40 @@
+# Configure with scripts/configure-instance.mjs after verifying separate resources.
+# Secrets are supplied through wrangler secret put, never this file.
+name = "REPLACE_WORKER_NAME"
+main = "src/worker.mjs"
+compatibility_date = "2026-05-18"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[observability]
+enabled = true
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = true
+
+[triggers]
+crons = ["0 18 * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "REPLACE_DATABASE_NAME"
+database_id = "REPLACE_D1_DATABASE_ID"
+migrations_dir = "migrations"
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "REPLACE_R2_BUCKET_NAME"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "REPLACE_KV_NAMESPACE_ID"
+
+[vars]
+# Default: owner password-only sign-in. Optional explicit staff-email entry:
+# ADMIN_LOGIN_MODE = "team"
+ADMIN_WORKSPACE_NAME = "REPLACE_WORKSPACE_NAME"
+ADMIN_TIMEZONE = "REPLACE_TIMEZONE"
+DATA_SOURCE_ID = "REPLACE_INSTANCE_ID"
+DATA_SOURCE_NAME = "REPLACE_WORKSPACE_NAME"

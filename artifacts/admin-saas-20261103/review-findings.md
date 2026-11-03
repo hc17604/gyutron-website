@@ -9,7 +9,7 @@
 | ID | 严重度 | 状态 | 发现 |
 |---|---|---|---|
 | Q-001 | P0 | CLOSED / 实现及隔离运行验证 | 覆盖15张持久表及可选迁移记录；会话仅结构恢复 |
-| Q-002 | P0 | MITIGATED / 新路径已独立复测 | 新workspaceCsv已防公式注入；旧导出路由替换后再关闭 |
+| Q-002 | P0 | CLOSED / 41项及新路由审查 | 新/legacy出口均使用安全CSV，旧signed-cookie入口已替换 |
 | Q-003 | P1 | CLOSED / 已独立复测 | 非法日期已返回422 |
 | Q-004 | P1 | CLOSED / 真实SQLite测试 | owner_id验证有效active成员；销售不可重分配 |
 | Q-005 | P1 | CLOSED / 真实SQLite测试 | 有关联任务/活动时拒绝商机客户重分配 |
@@ -23,6 +23,16 @@
 | Q-013 | P1 | CLOSED / 独立复跑17项 | 备份字节上限改为SQL端预检查和同事务读取guard |
 | Q-014 | P1 | CLOSED / 独立复跑17项 | 失败R2对象不再影响可信备份retention |
 | Q-015 | P1 | CLOSED / 实际workerd复测 | D1 compound SELECT terms限制已用scalar subqueries解决 |
+| Q-016 | P1 | FIXED / 冻结源码复核 | 旧详情/历史/route异步回调不再覆盖新视图 |
+| Q-017 | P1 | CLOSED / 独立交错回归 | future-version不能把旧header误冻结为新版本 |
+| Q-018 | P2 | CLOSED / 日期回归 | 签发业务日与时区随snapshot冻结 |
+| Q-019–Q-020 | P1 | FIXED / 独立源码复核 | 财务计算失效与客户快照异步保存窗口已修 |
+| Q-021 | P0 | CLOSED-LOCAL / 18项及workerd | 报价两表进入格式3；格式2恢复兼容 |
+| Q-022 | P2 | VERIFIED / 文本与离线PDF | 153key德/日；50行6页PDF无缺项，四语UI另验 |
+| Q-023 | 交付门槛 | VERIFIED-PREVIEW / 最终ZIP另验 | 63文件manifest/私密扫描、4套测试与bundle通过 |
+| Q-024 | P2 | CLOSED / 精确聚合与4语格式化 | CRM总览超safeint金额采用SQL整数块及BigInt |
+| Q-025 | P2 | CLOSED / 四语真实PDF | fixed页脚改marginbox，每页ref/counter且无覆盖 |
+| Q-026 | P1 | CLOSED / 四语内部备注负向 | 客户print不再包含非冻结internal outcome note |
 
 ## Q-001 — 每日备份缺少新领域
 
@@ -45,6 +55,8 @@
 **验证关闭条件**：CSV内容负向测试通过；新导出路径按角色与筛选测试，viewer/sales不能绕过服务端export权限。
 
 **复查结果**：独立执行新的 `workspaceCsv`：`=1+1`、空格`+1`、tab`@SUM`、CR`-1`、LF`=1`均添加文本前缀；普通文本和带引号/逗号文本保持正确CSV引用。新路径该缺陷已缓解。旧 `toCsv` 仍保持原实现，需确认旧导出路由已被替换或修复，再关闭整个数据出口风险。
+
+**整体关闭证据**：新admin router不再接受旧signed cookie；旧CRM列表入口转入workspace，order-intents/events由新principal授权的legacy模块保留。两条CSV实现均复用 `workspaceCsv`，权限、过滤、10000行超限与私密字段测试通过；独立复跑API套件41/41。旧 `toCsv`已无管理出口调用。
 
 ## Q-003 — 非法日期产生500
 
@@ -96,7 +108,7 @@ update路径将won/lost概率强制为100/0，但create路径采用payload默认
 - 停用、密码变更和角色撤销实际失效；事务保护最后owner，避免两个并发降级请求移除全部owner。
 - PBKDF2/scrypt使用独立随机salt、明确参数和版本；不要输出hash、token、密码或生产导出。
 - Cookie/CSRF密钥不复用到不相关业务；CSRF覆盖JSON写操作和登录/退出；失败请求保留一致错误。
-- bootstrap owner用现有秘密进行一次性授权，并明确迁移后是否继续允许共享密码fallback；不能在团队模式下保留绕过用户撤销的永久共享超级入口。
+- 明确环境owner与命名员工的不同身份语义。用户后续明确选择共享密码owner入口；该入口持续存在是当前产品决定，不冒充具名员工审计或员工撤销。保留会话撤销、CSRF与限流；不得自主改变用户指定密码或把其长度作为本轮发布阻断。
 - 独立部署隔离应明确写出，不因有workspace名称就宣称同库多租户隔离已实现。
 
 **已审实现方向**：`workspace-auth.mjs`采用32随机字节opaque token、DB只存token hash、SameSite=Strict/HttpOnly/Secure Cookie、每次从DB读取active/role、2小时idle与8小时TTL；owner会话包含Worker秘密的fingerprint。0004角色只允许manager/sales/viewer，唯一owner是环境秘密控制的部署操作者。应明确这是持续存在的break-glass身份，不宣称每次owner行为已经归属到具名员工。
@@ -136,6 +148,14 @@ update路径将won/lost概率强制为100/0，但create路径采用payload默认
 
 最终备份17/17通过，后端agent独立复跑确认两项阻断关闭。源实现与runbook通过路径级diff检查。自有8794测试服务已停止。
 
+## Q-016 — 详情异步失败不能覆盖后打开的记录
+
+最新UI审查发现openRecord成功分支检查当前modal，但catch未检查；A详情pending→关闭A打开B→A失败时，旧catch可能覆盖B或重开已关闭dialog。loadHistory的catch同样缺少上下文检查；过期route().loadPage()回调也可能打开旧deep-link记录。
+
+前端已修：openRecord每次捕获独立context，success/catch均检查dialog.open与state.modal===context；历史success/catch同样检查；route延迟打开记录前检查expectedLoadId和原hash。独立复核最新冻结源码确认三项guard存在。最终浏览器异步交互仍归root的冻结后检查，不把源码复核称为浏览器通过。
+
+独立renderer检查确认：当前ADMIN_CLIENT、workspace与login输出中的inline style和可执行inline event均为0，攻击样本principal.name正确HTML/JSON转义，嵌入脚本syntax通过。较早源码的CSP inline-style候选不再存在。
+
 ## 原子审计语义复核
 
 Cloudflare官方说明batch内语句按顺序非并发执行，且整个batch是SQL事务，一条失败会回滚全部。[D1 batch文档](https://developers.cloudflare.com/d1/worker-api/d1-database/) [D1查询优化文档](https://developers.cloudflare.com/d1/observability/find-expensive-queries/) SQLite官方定义changes()读取最近完成的INSERT/UPDATE/DELETE影响行数，不含低级触发器。[SQLite changes()](https://www.sqlite.org/lang_corefunc.html#changes)
@@ -158,6 +178,75 @@ Cloudflare官方说明batch内语句按顺序非并发执行，且整个batch是
 2. 前端实现完成后检查所有数据出口、HTML注入面、混合币种、假功能、筛选一致性和错误状态。
 3. 发布前复查生产数据备份、迁移、部署与CI证据。
 4. 发布后以实际URL/版本与最小读写闭环验证，不输出真实客户数据。
+
+## Q-017 — future-version请求可签发旧内容快照（已关闭）
+
+独立交错复现：服务层读到v1 header，在写batch之前另一请求把terms改为新值并升至v2；签发请求预先携带v2时，旧实现CAS碰巧匹配当前v2，却将已读到的v1内容冻结。结果签发成功但重打完整性验证失败。
+
+修复后getQuote的header与items通过同一个db.batch读取；所有mutation先比较请求version与已读record.version，再以该record.version执行CAS。明确重复issue/revise/status的幂等返回仍在适当位置保留。独立复跑报价23/23，新增确定性future-version交错用例确认409且无issue audit；重新加载新版本后才可正常签发。
+
+## Q-018 — 签发日期须冻结业务时区（已关闭）
+
+原打印使用UTC字符串截取日期，与Asia/Singapore跨日时的业务日不一致，也可能因以后配置变化漂移。snapshot现保存timezone、issued_date与created_date，打印仅采用冻结日期。独立复跑23项包含UTC Nov2晚间、SG Nov3签发后切换环境UTC仍打印Nov3的回归。
+
+签发前还会重算持久header/items金额并核对一致；打印不仅检查SHA，还校验quote identity、family/revision、内容字段、每行金额和total语义。hash一致不能代替业务完整性。
+
+## Q-019–Q-020 — 报价编辑异步状态（源码复核关闭；浏览器另验）
+
+- 非财务文字输入原先使进行中的财务计算失效，却没有安排新计算，可能长期停留在Calculating。markDirty(financial)现只在财务输入、币种或增删行时失效计算；标题/条款只标记dirty。
+- 切换客户时原先存在“已选B、尚为A的recipient”且Save可用的窗口。现更换前明确HTML确认、加载期间禁用整个editor与Save，成功后一次性替换快照并清空商机，失败回退旧客户/商机并保留原recipient。最新源码独立复核，最终浏览器竞态由UI发布负责人另验。
+
+## Q-021 — 报价备份与旧核心恢复兼容（已关闭本地）
+
+格式3加入ops_quotes和ops_quote_items，17张持久表；可选迁移跟踪后实际18表、92schema对象。18项真实SQLite检查保留已签发snapshot/hash和冻结trigger，恢复后实际quoteSnapshot与中文打印验证金额2700。格式2核心备份仍可恢复，再前向应用0006。
+
+独立8794实际workerd+D1/R2已完成新表snapshot、回读、commit marker和retention；root的local-quotes-checks.json另外记录15/15实际本地报价流程与私有R2备份。生产报价格式3在真正发布后另验，不把本地运行写为线上证明。
+
+## Q-022 — 多页报价打印与多语文案
+
+Chrome headless将真实renderer的50行、40条双语条款和长description合成fixture打印成6页A4。全部50个SKU、40个条款marker、中文和USD1,574,208.56均存在，Poppler页图及contact sheet检查未发现裁切或重叠。制品在quote-print-qa子目录，含渲染器hash与文件SHA，不含真实客户数据。该版本续页缺少重复报价编号/页码，作为后续可用性改善记录，任何CSS变更后需重渲染。
+
+新增quote-extra-locales.mjs，德/日各153key，与English153项无missing/extra/空值/placeholder异常。Angebot/見積書、Finalisiert/発行済均不表示已经发送；确认明确无邮件副作用，折扣/税/运费明确手填。frontend遗漏的Unsaved changes已改为词典key。文本与源码检查不等于四语手机视觉验收。
+
+## Q-023 — 独立商业starter文档一致性（审查中）
+
+入口源码只允许/admin、最小health与品牌静态资源，没有公共forms、Data API、Shop映射。模板使用资源占位名，configure脚本离线且不覆盖已有wrangler.toml；新客户必须实际核实资源归属与私密设置。
+
+README错误声称owner有staff同样的12字符强制规则，已由实现者修正并经独立读取确认。恢复runbook示例统一DB binding和REPLACE_PRIVATE_R2_BUCKET，GYUTRON生产已验证事实单列，不指示新客户操作上游资源。
+
+对preview stage独立执行Python hashlib、精确63文件成员、私密路径及真实上游resource ID扫描，全部通过。独立scratch复跑41/29/23/18四套测试及Wrangler4.93.1 dry-run，bundle472.02KiB/gzip123.49KiB；未provision/deploy且原stage未改。另离线copy执行configure八项测试，拒绝占位/全0ID/坏时区/secret参数、阻止覆盖已有配置，Python tomllib验证Unicode/引号/换行名称完整往返。实现者的另一个scratch已执行npm ci；我的这一轮没有重复下载依赖。最终干净commit打包、ZIP hash与成员验证仍待产物生成后执行，preview_only=true不当作发行ZIP。
+
+## Q-024 — CRM总览大额聚合失去minor精度（已关闭）
+
+独立测试写入18,030条真实SQLite合成商机，其中9010条USD商机各1e12 minor，再加1 minor。原实现的SUM结果9010000000000001在Node SQLite驱动触发RangeError；普通JavaScript Number同样不能精确表示该奇数。
+
+仅修改readWorkspaceDashboard：SQL分别SUM整数1e6块与余数并CAST TEXT，JavaScript用BigInt重组。pipeline每组新增amount_minor_exact十进制字符串；旧amount_minor只在安全整数内保留number，超限为null。前端按exact字段BigInt累加并使用Intl整数部分加精确fraction格式化，不经过Number金额转换。
+
+smoke-admin-aggregation五项真实SQLite检查通过，覆盖超safeint末位、MAX_SAFE_INTEGER兼容、币种/阶段分组、零组、归档排除和仅返回聚合行。另实际本地D1执行只读9011行CTE，返回blocks字符串9010000000与remainder字符串1；没有写业务数据。独立提取真实前端money()四语验算USD9010000000004004→90,100,000,000,040.04，JPY仍零小数，unsafe Number明确拒绝。原API41/41回归通过。证据为aggregation-checks.json。
+
+## Q-025 — fixed页脚在Chrome分页错位（已关闭）
+
+四语新版打印初次真实渲染时，页码正确出现在底部，但负bottom fixed footer在第1页消失，在第2–6页出现在约62pt的顶部表头附近。失败证据明确保存在quote-print-qa-v2；不能作为最终验收。
+
+bottom:0离线候选在原50行fixture可回到底部，但占据正文区域，任意长条款仍有覆盖风险。实现者改用受身份保护的报价专属CSS路由和@page marginbox，避免动态reference挤占正文。
+
+独立v3检查四语各6页，每页quote reference与页码完整，50 SKU/40条款零缺失，最小正文至页脚文本44.46pt。四语contact sheet及DE金额页、JA标题/条款页视觉无裁切、方块或覆盖。最新26项API/SQLite也通过，包含CSS路由未登录401、坏ID404、HEAD/no-store、非法lang fallback及CSS字符串escaping。制品在quote-print-qa-v3；v2明确标为失败诊断，旧v1不覆写。
+
+## Q-026 — 内部反馈备注进入客户打印（已关闭）
+
+独立源码审查发现print原先把非冻结record.outcome_note写入客户文件，而UI没有如quote notes明确“打印”说明。人工记录的内部谈判评价可能外泄，也会改变既有签发文件。root明确决定该备注仅内部。
+
+实现者已从renderer彻底移除outcome_note；四语UI既有三个key明确内部性质，quote notes仍为冻结的打印内容。独立复跑26项含四语非空INTERNAL OUTCOME负向检查；v3真实PDF fixture刻意携带非空internal sentinel，四语HTML和PDF均不包含该值，workspace数据仍保留。
+
+## Q-027 — 切换日元后默认零金额阻止核算（已关闭）
+
+实际Chrome中新报价从USD切到JPY后，discount/tax/shipping保留0.00，严格零小数parser拒绝计算。前端只规范化纯零小数尾部（0.00→0、100.00→100），不做汇率换算、不截断非零小数。真实UI按2×12345核算JPY24,690，默认调整值均为0；非零小数仍保留并报错。独立复跑金额61项和规范化8项通过，见frontend-state-checks.mjs。
+
+## Q-028 — 客户关联异步返回清空刚选商机（已关闭）
+
+主agent真实Task UI快速选择Customer和Opportunity后，异步客户过滤结果重建select并清空刚选值；保存后详情Opportunity为空。前端统一关联加载序号与表单上下文保护，加载期禁用机会和提交，失败恢复；远程搜索返回时保留当前选择而非请求发起时的旧值，报价搜索同样处理。
+
+主agent刷新独立Chrome后再次快速选择并保存，新任务详情保留实际OPP关联，活动历史正确联动；前端另执行6项异步检查。任务完成刷新持久、关联活动和CSV真实下载也通过，证据root-ui-workflow-checks.json。没有向生产写入业务fixture。
 
 ## 已执行独立身份函数检查
 

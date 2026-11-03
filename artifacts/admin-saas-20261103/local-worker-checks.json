@@ -1,95 +1,90 @@
 {
   "runtime": "actual workerd + local D1",
   "origin": "http://127.0.0.1:8787",
-  "run": "4d655f9b",
-  "at": "2026-11-03T06:27:04.639Z",
+  "run": "b8d16695",
+  "at": "2026-11-03T08:10:51.939Z",
   "results": [
     {
       "name": "Unauthenticated JSON endpoints return 401 without HTML",
       "ok": true,
-      "ms": 27
+      "ms": 34
     },
     {
       "name": "Login and static assets load under strict CSP",
       "ok": true,
-      "ms": 14
+      "ms": 15
     },
     {
       "name": "Real Worker owner sign-in and bootstrap",
       "ok": true,
-      "ms": 50
+      "ms": 43
     },
     {
       "name": "Operational metadata reports actual schema without secrets",
       "ok": true,
-      "ms": 14
-    },
-    {
-      "name": "Manual backup is verified using actual workerd, local D1 and local R2",
-      "ok": true,
-      "ms": 100
+      "ms": 17
     },
     {
       "name": "Owner can create a salted staff account in actual workerd",
       "ok": true,
-      "ms": 122
+      "ms": 143
     },
     {
       "name": "Staff scrypt authentication works in actual workerd",
       "ok": true,
-      "ms": 128
+      "ms": 146
     },
     {
       "name": "Viewer cannot write, export, audit or manage team",
       "ok": true,
-      "ms": 61
+      "ms": 72
     },
     {
       "name": "Cross-origin write is denied before business logic",
       "ok": true,
-      "ms": 7
+      "ms": 10
     },
     {
       "name": "Customer creation and search persist in D1",
       "ok": true,
-      "ms": 35
+      "ms": 40
     },
     {
       "name": "Optimistic conflict returns 409 and preserves saved version",
       "ok": true,
-      "ms": 40
+      "ms": 45
     },
     {
       "name": "Customer to opportunity to task workflow persists",
       "ok": true,
-      "ms": 48
+      "ms": 54
     },
     {
       "name": "Activity writes and dashboard return actual records",
       "ok": true,
-      "ms": 44
+      "ms": 45
     },
     {
       "name": "Archive guards, child archive, parent archive and restore work",
       "ok": true,
-      "ms": 120
+      "ms": 122
     },
     {
       "name": "Safe filtered export and preserved operational routes work",
       "ok": true,
-      "ms": 55
+      "ms": 51
     },
     {
       "name": "Team deactivation invalidates existing staff session immediately",
       "ok": true,
-      "ms": 27
+      "ms": 29
     },
     {
       "name": "Sign out revokes server session and rejects replay",
       "ok": true,
-      "ms": 18
+      "ms": 19
     }
   ],
-  "passed": 17,
-  "total": 17
+  "passed": 16,
+  "total": 16
 }

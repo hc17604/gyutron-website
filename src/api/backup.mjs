@@ -4,14 +4,15 @@ import { getDb } from '../platform/db/client.mjs';
 import { sha256Hex } from '../platform/security/hash.mjs';
 
 // Independent of config.TABLES, which also governs public Data API access.
-export const BACKUP_TABLES = Object.freeze([
+const CORE_BACKUP_TABLES = Object.freeze([
   'leads', 'rfqs', 'support_requests', 'download_requests',
   'order_intents', 'order_intent_items', 'events', 'api_keys',
   'crm_customers', 'crm_opportunities', 'crm_tasks', 'crm_activities',
   'crm_audit', 'crm_intake_links', 'admin_users',
 ]);
+export const BACKUP_TABLES = Object.freeze([...CORE_BACKUP_TABLES, 'ops_quotes', 'ops_quote_items']);
 export const EXCLUDED_BACKUP_TABLES = Object.freeze(['admin_sessions', 'admin_owner_sessions', 'admin_login_attempts']);
-export const BACKUP_SCHEMA_VERSION = 2;
+export const BACKUP_SCHEMA_VERSION = 3;
 export const MAX_BACKUP_ROWS = 25000;
 export const MAX_BACKUP_BYTES = 8 * 1024 * 1024;
 const MAX_DATA_BYTES = MAX_BACKUP_BYTES - 256 * 1024;
@@ -75,7 +76,7 @@ export async function createBackupSnapshot(db, { exportedAt = new Date().toISOSt
   const sequences = names.has('sqlite_sequence') ? (result[sequenceIndex].results || []).filter(row => tableNames.includes(row.name)) : [];
   const snapshot = {
     manifest: {
-      schema_version: BACKUP_SCHEMA_VERSION, application_schema_baseline: 'admin-workspace-0005',
+      schema_version: BACKUP_SCHEMA_VERSION, application_schema_baseline: 'operations-quotes-0006',
       backup_id: backupId, exported_at: exportedAt, date: exportedAt.slice(0, 10), timezone: 'UTC',
       table_names: tableNames, excluded_tables: [...EXCLUDED_BACKUP_TABLES], counts,
       migration_tracking_table: names.has('d1_migrations') ? 'd1_migrations' : null,
@@ -183,16 +184,18 @@ function sqlValue(value) {
 /** Offline recovery helper. Output is for a NEW isolated DB, never an HTTP route. */
 export async function backupToSql(snapshot) {
   const manifest = snapshot?.manifest;
-  if (manifest?.schema_version !== BACKUP_SCHEMA_VERSION || !Array.isArray(snapshot.schema) || !snapshot.tables || typeof snapshot.tables !== 'object') throw fail('RESTORE_UNSUPPORTED_FORMAT');
+  const formatTables = manifest?.schema_version === 2 ? CORE_BACKUP_TABLES : manifest?.schema_version === BACKUP_SCHEMA_VERSION ? BACKUP_TABLES : null;
+  if (!formatTables || !Array.isArray(snapshot.schema) || !snapshot.tables || typeof snapshot.tables !== 'object') throw fail('RESTORE_UNSUPPORTED_FORMAT');
+  const restorePermitted = new Set([...formatTables, ...EXCLUDED_BACKUP_TABLES, ...optionalTables]);
   if (await sha256Hex(JSON.stringify(snapshot.schema)) !== manifest.schema_sha256) throw fail('RESTORE_SCHEMA_CHECKSUM');
   if (EXCLUDED_BACKUP_TABLES.some(table => table in snapshot.tables)) throw fail('RESTORE_SESSION_DATA_FORBIDDEN');
   const tableNames = Object.keys(snapshot.tables);
-  if (BACKUP_TABLES.some(table => !tableNames.includes(table)) || tableNames.some(table => !permittedTables.has(table))) throw fail('RESTORE_TABLE_LIST');
+  if (formatTables.some(table => !tableNames.includes(table)) || tableNames.some(table => !restorePermitted.has(table))) throw fail('RESTORE_TABLE_LIST');
   if (!Array.isArray(manifest.table_names) || [...manifest.table_names].sort().join(',') !== [...tableNames].sort().join(',')) throw fail('RESTORE_TABLE_LIST');
   for (const table of tableNames) if (!Array.isArray(snapshot.tables[table]) || snapshot.tables[table].length !== manifest.counts?.[table]) throw fail('RESTORE_ROW_COUNT');
   const schemaTables = snapshot.schema.filter(row => row.type === 'table').map(row => row.name);
-  if ([...requiredSchemaTables, ...tableNames].some(table => !schemaTables.includes(table)) || new Set(snapshot.schema.map(row => row.name)).size !== snapshot.schema.length) throw fail('RESTORE_SCHEMA_INCOMPLETE');
-  if (snapshot.schema.some(row => !['table', 'index', 'trigger', 'view'].includes(row.type) || !permittedTables.has(row.tbl_name) || typeof row.sql !== 'string' || !/^CREATE\s/i.test(row.sql))) throw fail('RESTORE_SCHEMA_INVALID');
+  if ([...formatTables, ...EXCLUDED_BACKUP_TABLES, ...tableNames].some(table => !schemaTables.includes(table)) || new Set(snapshot.schema.map(row => row.name)).size !== snapshot.schema.length) throw fail('RESTORE_SCHEMA_INCOMPLETE');
+  if (snapshot.schema.some(row => !['table', 'index', 'trigger', 'view'].includes(row.type) || !restorePermitted.has(row.tbl_name) || typeof row.sql !== 'string' || !/^CREATE\s/i.test(row.sql))) throw fail('RESTORE_SCHEMA_INVALID');
   const strictDdl = row => row.sql.replace(/^(CREATE\s+(?:UNIQUE\s+)?(?:TABLE|INDEX|TRIGGER|VIEW))\s+IF\s+NOT\s+EXISTS\s+/i, '$1 ') + ';';
   const lines = ['-- Sensitive recovery SQL: contains customer records and password hashes.', '-- Restore only into a NEW isolated database. Existing tables cause a failure.', 'PRAGMA defer_foreign_keys = ON;'];
   lines.push(...snapshot.schema.filter(row => row.type === 'table').map(strictDdl));

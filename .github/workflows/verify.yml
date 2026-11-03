@@ -85,6 +85,12 @@ jobs:
       - name: Verify Operations authentication and team access
         working-directory: ${{ github.workspace }}
         run: node scripts/smoke-admin-auth.mjs
+      - name: Verify quotations, immutable issue snapshots and revisions
+        working-directory: ${{ github.workspace }}
+        run: node scripts/smoke-admin-quotes.mjs
+      - name: Verify exact multi-currency dashboard aggregation
+        working-directory: ${{ github.workspace }}
+        run: node scripts/smoke-admin-aggregation.mjs
       - name: Verify Operations backup and isolated recovery
         working-directory: ${{ github.workspace }}
         run: node scripts/smoke-admin-backup.mjs

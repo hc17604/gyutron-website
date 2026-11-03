@@ -57,7 +57,7 @@ try {
   });
   await test('Operational metadata reports actual schema without secrets', async () => {
     const r = await owner.request('/admin/api/system'); assert.equal(r.response.status, 200, r.text);
-    assert.equal(r.data.data.workspace.tenancy, 'deployment'); assert.equal(r.data.data.migration.latest, '0005_crm_relation_guards.sql');
+    assert.equal(r.data.data.workspace.tenancy, 'deployment'); assert.equal(r.data.data.migration.latest, '0006_operations_quotes.sql');
     assert.ok(!r.text.includes(password)); assert.ok(!r.text.includes('password_hash'));
   });
   if (process.env.ADMIN_CHECK_BACKUP === '1') await test('Manual backup is verified using actual workerd, local D1 and local R2', async () => {

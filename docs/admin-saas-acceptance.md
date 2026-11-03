@@ -6,7 +6,7 @@
 
 ## 首版冻结检查点（2026-11-03）
 
-当前状态以本地可复现结果与发布负责人已核实的操作为基础；尚未部署新版Worker，不能把本地通过写成生产上线。独立实例是本版的租户隔离方式，不是共享库多租户产品。
+此冻结检查点记录部署前状态，以下另记生产验证进展；不能把本地通过自动写成生产上线。独立实例是本版的租户隔离方式，不是共享库多租户产品。
 
 | 证据 | 当前结果与范围 |
 |---|---|
@@ -23,6 +23,8 @@
 
 原生SQL备份证据见 `artifacts/admin-saas-20261103/production-backup-verification.json`；前端已执行范围与剩余项见 `frontend-qa.md`；具体缺陷和关闭证据见 `review-findings.md`。未执行生产恢复，也未宣称外部渗透测试、长期稳定性、会计合规或SLA。
 
+**生产核心更新（2026-11-03）**：`production-core-checks.json`记录14:48 Singapore、源ref fa373c7、版本2026.11.03.1实际生产11/11通过，包括精确资源匹配、staff scrypt/viewer/停用、Cookie/CSRF/退出、私有R2手动backup回读以及三语品牌/Shop健康。CI41591975891成功。随后用户明确决定只留共享密码入口，ab80aae版本生产9/9复验，见production-core-password-only-checks.json；共享密码按用户选择保留，不再自主轮换，不把长度标志作为发布阻断，也不记录密码值。核心已上线；报价0006及格式3备份仍在下一阶段开发。最新确认框/System人工视觉完整验收不能由这些API结果代替。
+
 ## A. 基础生产发布门槛
 
 以下 P0 要求对应本次实际发布的能力。影响身份、数据、写操作和既有网站的失败必须在发布前修复。
@@ -31,7 +33,7 @@
 |---|---|---|---|---|
 | AUTH-01 | P0 | 未登录访问页面/API/导出不能读取业务数据；API返回明确未认证状态 | HTTP负向请求及响应摘要 | 通过：本地 workerd / SQLite |
 | AUTH-02 | P0 | 错误密码被拒；连续失败受到实际限流；未配置凭证时管理端关闭 | 集成测试；不得记录密码值 | 通过：本地 auth / workerd |
-| AUTH-03 | P0 | 生产会话 Cookie 具有 HttpOnly、Secure、SameSite 和正确 Path；过期/篡改会话被拒 | Header与负向测试 | 通过：HTTPS头单测；生产待验 |
+| AUTH-03 | P0 | 生产会话 Cookie 具有 HttpOnly、Secure、SameSite 和正确 Path；过期/篡改会话被拒 | Header与负向测试 | 通过：单测及生产安全Cookie |
 | AUTH-04 | P0 | 所有写请求含CSRF防护；跨站提交被拒，包括登录和退出 | 跨Origin/无令牌测试 | 通过：本地路由/CSRF负向测试 |
 | AUTH-05 | P0 | 退出后客户端状态清除；若无服务端撤销能力，准确记录有效期及限制 | 实际退出/重放测试 | 通过：workerd退出/重放 |
 | SEC-01 | P0 | 所有SQL值参数绑定；表/列/排序参数有服务端白名单 | 源码审查及注入负向用例 | 通过：源码审查/SQL负向测试 |
@@ -62,8 +64,8 @@
 | BRAND-01 | P1 | 硬边、层级清晰、紧凑布局；按钮使用品牌语义token；长文案不喧宾夺主 | 桌面/手机截图 | 通过：本地1440/390及品牌源码 |
 | OPS-01 | P0 | Worker dry-run、平台smoke、Astro build与verify:all通过；审阅已有报告警告 | 命令日志 | 部分：Astro132/verify通过；最终dry-run待验 |
 | OPS-02 | P0 | agent:check、deploy:check、git diff --check通过；Shop边界无意外变更 | 命令日志/路径diff | 部分：Shop120/public-sync0；提交门槛待验 |
-| OPS-03 | P0 | 生产URL实际提供新版本；新接口/静态资源正确；主站与健康端点正常 | 部署ID/HTTP/哈希 | 待执行：Worker尚未部署 |
-| OPS-04 | P0 | CI最终成功；生产浏览器无新增错误；关键写读闭环得到验证 | CI链接/浏览器记录 | 待执行：CI/生产浏览器 |
+| OPS-03 | P0 | 生产URL实际提供新版本；新接口/静态资源正确；主站与健康端点正常 | 部署ID/HTTP/哈希 | 通过：核心生产11/11；报价待部署 |
+| OPS-04 | P0 | CI最终成功；生产浏览器无新增错误；关键写读闭环得到验证 | CI链接/浏览器记录 | 部分：CI成功/生产API通过；最终视觉待验 |
 | OPS-05 | P0 | 仓库包含当前状态、限制、迁移/部署/恢复命令和下一步 | HANDOFF与runbook | 部分：runbook/证据齐；最终HANDOFF待提交 |
 
 ## B. 面向外部客户的 SaaS 门槛
@@ -100,6 +102,37 @@
 | 视觉与交互 | 页面与状态实现 | 桌面/手机/键盘/错误状态 | 无核心流程阻断 |
 | 发布 | 本地全门槛、备份、部署、CI | 生产版本、回归、读写检查 | 新版实际在线，回退可执行 |
 | 发布后 | 监控/日志/问题修复 | 回归/故障与能力声明复查 | 已知限制真实披露 |
+
+## C2. 工业报价阶段验收（0006，本地验收；生产另验）
+
+金额使用单一币种的minor-unit整数。折扣、税费、运费为手填固定金额，不计算税率、不声称税务合规。quantity最终合同为1至Number.MAX_SAFE_INTEGER的正安全整数；每行extended、subtotal与final均独立限制不超过1e12。不能用巨额折扣抵消已溢出的subtotal。
+
+| ID | 必须验证的行为 | 证据与当前状态 |
+|---|---|---|
+| QUOTE-01 | 1–50行；SKU可空、description必填；quantity为正安全整数，价格非负整数 | 通过：真实SQLite边界；本地workerd流程 |
+| QUOTE-02 | BigInt中间运算；每行extended/subtotal/final各自cap，折扣不超subtotal | 通过：精确向量/中间溢出负向检查 |
+| QUOTE-03 | fixed discount/tax/shipping单位与报价币种一致；USD两位、JPY零位 | API/持久化/打印通过；最终UI由发布负责人验收 |
+| QUOTE-04 | 2×1234=2468，discount68、tax100、shipping200→2700；所有存储/显示一致 | 通过：恢复fixture金额2700及中文打印；UI另验 |
+| QUOTE-05 | 客户/商机有效且同客户；归档与并发reassign/restore不能打破关系 | 通过：真实SQLite guard/race；本地workerd冲突 |
+| QUOTE-06 | draft更新CAS和items整批替换原子；冲突或audit失败无半套items/ghost audit | 通过：50行替换/stale/audit失败回滚 |
+| QUOTE-07 | sales可起草/修改/修订，只有manager/owner签发和记录外部结果；viewer只读/打印 | 通过：角色负向API/路由检查 |
+| QUOTE-08 | issue保存发行方、接收方、地址、条款、有效期、items、金额和issuer的冻结snapshot | 通过：snapshot语义/哈希；日期与时区也冻结 |
+| QUOTE-09 | issued header/items在API和DB不可修改；以后客户/商机/品牌资料变化不改变重打文档 | 通过：直接SQL/API冻结；CRM变化不漂移 |
+| QUOTE-10 | 重复issue不重复签发；并发issue一个有效版本；失败整体回滚 | 通过：CAS/幂等；future-version交错独立复现并修复 |
+| QUOTE-11 | revision_of仅一个后继，family+revision唯一；并发revise不分叉，历史issued保留 | 通过：并发/唯一约束；本地workerd重试 |
+| QUOTE-12 | accepted/declined为人工记录的外部结果；反馈备注仅工作区内部，客户打印排除；无自动邮件/收款/库存/会计副作用 | 通过：状态/API；四语非空内部备注负向检查 |
+| QUOTE-13 | draft打印清楚标Draft；issued打印来自snapshot并验证SHA；只允许已登录读 | 通过：本地workerd HTTP/CSP；语义完整性负向检查 |
+| QUOTE-14 | 50行、长SKU/中文/长条款A4分页；表头与合计可读；无文本裁切或横向溢出 | 通过：v3四语各6页，50 SKU/40条款无缺失；每页reference/page counter，正文间距至少44.46pt |
+| QUOTE-15 | owner/manager归档恢复与active依赖规则明确；不永久删除issued历史 | 通过：API/SQL与本地workerd恢复 |
+| QUOTE-16 | 两张ops报价表进入格式3备份，snapshot/hash/items完整恢复；格式2仍可恢复并升级0006 | 通过：18项SQLite；真实workerd18表/92schema对象及R2回读 |
+| QUOTE-17 | 新版迁移前备份，0006应用、本地真实Worker、CI、生产hash/API/私有备份验证 | 待执行：发布负责人 |
+| QUOTE-18 | 商业包不含秘密/生产资源ID/数据，迁移/依赖/源码manifest与实际功能一致 | 待执行：独立包检查 |
+
+证据范围：`smoke-admin-quotes.mjs`最新26/26已独立复跑；`local-quotes-checks.json`为实际workerd+D1/R2的15/15。最新四语离线打印制品在 `artifacts/admin-saas-20261103/quote-print-qa-v3/`，仅含合成资料；旧v1与失败v2明确分别保存。报价德/日词典与English各153key精确对应，四语打印固定label与locale数字均已支持，用户录入的正文不自动翻译。语言文本检查不替代四语窄屏浏览器验收。当前报价生产发布、0006远程迁移与最终包另由发布证据确认。
+
+## C3. 大额总览聚合
+
+`smoke-admin-aggregation.mjs`五项真实SQLite检查通过，fixture包含18,030条合成商机。9010条各1e12 minor加1 minor得到精确字符串9010000000000001，超过safe integer的旧amount_minor返回null；MAX_SAFE_INTEGER以内保留number兼容。币种/阶段独立分组、零组、归档排除及仅返回聚合行均验证。SQL整数块/余数聚合另经实际本地D1只读CTE执行；前端真实formatter四语精确显示与JPY零小数检查通过，见aggregation-checks.json。尚不以本地边界检查宣称负载SLA。
 
 ## D. 证据记录
 

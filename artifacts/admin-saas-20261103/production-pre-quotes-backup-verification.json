@@ -1,0 +1,17 @@
+{
+  "file": "private-backups/before-quotes-0006.sql",
+  "bytes": 108352,
+  "sha256": "55700d93da5a2dea47e4d5c0013712c7d810875bb5860d7974290697b2e085e4",
+  "integrity": "ok",
+  "foreignKeyFailures": 0,
+  "tableCount": 19,
+  "migrations": [
+    "0001_init.sql",
+    "0002_order_intents.sql",
+    "0003_admin_workspace.sql",
+    "0004_admin_identity.sql",
+    "0005_crm_relation_guards.sql"
+  ],
+  "verifiedAt": "2026-11-03T07:58:42.596Z",
+  "customerRowsDisclosed": false
+}

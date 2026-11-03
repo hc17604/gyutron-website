@@ -68,7 +68,7 @@ export function workspaceBootstrap(env, principal) {
     resources: Object.keys(RESOURCES), stages: STAGES, currencies: CURRENCIES,
     currencyMinorUnits: Object.fromEntries(CURRENCIES.map(currency => [currency, currency === 'JPY' ? 0 : 2])),
     statuses: { customers: CUSTOMER_STATUSES, tasks: TASK_STATUSES }, priorities: TASK_PRIORITIES, activityTypes: ACTIVITY_TYPES,
-    capabilities: { crm: true, intake: true, versionedWrites: true, softArchive: true, appendOnlyAudit: true, deploymentIsolation: true },
+    capabilities: { crm: true, intake: true, quotes: true, quotePrint: true, immutableQuotes: true, versionedWrites: true, softArchive: true, appendOnlyAudit: true, deploymentIsolation: true },
   };
 }
 

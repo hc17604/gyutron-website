@@ -1,0 +1,40 @@
+{
+  "at": "2026-11-03T08:10:28.150Z",
+  "origin": "http://127.0.0.1:8787",
+  "method": "real Chrome UI through supported browser controls",
+  "productionWrites": false,
+  "checks": [
+    {
+      "name": "Task created with customer, high priority, due date and description",
+      "passed": true
+    },
+    {
+      "name": "Mark-complete persisted after full reload",
+      "passed": true
+    },
+    {
+      "name": "Activity created with linked opportunity and visible in timeline",
+      "passed": true
+    },
+    {
+      "name": "CSV browser download contained the synthetic UI activity",
+      "passed": true,
+      "rows": 4,
+      "bytes": 1228
+    },
+    {
+      "name": "Fast customer-to-opportunity selection persisted after asynchronous loading fix",
+      "passed": true,
+      "task": "TSK-20261103-5C3FE90940AD46BB9BE26DD17CABD32D",
+      "opportunity": "OPP-20261103-D5D8FB8A702E40F9B279A588C7A983DD"
+    },
+    {
+      "name": "Quotation draft, issue confirmation, revision and unchanged earlier print",
+      "passed": true,
+      "issuedTotalMinor": 5675,
+      "revisedDraftTotalMinor": 3676,
+      "currency": "USD"
+    }
+  ],
+  "screenshotLimit": "One later CDP full-page capture timed out; no screenshot is claimed for that action. Earlier quotation captures and final production proof are separate."
+}

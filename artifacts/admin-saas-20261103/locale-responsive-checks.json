@@ -1,0 +1,130 @@
+[
+  {
+    "lang": "en",
+    "overflow": false,
+    "root": 1421,
+    "stageColumns": "94.7422px 94.7422px 94.7422px 94.75px 94.7422px 94.7422px",
+    "title": "Overview",
+    "width": 1440
+  },
+  {
+    "lang": "en",
+    "overflow": false,
+    "root": 748,
+    "stageColumns": "68.25px 68.25px 68.25px 68.25px 68.25px 68.25px",
+    "title": "Overview",
+    "width": 767
+  },
+  {
+    "lang": "en",
+    "overflow": false,
+    "root": 371,
+    "stageColumns": "91px 91px 91px",
+    "title": "Overview",
+    "width": 390
+  },
+  {
+    "lang": "en",
+    "overflow": false,
+    "root": 301,
+    "stageColumns": "73.6641px 73.6641px 73.6641px",
+    "title": "Overview",
+    "width": 320
+  },
+  {
+    "lang": "zh-CN",
+    "overflow": false,
+    "root": 1421,
+    "stageColumns": "94.7422px 94.7422px 94.7422px 94.75px 94.7422px 94.7422px",
+    "title": "运营总览",
+    "width": 1440
+  },
+  {
+    "lang": "zh-CN",
+    "overflow": false,
+    "root": 748,
+    "stageColumns": "68.25px 68.25px 68.25px 68.25px 68.25px 68.25px",
+    "title": "运营总览",
+    "width": 767
+  },
+  {
+    "lang": "zh-CN",
+    "overflow": false,
+    "root": 371,
+    "stageColumns": "91px 91px 91px",
+    "title": "运营总览",
+    "width": 390
+  },
+  {
+    "lang": "zh-CN",
+    "overflow": false,
+    "root": 301,
+    "stageColumns": "73.6641px 73.6641px 73.6641px",
+    "title": "运营总览",
+    "width": 320
+  },
+  {
+    "lang": "de",
+    "overflow": false,
+    "root": 1421,
+    "stageColumns": "94.7422px 94.7422px 94.7422px 94.75px 94.7422px 94.7422px",
+    "title": "Übersicht",
+    "width": 1440
+  },
+  {
+    "lang": "de",
+    "overflow": false,
+    "root": 748,
+    "stageColumns": "68.25px 68.25px 68.25px 68.25px 68.25px 68.25px",
+    "title": "Übersicht",
+    "width": 767
+  },
+  {
+    "lang": "de",
+    "overflow": false,
+    "root": 371,
+    "stageColumns": "91px 91px 91px",
+    "title": "Übersicht",
+    "width": 390
+  },
+  {
+    "lang": "de",
+    "overflow": false,
+    "root": 301,
+    "stageColumns": "73.6641px 73.6641px 73.6641px",
+    "title": "Übersicht",
+    "width": 320
+  },
+  {
+    "lang": "ja",
+    "overflow": false,
+    "root": 1421,
+    "stageColumns": "94.7422px 94.7422px 94.7422px 94.75px 94.7422px 94.7422px",
+    "title": "概要",
+    "width": 1440
+  },
+  {
+    "lang": "ja",
+    "overflow": false,
+    "root": 748,
+    "stageColumns": "68.25px 68.25px 68.25px 68.25px 68.25px 68.25px",
+    "title": "概要",
+    "width": 767
+  },
+  {
+    "lang": "ja",
+    "overflow": false,
+    "root": 371,
+    "stageColumns": "91px 91px 91px",
+    "title": "概要",
+    "width": 390
+  },
+  {
+    "lang": "ja",
+    "overflow": false,
+    "root": 301,
+    "stageColumns": "73.6641px 73.6641px 73.6641px",
+    "title": "概要",
+    "width": 320
+  }
+]
