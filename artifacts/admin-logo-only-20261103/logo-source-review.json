@@ -1,0 +1,59 @@
+{
+  "at": "2026-11-03T15:50:45.632Z",
+  "version": "2026.11.03.8",
+  "source_only": true,
+  "browser_control_performed": false,
+  "official_reference": {
+    "component": "astro/src/components/Header.astro:28",
+    "background_source": "astro/public/global.css:21,176-184",
+    "background": "#FFFFFF",
+    "logo_path": "/gyutron-logo-purple.png",
+    "logo_bytes": 288890,
+    "logo_sha256": "15478e8ed4dc3ae6da14fc3b547a357ac9c4985f2598ae55d447462749ae386f",
+    "native_dimensions": [
+      1550,
+      260
+    ],
+    "unchanged": true
+  },
+  "render_samples": [
+    {
+      "lang": "en",
+      "brand": "<a class=\"workspace-brand\" href=\"#overview\" aria-label=\"GYUTRON\"><img src=\"/gyutron-logo-purple.png\" width=\"1550\" height=\"260\" alt=\"GYUTRON\"></a>",
+      "menu_nodes": 0,
+      "unique_preferences_and_site_links_preserved": true,
+      "nav_count": 22
+    },
+    {
+      "lang": "zh",
+      "brand": "<a class=\"workspace-brand\" href=\"#overview\" aria-label=\"GYUTRON\"><img src=\"/gyutron-logo-purple.png\" width=\"1550\" height=\"260\" alt=\"GYUTRON\"></a>",
+      "menu_nodes": 0,
+      "unique_preferences_and_site_links_preserved": true,
+      "nav_count": 22
+    }
+  ],
+  "design_css_sha256": "d89285fd192b80515a087b102686b8561145e2a1addfa98a946054bf45866591",
+  "root_palette_unchanged": true,
+  "nonzero_css_border_radius_declarations": 0,
+  "obsolete_menu_listeners": 0,
+  "layout_arithmetic": {
+    "sidebar_width": 232,
+    "module_outer_width": 208,
+    "module_padding": 12,
+    "image_width": 184,
+    "image_height": 30.864516129032257,
+    "module_min_height": 56,
+    "css_viewport_targets": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "note": "Source arithmetic only, not measured browser geometry"
+  },
+  "limitations": [
+    "No new browser visual verification because user stopped computer control",
+    "PNG remains the exact opaque official file; near-white image edge pixels253-255 are not recolored"
+  ],
+  "production_business_writes": false
+}

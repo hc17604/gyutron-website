@@ -1,0 +1,282 @@
+{
+  "at": "2026-11-03T15:49:05.352Z",
+  "checks": 69,
+  "results": [
+    {
+      "name": "workbench emitted ESM syntax",
+      "ok": true
+    },
+    {
+      "name": "workbench strict CSP templates",
+      "ok": true
+    },
+    {
+      "name": "workbench serves only bilingual workspace copy",
+      "ok": true
+    },
+    {
+      "name": "operations emitted ESM syntax",
+      "ok": true
+    },
+    {
+      "name": "operations strict CSP templates",
+      "ok": true
+    },
+    {
+      "name": "operations serves only bilingual workspace copy",
+      "ok": true
+    },
+    {
+      "name": "intelligence emitted ESM syntax",
+      "ok": true
+    },
+    {
+      "name": "intelligence strict CSP templates",
+      "ok": true
+    },
+    {
+      "name": "intelligence serves only bilingual workspace copy",
+      "ok": true
+    },
+    {
+      "name": "core emitted ESM syntax",
+      "ok": true
+    },
+    {
+      "name": "core strict CSP templates",
+      "ok": true
+    },
+    {
+      "name": "core serves only bilingual workspace copy",
+      "ok": true
+    },
+    {
+      "name": "crm emitted ESM syntax",
+      "ok": true
+    },
+    {
+      "name": "crm strict CSP templates",
+      "ok": true
+    },
+    {
+      "name": "crm serves only bilingual workspace copy",
+      "ok": true
+    },
+    {
+      "name": "notifications emitted ESM syntax",
+      "ok": true
+    },
+    {
+      "name": "notifications strict CSP templates",
+      "ok": true
+    },
+    {
+      "name": "notifications serves only bilingual workspace copy",
+      "ok": true
+    },
+    {
+      "name": "quotes emitted ESM syntax",
+      "ok": true
+    },
+    {
+      "name": "quotes strict CSP templates",
+      "ok": true
+    },
+    {
+      "name": "quotes serves only bilingual workspace copy",
+      "ok": true
+    },
+    {
+      "name": "locales emitted ESM syntax",
+      "ok": true
+    },
+    {
+      "name": "locales strict CSP templates",
+      "ok": true
+    },
+    {
+      "name": "locales serves only bilingual workspace copy",
+      "ok": true
+    },
+    {
+      "name": "layout emitted ESM syntax",
+      "ok": true
+    },
+    {
+      "name": "layout strict CSP templates",
+      "ok": true
+    },
+    {
+      "name": "layout serves only bilingual workspace copy",
+      "ok": true
+    },
+    {
+      "name": "English and Chinese shared copy",
+      "ok": true
+    },
+    {
+      "name": "English and Chinese service errors",
+      "ok": true
+    },
+    {
+      "name": "workspace language policy supports exactly English and Chinese",
+      "ok": true
+    },
+    {
+      "name": "fresh browser defaults to English even with a Chinese browser locale",
+      "ok": true
+    },
+    {
+      "name": "old zh browser cache does not override the new English default",
+      "ok": true
+    },
+    {
+      "name": "old de browser cache does not override the new English default",
+      "ok": true
+    },
+    {
+      "name": "old ja browser cache does not override the new English default",
+      "ok": true
+    },
+    {
+      "name": "new explicit Chinese preference is remembered",
+      "ok": true
+    },
+    {
+      "name": "invalid query de falls back to English before a saved preference",
+      "ok": true
+    },
+    {
+      "name": "invalid query ja falls back to English before a saved preference",
+      "ok": true
+    },
+    {
+      "name": "invalid query constructor falls back to English before a saved preference",
+      "ok": true
+    },
+    {
+      "name": "invalid query __proto__ falls back to English before a saved preference",
+      "ok": true
+    },
+    {
+      "name": "explicit query Chinese and English override remembered language",
+      "ok": true
+    },
+    {
+      "name": "unsupported new stored language falls back to English",
+      "ok": true
+    },
+    {
+      "name": "the actual language action persists only the versioned Chinese preference",
+      "ok": true
+    },
+    {
+      "name": "en default password-only login",
+      "ok": true
+    },
+    {
+      "name": "zh default password-only login",
+      "ok": true
+    },
+    {
+      "name": "workbench.js real shell asset",
+      "ok": true
+    },
+    {
+      "name": "operations.js real shell asset",
+      "ok": true
+    },
+    {
+      "name": "intelligence.js real shell asset",
+      "ok": true
+    },
+    {
+      "name": "notifications.js real shell asset",
+      "ok": true
+    },
+    {
+      "name": "crm-experience.js real shell asset",
+      "ok": true
+    },
+    {
+      "name": "local-source-sync.mjs real shell asset",
+      "ok": true
+    },
+    {
+      "name": "unique accessible labels and escaped form values",
+      "ok": true
+    },
+    {
+      "name": "reports escape embedded HTML",
+      "ok": true
+    },
+    {
+      "name": "CSV header \"﻿A,B\\r\\n1,2\"",
+      "ok": true
+    },
+    {
+      "name": "CSV header \"\\\"Company, Legal\\\",Amount\\nA,2\"",
+      "ok": true
+    },
+    {
+      "name": "CSV header \"\\\"Quote \\\"\\\"name\\\"\\\"\\\",Value\"",
+      "ok": true
+    },
+    {
+      "name": "CSV header \"\\\"Multi\\nline\\\",B\\n1,2\"",
+      "ok": true
+    },
+    {
+      "name": "CSV header \"A,B,\\n1,2,3\"",
+      "ok": true
+    },
+    {
+      "name": "CSV header \"\"",
+      "ok": true
+    },
+    {
+      "name": "daily schedule keeps provenance and removes irrelevant fields",
+      "ok": true
+    },
+    {
+      "name": "interval schedule removes daily setting",
+      "ok": true
+    },
+    {
+      "name": "documents fetch full body before editing summary row",
+      "ok": true
+    },
+    {
+      "name": "document limits and explicit model version",
+      "ok": true
+    },
+    {
+      "name": "exact analytics amount source and honest accounting captions",
+      "ok": true
+    },
+    {
+      "name": "exact money 9010000000004004 USD",
+      "ok": true
+    },
+    {
+      "name": "exact money -1 USD",
+      "ok": true
+    },
+    {
+      "name": "exact money -7000 USD",
+      "ok": true
+    },
+    {
+      "name": "exact money 125000 JPY",
+      "ok": true
+    },
+    {
+      "name": "exact money 125000 KRW",
+      "ok": true
+    },
+    {
+      "name": "single desktop layout model and tablet drawer boundary",
+      "ok": true
+    }
+  ]
+}

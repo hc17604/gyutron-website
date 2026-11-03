@@ -16,6 +16,24 @@
 
 ## Fast takeover snapshot
 
+- **Logo-only sidebar .8 IN PROGRESS (2026-11-03):** current user supersedes the workspace-switch
+  design: replace its mark/name/subtitle/chevron and duplicate menu with only the canonical official
+  full PNG logo. Module background must match the official navigation's opaque #FFFFFF; all square
+  corners and the .7 neutral frame/search remain. Root owns shell/layout/CSS/version and deployment;
+  official_header_reference independently verifies header/logo source and admin_experience reviews
+  integration. No site/Shop/data/credential changes. Browser control remains stopped by user Escape;
+  do not reconnect or use another browser-control path. Run source/build/asset checks and record the
+  absence of a new browser visual pass explicitly.
+  Source now passes19/19 suites and69 frontend checks, plus independent15/15 static integration
+  assertions. Astro build/verify:all, agent:check, deploy:check (0 changed/131 public-only retained)
+  and diff checks passed; i18n reports retain unrelated existing main-site heuristic suspects.
+  The original1550×260 PNG is byte-identical to the homepage asset, and the new logo block uses#FFF
+  from global.css's official .site-header. Old menu DOM/listeners are removed; Preferences/Open website
+  remain in their original navigation/footer. Frozen CSS SHA256
+  `d89285fd192b80515a087b102686b8561145e2a1addfa98a946054bf45866591`.
+  Evidence: artifacts/admin-logo-only-20261103/. Next: commit/push, wait for Cloudflare .8, compare
+  all14 dynamic assets against the compiled commit and inspect authenticated EN/zh logo markup.
+
 - **Industrial UI .7 LIVE AND VERIFIED, explicit user steering (2026-11-03):** user rejected all rounded
   corners. The user subsequently withdrew the request for increased purple: restore the prior .6
   light frame and palette, while keeping zero corners, removed wordmark and compact search.

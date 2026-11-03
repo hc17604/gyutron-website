@@ -3,7 +3,6 @@ import { ADMIN_ICONS } from './icons.mjs';
 export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify({tasks:ADMIN_ICONS.tasks,activity:ADMIN_ICONS.activity})+';\n'+String.raw`
 (()=>{
  const sidebar=document.getElementById('workspace-sidebar'),page=document.getElementById('workspace-page');
- const trigger=document.getElementById('workspace-menu-trigger'),menu=document.getElementById('workspace-menu');
  const commandDialog=document.getElementById('command-dialog'),commandTrigger=document.getElementById('command-trigger');
  function closeCommand(returnFocus=false){if(!commandDialog?.open)return;const opener=commandDialog._workspaceOpener;commandDialog.close();if(returnFocus)(opener?.isConnected?opener:commandTrigger)?.focus();}
  // Keep the compact search panel non-modal; outside interactions remain available.
@@ -11,7 +10,6 @@ export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify({tasks
  commandDialog?.addEventListener('close',()=>{const opener=commandDialog._workspaceOpener;if(document.activeElement===document.body||commandDialog.contains(document.activeElement))(opener?.isConnected?opener:commandTrigger)?.focus();});
  document.addEventListener('pointerdown',event=>{if(commandDialog?.open&&!commandDialog.contains(event.target)&&!commandTrigger?.contains(event.target))closeCommand();});
  document.addEventListener('focusin',event=>{if(commandDialog?.open&&!commandDialog.contains(event.target)&&!commandTrigger?.contains(event.target))closeCommand();});
- function closeMenu(returnFocus=false){if(!menu||!trigger)return;menu.hidden=true;trigger.setAttribute('aria-expanded','false');if(returnFocus)trigger.focus();}
  function syncNavigation(){
   const tab=location.hash.slice(1).split('?')[0]||'overview';
   const active=Array.from(sidebar?.querySelectorAll('[data-nav]')||[]).find(link=>link.dataset.nav===tab);
@@ -45,12 +43,7 @@ export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify({tasks
   // Restore focus only when the browser has lost it; never take it from another dialog/input.
   if(recordDialog.open&&body.dataset.recordSection==='related'&&document.activeElement===document.body&&!Array.from(document.querySelectorAll('dialog[open]')).some(other=>other!==recordDialog))selectRecordTab(body,'related',true);
  }
- trigger?.addEventListener('click',()=>{const opening=menu.hidden;closeMenu();if(opening){menu.hidden=false;trigger.setAttribute('aria-expanded','true');menu.querySelector('[role=menuitem]')?.focus();}});
- document.addEventListener('click',event=>{if(!menu?.hidden&&!menu.contains(event.target)&&!trigger.contains(event.target))closeMenu();});
- document.addEventListener('focusin',event=>{if(!menu?.hidden&&!menu.contains(event.target)&&!trigger.contains(event.target))closeMenu();});
- menu?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();event.stopPropagation();closeMenu(true);return;}const items=Array.from(menu.querySelectorAll('[role=menuitem]'));if(!['ArrowDown','ArrowUp','Home','End'].includes(event.key)||!items.length)return;event.preventDefault();const index=items.indexOf(document.activeElement),next=event.key==='Home'?0:event.key==='End'?items.length-1:(index+(event.key==='ArrowDown'?1:-1)+items.length)%items.length;items[next].focus();});
- menu?.addEventListener('click',event=>{if(event.target.closest('a'))closeMenu();});
- addEventListener('hashchange',()=>{closeMenu();syncNavigation();});syncNavigation();
+ addEventListener('hashchange',syncNavigation);syncNavigation();
  if(sidebar)new MutationObserver(syncNavigation).observe(sidebar,{attributes:true,subtree:true,attributeFilter:['aria-current']});
  if(page)new MutationObserver(decoratePresentation).observe(page,{childList:true,subtree:true});decoratePresentation();
  if(recordDialog)new MutationObserver(decorateRecordTabs).observe(recordDialog,{childList:true,subtree:true});

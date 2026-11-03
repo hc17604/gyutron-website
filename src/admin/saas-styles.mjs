@@ -41,12 +41,10 @@ svg{width:18px;height:18px}
 .sidebar-brand{display:none}
 .sidebar-brand img{display:block;width:158px;height:auto;max-height:30px;object-fit:contain;object-position:left center}
 .brand-caption{font-size:10px;line-height:14px;letter-spacing:.07em;color:var(--subtle);margin-top:3px}
-.workspace-switch{display:flex;align-items:center;gap:9px;width:calc(100% - 24px);margin:12px 12px 14px;padding:8px 10px;min-height:46px;border:1px solid var(--line);border-radius:0;background:var(--surface);color:var(--ink);box-shadow:var(--shadow-xs)}
-.workspace-switch:hover{background:#fdfdff;border-color:var(--line-strong)}
-.workspace-switch strong{font-size:13px;line-height:18px;font-weight:600}
-.workspace-switch small{font-size:11px;line-height:15px;margin-top:0;color:var(--muted)}
-.workspace-avatar{width:28px;height:28px;border-radius:0;background:var(--button-purple-light);color:var(--button-purple-deep);font-size:13px;flex:none}
-.workspace-avatar img,.identity-avatar img{width:20px;height:20px;object-fit:contain}
+/* Same opaque white as the official .site-header; preserve the original full logo. */
+.workspace-brand{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:calc(100% - 24px);min-height:56px;margin:12px 12px 14px;padding:12px;border:0;border-radius:0;background:#fff;text-decoration:none}
+.workspace-brand img{display:block;width:100%;max-width:184px;height:auto;object-fit:contain}
+.identity-avatar img{width:20px;height:20px;object-fit:contain}
 .workspace-nav{display:flex;flex-direction:column;gap:2px;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:0 10px 12px}
 .nav-section-label{font-size:10px;line-height:16px;letter-spacing:.06em;font-weight:600;color:var(--subtle);padding:0 10px;margin:6px 0 3px}
 .nav-section-secondary{margin-top:10px;padding-left:10px}
@@ -97,10 +95,6 @@ kbd{font-family:var(--font-mono);font-size:10px;line-height:15px;padding:1px 4px
 .eyebrow{font-size:11px;line-height:16px;letter-spacing:.05em;font-weight:500;color:var(--muted)}
 .workspace-footer{min-height:38px;margin-top:auto;padding:10px 28px;font-size:11px;line-height:18px;color:var(--subtle);border-top:1px solid var(--line);background:var(--surface)}
 
-.workspace-menu{position:fixed;top:66px;left:12px;z-index:80;width:208px;padding:5px;border:1px solid var(--line);border-radius:0;background:#fff;box-shadow:var(--shadow-popover)}
-.workspace-menu-heading{padding:8px 10px 7px;font-size:11px;line-height:18px;color:var(--subtle);font-weight:500;border-bottom:1px solid var(--line);margin-bottom:4px}
-.workspace-menu a{display:flex;align-items:center;gap:8px;min-height:34px;padding:7px 10px;border-radius:0;font-size:13px;line-height:20px;color:#505a6a}
-.workspace-menu a:hover,.workspace-menu a:focus-visible{background:var(--button-purple-light);color:var(--button-purple-deep)}
 
 /* Actions, forms and shared states */
 .button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:7px 12px;border:1px solid var(--line-strong);border-radius:0;background:var(--surface);color:#384151;font-size:13px;line-height:20px;font-weight:500;box-shadow:var(--shadow-xs);white-space:nowrap}
