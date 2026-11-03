@@ -1,0 +1,14 @@
+{
+  "source_commit": "e076a7064943793d6ac3bca14887bcba8962ec1d",
+  "directory": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261103143905-e076a7064943",
+  "zip": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261103143905-e076a7064943.zip",
+  "sha256": "361848d2e6fb78b49b005c5236c677177a103c151fd772fcd2aef11736142fd0",
+  "source_manifest": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261103143905-e076a7064943.source-manifest.json",
+  "checksums": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261103143905-e076a7064943.SHA256SUMS.txt",
+  "provisioned_resources": false,
+  "deployed": false,
+  "fresh_install_with_scripts_passed": true,
+  "portable_suites_passed": 18,
+  "zip_sha_verified": true,
+  "at": "2026-11-03T14:50:17.007317+00:00"
+}

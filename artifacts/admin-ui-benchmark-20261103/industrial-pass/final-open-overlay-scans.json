@@ -1,0 +1,587 @@
+[
+  {
+    "body": 1440,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 1440,
+    "scanned": 400,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 1440,
+    "overlay": "advanced filters",
+    "openDialogs": [
+      "crm-tool-dialog"
+    ]
+  },
+  {
+    "body": 1440,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 1440,
+    "scanned": 390,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 1440,
+    "overlay": "columns",
+    "openDialogs": [
+      "crm-tool-dialog"
+    ]
+  },
+  {
+    "body": 1440,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 1440,
+    "scanned": 437,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 1440,
+    "overlay": "new customer editor",
+    "openDialogs": [
+      "record-dialog"
+    ]
+  },
+  {
+    "body": 1440,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 1440,
+    "scanned": 519,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers?record=CUS-20261103-74999694110A4629B9B7EFBD719C98E3&record_type=customers",
+    "width": 1440,
+    "overlay": "customer drawer",
+    "openDialogs": [
+      "record-dialog"
+    ]
+  },
+  {
+    "body": 1440,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 1440,
+    "scanned": 519,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers?record=CUS-20261103-74999694110A4629B9B7EFBD719C98E3&record_type=customers",
+    "width": 1440,
+    "overlay": "archive confirmation cancelled",
+    "openDialogs": [
+      "record-dialog",
+      "confirmation-dialog"
+    ]
+  },
+  {
+    "body": 1440,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 1440,
+    "scanned": 551,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 1440,
+    "overlay": "notifications",
+    "openDialogs": [
+      "workspace-notification-dialog"
+    ]
+  },
+  {
+    "body": 1440,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 1440,
+    "scanned": 551,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 1440,
+    "overlay": "workspace menu",
+    "openDialogs": []
+  },
+  {
+    "body": 1425,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Overview",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 1425,
+    "scanned": 655,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#overview",
+    "width": 1440,
+    "overlay": "real search results popover",
+    "openDialogs": [
+      "command-dialog"
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 597,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 768,
+    "overlay": "advanced filters",
+    "openDialogs": [
+      "crm-tool-dialog"
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 768,
+    "overlay": "columns",
+    "openDialogs": [
+      "crm-tool-dialog"
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 505,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 768,
+    "overlay": "new customer editor",
+    "openDialogs": [
+      "record-dialog"
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers?record=CUS-20261103-74999694110A4629B9B7EFBD719C98E3&record_type=customers",
+    "width": 768,
+    "overlay": "customer drawer",
+    "openDialogs": [
+      "record-dialog"
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers?record=CUS-20261103-74999694110A4629B9B7EFBD719C98E3&record_type=customers",
+    "width": 768,
+    "overlay": "archive confirmation cancelled",
+    "openDialogs": [
+      "record-dialog",
+      "confirmation-dialog"
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 768,
+    "overlay": "notifications",
+    "openDialogs": [
+      "workspace-notification-dialog"
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 768,
+    "overlay": "mobile sidebar",
+    "openDialogs": []
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 768,
+    "overlay": "workspace menu",
+    "openDialogs": []
+  },
+  {
+    "body": 753,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Overview",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 753,
+    "scanned": 655,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#overview",
+    "width": 768,
+    "overlay": "real search results popover",
+    "openDialogs": [
+      "command-dialog"
+    ]
+  },
+  {
+    "body": 390,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 390,
+    "scanned": 597,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 390,
+    "overlay": "advanced filters",
+    "openDialogs": [
+      "crm-tool-dialog"
+    ]
+  },
+  {
+    "body": 390,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 390,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 390,
+    "overlay": "columns",
+    "openDialogs": [
+      "crm-tool-dialog"
+    ]
+  },
+  {
+    "body": 390,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 390,
+    "scanned": 505,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 390,
+    "overlay": "new customer editor",
+    "openDialogs": [
+      "record-dialog"
+    ]
+  },
+  {
+    "body": 390,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 390,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers?record=CUS-20261103-74999694110A4629B9B7EFBD719C98E3&record_type=customers",
+    "width": 390,
+    "overlay": "customer drawer",
+    "openDialogs": [
+      "record-dialog"
+    ]
+  },
+  {
+    "body": 390,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 390,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers?record=CUS-20261103-74999694110A4629B9B7EFBD719C98E3&record_type=customers",
+    "width": 390,
+    "overlay": "archive confirmation cancelled",
+    "openDialogs": [
+      "record-dialog",
+      "confirmation-dialog"
+    ]
+  },
+  {
+    "body": 390,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 390,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 390,
+    "overlay": "notifications",
+    "openDialogs": [
+      "workspace-notification-dialog"
+    ]
+  },
+  {
+    "body": 390,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 390,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 390,
+    "overlay": "mobile sidebar",
+    "openDialogs": []
+  },
+  {
+    "body": 390,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 390,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 390,
+    "overlay": "workspace menu",
+    "openDialogs": []
+  },
+  {
+    "body": 375,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Overview",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 375,
+    "scanned": 655,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#overview",
+    "width": 390,
+    "overlay": "real search results popover",
+    "openDialogs": [
+      "command-dialog"
+    ]
+  },
+  {
+    "body": 320,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 320,
+    "scanned": 597,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 320,
+    "overlay": "advanced filters",
+    "openDialogs": [
+      "crm-tool-dialog"
+    ]
+  },
+  {
+    "body": 320,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 320,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 320,
+    "overlay": "columns",
+    "openDialogs": [
+      "crm-tool-dialog"
+    ]
+  },
+  {
+    "body": 320,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 320,
+    "scanned": 505,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 320,
+    "overlay": "new customer editor",
+    "openDialogs": [
+      "record-dialog"
+    ]
+  },
+  {
+    "body": 320,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 320,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers?record=CUS-20261103-74999694110A4629B9B7EFBD719C98E3&record_type=customers",
+    "width": 320,
+    "overlay": "customer drawer",
+    "openDialogs": [
+      "record-dialog"
+    ]
+  },
+  {
+    "body": 320,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 320,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers?record=CUS-20261103-74999694110A4629B9B7EFBD719C98E3&record_type=customers",
+    "width": 320,
+    "overlay": "archive confirmation cancelled",
+    "openDialogs": [
+      "record-dialog",
+      "confirmation-dialog"
+    ]
+  },
+  {
+    "body": 320,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 320,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 320,
+    "overlay": "notifications",
+    "openDialogs": [
+      "workspace-notification-dialog"
+    ]
+  },
+  {
+    "body": 320,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 320,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 320,
+    "overlay": "mobile sidebar",
+    "openDialogs": []
+  },
+  {
+    "body": 320,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 320,
+    "scanned": 587,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 320,
+    "overlay": "workspace menu",
+    "openDialogs": []
+  },
+  {
+    "body": 305,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Overview",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 305,
+    "scanned": 655,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#overview",
+    "width": 320,
+    "overlay": "real search results popover",
+    "openDialogs": [
+      "command-dialog"
+    ]
+  }
+]

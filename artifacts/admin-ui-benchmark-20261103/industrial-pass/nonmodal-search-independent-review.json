@@ -1,0 +1,83 @@
+{
+  "format": 1,
+  "checked_at": "2026-11-03T15:12:52.897Z",
+  "release_scope": "2026.11.03.7 industrial workspace candidate",
+  "reviewer": "backend_core",
+  "sources": [
+    {
+      "path": "src/admin/client.mjs",
+      "bytes": 127393,
+      "sha256": "18f1ba1db705ac62dff2117ecaa493b1feedf6ba5c626fd19e921f9c7d1e38ed"
+    },
+    {
+      "path": "src/admin/shell.mjs",
+      "bytes": 14050,
+      "sha256": "505d41f746ba94b4017d6698747c0b142cd4943ff05036aafa5e26892c53b189"
+    },
+    {
+      "path": "src/admin/layout-client.mjs",
+      "bytes": 9197,
+      "sha256": "47d6dd38d75582e90b36d2eb95f3bc02701065067993448a23145368043a13f1"
+    },
+    {
+      "path": "src/admin/saas-styles.mjs",
+      "bytes": 65133,
+      "sha256": "285536aec8df72578501b4dff327a1e5a244f091d5c9aa43a7f4340ab9b46441"
+    }
+  ],
+  "findings": [],
+  "remaining_blockers": 0,
+  "review": {
+    "sidebar_wordmark_removed": true,
+    "no_stale_sidebar_brand_lookup_in_client": true,
+    "nonmodal_search_uses_show": true,
+    "open_guard_covers_any_other_open_dialog": true,
+    "trigger_toggles_search": true,
+    "outside_pointer_and_focus_close_search": true,
+    "explicit_escape_closes_populated_search_and_restores_opener": true,
+    "pending_modal_focus_dismisses_nonmodal_search": true,
+    "production_and_api_contracts_changed_by_this_review": false
+  },
+  "browser_probe": {
+    "at": "2026-11-03T15:10:22.474Z",
+    "passed": 7,
+    "failed": 0,
+    "checks": [
+      "trigger opens an actually non-modal search panel with focused input",
+      "trigger toggles the panel closed",
+      "an existing modal prevents command search from opening",
+      "a newly arriving modal dismisses the previously open non-modal search",
+      "one Escape closes populated search and restores the opener",
+      "outside pointer dismissal does not steal the newly focused target",
+      "close then synchronous reopen remained open with focused input after 300ms"
+    ],
+    "failures": [],
+    "closeTrace": [],
+    "production_accessed": false,
+    "viewport_changed": false,
+    "synthetic_actual_chrome": true
+  },
+  "queued_close_race": {
+    "status": "unconfirmed, no change requested",
+    "observation_window_ms": 300,
+    "native_close_events_observed": 0,
+    "limitation": "The CLI headless virtual-time run did not dispatch native close events. It observed successful close/reopen state, but does not establish or rule out the proposed queued-native-close focus race. Root chose no runtime change on this unconfirmed hypothesis."
+  },
+  "targeted_existing_checks": {
+    "frontend": 69,
+    "routes": 5,
+    "layout_module_syntax": true
+  },
+  "tools_kept_frozen": [
+    "scripts/check-rebuild-production.mjs",
+    "scripts/build-committed-admin-assets.mjs"
+  ],
+  "runtime_modified": false,
+  "viewport_changed": false,
+  "production_accessed": false,
+  "root_browser_or_sessions_touched": false,
+  "notes": [
+    "Actual emitted layout code and actual openCommand/trigger handlers ran against an isolated synthetic Chrome document.",
+    "This was a behavior/code review, not a visual viewport or production-data acceptance test."
+  ]
+}

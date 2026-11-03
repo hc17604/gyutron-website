@@ -1,0 +1,24 @@
+{
+  "at": "2026-11-03T14:57:36.531Z",
+  "passed": 4,
+  "failed": 0,
+  "tests": [
+    "exact bytes pass for every compiled asset",
+    "one altered byte fails while the remaining assets are still checked",
+    "reuseBackup true verifies existing history without creating a backup",
+    "default mode retains explicit new verified backup behavior"
+  ],
+  "shipped_checker_blocks_executed": true,
+  "synthetic_network_and_backup_apis": true,
+  "production_accessed": false,
+  "source_hashes": [
+    {
+      "path": "scripts/check-rebuild-production.mjs",
+      "sha256": "73cf764fd1888b86c43964a4e711ab3d14f96051ed0c5c8f440911d13b6b80dd"
+    },
+    {
+      "path": "scripts/build-committed-admin-assets.mjs",
+      "sha256": "309d59899c10b1f1221b941be539c487bb663435c9452a85188b88adfd44cd6d"
+    }
+  ]
+}

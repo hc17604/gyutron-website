@@ -1,0 +1,125 @@
+{
+  "at": "2026-11-03T14:55:32.076Z",
+  "source_ref": "e076a7064943793d6ac3bca14887bcba8962ec1d",
+  "production_business_accessed": false,
+  "public_assets_only": true,
+  "compiled": {
+    "expected_from_compiled_committed_source": true,
+    "ref": "e076a7064943793d6ac3bca14887bcba8962ec1d",
+    "wrangler": "4.93.1",
+    "source_tree": "7bb15ec3d4607e425c37bce3e71de244aef44266",
+    "source_files_verified": 111,
+    "source_bytes_from_git_blobs": true,
+    "archive_eol_changes_corrected": 106,
+    "source_archive_sha256": "8634faddcb68076f1b558fb37307fceae99ed5a6881a8fe4ee0380e6819fcbe4",
+    "bundle_sha256": "63fccea68cf5e4d4cf6cb57ce6d2c9cbbd27fe46fae037224a397c679ba4740c",
+    "config_sha256": "c0317c54be4d01be3ee269a053baa0e1f640a53c07784a94015efd05234bea50",
+    "asset_count": 14,
+    "scratch": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\.wrangler\\production-asset-verification\\1340df81-6aeb-4c0c-b256-3e4d092cb353",
+    "static_asset_scope": "Committed brand assets only; dynamic Worker source is complete. Static production assets are checked separately.",
+    "provisioned_resources": false,
+    "deployed": false
+  },
+  "passed": 14,
+  "failed": 0,
+  "results": [
+    {
+      "asset": "/admin/assets/design-system.css",
+      "status": 200,
+      "expected_sha256": "dbf8fab2f9a97184ef0cf041adf73c1f445330e2fe048520350047a826c2a163",
+      "live_sha256": "dbf8fab2f9a97184ef0cf041adf73c1f445330e2fe048520350047a826c2a163",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/layout.js",
+      "status": 200,
+      "expected_sha256": "6532241a1c0941647d4d275e0d7ab811493d26660008647ef05f67fddb17a906",
+      "live_sha256": "6532241a1c0941647d4d275e0d7ab811493d26660008647ef05f67fddb17a906",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/workspace.css",
+      "status": 200,
+      "expected_sha256": "69fda45902480c6e9243e2d3d0d4b73dc9cacbe790f932b4af1ad05ed2988514",
+      "live_sha256": "69fda45902480c6e9243e2d3d0d4b73dc9cacbe790f932b4af1ad05ed2988514",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/workspace.js",
+      "status": 200,
+      "expected_sha256": "beb183003f27fb4f38fa5268a9501f93e5e5b57f821b62846705e391f86ecfd1",
+      "live_sha256": "beb183003f27fb4f38fa5268a9501f93e5e5b57f821b62846705e391f86ecfd1",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/quotes.js",
+      "status": 200,
+      "expected_sha256": "695ea06b6f7d406e640c9e6b2c3d0ef824b839b4fcdff0a0378d32d9bf01fa44",
+      "live_sha256": "695ea06b6f7d406e640c9e6b2c3d0ef824b839b4fcdff0a0378d32d9bf01fa44",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/quotes.css",
+      "status": 200,
+      "expected_sha256": "f38dd81869651998170d684c1574c469a9baa439024a9e2e1b5bd8f9cf2806be",
+      "live_sha256": "f38dd81869651998170d684c1574c469a9baa439024a9e2e1b5bd8f9cf2806be",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/locales.js",
+      "status": 200,
+      "expected_sha256": "4c0395bd74588f5d83f9d9aba6ff81aa69b2f6b3fe466d722d8823614288e26a",
+      "live_sha256": "4c0395bd74588f5d83f9d9aba6ff81aa69b2f6b3fe466d722d8823614288e26a",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/notifications.js",
+      "status": 200,
+      "expected_sha256": "fb3dda1e60017c1f6a9ec725d634bffc30fdff82df1da8d2d89f83edf0d517df",
+      "live_sha256": "fb3dda1e60017c1f6a9ec725d634bffc30fdff82df1da8d2d89f83edf0d517df",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/notifications.css",
+      "status": 200,
+      "expected_sha256": "546b4b0562228925a95911cda80ff29a34086ad0037a7d7458832df9042849ba",
+      "live_sha256": "546b4b0562228925a95911cda80ff29a34086ad0037a7d7458832df9042849ba",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/workbench.js",
+      "status": 200,
+      "expected_sha256": "ae2f58e98052eee1ec678e9a4fe97887e793c3fb34f1d96625ee2f055a0c01a2",
+      "live_sha256": "ae2f58e98052eee1ec678e9a4fe97887e793c3fb34f1d96625ee2f055a0c01a2",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/operations.js",
+      "status": 200,
+      "expected_sha256": "a43b62930ad977d5ca1906b36e06cb002cd22adcd38842f5577db5527d227de2",
+      "live_sha256": "a43b62930ad977d5ca1906b36e06cb002cd22adcd38842f5577db5527d227de2",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/intelligence.js",
+      "status": 200,
+      "expected_sha256": "849c5f3cdef9ea09a1e14deecad1ef28ce1cdca32bc160bf26749162ad72ebad",
+      "live_sha256": "849c5f3cdef9ea09a1e14deecad1ef28ce1cdca32bc160bf26749162ad72ebad",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/local-source-sync.mjs",
+      "status": 200,
+      "expected_sha256": "93c5f9ea1a987226224fde4fd8cd85fdf90a323316f630bee464a56f9c54551e",
+      "live_sha256": "93c5f9ea1a987226224fde4fd8cd85fdf90a323316f630bee464a56f9c54551e",
+      "exact": true
+    },
+    {
+      "asset": "/admin/assets/crm-experience.js",
+      "status": 200,
+      "expected_sha256": "166f2c47d8e804119eb7f7c04c7a88269e807b959a7f0b4a4ac3dbd0c164bea8",
+      "live_sha256": "166f2c47d8e804119eb7f7c04c7a88269e807b959a7f0b4a4ac3dbd0c164bea8",
+      "exact": true
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-03",
+  "source": "src/admin/saas-styles.mjs",
+  "baseline": "7c9b662",
+  "cssSha256": "5a77f1036a1c8f99908b7cdc5a1d959cef56e10f0c7d1e9d72af1d00b057038c",
+  "cssBytes": 62739,
+  "esbuildWarnings": 0,
+  "sourceNonzeroRadiusDeclarations": 0,
+  "rootTokensExceptRadiusExactlyMatchBaseline": true,
+  "servedCssExact": true,
+  "overview": {
+    "badRadii": [],
+    "contentMargin": "8px 8px 8px 0px",
+    "header": "rgb(255, 255, 255)",
+    "height": 673,
+    "main": "rgb(255, 255, 255)",
+    "mainPadding": "24px 28px 28px",
+    "root": 1521,
+    "sidebar": "rgb(247, 248, 250)",
+    "topbar": "rgba(255, 255, 255, 0.97)",
+    "width": 1536,
+    "workspaceTop": 12
+  },
+  "search": {
+    "client": 412,
+    "dialog": {
+      "bottom": 580.4000244140625,
+      "height": 516.4000244140625,
+      "left": 1016.7999877929688,
+      "right": 1496.7999877929688,
+      "top": 64,
+      "width": 480,
+      "x": 1016.7999877929688,
+      "y": 64
+    },
+    "footer": {
+      "bottom": 579.6000366210938,
+      "height": 42,
+      "left": 1017.6000366210938,
+      "right": 1496.000030517578,
+      "top": 537.6000366210938,
+      "width": 478.3999938964844,
+      "x": 1017.6000366210938,
+      "y": 537.6000366210938
+    },
+    "footerBackground": "rgb(252, 252, 253)",
+    "headerBackground": "rgb(252, 252, 253)",
+    "modal": false,
+    "overflow": "auto",
+    "overlap": false,
+    "radius": "0px",
+    "results": {
+      "bottom": 537.5999984741211,
+      "height": 412,
+      "left": 1017.6000366210938,
+      "right": 1496.000030517578,
+      "top": 125.5999984741211,
+      "width": 478.3999938964844,
+      "x": 1017.6000366210938,
+      "y": 125.5999984741211
+    },
+    "scroll": 930
+  },
+  "screenshotsSavedAndViewed": [
+    "01-overview-en.png",
+    "02-search-navigation-en.png"
+  ],
+  "scope": "Only CSS source changed. Neutral frame/palette and original padding restored from the specified commit; zero radii, top12 workspace selector and compact nonmodal search retained. No production or business data writes. No viewport override.",
+  "limits": [
+    "Short-result query was not repeated after this restoration: the tab visibly navigated to Customers without a local navigation action during the shared browser inspection. The unchanged auto-height behavior was already tested in the preceding CSS revision; this pass directly reconfirmed long-list scrolling and no footer overlap.",
+    "The viewport was actual CSS1536x673, not a simulated mobile measurement."
+  ],
+  "accepted_image_copies": [
+    {
+      "file": "01-overview-en.png",
+      "bytes": 72553,
+      "sha256": "6a373236f743496e3c2a176ca62d0d5aa89566f9cca84b5189f0dfa2a023788b"
+    },
+    {
+      "file": "02-search-navigation-en.png",
+      "bytes": 73880,
+      "sha256": "b8b49f0b314a4836e8c0c036d9571aebc305a2d4e89f283cc01ae557edd17a7c"
+    }
+  ],
+  "final_palette": "Original light framework from 7c9b662; all corners zero; added purple experiment withdrawn by user."
+}

@@ -16,34 +16,32 @@
 
 ## Fast takeover snapshot
 
-- **UI release .6 — final keyboard refinement; production verification pending (2026-11-03):**
-  Initial UI .5 commit e076a70 is live (Cloudflare838a7889/fa50354d, CI41655765829 passed).
-  Final .6 makes Escape close populated command search in one press, rather than native search-input
-  clearing first; all other UI/backend behavior remains. Asset verification uses the committed Worker
-  build because esbuild reformats serialized language helpers; direct source-import hashes differ.
-  Workspace language is English/Chinese only, first visit defaults English; the new v2 preference
-  ignores old locale caches and unsupported language links fall back to English. Historical content
-  and printable quote compatibility remain; brand-site/Shop language routes are unchanged.
-  Root replaced the malformed reconstructed admin SVG with the original homepage PNG wordmark,
-  added the original GYUTRON mark, self-hosted official Inter/OFL and licensed Lucide paths, a
-  light unified design system, grouped/collapsible navigation and an accessible workspace menu.
-  Customer/opportunity previews are right drawers with Overview/Activity/Contacts & related tabs;
-  contact refresh preserves the tab and restores lost focus. Independent review found and fixed a
-  delayed-contact-restore race that could replace another customer's related panel (five new cases).
-  UI uses 232px navigation,56px topbar,14px body/table text,6px controls/8px cards and160ms motion
-  with reduced-motion support. Mobile search remains reachable; navigation/search/notifications
-  use44px touch areas. The new UI requirement supersedes the legacy zero-radius admin style.
-  Existing functional styles are kept in a legacy cascade layer; the new design system applies to
-  core CRM, quotes, operations, intelligence, notifications and management. No schema, secrets,
-  storage bindings or password changes. Password-only123 remains the explicit user choice.
-  Source19/19 suites passed; independent CRM controller10/10 and offline Chrome layout13/13 passed;
-  browser visual/responsive results and official references are in
-  `docs/admin-ui-benchmark-20261103.md` and `artifacts/admin-ui-benchmark-20261103/`.
-  Astro build/verify:all and deploy:check pass (0 changed,131 public-only preserved); Worker dry run
-  gzip about311KiB. Root owns release, admin_experience the design system, backend_core bilingual and
-  context-race review, research_quality the independent SaaS/visual acceptance. Final source commit,
-  live hashes, CI/deployment IDs and refreshed standalone ZIP will be appended after verification.
-  Baseline7d886a4 and pre-existing untracked QA/content-audit files were preserved.
+- **Industrial UI .7 IN PROGRESS, explicit user steering (2026-11-03):** user rejected all rounded
+  corners. The user subsequently withdrew the request for increased purple: restore the prior .6
+  light frame and palette, while keeping zero corners, removed wordmark and compact search.
+  This supersedes the previous6/8px decision: every workspace/login
+  component and pseudo-element must have zero corners; SVG rect corners are square too. Top-left
+  sidebar wordmark is removed from HTML and its obsolete client lookup is removed; workspace switch
+  starts at12px. The final pass uses the prior neutral sidebar, light topbar and white/gray frame,
+  preserving the existing restrained brand-purple actions, Inter typography and business functions.
+  The deep-purple topbar/purple-canvas experiment was explicitly rejected and is only intermediate QA.
+  Search is a non-modal upper-right panel (480px maximum, top64/right24, auto content height bounded
+  by viewport). Header/footer stay fixed and results scroll independently, eliminating the pictured
+  text-overlap defect. Outside pointer/focus dismisses it; Escape closes once and returns focus;
+  another open dialog blocks opening the search panel. English/Chinese only, English first default,
+  password-only123 and original data/bindings/secrets/schema remain.
+  Current live baseline .6 source7c9b662 passed CI41658447654 and all12 production checks. All14 dynamic
+  assets matched a true Wrangler4.93.1 build of111 verified Git blobs, plus4 original brand/font files;
+  direct source-import hashes are unsuitable for Function.toString serialization. Format4 existing
+  backup was reverified without creating another snapshot. The .6 portable ZIP is historical; .7
+  requires new source/visual/live acceptance and a regenerated committed-source archive.
+  Root owns shell/layout, source integration and deployment; admin_experience owns saas-styles;
+  research_quality independently checks screenshots, actual320/390/768 widths, all zero radii,
+  search overflow and neutral-frame fidelity. Backend independently reviews non-modal focus/races.
+  Latest QA and benchmark history: docs/admin-ui-benchmark-20261103.md and
+  artifacts/admin-ui-benchmark-20261103/industrial-pass/. Do not reuse rounded-design acceptance
+  as proof of this industrial revision. Baseline .5 sourcee076a70 and .6 source7c9b662 are preserved;
+  no production business test rows or external model calls have been created.
 
 - **Final interaction release .4 LIVE AND VERIFIED:** production .3 history below remains valid.
   Candidate .4 adds continuous bounded rule-run advancement with visible progress, navigation-safe

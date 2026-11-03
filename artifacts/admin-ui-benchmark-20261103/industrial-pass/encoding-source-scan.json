@@ -1,0 +1,5 @@
+{
+  "utf8_decode_errors": 0,
+  "replacement_or_common_mojibake_flags": [],
+  "scope": "src/admin/*.mjs; this does not prove every possible mojibake string absent"
+}

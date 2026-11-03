@@ -1,0 +1,120 @@
+{
+  "date": "2026-11-03",
+  "environment": "Local synthetic preview at 127.0.0.1:8799; independent login preview localhost:8799",
+  "source": "src/admin/saas-styles.mjs",
+  "css_bytes": 64425,
+  "css_sha256": "b44117ffe102e7d6759893fba694a7a2ed379b0a1e4906ab5c43a674c505a8c2",
+  "scope": "Industrial CSS revision only; shell removal, search interaction behavior and release owned by root agent.",
+  "checks": {
+    "esbuild_css_warnings": 0,
+    "source_nonzero_border_radius_declarations": 0,
+    "default_desktop": {
+      "actual_viewport_width": 1920,
+      "root_scroll_width": 1901,
+      "workspace_switch_top": 12,
+      "computed_nonzero_radius_elements_and_pseudos": 0
+    },
+    "quote_editor": {
+      "loaded": true,
+      "actual_viewport_width": 1920,
+      "root_scroll_width": 1901,
+      "computed_nonzero_radius_elements_and_pseudos": 0,
+      "server_verified_total": "USD 3,600.00",
+      "changed_fields": 0,
+      "saved": false
+    },
+    "search_long_navigation": {
+      "native_modal": false,
+      "top": 64,
+      "right": 24,
+      "width": 480,
+      "height": 519,
+      "z_index": 100,
+      "results_client_height": 412,
+      "results_scroll_height": 930,
+      "results_overflow_y": "auto",
+      "results_bottom": 540,
+      "footer_top": 540,
+      "overlap": false
+    },
+    "search_two_records": {
+      "query": "Atlas",
+      "native_modal": false,
+      "width": 480,
+      "height": 253,
+      "results_bottom": 274,
+      "footer_top": 274,
+      "overlap": false,
+      "real_quote_link_opened": true
+    },
+    "login": {
+      "actual_viewport_width": 1536,
+      "body_scroll_width": 1536,
+      "password_fields": 1,
+      "email_fields": 0,
+      "application_nonzero_radii": 0,
+      "browser_overlay_exception": "One empty injected [popover=manual] DIV has inline important radius 8px, opacity 0 and visibility hidden. It is not application markup and was not modified."
+    },
+    "application_console_errors": [],
+    "business_record_writes": 0,
+    "external_model_requests": 0
+  },
+  "visual_changes": [
+    "Deep purple 56px topbar, light purple navigation, purple-gray canvas and section headers; no gradients.",
+    "Workspace selector starts at 12px after the removed wordmark; navigation remains compact and readable.",
+    "All radius variables and declarations zero; workspace/login descendant and pseudo-element important zero fallback covers lazy modules.",
+    "SVG rect rx/ry zero and square/miter icon strokes; circular semantic shapes such as search lens preserved.",
+    "Search is a top-right compact surface with fixed header/footer, independently scrolling results and automatic short-result height."
+  ],
+  "screenshots_saved_and_viewed": [
+    "01-overview-en.png",
+    "04-quote-readonly-en.png",
+    "05-search-navigation-final.png",
+    "06-search-records-final.png",
+    "07-quote-editor-en.png",
+    "08-login-en.png"
+  ],
+  "superseded_screenshots": {
+    "02-search-navigation-en.png": "Initial modal interaction before root changed to nonmodal show; CSS layout was already correct.",
+    "03-search-records-en.png": "Initial fixed-height search; final auto-height version is 06."
+  },
+  "limits": [
+    "Mobile dimensions and independent interaction evidence are owned by the quality agent and are not inferred from this desktop pass.",
+    "No production data or settings were modified. No login submitted, no quote saved or issued.",
+    "This is a visual and computed-style check, not full WCAG certification or a repeat of the complete business regression suite."
+  ],
+  "accepted_image_copies": [
+    {
+      "file": "frontend-01-overview-en.png",
+      "bytes": 93822,
+      "sha256": "1af89e18fc49d05514c83618d5954b1e37e790a2386ffd846367d57b3cc32b05"
+    },
+    {
+      "file": "frontend-04-quote-readonly-en.png",
+      "bytes": 80339,
+      "sha256": "a01e57e3ad56b58ca1e556ab2a1ab10023e3bfecbbe17445bd8af24899fa1177"
+    },
+    {
+      "file": "frontend-05-search-navigation-final.png",
+      "bytes": 91093,
+      "sha256": "56757f98cc9c760c4eb65097a0b67b036a5c3a6f25ee1fbe143e9232adb09cc9"
+    },
+    {
+      "file": "frontend-06-search-records-final.png",
+      "bytes": 90722,
+      "sha256": "9f36180cb1288d60a5def7aab5adba3780098c023b562763a1ee82f67fe28e07"
+    },
+    {
+      "file": "frontend-07-quote-editor-en.png",
+      "bytes": 103503,
+      "sha256": "d4d7f343b9873f529e0b3f14dbbe271be6819a9bdf759f56e63598d26b732447"
+    },
+    {
+      "file": "frontend-08-login-en.png",
+      "bytes": 21841,
+      "sha256": "21fe7b76ffdb42577de690629133090150a3d48390062eb7bd4d166145dfe0f9"
+    }
+  ],
+  "superseded_for_final_palette": true,
+  "reason": "User withdrew added purple. Use neutral-final evidence for delivered appearance."
+}

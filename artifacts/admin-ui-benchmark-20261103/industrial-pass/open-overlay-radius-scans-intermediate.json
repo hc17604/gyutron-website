@@ -1,0 +1,126 @@
+[
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 615,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 768,
+    "overlay": "notifications open",
+    "openDialogs": [
+      {
+        "id": "workspace-notification-dialog",
+        "title": "workspace-notification-title"
+      }
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 625,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 768,
+    "overlay": "advanced filters open",
+    "openDialogs": [
+      {
+        "id": "crm-tool-dialog",
+        "title": "crm-tool-title"
+      }
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 615,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 768,
+    "overlay": "columns open",
+    "openDialogs": [
+      {
+        "id": "crm-tool-dialog",
+        "title": "crm-tool-title"
+      }
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 533,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers",
+    "width": 768,
+    "overlay": "new customer editor open",
+    "openDialogs": [
+      {
+        "id": "record-dialog",
+        "title": "dialog-title"
+      }
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 615,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers?record=CUS-20261103-74999694110A4629B9B7EFBD719C98E3&record_type=customers",
+    "width": 768,
+    "overlay": "read-only customer drawer open",
+    "openDialogs": [
+      {
+        "id": "record-dialog",
+        "title": "dialog-title"
+      }
+    ]
+  },
+  {
+    "body": 768,
+    "brandNodes": 0,
+    "height": 900,
+    "mainHeading": "Customers",
+    "mojibake": [],
+    "nonzero_radius": [],
+    "root": 768,
+    "scanned": 615,
+    "sidebarTop": 12,
+    "url": "http://127.0.0.1:8799/admin?lang=en#customers?record=CUS-20261103-74999694110A4629B9B7EFBD719C98E3&record_type=customers",
+    "width": 768,
+    "overlay": "archive confirmation open not confirmed",
+    "openDialogs": [
+      {
+        "id": "record-dialog",
+        "title": "dialog-title"
+      },
+      {
+        "id": "confirmation-dialog",
+        "title": "confirmation-title"
+      }
+    ]
+  }
+]

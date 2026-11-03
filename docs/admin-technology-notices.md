@@ -14,8 +14,9 @@ Navigation icons use the official Lucide SVG paths pinned to revision
 `aa0b77386c07630e5f1a9f877fd3ba4b2a4a1558` of https://github.com/lucide-icons/lucide.
 The full upstream copyright/license text is embedded in `src/admin/icons.mjs`, including the
 Lucide ISC notice and Feather-derived MIT notice. No third-party browser framework or chart library
-was added. Existing GYUTRON logos retain project ownership and branding restrictions. The admin now
-uses the same original purple PNG wordmark as the official homepage, rather than a reconstructed SVG.
+was added. Existing GYUTRON logos retain project ownership and branding restrictions. The login uses the same original purple PNG wordmark as the official homepage, rather than a reconstructed SVG.
+The workspace sidebar omits that wordmark at the owner's request; its company switch keeps the original
+small mark. The industrial revision applies square corners to controls, surfaces and SVG rectangles.
 
 The deployed service uses the existing Cloudflare Worker/D1/R2/KV environment. Open source technology
 underlies that environment (including workerd and SQLite), but Cloudflare's managed services are not
