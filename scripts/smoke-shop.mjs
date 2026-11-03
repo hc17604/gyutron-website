@@ -131,7 +131,10 @@ check("global storefront styling is mirrored while behavior and locale dictionar
 
 check("backend-safe order-intent files remain pinned", () => {
   for (const relative of [
-    "src/api/admin.mjs", "src/api/order-intents.mjs", "src/platform/config.mjs",
+    // Admin was intentionally upgraded to Operations; its preserved order-intent
+    // reads/writes/exports are exercised by smoke-admin-api and smoke-admin-auth.
+    // Storefront submission, schema and routing contracts remain pinned here.
+    "src/api/order-intents.mjs", "src/platform/config.mjs",
     "src/platform/ids.mjs", "src/platform/schemas.mjs", "src/worker.mjs",
     "scripts/smoke-platform.mjs",
   ]) baselineEqual(relative, backendRef);

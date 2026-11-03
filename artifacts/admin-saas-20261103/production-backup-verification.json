@@ -1,0 +1,17 @@
+{
+  "file": "private-backups/before-admin-upgrade.sql",
+  "bytes": 89269,
+  "sha256": "13ce90e1cb909aa2e21c018b15decc113c0b0089f1df24033d817be2b8931023",
+  "integrity": "ok",
+  "tables": {
+    "d1_migrations": 2,
+    "leads": 3,
+    "rfqs": 2,
+    "support_requests": 1,
+    "download_requests": 3,
+    "events": 196,
+    "api_keys": 0,
+    "order_intents": 1,
+    "order_intent_items": 3
+  }
+}

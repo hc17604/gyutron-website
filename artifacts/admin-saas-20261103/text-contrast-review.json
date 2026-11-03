@@ -1,0 +1,383 @@
+{
+  "scope": "Text color palette review only; not a WCAG certification. Actual browser checks remain required.",
+  "updates": [
+    {
+      "selector": "input::placeholder,textarea::placeholder",
+      "from": "#8b8e97",
+      "to": "#656d79",
+      "contrast_before": 3.03,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".brand-caption",
+      "from": "#7f808b",
+      "to": "#999ca8",
+      "contrast_before": 4.48,
+      "contrast_after": 6.41
+    },
+    {
+      "selector": ".nav-section-label",
+      "from": "#73747f",
+      "to": "#999ca8",
+      "contrast_before": 3.79,
+      "contrast_after": 6.41
+    },
+    {
+      "selector": ".nav-count",
+      "from": "#ededf0",
+      "to": "#656d79",
+      "contrast_before": 1.08,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".breadcrumbs>span:first-child",
+      "from": "#7a7d86",
+      "to": "#656d79",
+      "contrast_before": 3.8,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".breadcrumbs>span:nth-child(2)",
+      "from": "#bfc2c9",
+      "to": "#656d79",
+      "contrast_before": 1.65,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".search-trigger",
+      "from": "#92959e",
+      "to": "#656d79",
+      "contrast_before": 2.77,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": "kbd",
+      "from": "#888c96",
+      "to": "#656d79",
+      "contrast_before": 3.11,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".icon-button",
+      "from": "#737782",
+      "to": "#656d79",
+      "contrast_before": 4.14,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".metric-label",
+      "from": "#747783",
+      "to": "#656d79",
+      "contrast_before": 4.12,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".metric-detail",
+      "from": "#9396a0",
+      "to": "#656d79",
+      "contrast_before": 2.73,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".stack-meta",
+      "from": "#92959f",
+      "to": "#656d79",
+      "contrast_before": 2.77,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".stack-end",
+      "from": "#858994",
+      "to": "#656d79",
+      "contrast_before": 3.23,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".search-field svg",
+      "from": "#9498a3",
+      "to": "#656d79",
+      "contrast_before": 2.67,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".view-toggle button",
+      "from": "#81848e",
+      "to": "#656d79",
+      "contrast_before": 3.45,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": "th",
+      "from": "#7e828e",
+      "to": "#656d79",
+      "contrast_before": 3.55,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".cell-sub",
+      "from": "#9397a2",
+      "to": "#656d79",
+      "contrast_before": 2.7,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".cell-mono",
+      "from": "#9295a0",
+      "to": "#656d79",
+      "contrast_before": 2.76,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".badge-inactive,.badge-lost,.badge-closed,.badge-spam,.badge-archived",
+      "from": "#8a8d97",
+      "to": "#656d79",
+      "contrast_before": 3.06,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".badge-low",
+      "from": "#7d8591",
+      "to": "#656d79",
+      "contrast_before": 3.45,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".table-footer",
+      "from": "#9296a0",
+      "to": "#656d79",
+      "contrast_before": 2.74,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".empty-symbol",
+      "from": "#a0a5af",
+      "to": "#656d79",
+      "contrast_before": 2.29,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".kanban-heading span",
+      "from": "#8d93a0",
+      "to": "#656d79",
+      "contrast_before": 2.85,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".deal-customer",
+      "from": "#8c92a0",
+      "to": "#656d79",
+      "contrast_before": 2.88,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".deal-meta",
+      "from": "#9ba0aa",
+      "to": "#656d79",
+      "contrast_before": 2.43,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".kanban-empty",
+      "from": "#9b9fa9",
+      "to": "#656d79",
+      "contrast_before": 2.45,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".kanban-count",
+      "from": "#828896",
+      "to": "#656d79",
+      "contrast_before": 3.29,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".inbox-card .inbox-arrow",
+      "from": "#9398a4",
+      "to": "#656d79",
+      "contrast_before": 2.67,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".property dt",
+      "from": "#8b919d",
+      "to": "#656d79",
+      "contrast_before": 2.93,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".detail-subtitle",
+      "from": "#8b909b",
+      "to": "#656d79",
+      "contrast_before": 2.96,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".workspace-footer",
+      "from": "#a0a4ad",
+      "to": "#656d79",
+      "contrast_before": 2.31,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".footer-divider",
+      "from": "#c9ccd3",
+      "to": "#656d79",
+      "contrast_before": 1.49,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".form-field",
+      "from": "#717683",
+      "to": "#656d79",
+      "contrast_before": 4.2,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".form-help",
+      "from": "#9298a3",
+      "to": "#656d79",
+      "contrast_before": 2.68,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".detail-notes h3",
+      "from": "#808692",
+      "to": "#656d79",
+      "contrast_before": 3.38,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".detail-tabs button",
+      "from": "#969ba6",
+      "to": "#656d79",
+      "contrast_before": 2.58,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".command-group-label",
+      "from": "#9298a4",
+      "to": "#656d79",
+      "contrast_before": 2.68,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".command-result small",
+      "from": "#999faa",
+      "to": "#656d79",
+      "contrast_before": 2.46,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".command-footer",
+      "from": "#9299a6",
+      "to": "#656d79",
+      "contrast_before": 2.65,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".login-brand-footer",
+      "from": "#737582",
+      "to": "#999ca8",
+      "contrast_before": 3.84,
+      "contrast_after": 6.41
+    },
+    {
+      "selector": ".login-form-container>.eyebrow",
+      "from": "#8d8996",
+      "to": "#656d79",
+      "contrast_before": 3.16,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".login-intro",
+      "from": "#92939e",
+      "to": "#656d79",
+      "contrast_before": 2.82,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".login-form small",
+      "from": "#a0a4ae",
+      "to": "#656d79",
+      "contrast_before": 2.31,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".login-help",
+      "from": "#999faa",
+      "to": "#656d79",
+      "contrast_before": 2.46,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".login-back",
+      "from": "#747a86",
+      "to": "#656d79",
+      "contrast_before": 3.99,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".login-legal",
+      "from": "#b0b3bc",
+      "to": "#656d79",
+      "contrast_before": 1.94,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".intake-tabs button",
+      "from": "#8b919d",
+      "to": "#656d79",
+      "contrast_before": 2.93,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".timeline-actor",
+      "from": "#999faa",
+      "to": "#656d79",
+      "contrast_before": 2.46,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".result-count",
+      "from": "#9a9faa",
+      "to": "#656d79",
+      "contrast_before": 2.45,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".table-task-title.is-done",
+      "from": "#a2a7b1",
+      "to": "#656d79",
+      "contrast_before": 2.23,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".code-label",
+      "from": "#9198a4",
+      "to": "#656d79",
+      "contrast_before": 2.69,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".section-note",
+      "from": "#979eaa",
+      "to": "#656d79",
+      "contrast_before": 2.49,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".permission-note",
+      "from": "#8d94a1",
+      "to": "#656d79",
+      "contrast_before": 2.82,
+      "contrast_after": 4.83
+    },
+    {
+      "selector": ".login-wordmark span",
+      "from": "#9194a0",
+      "to": "#656d79",
+      "contrast_before": 2.8,
+      "contrast_after": 4.83
+    }
+  ]
+}

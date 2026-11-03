@@ -1,7 +1,7 @@
 # GYUTRON gyutron.com — Engineering Handoff (single source of truth)
 
 > Consolidated handoff for the agent/engineer taking over. `AGENTS.md` is now the concise active rule set;
-> this file owns current state and decision history. Last updated 2026-10-19. Obtain the current live
+> this file owns current state and decision history. Last updated 2026-11-03. Obtain the current live
 > HEAD with `git fetch origin` and `git rev-parse origin/main`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
 > 🏗️ **2026-06-06:** an **additive engineering foundation** was added — repo-root **`docs/`** + `astro/src/{config,types,data}` + `astro/src/lib/{api,forms,crm,cms,agent,logger}` (mock/placeholder) + `astro/.env.example`. See **§5b** and `docs/`.
@@ -17,6 +17,12 @@
 ## Fast takeover snapshot
 
 Read this block first; use the dated entries below only for task-relevant history.
+
+- **Operations upgrade in progress (2026-11-03):** `/admin` now has an independent industrial
+  workspace in `src/admin/`, CRM APIs/domain under `src/api/admin-*` and `src/platform/crm/`, and
+  revocable named-member sessions in `workspace-auth.mjs`. Production additive migrations 0003–0005
+  have been applied after a verified SQL backup. Worker release and final browser acceptance are
+  still being completed; use the newest dated entry and `docs/admin-saas-project-plan.md`.
 
 - **Repository:** `D:\AI PRODUT\GYUTRON web\website\gyutron-website-repo`, branch `main`. Run
   `git fetch origin` and `npm run agent:status`; do not trust a hard-coded HEAD in documentation.
@@ -67,7 +73,41 @@ Read this block first; use the dated entries below only for task-relevant histor
 
 ---
 
-## 🤝 CODEX HANDOFF — current state (2026-10-19)
+## 🤝 CODEX HANDOFF — current state (2026-11-03)
+
+> **2026-11-03 (Codex) — Core Operations workspace ready for release checks; work continues.**
+> Scope: `src/admin/` industrial EN/zh interface; `admin.mjs` authentication/router;
+> `admin-api.mjs`, `admin-team.mjs`, `admin-system.mjs`, `admin-legacy.mjs`; CRM schema/domain;
+> opaque 8h sessions with 2h idle, server roles, CSRF, hard login throttle, scrypt staff passwords;
+> customer/opportunity/task/activity CRUD, atomic append-only audit, safe exports, inbox conversion;
+> preserved order-intent/event operations, versioned writes, soft archive/restore, system status and
+> owner-reauthenticated verified manual backups. Daily backup schema v2 covers all persistent tables
+> and excludes live sessions; isolated restore and R2 readback/retention failures are tested.
+> Verification: Astro 132-page build + verify:all PASS; existing reports remain 3 multi-H1 homes,
+> 615 JS nav triggers, 42 pages/143 heuristic i18n tokens. Root agent:check/deploy:check PASS;
+> built/public diff 0; platform smoke 34, Shop smoke 120, API/legacy 41, auth/System 29, backup 17,
+> actual local workerd+D1+R2 flow 17/17 PASS. Worker dry-run and strict CSP source assertions PASS.
+> Local UI: actual sign-in/customer create/deep-link refresh/JPY quote-value opportunity and mobile
+> navigation observed at 1440/390; final confirmation/System/320/768 checks still pending because
+> browser input was stopped by the environment. Intermediate captures and truthful QA records are in
+> `artifacts/admin-saas-20261103/`. No real customer records were created by the new UI tests.
+> Production DB: pre-upgrade SQL backup 89,269 bytes, SHA256
+> `13ce90e1cb909aa2e21c018b15decc113c0b0089f1df24033d817be2b8931023`, restored into isolated
+> SQLite with integrity_check=ok. Backup is private outside Git under workspace outputs.
+> Remote 0003/0004/0005 migrations succeeded and remote migration list is empty.
+> Preserved: brand source/public assets and storefront submission/routing/schema. The Shop test's
+> former whole-file admin byte pin was replaced by dedicated semantic API/auth checks; remaining
+> protected Shop/backend files stay byte-pinned. No binding IDs or secrets changed.
+> Deploy: source commit/push and Worker release still pending at this entry. Existing broad
+> Wrangler OAuth can access D1/R2, but deployment listing needs the newer script scope; automatic
+> main-branch Cloudflare deployment remains the established release path. Current owner credential
+> still needs strengthening before external commercial deployment; no value is recorded here.
+> Limits: application JSON snapshots are bounded to 25k rows/8MiB; larger deployments require full
+> D1 export/Time Travel. Deployment isolation is one Worker+D1 per customer, not shared-DB tenancy.
+> Rollback: revert the task's Worker/UI source commit; retain additive tables, never drop production
+> data or restore the old backup over newer writes without a separate recovery procedure.
+> Next: commit/release core, verify production runtime including staff crypto and backups, continue
+> quotation/commercial delivery work and independent checks through the user's four-hour window.
 
 > **2026-10-19 (Codex) — Selected solution explorer option3 published and verified.**
 > User explicitly selected option3, requested fewer separator/model leader lines and background-tone

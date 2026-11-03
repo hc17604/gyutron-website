@@ -1,463 +1,169 @@
-/**
- * Lightweight internal Admin (NOT a customer portal). Server-rendered HTML from
- * the Worker — zero impact on the static Astro build. Single admin, protected by
- * a signed-cookie session (see security/admin-auth.mjs). Plain, on-brand, stable.
- *
- *   GET  /admin                      dashboard (counts)
- *   GET  /admin/:resource            list (?status= &cursor= &since=)
- *   GET  /admin/:resource.csv        CSV export
- *   GET  /admin/:resource/:id        detail
- *   POST /admin/:resource/:id        action: save (status+note) | spam | delete
- *   POST /admin/login   POST /admin/logout
- *
- * Resources: leads, rfqs, support, downloads, order intents, events
- * (events is read-only).
- */
-import { adminConfigured, isAuthed, verifyPassword, createSessionCookie, clearSessionCookie } from "../platform/security/admin-auth.mjs";
-import { getDb } from "../platform/db/client.mjs";
-import { list, count, getByPublicId, updateByPublicId, deleteByPublicId } from "../platform/db/repository.mjs";
-import { emitEvent } from "../platform/db/events.mjs";
-import { STATUS_VALUES, ACCESS_TYPES } from "../platform/schemas.mjs";
-import { toCsv, csvResponse } from "../platform/csv.mjs";
-import { rateLimit } from "../platform/security/ratelimit.mjs";
-import { requestContext } from "../platform/request.mjs";
+/** GYUTRON Operations authentication and server-side workspace boundary. */
+import { renderAdminWorkspace, renderAdminLogin, getAdminAsset } from '../admin/shell.mjs';
+import { handleAdminApi, workspaceJson } from './admin-api.mjs';
+import { handleAdminTeam } from './admin-team.mjs';
+import { handleAdminSystem } from './admin-system.mjs';
+import { adminConfigured, verifyPassword } from '../platform/security/admin-auth.mjs';
+import {
+  randomToken, cookieValue, getWorkspacePrincipal, createWorkspaceSession, revokeWorkspaceSession,
+  workspaceCookie, clearWorkspaceCookie, sameOrigin, checkCsrf, allowLoginAttempt, verifyStaffPassword,
+} from '../platform/security/workspace-auth.mjs';
+import { timingSafeEqual } from '../platform/security/hash.mjs';
 
-const RESOURCES = {
-  leads: { table: "leads", label: "Leads", editable: true },
-  rfqs: { table: "rfqs", label: "RFQs", editable: true },
-  support: { table: "support_requests", label: "Support", editable: true },
-  downloads: { table: "download_requests", label: "Downloads", editable: true },
-  "order-intents": {
-    table: "order_intents",
-    label: "Order Intents",
-    editable: true,
-    freshStatus: "pending_review",
-  },
-  events: { table: "events", label: "Events", editable: false, idCol: "event_id" },
+const BUILD = '2026.11.03.1';
+const LOGIN_COOKIE = 'gy_workspace_login';
+const READ = new Set(['GET', 'HEAD']);
+const SECURITY_HEADERS = {
+  'cache-control': 'no-store, private', 'x-robots-tag': 'noindex, nofollow',
+  'x-content-type-options': 'nosniff', 'referrer-policy': 'same-origin',
+  'x-frame-options': 'DENY', 'permissions-policy': 'camera=(), microphone=(), geolocation=()',
+  'content-security-policy': "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",
+  'x-gyutron-admin': BUILD,
 };
-
-const LIST_COLUMNS = {
-  leads: ["public_id", "created_at", "name", "company", "email", "product_interest", "status"],
-  rfqs: ["public_id", "created_at", "company", "email", "product_category", "quantity", "status"],
-  support: ["public_id", "created_at", "company", "email", "issue_type", "status"],
-  downloads: ["public_id", "created_at", "company", "email", "requested_file", "status"],
-  "order-intents": ["public_id", "created_at", "company", "email", "request_type", "item_count", "status"],
-  events: ["event_id", "created_at", "event_type", "entity_type", "entity_id"],
-};
-
-/* ------------------------------ entrypoint -------------------------------- */
-
-export async function handleAdmin(request, env, ctx, url) {
-  const secure = url.protocol === "https:";
-  const segments = url.pathname.replace(/^\/admin\/?/, "").split("/").filter(Boolean);
-
-  // Auth actions first.
-  if (segments[0] === "login" && request.method === "POST") return doLogin(request, env, secure, getDb(env));
-  if (segments[0] === "logout" && request.method === "POST") return doLogout(secure);
-
-  // Everything else requires a session.
-  if (!(await isAuthed(request, env))) {
-    return htmlResponse(loginPage(env), 200);
-  }
-
-  const db = getDb(env);
-  if (!db) return htmlResponse(page("Admin", `<p class="empty">No data store bound. Create D1 and add the <code>DB</code> binding (see docs/cloudflare-deployment.md).</p>`));
-
-  // Dashboard.
-  if (segments.length === 0) return dashboard(env, db);
-
-  // CSV export: /admin/<resource>.csv
-  let resourceKey = segments[0];
-  if (resourceKey.endsWith(".csv")) {
-    return exportCsv(db, resourceKey.slice(0, -4));
-  }
-
-  const resource = RESOURCES[resourceKey];
-  if (!resource) return htmlResponse(page("Not found", `<p class="empty">Unknown section.</p>`), 404);
-
-  // Detail / action: /admin/<resource>/<id>
-  if (segments.length >= 2) {
-    const id = decodeURIComponent(segments.slice(1).join("/"));
-    if (request.method === "POST") return doAction(request, db, resourceKey, id, secure, env);
-    return detailView(db, resourceKey, id);
-  }
-
-  // List: /admin/<resource>
-  return listView(db, resourceKey, url);
+function secured(response, head = false) {
+  const headers = new Headers(response.headers);
+  for (const [key, value] of Object.entries(SECURITY_HEADERS)) headers.set(key, value);
+  return new Response(head ? null : response.body, { status: response.status, headers });
 }
-
-/* ------------------------------- auth flow -------------------------------- */
-
-async function doLogin(request, env, secure, db) {
-  // Throttle login attempts per IP to blunt online brute force. No-op without a
-  // RATE_LIMIT KV binding, so a strong ADMIN_PASSWORD is still required.
-  const ctx = await requestContext(request, env);
-  const rl = await rateLimit(env, `admin-login:${ctx.ip_hash || ctx.ip || "anon"}`, { limit: 5, windowSeconds: 300 });
-  if (!rl.ok) return htmlResponse(loginPage(env, "Too many attempts. Please wait a few minutes."), 429);
-
-  const form = await request.formData().catch(() => null);
-  const password = form ? form.get("password") : "";
-  const ok = await verifyPassword(env, password);
-  // Audit trail (never the password; country only — same minimization as forms).
-  await emitEvent(db, env, {
-    eventType: ok ? "admin.login.succeeded" : "admin.login.failed",
-    entityType: "admin",
-    entityId: "login",
-    payload: { ip_country: ctx.ip_country || null },
-  });
-  if (ok) {
-    return redirect("/admin", await createSessionCookie(env, { secure }));
-  }
-  return htmlResponse(loginPage(env, "Incorrect password."), 401);
+function html(body, status = 200, cookies = []) {
+  const headers = new Headers({ 'content-type': 'text/html; charset=utf-8' });
+  for (const cookie of cookies) headers.append('set-cookie', cookie);
+  return new Response(body, { status, headers });
 }
-
-function doLogout(secure) {
-  return redirect("/admin", clearSessionCookie({ secure }));
-}
-
-/* --------------------------------- views ---------------------------------- */
-
-async function dashboard(env, db) {
-  const cards = [];
-  for (const [key, r] of Object.entries(RESOURCES)) {
-    let total = 0;
-    let fresh = 0;
-    try {
-      total = await count(db, r.table);
-      if (STATUS_VALUES[r.table]) fresh = await count(db, r.table, { status: r.freshStatus || "new" });
-    } catch {
-      /* ignore */
-    }
-    cards.push(`
-      <a class="card" href="/admin/${key}">
-        <span class="card-label">${esc(r.label)}</span>
-        <span class="card-total">${total}</span>
-        ${STATUS_VALUES[r.table] ? `<span class="card-sub">${fresh} ${esc((r.freshStatus || "new").replace(/_/g, " "))}</span>` : `<span class="card-sub">stream</span>`}
-      </a>`);
-  }
-  return htmlResponse(page("Dashboard", `<div class="cards">${cards.join("")}</div>`));
-}
-
-async function listView(db, resourceKey, url) {
-  const resource = RESOURCES[resourceKey];
-  const cols = LIST_COLUMNS[resourceKey];
-  let status = url.searchParams.get("status") || undefined;
-  if (status && STATUS_VALUES[resource.table] && !STATUS_VALUES[resource.table].includes(status)) {
-    status = undefined; // ignore an out-of-vocabulary filter rather than show an empty list
-  }
-  const cursor = url.searchParams.get("cursor") || undefined;
-  const since = url.searchParams.get("since") || undefined;
-
-  const { rows, nextCursor } = await list(db, resource.table, {
-    select: [...cols, "id"],
-    status,
-    cursor,
-    since,
-    limit: 50,
-  });
-
-  const idCol = resource.idCol || "public_id";
-  const head = cols.map((c) => `<th>${esc(c)}</th>`).join("");
-  const body = rows
-    .map((row) => {
-      const cells = cols
-        .map((c) => {
-          let v = row[c];
-          if (c === idCol && resource.editable) {
-            return `<td><a href="/admin/${resourceKey}/${encodeURIComponent(String(v))}">${esc(short(v))}</a></td>`;
-          }
-          if (c === "status") return `<td>${statusPill(v)}</td>`;
-          return `<td>${esc(short(v))}</td>`;
-        })
-        .join("");
-      return `<tr>${cells}</tr>`;
-    })
-    .join("");
-
-  const statusFilter = STATUS_VALUES[resource.table]
-    ? `<form method="get" class="filterbar">
-         <select name="status" onchange="this.form.submit()">
-           <option value="">All statuses</option>
-           ${STATUS_VALUES[resource.table].map((s) => `<option value="${s}"${s === status ? " selected" : ""}>${s}</option>`).join("")}
-         </select>
-       </form>`
-    : "";
-
-  const nextLink = nextCursor
-    ? `<a class="button" href="/admin/${resourceKey}?cursor=${nextCursor}${status ? `&status=${encodeURIComponent(status)}` : ""}">Next →</a>`
-    : "";
-
-  const tools = `<div class="toolbar">${statusFilter}<a class="button ghost" href="/admin/${resourceKey}.csv">Export CSV</a></div>`;
-  const table = rows.length
-    ? `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>${nextLink}`
-    : `<p class="empty">No records.</p>`;
-
-  return htmlResponse(page(resource.label, tools + table, resourceKey));
-}
-
-async function detailView(db, resourceKey, id) {
-  const resource = RESOURCES[resourceKey];
-  const row = await getByPublicId(db, resource.table, id);
-  if (!row) return htmlResponse(page("Not found", `<p class="empty">Record not found.</p>`, resourceKey), 404);
-
-  const fields = Object.entries(row)
-    .filter(([k]) => !["id", "idempotency_key_hash", "request_fingerprint"].includes(k))
-    .map(([k, v]) => `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`)
-    .join("");
-
-  let related = "";
-  if (resourceKey === "order-intents") {
-    const itemResult = await db.prepare(
-      `SELECT line_number, sku, quantity, configuration_json
-       FROM order_intent_items WHERE order_intent_id = ? ORDER BY line_number ASC`,
-    ).bind(row.id).all();
-    const itemRows = (itemResult.results || []).map((item) => `
-      <tr>
-        <td>${esc(item.line_number)}</td>
-        <td>${esc(item.sku)}</td>
-        <td>${esc(item.quantity)}</td>
-        <td>${configurationCell(item.configuration_json)}</td>
-      </tr>`).join("");
-    related = `<h2>Requested items</h2>
-      <table><thead><tr><th>Line</th><th>SKU</th><th>Quantity</th><th>Configuration</th></tr></thead>
-      <tbody>${itemRows || '<tr><td colspan="4">No item rows found.</td></tr>'}</tbody></table>`;
-  }
-
-  let actions = "";
-  if (resource.editable) {
-    const statuses = STATUS_VALUES[resource.table] || [];
-    const accessSelect =
-      resourceKey === "downloads"
-        ? `<label>Access type
-             <select name="access_type">
-               ${ACCESS_TYPES.map((a) => `<option value="${a}"${a === row.access_type ? " selected" : ""}>${a}</option>`).join("")}
-             </select>
-           </label>`
-        : "";
-    actions = `
-      <form method="post" class="actions" action="/admin/${resourceKey}/${encodeURIComponent(id)}">
-        <input type="hidden" name="action" value="save" />
-        <label>Status
-          <select name="status">
-            ${statuses.map((s) => `<option value="${s}"${s === row.status ? " selected" : ""}>${s}</option>`).join("")}
-          </select>
-        </label>
-        ${accessSelect}
-        <label>Internal note
-          <textarea name="internal_note" rows="4">${esc(row.internal_note)}</textarea>
-        </label>
-        <div class="action-buttons">
-          <button class="button" type="submit">Save</button>
-          <button class="button ghost" type="submit" name="action" value="spam">Mark spam</button>
-          <button class="button danger" type="submit" name="action" value="delete"
-            onclick="return confirm('Delete this record permanently?')">Delete</button>
-        </div>
-      </form>`;
-  }
-
-  const back = `<p><a href="/admin/${resourceKey}">← ${esc(resource.label)}</a></p>`;
-  return htmlResponse(page(`${resource.label} · ${short(id)}`, `${back}<table class="detail">${fields}</table>${related}${actions}`, resourceKey));
-}
-
-/** events.entity_type values per admin resource (matches the *.created events). */
-const EVENT_ENTITY = {
-  leads: "lead",
-  rfqs: "rfq",
-  support: "support_request",
-  downloads: "download_request",
-  "order-intents": "order_intent",
-};
-
-async function doAction(request, db, resourceKey, id, secure, env) {
-  const resource = RESOURCES[resourceKey];
-  if (!resource.editable) return redirect(`/admin/${resourceKey}`);
-  const form = await request.formData().catch(() => null);
-  const action = form ? form.get("action") : "";
-
-  if (action === "delete") {
-    await deleteByPublicId(db, resource.table, id).catch((e) => console.error("admin delete failed", e && e.message));
-    await emitEvent(db, env, {
-      eventType: "admin.record_deleted",
-      entityType: EVENT_ENTITY[resourceKey],
-      entityId: id,
-      payload: { public_id: id, source: "admin" },
-    });
-    return redirect(`/admin/${resourceKey}`);
-  }
-
-  const patch = { updated_at: new Date().toISOString() };
-  if (action === "spam") {
-    patch.status = "spam";
-  } else {
-    const status = form ? String(form.get("status") || "") : "";
-    if (status && (STATUS_VALUES[resource.table] || []).includes(status)) patch.status = status;
-    if (form && form.has("internal_note")) patch.internal_note = String(form.get("internal_note") || "");
-    if (resourceKey === "downloads" && form && form.has("access_type")) {
-      const at = String(form.get("access_type") || "");
-      if (ACCESS_TYPES.includes(at)) patch.access_type = at;
-    }
-  }
-
-  // Status transitions feed the event stream so the Agent Workspace can close the
-  // follow-up loop ("replied" clears overdue alerts) without polling every table.
-  let oldStatus = null;
-  if (patch.status) {
-    const before = await getByPublicId(db, resource.table, id, ["status"]).catch(() => null);
-    oldStatus = before ? before.status : null;
-  }
-  await updateByPublicId(db, resource.table, id, patch).catch((e) => console.error("admin update failed", e && e.message));
-  if (patch.status && oldStatus !== null && oldStatus !== patch.status) {
-    const entity = EVENT_ENTITY[resourceKey];
-    await emitEvent(db, env, {
-      eventType: `${entity}.status_changed`,
-      entityType: entity,
-      entityId: id,
-      payload: { public_id: id, old_status: oldStatus, new_status: patch.status, source: "admin" },
-    });
-  }
-  return redirect(`/admin/${resourceKey}/${encodeURIComponent(id)}`);
-}
-
-async function exportCsv(db, resourceKey) {
-  const resource = RESOURCES[resourceKey];
-  if (!resource) return htmlResponse(page("Not found", `<p class="empty">Unknown section.</p>`), 404);
-  const { rows } = await list(db, resource.table, { limit: 200 });
-  // Drop the internal numeric id from exports; keep everything else.
-  const cleaned = rows.map(({ id, ...rest }) => rest);
-  const stamp = new Date().toISOString().slice(0, 10);
-  return csvResponse(`${resourceKey}-${stamp}.csv`, toCsv(cleaned));
-}
-
-/* ------------------------------ presentation ------------------------------ */
-
-function statusPill(v) {
-  const s = String(v || "");
-  return `<span class="pill pill-${esc(s)}">${esc(s)}</span>`;
-}
-
-function short(v) {
-  const s = String(v ?? "");
-  return s.length > 60 ? `${s.slice(0, 57)}…` : s;
-}
-
-function configurationCell(value) {
-  if (!value) return '<span class="empty">None</span>';
-  try {
-    return `<pre>${esc(JSON.stringify(JSON.parse(value), null, 2))}</pre>`;
-  } catch {
-    return `<pre>${esc(value)}</pre>`;
-  }
-}
-
-function loginPage(env, error) {
-  const note = adminConfigured(env)
-    ? ""
-    : `<p class="empty">Admin is not configured. Set the <code>ADMIN_PASSWORD</code> secret to enable it.</p>`;
-  return page(
-    "Sign in",
-    `<form method="post" action="/admin/login" class="login">
-       ${note}
-       ${error ? `<p class="error">${esc(error)}</p>` : ""}
-       <label>Password<input type="password" name="password" autofocus required /></label>
-       <button class="button" type="submit">Sign in</button>
-     </form>`,
-    null,
-    false,
-  );
-}
-
-function navBar(active) {
-  const links = Object.entries(RESOURCES)
-    .map(([key, r]) => `<a href="/admin/${key}"${key === active ? ' class="active"' : ""}>${esc(r.label)}</a>`)
-    .join("");
-  return `<nav class="adminnav">
-    <a class="brand" href="/admin">GYUTRON · Admin</a>
-    <span class="links">${links}</span>
-    <form method="post" action="/admin/logout" class="logout"><button type="submit">Sign out</button></form>
-  </nav>`;
-}
-
-function page(title, body, active = null, authed = true) {
-  return `<!doctype html><html lang="en"><head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="noindex, nofollow" />
-<title>${esc(title)} · GYUTRON Admin</title>
-<style>${STYLE}</style>
-</head><body>
-${authed ? navBar(active) : ""}
-<main class="wrap">
-  <h1>${esc(title)}</h1>
-  ${body}
-</main>
-</body></html>`;
-}
-
-function esc(value) {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-function htmlResponse(html, status = 200) {
-  return new Response(html, {
-    status,
-    headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex" },
-  });
-}
-
-function redirect(location, cookie) {
-  const headers = { location };
-  if (cookie) headers["set-cookie"] = cookie;
+function redirect(location, cookies = []) {
+  const headers = new Headers({ location });
+  for (const cookie of cookies) headers.append('set-cookie', cookie);
   return new Response(null, { status: 303, headers });
 }
-
-const STYLE = `
-:root{--ink:#17151d;--purple:#4b2e83;--purple-500:#8a63d2;--line:#e6e0ee;--bg:#faf9fc;--muted:#6f687a}
-*{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-a{color:var(--purple);text-decoration:none}
-a:hover{text-decoration:underline}
-.adminnav{display:flex;align-items:center;gap:18px;background:var(--purple);color:#fff;padding:0 20px;height:52px}
-.adminnav a{color:#fff}
-.adminnav .brand{font-weight:700;letter-spacing:.02em}
-.adminnav .links{display:flex;gap:14px;flex:1}
-.adminnav .links a.active{text-decoration:underline}
-.adminnav .logout button{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff;padding:6px 12px;cursor:pointer}
-.wrap{max-width:1080px;margin:0 auto;padding:24px 20px 64px}
-h1{font-size:22px;margin:8px 0 18px}
-h2{font-size:17px;margin:24px 0 10px}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
-.card{display:flex;flex-direction:column;gap:4px;border:1px solid var(--line);background:#fff;padding:18px}
-.card-label{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
-.card-total{font-size:32px;font-weight:700}
-.card-sub{color:var(--purple-500);font-size:13px}
-.toolbar,.filterbar{display:flex;gap:10px;align-items:center;margin-bottom:14px}
-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:14px}
-th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
-thead th{background:#f3eefb;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
-table.detail th{width:200px;color:var(--muted);font-weight:600}
-.button{display:inline-block;background:var(--purple);color:#fff;border:0;padding:9px 16px;cursor:pointer;font-size:14px}
-.button:hover{text-decoration:none;background:#3c2569}
-.button.ghost{background:#fff;color:var(--purple);border:1px solid var(--purple)}
-.button.danger{background:#b3261e}
-select,input,textarea{font:inherit;padding:8px;border:1px solid var(--line);background:#fff;width:100%}
-.actions{margin-top:20px;display:flex;flex-direction:column;gap:12px;max-width:560px}
-.action-buttons{display:flex;gap:10px}
-.actions label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted)}
-.login{max-width:320px;display:flex;flex-direction:column;gap:12px}
-.login label{display:flex;flex-direction:column;gap:6px}
-.empty{color:var(--muted)}
-.error{color:#b3261e}
-.pill{display:inline-block;padding:2px 8px;font-size:12px;border:1px solid var(--line);background:#f3eefb}
-.pill-new{background:#e7f0ff;border-color:#bcd4ff}
-.pill-pending_review{background:#fff4d6;border-color:#e8cf82}
-.pill-spam{background:#fde7e7;border-color:#f3b4b4}
-.pill-closed,.pill-lost,.pill-rejected{background:#eee;color:var(--muted)}
-.pill-won,.pill-fulfilled,.pill-replied,.pill-quoted{background:#e7f7ee;border-color:#b4e3c6}
-code{background:#f3eefb;padding:1px 5px}
-pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font:12px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace}
-`;
+function fail(status, code, message) { return workspaceJson({ error: { code, message } }, status); }
+function langOf(url) { return url.searchParams.get('lang') === 'zh' ? 'zh' : 'en'; }
+function loginPage(env, url, secure, error = '', status = 200) {
+  const token = randomToken();
+  return html(renderAdminLogin({ error, lang: langOf(url), csrfToken: token, configured: adminConfigured(env) }), status,
+    [`${LOGIN_COOKIE}=${token}; Path=/admin; HttpOnly; ${secure ? 'Secure; ' : ''}SameSite=Strict; Max-Age=900`]);
+}
+async function boundedText(request, limit = 8192) {
+  if (Number(request.headers.get('content-length') || 0) > limit) return null;
+  const reader = request.body?.getReader();
+  if (!reader) return '';
+  let length = 0; const chunks = [];
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      length += value.byteLength;
+      if (length > limit) { await reader.cancel(); return null; }
+      chunks.push(value);
+    }
+  } finally { reader.releaseLock(); }
+  const buffer = new Uint8Array(length); let offset = 0;
+  for (const chunk of chunks) { buffer.set(chunk, offset); offset += chunk.byteLength; }
+  try { return new TextDecoder('utf-8', { fatal: true }).decode(buffer); } catch { return null; }
+}
+function loginAudit(db, principal, success) {
+  return db.prepare(`INSERT INTO crm_audit (public_id,actor_id,actor_name,actor_role,action,entity_type,entity_id,summary,metadata_json,created_at)
+    VALUES (?,?,?,?,?,?,?,?,?,?)`).bind(`AUD-${crypto.randomUUID()}`, principal?.id || 'anonymous', principal?.name || 'Unauthenticated',
+    principal?.role || 'anonymous', success ? 'login.succeeded' : 'login.failed', 'authentication', principal?.id || 'login',
+    success ? 'Workspace sign-in succeeded' : 'Workspace sign-in failed', '{}', new Date().toISOString());
+}
+async function login(request, env, url, secure) {
+  if (!sameOrigin(request)) return fail(403, 'INVALID_ORIGIN', 'Sign in from this workspace.');
+  if (!adminConfigured(env) || !env.DB) return loginPage(env, url, secure, 'Workspace access is not configured.', 503);
+  if (!(request.headers.get('content-type') || '').startsWith('application/x-www-form-urlencoded')) return fail(415, 'INVALID_FORM', 'Use the workspace sign-in form.');
+  const text = await boundedText(request);
+  if (text === null) return fail(413, 'PAYLOAD_TOO_LARGE', 'This sign-in request is too large.');
+  const form = new URLSearchParams(text), csrf = cookieValue(request, LOGIN_COOKIE);
+  if (!csrf || !/^[a-f0-9]{64}$/.test(csrf) || !(await timingSafeEqual(csrf, form.get('csrf_token') || ''))) {
+    return loginPage(env, url, secure, 'The sign-in form expired. Please try again.', 403);
+  }
+  const throttle = await allowLoginAttempt(env.DB, request, env);
+  if (!throttle.ok) {
+    const response = loginPage(env, url, secure, 'Too many sign-in attempts. Try again in a few minutes.', 429);
+    response.headers.set('retry-after', String(throttle.retryAfter)); return response;
+  }
+  const email = (form.get('email') || '').trim().toLowerCase(), password = form.get('password') || '';
+  if (new TextEncoder().encode(password).length > 256 || email.length > 254) return loginPage(env, url, secure, 'The email or password is incorrect.', 401);
+  let user = null, ok = false;
+  if (!email) ok = await verifyPassword(env, password);
+  else {
+    user = await env.DB.prepare('SELECT * FROM admin_users WHERE email = ?').bind(email).first();
+    const encoded = user?.password_hash || `scrypt$32768$8$3$${'0'.repeat(64)}$${'0'.repeat(128)}`;
+    ok = await verifyStaffPassword(password, encoded) && user?.active === 1;
+  }
+  if (!ok) {
+    await loginAudit(env.DB, null, false).run();
+    return loginPage(env, url, secure, 'The email or password is incorrect.', 401);
+  }
+  const principal = user ? { id: user.id, name: user.name, role: user.role } : { id: 'owner', name: 'Workspace owner', role: 'owner' };
+  const session = await createWorkspaceSession(env.DB, env, user);
+  const operations = [loginAudit(env.DB, principal, true)];
+  if (user) operations.push(env.DB.prepare('UPDATE admin_users SET last_login_at = ? WHERE id = ?').bind(new Date().toISOString(), user.id));
+  await env.DB.batch(operations);
+  return redirect(`/admin${form.get('lang') === 'zh' ? '?lang=zh' : ''}`, [workspaceCookie(session.token, secure),
+    `${LOGIN_COOKIE}=; Path=/admin; HttpOnly; ${secure ? 'Secure; ' : ''}SameSite=Strict; Max-Age=0`]);
+}
+async function route(request, env, ctx, url) {
+  const secure = url.protocol === 'https:', path = url.pathname.replace(/\/+$/, '') || '/';
+  if (path.startsWith('/admin/assets/')) {
+    if (!READ.has(request.method)) return fail(405, 'METHOD_NOT_ALLOWED', 'This asset is read-only.');
+    return getAdminAsset(path) || fail(404, 'NOT_FOUND', 'This asset does not exist.');
+  }
+  if (path === '/admin/auth/login' || path === '/admin/login') {
+    if (request.method === 'POST') return login(request, env, url, secure);
+    if (READ.has(request.method)) return redirect(`/admin${langOf(url) === 'zh' ? '?lang=zh' : ''}`);
+    return fail(405, 'METHOD_NOT_ALLOWED', 'Use the sign-in form.');
+  }
+  const principal = await getWorkspacePrincipal(request, env, env.DB);
+  if (!principal) {
+    if (path.startsWith('/admin/api/')) return fail(401, 'UNAUTHENTICATED', 'Your session ended. Sign in to continue.');
+    if (!READ.has(request.method)) return fail(401, 'UNAUTHENTICATED', 'Sign in to continue.');
+    return loginPage(env, url, secure);
+  }
+  if (!READ.has(request.method)) {
+    if (!sameOrigin(request)) return fail(403, 'INVALID_ORIGIN', 'Submit this action from the workspace.');
+    let csrf = request.headers.get('x-csrf-token');
+    if (!csrf && (request.headers.get('content-type') || '').startsWith('application/x-www-form-urlencoded')) {
+      const text = await boundedText(request, /^\/admin\/order-intents\//.test(path) ? 65536 : 8192);
+      if (text === null) return fail(413, 'PAYLOAD_TOO_LARGE', 'This request is too large.');
+      csrf = new URLSearchParams(text).get('csrf_token');
+      request = new Request(request, { body: text });
+    }
+    if (!(await checkCsrf(request, principal, csrf))) return fail(403, 'INVALID_CSRF', 'This form expired. Reload the workspace and try again.');
+  }
+  if (path === '/admin/logout') {
+    if (request.method !== 'POST') return fail(405, 'METHOD_NOT_ALLOWED', 'Use Sign out in the workspace.');
+    await revokeWorkspaceSession(env.DB, request);
+    return redirect('/admin', [clearWorkspaceCookie(secure)]);
+  }
+  if (path === '/admin/api/team' || path.startsWith('/admin/api/team/')) return handleAdminTeam(request, env, principal, url);
+  if (path === '/admin/api/system' || path === '/admin/api/system/backup') return handleAdminSystem(request, env, principal, BUILD);
+  if (path === '/admin/api/assignees') {
+    if (request.method !== 'GET') return fail(405, 'METHOD_NOT_ALLOWED', 'This directory is read-only.');
+    const result = await env.DB.prepare('SELECT id,name FROM admin_users WHERE active = 1 ORDER BY name LIMIT 500').all();
+    return workspaceJson({ data: [{ id: 'owner', name: 'Workspace owner' }, ...(result.results || [])] });
+  }
+  if (path.startsWith('/admin/api/')) return handleAdminApi(request, env, ctx, url, principal);
+  if (/^\/admin\/(order-intents|events)(\.csv|\/|$)/.test(path) || path === '/admin/legacy.css') {
+    const { handleLegacyAdmin } = await import('./admin-legacy.mjs');
+    return handleLegacyAdmin(request, env, ctx, url, principal);
+  }
+  const old = { leads: 'leads', rfqs: 'rfqs', support: 'support', downloads: 'downloads' };
+  const resource = path.split('/')[2];
+  if (Object.hasOwn(old, resource)) {
+    if (!READ.has(request.method)) return fail(405, 'METHOD_NOT_ALLOWED', 'Use the workspace record editor.');
+    return redirect(`/admin#inbox?resource=${old[resource]}`);
+  }
+  if (path === '/admin' && READ.has(request.method)) {
+    const publicPrincipal = { id: principal.id, name: principal.name, email: principal.email, role: principal.role, expiresAt: principal.expiresAt };
+    return html(renderAdminWorkspace({ principal: publicPrincipal, csrfToken: principal.csrfToken, lang: langOf(url),
+      workspaceName: String(env.ADMIN_WORKSPACE_NAME || env.DATA_SOURCE_NAME || 'GYUTRON').slice(0, 200) }));
+  }
+  return fail(404, 'NOT_FOUND', 'This workspace route does not exist.');
+}
+export async function handleAdmin(request, env, ctx, url = new URL(request.url)) {
+  try { return secured(await route(request, env, ctx, url), request.method === 'HEAD'); }
+  catch (error) {
+    console.error('workspace request failed', error?.name || 'Error');
+    return secured(fail(503, 'SERVICE_UNAVAILABLE', 'The workspace is temporarily unavailable. Please try again shortly.'), request.method === 'HEAD');
+  }
+}

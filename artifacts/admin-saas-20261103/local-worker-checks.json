@@ -1,0 +1,95 @@
+{
+  "runtime": "actual workerd + local D1",
+  "origin": "http://127.0.0.1:8787",
+  "run": "4d655f9b",
+  "at": "2026-11-03T06:27:04.639Z",
+  "results": [
+    {
+      "name": "Unauthenticated JSON endpoints return 401 without HTML",
+      "ok": true,
+      "ms": 27
+    },
+    {
+      "name": "Login and static assets load under strict CSP",
+      "ok": true,
+      "ms": 14
+    },
+    {
+      "name": "Real Worker owner sign-in and bootstrap",
+      "ok": true,
+      "ms": 50
+    },
+    {
+      "name": "Operational metadata reports actual schema without secrets",
+      "ok": true,
+      "ms": 14
+    },
+    {
+      "name": "Manual backup is verified using actual workerd, local D1 and local R2",
+      "ok": true,
+      "ms": 100
+    },
+    {
+      "name": "Owner can create a salted staff account in actual workerd",
+      "ok": true,
+      "ms": 122
+    },
+    {
+      "name": "Staff scrypt authentication works in actual workerd",
+      "ok": true,
+      "ms": 128
+    },
+    {
+      "name": "Viewer cannot write, export, audit or manage team",
+      "ok": true,
+      "ms": 61
+    },
+    {
+      "name": "Cross-origin write is denied before business logic",
+      "ok": true,
+      "ms": 7
+    },
+    {
+      "name": "Customer creation and search persist in D1",
+      "ok": true,
+      "ms": 35
+    },
+    {
+      "name": "Optimistic conflict returns 409 and preserves saved version",
+      "ok": true,
+      "ms": 40
+    },
+    {
+      "name": "Customer to opportunity to task workflow persists",
+      "ok": true,
+      "ms": 48
+    },
+    {
+      "name": "Activity writes and dashboard return actual records",
+      "ok": true,
+      "ms": 44
+    },
+    {
+      "name": "Archive guards, child archive, parent archive and restore work",
+      "ok": true,
+      "ms": 120
+    },
+    {
+      "name": "Safe filtered export and preserved operational routes work",
+      "ok": true,
+      "ms": 55
+    },
+    {
+      "name": "Team deactivation invalidates existing staff session immediately",
+      "ok": true,
+      "ms": 27
+    },
+    {
+      "name": "Sign out revokes server session and rejects replay",
+      "ok": true,
+      "ms": 18
+    }
+  ],
+  "passed": 17,
+  "total": 17
+}
