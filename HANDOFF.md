@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **2026-11-03 rebuild candidate 2026.11.03.3:** the old Local Agent's actual business functions
+- **2026-11-03 rebuild LIVE, 2026.11.03.3:** the old Local Agent's actual business functions
   are implemented alongside CRM: native website source, mapped commerce CSV, currency-safe
   analytics/reports, 13 rules, durable interval/calendar automation, knowledge/memory and selectable
   AI context. Multi-contact customer workspaces, saved views, column controls, bulk per-record
@@ -29,8 +29,21 @@
   format-4 recovery including a 200KiB document, 44 table counts and zero foreign-key violations.
   Production migrations 0007–0010 were applied at 2026-11-03 12:46 UTC after a fresh private SQL
   export (SHA-256 2895d83faaafc16a7cb0bcf60aaca5480896ea1ef380e451f99c036c1a7ed7a1),
-  isolated integrity/FK validation and independent additive-compatibility review. New code is awaiting
-  the release commit; production verification will be recorded separately. Do not infer live from this block.
+  isolated integrity/FK validation and independent additive-compatibility review. Source release
+  `f055c43513f0a56903cd52da2cf722b68c1627c8` passed GitHub CI41638967674 and Cloudflare build
+  eca1e29b-f444-4670-afc5-4809945e0d14. Production 11/11 checks passed: all 12 admin assets equal
+  that committed source, storage probes pass, all modules respond, password-only/four-language/CSRF/
+  logout and legacy brand/Shop routes pass. Three real default schedules were installed and manually
+  completed; the actual five-minute cron subsequently enqueued native/rule work and completed native
+  sync. Rules advance durable checkpoints over multiple ticks; do not claim every cron run has completed.
+  Verified production format-4 JSON was restored into NEW local D1: every value in all44 tables matches,
+  integrity ok, FK0, sessions0, staging0, then a real recovered Worker login and report/schedule/run reads
+  passed. Evidence: `production-checks.json`, `production-isolated-recovery-checks.json` in the rebuild
+  artifacts. An initial release-check script stopped rules after12 steps although a full rule set needs
+  more checkpoints; its preserved checkpoint is superseded by the completed100-step-bounded check.
+  External model connectors were protocol-tested; no real external LLM or second customer was invoked.
+  Delivery docs describe these limits and encrypted-model master recovery. Old .2 cannot fully back up
+  the new tables: rollback must retain an0010/format4-capable backend, never overwrite current D1.
 
 Read this block first; use the dated entries below only for task-relevant history.
 

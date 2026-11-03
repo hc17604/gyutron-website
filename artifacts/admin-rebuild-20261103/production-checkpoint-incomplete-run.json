@@ -1,0 +1,119 @@
+{
+  "at": "2026-11-03T12:51:53.485Z",
+  "source_commit": "f055c43513f0a56903cd52da2cf722b68c1627c8",
+  "origin": "https://www.gyutron.com",
+  "checks": [
+    {
+      "name": "unauthenticated business APIs deny access",
+      "ok": true
+    },
+    {
+      "name": "four-language password-only sign-in remains intact",
+      "ok": true
+    },
+    {
+      "name": "owner sign-in and new release header",
+      "ok": true
+    },
+    {
+      "name": "every deployed admin asset equals the committed source",
+      "ok": true
+    },
+    {
+      "name": "new capabilities and all persistent modules respond",
+      "ok": true
+    },
+    {
+      "name": "active storage probes, final migration and encrypted-model readiness",
+      "ok": true
+    },
+    {
+      "name": "CSRF and cross-origin writes fail before changing data",
+      "ok": true
+    },
+    {
+      "name": "safe operating schedules are installed and actually run",
+      "ok": false,
+      "error": "rules\n+ actual - expected\n\n+ 'queued'\n- 'completed'\n"
+    },
+    {
+      "name": "new format-four backup verifies and exports a complete recovery file",
+      "ok": true
+    },
+    {
+      "name": "legacy orders and all brand storefront routes remain available",
+      "ok": true
+    },
+    {
+      "name": "logout immediately rejects session replay",
+      "ok": true
+    }
+  ],
+  "observations": {
+    "version": "2026.11.03.3",
+    "asset_hashes": {
+      "/admin/assets/workspace.css": "4f45fb30d8e166adaa2f4b0d1fca4a95a76fc7d36510d041b898c1305f93c880",
+      "/admin/assets/workspace.js": "28b13f6c02dad5cca968abfc660e748f2b0ac61b05ba4dac3c1f835a4dbef637",
+      "/admin/assets/quotes.js": "695ea06b6f7d406e640c9e6b2c3d0ef824b839b4fcdff0a0378d32d9bf01fa44",
+      "/admin/assets/quotes.css": "fe8ceae3efcc9966640e28eb1bf279d49dcced841aa449079bbda492c9d03afe",
+      "/admin/assets/locales.js": "fdc9189e4ec29e178062279ea8ed71a1b59ff24b01ce70e9394853ded22e097f",
+      "/admin/assets/notifications.js": "a9f1289a23e155fa179837ba3e857770a93b3279ca19fe31749b01c1e93cd425",
+      "/admin/assets/notifications.css": "25c1452924c77b83ee9669c68d98ddc859f1d7c03800c585b5f8334f0ccfe2e6",
+      "/admin/assets/workbench.js": "de197439de351ca24a40e5f0cbdd8d41c7ebfd2c2614bf0ee0b2d60b2d7c8b68",
+      "/admin/assets/operations.js": "a6d5b554247b7ab6d9ccfa5e913a3b7aa3572f055d1cd1143dab49ac8b993445",
+      "/admin/assets/intelligence.js": "1a45e983f619bf74789b2f78aa0e389df4cd57bd6e2882af172b5cd001dfaa47",
+      "/admin/assets/local-source-sync.mjs": "93c5f9ea1a987226224fde4fd8cd85fdf90a323316f630bee464a56f9c54551e",
+      "/admin/assets/crm-experience.js": "cfe187211ec7ffd8f8e9256398eb9d84637a3eb3e061e102fe75626aa7265715"
+    },
+    "probes": {
+      "checked_at": "2026-11-03T12:51:24.594Z",
+      "mode": "read",
+      "database": {
+        "status": "ok",
+        "latency_ms": 42
+      },
+      "privateFiles": {
+        "status": "ok",
+        "latency_ms": 141
+      },
+      "requestThrottle": {
+        "status": "ok",
+        "latency_ms": 89
+      }
+    },
+    "intelligence_status_fields": [
+      "engine",
+      "model_configured",
+      "model_target",
+      "encryption_available",
+      "external_transmission_requires_consent",
+      "permissions",
+      "context_sources",
+      "supported_documents",
+      "tools",
+      "external_actions_available"
+    ],
+    "migration": "0010_workspace_notifications.sql",
+    "installed_schedules": [
+      {
+        "id": "AUTO-4d8bdb1c-94d3-464b-938b-7452dea7ee37",
+        "kind": "native_sync",
+        "status": "completed",
+        "next_run_at": "2026-11-03T12:51:27.124Z",
+        "run_id": "RUN-cd0c0b6a-bead-4ea2-b4e1-ea2728eaba28"
+      }
+    ],
+    "backup": {
+      "verified": true,
+      "sha256": "4bcfb416e118e53e7f4cb1744ed57d49bb9208311245add988573750b597be77",
+      "format": 4,
+      "tables": 44
+    },
+    "private_recovery_file": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\private-backups\\production-format4-1793710307861.json"
+  },
+  "passed": 10,
+  "failed": 1,
+  "synthetic_production_business_records_created": false,
+  "external_messages_sent": false,
+  "external_models_called": false
+}
