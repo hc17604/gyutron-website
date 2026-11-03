@@ -1,0 +1,8 @@
+{
+  "at": "2026-11-03T13:27:06.371Z",
+  "worker": "gyutron-website",
+  "read_only": true,
+  "dashboard_every_minute_confirmed": true,
+  "daily_backup_1800_utc_confirmed": true,
+  "scope": "Production dashboard configuration; activation timing verified separately."
+}

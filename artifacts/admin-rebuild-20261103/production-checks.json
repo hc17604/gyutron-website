@@ -1,6 +1,6 @@
 {
-  "at": "2026-11-03T12:54:18.149Z",
-  "source_commit": "f055c43513f0a56903cd52da2cf722b68c1627c8",
+  "at": "2026-11-03T13:21:59.426Z",
+  "source_commit": "180a67001fcfb2d004383ba6e117e595aea3de87",
   "origin": "https://www.gyutron.com",
   "checks": [
     {
@@ -49,7 +49,7 @@
     }
   ],
   "observations": {
-    "version": "2026.11.03.3",
+    "version": "2026.11.03.4",
     "asset_hashes": {
       "/admin/assets/workspace.css": "4f45fb30d8e166adaa2f4b0d1fca4a95a76fc7d36510d041b898c1305f93c880",
       "/admin/assets/workspace.js": "28b13f6c02dad5cca968abfc660e748f2b0ac61b05ba4dac3c1f835a4dbef637",
@@ -59,25 +59,25 @@
       "/admin/assets/notifications.js": "a9f1289a23e155fa179837ba3e857770a93b3279ca19fe31749b01c1e93cd425",
       "/admin/assets/notifications.css": "25c1452924c77b83ee9669c68d98ddc859f1d7c03800c585b5f8334f0ccfe2e6",
       "/admin/assets/workbench.js": "de197439de351ca24a40e5f0cbdd8d41c7ebfd2c2614bf0ee0b2d60b2d7c8b68",
-      "/admin/assets/operations.js": "a6d5b554247b7ab6d9ccfa5e913a3b7aa3572f055d1cd1143dab49ac8b993445",
+      "/admin/assets/operations.js": "c2a07fc7353ad830e9ceeff3b951a9d23877b2b1300db291cde000610a2606cc",
       "/admin/assets/intelligence.js": "1a45e983f619bf74789b2f78aa0e389df4cd57bd6e2882af172b5cd001dfaa47",
       "/admin/assets/local-source-sync.mjs": "93c5f9ea1a987226224fde4fd8cd85fdf90a323316f630bee464a56f9c54551e",
       "/admin/assets/crm-experience.js": "cfe187211ec7ffd8f8e9256398eb9d84637a3eb3e061e102fe75626aa7265715"
     },
     "probes": {
-      "checked_at": "2026-11-03T12:53:49.042Z",
+      "checked_at": "2026-11-03T13:21:40.493Z",
       "mode": "read",
       "database": {
         "status": "ok",
-        "latency_ms": 46
+        "latency_ms": 38
       },
       "privateFiles": {
         "status": "ok",
-        "latency_ms": 166
+        "latency_ms": 171
       },
       "requestThrottle": {
         "status": "ok",
-        "latency_ms": 115
+        "latency_ms": 173
       }
     },
     "intelligence_status_fields": [
@@ -98,14 +98,14 @@
         "id": "AUTO-4d8bdb1c-94d3-464b-938b-7452dea7ee37",
         "kind": "native_sync",
         "status": "completed",
-        "next_run_at": "2026-11-03T12:51:27.124Z",
+        "next_run_at": "2026-11-03T13:55:53.767Z",
         "run_id": "RUN-cd0c0b6a-bead-4ea2-b4e1-ea2728eaba28"
       },
       {
         "id": "AUTO-62ca22d1-5e74-4d81-a977-dc7bb0092efd",
         "kind": "rules",
         "status": "completed",
-        "next_run_at": "2026-11-03T12:51:29.508Z",
+        "next_run_at": "2026-11-03T13:55:54.564Z",
         "run_id": "RUN-fd449364-e2b8-4c62-bbc4-092748a2895a"
       },
       {
@@ -118,11 +118,11 @@
     ],
     "backup": {
       "verified": true,
-      "sha256": "fbaa4217b485934bb50932ece579f3c94a59796dd950ed49993cfe1becc0914f",
+      "sha256": "065e9e9161697e8573e75598d604c042710d2c32861bc4b5695d9866b0f9be05",
       "format": 4,
       "tables": 44
     },
-    "private_recovery_file": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\private-backups\\production-format4-1793710452705.json"
+    "private_recovery_file": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\private-backups\\production-format4-1793712114575.json"
   },
   "passed": 11,
   "failed": 0,

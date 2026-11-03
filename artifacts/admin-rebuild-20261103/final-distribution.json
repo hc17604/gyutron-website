@@ -1,0 +1,14 @@
+{
+  "at": "2026-11-03T13:21:29.070Z",
+  "source_commit": "180a67001fcfb2d004383ba6e117e595aea3de87",
+  "archive_name": "gyutron-operations-20261103131926-180a67001fcf.zip",
+  "archive_bytes": 493433,
+  "sha256": "66977c26d15b530db72eaac5d6f0dc5b48c33f80d23e1b99f6df9494eba6bf8b",
+  "verified_archive_members": 113,
+  "clean_install_verified": true,
+  "installation_scripts_enabled": true,
+  "portable_suites_passed": 18,
+  "worker_dry_run_passed": true,
+  "production_credentials_or_customer_data_included": false,
+  "provisioned_customer_resources": false
+}

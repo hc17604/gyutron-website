@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-03T13:37:28.376Z",
+  "source_commit": "180a67001fcfb2d004383ba6e117e595aea3de87",
+  "autonomous_scheduled_rule_completed": true,
+  "rule_progress": "13/13",
+  "rule_run": {
+    "checked_at": "2026-11-03T13:37:27.763Z",
+    "id": "RUN-06bb55d4-f3f5-4934-a1db-49f814f62889",
+    "kind": "rules",
+    "status": "completed",
+    "trigger_kind": "scheduled",
+    "rule_index": 13,
+    "rules_total": 13,
+    "processed": 3,
+    "findings_count": 0,
+    "completed_at": "2026-11-03T13:35:56.679Z"
+  },
+  "scheduled_native_sync_completed": true,
+  "native_run": {
+    "checked_at": "2026-11-03T13:37:27.763Z",
+    "id": "RUN-d92ea465-95ff-4ebd-bfcf-c0d236fa91c3",
+    "kind": "native_sync",
+    "status": "completed",
+    "trigger_kind": "scheduled",
+    "rule_index": 0,
+    "rules_total": 0,
+    "processed": 0,
+    "findings_count": 0,
+    "completed_at": "2026-11-03T12:55:55.693Z"
+  },
+  "foreground_process_calls_for_these_scheduled_runs": 0,
+  "dashboard_configuration": {
+    "at": "2026-11-03T13:27:06.371Z",
+    "worker": "gyutron-website",
+    "read_only": true,
+    "dashboard_every_minute_confirmed": true,
+    "daily_backup_1800_utc_confirmed": true,
+    "scope": "Production dashboard configuration; activation timing verified separately."
+  },
+  "minute_period_configured": true,
+  "exact_minute_sla_claimed": false
+}

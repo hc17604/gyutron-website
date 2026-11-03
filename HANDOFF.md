@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Final interaction refinement .4 READY FOR RELEASE:** production .3 and its proofs below remain valid.
+- **Final interaction release .4 LIVE AND VERIFIED:** production .3 history below remains valid.
   Candidate .4 adds continuous bounded rule-run advancement with visible progress, navigation-safe
   interruption and explicit waiting/failure states; operations cron changes from5min to1min to keep
   queued work moving promptly. No schema/resource/password changes. Root owns config/integration/
@@ -31,7 +31,25 @@
   Report automation now strictly validates/executed frozen boolean exclusion filters (core46/46);
   tests distinguish one real record from two including an internal test record. Dry-run gzip334.89KiB,
   deploy:check0 changed/131 public-only preserved, agent:check pass. Deployment and final committed
-  package still require verification; production is not .4 until its header/asset checks pass.
+  package have now passed. Runtime commit `180a67001fcfb2d004383ba6e117e595aea3de87` passed CI
+  41643313536 and Cloudflare build721a44a3-819d-4d2a-b4fa-2b9adafaa246. Production .4 passed11/11
+  checks, including exact hashes for12 assets; operations.js is
+  `c2a07fc7353ad830e9ceeff3b951a9d23877b2b1300db291cde000610a2606cc`.
+  Current production JSON SHA065e9e9161697e8573e75598d604c042710d2c32861bc4b5695d9866b0f9be05
+  restored into NEW local D1: all44 tables and every stored value match, integrity ok/FK0/sessions0,
+  followed by successful .4 recovered-Worker login and report/automation/run API reads. Production
+  D1 was never overwritten. The dashboard confirms every-minute operations plus daily18:00UTC backup;
+  Cron updates may need up to15min propagation. The actual scheduled rule run autonomously completed
+  all13/13 rules at2026-11-03T13:35:56.679Z, without any foreground process calls for that run;
+  the scheduled native sync also completed. See `production-scheduled-completion.json`. This proves
+  autonomous completion and configured minute cadence, not a precise execution-time SLA.
+  All owned QA servers/tabs are stopped/closed; the live tab stays.
+  Formal independent-instance delivery is
+  `D:\AI PRODUT\GYUTRON web\outputs\admin-rebuild-20261103\gyutron-operations-20261103131926-180a67001fcf.zip`
+  (493433bytes,113 verified ZIP members, SHA256
+  `66977c26d15b530db72eaac5d6f0dc5b48c33f80d23e1b99f6df9494eba6bf8b`). Its committed source is180a670;
+  a clean installation with real lifecycle scripts, all18 portable suites and its own pinned Wrangler
+  build passed. It excludes credentials/customer data; no second customer's resources were created.
 
 - **2026-11-03 rebuild LIVE, 2026.11.03.3:** the old Local Agent's actual business functions
   are implemented alongside CRM: native website source, mapped commerce CSV, currency-safe

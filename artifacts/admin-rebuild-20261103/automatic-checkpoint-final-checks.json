@@ -1,0 +1,91 @@
+{
+  "scope": "Final automatic durable-checkpoint UX correction; synthetic localhost8796 only. Frontend source frozen after this evidence.",
+  "changed_sources": [
+    "src/admin/operations-client.mjs",
+    "scripts/test-operations-run-ui.mjs"
+  ],
+  "source": {
+    "at": "2026-11-03T13:19:12.566Z",
+    "asset": "/admin/assets/operations.js",
+    "status": 200,
+    "servedMatchesDisk": true,
+    "sha256": "c2a07fc7353ad830e9ceeff3b951a9d23877b2b1300db291cde000610a2606cc"
+  },
+  "behavior": {
+    "actions": [
+      "Run",
+      "Run rule",
+      "Retry",
+      "Continue"
+    ],
+    "automatic_budget": {
+      "loop_milliseconds": 90000,
+      "per_request_timeout_milliseconds": 20000,
+      "max_checkpoint_posts_including_launch": 64,
+      "max_confirmation_gets": 2
+    },
+    "busy_response": "Immediately pauses as waiting; never spins on another queued/running worker.",
+    "failed_response": "Stops with saved server error; requires explicit retry.",
+    "transport_unknown": "Known run uses bounded confirmation GET before safe continuation. Initial create/run response unknown is not reissued.",
+    "navigation": "Stops future frontend requests and DOM writes once route/context changes; does not claim cancellation of an already executing server checkpoint.",
+    "background": "Saved queued/running state remains available to the scheduled worker."
+  },
+  "actual_local_ui": [
+    {
+      "automation_id": "AUTO-92b80205-71c0-4f18-8c46-b0ea56fda376",
+      "automation_name": "FINAL UI QA · Automatic all-rules 20261103-2110",
+      "enabled": false,
+      "run_id": "RUN-77ed9dab-ff27-4140-b0f0-12b1f5687488",
+      "start_clicks": 1,
+      "manual_continue_clicks": 0,
+      "status": "completed",
+      "rules_completed": 13,
+      "rules_total": 13,
+      "processed_records": 2,
+      "findings_created": 0,
+      "reload_persisted": true
+    },
+    {
+      "run_id": "RUN-75d583da-79f8-4328-9009-a91091d91dea",
+      "start_clicks": 1,
+      "left_during_processing_to": "customers",
+      "new_page_preserved": true,
+      "on_return": {
+        "status": "queued",
+        "rules_completed": 11,
+        "rules_total": 13,
+        "phase": "resolving existing findings"
+      },
+      "resume_clicks": 1,
+      "status_after_automatic_resume": "completed",
+      "rules_completed": 13,
+      "rules_total": 13
+    }
+  ],
+  "tests": {
+    "own_shipped_controller_cases": 26,
+    "own_failed": 0,
+    "independent_review_reported_by_root": {
+      "passed": 15,
+      "failed": 0
+    },
+    "root_final_gates": "Root reported all 19 suites plus dry-run/agent/deploy checks passed; this report does not duplicate those commands."
+  },
+  "application_console_errors": 0,
+  "evidence": [
+    "automatic-checkpoint-local-completed.png",
+    "automatic-checkpoint-navigation.json",
+    "automatic-checkpoint-final-source.json"
+  ],
+  "limits": [
+    "No real production write or external model call. Production .3 independent read-only report remains separate at production-independent-ui-checks.json.",
+    "Busy/failure/timeout/budget negative branches are actual shipped-controller/helper test evidence; successful full execution and navigation/resumption have browser evidence.",
+    "No other agent run was processed by this browser. The fixture automation is paused, and both own runs finished."
+  ],
+  "cleanup": {
+    "local_tab": "918581674 closed after evidence",
+    "viewport_changed": false,
+    "zoom_changed": false,
+    "logout_clicked": false
+  }
+}
