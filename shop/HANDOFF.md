@@ -4,7 +4,7 @@
 > 与用户交流用**中文**；GYUTRON 品牌名在可见文案中保持**大写**；i18n key / URL / 文件路径保持原样。
 > 🔄 多代理协作：开工先按根 `docs/AGENT_TAKEOVER.md` 核对 Git 状态，再读本文件；收工更新本文件并 push。
 
-最近更新：2026-08-07（接手时先 `git status -sb`、`git fetch origin`、`npm run agent:status`）
+最近更新：2026-11-03（接手时先 `git status -sb`、`git fetch origin`、`npm run agent:status`）
 
 ---
 
@@ -16,6 +16,14 @@
 - 资源：`shop.css`(样式) `shop.js`(购物车/交互) `shop-i18n.js`(`window.GYUTRON_SHOP_I18N`，三语文案 + 产品 i18n)。
 
 ## §2 当前状态
+
+### 2026-11-03 主站 Operations 管理端兼容记录
+
+- 用户授权整体升级 `www.gyutron.com/admin`。核心实现提交 `fa373c7`，独立管理工作台、成员角色和可撤销会话已经部署；这不是商城顾客账户系统。
+- 原 `/admin/order-intents` 和 `/admin/events` 列表、详情及导出由新的 `src/api/admin-legacy.mjs` 保留，只有 owner/manager 可访问。订单申请的状态/备注更新加入同源、CSRF、并发检查和原子审计；没有增加支付、库存、发票、物流或自动履约行为。
+- 商城页面、SKU、checkout、三语字典、提交接口、Worker Shop 路由和数据表均未修改。`scripts/smoke-shop.mjs` 原来对整个 `admin.mjs` 的字节固定检查不再适合授权重写，因此此文件改由新增真实 SQLite 的管理 API/auth 测试覆盖；其他 Shop 后端文件继续固定基线。
+- 验证：Shop smoke 120/120、内容图标 20/20、平台 34/34，管理 API/legacy 41/41、auth/System 29/29，既有 order-intent 的读取/配置/状态写入/CSV 语义已验证。提交后的 CI 提示本交接旧于 Shop 检查文件修改，本条补齐兼容交接；没有放宽商城运行时范围。
+- 主站正在继续报价与商业交付模块，最终发布记录以根 `HANDOFF.md` 最新条目为准。回滚管理端仅回滚本次 Worker/UI 源，保留新增数据库表及已有业务记录。
 
 ### 2026-08-07 已知 clean-path 路由缺口（审计发现，尚未修复）
 

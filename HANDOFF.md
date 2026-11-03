@@ -109,6 +109,16 @@ Read this block first; use the dated entries below only for task-relevant histor
 > Next: commit/release core, verify production runtime including staff crypto and backups, continue
 > quotation/commercial delivery work and independent checks through the user's four-hour window.
 
+> **2026-11-03 (Codex) — Core release fa373c7 is live; follow-up verification continues.**
+> Cloudflare auto-deployed pushed main `fa373c7a621429ce5dedd353625809eb41d1dc99`.
+> Live `/admin` and JS respond 200 with `x-gyutron-admin: 2026.11.03.1`, JSON bootstrap returns
+> authenticated-only 401, and brand health remains 200. GitHub run 41591374206 stopped on the
+> Shop handoff freshness gate because the intentional `smoke-shop.mjs` compatibility update had
+> no matching Shop ledger entry. Added a narrow documentation-only interoperability entry;
+> storefront code, payment boundaries, public assets and bindings remain unchanged.
+> Next: verify the follow-up CI, exercise production staff crypto and owner-authorized backup,
+> finish browser acceptance, then implement and validate quotation/commercial delivery additions.
+
 > **2026-10-19 (Codex) — Selected solution explorer option3 published and verified.**
 > User explicitly selected option3, requested fewer separator/model leader lines and background-tone
 > layering, authorized direct publication and compact phone adaptation. Revised target is
