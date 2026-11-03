@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Industrial UI .7 IN PROGRESS, explicit user steering (2026-11-03):** user rejected all rounded
+- **Industrial UI .7 LIVE AND VERIFIED, explicit user steering (2026-11-03):** user rejected all rounded
   corners. The user subsequently withdrew the request for increased purple: restore the prior .6
   light frame and palette, while keeping zero corners, removed wordmark and compact search.
   This supersedes the previous6/8px decision: every workspace/login
@@ -30,11 +30,21 @@
   text-overlap defect. Outside pointer/focus dismisses it; Escape closes once and returns focus;
   another open dialog blocks opening the search panel. English/Chinese only, English first default,
   password-only123 and original data/bindings/secrets/schema remain.
-  Current live baseline .6 source7c9b662 passed CI41658447654 and all12 production checks. All14 dynamic
-  assets matched a true Wrangler4.93.1 build of111 verified Git blobs, plus4 original brand/font files;
-  direct source-import hashes are unsuitable for Function.toString serialization. Format4 existing
-  backup was reverified without creating another snapshot. The .6 portable ZIP is historical; .7
-  requires new source/visual/live acceptance and a regenerated committed-source archive.
+  Runtime source `3f27d665367023550f7b0553001fb13ed0c37829` passed CI41663392726. Production
+  `2026.11.03.7` was confirmed on www/apex and passed12/12 checks at15:34:44UTC. All14 dynamic
+  assets exactly match a true Wrangler4.93.1 build of111 verified Git blobs, plus4 original brand/font
+  files; direct source-import hashes are unsuitable for Function.toString serialization. Design CSS
+  SHA256 is `5a77f1036a1c8f99908b7cdc5a1d959cef56e10f0c7d1e9d72af1d00b057038c` (62739B).
+  Existing format4 backup (44 tables) was reverified without creating another snapshot. Local source
+  passed19/19 suites; final neutral visual coverage is41 route/login and35 open-overlay samples at
+  1440/768/390/320, with10 search cases. These are local synthetic visual tests; final production proof
+  is the version, strict committed-byte comparison and API/recovery checks, not a new production screenshot.
+  The .6 portable ZIP is historical. Final .7 standalone ZIP is
+  `D:\AI PRODUT\GYUTRON web\outputs\admin-rebuild-20261103\gyutron-operations-20261103152346-3f27d6653670.zip`
+  (1190746B,121 members, SHA256
+  `09563e7d6c9d38597fc6aec93c1a4e4ae149d22a3f9ab7a846097e9832f160f7`). Fresh lifecycle-enabled
+  installation,18 portable suites, pinned Wrangler build, all ZIP members/CRC/hashes and an independent
+  read-only manifest/source check passed. No second customer's resources were provisioned.
   Root owns shell/layout, source integration and deployment; admin_experience owns saas-styles;
   research_quality independently checks screenshots, actual320/390/768 widths, all zero radii,
   search overflow and neutral-frame fidelity. Backend independently reviews non-modal focus/races.
@@ -42,6 +52,11 @@
   artifacts/admin-ui-benchmark-20261103/industrial-pass/. Do not reuse rounded-design acceptance
   as proof of this industrial revision. Baseline .5 sourcee076a70 and .6 source7c9b662 are preserved;
   no production business test rows or external model calls have been created.
+  Browser cleanup is USER-INTERRUPTED: physical Escape stopped Computer Use. Do not reconnect or
+  bypass that stop. QA tab759 remains at localhost login,320×900 with temporary local127 origin
+  zoom100%; no restore/reset/close was performed. Production tab732 was not touched by QA.
+  The isolated8799 preview server (root exec session37887) remains running with synthetic state
+  under outputs/admin-ui-20261103; preserve the user's original Local Agent5173.
 
 - **Final interaction release .4 LIVE AND VERIFIED:** production .3 history below remains valid.
   Candidate .4 adds continuous bounded rule-run advancement with visible progress, navigation-safe

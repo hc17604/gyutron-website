@@ -1,0 +1,766 @@
+{
+  "at": "2026-11-03T15:23:34.806634+00:00",
+  "build": "2026.11.03.7 candidate",
+  "final_css_export_sha256": "5a77f1036a1c8f99908b7cdc5a1d959cef56e10f0c7d1e9d72af1d00b057038c",
+  "final_css_export_bytes": 62739,
+  "user_direction": "Latest: restore preceding neutral/light framework, zero all custom corners, remove upper-left wordmark and move sidebar up, compact upper-right nonmodal search; earlier extra-purple proposal withdrawn",
+  "environment": "Local isolated synthetic http://127.0.0.1:8799/admin; login http://localhost:8799/admin (different cookies, never logged out shared session)",
+  "production_business_writes": false,
+  "external_model_calls": false,
+  "valid_business_mutations": false,
+  "archive_confirmations_cancelled": true,
+  "final_coverage": {
+    "route_login_samples": 41,
+    "route_login_definition": "4 core routes (Overview/Customers/Analytics/Quotes) plus actual login x EN/zh x1440/768/390/320 =40 +1 settled320login recheck",
+    "open_overlay_samples": 35,
+    "overlays": "Advanced filters, Columns, New customer editor, customer drawer, cancelled Archive confirmation, Notifications, workspace menu, mobile sidebar, real search popover",
+    "widths_css": [
+      1440,
+      768,
+      390,
+      320
+    ],
+    "height_css": 900,
+    "horizontal_overflow_samples": 0,
+    "mojibake_flags": 0,
+    "overlay_radius_violations": 0,
+    "sidebar_wordmark_nodes": [
+      0
+    ]
+  },
+  "corner_policy": {
+    "scope": "All custom body descendants including hidden DOM and open dialogs/menus, plus ::before/::after, each of four computed border radii",
+    "app_owned_nonzero": 0,
+    "raw_login_anonymous_div_samples": [
+      {
+        "url": "http://localhost:8799/admin?lang=zh",
+        "width": 1440,
+        "raw": [
+          {
+            "cls": "",
+            "id": "",
+            "pseudo": null,
+            "radii": [
+              "8px",
+              "8px",
+              "8px",
+              "8px"
+            ],
+            "tag": "DIV"
+          }
+        ]
+      },
+      {
+        "url": "http://localhost:8799/admin?lang=zh",
+        "width": 320,
+        "raw": [
+          {
+            "cls": "",
+            "id": "",
+            "pseudo": null,
+            "radii": [
+              "8px",
+              "8px",
+              "8px",
+              "8px"
+            ],
+            "tag": "DIV"
+          }
+        ]
+      }
+    ],
+    "exclusion": "Empty BODY child [popover=manual], inline !important8px, opacity0, visibilityhidden, z2147483647: browser-injected overlay, not workspace/login source. Full independently observed outerHTML saved browser-injected-popover.json; left untouched. Earlier same anonymous1440zh node was transient; reloaded page returned0. Not silently deleted from raw scans."
+  },
+  "search_checks": {
+    "count": 10,
+    "cases": [
+      {
+        "case": "long navigation bottom",
+        "ariaModal": "false",
+        "clientHeight": 412,
+        "dialog": {
+          "bottom": 580.1780471801758,
+          "height": 516.4000244140625,
+          "right": 1400.7999877929688,
+          "width": 480,
+          "x": 920.7999877929688,
+          "y": 63.77802276611328
+        },
+        "footer": {
+          "bottom": 579.3780517578125,
+          "height": 42,
+          "right": 1400.000030517578,
+          "width": 478.3999938964844,
+          "x": 921.6000366210938,
+          "y": 537.3780517578125
+        },
+        "header": {
+          "bottom": 125.37803268432616,
+          "height": 60.80000686645508,
+          "right": 1400.000030517578,
+          "width": 478.3999938964844,
+          "x": 921.6000366210938,
+          "y": 64.5780258178711
+        },
+        "items": 21,
+        "last": {
+          "rect": {
+            "bottom": 530.3780212402344,
+            "height": 42,
+            "right": 1383.000030517578,
+            "width": 454.3999938964844,
+            "x": 928.6000366210938,
+            "y": 488.3780212402344
+          },
+          "text": "Settings↗"
+        },
+        "modal": false,
+        "open": true,
+        "overflowY": "auto",
+        "results": {
+          "bottom": 537.3780288696289,
+          "height": 412,
+          "right": 1400.000030517578,
+          "width": 478.3999938964844,
+          "x": 921.6000366210938,
+          "y": 125.3780288696289
+        },
+        "scroll": 518,
+        "scrollHeight": 930,
+        "width": 1440
+      },
+      {
+        "case": "real qa results bottom",
+        "ariaModal": "false",
+        "clientHeight": 412,
+        "dialog": {
+          "bottom": 580.4000244140625,
+          "height": 516.4000244140625,
+          "right": 1400.7999877929688,
+          "width": 480,
+          "x": 920.7999877929688,
+          "y": 64
+        },
+        "footer": {
+          "bottom": 579.6000366210938,
+          "height": 42,
+          "right": 1400.000030517578,
+          "width": 478.3999938964844,
+          "x": 921.6000366210938,
+          "y": 537.6000366210938
+        },
+        "header": {
+          "bottom": 125.60000228881836,
+          "height": 60.79999923706055,
+          "right": 1400.000030517578,
+          "width": 478.3999938964844,
+          "x": 921.6000366210938,
+          "y": 64.80000305175781
+        },
+        "items": 12,
+        "last": {
+          "rect": {
+            "bottom": 530.6000061035156,
+            "height": 42,
+            "right": 1383.000030517578,
+            "width": 454.3999938964844,
+            "x": 928.6000366210938,
+            "y": 488.6000061035156
+          },
+          "text": "Selected QA document 1documents"
+        },
+        "modal": false,
+        "open": true,
+        "overflowY": "auto",
+        "results": {
+          "bottom": 537.5999984741211,
+          "height": 412,
+          "right": 1400.000030517578,
+          "width": 478.3999938964844,
+          "x": 921.6000366210938,
+          "y": 125.5999984741211
+        },
+        "scroll": 220,
+        "scrollHeight": 632,
+        "width": 1440
+      },
+      {
+        "case": "long navigation bottom",
+        "ariaModal": "false",
+        "clientHeight": 412,
+        "dialog": {
+          "bottom": 580.3463439941406,
+          "height": 516.4000244140625,
+          "right": 728.8000030517578,
+          "width": 480,
+          "x": 248.8000030517578,
+          "y": 63.946319580078125
+        },
+        "footer": {
+          "bottom": 579.5463256835938,
+          "height": 42,
+          "right": 728,
+          "width": 478.3999938964844,
+          "x": 249.6000061035156,
+          "y": 537.5463256835938
+        },
+        "header": {
+          "bottom": 125.54631805419922,
+          "height": 60.79999542236328,
+          "right": 728,
+          "width": 478.3999938964844,
+          "x": 249.6000061035156,
+          "y": 64.74632263183594
+        },
+        "items": 21,
+        "last": {
+          "rect": {
+            "bottom": 530.5463562011719,
+            "height": 42,
+            "right": 711,
+            "width": 454.3999938964844,
+            "x": 256.6000061035156,
+            "y": 488.5463562011719
+          },
+          "text": "Settings↗"
+        },
+        "modal": false,
+        "open": true,
+        "overflowY": "auto",
+        "results": {
+          "bottom": 537.5463180541992,
+          "height": 412,
+          "right": 728,
+          "width": 478.3999938964844,
+          "x": 249.6000061035156,
+          "y": 125.54631805419922
+        },
+        "scroll": 518,
+        "scrollHeight": 930,
+        "width": 768
+      },
+      {
+        "case": "real qa results bottom",
+        "ariaModal": "false",
+        "clientHeight": 412,
+        "dialog": {
+          "bottom": 580.4000244140625,
+          "height": 516.4000244140625,
+          "right": 728.8000030517578,
+          "width": 480,
+          "x": 248.8000030517578,
+          "y": 64
+        },
+        "footer": {
+          "bottom": 579.6000366210938,
+          "height": 42,
+          "right": 728,
+          "width": 478.3999938964844,
+          "x": 249.6000061035156,
+          "y": 537.6000366210938
+        },
+        "header": {
+          "bottom": 125.60000228881836,
+          "height": 60.79999923706055,
+          "right": 728,
+          "width": 478.3999938964844,
+          "x": 249.6000061035156,
+          "y": 64.80000305175781
+        },
+        "items": 12,
+        "last": {
+          "rect": {
+            "bottom": 530.6000061035156,
+            "height": 42,
+            "right": 711,
+            "width": 454.3999938964844,
+            "x": 256.6000061035156,
+            "y": 488.6000061035156
+          },
+          "text": "Selected QA document 1documents"
+        },
+        "modal": false,
+        "open": true,
+        "overflowY": "auto",
+        "results": {
+          "bottom": 537.5999984741211,
+          "height": 412,
+          "right": 728,
+          "width": 478.3999938964844,
+          "x": 249.6000061035156,
+          "y": 125.5999984741211
+        },
+        "scroll": 220,
+        "scrollHeight": 632,
+        "width": 768
+      },
+      {
+        "case": "long navigation bottom",
+        "ariaModal": "false",
+        "clientHeight": 412,
+        "dialog": {
+          "bottom": 580.4000244140625,
+          "height": 516.4000244140625,
+          "right": 358.80000001192093,
+          "width": 358,
+          "x": 0.800000011920929,
+          "y": 64
+        },
+        "footer": {
+          "bottom": 579.6000366210938,
+          "height": 42,
+          "right": 357.99999392032623,
+          "width": 356.3999938964844,
+          "x": 1.600000023841858,
+          "y": 537.6000366210938
+        },
+        "header": {
+          "bottom": 125.60000228881836,
+          "height": 60.79999923706055,
+          "right": 357.99999392032623,
+          "width": 356.3999938964844,
+          "x": 1.600000023841858,
+          "y": 64.80000305175781
+        },
+        "items": 21,
+        "last": {
+          "rect": {
+            "bottom": 530.6000061035156,
+            "height": 42,
+            "right": 340.9999942779541,
+            "width": 332.3999938964844,
+            "x": 8.600000381469727,
+            "y": 488.6000061035156
+          },
+          "text": "Settings↗"
+        },
+        "modal": false,
+        "open": true,
+        "overflowY": "auto",
+        "results": {
+          "bottom": 537.5999984741211,
+          "height": 412,
+          "right": 357.99999392032623,
+          "width": 356.3999938964844,
+          "x": 1.600000023841858,
+          "y": 125.5999984741211
+        },
+        "scroll": 518,
+        "scrollHeight": 930,
+        "width": 390
+      },
+      {
+        "case": "real qa results bottom",
+        "ariaModal": "false",
+        "clientHeight": 412,
+        "dialog": {
+          "bottom": 580.4000244140625,
+          "height": 516.4000244140625,
+          "right": 358.80000001192093,
+          "width": 358,
+          "x": 0.800000011920929,
+          "y": 64
+        },
+        "footer": {
+          "bottom": 579.6000366210938,
+          "height": 42,
+          "right": 357.99999392032623,
+          "width": 356.3999938964844,
+          "x": 1.600000023841858,
+          "y": 537.6000366210938
+        },
+        "header": {
+          "bottom": 125.60000228881836,
+          "height": 60.79999923706055,
+          "right": 357.99999392032623,
+          "width": 356.3999938964844,
+          "x": 1.600000023841858,
+          "y": 64.80000305175781
+        },
+        "items": 12,
+        "last": {
+          "rect": {
+            "bottom": 530.6000061035156,
+            "height": 42,
+            "right": 340.9999942779541,
+            "width": 332.3999938964844,
+            "x": 8.600000381469727,
+            "y": 488.6000061035156
+          },
+          "text": "Selected QA document 1documents"
+        },
+        "modal": false,
+        "open": true,
+        "overflowY": "auto",
+        "results": {
+          "bottom": 537.5999984741211,
+          "height": 412,
+          "right": 357.99999392032623,
+          "width": 356.3999938964844,
+          "x": 1.600000023841858,
+          "y": 125.5999984741211
+        },
+        "scroll": 274,
+        "scrollHeight": 686,
+        "width": 390
+      },
+      {
+        "case": "long navigation bottom",
+        "ariaModal": "false",
+        "clientHeight": 412,
+        "dialog": {
+          "bottom": 580.4000244140625,
+          "height": 516.4000244140625,
+          "right": 288.80000001192093,
+          "width": 288,
+          "x": 0.800000011920929,
+          "y": 64
+        },
+        "footer": {
+          "bottom": 579.6000366210938,
+          "height": 42,
+          "right": 287.99999392032623,
+          "width": 286.3999938964844,
+          "x": 1.600000023841858,
+          "y": 537.6000366210938
+        },
+        "header": {
+          "bottom": 125.60000228881836,
+          "height": 60.79999923706055,
+          "right": 287.99999392032623,
+          "width": 286.3999938964844,
+          "x": 1.600000023841858,
+          "y": 64.80000305175781
+        },
+        "items": 21,
+        "last": {
+          "rect": {
+            "bottom": 530.6000061035156,
+            "height": 42,
+            "right": 270.9999942779541,
+            "width": 262.3999938964844,
+            "x": 8.600000381469727,
+            "y": 488.6000061035156
+          },
+          "text": "Settings↗"
+        },
+        "modal": false,
+        "open": true,
+        "overflowY": "auto",
+        "results": {
+          "bottom": 537.5999984741211,
+          "height": 412,
+          "right": 287.99999392032623,
+          "width": 286.3999938964844,
+          "x": 1.600000023841858,
+          "y": 125.5999984741211
+        },
+        "scroll": 518,
+        "scrollHeight": 930,
+        "width": 320
+      },
+      {
+        "case": "real qa results bottom",
+        "ariaModal": "false",
+        "clientHeight": 412,
+        "dialog": {
+          "bottom": 580.4000244140625,
+          "height": 516.4000244140625,
+          "right": 288.80000001192093,
+          "width": 288,
+          "x": 0.800000011920929,
+          "y": 64
+        },
+        "footer": {
+          "bottom": 579.6000366210938,
+          "height": 42,
+          "right": 287.99999392032623,
+          "width": 286.3999938964844,
+          "x": 1.600000023841858,
+          "y": 537.6000366210938
+        },
+        "header": {
+          "bottom": 125.60000228881836,
+          "height": 60.79999923706055,
+          "right": 287.99999392032623,
+          "width": 286.3999938964844,
+          "x": 1.600000023841858,
+          "y": 64.80000305175781
+        },
+        "items": 12,
+        "last": {
+          "rect": {
+            "bottom": 530.6000061035156,
+            "height": 42,
+            "right": 270.9999942779541,
+            "width": 262.3999938964844,
+            "x": 8.600000381469727,
+            "y": 488.6000061035156
+          },
+          "text": "Selected QA document 1documents"
+        },
+        "modal": false,
+        "open": true,
+        "overflowY": "auto",
+        "results": {
+          "bottom": 537.5999984741211,
+          "height": 412,
+          "right": 287.99999392032623,
+          "width": 286.3999938964844,
+          "x": 1.600000023841858,
+          "y": 125.5999984741211
+        },
+        "scroll": 370,
+        "scrollHeight": 782,
+        "width": 320
+      },
+      {
+        "case": "short Atlas results mobile",
+        "ariaModal": "false",
+        "clientHeight": 185,
+        "dialog": {
+          "bottom": 353.3999938964844,
+          "height": 289.3999938964844,
+          "right": 288.80000001192093,
+          "width": 288,
+          "x": 0.800000011920929,
+          "y": 64
+        },
+        "footer": {
+          "bottom": 352.6000061035156,
+          "height": 42,
+          "right": 287.99999392032623,
+          "width": 286.3999938964844,
+          "x": 1.600000023841858,
+          "y": 310.6000061035156
+        },
+        "header": {
+          "bottom": 125.60000228881836,
+          "height": 60.79999923706055,
+          "right": 287.99999392032623,
+          "width": 286.3999938964844,
+          "x": 1.600000023841858,
+          "y": 64.80000305175781
+        },
+        "items": 2,
+        "last": {
+          "rect": {
+            "bottom": 303.6000061035156,
+            "height": 81,
+            "right": 280.9999942779541,
+            "width": 272.3999938964844,
+            "x": 8.600000381469727,
+            "y": 222.6000061035156
+          },
+          "text": "QT-20261103-4C2F02CA188041F3-R01 · Vision inspection packageAtlas Manufacturing"
+        },
+        "modal": false,
+        "open": true,
+        "overflowY": "auto",
+        "results": {
+          "bottom": 310.5999984741211,
+          "height": 185,
+          "right": 287.99999392032623,
+          "width": 286.3999938964844,
+          "x": 1.600000023841858,
+          "y": 125.5999984741211
+        },
+        "scroll": 0,
+        "scrollHeight": 185,
+        "width": 320
+      },
+      {
+        "case": "short Atlas results desktop",
+        "ariaModal": "false",
+        "clientHeight": 146,
+        "dialog": {
+          "bottom": 314.40000915527344,
+          "height": 250.40000915527344,
+          "right": 1400.7999877929688,
+          "width": 480,
+          "x": 920.7999877929688,
+          "y": 64
+        },
+        "footer": {
+          "bottom": 313.6000061035156,
+          "height": 42,
+          "right": 1400.000030517578,
+          "width": 478.3999938964844,
+          "x": 921.6000366210938,
+          "y": 271.6000061035156
+        },
+        "header": {
+          "bottom": 125.60000228881836,
+          "height": 60.79999923706055,
+          "right": 1400.000030517578,
+          "width": 478.3999938964844,
+          "x": 921.6000366210938,
+          "y": 64.80000305175781
+        },
+        "items": 2,
+        "last": {
+          "rect": {
+            "bottom": 264.6000061035156,
+            "height": 60,
+            "right": 1393.000030517578,
+            "width": 464.3999938964844,
+            "x": 928.6000366210938,
+            "y": 204.6000061035156
+          },
+          "text": "QT-20261103-4C2F02CA188041F3-R01 · Vision inspection packageAtlas Manufacturing"
+        },
+        "modal": false,
+        "open": true,
+        "overflowY": "auto",
+        "results": {
+          "bottom": 271.5999984741211,
+          "height": 146,
+          "right": 1400.000030517578,
+          "width": 478.3999938964844,
+          "x": 921.6000366210938,
+          "y": 125.5999984741211
+        },
+        "scroll": 0,
+        "scrollHeight": 146,
+        "width": 1440
+      }
+    ],
+    "all_nonmodal": true,
+    "all_results_overflow_auto": true,
+    "all_header_before_results": true,
+    "all_results_before_footer": true,
+    "all_last_results_before_footer": true,
+    "real_query": "qa:12 actual local records, including customer/task/activity/contact/documents; no injected sample result array",
+    "long_navigation": "21 entries, independently focused last Settings and scrolled to bottom",
+    "short_query": "Atlas:2 actual records, height250.4 desktop/289.4 at320; no fixed-height empty block",
+    "keyboard": "Escape from typed search closes once and returns focus to command-trigger (actual); outside heading click dismissed (intermediate same runtime); CtrlK does not open search atop customer edit modal (actual)"
+  },
+  "neutral_theme_computed": {
+    "body": "rgb(244, 245, 247)",
+    "brandNodes": 0,
+    "mainText": "rgb(32, 35, 43)",
+    "navText": "rgb(75, 46, 131)",
+    "sidebar": "rgb(247, 248, 250)",
+    "topbar": "rgba(255, 255, 255, 0.97)",
+    "topbarText": "rgb(105, 113, 128)",
+    "workspaceTop": 12
+  },
+  "intermediate_evidence": {
+    "route_radius_scans": "route-radius-scans.json:176 samples/62432 elements, former purple colors, preserved as intermediate not final appearance proof",
+    "open_overlays": "open-overlay-radius-scans-intermediate.json",
+    "search": "search-geometry-intermediate.json",
+    "images": "01-overview,02/03/04-search,05-editor without final- prefix are superseded purple intermediate; never final delivery appearance"
+  },
+  "accepted_images": [
+    {
+      "file": "final-01-overview-en-1440.jpg",
+      "bytes": 91531,
+      "sha256": "378b8bb063296e649074dda7b11176929e4b32c58246022f466e274944728424",
+      "bitmap_pixels": [
+        1425,
+        891
+      ],
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "final-02-login-zh-320.jpg",
+      "bytes": 13600,
+      "sha256": "4e8ef4fd3a1b25e9b284be7abd06f6bcfd74ec8256a61c7a92a2558e2df6194b",
+      "bitmap_pixels": [
+        320,
+        900
+      ],
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "final-search-bottom-en-1440.jpg",
+      "bytes": 75217,
+      "sha256": "b26fb24534db122120aa335f63263c4eca812276c903c97c6baa161d9904a7fb",
+      "bitmap_pixels": [
+        1425,
+        625
+      ],
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "final-search-bottom-en-768.jpg",
+      "bytes": 65012,
+      "sha256": "34b189f0e209814e61c9ab8f4b2dd76426f26d56bb78078c71215732294e7bff",
+      "bitmap_pixels": [
+        753,
+        882
+      ],
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "final-search-bottom-en-390.jpg",
+      "bytes": 36598,
+      "sha256": "a6fc41affaf8262cbc9444d6c0f71529863910ec0bbda62234a44eb27f80fc59",
+      "bitmap_pixels": [
+        375,
+        865
+      ],
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "final-search-bottom-en-320.jpg",
+      "bytes": 32153,
+      "sha256": "07ae7b3113b3c7bc72cd4aaa93a7d7030633b61665339eddb8617cd7e6e7c6ee",
+      "bitmap_pixels": [
+        305,
+        858
+      ],
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "final-search-short-en-1440.jpg",
+      "bytes": 98546,
+      "sha256": "7f43c1de21206a1503b4d237dea77fd2f0dba6f26bf27e49949ed5492a3f0cda",
+      "bitmap_pixels": [
+        1425,
+        891
+      ],
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "final-search-short-en-320.jpg",
+      "bytes": 27621,
+      "sha256": "a5fe4d4395a8d62c890024f7d22297d0e5ed9c0d8a9dee2951b7bcb771d0f52a",
+      "bitmap_pixels": [
+        305,
+        858
+      ],
+      "reopened_and_visually_inspected": true
+    }
+  ],
+  "rejected_captures": "Initial final-01 loading frame and final-02 2039-byte shrunk compositor frame were rejected, replaced after a separate settled DOM observation, reopened and inspected. Current final-01=91531B and final-02=13600B; only current hashed bytes accepted.",
+  "limitations": [
+    "Local verification, not independent final production visual pass",
+    "Computed scan only covers actual DOM in visited routes and opened listed overlays, not every uninstantiated future dialog branch",
+    "Common mojibake pattern and UTF8 scanning plus visual inspection is not exhaustive every possible encoding corruption",
+    "Bitmap dimensions are separately recorded and are not the proof of CSS viewport width",
+    "Zero border-radius policy does not remove meaningful SVG circle geometry or browser/OS UI corners",
+    "No new saved-view persistence or server business mutation testing in this styling-only pass"
+  ],
+  "cleanup": {
+    "computer_use_stopped_by_user_physical_escape": true,
+    "no_further_computer_use_after_stop": true,
+    "zoom_restore_completed": false,
+    "viewport_reset_completed": false,
+    "qa_tab_closed": false,
+    "qa_tab_id": "918581759",
+    "last_url": "http://localhost:8799/admin?lang=zh",
+    "last_css_viewport": [
+      320,
+      900
+    ],
+    "local127_zoom_temporarily_100_percent": true,
+    "production_tab_732_touched": false
+  },
+  "source_file_sha256": {
+    "src/admin/saas-styles.mjs": "b41fd1af1b7b019adc7667a386522f936e31a5a4ab87e753afbfba5f47bdbc21",
+    "src/admin/shell.mjs": "505d41f746ba94b4017d6698747c0b142cd4943ff05036aafa5e26892c53b189",
+    "src/admin/layout-client.mjs": "47d6dd38d75582e90b36d2eb95f3bc02701065067993448a23145368043a13f1",
+    "src/admin/client.mjs": "18f1ba1db705ac62dff2117ecaa493b1feedf6ba5c626fd19e921f9c7d1e38ed"
+  }
+}

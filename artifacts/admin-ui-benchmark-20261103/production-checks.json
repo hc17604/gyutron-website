@@ -1,6 +1,6 @@
 {
-  "at": "2026-11-03T15:02:39.150Z",
-  "source_commit": "7c9b6623739dddcf027ec70784fc3fdba3b99ba5",
+  "at": "2026-11-03T15:34:44.159Z",
+  "source_commit": "3f27d665367023550f7b0553001fb13ed0c37829",
   "origin": "https://www.gyutron.com",
   "checks": [
     {
@@ -53,32 +53,32 @@
     }
   ],
   "observations": {
-    "version": "2026.11.03.6",
+    "version": "2026.11.03.7",
     "expected_from_compiled_committed_source": true,
-    "expected_source_ref": "7c9b6623739dddcf027ec70784fc3fdba3b99ba5",
-    "expected_bundle_sha256": "8a0e6787a29c68a5210c459839d203787ec7912ecd70786717bda9e9ac91cbf8",
+    "expected_source_ref": "3f27d665367023550f7b0553001fb13ed0c37829",
+    "expected_bundle_sha256": "a0eb11f4f1d622edeecee31dd1362688a2044b87042e4344a7f93e64ddf0cfc0",
     "compiled_asset_provenance": {
       "expected_from_compiled_committed_source": true,
-      "ref": "7c9b6623739dddcf027ec70784fc3fdba3b99ba5",
+      "ref": "3f27d665367023550f7b0553001fb13ed0c37829",
       "wrangler": "4.93.1",
-      "source_tree": "fcf07eb1c39d9e4ea463e084f7600f9acde6f925",
+      "source_tree": "f447e1f4b8fde4b3fdc360aaaab2df9b5bbacd16",
       "source_files_verified": 111,
       "source_bytes_from_git_blobs": true,
       "archive_eol_changes_corrected": 106,
-      "source_archive_sha256": "37969bf4234623a3f0cbd275420fa883344cae54178367fda3118d76fc00beda",
-      "bundle_sha256": "8a0e6787a29c68a5210c459839d203787ec7912ecd70786717bda9e9ac91cbf8",
+      "source_archive_sha256": "f7e7993fde8a363e7c92e95a9bd0fd107814938a24394285be433df0447bc06f",
+      "bundle_sha256": "a0eb11f4f1d622edeecee31dd1362688a2044b87042e4344a7f93e64ddf0cfc0",
       "config_sha256": "c0317c54be4d01be3ee269a053baa0e1f640a53c07784a94015efd05234bea50",
       "asset_count": 14,
-      "scratch": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\.wrangler\\production-asset-verification\\ad14e526-df76-4343-b5a6-4dca8b4cf8b5",
+      "scratch": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\.wrangler\\production-asset-verification\\5e41eec1-07da-48c5-b1d1-20d0e3392c63",
       "static_asset_scope": "Committed brand assets only; dynamic Worker source is complete. Static production assets are checked separately.",
       "provisioned_resources": false,
       "deployed": false
     },
     "asset_hashes": {
-      "/admin/assets/design-system.css": "dbf8fab2f9a97184ef0cf041adf73c1f445330e2fe048520350047a826c2a163",
-      "/admin/assets/layout.js": "e7a2246bb144c0df9d90b1d1b7776b8f9281a2737a0f7cecdf219ee72b8c7b2f",
+      "/admin/assets/design-system.css": "5a77f1036a1c8f99908b7cdc5a1d959cef56e10f0c7d1e9d72af1d00b057038c",
+      "/admin/assets/layout.js": "6f7b90fe2a36731a02b9362e3190f0c7476ce30093e3f55a041103a208640077",
       "/admin/assets/workspace.css": "69fda45902480c6e9243e2d3d0d4b73dc9cacbe790f932b4af1ad05ed2988514",
-      "/admin/assets/workspace.js": "beb183003f27fb4f38fa5268a9501f93e5e5b57f821b62846705e391f86ecfd1",
+      "/admin/assets/workspace.js": "01ff784059b96ef186470d746ffff78408278f40f98472f7143cc5c0574ce072",
       "/admin/assets/quotes.js": "695ea06b6f7d406e640c9e6b2c3d0ef824b839b4fcdff0a0378d32d9bf01fa44",
       "/admin/assets/quotes.css": "f38dd81869651998170d684c1574c469a9baa439024a9e2e1b5bd8f9cf2806be",
       "/admin/assets/locales.js": "4c0395bd74588f5d83f9d9aba6ff81aa69b2f6b3fe466d722d8823614288e26a",
@@ -91,10 +91,10 @@
       "/admin/assets/crm-experience.js": "166f2c47d8e804119eb7f7c04c7a88269e807b959a7f0b4a4ac3dbd0c164bea8"
     },
     "expected_asset_hashes": {
-      "/admin/assets/design-system.css": "dbf8fab2f9a97184ef0cf041adf73c1f445330e2fe048520350047a826c2a163",
-      "/admin/assets/layout.js": "e7a2246bb144c0df9d90b1d1b7776b8f9281a2737a0f7cecdf219ee72b8c7b2f",
+      "/admin/assets/design-system.css": "5a77f1036a1c8f99908b7cdc5a1d959cef56e10f0c7d1e9d72af1d00b057038c",
+      "/admin/assets/layout.js": "6f7b90fe2a36731a02b9362e3190f0c7476ce30093e3f55a041103a208640077",
       "/admin/assets/workspace.css": "69fda45902480c6e9243e2d3d0d4b73dc9cacbe790f932b4af1ad05ed2988514",
-      "/admin/assets/workspace.js": "beb183003f27fb4f38fa5268a9501f93e5e5b57f821b62846705e391f86ecfd1",
+      "/admin/assets/workspace.js": "01ff784059b96ef186470d746ffff78408278f40f98472f7143cc5c0574ce072",
       "/admin/assets/quotes.js": "695ea06b6f7d406e640c9e6b2c3d0ef824b839b4fcdff0a0378d32d9bf01fa44",
       "/admin/assets/quotes.css": "f38dd81869651998170d684c1574c469a9baa439024a9e2e1b5bd8f9cf2806be",
       "/admin/assets/locales.js": "4c0395bd74588f5d83f9d9aba6ff81aa69b2f6b3fe466d722d8823614288e26a",
@@ -114,19 +114,19 @@
       "/workspace-assets/fonts/OFL.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
     },
     "probes": {
-      "checked_at": "2026-11-03T15:02:29.767Z",
+      "checked_at": "2026-11-03T15:34:33.824Z",
       "mode": "read",
       "database": {
         "status": "ok",
-        "latency_ms": 49
+        "latency_ms": 57
       },
       "privateFiles": {
         "status": "ok",
-        "latency_ms": 223
+        "latency_ms": 229
       },
       "requestThrottle": {
         "status": "ok",
-        "latency_ms": 6
+        "latency_ms": 105
       }
     },
     "intelligence_status_fields": [

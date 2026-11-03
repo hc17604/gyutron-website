@@ -515,5 +515,29 @@
     "scanned": 37,
     "url": "http://localhost:8799/admin?lang=zh",
     "width": 320
+  },
+  {
+    "body": 320,
+    "brandNodes": 0,
+    "height": 900,
+    "mojibake": [],
+    "nonzero_radius": [
+      {
+        "cls": "",
+        "id": "",
+        "pseudo": null,
+        "radii": [
+          "8px",
+          "8px",
+          "8px",
+          "8px"
+        ],
+        "tag": "DIV"
+      }
+    ],
+    "root": 320,
+    "scanned": 38,
+    "url": "http://localhost:8799/admin?lang=zh",
+    "width": 320
   }
 ]

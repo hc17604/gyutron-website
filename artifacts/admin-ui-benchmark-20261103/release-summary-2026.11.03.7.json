@@ -1,0 +1,53 @@
+{
+  "verified_at": "2026-11-03T15:34:44.159Z",
+  "version": "2026.11.03.7",
+  "runtime_source_commit": "3f27d665367023550f7b0553001fb13ed0c37829",
+  "ci": {
+    "run": 41663392726,
+    "conclusion": "success"
+  },
+  "live_url": "https://www.gyutron.com/admin",
+  "final_direction": "Restore preceding neutral light framework, withdraw additional purple, preserve zero corners, removed sidebar wordmark and compact upper-right nonmodal search",
+  "production_checks": {
+    "passed": 12,
+    "failed": 0,
+    "dynamic_assets_exact": 14,
+    "static_brand_font_assets_exact": 4,
+    "backup_reused": true,
+    "backup_created_new": false
+  },
+  "local_checks": {
+    "source_suites_passed": 19,
+    "route_login_samples": 41,
+    "open_overlay_samples": 35,
+    "search_cases": 10,
+    "accepted_images_hash_verified": 8
+  },
+  "package": {
+    "source_commit": "3f27d665367023550f7b0553001fb13ed0c37829",
+    "zip": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261103152346-3f27d6653670.zip",
+    "sha256": "09563e7d6c9d38597fc6aec93c1a4e4ae149d22a3f9ab7a846097e9832f160f7",
+    "bytes": 1190746,
+    "members": 121,
+    "fresh_install_lifecycle_enabled": true,
+    "portable_suites": 18,
+    "independent_readonly_verification_passed": true
+  },
+  "evidence": [
+    "production-checks.json",
+    "industrial-pass/industrial-final-review.json",
+    "industrial-pass/final-source-checks.json",
+    "standalone-delivery.json",
+    "../../docs/admin-ui-benchmark-20261103.md"
+  ],
+  "limits": {
+    "final_visual_evidence_is_local_synthetic": true,
+    "new_final_production_browser_visual_pass": false,
+    "computer_use_stopped_by_user_and_not_resumed": true,
+    "temporary_qa_320_viewport_not_restored": true,
+    "second_customer_resources_provisioned": false
+  },
+  "production_business_test_records_created": false,
+  "external_messages_sent": false,
+  "external_models_called": false
+}
