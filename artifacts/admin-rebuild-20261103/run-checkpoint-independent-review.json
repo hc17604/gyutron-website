@@ -1,0 +1,69 @@
+{
+  "reviewed_at": "2026-11-03T13:17:57.715Z",
+  "reviewer": "independent-quality-agent",
+  "status": "passed",
+  "blocking_findings": [],
+  "tests": [
+    {
+      "command": "node scripts/test-operations-run-review.mjs",
+      "passed": 15,
+      "failed": 0,
+      "shipped_helper_executed": true,
+      "synthetic_real_sqlite": true,
+      "loss_after_committed_checkpoint": true,
+      "lead_count": 205,
+      "findings": 205,
+      "distinct_tasks": 205,
+      "maximum_operations_module_d1_binding_calls": 17
+    },
+    {
+      "command": "node scripts/test-operations-run-ui.mjs",
+      "passed": 26,
+      "failed": 0,
+      "shipped_controller_executed": true
+    },
+    {
+      "command": "node scripts/test-operations-core.mjs",
+      "passed": 46,
+      "failed": 0,
+      "includes_fixed_automation_exclude_tests": true
+    }
+  ],
+  "verified": [
+    "terminal completion requires completed persisted run status",
+    "failed business execution is not silently retried",
+    "busy/running pause without polling spin",
+    "unconfirmed process results are read before further writes",
+    "unconfirmable initial create does not automatically recreate a run",
+    "navigation stops subsequent POSTs and stale page updates",
+    "64-step budget includes the initial request",
+    "90-second budget checked between requests",
+    "persisted server checkpoints are retained after navigation or response loss",
+    "launch/process/confirmation requests use a 20-second abort boundary and clear their timers",
+    "native DOMException numeric codes20/23 are transport uncertainty and trigger GET confirmation"
+  ],
+  "scope": {
+    "browser_visual_tested": false,
+    "production_accessed": false,
+    "old_local_database_accessed": false,
+    "external_model_called": false,
+    "parent_authentication_queries_included_in_module_count": false,
+    "already_sent_server_request_cancelled": false
+  },
+  "source_sha256": {
+    "src/admin/operations-client.mjs": "0dac8e9f8a93087a6eb21a9c347892ae9288fa928b2a6185c5185cb90e09e351",
+    "src/platform/operations/scheduler.mjs": "518a7127f0f8adaa1cc73757a0ed29f1da180b6598100db66e804de18507b1f5",
+    "scripts/test-operations-run-review.mjs": "8506441655a13eff33efbdd0225199929abc3902870ba6968cc6582461f09c4b",
+    "scripts/test-operations-run-ui.mjs": "4f1ed135ace839b7db3528c6e11cb79e385a16f490ac284b7f967786f6efee64",
+    "scripts/test-operations-core.mjs": "0d0add214b3e1c80fe486dc82b52f7ac99c37b7dd29b683211f842bbed56dc40"
+  },
+  "findings": [
+    {
+      "id": "RUN-TRANSPORT-01",
+      "status": "closed",
+      "summary": "Native AbortError/TimeoutError carry numeric code values and must not be classified as string API errors.",
+      "fix": "Only string API codes are treated as business errors; aborted or timed-out process responses are confirmed by GET.",
+      "evidence": "Independent real DOMException regression and shipped-controller deadline cases pass."
+    }
+  ]
+}

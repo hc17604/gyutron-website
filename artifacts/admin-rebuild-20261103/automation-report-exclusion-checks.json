@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-11-03T13:14:44.133Z",
+  "source_hashes": [
+    {
+      "path": "src/platform/operations/scheduler.mjs",
+      "sha256": "518a7127f0f8adaa1cc73757a0ed29f1da180b6598100db66e804de18507b1f5"
+    },
+    {
+      "path": "src/platform/operations/analytics.mjs",
+      "sha256": "512920cd7bb752e0bfb2dc726dc89809d91423438b881476c59217ce8a62b269"
+    },
+    {
+      "path": "scripts/test-operations-core.mjs",
+      "sha256": "0d0add214b3e1c80fe486dc82b52f7ac99c37b7dd29b683211f842bbed56dc40"
+    }
+  ],
+  "suite": "scripts/test-operations-core.mjs",
+  "passed": 46,
+  "failed": 0,
+  "synthetic_only": true,
+  "production_writes": false,
+  "coverage": {
+    "strict_automation_exclude_tests_boolean": true,
+    "invalid_values_rejected_without_writes": [
+      "string",
+      "0",
+      "1",
+      "null",
+      "array",
+      "object"
+    ],
+    "frozen_true_report_inquiries": 1,
+    "frozen_false_report_inquiries": 2,
+    "later_automation_edits_do_not_drift_queued_snapshot": true,
+    "legacy_query_string_false_preserved": true,
+    "report_process_binding_calls_cap": 14,
+    "existing_import_rule_and_cron_budgets_still_pass": true
+  }
+}

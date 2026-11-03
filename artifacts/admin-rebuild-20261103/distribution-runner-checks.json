@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-11-03T13:10:09.793Z",
+  "passed": 5,
+  "checks": [
+    "argument boundaries and Unicode cwd are preserved without a shell",
+    "nonzero exit fails closed",
+    "missing executable fails promptly",
+    "expired deadline never starts work",
+    "timeout terminates the owned child and grandchild and retains scratch"
+  ],
+  "platform": "win32",
+  "node": "24.16.0",
+  "installation_scripts_skipped": false,
+  "external_calls": 0,
+  "scratch": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\.wrangler\\distribution-runner-probe-5T1NYX"
+}

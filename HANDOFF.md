@@ -16,6 +16,23 @@
 
 ## Fast takeover snapshot
 
+- **Final interaction refinement .4 READY FOR RELEASE:** production .3 and its proofs below remain valid.
+  Candidate .4 adds continuous bounded rule-run advancement with visible progress, navigation-safe
+  interruption and explicit waiting/failure states; operations cron changes from5min to1min to keep
+  queued work moving promptly. No schema/resource/password changes. Root owns config/integration/
+  release, frontend agent owns operations controller/tests, backend agent owns packaging diagnostics.
+  The first .3 final-package install was interrupted after stalled npm output; an independent fresh
+  install with all scripts enabled subsequently succeeded in7s and all16 suites/build passed. No final
+  .3 ZIP was delivered. Current .4 source passed19/19 suites, including26 shipped-controller and15
+  independent checkpoint checks. Actual local Worker/browser: one Run click completed all13 rules;
+  navigating away preserved the checkpoint, then one Continue completed the same run. Per-request
+  20s transport timeouts confirm unknown outcomes with GET; API errors, active prior work and budgets
+  stop honestly. A real SQLite205-record lost-response test produced205 findings/tasks without duplicates.
+  Report automation now strictly validates/executed frozen boolean exclusion filters (core46/46);
+  tests distinguish one real record from two including an internal test record. Dry-run gzip334.89KiB,
+  deploy:check0 changed/131 public-only preserved, agent:check pass. Deployment and final committed
+  package still require verification; production is not .4 until its header/asset checks pass.
+
 - **2026-11-03 rebuild LIVE, 2026.11.03.3:** the old Local Agent's actual business functions
   are implemented alongside CRM: native website source, mapped commerce CSV, currency-safe
   analytics/reports, 13 rules, durable interval/calendar automation, knowledge/memory and selectable

@@ -1,6 +1,6 @@
 # GYUTRON Operations — independent instance starter
 
-Source application **2026.11.03.3**, migrations **0001–0010**, backup **format 4**.
+Source application **2026.11.03.4**, migrations **0001–0010**, backup **format 4**.
 The manifest and release evidence identify the delivered commit and actual checks.
 This README does not claim the new production release or a second customer
 instance has passed acceptance.
@@ -159,7 +159,7 @@ The 13 rules/policies cover enquiry/support/download follow-up, data hygiene,
 duplicates, product opportunity, cart signals, paid-unfulfilled orders, high views
 without enquiry, RFQ surge, priority countries/categories and internal-test
 exclusion. Calendar schedules use the business IANA zone or intervals. The
-five-minute cron advances bounded work, not a second-accurate SLA. Runs/retries,
+one-minute cron advances bounded work, not a second-accurate SLA. Runs/retries,
 findings and report snapshots are real, with documented retention. Pausing a rule
 does not cancel already queued snapshots. In-workspace alerts do not prove an
 external recipient is connected.
@@ -193,7 +193,7 @@ The last two commands modify the configured customer's resources. Verify destina
 IDs and preserve a trusted recovery point first. Apply incremental migrations;
 do not edit historical files or overwrite live data with an older snapshot.
 
-The template schedules operations every five minutes and backup daily at 18:00 UTC
+The template schedules operations every minute and backup daily at 18:00 UTC
 (02:00 next day in Singapore). Confirm the deployed cron. Format4 covers **43
 persistent business tables**, plus `d1_migrations` when present (**44 data tables**).
 Restored sessions/login attempts are empty. Capture limits remain 25000 rows/8 MiB

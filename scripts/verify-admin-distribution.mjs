@@ -1,20 +1,48 @@
 /** Independent artifact verification. All optional installs/builds run in scratch copies. */
 import { readFile,writeFile,mkdir,readdir,lstat,access,copyFile,realpath } from 'node:fs/promises';
-import { spawnSync } from 'node:child_process';
+import { spawn,spawnSync } from 'node:child_process';
 import { createHash,randomUUID } from 'node:crypto';
 import { inflateRawSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const TOOL_ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const PORTABLE_SUITES=['smoke-admin-api.mjs','smoke-admin-auth.mjs','smoke-admin-quotes.mjs','smoke-admin-backup.mjs','smoke-admin-aggregation.mjs','test-workspace-experience.mjs','test-operations-core.mjs','test-intelligence.mjs','test-intelligence-cross-review.mjs','test-intelligence-crm-controller.mjs','test-operations-intelligence-review.mjs','test-notifications.mjs','test-operations-bulk-ui.mjs','test-operations-license-issuer.mjs','check-admin-frontend.mjs','check-admin-routes.mjs'];
+const PORTABLE_SUITES=['smoke-admin-api.mjs','smoke-admin-auth.mjs','smoke-admin-quotes.mjs','smoke-admin-backup.mjs','smoke-admin-aggregation.mjs','test-workspace-experience.mjs','test-operations-core.mjs','test-intelligence.mjs','test-intelligence-cross-review.mjs','test-intelligence-crm-controller.mjs','test-operations-intelligence-review.mjs','test-notifications.mjs','test-operations-bulk-ui.mjs','test-operations-license-issuer.mjs','check-admin-frontend.mjs','check-admin-routes.mjs','test-operations-run-ui.mjs','test-operations-run-review.mjs'];
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const crcTable=Array.from({length:256},(_,index)=>{let value=index;for(let bit=0;bit<8;bit++)value=value&1?0xedb88320^(value>>>1):value>>>1;return value>>>0;});
 function crc32(bytes){let value=0xffffffff;for(const byte of bytes)value=crcTable[(value^byte)&255]^(value>>>8);return(value^0xffffffff)>>>0;}
 function safe(value){if(!value||value.startsWith('/')||value.includes('\\')||value.split('/').some(part=>['','..','.'].includes(part))||/^[a-z]:/i.test(value))throw Error('Unsafe artifact path: '+value);return value;}
 async function exists(value){try{await access(value);return true;}catch(error){if(error.code==='ENOENT')return false;throw error;}}
 async function walk(root,prefix=''){const files=[];for(const entry of await readdir(path.join(root,prefix),{withFileTypes:true})){const relative=prefix?prefix+'/'+entry.name:entry.name;if(entry.isSymbolicLink())throw Error('Artifact contains a symbolic link: '+relative);if(entry.isDirectory())files.push(...await walk(root,relative));else if(entry.isFile())files.push(safe(relative));else throw Error('Unexpected artifact entry: '+relative);}return files;}
-function execute(executable,args,cwd,extraEnv={}){const result=spawnSync(executable,args,{cwd,stdio:'inherit',windowsHide:true,env:{...process.env,...extraEnv}});if(result.status!==0)throw Error('Validation command failed: '+path.basename(executable)+' '+args.join(' '));}
+/** Run only the requested validation process, with visible progress and bounded cleanup. */
+export async function runValidationCommand(executable,args,cwd,extraEnv={}, {label=path.basename(executable),timeoutMs=120000,heartbeatMs=15000}={}){
+ if(!Number.isFinite(timeoutMs)||timeoutMs<=0)throw Error('Validation deadline exceeded before '+label+'. Scratch files are preserved.');
+ const started=Date.now();console.log('[validation] START '+label+' (limit '+Math.ceil(timeoutMs/1000)+'s)');
+ const child=spawn(executable,args,{cwd,stdio:'inherit',windowsHide:true,shell:false,detached:process.platform!=='win32',env:{...process.env,...extraEnv}});
+ await new Promise((resolve,reject)=>{
+  let stoppedFor=null,finished=false;
+  const stop=reason=>{
+   if(finished||stoppedFor)return;stoppedFor=reason;
+   if(!child.pid)return;
+   if(process.platform==='win32'){
+    // PID is supplied by spawn; no shell, command interpolation or filesystem cleanup.
+    const killer=path.join(process.env.SystemRoot||'C:\\Windows','System32','taskkill.exe');
+    const result=spawnSync(killer,['/PID',String(child.pid),'/T','/F'],{stdio:'ignore',windowsHide:true,timeout:5000});
+    if(result.status!==0)try{child.kill('SIGKILL');}catch{/* Already exited. */}
+   }else try{process.kill(-child.pid,'SIGKILL');}catch{try{child.kill('SIGKILL');}catch{/* Already exited. */}}
+  };
+  const onInterrupt=()=>stop('interrupted'),onTerminate=()=>stop('terminated');
+  process.once('SIGINT',onInterrupt);process.once('SIGTERM',onTerminate);
+  const timer=setTimeout(()=>stop('timed out after '+Math.ceil(timeoutMs/1000)+'s'),timeoutMs);
+  const heartbeat=setInterval(()=>console.log('[validation] RUNNING '+label+' ('+Math.floor((Date.now()-started)/1000)+'s, pid '+child.pid+')'),heartbeatMs);
+  const finish=(error,code,signal)=>{
+   if(finished)return;finished=true;clearTimeout(timer);clearInterval(heartbeat);process.removeListener('SIGINT',onInterrupt);process.removeListener('SIGTERM',onTerminate);
+   if(error||stoppedFor||code!==0){reject(Error('Validation '+label+' '+(stoppedFor||error?.message||'failed with '+(signal||'exit '+code))+'. Scratch files are preserved.'));return;}
+   console.log('[validation] PASS '+label+' ('+((Date.now()-started)/1000).toFixed(1)+'s)');resolve();
+  };
+  child.once('error',error=>finish(error));child.once('close',(code,signal)=>finish(null,code,signal));
+ });
+}
 async function npmCli(){
  const candidates=[process.env.npm_execpath,path.join(path.dirname(process.execPath),'node_modules/npm/bin/npm-cli.js')].filter(Boolean);
  for(const directory of (process.env.PATH || '').split(path.delimiter))if(directory){const executable=path.join(directory,process.platform==='win32'?'npm.cmd':'npm');if(await exists(executable)){const resolved=await realpath(executable);candidates.push(resolved,path.join(path.dirname(resolved),'node_modules/npm/bin/npm-cli.js'));}}
@@ -64,22 +92,26 @@ async function main(){
  const archive=options['--archive']?await verifyArchive(options['--archive'],expected):null;
  let scratch=null;
  if(options['--test']||options['--build']||options['--install']){
+  const deadline=Date.now()+10*60*1000;
+  const execute=(executable,args,cwd,extraEnv={},step={})=>runValidationCommand(executable,args,cwd,extraEnv,{...step,timeoutMs:Math.min(step.timeoutMs||120000,deadline-Date.now())});
   scratch=path.join(TOOL_ROOT,'.wrangler','distribution-verification',randomUUID());await mkdir(scratch,{recursive:true});
+  console.log('[validation] Scratch: '+scratch);
   for(const file of files){const destination=path.join(scratch,...file.split('/'));await mkdir(path.dirname(destination),{recursive:true});await copyFile(path.join(root,...file.split('/')),destination);}
   const local=path.join(scratch,'.wrangler','local-check');await mkdir(path.join(local,'tmp'),{recursive:true});
   const childEnv={npm_config_cache:path.join(local,'npm-cache'),TEMP:path.join(local,'tmp'),TMP:path.join(local,'tmp')};
   await writeFile(path.join(local,'empty.npmrc'),'');
-  if(options['--install'])execute(process.execPath,[await npmCli(),'ci','--no-audit','--no-fund','--userconfig',path.join(local,'empty.npmrc'),'--registry','https://registry.npmjs.org'],scratch,childEnv);
-  execute(process.execPath,['scripts/verify-instance.mjs'],scratch,childEnv);
-  if(options['--test'])for(const script of PORTABLE_SUITES)execute(process.execPath,['scripts/'+script],scratch,childEnv);
+  if(options['--install'])await execute(process.execPath,[await npmCli(),'ci','--no-audit','--no-fund','--foreground-scripts','--loglevel=http','--timing','--userconfig',path.join(local,'empty.npmrc'),'--registry','https://registry.npmjs.org'],scratch,childEnv,{label:'npm ci (installation scripts enabled)',timeoutMs:5*60*1000});
+  await execute(process.execPath,['scripts/verify-instance.mjs'],scratch,childEnv,{label:'verify-instance.mjs'});
+  if(options['--test'])for(const script of PORTABLE_SUITES)await execute(process.execPath,['scripts/'+script],scratch,childEnv,{label:script});
   if(options['--build']){
    const quote=value=>JSON.stringify(value),localConfig=path.join(local,'wrangler.local.toml');
    await writeFile(localConfig,`# LOCAL-ONLY dummy IDs; no remote commands are used.\nname="operations-distribution-local-check"\nmain=${quote(path.join(scratch,'src','worker.mjs'))}\ncompatibility_date="2026-05-18"\ncompatibility_flags=["nodejs_compat"]\n[assets]\ndirectory=${quote(path.join(scratch,'public'))}\nbinding="ASSETS"\nrun_worker_first=true\n[[d1_databases]]\nbinding="DB"\ndatabase_name="local_distribution_check"\ndatabase_id="00000000-0000-4000-8000-000000000000"\nmigrations_dir=${quote(path.join(scratch,'migrations'))}\n[[r2_buckets]]\nbinding="R2"\nbucket_name="local-distribution-check"\n[[kv_namespaces]]\nbinding="RATE_LIMIT"\nid="00000000000000000000000000000000"\n`);
    await writeFile(path.join(local,'.dev.vars'),'ADMIN_PASSWORD=local-distribution-test-only\nADMIN_SECRET=local-distribution-secret-only\nIP_HASH_SALT=local-distribution-salt-only\n');
-   let wrangler=path.join(scratch,'node_modules','wrangler','bin','wrangler.js');if(!(await exists(wrangler)))wrangler=path.join(TOOL_ROOT,'node_modules','wrangler','bin','wrangler.js');if(!(await exists(wrangler)))throw Error('Install the pinned dependencies with --install before building.');
-   execute(process.execPath,[wrangler,'deploy','--dry-run','--config',localConfig,'--outdir',path.join(local,'bundle')],scratch,childEnv);
+   let wrangler=path.join(scratch,'node_modules','wrangler','bin','wrangler.js');if(!(await exists(wrangler))){if(options['--install'])throw Error('Clean installation did not provide the pinned Wrangler. Scratch files are preserved.');wrangler=path.join(TOOL_ROOT,'node_modules','wrangler','bin','wrangler.js');}if(!(await exists(wrangler)))throw Error('Install the pinned dependencies with --install before building.');
+   await execute(process.execPath,[wrangler,'deploy','--dry-run','--config',localConfig,'--outdir',path.join(local,'bundle')],scratch,childEnv,{label:'Wrangler dry-run (local dummy bindings)'});
   }
  }
  console.log(JSON.stringify({ok:true,source_commit:manifest.source_commit,preview_only:Boolean(manifest.preview_only),files:expected.size,archive,scratch,source_directory_unchanged:true,provisioned_resources:false,deployed:false},null,2));
 }
-main().catch(error=>{console.error('Operations distribution verification failed: '+error.message);process.exitCode=1;});
+const entry=process.argv[1]?path.resolve(process.argv[1]):null,self=fileURLToPath(import.meta.url);
+if(entry&&(process.platform==='win32'?entry.toLowerCase()===self.toLowerCase():entry===self))main().catch(error=>{console.error('Operations distribution verification failed: '+error.message);process.exitCode=1;});

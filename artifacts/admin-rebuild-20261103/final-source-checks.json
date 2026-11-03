@@ -1,27 +1,27 @@
 {
-  "at": "2026-11-03T12:48:32.583Z",
-  "passed": 17,
+  "at": "2026-11-03T13:18:04.239Z",
+  "passed": 19,
   "failed": 0,
   "suites": [
     {
       "file": "smoke-platform.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 194,
+      "duration_ms": 170,
       "output": "\n  smoke: 34 passed, 0 failed\n  ✓ all platform smoke tests passed\n\n"
     },
     {
       "file": "smoke-admin-api.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 332,
+      "duration_ms": 302,
       "output": "admin workspace operation failed Error\nadmin workspace operation failed Error\nlegacy operational view failed Error\n{\n  \"passed\": 41,\n  \"failed\": 0,\n  \"checks\": 41,\n  \"storage\": \"real SQLite in memory\",\n  \"productionWrites\": false\n}\n"
     },
     {
       "file": "smoke-admin-auth.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 2313,
+      "duration_ms": 2484,
       "output": "workspace request failed Error\nworkspace request failed Error\nworkspace request failed Error\nbackup skipped: missing storage binding\n{\n  \"passed\": 29,\n  \"failed\": 0,\n  \"checks\": 29,\n  \"storage\": \"real SQLite in memory\",\n  \"productionWrites\": false\n}\n"
     },
     {
@@ -35,91 +35,105 @@
       "file": "smoke-admin-aggregation.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 255,
+      "duration_ms": 284,
       "output": "{\n  \"passed\": 5,\n  \"failed\": 0,\n  \"checks\": 5,\n  \"fixtureOpportunities\": 18030,\n  \"storage\": \"real SQLite in memory\",\n  \"productionWrites\": false\n}\n"
     },
     {
       "file": "smoke-admin-backup.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 1976,
+      "duration_ms": 2256,
       "output": "backup failed BACKUP_R2_WRITE_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup retention failed Error\nbackup retention failed Error\nbackup skipped: missing storage binding\n{\n  \"passed\": 20,\n  \"failed\": 0,\n  \"checks\": 20,\n  \"storage\": \"real SQLite; R2 failure behavior tested with an in-memory mock\",\n  \"productionWrites\": false\n}\n"
     },
     {
       "file": "test-workspace-experience.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 126,
+      "duration_ms": 139,
       "output": "PASS contacts persist and customer details include real contacts\nPASS only one primary contact; prior primary version increments\nPASS stale primary update does not clear the current primary\nPASS contact cross-customer move is rejected; history stays\nPASS contact archive and restore are versioned and do not reassign primary\nPASS RBAC and origin protect contact writes\nPASS private view persists server side and is private to its creator\nPASS team views are readable but only managed by permitted users\nPASS view CAS and malformed config rejection\nPASS bulk reports individual conflicts without claiming all succeeded\nPASS real record search returns matching contact and customer, not unrelated rows\nPASS sort and amount/date filters use allowlisted SQL\nPASS contact changes produce before/after audit records\nPASS primary contacts appear and are searchable in the real customer list\nPASS created date filters respect the workspace business timezone\n{\"passed\":15,\"failed\":0}\n"
     },
     {
       "file": "test-operations-core.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 435,
-      "output": "PASS role and origin defenses precede business writes\nPASS CSV parser preserves multiline/quoted/UTF8 values and rejects malformed data\nPASS amount conversion is exact, currency-specific and bounded\nPASS business day boundaries use workspace timezone and DST\nPASS sources and native sync describe original tables without copying\nPASS preview validates, maps, deduplicates and persists no commerce rows\nPASS commit upserts valid rows and is idempotent with a stale repeated completion\nPASS failed row CSV is downloadable only to managers and spreadsheet-safe\nPASS upsert identity includes source and preserves one canonical order per external ID\nPASS customer import has real rows and item foreign-parent/currency failures stay explicit\nPASS payment import supports unmatched reconciliation without counting revenue twice\nPASS source/date/currency drilldown totals match metric filters\nPASS Shopify export maps Id/Name and repeated line headers correctly\nPASS Shopify derived identities survive row reordering and reject ambiguous duplicate SKUs\nPASS database guards reject interleaved currency mismatch independently of prevalidation\nPASS native site source is queried live and internal synthetic/spam data is excluded\nPASS reports are factual, persisted, multilingual and immutable\nPASS rule edits create immutable version history and enforce optimistic concurrency\nPASS rule runs create real deduplicated CRM tasks and bounded resumable runs\nPASS no-longer-matching enquiries resolve generated tasks without deleting evidence\nPASS a previously resolved condition reopens the same task without duplicating it\nPASS mid-step lease expiration keeps the old checkpoint and safely replays without skipped tasks\nPASS manual and scheduled automation runs are backed by unique durable claims\nPASS active leases block duplicate processing and expired leases resume safely\nPASS exact currency aggregation exceeds JS safe integer without losing a minor unit\nPASS body streams, malformed dates and invalid JSON fail closed\nPASS all thirteen rules expose real task or policy execution\nPASS report current findings respect source/currency and unsupported language is 422\nPASS imports commit at most 100 rows, resume accurately and discard remains explicit in history\nPASS lost import ownership cannot create completion audit or skip pending rows\noperations run failed Error\nPASS transient execution failures retry from the same run rather than duplicating success\nPASS priority country/category policies alter real existing task priorities and can be independently disabled\nPASS support and gated/manual download review retain independent enablement and thresholds\nPASS versioned internal-test policy affects metrics, reports and rule tasks without deleting raw enquiries\nPASS bad scheduled rule configuration pauses that schedule without blocking a healthy schedule\nPASS bounded retention preserves canonical records, batch summaries and referenced provenance\nPASS calendar daily triggers retain wall-clock time across DST gaps and overlaps\nPASS daily automations persist the calendar and enqueue the next local occurrence without interval drift\nPASS trend buckets use the same business date as filtered metric totals\nPASS 100-row import stays below the Free Worker D1 invocation budget\nPASS 100-candidate rule page uses batched reads/writes with lease-safe replay\nPASS one cron advances a multi-step run while preserving a bounded D1 query budget\nPASS partial refund keeps original paid order value separate from 100 paid minus 30 refund movement\nPASS long Unicode and literal percent/underscore searches bypass D1 LIKE length limits without truncation\nPASS mixed report backlog plus two due rule schedules remains under the conservative cron budget\n{\n  \"passed\": 45,\n  \"total\": 45,\n  \"failures\": []\n}\n"
+      "duration_ms": 506,
+      "output": "PASS role and origin defenses precede business writes\nPASS CSV parser preserves multiline/quoted/UTF8 values and rejects malformed data\nPASS amount conversion is exact, currency-specific and bounded\nPASS business day boundaries use workspace timezone and DST\nPASS sources and native sync describe original tables without copying\nPASS preview validates, maps, deduplicates and persists no commerce rows\nPASS commit upserts valid rows and is idempotent with a stale repeated completion\nPASS failed row CSV is downloadable only to managers and spreadsheet-safe\nPASS upsert identity includes source and preserves one canonical order per external ID\nPASS customer import has real rows and item foreign-parent/currency failures stay explicit\nPASS payment import supports unmatched reconciliation without counting revenue twice\nPASS source/date/currency drilldown totals match metric filters\nPASS Shopify export maps Id/Name and repeated line headers correctly\nPASS Shopify derived identities survive row reordering and reject ambiguous duplicate SKUs\nPASS database guards reject interleaved currency mismatch independently of prevalidation\nPASS native site source is queried live and internal synthetic/spam data is excluded\nPASS reports are factual, persisted, multilingual and immutable\nPASS rule edits create immutable version history and enforce optimistic concurrency\nPASS rule runs create real deduplicated CRM tasks and bounded resumable runs\nPASS no-longer-matching enquiries resolve generated tasks without deleting evidence\nPASS a previously resolved condition reopens the same task without duplicating it\nPASS mid-step lease expiration keeps the old checkpoint and safely replays without skipped tasks\nPASS manual and scheduled automation runs are backed by unique durable claims\nPASS active leases block duplicate processing and expired leases resume safely\nPASS exact currency aggregation exceeds JS safe integer without losing a minor unit\nPASS body streams, malformed dates and invalid JSON fail closed\nPASS all thirteen rules expose real task or policy execution\nPASS report current findings respect source/currency and unsupported language is 422\nPASS imports commit at most 100 rows, resume accurately and discard remains explicit in history\nPASS lost import ownership cannot create completion audit or skip pending rows\noperations run failed Error\nPASS transient execution failures retry from the same run rather than duplicating success\nPASS priority country/category policies alter real existing task priorities and can be independently disabled\nPASS support and gated/manual download review retain independent enablement and thresholds\nPASS versioned internal-test policy affects metrics, reports and rule tasks without deleting raw enquiries\nPASS bad scheduled rule configuration pauses that schedule without blocking a healthy schedule\nPASS bounded retention preserves canonical records, batch summaries and referenced provenance\nPASS calendar daily triggers retain wall-clock time across DST gaps and overlaps\nPASS daily automations persist the calendar and enqueue the next local occurrence without interval drift\nPASS trend buckets use the same business date as filtered metric totals\nPASS 100-row import stays below the Free Worker D1 invocation budget\nPASS 100-candidate rule page uses batched reads/writes with lease-safe replay\nPASS one cron advances a multi-step run while preserving a bounded D1 query budget\nPASS partial refund keeps original paid order value separate from 100 paid minus 30 refund movement\nPASS long Unicode and literal percent/underscore searches bypass D1 LIKE length limits without truncation\nPASS mixed report backlog plus two due rule schedules remains under the conservative cron budget\nPASS report automation strictly validates exclusion booleans and executes the frozen true or false filter\n{\n  \"passed\": 46,\n  \"total\": 46,\n  \"failures\": []\n}\n"
     },
     {
       "file": "test-intelligence.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 275,
+      "duration_ms": 290,
       "output": "intelligence operation failed Error\n{\n  \"suite\": \"intelligence\",\n  \"passed\": 53,\n  \"failed\": 0,\n  \"provider_calls_are_protocol_test_doubles\": true,\n  \"real_external_model_tested\": false,\n  \"failures\": []\n}\n"
     },
     {
       "file": "test-intelligence-cross-review.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 117,
+      "duration_ms": 138,
       "output": "bulk record outcome unconfirmed Error\n{\n  \"suite\": \"independent-cross-review\",\n  \"passed\": 5,\n  \"failed\": 0,\n  \"findings\": []\n}\n"
     },
     {
       "file": "test-intelligence-crm-controller.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 70,
+      "duration_ms": 83,
       "output": "PASS select or checkbox change marks the actual form dirty\nPASS declining navigation preserves dirty form and open dialog\nPASS busy operation blocks navigation without discard confirmation\nPASS confirmed discard closes the actual tool\nPASS business amounts convert to exact minor strings with explicit currency\n{\"suite\":\"crm-controller-branches\",\"passed\":5,\"failed\":0,\"visual_browser_tested\":false}\n"
     },
     {
       "file": "test-operations-intelligence-review.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 97,
+      "duration_ms": 127,
       "output": "{\"passed\":true,\"cross_provider_reuse_rejected\":true,\"rejected_write_atomic\":true,\"same_provider_model_change_retains_key\":true,\"new_provider_requires_new_key\":true,\"external_calls\":0}\n"
     },
     {
       "file": "test-notifications.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 169,
+      "duration_ms": 195,
       "output": "workspace notifications failed Error\n{\n  \"suite\": \"workspace-notifications\",\n  \"passed\": 20,\n  \"failed\": 0,\n  \"real_sqlite\": true,\n  \"controller_dom_contract\": true,\n  \"visual_browser_tested\": false,\n  \"failures\": []\n}\n"
     },
     {
       "file": "test-operations-bulk-ui.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 97,
+      "duration_ms": 118,
       "output": "{\n  \"suite\": \"independent-crm-bulk-ui\",\n  \"passed\": 4,\n  \"failed\": 0,\n  \"shipped_controller_executed\": true,\n  \"visual_browser_tested\": false,\n  \"failures\": []\n}\n"
     },
     {
       "file": "test-operations-license-issuer.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 86,
+      "duration_ms": 113,
       "output": "{\n  \"suite\": \"offline-instance-license-issuer\",\n  \"passed\": 6,\n  \"failed\": 0,\n  \"synthetic_fixtures_only\": true,\n  \"external_calls\": 0,\n  \"production_state_changed\": false,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "test-operations-run-ui.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 117,
+      "output": "{\n  \"suite\": \"operations-automatic-checkpoint-ui\",\n  \"passed\": 26,\n  \"failed\": 0,\n  \"shipped_controller_executed\": true,\n  \"production_writes\": false,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "test-operations-run-review.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 209,
+      "output": "{\n  \"suite\": \"independent-checkpoint-driver-review\",\n  \"passed\": 15,\n  \"failed\": 0,\n  \"shipped_helper_executed\": true,\n  \"synthetic_real_sqlite\": true,\n  \"maximum_module_d1_binding_calls\": 17,\n  \"browser_visual_tested\": false,\n  \"production_accessed\": false,\n  \"external_model_called\": false,\n  \"failures\": []\n}\n"
     },
     {
       "file": "check-admin-frontend.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 410,
+      "duration_ms": 541,
       "output": "{\"checks\":43,\"passed\":43}\n"
     },
     {
       "file": "check-admin-routes.mjs",
       "ok": true,
       "exit_code": 0,
-      "duration_ms": 69,
+      "duration_ms": 97,
       "output": "{\"checks\":5,\"passed\":5}\n"
     }
   ],
@@ -132,7 +146,7 @@
     "src/admin/intelligence-client.mjs": "2e971ad5765e7d1852ec9b5c86f4eda2a1d42767a8eb8ba18c398333b839df38",
     "src/admin/locale-assets.mjs": "8d6659234f6a7bb69ddb1fb783bc7be135a33269b811c660f711c0aa9d7553a5",
     "src/admin/notifications-client.mjs": "ad094c4d759391c558cd53b3a0561d59cad20a1252d6188e1ba8e8c69820e90d",
-    "src/admin/operations-client.mjs": "da41735a9178d2f7edb9188a00acf7f0c3f0da171d43d3a15cb7ba396474eed3",
+    "src/admin/operations-client.mjs": "0dac8e9f8a93087a6eb21a9c347892ae9288fa928b2a6185c5185cb90e09e351",
     "src/admin/quote-extra-locales.mjs": "d3afa484db775d72de6307c90cf69910111b60923aa3caa1e0c370878eea9ab6",
     "src/admin/quotes-client.mjs": "c325ff247e3ba5d83f1e7158cf0856ea65caca2429e1e6139a7a364d2de9a343",
     "src/admin/quotes-styles.mjs": "6a28b8692b0c65e2ad7de8fd51dddebe0727108265ff97dabcfebc44a1fb5e49",
@@ -144,7 +158,7 @@
     "src/api/admin-quotes.mjs": "229586463192283c60008a883ef96c5e0a319ac5a28a120aa004e4025b0d0e52",
     "src/api/admin-system.mjs": "b01be3ceaf7797d448afa05b397a86762c044d247957b1c3089b8149d72bdbf8",
     "src/api/admin-team.mjs": "b15e24ad05573ae49a272667f314a4102b2c9ce34532a8c124bd0b36fde05412",
-    "src/api/admin.mjs": "0871e623018b33b1d41964e6cf7929d8cb91052f323fa3f704be4de73f5b8536",
+    "src/api/admin.mjs": "156199b2e7313428572b01bb41544350c73d1829483411e5665f8f3188bdb142",
     "src/api/backup.mjs": "a43a82bc83f8427646d8cd273d0d316015b508dc51b17a1a2abdd33c13acafd5",
     "src/api/data.mjs": "c456d1f45304b146e54979358d5fbc81cc5b1333a137d5b04d8ca457adc89f06",
     "src/api/downloads.mjs": "4e7987159a41cd39c5537b6bcb67497fd5cdd4d40daef95297e091ed53a314a8",
@@ -174,7 +188,7 @@
     "src/platform/intelligence/license.mjs": "5315f437c3c28f53836b891208ef48b7e37276ba4cc05241411a11243569d380",
     "src/platform/intelligence/models.mjs": "7a0487a764a0b532d923f137dbef44d33dd1ad2636142205f8b1a1908cc65964",
     "src/platform/intelligence/presentation.mjs": "55d966fa4e03360852af4baac107b5fb3b081db62c9bc88ca76ca92d5d2375c6",
-    "src/platform/operations/analytics.mjs": "867128aecb3bc024dd4c5464ba567d6153944596aa786abaf674f3c9fed4e0bd",
+    "src/platform/operations/analytics.mjs": "512920cd7bb752e0bfb2dc726dc89809d91423438b881476c59217ce8a62b269",
     "src/platform/operations/calendar.mjs": "3595777d6c78151739b7ffb39374755340e7a2db3932164ae160e5ac0893e38e",
     "src/platform/operations/common.mjs": "3d44826ee17444a30cac2d04b172ac0dfd536c6e8599c06684310b6131610591",
     "src/platform/operations/exclusions.mjs": "70eb30ae9b4d020bea54cf1727ec615092a196782f412489f098f21dd283b33a",
@@ -182,7 +196,7 @@
     "src/platform/operations/maintenance.mjs": "2dd2be944e8e0fd061abb2598ca4031bca7890c0f8dc4a9e5606e8716fcf1e47",
     "src/platform/operations/reports.mjs": "70e1f61782ab911c8c1b45517272151c39346c0d870060d93f88e7fa33d22415",
     "src/platform/operations/rules.mjs": "b24333be004fe2eb5efc199e5d69570d502c3ac143b8a7c47e00c826e93eb1ec",
-    "src/platform/operations/scheduler.mjs": "2a401eb8c5acc98d20b677f250c0387d5d83d25e40aadb0d73b165b6357c8868",
+    "src/platform/operations/scheduler.mjs": "518a7127f0f8adaa1cc73757a0ed29f1da180b6598100db66e804de18507b1f5",
     "src/platform/quotes/document.mjs": "3f6e5826b74183e7c65447e8cdef4e2aeb8528882c6547e03f5f19e32772f42e",
     "src/platform/quotes/repository.mjs": "9793d5e9f84b39d99347e1e8cfb795d076024b253472b4b9266bcbfba7a97047",
     "src/platform/quotes/schema.mjs": "3675197823bb8e8736c0b0a155d1498666b6d82a6446ea70c60e7b0e369e9204",

@@ -9,6 +9,8 @@ const suites=[
   'test-intelligence-cross-review.mjs','test-intelligence-crm-controller.mjs',
   'test-operations-intelligence-review.mjs','test-notifications.mjs',
   'test-operations-bulk-ui.mjs','test-operations-license-issuer.mjs',
+  'test-operations-run-ui.mjs',
+  'test-operations-run-review.mjs',
   'check-admin-frontend.mjs','check-admin-routes.mjs',
 ];
 const results=[],pending=[...suites];

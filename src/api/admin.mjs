@@ -15,7 +15,7 @@ import {
 } from '../platform/security/workspace-auth.mjs';
 import { timingSafeEqual } from '../platform/security/hash.mjs';
 
-const BUILD = '2026.11.03.3';
+const BUILD = '2026.11.03.4';
 const LOGIN_COOKIE = 'gy_workspace_login';
 const READ = new Set(['GET', 'HEAD']);
 const SECURITY_HEADERS = {

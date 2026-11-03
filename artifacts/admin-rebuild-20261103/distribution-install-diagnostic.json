@@ -1,0 +1,156 @@
+{
+  "format": 1,
+  "checked_at": "2026-11-03T13:12:18.398Z",
+  "source_commit_under_diagnosis": "03aaa1581b9db5900a123a8572b2af51149a8326",
+  "original_staging": "D:/AI PRODUT/GYUTRON web/outputs/admin-rebuild-20261103/.staging-8ad54451-91a7-42e1-8293-95c1fe1c95dd",
+  "original_scratch": ".wrangler/distribution-verification/cda8e560-7a66-4086-a266-c3e819eab3c9",
+  "reproduction": {
+    "same_staging_unchanged": true,
+    "new_empty_scratch": ".wrangler/distribution-verification/38215c0e-c2be-4166-96fc-0b9f85e5daca",
+    "command": "node scripts/verify-admin-distribution.mjs --dir STAGING --install --test --build",
+    "npm_ci": {
+      "exit_code": 0,
+      "packages": 34,
+      "seconds_reported": 7,
+      "install_scripts_enabled": true,
+      "sharp_install_exit": 0,
+      "esbuild_postinstall_exit": 0
+    },
+    "portable_suites_passed": 16,
+    "manifest_files": 111,
+    "dry_run_passed": true,
+    "bundle_kib": 959.78,
+    "gzip_kib": 263.35,
+    "production_writes": false,
+    "deployed": false
+  },
+  "original_evidence": {
+    "last_log_line": 117,
+    "logged_completed_tarballs_not_all": true,
+    "sharp_tarball_extraction_started": true,
+    "sharp_tarball_download_completion_logged": false,
+    "install_postinstall_phase_started": false,
+    "unfinished_node_modules_files": 1543,
+    "complete_node_modules_files": 1592,
+    "missing_sharp_files": 30,
+    "missing_final_bin_and_lock_files": 19,
+    "npm_completion_lock_present": false
+  },
+  "diagnosis": {
+    "supported": "The original attempt stopped before sharp tarball extraction/download completed and before install/postinstall scripts.",
+    "unconfirmed": "Whether the incomplete tarball stream was caused by network, local I/O, or another environmental condition cannot be established after the process was terminated.",
+    "not_reproduced": true,
+    "no_runtime_fault_established": true
+  },
+  "tool_changes": {
+    "sources": [
+      {
+        "path": "scripts/package-admin-workspace.mjs",
+        "sha256": "5db1118cbddb1d14ccfe5a0e9f5801d92c1d8274e1befdb0a3f67da1a043f132"
+      },
+      {
+        "path": "scripts/verify-admin-distribution.mjs",
+        "sha256": "32c044cfd1052ce8506ab1ffbe9a19025865d987a1f90abf68163dfcc2c8434e"
+      },
+      {
+        "path": "template/operations-workspace/package.json",
+        "sha256": "76a421165bb35ac1e9a5b250fe975c453badaf7219a891e1794d9adae7d59c84"
+      }
+    ],
+    "phase_logs": true,
+    "heartbeat_seconds": 15,
+    "npm_install_timeout_seconds": 300,
+    "other_step_timeout_seconds": 120,
+    "overall_validation_timeout_seconds": 600,
+    "outer_packager_timeout_seconds": 610,
+    "timeout_preserves_scratch": true,
+    "windows_owned_pid_tree_cleanup_verified": true,
+    "posix_process_group_cleanup_implemented_not_executed": true,
+    "foreground_install_scripts": true,
+    "ignored_scripts": false,
+    "mirror_fallback": false,
+    "installed_wrangler_cannot_fall_back_to_repo_when_install_requested": true,
+    "portable_suite_count_now": 18,
+    "added_suites": [
+      "test-operations-run-ui.mjs",
+      "test-operations-run-review.mjs"
+    ]
+  },
+  "synthetic_process_runner_probe": {
+    "checked_at": "2026-11-03T13:10:09.793Z",
+    "passed": 5,
+    "checks": [
+      "argument boundaries and Unicode cwd are preserved without a shell",
+      "nonzero exit fails closed",
+      "missing executable fails promptly",
+      "expired deadline never starts work",
+      "timeout terminates the owned child and grandchild and retains scratch"
+    ],
+    "platform": "win32",
+    "node": "24.16.0",
+    "installation_scripts_skipped": false,
+    "external_calls": 0,
+    "scratch": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\.wrangler\\distribution-runner-probe-5T1NYX"
+  },
+  "final_release_archive_created_by_this_diagnostic": false,
+  "final_checked_at": "2026-11-03T13:16:14.593Z",
+  "latest_self_check_install": {
+    "passed": true,
+    "exit_code": 0,
+    "preview_only": true,
+    "relevant_dirty": true,
+    "stage": ".wrangler/distribution-self-check/.staging-1090e047-318f-4567-99ad-c7dbb0993410",
+    "scratch": ".wrangler/distribution-verification/0ac45fe7-f30c-4093-91ba-cad38f9c32a1",
+    "manifest_files": 113,
+    "portable_suites_passed": 18,
+    "operations_core_passed": 46,
+    "automatic_checkpoint_ui_passed": 21,
+    "independent_checkpoint_review_passed": 14,
+    "npm_ci_packages": 34,
+    "npm_ci_seconds": 7.9,
+    "installation_scripts_executed": [
+      "sharp install",
+      "esbuild postinstall",
+      "workerd postinstall"
+    ],
+    "dry_run_passed": true,
+    "bundle_kib": 968.4,
+    "gzip_kib": 266.67,
+    "source_directory_unchanged": true,
+    "archive_created": false,
+    "production_writes": false,
+    "log": ".wrangler/package-install-selfcheck-backend.log",
+    "log_sha256": "3962b75b604add0ca0f95a4058158f5bf9e1811938c9805bf0d002d67b922d6f"
+  },
+  "owned_source_freeze": {
+    "checked_at": "2026-11-03T13:16:14.593Z",
+    "source_hashes": [
+      {
+        "path": "scripts/package-admin-workspace.mjs",
+        "sha256": "5db1118cbddb1d14ccfe5a0e9f5801d92c1d8274e1befdb0a3f67da1a043f132"
+      },
+      {
+        "path": "scripts/verify-admin-distribution.mjs",
+        "sha256": "32c044cfd1052ce8506ab1ffbe9a19025865d987a1f90abf68163dfcc2c8434e"
+      },
+      {
+        "path": "template/operations-workspace/package.json",
+        "sha256": "76a421165bb35ac1e9a5b250fe975c453badaf7219a891e1794d9adae7d59c84"
+      },
+      {
+        "path": "src/platform/operations/scheduler.mjs",
+        "sha256": "518a7127f0f8adaa1cc73757a0ed29f1da180b6598100db66e804de18507b1f5"
+      },
+      {
+        "path": "src/platform/operations/analytics.mjs",
+        "sha256": "512920cd7bb752e0bfb2dc726dc89809d91423438b881476c59217ce8a62b269"
+      },
+      {
+        "path": "scripts/test-operations-core.mjs",
+        "sha256": "0d0add214b3e1c80fe486dc82b52f7ac99c37b7dd29b683211f842bbed56dc40"
+      }
+    ],
+    "stage_matches": true,
+    "uncommitted": true
+  }
+}

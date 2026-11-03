@@ -119,6 +119,11 @@ jobs:
       - name: Verify offline per-instance license issuance
         working-directory: ${{ github.workspace }}
         run: node scripts/test-operations-license-issuer.mjs
+      - name: Verify continuous automation progress and cancellation
+        working-directory: ${{ github.workspace }}
+        run: |
+          node scripts/test-operations-run-ui.mjs
+          node scripts/test-operations-run-review.mjs
       - name: Verify emitted admin frontend, locale and routing contracts
         working-directory: ${{ github.workspace }}
         run: |

@@ -9,7 +9,7 @@ import { build } from 'esbuild';
 
 const REPO=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const TEMPLATE='template/operations-workspace';
-const SMOKES=['smoke-admin-api.mjs','smoke-admin-auth.mjs','smoke-admin-quotes.mjs','smoke-admin-backup.mjs','smoke-admin-aggregation.mjs','test-workspace-experience.mjs','test-operations-core.mjs','test-intelligence.mjs','test-intelligence-cross-review.mjs','test-intelligence-crm-controller.mjs','test-operations-intelligence-review.mjs','test-notifications.mjs','test-operations-bulk-ui.mjs','test-operations-license-issuer.mjs','check-admin-frontend.mjs','check-admin-routes.mjs'];
+const SMOKES=['smoke-admin-api.mjs','smoke-admin-auth.mjs','smoke-admin-quotes.mjs','smoke-admin-backup.mjs','smoke-admin-aggregation.mjs','test-workspace-experience.mjs','test-operations-core.mjs','test-intelligence.mjs','test-intelligence-cross-review.mjs','test-intelligence-crm-controller.mjs','test-operations-intelligence-review.mjs','test-notifications.mjs','test-operations-bulk-ui.mjs','test-operations-license-issuer.mjs','check-admin-frontend.mjs','check-admin-routes.mjs','test-operations-run-ui.mjs','test-operations-run-review.mjs'];
 const TOOLS=['recover-workspace.mjs','check-restored-workspace.mjs','local-source-sync.mjs','issue-instance-license.mjs'];
 const MIGRATIONS=['0001_init.sql','0002_order_intents.sql','0003_admin_workspace.sql','0004_admin_identity.sql','0005_crm_relation_guards.sql','0006_operations_quotes.sql','0007_operations.sql','0008_intelligence.sql','0009_workspace_experience.sql','0010_workspace_notifications.sql'];
 const ASSETS=['brand-tokens.css','gyutron-logo-light.svg','gyutron-logo.svg','favicon.ico','favicon-32x32.png'];
@@ -19,7 +19,7 @@ const slash=value=>value.split(path.sep).join('/');
 function git(args){const result=spawnSync('git',args,{cwd:REPO,encoding:'utf8',windowsHide:true,maxBuffer:4*1024*1024});if(result.status!==0)throw Error('Git provenance check failed: '+String(result.stderr||result.error?.message||'unknown error').trim());return result.stdout.trim();}
 function safeRelative(value){if(!value||value.startsWith('/')||value.includes('\\')||value.split('/').some(part=>['','..','.'].includes(part))||/^[A-Za-z]:/.test(value))throw Error('Unsafe distribution path: '+value);return value;}
 async function exists(value){try{await access(value);return true;}catch(error){if(error.code==='ENOENT')return false;throw error;}}
-function runNode(script,args){const result=spawnSync(process.execPath,[script,...args],{cwd:REPO,stdio:'inherit',windowsHide:true});if(result.status!==0)throw Error('Distribution verification failed. No release archive was created.');}
+function runNode(script,args){console.log('[package] START '+path.basename(script)+' (verification limit 10min; outer cleanup allowance 10s)');const result=spawnSync(process.execPath,[script,...args],{cwd:REPO,stdio:'inherit',windowsHide:true,timeout:610000,killSignal:'SIGTERM'});if(result.error||result.status!==0)throw Error('Distribution verification failed'+(result.error?.code==='ETIMEDOUT'?' (outer deadline exceeded)':'')+'. Scratch files are preserved. No release was confirmed.');console.log('[package] PASS '+path.basename(script));}
 
 async function sourceMap(){
   const entry=await readFile(path.join(REPO,TEMPLATE,'worker.mjs'),'utf8');
