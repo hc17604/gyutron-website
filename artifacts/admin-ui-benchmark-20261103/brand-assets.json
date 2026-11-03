@@ -1,0 +1,39 @@
+{
+  "canonical_wordmark": "same original PNG used by the official homepage",
+  "wordmark_intrinsic": [
+    1550,
+    260
+  ],
+  "mark_intrinsic": [
+    344,
+    311
+  ],
+  "font_source": "https://rsms.me/inter/font-files/InterVariable.woff2",
+  "license": "SIL OFL 1.1",
+  "assets": [
+    {
+      "path": "public/gyutron-logo-purple.png",
+      "bytes": 288890,
+      "sha256": "15478e8ed4dc3ae6da14fc3b547a357ac9c4985f2598ae55d447462749ae386f",
+      "astro_source_bytes_equal": true
+    },
+    {
+      "path": "public/workspace-assets/gyutron-mark.png",
+      "bytes": 68869,
+      "sha256": "72769f551f4a5c022e42260881fe7b54e2d5c7816ded5281eb1790975b58ebb1",
+      "astro_source_bytes_equal": true
+    },
+    {
+      "path": "public/workspace-assets/fonts/inter-latin.woff2",
+      "bytes": 352240,
+      "sha256": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+      "astro_source_bytes_equal": true
+    },
+    {
+      "path": "public/workspace-assets/fonts/OFL.txt",
+      "bytes": 4380,
+      "sha256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+      "astro_source_bytes_equal": true
+    }
+  ]
+}

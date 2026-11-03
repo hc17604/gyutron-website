@@ -1,0 +1,16 @@
+{
+  "at": "2026-11-03T14:19:13.342Z",
+  "synthetic_only": true,
+  "shipped_controller_executed": true,
+  "production_accessed": false,
+  "deferred_restore_switch_record_before_response": true,
+  "new_record_related_panel_retained": false,
+  "new_panel_stuck_loading": true,
+  "requests": [
+    "workspace/record/customers/CUS-A",
+    "workspace/contacts?customer_id=CUS-A&archived=true",
+    "workspace/contacts/CONTACT-A/restore",
+    "workspace/record/customers/CUS-B",
+    "workspace/record/customers/CUS-A"
+  ]
+}

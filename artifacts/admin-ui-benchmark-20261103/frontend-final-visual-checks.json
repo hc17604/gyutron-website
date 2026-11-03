@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-03",
+  "environment": "http://127.0.0.1:8799/admin?lang=en",
+  "scope": "Independent style implementation and read-only visual inspection of local synthetic data; not a full accessibility or functional certification.",
+  "source": "src/admin/saas-styles.mjs",
+  "css_bytes": 61406,
+  "css_sha256": "dbf8fab2f9a97184ef0cf041adf73c1f445330e2fe048520350047a826c2a163",
+  "css_parser": {
+    "tool": "esbuild transform loader=css",
+    "warnings": 0
+  },
+  "business_writes": 0,
+  "external_model_requests": 0,
+  "console_errors": [],
+  "observed": {
+    "font": "Self-hosted variable Inter loaded via document.fonts.check; CJK system fallback retained.",
+    "desktop_type": "Navigation 13px, table body 14px, main headings 28px.",
+    "drawer": "Read-only customer record anchored right at 880px with full viewport height, inner body scroll, light backdrop, real Overview / Activity / Contacts and related tabs. Editing retains centered form.",
+    "login": "Centered 400px panel; canonical PNG wordmark preserves 1550:260 ratio; password input present, email input absent.",
+    "agent": "Final screenshot at actual CSS width 1536; root/body scrollWidth 1521, Inter loaded. Long conversation title wraps to two lines with ellipsis. No question submitted.",
+    "quote_editor": "Existing synthetic draft loaded with customer, opportunity and real line items. Server-verified total USD 3,600.00 visible; no form fields changed and no Save or Issue performed.",
+    "models": "Loaded provider form with no configured key and Encryption configured. No test, key entry or save.",
+    "health": "Loaded release 2026.11.03.5 and real read-only database/private-file/request-throttle probe results.",
+    "backup": "Loaded verified local backup history and recovery boundary; no create, verification, download or restore action.",
+    "users": "Loaded genuine empty team-account state; no account creation.",
+    "security": "Loaded actual session and access boundaries; no settings changes.",
+    "license": "Loaded Owned deployment with verification configuration stated accurately; no activation. Root/body 1521 <= actual viewport 1536."
+  },
+  "accepted_screenshots": [
+    "02-candidate-customers-en.png",
+    "04-candidate-login-en-fixed.png",
+    "05-candidate-customer-drawer-en.png",
+    "09-candidate-quote-editor-en-loaded.png",
+    "10-candidate-quote-editor-lines-en.png",
+    "12-candidate-agent-en-final.png",
+    "13-candidate-models-en.png",
+    "14-candidate-health-en.png",
+    "15-candidate-backup-en.png",
+    "16-candidate-users-en.png",
+    "17-candidate-security-en.png",
+    "18-candidate-license-en.png"
+  ],
+  "rejected_or_superseded": {
+    "03-candidate-login-en.png": "Initial legal/footer overlap, fixed and superseded by 04.",
+    "06-candidate-topbar-320.png": "Viewport override did not apply: actual viewport 1920. Not mobile evidence.",
+    "07-candidate-topbar-390.png": "Viewport override did not apply: actual viewport 1920. Not mobile evidence.",
+    "11-candidate-agent-en.png": "Superseded by final long-title wrap fix in 12."
+  },
+  "limits": [
+    "Responsive 320/390/768/1440 verification is assigned to the independent quality agent using its working viewport capability; no mobile pass inferred from this agent's failed viewport override.",
+    "Earlier screenshots 02/04/05/09/10 are visual checkpoints before the final Agent-only CSS change; 12-18 were captured after the final CSS freeze.",
+    "Quote line-item table retains local horizontal overflow behavior; no whole-page overflow was observed.",
+    "This read-only pass did not retest backup recovery, model transmission, user-management writes or every functional route. Root owns integration and production verification."
+  ],
+  "source_copy_evidence": [
+    {
+      "source": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-ui-redesign-20261103\\09-candidate-quote-editor-en-loaded.png",
+      "copy": "frontend-09-candidate-quote-editor-en-loaded.png",
+      "bytes": 102583,
+      "sha256": "6674817938b58778a142e35a9321bfad7830188abc4ed96812f604141cb98461"
+    },
+    {
+      "source": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-ui-redesign-20261103\\10-candidate-quote-editor-lines-en.png",
+      "copy": "frontend-10-candidate-quote-editor-lines-en.png",
+      "bytes": 92585,
+      "sha256": "9f2f1d94ed97c96c8ef88102710d914bb4509d558ca336d00ef7e6ca68dcae56"
+    },
+    {
+      "source": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-ui-redesign-20261103\\12-candidate-agent-en-final.png",
+      "copy": "frontend-12-candidate-agent-en-final.png",
+      "bytes": 63260,
+      "sha256": "1286672376341722c3e4e04281df33d9079fc36e65ccf79b735a443b43522c09"
+    },
+    {
+      "source": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-ui-redesign-20261103\\13-candidate-models-en.png",
+      "copy": "frontend-13-candidate-models-en.png",
+      "bytes": 56493,
+      "sha256": "e307775cca123c7758ff03daeefefdd779f5e9f2263c6f39a57eacb11b68a960"
+    },
+    {
+      "source": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-ui-redesign-20261103\\14-candidate-health-en.png",
+      "copy": "frontend-14-candidate-health-en.png",
+      "bytes": 59387,
+      "sha256": "7368c13f9ff204c71623d81497538c1b3a91f7f0d747d678e65876c549d25729"
+    },
+    {
+      "source": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-ui-redesign-20261103\\15-candidate-backup-en.png",
+      "copy": "frontend-15-candidate-backup-en.png",
+      "bytes": 60895,
+      "sha256": "e88fe470d6f6aaf92ee2645a53bcac3537f937b59e7c969d33b0e1a2d0523377"
+    },
+    {
+      "source": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-ui-redesign-20261103\\16-candidate-users-en.png",
+      "copy": "frontend-16-candidate-users-en.png",
+      "bytes": 47811,
+      "sha256": "2ad3455de6d61f08af03fb7fae4d5d0e7b34d9bfec2d43490eaf00c850dbfaa7"
+    },
+    {
+      "source": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-ui-redesign-20261103\\17-candidate-security-en.png",
+      "copy": "frontend-17-candidate-security-en.png",
+      "bytes": 54859,
+      "sha256": "028906a1d32bc80a2aa3f0868c9d350c32bca3da8528505f396e9bfb8216615f"
+    },
+    {
+      "source": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-ui-redesign-20261103\\18-candidate-license-en.png",
+      "copy": "frontend-18-candidate-license-en.png",
+      "bytes": 55598,
+      "sha256": "ce3be5e03880c926d867b632057debe15d9364d57255d28da1456a32006eb05b"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "at": "2026-11-03T14:44:14.517Z",
+  "source_commit": "e076a7064943793d6ac3bca14887bcba8962ec1d",
+  "origin": "https://www.gyutron.com",
+  "checks": [
+    {
+      "name": "unauthenticated business APIs deny access",
+      "ok": true
+    },
+    {
+      "name": "English-default bilingual password-only sign-in and legacy language fallback",
+      "ok": true
+    },
+    {
+      "name": "owner sign-in and new release header",
+      "ok": true
+    },
+    {
+      "name": "every deployed admin asset equals the committed source",
+      "ok": false,
+      "error": "/admin/assets/workspace.js\n+ actual - expected\n\n+ 'beb183003f27fb4f38fa5268a9501f93e5e5b57f821b62846705e391f86ecfd1'\n- '8352227181225cd3fefdfda03faa89f71295490c586a628596dd78232f1bc1a4'\n"
+    },
+    {
+      "name": "canonical brand assets and licensed self-hosted font equal committed bytes",
+      "ok": true
+    },
+    {
+      "name": "workspace chrome exposes only English and Chinese and normalizes old links",
+      "ok": true
+    },
+    {
+      "name": "new capabilities and all persistent modules respond",
+      "ok": true
+    },
+    {
+      "name": "active storage probes, final migration and encrypted-model readiness",
+      "ok": true
+    },
+    {
+      "name": "CSRF and cross-origin writes fail before changing data",
+      "ok": true
+    },
+    {
+      "name": "new format-four backup verifies and exports a complete recovery file",
+      "ok": true
+    },
+    {
+      "name": "legacy orders and all brand storefront routes remain available",
+      "ok": true
+    },
+    {
+      "name": "logout immediately rejects session replay",
+      "ok": true
+    }
+  ],
+  "observations": {
+    "version": "2026.11.03.5",
+    "asset_hashes": {
+      "/admin/assets/design-system.css": "dbf8fab2f9a97184ef0cf041adf73c1f445330e2fe048520350047a826c2a163",
+      "/admin/assets/layout.js": "6532241a1c0941647d4d275e0d7ab811493d26660008647ef05f67fddb17a906",
+      "/admin/assets/workspace.css": "69fda45902480c6e9243e2d3d0d4b73dc9cacbe790f932b4af1ad05ed2988514"
+    },
+    "brand_asset_hashes": {
+      "/gyutron-logo-purple.png": "15478e8ed4dc3ae6da14fc3b547a357ac9c4985f2598ae55d447462749ae386f",
+      "/workspace-assets/gyutron-mark.png": "72769f551f4a5c022e42260881fe7b54e2d5c7816ded5281eb1790975b58ebb1",
+      "/workspace-assets/fonts/inter-latin.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+      "/workspace-assets/fonts/OFL.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+    },
+    "probes": {
+      "checked_at": "2026-11-03T14:44:00.579Z",
+      "mode": "read",
+      "database": {
+        "status": "ok",
+        "latency_ms": 50
+      },
+      "privateFiles": {
+        "status": "ok",
+        "latency_ms": 221
+      },
+      "requestThrottle": {
+        "status": "ok",
+        "latency_ms": 123
+      }
+    },
+    "intelligence_status_fields": [
+      "engine",
+      "model_configured",
+      "model_target",
+      "encryption_available",
+      "external_transmission_requires_consent",
+      "permissions",
+      "context_sources",
+      "supported_documents",
+      "tools",
+      "external_actions_available"
+    ],
+    "migration": "0010_workspace_notifications.sql",
+    "backup": {
+      "verified": true,
+      "sha256": "9813e5575ce42ca5fe61f96b7082d6d99f1caddb4b5b61f4b807315a76567851",
+      "format": 4,
+      "tables": 44
+    }
+  },
+  "passed": 11,
+  "failed": 1,
+  "synthetic_production_business_records_created": false,
+  "external_messages_sent": false,
+  "external_models_called": false
+}

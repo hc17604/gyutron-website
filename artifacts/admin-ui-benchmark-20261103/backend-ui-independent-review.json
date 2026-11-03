@@ -1,0 +1,194 @@
+{
+  "format": 1,
+  "checked_at": "2026-11-03T14:25:19.321Z",
+  "scope": "Independent source review of layout observers, record context, keyboard/ARIA, style cascade, language creation boundaries and dedicated-instance asset routes.",
+  "sources": [
+    {
+      "path": "src/admin/layout-client.mjs",
+      "bytes": 8053,
+      "sha256": "36113dc6604b6c9f50ad1ecf54ee43ef63510dae0013a3091aa5affd6730212f"
+    },
+    {
+      "path": "src/admin/shell.mjs",
+      "bytes": 14195,
+      "sha256": "32a45a774a38e557c67b1ba18dc8e0d909745127ec85095fd684ed4acc93c7f7"
+    },
+    {
+      "path": "src/admin/icons.mjs",
+      "bytes": 7921,
+      "sha256": "fce886917663775bb5644312039c9a4d9b683006cd203388765f33844af0c37c"
+    },
+    {
+      "path": "src/api/admin.mjs",
+      "bytes": 12286,
+      "sha256": "c47cd7a97f747c4f0c256cf5c13427405bc732434a77fe5689a726dbb625f80d"
+    },
+    {
+      "path": "src/admin/saas-styles.mjs",
+      "bytes": 61812,
+      "sha256": "f319887e7048c962748824d78bc3d3e0a964ff38c440b7ae2abd36bd87b19e53"
+    },
+    {
+      "path": "src/admin/crm-experience-client.mjs",
+      "bytes": 35690,
+      "sha256": "ca8c6f5c7ffdba8152e65f5e5d87a12dca9f48d4442a64f47437afc0e4c8a84f"
+    },
+    {
+      "path": "scripts/test-intelligence-crm-controller.mjs",
+      "bytes": 8008,
+      "sha256": "98f3a27b8da13f0a31f384d9f6161f5016e01038d56e8bd5f5336b5c479d501e"
+    },
+    {
+      "path": "src/admin/locale-policy.mjs",
+      "bytes": 628,
+      "sha256": "0360d604d57a582a6e6c841290d005c5a5df08943f165c5105ff7510b09f155b"
+    },
+    {
+      "path": "src/platform/intelligence/agent.mjs",
+      "bytes": 15032,
+      "sha256": "32be7bfcb3b15a9a603ad9dc6ac9d8392ee3bd2d6b0b143af8058b7ec2872b69"
+    },
+    {
+      "path": "src/platform/operations/reports.mjs",
+      "bytes": 6294,
+      "sha256": "e50c1d1ce94518a65d889595b82275c44d5b5dbf49c902a9464c0598d81ada1e"
+    },
+    {
+      "path": "src/platform/operations/scheduler.mjs",
+      "bytes": 16942,
+      "sha256": "07518aac760db0374606f64adebf7a98e2bc3163e9709c71765c9a4b9476864f"
+    },
+    {
+      "path": "template/operations-workspace/worker.mjs",
+      "bytes": 1649,
+      "sha256": "21830ee02934c577ba02df673a757b1924151b8eaa8ba1addd7d80904d8e4505"
+    },
+    {
+      "path": "template/operations-workspace/verify-instance.mjs",
+      "bytes": 3379,
+      "sha256": "6791f633415b06dbc4f24034bf1614cf42f01198d931284298327f864ead3cf7"
+    }
+  ],
+  "findings": [
+    {
+      "severity": "P1",
+      "status": "fixed and covered",
+      "file": "src/admin/crm-experience-client.mjs",
+      "functions": [
+        "decorateRecord",
+        "data-crm-restore-contact click branch"
+      ],
+      "problem": "A delayed contact restore for customer A could remove customer B's current related panel before checking record ownership, then leave B stuck loading.",
+      "reproduction": {
+        "at": "2026-11-03T14:19:13.342Z",
+        "synthetic_only": true,
+        "shipped_controller_executed": true,
+        "production_accessed": false,
+        "deferred_restore_switch_record_before_response": true,
+        "new_record_related_panel_retained": false,
+        "new_panel_stuck_loading": true,
+        "requests": [
+          "workspace/record/customers/CUS-A",
+          "workspace/contacts?customer_id=CUS-A&archived=true",
+          "workspace/contacts/CONTACT-A/restore",
+          "workspace/record/customers/CUS-B",
+          "workspace/record/customers/CUS-A"
+        ]
+      },
+      "fix": "Validate the open record context before any DOM change; validate the original connected panel and record context after restore success/failure; guard asynchronous reads against body replacement.",
+      "regression_suite": "scripts/test-intelligence-crm-controller.mjs",
+      "new_cases": [
+        "stale decorate entry starts no request and changes no current panel",
+        "restore response after A-to-B navigation preserves B",
+        "restore response after record close changes no DOM",
+        "current-record restore still refreshes its panel",
+        "stale restore failure cannot show a different record an unrelated error"
+      ]
+    }
+  ],
+  "remaining_blockers": 0,
+  "tests": {
+    "crm_controller": {
+      "passed": 10,
+      "failed": 0,
+      "shipped_controller_executed": true,
+      "visual_browser_tested": false
+    },
+    "bulk_ui": {
+      "passed": 4,
+      "failed": 0
+    },
+    "frontend": {
+      "passed": 69,
+      "failed": 0
+    },
+    "routes": {
+      "passed": 5,
+      "failed": 0
+    },
+    "synthetic_actual_chrome": {
+      "at": "2026-11-03T14:22:08.661Z",
+      "passed": 13,
+      "failed": 0,
+      "checks": [
+        "tab creation settles with one tablist and three complete ARIA associations",
+        "overview is the only initially visible record panel",
+        "related tab hides the other panels",
+        "Home moves selection and keyboard focus to overview",
+        "ArrowRight moves to Activity with roving tab stops",
+        "contact refresh preserves related selection and its controller context",
+        "language relabeling preserves the selected record section",
+        "menu opening focuses its first item and sets expanded",
+        "menu arrows move keyboard focus",
+        "Escape closes menu and returns focus to the trigger",
+        "moving focus outside closes the menu",
+        "presentation observers settle instead of scheduling an infinite loop",
+        "unlayered design typography wins and functional hidden still wins"
+      ],
+      "failures": [],
+      "observerCalls": 6,
+      "synthetic_only": true,
+      "production_accessed": false,
+      "viewport_changed": false
+    }
+  },
+  "source_review": {
+    "observer_loop": "No child-list observer loop found. Tab labels and chart HTML have value guards; attributes and focus do not retrigger child-list observers. Synthetic browser recorded six callbacks and settled.",
+    "record_tabs": "One tablist, valid tab/panel ARIA references, one selected and visible panel, roving keyboard focus and related selection survive replacement.",
+    "menu": "Arrow navigation, Escape focus return and outside-focus dismissal passed in the isolated Chrome fixture.",
+    "css": "Legacy CSS is wrapped in named @layer legacy; design-system.css is unlayered and loaded afterward. Native Chrome computed the declared 13px button style while the functional hidden rule still hides panels.",
+    "icons": "Static reviewed SVG bodies have no user-interpolated paths; wrapper icons are aria-hidden. No external SVG references are introduced.",
+    "languages": "Workspace/login normalize to en/zh; Agent/report/settings creation is en/zh-only. Historical database text and four-language quotation print remain intentionally readable.",
+    "assets": "Dedicated template allowlists logo PNG, brand mark, local font and license. Its offline route checker validates GET bytes, HEAD and rejected POST; final deployment remains root-owned."
+  },
+  "limitations": [
+    "Chrome checks used synthetic offline DOM and the shipped layout script, not production data or API sessions.",
+    "The separate agent owns live visual and nested-dialog focus validation.",
+    "The initial offline fixture was corrected to model asynchronous record arrival and the actual declared 13px button style; only the final 13/13 browser result is acceptance evidence."
+  ],
+  "runtime_files_changed_by_this_review": [
+    "src/admin/crm-experience-client.mjs"
+  ],
+  "test_files_changed_by_this_review": [
+    "scripts/test-intelligence-crm-controller.mjs"
+  ],
+  "new_ci_suite_required": false,
+  "production_accessed": false,
+  "viewport_changed": false,
+  "root_sessions_touched": false,
+  "committed": false,
+  "copy_followup": {
+    "checked_at": "2026-11-03T14:27:08.035Z",
+    "exact_two_edits_verified_against_previous_review_hash": "23718edeb3c5fca4ce36893c1b5de5f0c4cd69a29067caa9e4409449915fd3fd",
+    "previous_dir_label": "sort",
+    "new_dir_label": "sortDirection",
+    "dictionary": [
+      "Sort direction",
+      "排序方向"
+    ],
+    "race_logic_unchanged": true,
+    "controller_checks": 10,
+    "frontend_checks": 69,
+    "remaining_blockers": 0
+  }
+}

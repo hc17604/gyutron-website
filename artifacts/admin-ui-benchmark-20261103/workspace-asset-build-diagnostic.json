@@ -1,0 +1,17 @@
+{
+  "at": "2026-11-03T14:46:46.714Z",
+  "public_url": "https://www.gyutron.com/admin/assets/workspace.js",
+  "live_status": 200,
+  "built_status": 200,
+  "source_sha256": "8352227181225cd3fefdfda03faa89f71295490c586a628596dd78232f1bc1a4",
+  "built_sha256": "beb183003f27fb4f38fa5268a9501f93e5e5b57f821b62846705e391f86ecfd1",
+  "live_sha256": "beb183003f27fb4f38fa5268a9501f93e5e5b57f821b62846705e391f86ecfd1",
+  "live_equals_real_build": true,
+  "only_difference_is_serialized_locale_functions": true,
+  "source_functions": "  const normalizeWorkspaceLanguage = function normalizeWorkspaceLanguage(value) {\n  return value === 'zh' ? 'zh' : 'en';\n};\n  const selectWorkspaceLanguage = function selectWorkspaceLanguage({ query, stored, initial } = {}) {\n  if (query !== null && query !== undefined) return normalizeWorkspaceLanguage(query);\n  if (stored !== null && stored !== undefined) return normalizeWorkspaceLanguage(stored);\n  return normalizeWorkspaceLanguage(initial);\n};\n",
+  "built_functions": "  const normalizeWorkspaceLanguage = function normalizeWorkspaceLanguage(value) {\n  return value === \"zh\" ? \"zh\" : \"en\";\n};\n  const selectWorkspaceLanguage = function selectWorkspaceLanguage({ query, stored, initial } = {}) {\n  if (query !== null && query !== void 0) return normalizeWorkspaceLanguage(query);\n  if (stored !== null && stored !== void 0) return normalizeWorkspaceLanguage(stored);\n  return normalizeWorkspaceLanguage(initial);\n};\n",
+  "built_function_trials_passed": 7,
+  "worker_bundle_sha256": "e3061a541936a28180ae1e742d0b10abf918049204e722fdfa9e8b4de8bcaa71",
+  "production_business_accessed": false,
+  "runtime_modified": false
+}

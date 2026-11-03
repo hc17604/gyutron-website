@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-03T14:22:08.661Z",
+  "passed": 13,
+  "failed": 0,
+  "checks": [
+    "tab creation settles with one tablist and three complete ARIA associations",
+    "overview is the only initially visible record panel",
+    "related tab hides the other panels",
+    "Home moves selection and keyboard focus to overview",
+    "ArrowRight moves to Activity with roving tab stops",
+    "contact refresh preserves related selection and its controller context",
+    "language relabeling preserves the selected record section",
+    "menu opening focuses its first item and sets expanded",
+    "menu arrows move keyboard focus",
+    "Escape closes menu and returns focus to the trigger",
+    "moving focus outside closes the menu",
+    "presentation observers settle instead of scheduling an infinite loop",
+    "unlayered design typography wins and functional hidden still wins"
+  ],
+  "failures": [],
+  "observerCalls": 6,
+  "synthetic_only": true,
+  "production_accessed": false,
+  "viewport_changed": false
+}

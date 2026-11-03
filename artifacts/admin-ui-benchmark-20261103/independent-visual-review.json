@@ -1,0 +1,268 @@
+{
+  "at": "2026-11-03T14:42:15.855055+00:00",
+  "reviewer": "independent research_quality agent",
+  "build": "2026.11.03.5",
+  "baseline": "7d886a4",
+  "environment": "http://127.0.0.1:8799/admin; isolated synthetic QA state",
+  "production_written": false,
+  "external_model_called": false,
+  "old_agent_database_modified": false,
+  "evidence_method": "Official screenshots plus real Chrome CUA interactions, read-only DOM geometry/computed styles, saved images reopened; not API-only visual proof",
+  "viewports": [
+    {
+      "css_width": 320,
+      "css_height": 800,
+      "zoom_percent": 100,
+      "root_width": 320,
+      "body_width": 320
+    },
+    {
+      "css_width": 390,
+      "css_height": 844,
+      "zoom_percent": 100,
+      "root_width": 390,
+      "body_width": 390,
+      "kpi_width": 356,
+      "kpi_scroll_width": 356,
+      "amount_text": "€9,600.00 · $12,800.50"
+    },
+    {
+      "css_width": 768,
+      "css_height": 900,
+      "zoom_percent": 100,
+      "root_width": 768,
+      "body_width": 768,
+      "drawer_width": 768
+    },
+    {
+      "css_width": 1440,
+      "css_height": 900,
+      "zoom_percent": 100,
+      "root_width": 1440,
+      "body_width": 1440
+    },
+    {
+      "css_width": 1920,
+      "css_height": 841,
+      "zoom_percent": 80,
+      "drawer_width": 880,
+      "drawer_x": 1040
+    }
+  ],
+  "mobile_targets_320": {
+    "nav": [
+      44,
+      44
+    ],
+    "search": [
+      44,
+      44
+    ],
+    "notification": [
+      44,
+      44
+    ],
+    "language": [
+      74,
+      44
+    ],
+    "opened_search": true,
+    "searched_Atlas_actual_local_results": true,
+    "result_screenshot_available": false
+  },
+  "typography": {
+    "body": "14px/21px weight400",
+    "nav": "13px/20px weight450",
+    "table": "14px/20px weight400",
+    "heading": "28px/36px weight600",
+    "Inter_FontFaceSet_check": true,
+    "CJK_readable": true,
+    "glyph_platform_inspection_performed": false
+  },
+  "brand": {
+    "wordmark_natural_size": [
+      1550,
+      260
+    ],
+    "mark_natural_size": [
+      344,
+      311
+    ],
+    "loaded": true,
+    "redrawn_svg_used": false
+  },
+  "interaction_checks": [
+    "real customer right drawer 880px desktop and full-width768; no backdrop blur",
+    "Overview/Activity/ContactsRelated tabs mouse and ArrowRight/Home/End; ARIA panel associations and roving tabindex",
+    "own synthetic contact create edit archive showArchived restore; Related remains selected",
+    "latest related panel refresh and Restore return focus to record-tab-related when BODY lost focus",
+    "ESC returns to customer list and Atlas trigger focus",
+    "Columns hideCountry Apply changes actual TH list",
+    "AdvancedFilter final distinct sort-field/sort-direction labels; Cancel returns focus",
+    "single-row selection shows count(current page)/bulk toolbar; cancel selection; no bulk write",
+    "mobile320 44px Search opens dialog, Atlas actual local results, Escape exits",
+    "390 analytics multi-currency amount complete and correct before-refunds label"
+  ],
+  "closed_findings": [
+    {
+      "id": "VIS-P1-DRAWER",
+      "before": "centered1040px modal blurred underlying list",
+      "after": "right880px drawer, light unblurred overlay, true tabs",
+      "evidence": "gyutron-09-drawer-overview-zh-desktop.jpg"
+    },
+    {
+      "id": "VIS-P1-MOBILE-SEARCH",
+      "before": "search control hidden <=480",
+      "after": "44px icon retained and actually opens search at320",
+      "evidence": "gyutron-19-customers-en-320-final.jpg"
+    },
+    {
+      "id": "VIS-P2-FOCUS",
+      "before": "contact refresh lost focus to BODY",
+      "after": "Related current tab regains focus after refresh/Restore; actual browser retested",
+      "evidence": "manual interaction record in this JSON"
+    },
+    {
+      "id": "VIS-P2-SORT-LABEL",
+      "before": "direction select also labeled sort field",
+      "after": "distinct sort field/direction labels actual1440",
+      "evidence": "gyutron-22-advanced-filters-zh-1440-final.jpg"
+    }
+  ],
+  "open_core_visual_P0_P1_found": [],
+  "limits": [
+    "Not a complete CRM/ERP or competitor authenticated product audit",
+    "No final production visual verification by this reviewer",
+    "No full screen-reader, contrast certification or reduced-motion emulation",
+    "No new saved-view persistence/privacy test or multi-page pagination test in this visual round",
+    "No bulk business write or comprehensive validation/409 error-state retest",
+    "No complete all-module x all-locale x all-viewport matrix",
+    "Resizable/previous-next inspector not implemented",
+    "Contact staleA->B race final guarded in separate controller10 suite; browser here verifies currentA happy path only",
+    "Overview metric cards are static divs; View all exists in sections. KPI direct drilldown is a P2 enhancement, not delivered."
+  ],
+  "cleanup": {
+    "zoom_restored_percent": 80,
+    "viewport_override_reset": true,
+    "actual_css_width": 1920,
+    "actual_css_height": 841,
+    "body_width": 1920,
+    "root_width": 1920,
+    "open_dialogs": 0,
+    "own_contact_final_state": "active",
+    "selection_cleared": true,
+    "country_column_client_hidden": true,
+    "qa_tab_closed": true
+  },
+  "rows": {
+    "UI01": "通过（核心外壳）。原PNG字标/mark已加载，自然尺寸1550×260/344×311、比例正确；图21/06。登录页本轮未独立重验。",
+    "UI02": "通过（实测）。body14/21/400、nav13/20/450、table14/20/400、标题28/36/600；Inter check=true，中文无方块；图19/21。未做逐字形平台字体鉴定。",
+    "UI03": "通过。浅中性侧栏、选中紫色、正文优先；官方Linear对比图与图21并列观察，无大面积品牌色干扰。",
+    "UI04": "通过（导航结构）。CRM/运营/智能/管理真实分组、当前项清楚、长侧栏独滚；图09/21/06。全部低频页另见实现负责人目检报告。",
+    "UI05": "通过（所测尺寸）。路径/搜索/通知/语言固定；320实测四触控目标无重叠，标题可省略；图19/20/21。",
+    "UI06": "通过（客户表）。14/20文字、主次信息与弱分隔一致；长公司名换行且完整accessible name；图21。48为基础最小行高，多行内容允许增高；金额表非本轮全量检查。",
+    "UI07": "通过（所见状态）。合作中/潜在客户同时有文字和低强度色标；图21/09。不外推到全部失败状态页面。",
+    "UI08": "部分：Columns真开、取消Country并Apply后表头实际移除；图12/21。视图入口可辨；本轮未新建保存视图/刷新验证隐私，不能据截图关闭持久化验收。",
+    "UI09": "通过（筛选界面）。搜索/状态与高级筛选可达；排序字段/方向分别正确，取消回原列表；图22。未逐个提交日期/组合筛选。",
+    "UI10": "通过（选择呈现）。单行勾选出现“1项已选（当前页）”及批量栏，Cancel恢复；图14。未提交批量业务写入；逐项失败功能证据不属于本视觉测试。",
+    "UI11": "部分：3条单页fixture的1–3/3和禁用前后页正确；图21。未构造多页，不宣称跨页选择/末页全部通过。",
+    "UI12": "通过（客户预览）。真实右880px drawer、轻遮罩无blur；768全宽；ESC回原客户列表与触发按钮；图09/17。深链刷新完整路径另属既有功能检查。",
+    "UI13": "通过。名称/ID先于属性，编辑主按钮、归档次级危险动作在固定footer；图09。",
+    "UI14": "通过（客户）。Overview/Activity/Contacts & related真tab；Arrow/Home/End与ARIA正确；活动SVG实见1个。自建联系人新增/编辑/归档/恢复后Related仍选中；图11/17。",
+    "UI15": "通过（所测联系人/筛选表单）。可见标签、桌面分列、按钮层级；图12/22；自建联系人实际保存。报价/模型等页面另见前端目检，不合并成我方全部表单通过。",
+    "UI16": "部分：自建联系人正常保存后状态正确；本轮未重跑缺必填/金额/409输入保留。既有功能测试不能代替新版视觉错误态复测。",
+    "UI17": "通过（联系人生命周期）。编辑/取消/应用内归档确认及Restore真实完成；只改自己synthetic联系人。双击、dirty离开与server取消边界未在本轮全量重验。",
+    "UI18": "部分：未给本地新库补假趋势，图21为真实3记录。首次空/过滤空/权限空三类尚无本轮独立截图，不声称全覆盖。",
+    "UI19": "通过（经营数字呈现）。390真宽退款前已付订单金额€9,600.00 · $12,800.50完整显示，独立币种/口径清楚，KPI client/scroll均356；图20。末位精度另有SQL测试。Overview五张KPI为静态div，下方section有View all；卡片直达明细未实现，列P2增强，不宣称已验收。",
+    "UI20": "通过（移动搜索）。320顶部44×44搜索按钮实际打开command dialog；输入Atlas实际返回本地客户/报价结果，ESC退出。图18仅保存快捷导航初帧，不作为Atlas结果截图。CtrlK本轮未独立重按。",
+    "UI21": "通过（所测键盘路径）。tab箭头/Home/End、ESC回客户触发点；Related刷新/Restore失焦后回选中tab，未抢其他dialog。完整屏幕阅读器/全页面Tab序未认证。",
+    "UI22": "部分：drawer与tab实际切换可用，无整页反复飞入；本轮未启用prefers-reduced-motion仿真，不把源码声明当实测通过。",
+    "UI23": "通过（所测路线）。真320/390/768/1440 CSS宽度记录，客户表自身滚动而root/body不溢出；320顶栏搜索/通知/导航均44×44、语言74×44；390经营金额完整。图16/19/20/21。非全部路线手机验收。",
+    "UI24": "通过（核心客户路线EN/中文）。图19/21/16；用户保存的英文视图名与业务内容保持原样。通知API仅en/zh与旧lang英语fallback 21/21真实SQLite；全模块双语由独立source检查补充，不以此冒充每屏目检。",
+    "UI25": "交叉检查（root/前端，非我方全独立）。root fresh ZH实见Backup“已验证”、Security“独立部署与数据库”、console errors=[]；前端13–18管理页截图目检报告见outputs路径。密钥/许可真实语义由功能验收负责。",
+    "UI26": "明确未实现：本轮无前后记录箭头/可调drawer宽度；固定880px/窄屏全宽。不显示假拖动把手，不宣称复制Attio全部Inspector功能。"
+  },
+  "source_sha256": {
+    "src/admin/saas-styles.mjs": "de4e23b5aa58fe87307e121ecb5191533d8334e17d3b408c14f8263507a75718",
+    "src/admin/layout-client.mjs": "36113dc6604b6c9f50ad1ecf54ee43ef63510dae0013a3091aa5affd6730212f",
+    "src/admin/crm-experience-client.mjs": "ca8c6f5c7ffdba8152e65f5e5d87a12dca9f48d4442a64f47437afc0e4c8a84f",
+    "src/api/workspace-notifications.mjs": "c54ca487a2e0a81d1e5665be46bafe8478a71a0b68066375322198329e0be0d9",
+    "src/admin/shell.mjs": "32a45a774a38e557c67b1ba18dc8e0d909745127ec85095fd684ed4acc93c7f7"
+  },
+  "accepted_images": [
+    {
+      "file": "gyutron-09-drawer-overview-zh-desktop.jpg",
+      "bytes": 89333,
+      "sha256": "28212a319c385073d712b3a9b2d0642f74157a3d203708be73b643dfa76af331",
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "gyutron-11-drawer-related-zh-desktop.jpg",
+      "bytes": 107272,
+      "sha256": "d5ef4e46fb81d9de7fa36a3bb7d59b987a83e34dc8d3d0dbddc8c74eba0f2d82",
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "gyutron-12-columns-zh-desktop.jpg",
+      "bytes": 46770,
+      "sha256": "841b829eb2079273bb7654f86bab3af4a752ffcd0050818246089ce6ae3adcd6",
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "gyutron-14-bulk-selection-zh-desktop.jpg",
+      "bytes": 96110,
+      "sha256": "adfceb84282561cb13c09138f24aa0be6020a3d546a4a09563c1e518bc3173cb",
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "gyutron-16-customers-zh-768.jpg",
+      "bytes": 47021,
+      "sha256": "70ce447a3a9df854580bb52d0699fa401cffb674805eea764ebf4c01abf40b09",
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "gyutron-17-drawer-activity-zh-768.jpg",
+      "bytes": 22976,
+      "sha256": "9842402b2331696a905aaee7c588f863f93825de28d6d89237877dc8433b0566",
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "gyutron-19-customers-en-320-final.jpg",
+      "bytes": 33215,
+      "sha256": "80e55d266523abe24812c602fa3a2a9031f5831f03f8b25b5e597f3f57cbbe51",
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "gyutron-20-analytics-en-390.jpg",
+      "bytes": 26755,
+      "sha256": "651ae350c383da866f0d13ce9e7b50ac4a471add24b9d24bb798d4a2d40fd46d",
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "gyutron-21-customers-zh-1440-final.jpg",
+      "bytes": 75459,
+      "sha256": "d498c5405052b1186db3b28e9d65c8d7996e48d69a1ed1ef2d49464fdea3ec8d",
+      "reopened_and_visually_inspected": true
+    },
+    {
+      "file": "gyutron-22-advanced-filters-zh-1440-final.jpg",
+      "bytes": 46109,
+      "sha256": "2c735ef450b1af8de6dbffad6ec61bcb58e8009d82fde8c39e47ec8cd5e4a0a7",
+      "reopened_and_visually_inspected": true
+    }
+  ],
+  "superseded_or_limited_images": {
+    "gyutron-03-customer-detail-en-desktop-initial.jpg": "before drawer fix",
+    "gyutron-05-customers-en-320.jpg": "before mobile search fix",
+    "gyutron-07-customers-zh-320.jpg": "before mobile search fix",
+    "gyutron-13-advanced-filters-zh-desktop.jpg": "before direction label fix",
+    "gyutron-15-customers-zh-1440.jpg": "fullPage gray padding, superseded21",
+    "gyutron-18-search-zh-320.jpg": "quicknavigation frame only, not actual Atlas results screenshot"
+  },
+  "cross_review": {
+    "root_integrated_suites": "19/19 reported; not independently rerun for visual proof",
+    "frontend_low_frequency_report": "outputs/admin-ui-redesign-20261103/styles-final-visual-checks.json; its incorrect06/07mobile images excluded",
+    "root_latest_low_frequency": "fresh ZH Backup verified label localized; Security standalone deployment label localized; console errors=[]",
+    "historical_harness": "layout-browser-independent-checks.json retains earlier typography fixture failure, not rewritten as pass"
+  }
+}

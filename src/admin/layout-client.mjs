@@ -4,6 +4,9 @@ export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify({tasks
 (()=>{
  const sidebar=document.getElementById('workspace-sidebar'),page=document.getElementById('workspace-page');
  const trigger=document.getElementById('workspace-menu-trigger'),menu=document.getElementById('workspace-menu');
+ const commandDialog=document.getElementById('command-dialog');
+ // A search input otherwise consumes Escape to clear its value before closing its dialog.
+ commandDialog?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();event.stopPropagation();commandDialog.close();}});
  function closeMenu(returnFocus=false){if(!menu||!trigger)return;menu.hidden=true;trigger.setAttribute('aria-expanded','false');if(returnFocus)trigger.focus();}
  function syncNavigation(){
   const tab=location.hash.slice(1).split('?')[0]||'overview';

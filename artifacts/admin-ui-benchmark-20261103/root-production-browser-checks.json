@@ -1,0 +1,58 @@
+{
+  "at": "2026-11-03T14:53:21.654662+00:00",
+  "reviewer": "root, real Chrome CUA",
+  "production_build": "2026.11.03.5",
+  "production_source": "e076a7064943793d6ac3bca14887bcba8962ec1d",
+  "default_policy": "Fresh English default tested in emitted-client suite; existing explicit Chinese preferences may persist.",
+  "production_observations": {
+    "first_no_query_page_was_english": true,
+    "english_chinese_choices_only": true,
+    "english_chinese_switch_worked": true,
+    "inter_font_loaded": true,
+    "wordmark_natural_size": [
+      1550,
+      260
+    ],
+    "mark_natural_size": [
+      344,
+      311
+    ],
+    "customer_first_empty_state_has_real_create_action": true,
+    "blank_customer_name_required": true,
+    "invalid_submit_focuses_name": true,
+    "native_validation_message": "Please fill out this field.",
+    "dirty_escape_opens_confirmation": true,
+    "cancel_preserves_unsaved_value": true,
+    "discard_closes_all_dialogs": true,
+    "discard_returns_focus_to_create_trigger": true,
+    "customer_list_still_empty_after_discard": true,
+    "ctrl_k_focuses_command_input": true,
+    "unmatched_search_shows_real_empty_result": true,
+    "console_errors": []
+  },
+  "business_records_created": false,
+  "external_models_called": false,
+  "search_escape_followup": {
+    "local_build": "2026.11.03.6",
+    "reason": "Native search input cleared nonempty text on the first Escape; the dialog stayed open.",
+    "nonempty_query_one_escape_closes": true,
+    "empty_query_one_escape_closes": true,
+    "focus_returns_to_command_trigger": true,
+    "local_console_errors": [],
+    "production_recheck_pending": true
+  },
+  "images": [
+    {
+      "file": "production-01-customers-en-empty.png",
+      "sha256": "26d52edfcd80253992aff87c6c301efdbd8fa807f2f00f2b72cd227c6bbe0321",
+      "bytes": 71376,
+      "contains_customer_business_rows": false
+    },
+    {
+      "file": "production-02-unsaved-confirmation-en.png",
+      "sha256": "c4f94c83a418559ae92af4587f03e0d719f6fd3c0de675db7455a0aa7bf5802b",
+      "bytes": 44275,
+      "contains_customer_business_rows": false
+    }
+  ]
+}

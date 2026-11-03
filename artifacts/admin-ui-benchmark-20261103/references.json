@@ -1,0 +1,80 @@
+{
+  "captured_at": "2026-11-03T13:55:43.601Z",
+  "browser": "Chrome; IAB attempted and unavailable",
+  "css_viewport": {
+    "width": 1536,
+    "height": 729,
+    "device_pixel_ratio": 2.5
+  },
+  "evidence_type": "Official public documentation screenshots / component demos / design-team comparisons; no authenticated vendor account audit",
+  "registered_accounts": false,
+  "third_party_records_modified": false,
+  "gyutron_customer_data_included": false,
+  "all_saved_images_reopened_and_inspected": true,
+  "observed_typography": {
+    "source": "https://docs.stripe.com/stripe-apps/components/datatable#basic",
+    "scope": "Stripe Apps official DataTable demo name cell, not authenticated Dashboard",
+    "font_family": "-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif",
+    "font_size_px": 14,
+    "line_height_px": 20,
+    "font_weight": 400
+  },
+  "images": [
+    {
+      "file": "01-attio-record-official.jpg",
+      "url": "https://attio.com/help/reference/managing-your-data/records/create-and-view-records",
+      "scope": "Official record header/property screenshot crop",
+      "bytes": 57143,
+      "sha256": "9d1df4d9e4146335cee513ff595d83c7450b23bf52771ed5c45869d039f96dac",
+      "visual_check": "accepted"
+    },
+    {
+      "file": "02-attio-table-official.jpg",
+      "url": "https://attio.com/help/reference/managing-your-data/views/create-and-manage-table-views",
+      "scope": "Official spreadsheet-style recruitment example",
+      "bytes": 105249,
+      "sha256": "9dba23288db557521018456182dcb0b8b148ce9f2b7f684fd89ff2d7218e4472",
+      "visual_check": "accepted"
+    },
+    {
+      "file": "04-linear-view-controls-official.jpg",
+      "url": "https://linear.app/docs/display-options",
+      "scope": "Official display-options panel image",
+      "bytes": 32795,
+      "sha256": "fe0c000d54dd130db202f8bc7829618f5ba22dec778d21d48c83ea4709ceac8e",
+      "visual_check": "accepted"
+    },
+    {
+      "file": "05-hubspot-activity-official.jpg",
+      "url": "https://knowledge.hubspot.com/records/work-with-records",
+      "scope": "Official activity timeline documentation image",
+      "bytes": 52954,
+      "sha256": "55330e3c70c856ff9aab0de5eb30b9445843e3c924a3333d3e69cc00cacadfb5",
+      "visual_check": "accepted"
+    },
+    {
+      "file": "06-linear-sidebar-comparison-official.jpg",
+      "url": "https://linear.app/now/behind-the-latest-design-refresh",
+      "scope": "Official design-team before/after sidebar comparison",
+      "bytes": 28094,
+      "sha256": "508c924e62511292141e43ccccd23276a66dd5fecd15390144ee50c1e86bf3dc",
+      "visual_check": "accepted"
+    },
+    {
+      "file": "07-stripe-apps-datatable-official-demo.jpg",
+      "url": "https://docs.stripe.com/stripe-apps/components/datatable#basic",
+      "scope": "Live public component demonstration, not Dashboard",
+      "bytes": 82524,
+      "sha256": "51d0675a214162b1339cb2dbd749a3c90242851dbef0cc477dc6d6790dea7351",
+      "visual_check": "accepted"
+    },
+    {
+      "file": "08-stripe-apps-empty-state-official-demo.jpg",
+      "url": "https://docs.stripe.com/stripe-apps/components/datatable#empty-state-with-action",
+      "scope": "Live public component empty-state demonstration",
+      "bytes": 76087,
+      "sha256": "ca99237e0d679541eec46043c5e77766b510fcfc0c21c2e0b95b82b90527d49a",
+      "visual_check": "accepted"
+    }
+  ]
+}

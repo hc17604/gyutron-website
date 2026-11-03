@@ -16,7 +16,11 @@
 
 ## Fast takeover snapshot
 
-- **UI release .5 — implementation reviewed; deployment verification pending (2026-11-03):**
+- **UI release .6 — final keyboard refinement; production verification pending (2026-11-03):**
+  Initial UI .5 commit e076a70 is live (Cloudflare838a7889/fa50354d, CI41655765829 passed).
+  Final .6 makes Escape close populated command search in one press, rather than native search-input
+  clearing first; all other UI/backend behavior remains. Asset verification uses the committed Worker
+  build because esbuild reformats serialized language helpers; direct source-import hashes differ.
   Workspace language is English/Chinese only, first visit defaults English; the new v2 preference
   ignores old locale caches and unsupported language links fall back to English. Historical content
   and printable quote compatibility remain; brand-site/Shop language routes are unchanged.

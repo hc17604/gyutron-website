@@ -22,7 +22,7 @@ const jar=new Map();let csrf='';
 async function request(route,method='GET',body){const response=await fetch(new URL(route,origin),{method,redirect:'manual',signal:AbortSignal.timeout(20000),headers:{origin:origin.origin,cookie:[...jar].map(([k,v])=>k+'='+v).join('; '),'x-csrf-token':csrf,...(body?{'content-type':'application/x-www-form-urlencoded'}:{})},...(body?{body}:{})});for(const cookie of response.headers.getSetCookie()){const pair=cookie.split(';')[0],i=pair.indexOf('=');jar.set(pair.slice(0,i),pair.slice(i+1));}return{response,text:await response.text()};}
 const signIn=await request('/admin'),token=signIn.text.match(/name="csrf_token" value="([a-f0-9]+)"/)[1];
 assert.equal((await request('/admin/auth/login','POST',new URLSearchParams({password,csrf_token:token}))).response.status,303);
-const page=await request('/admin?lang=zh');assert.equal(page.response.status,200);assert.equal(page.response.headers.get('x-gyutron-admin'),'2026.11.03.5');csrf=JSON.parse(page.text.match(/id="workspace-bootstrap">([^<]+)</)[1]).csrfToken;
+const page=await request('/admin?lang=zh');assert.equal(page.response.status,200);assert.equal(page.response.headers.get('x-gyutron-admin'),'2026.11.03.6');csrf=JSON.parse(page.text.match(/id="workspace-bootstrap">([^<]+)</)[1]).csrfToken;
 const checked=[];for(const [route,table]of [['operations/reports','ops_reports'],['operations/automations','ops_automations'],['operations/runs','ops_automation_runs']]){
   const r=await request('/admin/api/'+route+'?limit=100');assert.equal(r.response.status,200);const result=JSON.parse(r.text);assert.equal(result.meta.total,snapshot.tables[table].length);checked.push(route);
 }

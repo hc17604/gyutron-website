@@ -1,0 +1,247 @@
+{
+  "checked_at": "2026-11-03T14:04:41.809Z",
+  "default_language": "en",
+  "supported_languages": [
+    "en",
+    "zh"
+  ],
+  "storage_key": "gyutron.workspace.language.v2",
+  "previous_storage_ignored": true,
+  "parser": "existing local TypeScript parser, development-only; not shipped or added as a dependency",
+  "assets": [
+    {
+      "export": "ADMIN_CLIENT",
+      "before_bytes": 127064,
+      "after_bytes": 127028,
+      "removed_bytes": 36,
+      "sha256": "8352227181225cd3fefdfda03faa89f71295490c586a628596dd78232f1bc1a4",
+      "unsupported_locale_fixed_copy_or_text_arguments": []
+    },
+    {
+      "export": "QUOTES_CLIENT",
+      "before_bytes": 52430,
+      "after_bytes": 52430,
+      "removed_bytes": 0,
+      "sha256": "695ea06b6f7d406e640c9e6b2c3d0ef824b839b4fcdff0a0378d32d9bf01fa44",
+      "unsupported_locale_fixed_copy_or_text_arguments": []
+    },
+    {
+      "export": "CRM_EXPERIENCE_CLIENT",
+      "before_bytes": 34592,
+      "after_bytes": 31203,
+      "removed_bytes": 3389,
+      "sha256": "3bd53d1a5ce5369e292f946326fca0b55c8b00ca7d111097dcc0a74c7b0dcdcf",
+      "unsupported_locale_fixed_copy_or_text_arguments": []
+    },
+    {
+      "export": "NOTIFICATIONS_CLIENT",
+      "before_bytes": 12025,
+      "after_bytes": 9890,
+      "removed_bytes": 2135,
+      "sha256": "fb3dda1e60017c1f6a9ec725d634bffc30fdff82df1da8d2d89f83edf0d517df",
+      "unsupported_locale_fixed_copy_or_text_arguments": []
+    },
+    {
+      "export": "INTELLIGENCE_CLIENT",
+      "before_bytes": 42930,
+      "after_bytes": 33809,
+      "removed_bytes": 9121,
+      "sha256": "11b126852cfc15c699a4ea7bffd7c07bf66964dfbec3996888be3b65ca7bb545",
+      "unsupported_locale_fixed_copy_or_text_arguments": []
+    },
+    {
+      "export": "OPERATIONS_CLIENT",
+      "before_bytes": 57840,
+      "after_bytes": 48060,
+      "removed_bytes": 9780,
+      "sha256": "805788a1367f4bf7c3f4c7bf223c8060efa6a6a2f8d5d5815ca7d760ee9c00c8",
+      "unsupported_locale_fixed_copy_or_text_arguments": []
+    },
+    {
+      "export": "WORKBENCH_CLIENT",
+      "before_bytes": 19751,
+      "after_bytes": 12401,
+      "removed_bytes": 7350,
+      "sha256": "ae2f58e98052eee1ec678e9a4fe97887e793c3fb34f1d96625ee2f055a0c01a2",
+      "unsupported_locale_fixed_copy_or_text_arguments": []
+    },
+    {
+      "export": "ADMIN_LOCALE_CLIENT",
+      "before_bytes": 76409,
+      "after_bytes": 11760,
+      "removed_bytes": 64649,
+      "sha256": "4c0395bd74588f5d83f9d9aba6ff81aa69b2f6b3fe466d722d8823614288e26a",
+      "unsupported_locale_fixed_copy_or_text_arguments": []
+    }
+  ],
+  "total_removed_bytes": 96460,
+  "residuals": 0,
+  "styles": [
+    {
+      "export": "CRM_EXPERIENCE_STYLES",
+      "unchanged": true
+    },
+    {
+      "export": "NOTIFICATIONS_STYLES",
+      "unchanged": true
+    },
+    {
+      "export": "WORKBENCH_STYLES",
+      "unchanged": true
+    }
+  ],
+  "tests": {
+    "frontend": 66,
+    "intelligence": 54,
+    "operations": 47,
+    "notifications": 21,
+    "historical_quotation": 26
+  },
+  "history": {
+    "existing_foreign_language_messages_and_reports_unchanged": true,
+    "new_reports_from_legacy_schedules_use_english": true,
+    "quotation_document_renderer_untouched": true,
+    "schema_migration_needed": false
+  },
+  "production_writes": false,
+  "visual_browser_tested_by_this_agent": false,
+  "final_freeze_at": "2026-11-03T14:07:19.899Z",
+  "source_hashes": [
+    {
+      "path": "src/admin/client.mjs",
+      "bytes": 127289,
+      "sha256": "763ed0cf65fa9f0d80f251cbf8e3da639c432c114193fc71529f0b1060aa956f"
+    },
+    {
+      "path": "src/admin/locale-policy.mjs",
+      "bytes": 628,
+      "sha256": "0360d604d57a582a6e6c841290d005c5a5df08943f165c5105ff7510b09f155b"
+    },
+    {
+      "path": "src/admin/core-extra-locales.mjs",
+      "bytes": 1949,
+      "sha256": "faf5c1c6f10931af379f948b9f4197698008dd03bf4c6899f2baa67217e4520c"
+    },
+    {
+      "path": "src/admin/quote-extra-locales.mjs",
+      "bytes": 128,
+      "sha256": "055d7023d9018b444c9345455528f34d2281c6cc85f601505a970df5130d1d41"
+    },
+    {
+      "path": "src/admin/extension-locales.mjs",
+      "bytes": 16128,
+      "sha256": "331d4a171231e95ff42fb7c2dd59304e69ee99c42787712e53496b17eaa07491"
+    },
+    {
+      "path": "src/admin/extension-errors.mjs",
+      "bytes": 8950,
+      "sha256": "66cd99c12135a0f3882b831904933268eebc095778a820e74de44ae2fd794d88"
+    },
+    {
+      "path": "src/admin/locale-assets.mjs",
+      "bytes": 756,
+      "sha256": "87118624bccfa02fa57b880b6a08ee2d3e5fd213ef1ced671afe3eefc5f6ca75"
+    },
+    {
+      "path": "src/admin/workbench-ui.mjs",
+      "bytes": 16142,
+      "sha256": "6eaa8d92c698c72f3141fb410469b1263fbccd66b40805eee3c88ddfd1901b04"
+    },
+    {
+      "path": "src/admin/intelligence-client.mjs",
+      "bytes": 34005,
+      "sha256": "3ae9336c8fce452d3d077f0f59b5d114bab06612ad211d7c502a3ab81dbb9bef"
+    },
+    {
+      "path": "src/admin/operations-client.mjs",
+      "bytes": 48304,
+      "sha256": "4bcaa3da5648681cc639579ad88f6cf13b8ae9cdc317f45c4e4ae572aee4f6fe"
+    },
+    {
+      "path": "src/admin/crm-experience-client.mjs",
+      "bytes": 35389,
+      "sha256": "e9ce502e16a39fb76c226666f30ca7ca7c646ec1667004b4d4e68533828d9f7f"
+    },
+    {
+      "path": "src/admin/notifications-client.mjs",
+      "bytes": 13940,
+      "sha256": "67d691b0ac83cd5fe72ca9c95be8c6a534c0e14c3aa26fffabf3dd8383987cd0"
+    },
+    {
+      "path": "src/platform/intelligence/agent.mjs",
+      "bytes": 15032,
+      "sha256": "32be7bfcb3b15a9a603ad9dc6ac9d8392ee3bd2d6b0b143af8058b7ec2872b69"
+    },
+    {
+      "path": "src/platform/intelligence/presentation.mjs",
+      "bytes": 10159,
+      "sha256": "048afece2977231ca825fdfaaedf6e2d1bfaa75f0efe72cef26da9d6f72c6b8b"
+    },
+    {
+      "path": "src/platform/operations/reports.mjs",
+      "bytes": 6294,
+      "sha256": "e50c1d1ce94518a65d889595b82275c44d5b5dbf49c902a9464c0598d81ada1e"
+    },
+    {
+      "path": "src/platform/operations/scheduler.mjs",
+      "bytes": 16942,
+      "sha256": "07518aac760db0374606f64adebf7a98e2bc3163e9709c71765c9a4b9476864f"
+    },
+    {
+      "path": "scripts/test-intelligence.mjs",
+      "bytes": 41929,
+      "sha256": "e3ecd9dac2c885fb0d1b1082e35bce4e01b6afc09673f3e3b2f9aab81ad46eed"
+    },
+    {
+      "path": "scripts/test-operations-core.mjs",
+      "bytes": 45994,
+      "sha256": "90ffeebfa8abaa3631c47162b8e90aff2f1582f168eb795a573b64d976c135c3"
+    },
+    {
+      "path": "scripts/check-admin-frontend.mjs",
+      "bytes": 10172,
+      "sha256": "c35608cd0490d97b7fc81b82639476f8fc4c7a2c0f7e8a4fa988c6e58419b5e3"
+    },
+    {
+      "path": "scripts/package-admin-workspace.mjs",
+      "bytes": 15086,
+      "sha256": "10033bdb3b25e7333b30d6c95f52db6099f96f61fa35980edf5721fadc564a85"
+    },
+    {
+      "path": "template/operations-workspace/README.md",
+      "bytes": 13152,
+      "sha256": "0140f647e8692224617bf25bb4954e01c58ef40297c8b3ff03a14a682379b22a"
+    },
+    {
+      "path": "template/operations-workspace/worker.mjs",
+      "bytes": 1649,
+      "sha256": "21830ee02934c577ba02df673a757b1924151b8eaa8ba1addd7d80904d8e4505"
+    },
+    {
+      "path": "template/operations-workspace/verify-instance.mjs",
+      "bytes": 3379,
+      "sha256": "6791f633415b06dbc4f24034bf1614cf42f01198d931284298327f864ead3cf7"
+    }
+  ],
+  "package_self_check": {
+    "passed": true,
+    "exit_code": 0,
+    "suites": 18,
+    "preview_only": true,
+    "stage": ".wrangler/distribution-self-check/.staging-55deb417-cac4-4209-9697-d521b3bc90ba",
+    "scratch": ".wrangler/distribution-verification/0805937f-f7df-4d6e-8e48-7314d84949eb",
+    "files": 121,
+    "assets_allowlisted": 9,
+    "branding_asset_real_fetch_checks": 4,
+    "branding_response_matches_packaged_bytes": true,
+    "dry_run_passed": true,
+    "bundle_kib": 916.34,
+    "gzip_kib": 241.32,
+    "archive_created": false,
+    "provisioned_resources": false,
+    "deployed": false,
+    "log": ".wrangler/package-bilingual-selfcheck-backend.log"
+  },
+  "new_ci_suite_required": false,
+  "evidence_scope": "Bilingual implementation checkpoint before later root layout syntax and final visual changes; final source suite supersedes file hashes where changed."
+}
