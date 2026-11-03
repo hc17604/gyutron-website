@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-03T09:33:24.847Z",
+  "origin": "https://www.gyutron.com",
+  "zoomPercent": 100,
+  "checks": [
+    {
+      "page": "overview",
+      "bodyWidth": 753,
+      "rootWidth": 753,
+      "width": 768
+    },
+    {
+      "page": "quotes",
+      "bodyWidth": 768,
+      "rootWidth": 768,
+      "width": 768
+    },
+    {
+      "page": "settings",
+      "bodyWidth": 753,
+      "rootWidth": 753,
+      "sidebarInert": false,
+      "sidebarX": 0,
+      "width": 768
+    }
+  ],
+  "sourceRef": "eca97d0b9be901ea531afeffe6852135c3098a11",
+  "temporaryViewportReset": true,
+  "businessWrites": 0
+}

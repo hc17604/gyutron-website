@@ -1,0 +1,48 @@
+{
+  "at": "2026-11-03T08:30:40.948Z",
+  "origin": "https://www.gyutron.com",
+  "version": "2026.11.03.2",
+  "sourceRef": "eca97d0b9be901ea531afeffe6852135c3098a11",
+  "checks": [
+    {
+      "name": "Password-only sign-in with the user-selected password through native Windows screen controls",
+      "passed": true
+    },
+    {
+      "name": "Actual Chinese production overview with real empty CRM and three new enquiries",
+      "passed": true
+    },
+    {
+      "name": "320px overview has no horizontal overflow",
+      "passed": true,
+      "innerWidth": 320,
+      "rootWidth": 305,
+      "bodyWidth": 305
+    },
+    {
+      "name": "Mobile drawer opens as dialog; quotation navigation closes it and restores menu-button focus",
+      "passed": true,
+      "closedSidebarInert": true
+    },
+    {
+      "name": "320px quotation workspace has no horizontal overflow",
+      "passed": true,
+      "innerWidth": 320,
+      "rootWidth": 320,
+      "bodyWidth": 320
+    },
+    {
+      "name": "Production browser captured no application error logs",
+      "passed": true,
+      "capturedErrors": 0
+    }
+  ],
+  "screenshots": [
+    "production-final-zh-desktop.png",
+    "production-final-zh-mobile-320.png",
+    "production-final-zh-quotes-mobile-320.png"
+  ],
+  "temporaryViewportReset": true,
+  "businessRecordsCreated": 0,
+  "scope": "Desktop and narrow viewport in real Chrome; no physical touch-device or screen-reader certification"
+}

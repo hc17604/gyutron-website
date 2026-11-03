@@ -1,0 +1,478 @@
+{
+  "checked_at": "2026-11-03T09:44:53.159898+00:00",
+  "results": [
+    {
+      "lang": "en",
+      "pages": 3,
+      "pdf_bytes": 101291,
+      "sha256": "a70a347d8465fe42347bf088872ab1ed886d93a50a24a0481d8d80a2e6eb8510",
+      "quantity_spans": [
+        {
+          "page": 2,
+          "text": "90071992547",
+          "bbox": [
+            277.921875,
+            74.96044921875,
+            323.7918701171875,
+            83.33935546875
+          ]
+        },
+        {
+          "page": 2,
+          "text": "40991",
+          "bbox": [
+            302.953125,
+            86.21044921875,
+            323.8031311035156,
+            94.58935546875
+          ]
+        }
+      ],
+      "unit_spans": [
+        {
+          "page": 2,
+          "text": "pieces",
+          "bbox": [
+            334.3125,
+            74.96044921875,
+            355.98748779296875,
+            83.33935546875
+          ]
+        }
+      ],
+      "quantity_complete": true,
+      "max_amount_tokens": [
+        {
+          "page": 2,
+          "text": "$10,000,000,000.00",
+          "bbox": [
+            392.7890625,
+            710.21044921875,
+            459.50909423828125,
+            718.58935546875
+          ]
+        },
+        {
+          "page": 2,
+          "text": "$10,000,000,000.00",
+          "bbox": [
+            486.76171875,
+            710.21044921875,
+            553.4817504882812,
+            718.58935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "$10,000,000,000.00",
+          "bbox": [
+            492.01171875,
+            45.71044921875,
+            558.7317504882812,
+            54.08935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "− $10,000,000,000.00",
+          "bbox": [
+            485.5546875,
+            65.96044921875,
+            558.7398071289062,
+            74.33935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "$10,000,000,000.00",
+          "bbox": [
+            492.01171875,
+            86.21044921875,
+            558.7317504882812,
+            94.58935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "$10,000,000,000.00",
+          "bbox": [
+            458.6484375,
+            138.315673828125,
+            558.7286376953125,
+            150.884033203125
+          ]
+        }
+      ],
+      "private_note_absent": true,
+      "description_start": true,
+      "description_end": true,
+      "scope_limit": "Synthetic valid rows; no production or soak server requested."
+    },
+    {
+      "lang": "zh",
+      "pages": 3,
+      "pdf_bytes": 130918,
+      "sha256": "ac1fe7a129aacdadebd03e43ee86690d31c2d601df1e4a3a6f46f57f2ae6e097",
+      "quantity_spans": [
+        {
+          "page": 2,
+          "text": "90071992547",
+          "bbox": [
+            277.921875,
+            74.96044921875,
+            323.7918701171875,
+            83.33935546875
+          ]
+        },
+        {
+          "page": 2,
+          "text": "40991",
+          "bbox": [
+            302.953125,
+            86.21044921875,
+            323.8031311035156,
+            94.58935546875
+          ]
+        }
+      ],
+      "unit_spans": [
+        {
+          "page": 2,
+          "text": "pieces",
+          "bbox": [
+            334.3125,
+            74.96044921875,
+            355.98748779296875,
+            83.33935546875
+          ]
+        }
+      ],
+      "quantity_complete": true,
+      "max_amount_tokens": [
+        {
+          "page": 2,
+          "text": "US$10,000,000,000.0",
+          "bbox": [
+            386.54296875,
+            710.21044921875,
+            459.51055908203125,
+            718.58935546875
+          ]
+        },
+        {
+          "page": 2,
+          "text": "US$10,000,000,000.00",
+          "bbox": [
+            476.34375,
+            710.21044921875,
+            553.4812622070312,
+            718.58935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "US$10,000,000,000.00",
+          "bbox": [
+            481.59375,
+            45.71044921875,
+            558.7312622070312,
+            54.08935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "− US$10,000,000,000.00",
+          "bbox": [
+            475.13671875,
+            65.96044921875,
+            558.7392578125,
+            74.33935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "US$10,000,000,000.00",
+          "bbox": [
+            481.59375,
+            86.21044921875,
+            558.7312622070312,
+            94.58935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "US$10,000,000,000.00",
+          "bbox": [
+            443.015625,
+            138.315673828125,
+            558.7221069335938,
+            150.884033203125
+          ]
+        }
+      ],
+      "private_note_absent": true,
+      "description_start": true,
+      "description_end": true,
+      "scope_limit": "Synthetic valid rows; no production or soak server requested."
+    },
+    {
+      "lang": "de",
+      "pages": 3,
+      "pdf_bytes": 104206,
+      "sha256": "5979f1a6ac3029431c3394b64e8182698865a951aba0485e861881a9a9e3b873",
+      "quantity_spans": [
+        {
+          "page": 2,
+          "text": "90071992547",
+          "bbox": [
+            277.921875,
+            74.96044921875,
+            323.7918701171875,
+            83.33935546875
+          ]
+        },
+        {
+          "page": 2,
+          "text": "40991",
+          "bbox": [
+            302.953125,
+            86.21044921875,
+            323.8031311035156,
+            94.58935546875
+          ]
+        }
+      ],
+      "unit_spans": [
+        {
+          "page": 2,
+          "text": "pieces",
+          "bbox": [
+            334.3125,
+            74.96044921875,
+            355.98748779296875,
+            83.33935546875
+          ]
+        }
+      ],
+      "quantity_complete": true,
+      "max_amount_tokens": [
+        {
+          "page": 2,
+          "text": "10.000.000.000,00 $",
+          "bbox": [
+            390.703125,
+            710.21044921875,
+            459.5081787109375,
+            718.58935546875
+          ]
+        },
+        {
+          "page": 2,
+          "text": "10.000.000.000,00 $",
+          "bbox": [
+            484.67578125,
+            710.21044921875,
+            553.4808349609375,
+            718.58935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "10.000.000.000,00 $",
+          "bbox": [
+            489.92578125,
+            45.71044921875,
+            558.7308349609375,
+            54.08935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "− 10.000.000.000,00 $",
+          "bbox": [
+            483.46875,
+            65.96044921875,
+            558.7388305664062,
+            74.33935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "10.000.000.000,00 $",
+          "bbox": [
+            489.92578125,
+            86.21044921875,
+            558.7308349609375,
+            94.58935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "10.000.000.000,00 $",
+          "bbox": [
+            455.51953125,
+            138.315673828125,
+            558.7272338867188,
+            150.884033203125
+          ]
+        }
+      ],
+      "private_note_absent": true,
+      "description_start": true,
+      "description_end": true,
+      "scope_limit": "Synthetic valid rows; no production or soak server requested."
+    },
+    {
+      "lang": "ja",
+      "pages": 3,
+      "pdf_bytes": 134511,
+      "sha256": "681261ade0189fe8f63f79850d411a46ffd721ca1db906695f1c1569b026cb27",
+      "quantity_spans": [
+        {
+          "page": 2,
+          "text": "90071992547",
+          "bbox": [
+            277.921875,
+            74.96044921875,
+            323.7918701171875,
+            83.33935546875
+          ]
+        },
+        {
+          "page": 2,
+          "text": "40991",
+          "bbox": [
+            302.953125,
+            86.21044921875,
+            323.8031311035156,
+            94.58935546875
+          ]
+        }
+      ],
+      "unit_spans": [
+        {
+          "page": 2,
+          "text": "pieces",
+          "bbox": [
+            334.3125,
+            74.96044921875,
+            355.98748779296875,
+            83.33935546875
+          ]
+        }
+      ],
+      "quantity_complete": true,
+      "max_amount_tokens": [
+        {
+          "page": 2,
+          "text": "$10,000,000,000.00",
+          "bbox": [
+            392.7890625,
+            710.21044921875,
+            459.50909423828125,
+            718.58935546875
+          ]
+        },
+        {
+          "page": 2,
+          "text": "$10,000,000,000.00",
+          "bbox": [
+            486.76171875,
+            710.21044921875,
+            553.4817504882812,
+            718.58935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "$10,000,000,000.00",
+          "bbox": [
+            492.01171875,
+            45.71044921875,
+            558.7317504882812,
+            54.08935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "− $10,000,000,000.00",
+          "bbox": [
+            485.5546875,
+            65.96044921875,
+            558.7398071289062,
+            74.33935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "$10,000,000,000.00",
+          "bbox": [
+            492.01171875,
+            86.21044921875,
+            558.7317504882812,
+            94.58935546875
+          ]
+        },
+        {
+          "page": 3,
+          "text": "$10,000,000,000.00",
+          "bbox": [
+            458.6484375,
+            138.315673828125,
+            558.7286376953125,
+            150.884033203125
+          ]
+        }
+      ],
+      "private_note_absent": true,
+      "description_start": true,
+      "description_end": true,
+      "scope_limit": "Synthetic valid rows; no production or soak server requested."
+    }
+  ],
+  "contract_validation": {
+    "passed": true,
+    "sku_length": 100,
+    "description_length": 1997,
+    "totals": {
+      "currency": "USD",
+      "items": [
+        {
+          "line_number": 1,
+          "sku": "MAX-QTY-SKU-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+          "description": "EDGE-QTY-BEGIN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGHIJKLMN LONG-SCOPE-ABCDEFGH EDGE-QTY-END",
+          "unit": "pieces",
+          "quantity": 9007199254740991,
+          "unit_price_minor": 0,
+          "line_total_minor": 0
+        },
+        {
+          "line_number": 2,
+          "sku": "MAX-AMOUNT",
+          "description": "Maximum legal unit price and line subtotal",
+          "unit": "set",
+          "quantity": 1,
+          "unit_price_minor": 1000000000000,
+          "line_total_minor": 1000000000000
+        }
+      ],
+      "subtotal_minor": 1000000000000,
+      "discount_minor": 1000000000000,
+      "tax_minor": 1000000000000,
+      "shipping_minor": 0,
+      "total_minor": 1000000000000
+    }
+  },
+  "renderer_source_sha256": "3f6e5826b74183e7c65447e8cdef4e2aeb8528882c6547e03f5f19e32772f42e",
+  "visual_review": {
+    "reviewer": "backend_core",
+    "viewed": [
+      "page-en-2.png",
+      "page-zh-2.png",
+      "page-de-2.png",
+      "page-ja-3.png"
+    ],
+    "result": "Quantity wraps within its own column. Long scope and SKU wrap without overlap. Maximum legal values remain inside monetary columns; zh unit price uses a second line for the final zero. No source or distribution files changed."
+  },
+  "passed": true
+}

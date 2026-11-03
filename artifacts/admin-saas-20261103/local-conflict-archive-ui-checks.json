@@ -1,0 +1,101 @@
+{
+  "checkedAt": "2026-11-03T09:24:18.763Z",
+  "environment": "Actual local Worker and D1 only",
+  "origin": "http://127.0.0.1:8787",
+  "sourceRevision": "b4c2b06133d136c0e593a9988e468578e6bfaa61",
+  "syntheticFixture": {
+    "resource": "customers",
+    "publicId": "CUS-20261103-32F15CA26CDA494E94051788731037DD",
+    "name": "UI QA Local Conflict Archive 20261103-1720",
+    "relatedOpportunities": 0,
+    "relatedTasks": 0
+  },
+  "productionWrites": false,
+  "outboundCommunications": false,
+  "sourceChanges": false,
+  "browser": {
+    "type": "Chrome",
+    "independentTabs": 2,
+    "viewportOverride": false,
+    "zoomChanged": false,
+    "sharedSessionLogout": false,
+    "applicationConsoleErrors": []
+  },
+  "conflict": {
+    "method": "Actual UI: both tabs opened baseline record version, both edited, A saved before B clicked Save changes",
+    "aSavedFirst": true,
+    "bSaveAttempted": true,
+    "visibleConflict": "This record changed while you were editing. Close this window and reopen the record before saving.",
+    "bDialogRemainedOpen": true,
+    "bNotesPreserved": "UI QA B unsaved conflict input must stay visible.",
+    "bContactPreserved": "UI QA B retained contact input",
+    "bSubmitRecovered": true,
+    "bSuccessToast": false,
+    "databaseAfterConflict": {
+      "version": 2,
+      "aNotesPreserved": true,
+      "bContactNotPersisted": true
+    },
+    "protocolSupplement": {
+      "method": "Independent local HTTP stale version=1 PATCH after UI archive/restore",
+      "status": 409,
+      "code": "VERSION_CONFLICT",
+      "writeRejected": true
+    },
+    "screenshot": "local-conflict-input-preserved.jpg",
+    "screenshots": [
+      "local-conflict-input-preserved.jpg",
+      "local-conflict-error-visible.jpg"
+    ]
+  },
+  "archiveRestore": {
+    "method": "Actual UI only",
+    "archiveConfirmation": {
+      "kind": "HTML dialog",
+      "text": "Archive this record? It will be hidden from active views.",
+      "confirmed": true
+    },
+    "activeListAbsentAfterArchive": true,
+    "showArchivedOpened": true,
+    "archivedRecordReadOnly": true,
+    "editButtonAbsentWhileArchived": true,
+    "restoreConfirmation": {
+      "kind": "HTML dialog",
+      "text": "Restore this record to active views?",
+      "confirmed": true
+    },
+    "switchedToActiveList": true,
+    "activeListPresentAfterRefresh": true,
+    "finalDatabase": {
+      "version": 4,
+      "active": true,
+      "aNotesPreserved": true,
+      "bContactNotPersisted": true
+    },
+    "screenshots": [
+      "local-archive-html-confirmation.jpg",
+      "local-archive-restored-list.jpg"
+    ]
+  },
+  "requiredField": {
+    "method": "Actual new-customer UI without required name",
+    "nativeValidationMessage": "Please fill out this field.",
+    "nameValueMissing": true,
+    "dialogRemainedOpen": true,
+    "contactPreserved": true,
+    "notesPreserved": true,
+    "submitRemainedEnabled": true,
+    "noRecordCreated": true,
+    "screenshot": "local-required-input-preserved.jpg"
+  },
+  "knownLimitations": [
+    "Browser tooling did not expose the network response for the UI request; visible UI conflict and retained input were checked directly, with exact database state and a separate rejected stale PATCH confirming HTTP 409/VERSION_CONFLICT.",
+    "These are local synthetic records. No production or physical-device certification is implied."
+  ],
+  "ok": true,
+  "cleanup": {
+    "unsavedFormsDiscardedViaHtmlConfirmation": true,
+    "independentTabsClosed": true,
+    "sharedSessionLogout": false
+  }
+}

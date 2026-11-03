@@ -1,0 +1,78 @@
+{
+  "checkedAt": "2026-11-03T08:30:48.589Z",
+  "environment": "local Worker/D1 only",
+  "origin": "http://127.0.0.1:8787",
+  "sourceRevision": "b4c2b06133d136c0e593a9988e468578e6bfaa61",
+  "sourceId": "UIQA-LEAD-20261103-1627-INTAKE",
+  "synthetic": true,
+  "productionWrites": false,
+  "outboundCommunications": false,
+  "ui": {
+    "browser": "Chrome independent QA tab",
+    "actualInboxOpen": true,
+    "statusEdited": "reviewing",
+    "internalNoteSavedAndReloaded": true,
+    "conversionViaUi": {
+      "newCustomer": true,
+      "newOpportunity": true,
+      "amountMinor": 450025,
+      "currency": "USD"
+    },
+    "afterConversion": {
+      "crmLinkedBanner": true,
+      "convertButtonHidden": true,
+      "customerJumpVerified": true,
+      "opportunityJumpVerified": true,
+      "opportunityDisplayedValue": "$4,500.25"
+    }
+  },
+  "conversion": {
+    "customer_id": "CUS-20261103-04A8C364A4AB4EF0A35F69526AC23B11",
+    "opportunity_id": "OPP-20261103-FBE19C013EB24F13B01EA6B515BE89EE",
+    "created_at": "2026-11-03T08:28:26.175Z"
+  },
+  "replayMethod": "Independent authenticated loopback HTTP session; UI intentionally hides Convert after successful conversion",
+  "replays": [
+    {
+      "status": 200,
+      "alreadyConverted": true,
+      "sameCustomer": true,
+      "sameOpportunity": true
+    },
+    {
+      "status": 200,
+      "alreadyConverted": true,
+      "sameCustomer": true,
+      "sameOpportunity": true
+    }
+  ],
+  "matchingRecords": {
+    "before": {
+      "customers": 0,
+      "opportunities": 0,
+      "links": 0
+    },
+    "afterApi": {
+      "customers": 1,
+      "opportunities": 1
+    }
+  },
+  "sourceStateAfterRefresh": {
+    "status": "reviewing",
+    "internalNoteExactMatch": true
+  },
+  "databaseExactCheck": {
+    "method": "wrangler d1 execute DB --local SELECT; no remote flag",
+    "customers": 1,
+    "opportunities": 1,
+    "links": 1,
+    "sourceExactMatch": true
+  },
+  "consoleErrors": [],
+  "limits": [
+    "Repeated conversion uses the actual API because the UI intentionally prevents repeating conversion after a link exists.",
+    "No external email, message, form submission or production request was used."
+  ],
+  "ok": true,
+  "screenshot": "local-intake-ui-linked.jpg"
+}

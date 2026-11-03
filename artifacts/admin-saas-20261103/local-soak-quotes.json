@@ -1,0 +1,29 @@
+{
+  "run": "da13178f",
+  "runtime": "isolated pinned quotation workerd + D1 + R2",
+  "sourceRef": "eca97d0b9be901ea531afeffe6852135c3098a11",
+  "origin": "http://127.0.0.1:8792",
+  "startedAt": "2026-11-03T08:13:52.884Z",
+  "at": "2026-11-03T09:43:53.245Z",
+  "durationSeconds": 5400,
+  "targetSeconds": 5400,
+  "final": true,
+  "requests": 12660,
+  "cycles": 5361,
+  "counts": {
+    "issued": 90,
+    "revisions": 90,
+    "conflicts": 270,
+    "prints": 270,
+    "archives": 360,
+    "backups": 5,
+    "sessionRevocations": 8
+  },
+  "latencyMs": {
+    "p50": 33,
+    "p95": 44,
+    "max": 276
+  },
+  "errors": [],
+  "productionRequests": 0
+}

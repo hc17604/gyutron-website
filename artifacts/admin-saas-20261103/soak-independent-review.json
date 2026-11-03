@@ -1,0 +1,296 @@
+{
+  "format": 1,
+  "checked_at": "2026-11-03T09:47:02.366Z",
+  "reviewer": "backend_core",
+  "method": "Independent read of final report JSON, workload source, timestamp arithmetic, exact per-cycle request/count derivation, and rehash of the previously audited fixed-copy source files. No HTTP, login, data write or process operation.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "core.final",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "core.errors",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "core.loopback",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "core.productionRequests",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "core.timestampDuration",
+      "passed": true,
+      "actual": 9601,
+      "expected": 9601
+    },
+    {
+      "name": "core.targetReached",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "quotes.final",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "quotes.errors",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "quotes.loopback",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "quotes.productionRequests",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "quotes.timestampDuration",
+      "passed": true,
+      "actual": 5400,
+      "expected": 5400
+    },
+    {
+      "name": "quotes.targetReached",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "core.counts.reads",
+      "passed": true,
+      "actual": 19256,
+      "expected": 19256
+    },
+    {
+      "name": "core.counts.creates",
+      "passed": true,
+      "actual": 636,
+      "expected": 636
+    },
+    {
+      "name": "core.counts.updates",
+      "passed": true,
+      "actual": 159,
+      "expected": 159
+    },
+    {
+      "name": "core.counts.conflicts",
+      "passed": true,
+      "actual": 159,
+      "expected": 159
+    },
+    {
+      "name": "core.counts.archives",
+      "passed": true,
+      "actual": 636,
+      "expected": 636
+    },
+    {
+      "name": "core.counts.restores",
+      "passed": true,
+      "actual": 159,
+      "expected": 159
+    },
+    {
+      "name": "core.counts.negativeChecks",
+      "passed": true,
+      "actual": 174,
+      "expected": 174
+    },
+    {
+      "name": "core.backups",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "core.requests",
+      "passed": true,
+      "actual": 21203,
+      "expected": 21203
+    },
+    {
+      "name": "quotes.counts.issued",
+      "passed": true,
+      "actual": 90,
+      "expected": 90
+    },
+    {
+      "name": "quotes.counts.revisions",
+      "passed": true,
+      "actual": 90,
+      "expected": 90
+    },
+    {
+      "name": "quotes.counts.conflicts",
+      "passed": true,
+      "actual": 270,
+      "expected": 270
+    },
+    {
+      "name": "quotes.counts.prints",
+      "passed": true,
+      "actual": 270,
+      "expected": 270
+    },
+    {
+      "name": "quotes.counts.archives",
+      "passed": true,
+      "actual": 360,
+      "expected": 360
+    },
+    {
+      "name": "quotes.counts.backups",
+      "passed": true,
+      "actual": 5,
+      "expected": 5
+    },
+    {
+      "name": "quotes.counts.sessionRevocations",
+      "passed": true,
+      "actual": 8,
+      "expected": 8
+    },
+    {
+      "name": "quotes.requests",
+      "passed": true,
+      "actual": 12660,
+      "expected": 12660
+    },
+    {
+      "name": "summary.combinedRequests",
+      "passed": true,
+      "actual": 33863,
+      "expected": 33863
+    },
+    {
+      "name": "summary.productionLoadRequests",
+      "passed": true,
+      "actual": 0,
+      "expected": 0
+    },
+    {
+      "name": "summary.passed",
+      "passed": true,
+      "actual": true,
+      "expected": true
+    },
+    {
+      "name": "core.sourceHashesUnchanged",
+      "passed": true,
+      "actual": 67,
+      "expected": 67
+    },
+    {
+      "name": "quotes.sourceHashesUnchanged",
+      "passed": true,
+      "actual": 78,
+      "expected": 78
+    }
+  ],
+  "results": {
+    "core": {
+      "startedAt": "2026-11-03T06:55:57.666Z",
+      "endedAt": "2026-11-03T09:35:58.571Z",
+      "elapsedMilliseconds": 9600905,
+      "durationSeconds": 9601,
+      "requests": 21203,
+      "cycles": 9525,
+      "backups": 8,
+      "errors": 0
+    },
+    "quotes": {
+      "startedAt": "2026-11-03T08:13:52.884Z",
+      "endedAt": "2026-11-03T09:43:53.245Z",
+      "elapsedMilliseconds": 5400361,
+      "durationSeconds": 5400,
+      "requests": 12660,
+      "cycles": 5361,
+      "counts": {
+        "issued": 90,
+        "revisions": 90,
+        "conflicts": 270,
+        "prints": 270,
+        "archives": 360,
+        "backups": 5,
+        "sessionRevocations": 8
+      },
+      "errors": 0
+    },
+    "combinedRequests": 33863,
+    "productionLoadRequests": 0
+  },
+  "source_recheck": [
+    {
+      "name": "core",
+      "ref": "fa373c7a621429ce5dedd353625809eb41d1dc99",
+      "recorded_source_files": 67,
+      "current_hash_matches": 67,
+      "missing": [],
+      "current_files_unchanged": true
+    },
+    {
+      "name": "quotes",
+      "ref": "eca97d0b9be901ea531afeffe6852135c3098a11",
+      "recorded_source_files": 78,
+      "current_hash_matches": 78,
+      "missing": [],
+      "current_files_unchanged": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "artifacts/admin-saas-20261103/local-soak-core.json",
+      "sha256": "7b5441c4d82b60d4cecb45174cc8e3c74824af4474bcc3a261d37b2e825b10d1"
+    },
+    {
+      "path": "artifacts/admin-saas-20261103/local-soak-quotes.json",
+      "sha256": "05e466e98b8e5bbcfdcde74c43b3bc3f451be545a333542fda99fdb325355454"
+    },
+    {
+      "path": "artifacts/admin-saas-20261103/soak-summary.json",
+      "sha256": "1e9b8d4854df4d94f98d0836a76e51a72c1ce3f51bccefed2c0622d081a35e2b"
+    },
+    {
+      "path": "artifacts/admin-saas-20261103/soak-source-provenance.json",
+      "sha256": "b4ad346af632db41024e651edfd774eef4874e320a6e177d1418b67d8724b2f3"
+    },
+    {
+      "path": "scripts/soak-admin-local.mjs",
+      "sha256": "ec886dad71d79693c96c9d82ada4be62557573ce8f9f09957aa701c55a0faff6"
+    },
+    {
+      "path": "scripts/soak-quotes-local.mjs",
+      "sha256": "c87c63294caee375a0e253b8e55b2c7c6e68c1fdefc39d2bca458899118fe18d"
+    }
+  ],
+  "scope": {
+    "source": "Core fa373c7 and quotation eca97d0 are different pinned revisions. Prior byte/Git/EOL and unauthenticated JS/CSS hash/header audit is in soak-source-provenance.json. Core deliberately lacks unused favicon-32x32.png; current quotation copy has all five requested brand assets. This review rehashes source files but does not attest every executed runtime instruction.",
+    "latency": "Driver arrays cap at 20000 samples, trimming 1000 when exceeded. Core final window has 19203 samples by source arithmetic; quotes has 12660. Reported latency p50/p95/max are window statistics, not a production SLA or complete core-run maximum. Raw latency samples were not persisted, so quantiles cannot be independently recomputed.",
+    "duration": "The two workloads overlap in wall time. Do not add durations and describe the result as a single uninterrupted four-hour workload.",
+    "exit": "Parent observed both drivers exit 0 and stopped only its own two services. This reviewer independently verifies final=true and empty errors, but did not observe process exit events.",
+    "limits": "Controlled loopback workerd/D1/R2 functional endurance. No production load, broad concurrency/capacity, penetration test, external availability SLA or RPO/RTO claim."
+  }
+}

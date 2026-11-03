@@ -1,0 +1,27 @@
+{
+  "at": "2026-11-03T09:44:34.767Z",
+  "passed": true,
+  "driversExitedSuccessfully": true,
+  "combinedRequests": 33863,
+  "productionLoadRequests": 0,
+  "reports": [
+    {
+      "workload": "core",
+      "sourceRef": "fa373c7",
+      "durationSeconds": 9601,
+      "requests": 21203,
+      "backups": 8,
+      "errors": 0
+    },
+    {
+      "workload": "quotes",
+      "sourceRef": "eca97d0b9be901ea531afeffe6852135c3098a11",
+      "durationSeconds": 5400,
+      "requests": 12660,
+      "backups": 5,
+      "errors": 0
+    }
+  ],
+  "scope": "Controlled loopback workerd/D1/R2 workloads. Not a concurrency, external penetration test, production RPO/RTO or SLA result.",
+  "latencyScope": "Each driver retains at most its most recent 20,000 latency samples; values in reports are window statistics."
+}

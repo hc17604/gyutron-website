@@ -1,0 +1,30 @@
+{
+  "run": "c33220e8",
+  "runtime": "isolated pinned core workerd + D1 + R2",
+  "origin": "http://127.0.0.1:8789",
+  "sourceRef": "fa373c7",
+  "startedAt": "2026-11-03T06:55:57.666Z",
+  "at": "2026-11-03T09:35:58.571Z",
+  "durationSeconds": 9601,
+  "targetSeconds": 9600,
+  "final": true,
+  "requests": 21203,
+  "cycles": 9525,
+  "backups": 8,
+  "counts": {
+    "reads": 19256,
+    "creates": 636,
+    "updates": 159,
+    "conflicts": 159,
+    "archives": 636,
+    "restores": 159,
+    "negativeChecks": 174
+  },
+  "latencyMs": {
+    "p50": 34,
+    "p95": 45,
+    "max": 418
+  },
+  "errors": [],
+  "productionRequests": 0
+}

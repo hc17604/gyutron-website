@@ -1,0 +1,169 @@
+{
+  "sourceCommit": "b4c2b06133d136c0e593a9988e468578e6bfaa61",
+  "productionResourcesModified": false,
+  "installedDependencies": false,
+  "zipBytes": 257955,
+  "zipSha256": "685761dc700961e75442c41a87e5ac57026f0d5180c8b28b5ec0c1477d32a943",
+  "standaloneEntryCheck": {
+    "ok": true,
+    "nodeMajor": 24,
+    "wrangler": "4.93.1",
+    "entry": "operations-only",
+    "provisionedResources": false,
+    "deployed": false
+  },
+  "passed": true,
+  "members": 64,
+  "manifestEntries": 62,
+  "crc": "all members passed Python zipfile and zlib",
+  "exactZipDirectoryMembership": true,
+  "shaManifestAndSidecars": true,
+  "privateMaterialExcluded": true,
+  "upstreamResourceIdsExcluded": 2,
+  "secretScan": "private-key/common-token patterns; private files and actual upstream resource IDs",
+  "sourceBlobExact": 40,
+  "sourceBlobOnlyLineEndings": 21,
+  "sourceBlobUnexpected": 0,
+  "configure": {
+    "valid": true,
+    "unicodeRoundTrip": true,
+    "existingConfigPreserved": true,
+    "secretArgumentRejected": true
+  },
+  "scope": "Independent final artifact checks. No npm reinstall or duplicate full smoke suites. Formal release directory unchanged.",
+  "scratch": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\.wrangler\\distribution-final-independent\\extracted-e2bb3dcc-eb91-44f9-a5c9-dcecdc0bfa2a",
+  "entryNegativeChecks": {
+    "passed": 20,
+    "total": 20,
+    "mode": "In-process dedicated Worker from independently extracted final ZIP; no network",
+    "results": [
+      {
+        "path": "/admin/api/customers",
+        "method": "GET",
+        "status": 401,
+        "passed": true
+      },
+      {
+        "path": "/admin/api/quotes",
+        "method": "GET",
+        "status": 401,
+        "passed": true
+      },
+      {
+        "path": "/admin/api/quotes/calculate",
+        "method": "POST",
+        "status": 401,
+        "passed": true
+      },
+      {
+        "path": "/api/v1/leads",
+        "method": "GET",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/api/v1/leads",
+        "method": "POST",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/api/contact",
+        "method": "POST",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/api/rfq",
+        "method": "POST",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/api/support",
+        "method": "POST",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/api/downloads",
+        "method": "POST",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/api/order-intents",
+        "method": "POST",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/shop/",
+        "method": "GET",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/.dev.vars",
+        "method": "GET",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/wrangler.toml",
+        "method": "GET",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/backups/daily/synthetic.json",
+        "method": "GET",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/private-backups/synthetic.sql",
+        "method": "HEAD",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/health",
+        "method": "POST",
+        "status": 405,
+        "passed": true
+      },
+      {
+        "path": "/",
+        "method": "POST",
+        "status": 404,
+        "passed": true
+      },
+      {
+        "path": "/admin/quotes/QUO-private/print?lang=de",
+        "method": "GET",
+        "status": 200,
+        "loginWall": true,
+        "noBusinessContent": true,
+        "noStore": true,
+        "passed": true
+      },
+      {
+        "path": "/admin/quotes/QUO-private/print.css?lang=ja",
+        "method": "GET",
+        "status": 200,
+        "loginWall": true,
+        "noBusinessContent": true,
+        "noStore": true,
+        "passed": true
+      },
+      {
+        "path": "/health?view=admin",
+        "method": "GET",
+        "status": 200,
+        "minimalHealth": true,
+        "passed": true
+      }
+    ]
+  }
+}

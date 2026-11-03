@@ -1,0 +1,63 @@
+{
+  "at": "2026-11-03T08:23:11.053Z",
+  "source": "actual production private R2 format-3 payload and verified marker",
+  "sha256": "2798fbd2a4499e1232b31696115286556d9cf53cf6ddaffc1d68c812bc2b6bdd",
+  "bytes": 122140,
+  "format": 3,
+  "migration": "0006_operations_quotes.sql",
+  "tableCount": 18,
+  "schemaObjects": 92,
+  "restoredCountsMatch": true,
+  "integrity": "ok",
+  "foreignKeyFailures": 0,
+  "excludedSessionsAndThrottleRows": 0,
+  "target": "new isolated local SQLite; no remote restore",
+  "businessRowsDisclosed": false,
+  "productionWrites": false,
+  "actualLocalD1Restore": {
+    "success": true,
+    "sourceRef": "eca97d0b9be901ea531afeffe6852135c3098a11",
+    "runtime": "workerd + fresh isolated local D1",
+    "passwordOnlyOwnerLogin": true,
+    "resources": [
+      {
+        "resource": "customers",
+        "status": 200
+      },
+      {
+        "resource": "opportunities",
+        "status": 200
+      },
+      {
+        "resource": "tasks",
+        "status": 200
+      },
+      {
+        "resource": "activities",
+        "status": 200
+      },
+      {
+        "resource": "audit",
+        "status": 200
+      },
+      {
+        "resource": "quotes",
+        "status": 200
+      },
+      {
+        "resource": "intake",
+        "status": 200
+      },
+      {
+        "resource": "dashboard",
+        "status": 200
+      },
+      {
+        "resource": "system",
+        "status": 200
+      }
+    ],
+    "logoutReplayDenied": true,
+    "externalMessagesSent": 0
+  }
+}

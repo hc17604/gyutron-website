@@ -25,6 +25,9 @@ Read this block first; use the dated entries below only for task-relevant histor
   Production additive migrations 0003–0006 have been applied after verified private SQL exports.
   Release 2026.11.03.2 is live and passed 12/12 production checks; use the newest dated entry,
   `docs/admin-saas-project-plan.md` and the production evidence JSON files for actual live status.
+  Final sustained checks passed: core 9601 seconds / 21203 requests and quotations 5400 seconds /
+  12660 requests, with no failed workload assertions. The source-only independent-instance ZIP and
+  Chinese project/acceptance and daily-use documents are available under the D-drive task outputs.
 
 - **Repository:** `D:\AI PRODUT\GYUTRON web\website\gyutron-website-repo`, branch `main`. Run
   `git fetch origin` and `npm run agent:status`; do not trust a hard-coded HEAD in documentation.
@@ -76,6 +79,39 @@ Read this block first; use the dated entries below only for task-relevant histor
 ---
 
 ## 🤝 CODEX HANDOFF — current state (2026-11-03)
+
+> **2026-11-03 (Codex) — Final technical acceptance and commercial delivery.**
+> The user-required four-hour minimum elapsed before final delivery preparation: task start
+> 05:50:18UTC and release-summary prepared09:52:08UTC (14510seconds). See `release-summary.json`
+> for the delivery file hashes; the actual production/soak checks retain their own independent times.
+> Live release remains `2026.11.03.2`; application source is eca97d0 and the frozen distribution
+> source is `b4c2b06133d136c0e593a9988e468578e6bfaa61` (same application code, verified release docs).
+> Final production check at 17:46 SGT passed 12/12, including exact five-asset equality, four-language
+> password-only forms, protected quotation reads, CSRF/session replay, migration0006 and another
+> actual verified private R2 backup. The user's selected login policy and password remain unchanged.
+> Core and quotation controlled local workloads both ended normally: 9601s/21203 requests/8 backups
+> and 5400s/12660 requests/5 backups, total33863 and zero failed assertions. Independent review34/34
+> verified times, counts and unchanged145 source files. The runs overlap; do not combine them into
+> a single four-hour stability test or claim a concurrency benchmark/SLA. Both local servers stopped.
+> Actual production R2 format3 payload (122140bytes) matched its verified marker and restored with
+> integrity=ok, zero foreign-key failures and matching18 persistent tables/92schema objects. It also
+> restored into a fresh isolated local D1, where real workerd login, nine resource reads and logout
+> replay passed. Live sessions were excluded. No remote production restore or customer QA fixtures.
+> Actual Chrome checks additionally covered two-tab conflict/input preservation, required-input
+> preservation, HTML archive/restore, intake status/conversion/retry, exact768px production layouts,
+> and 320px drawer/focus. Four-language extreme-quantity/amount prints passed without lost digits
+> or cross-column overlap; normal50-item/40-term documents passed earlier. No final source patch.
+> Independent distribution:64 ZIP members,257955bytes, SHA256
+> `685761dc700961e75442c41a87e5ac57026f0d5180c8b28b5ec0c1477d32a943`.
+> ZIP: `../../outputs/admin-saas-20261103/gyutron-operations-20261103082117-b4c2b06133d1.zip`;
+> adjacent source-manifest and SHA256SUMS identify its exact contents. No production secrets,
+> resource IDs, customer records, node_modules or local runtime state were distributed.
+> The six-page Chinese project/acceptance document and two-page daily guide have DOCX/PDF copies
+> and rendered QA under the same task outputs. Keep private backups/credentials out of any package.
+> For schema0006, select a quote-aware .2 code baseline (eca97d0/b4c2b06) for compatible rollback;
+> earlier .1 code safely refuses to produce an incomplete backup when quotation tables exist.
+> Actual new-customer Cloudflare provisioning, shared-DB tenancy, inventory/accounting, subscriptions,
+> external penetration tests, alert-recipient drills and production RPO/RTO remain outside proven scope.
 
 > **2026-11-03 16:20 SGT (Codex) — Quotations production release verified; sustained QA continues.**
 > Source `eca97d0b9be901ea531afeffe6852135c3098a11`, GitHub CI `41601647771` succeeded. Actual

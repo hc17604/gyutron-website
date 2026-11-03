@@ -1,0 +1,75 @@
+{
+  "preparedAt": "2026-11-03T09:52:08.743Z",
+  "taskStartedAt": "2026-11-03T05:50:18.000Z",
+  "elapsedSecondsWhenPrepared": 14510,
+  "requestedMinimumSeconds": 14400,
+  "minimumDurationObserved": true,
+  "liveUrl": "https://www.gyutron.com/admin",
+  "liveRelease": "2026.11.03.2",
+  "applicationSource": "eca97d0b9be901ea531afeffe6852135c3098a11",
+  "distributionSource": "b4c2b06133d136c0e593a9988e468578e6bfaa61",
+  "login": "password only, user-selected credential retained; no credential value in this report",
+  "migration": "0006_operations_quotes.sql",
+  "coreChecks": 119,
+  "localWorkerChecks": {
+    "core": 16,
+    "quotes": 15
+  },
+  "finalProductionChecks": {
+    "passed": 12,
+    "total": 12,
+    "evidence": "production-core-final-checks.json"
+  },
+  "sustainedRun": {
+    "requests": 33863,
+    "failedAssertions": 0,
+    "coreSeconds": 9601,
+    "quotationSeconds": 5400,
+    "independentChecks": 34,
+    "productionLoadRequests": 0
+  },
+  "productionBusinessQaFixtures": 0,
+  "originalBrandPublicDiff": 0,
+  "publicOnlyFilesPreserved": 131,
+  "files": [
+    {
+      "name": "gyutron-operations-20261103082117-b4c2b06133d1.zip",
+      "bytes": 257955,
+      "sha256": "685761dc700961e75442c41a87e5ac57026f0d5180c8b28b5ec0c1477d32a943"
+    },
+    {
+      "name": "gyutron-operations-20261103082117-b4c2b06133d1.source-manifest.json",
+      "bytes": 22441,
+      "sha256": "9df0f32e8d8d53831870b6e097d93463ee34af927d0be888e300f8b935a1aac3"
+    },
+    {
+      "name": "gyutron-operations-20261103082117-b4c2b06133d1.SHA256SUMS.txt",
+      "bytes": 251,
+      "sha256": "2dcbe20649cb4708e9bcfb4ae16d1609952bffb8e8176e7ee1a5e07ff64601f8"
+    },
+    {
+      "name": "GYUTRON-Operations-项目计划与验收.docx",
+      "bytes": 57305,
+      "sha256": "99c64309b58b7de7145d2155b5ff0c1470a49f7f2a9fdfe0306e086410d96bcb"
+    },
+    {
+      "name": "GYUTRON-Operations-项目计划与验收.pdf",
+      "bytes": 418029,
+      "sha256": "ae5d0a2f2f4d06d2be1f8267e3d452df950ed3b512253f0f6f9a605fe245c375"
+    },
+    {
+      "name": "GYUTRON-Operations-日常使用指南.docx",
+      "bytes": 44555,
+      "sha256": "a968ad1b38ce3a1170bce374e777c21298067847b23970f323449899993dcfb5"
+    },
+    {
+      "name": "GYUTRON-Operations-日常使用指南.pdf",
+      "bytes": 268166,
+      "sha256": "726c360265dbdb0e704ed4f4df224a77aa32666dd7af0cedaa27c7b5b4ebd9da"
+    }
+  ],
+  "scope": "Industrial customer, opportunity, intake, task, activity and quotation operations; per-customer independent deployments. Inventory, accounting, shared-database multi-tenancy and subscription billing are not included.",
+  "evidenceDirectory": "artifacts/admin-saas-20261103/",
+  "temporaryBrowserProfiles": "retained outside repository in task output scratch; no deletion",
+  "ownedLocalServersStopped": true
+}
