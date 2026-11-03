@@ -75,6 +75,16 @@ Read this block first; use the dated entries below only for task-relevant histor
 
 ## 🤝 CODEX HANDOFF — current state (2026-11-03)
 
+> **2026-11-03 (Codex) — User-directed password-only access.**
+> User explicitly requested no account field and a specific simple shared password. The production
+> ADMIN_PASSWORD secret was updated to that requested value; no credential is committed here.
+> Login now contains only the password field and submit button. Removed unsolicited password-strength
+> warnings from System Settings. Session revocation, CSRF and login throttling remain enabled.
+> Only the login renderer and System Settings renderer are staged for this compatibility release;
+> quotation work remains uncommitted and is not included accidentally. Credentials in the private
+> local access file have been updated. Do not autonomously rotate this user-selected password again.
+> Next: verify the new live form/login, then resume quotation, commercial packaging and sustained QA.
+
 > **2026-11-03 (Codex) — Core Operations workspace ready for release checks; work continues.**
 > Scope: `src/admin/` industrial EN/zh interface; `admin.mjs` authentication/router;
 > `admin-api.mjs`, `admin-team.mjs`, `admin-system.mjs`, `admin-legacy.mjs`; CRM schema/domain;
