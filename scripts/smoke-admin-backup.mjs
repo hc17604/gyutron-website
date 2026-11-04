@@ -11,7 +11,7 @@ import { quoteSnapshot } from '../src/platform/quotes/repository.mjs';
 import { renderQuoteDocument } from '../src/platform/quotes/document.mjs';
 import { handleAdminSystem } from '../src/api/admin-system.mjs';
 
-const migrations = ['0001_init.sql', '0002_order_intents.sql', '0003_admin_workspace.sql', '0004_admin_identity.sql', '0005_crm_relation_guards.sql', '0006_operations_quotes.sql','0007_operations.sql','0008_intelligence.sql','0009_workspace_experience.sql','0010_workspace_notifications.sql'];
+const migrations = ['0001_init.sql', '0002_order_intents.sql', '0003_admin_workspace.sql', '0004_admin_identity.sql', '0005_crm_relation_guards.sql', '0006_operations_quotes.sql','0007_operations.sql','0008_intelligence.sql','0009_workspace_experience.sql','0010_workspace_notifications.sql','0011_analytics_observations.sql'];
 const stamp = '2026-11-03T05:00:00.000Z';
 const staffPassword = 'Recovery-test-password-only';
 const staffHash = await hashStaffPassword(staffPassword);
@@ -57,6 +57,9 @@ function makeDatabase({ withTracking = true } = {}) {
   sqlite.prepare("UPDATE ops_quotes SET status='issued',snapshot_json=?,snapshot_sha256=?,issued_at=?,issued_by=? WHERE public_id=?").run(quotationSnapshot, quotationSha256, stamp, 'owner', 'QTE-recovery');
   sqlite.prepare("UPDATE ops_quotes SET status='accepted',outcome_note=?,outcome_recorded_at=?,outcome_recorded_by=? WHERE public_id=?").run('Manual recorded outcome', stamp, 'owner', 'QTE-recovery');
   sqlite.prepare('UPDATE crm_customers SET archived_at=? WHERE public_id=?').run(stamp, 'CUS-recovery');
+  sqlite.prepare('INSERT INTO ops_data_sources(id,name,kind,created_at,updated_at) VALUES(?,?,?,?,?)').run('SRC-aggregate-recovery','Aggregate recovery fixture','csv_generic',stamp,stamp);
+  sqlite.prepare('INSERT INTO ops_analytics_imports(id,source_id,sha256,row_count,created_by,created_at,mutation_token) VALUES(?,?,?,?,?,?,?)').run('AMIMP-recovery','SRC-aggregate-recovery','a'.repeat(64),1,'owner',stamp,'recovery-fixture-only');
+  sqlite.prepare('INSERT INTO ops_analytics_observations(id,source_id,date,date_to,metric,value_exact,unit,series,scope_hash,import_id,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)').run('OBS-recovery','SRC-aggregate-recovery','2026-11-03','2026-11-03','impressions','90071992547409931234567890','count','self','b'.repeat(64),'AMIMP-recovery',stamp,stamp);
   const trace = { batches: [], individualReads: [] };
   const db = {
     prepare(query) {
@@ -97,7 +100,7 @@ await test('explicit snapshot covers all persistent tables, tracking and schema 
   const fixture = makeDatabase(); const snapshot = await createBackupSnapshot(fixture.db);
   assert.deepEqual(Object.keys(snapshot.tables), [...BACKUP_TABLES, 'd1_migrations']);
   for (const table of BACKUP_TABLES) assert.equal(snapshot.manifest.counts[table], fixture.sqlite.prepare(`SELECT COUNT(*) n FROM ${table}`).get().n);
-  assert.equal(snapshot.manifest.migrations.length, 10); assert.equal(snapshot.manifest.schema_version, 4);
+  assert.equal(snapshot.manifest.migrations.length, 11); assert.equal(snapshot.manifest.schema_version, 5);
   for (const table of EXCLUDED_BACKUP_TABLES) { assert.equal(snapshot.tables[table], undefined); assert.ok(snapshot.schema.some(row => row.name === table)); }
   assert.equal(fixture.trace.batches.length, 2); assert.ok(fixture.trace.batches[0].every(sql => sql.startsWith('PRAGMA table_info'))); assert.ok(fixture.trace.batches[1][0].includes('sqlite_master'));
   assert.equal(fixture.trace.individualReads.length, 2);
@@ -244,6 +247,21 @@ await test('core format-2 snapshots remain restorable after quote format-3 relea
   assert.equal(restored.prepare('SELECT COUNT(*) AS n FROM admin_sessions').get().n, 0);
   restored.exec(readFileSync(new URL('../migrations/0006_operations_quotes.sql', import.meta.url), 'utf8'));
   assert.equal(restored.prepare('SELECT COUNT(*) AS n FROM ops_quotes').get().n, 0);
+});
+await test('format-3 and format-4 snapshots remain recoverable after aggregate format-5 release',async()=>{
+ for(const format of [3,4]){
+  const {db}=makeDatabase(),legacy=structuredClone(await createBackupSnapshot(db));
+  const removed=format===3?[...EXTENDED_BACKUP_TABLES]:['ops_analytics_imports','ops_analytics_observations'];
+  legacy.manifest.schema_version=format;legacy.manifest.application_schema_baseline=format===3?'operations-workspace-0006':'operations-workspace-0010';
+  for(const name of removed){delete legacy.tables[name];delete legacy.manifest.counts[name];}
+  legacy.manifest.table_names=legacy.manifest.table_names.filter(name=>!removed.includes(name));legacy.schema=legacy.schema.filter(row=>!removed.includes(row.tbl_name));legacy.sequences=legacy.sequences.filter(row=>!removed.includes(row.name));
+  legacy.tables.d1_migrations=legacy.tables.d1_migrations.filter(row=>row.name<(format===3?'0007':'0011'));legacy.manifest.counts.d1_migrations=legacy.tables.d1_migrations.length;legacy.manifest.migrations=legacy.tables.d1_migrations;legacy.manifest.migration_version=legacy.tables.d1_migrations.at(-1)?.name;legacy.manifest.schema_sha256=await sha256Hex(JSON.stringify(legacy.schema));
+  const recovered=new DatabaseSync(':memory:');recovered.exec('PRAGMA foreign_keys=ON;BEGIN');recovered.exec(await backupToSql(legacy));recovered.exec('COMMIT');assert.deepEqual(recovered.prepare('PRAGMA foreign_key_check').all(),[]);assert.equal(recovered.prepare('SELECT COUNT(*) n FROM admin_sessions').get().n,0);assert.equal(recovered.prepare("SELECT COUNT(*) n FROM sqlite_master WHERE name='ops_analytics_observations'").get().n,0);
+ }
+});
+await test('format-5 restores aggregate exact values and immutable import history without sessions',async()=>{
+ const {db}=makeDatabase(),snapshot=await createBackupSnapshot(db);assert.equal(snapshot.manifest.schema_version,5);assert.equal(snapshot.tables.ops_analytics_observations[0].value_exact,'90071992547409931234567890');
+ const recovered=new DatabaseSync(':memory:');recovered.exec('PRAGMA foreign_keys=ON;BEGIN');recovered.exec(await backupToSql(snapshot));recovered.exec('COMMIT');assert.deepEqual(recovered.prepare('PRAGMA foreign_key_check').all(),[]);assert.equal(recovered.prepare('SELECT value_exact FROM ops_analytics_observations').get().value_exact,'90071992547409931234567890');assert.equal(recovered.prepare('SELECT COUNT(*) n FROM admin_sessions').get().n,0);
 });
 await test('session table schema is required even though its live rows are excluded', async () => {
   const { db, sqlite } = makeDatabase(); sqlite.exec('DROP TABLE admin_owner_sessions');

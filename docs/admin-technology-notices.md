@@ -20,13 +20,22 @@ filenames and original SVG SHA-256 values in `ADMIN_ICON_SOURCES`. Application a
 supplies a shared 24-unit view box, current-color 2.1-unit stroke and square/miter presentation.
 `ADMIN_ICON_HTML` is a trusted pre-rendered string map shared by the server and browser clients.
 No icon font, remote SVG reference, runtime function serialization, or proprietary Alibaba icon
-asset is included. No third-party browser framework or chart library was added. Existing GYUTRON
+asset is included. No third-party browser framework was added. Existing GYUTRON
 logos retain project ownership and branding restrictions. The login uses the same original purple
 PNG wordmark as the official homepage, rather than a reconstructed SVG.
 The workspace sidebar uses only that original full PNG wordmark on the same solid white background
 as the official main navigation. The former company-switch text, small mark and duplicate menu have
 been removed at the owner's latest request. The industrial revision applies square corners to controls,
 surfaces and SVG rectangles.
+
+The Data Adviser revision uses Apache ECharts 6.1.0 and ZRender 6.1.0, pinned in the complete
+package lock. A tree-shaken Canvas-only ESM bundle is generated with `scripts/build-admin-charts.mjs`
+from `src/admin/charts-runtime-entry.mjs`. The self-hosted, content-addressed asset and its upstream
+Apache 2.0 LICENSE/NOTICE plus tslib license are included under `public/workspace-assets/vendor/`.
+The chart runtime loads only when analysis charts are used; it does not send business data to a CDN.
+The application supplies native keyboard/legend/date-range controls, exact-value readouts and
+same-scope drill links. Alibaba's authenticated interface informed the analysis workflows; no
+proprietary Alibaba HTML, scripts, icons, copied account data or marketing claims are distributed.
 
 The deployed service uses the existing Cloudflare Worker/D1/R2/KV environment. Open source technology
 underlies that environment (including workerd and SQLite), but Cloudflare's managed services are not

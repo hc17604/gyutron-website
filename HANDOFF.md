@@ -16,6 +16,46 @@
 
 ## Fast takeover snapshot
 
+- **Data Adviser .12 IMPLEMENTED; production migration verified; application rollout pending (2026-11-04 SGT):**
+  Fresh root-only Alibaba inspection covered all13 business entries and concrete Data Map27-indicator
+  selection/board-table, Shop KPI/product tabs, Market sorting and Flow Trend popup interactions.
+  AI Showcase is SmartWindow product review, not LLM visibility; its agreement was not accepted.
+  Added16 nested analysis views, preserving22 top-level modules, neutral industrial EN/default+zh UI,
+  zero corners, original white-backed logo and compact right-side search/Test switch. Data Map has
+  searched/ordered <=12 indicators, board/table and URL scope, not cross-session team saved dashboards.
+  Pinned self-hosted Apache ECharts6.1.0 Canvas (705309B, gzip239101B) supplies actual multi-series
+  tooltips/crosshair, legend/zoom/reset, explicit range application, keyboard exact readouts and drill;
+  licensed hash asset mirrored under astro/public and public, lazy loaded only for analytics.
+  New aggregate CSV preview/atomic commit/import history enforce500rows/1MiB/30digit exact integers,
+  weighted ratios, exact-period UV, matching peer date/dimension coverage, no PII/formulas and file
+  idempotence. Native enquiries are currency-less, money stays separate, missing telemetry is explicit.
+  Profiles use imported customer country/completeness, not anonymous-person claims; recommendations
+  use recorded evidence with local review/hide only. Previous-period comparison is KPI-only.
+  Test mode shares every new protocol,37 dedicated adviser cases plus35 original demo cases, zero
+  network/storage; eight synthetic recommendation candidates and linked profile charts/tables.
+  Independent SQL42/42 and emitted chart/controller31/31 passed. Agents own frontend/demo, backend
+  and independent checks; root owns
+  integration, SDK, full compilation, browser and release. Root20 preserved suites and full compiled
+  startup7/7 passed. Actual local Workerd16API views + CSV/peer drill/idempotence passed. Browser
+  desktop1440, zh390 and en320 all16 views passed DOM/error/corner checks; chart buttons >=44px on
+  mobile. An absolute sr-only table header caused320px overflow; relative table wrapper fixed it and
+  all16 narrow views passed again. Real Canvas peer tooltip/legend/zoom→filter/date-point drill passed.
+  Pixel screenshots from rapid loops can lag one view; only individually inspected final captures count.
+  Mandatory Astro build/verify:all and deploy:check pass; baseline report-only143 English suspects remain.
+  Before remote0011 root created/downloaded real verified format4 recovery (44tables), SHA256
+  76c38db7a1c040588a9b50effd144bed3fb485d60418a2ecbd7e2c690459885d, outside Git. Wrangler OAuth
+  returned7403 for D1; authenticated dashboard Console applied unchanged0011 SQL with whitespace
+  normalization after verifying0new tables.9/9 objects and exact schemas matched, both tables empty;
+  only then migration tracking inserted. Final console9/9/9,0rows,tracking1/latest0011 verified.
+  Format5 now covers45 persistent tables (+optional d1_migrations=46), old formats2–4 restore compatible.
+  Do not roll back to the old format4 app after0011: unknown-table integrity checks reject new backups.
+  Shop/brand routes/tracking/payment/bindings/credentials have no source changes. No production demo
+  business records created or external models/messages used. Reference/evidence/private recovery live
+  under outputs/admin-data-adviser-20261104 outside Git. Details: docs/admin-data-adviser.md.
+  Next: freeze independent final profile/export tests, commit explicit files, push, observe CI/Cloudflare,
+  compare19 deployed admin assets +3vendor assets to compiled committed source, run real startup from
+  deployed bytes, verify format5 R2 recovery and build/install/check fresh portable distribution.
+
 - **Alibaba-informed workspace UI .11 LIVE AND VERIFIED (2026-11-04 SGT):** the user explicitly
   reauthorizes inspection of their open Alibaba seller backend and requests implementation and direct
   deployment. This supersedes the earlier browser stop for this task. Root exclusively owns browser

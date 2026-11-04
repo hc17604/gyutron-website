@@ -21,9 +21,13 @@
     "shop:build": "python tools/build_shop.py",
     "shop:verify": "npm run shop:check && node scripts/smoke-content-icons.mjs --scope shop && node scripts/smoke-shop.mjs",
     "check:admin-demo": "node scripts/test-admin-demo.mjs",
-    "check:admin-startup": "node scripts/test-admin-startup.mjs"
+    "check:admin-startup": "node scripts/test-admin-startup.mjs",
+    "build:admin-charts": "node scripts/build-admin-charts.mjs",
+    "check:admin-charts": "node scripts/build-admin-charts.mjs --check",
+    "check:admin-adviser": "node scripts/test-admin-adviser.mjs && node scripts/test-admin-chart-interactions.mjs && node scripts/test-adviser-demo.mjs"
   },
   "devDependencies": {
+    "echarts": "6.1.0",
     "wrangler": "4.93.1"
   }
 }

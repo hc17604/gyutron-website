@@ -100,6 +100,11 @@ jobs:
       - name: Verify commerce imports, reports, rules and durable automation
         working-directory: ${{ github.workspace }}
         run: node scripts/test-operations-core.mjs
+      - name: Verify pinned chart bytes and independent adviser data and interaction checks
+        working-directory: ${{ github.workspace }}
+        run: |
+          npm run check:admin-charts
+          npm run check:admin-adviser
       - name: Verify knowledge, model security and commercial license signatures
         working-directory: ${{ github.workspace }}
         run: node scripts/test-intelligence.mjs

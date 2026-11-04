@@ -1,12 +1,13 @@
 # GYUTRON Operations — independent instance starter
 
-Source application **2026.11.04.10**, migrations **0001–0010**, backup **format 4**.
+Source application **2026.11.04.12**, migrations **0001–0011**, backup **format 5**.
 The manifest and release evidence identify the delivered commit and actual checks.
 This README does not claim the new production release or a second customer
 instance has passed acceptance.
 
 Includes CRM/contacts/saved views, preserved enquiry/event operations, customer
 work and immutable quotations; sources/CSV imports/commerce analytics; reports,
+16 Data Adviser views with interactive charts and aggregate-metric CSV imports;
 13 rules/policies and scheduled automations; real Agent conversations, Memory,
 text documents and model settings; notifications, users, audit, security,
 backup, health and instance/license state. Fixed workspace labels support English and Chinese only; English is the default.
@@ -16,7 +17,7 @@ settings fall back to English. Historical German/Japanese reports, conversations
 quotation print records remain readable; user content is not automatically translated.
 
 `/` redirects to protected `/admin`; `/health` returns only `{ "status": "ok" }`.
-Only necessary brand assets are allowlisted. No public website forms, public Data
+Only necessary brand/font assets and the pinned ECharts runtime and license notices are allowlisted. No public website forms, public Data
 API, Shop host mapping, checkout or payment flow are exposed. Each customer needs
 separate Worker/D1/private R2/KV resources. This is not shared database tenancy,
 self-service provisioning, subscription billing or a complete accounting ERP.
@@ -215,7 +216,7 @@ node scripts/recover-workspace.mjs --snapshot .wrangler/private-recovery/snapsho
 
 The command writes local SQLite/SQL only and checks integrity, foreign keys and
 counts. Long text uses bounded SQL staging fragments, reconstructed before the
-business INSERT, then staging is removed. A current format4 isolated D1 rehearsal
+business INSERT, then staging is removed. A previous format4 isolated D1 rehearsal
 restored all 44 data tables, full 200 KiB text and seven other documents, matching
 content with integrity ok, zero foreign-key errors and no staging table. This is
 not a remote production restore or this customer's acceptance.
@@ -223,7 +224,7 @@ not a remote production restore or this customer's acceptance.
 Restore the original `WORKSPACE_ENCRYPTION_KEY` separately or re-enter model keys;
 a different master cannot decrypt existing ciphertext. Issuer private keys stay
 separate. Test the recovered instance before a controlled maintenance cutover.
-Rollback code must understand migrations through0010 and format4; older `.2` does
+Rollback code must understand migrations through0011 and format5; older `.2` does
 not cover new tables. Worker rollback does not rewind D1/R2.
 
 After deployment verify actual login/roles/CSRF/logout, source imports/dedupe,

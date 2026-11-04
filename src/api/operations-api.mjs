@@ -10,6 +10,8 @@ import {generateReport,getReport,listReports} from '../platform/operations/repor
 import {RULE_TEMPLATES,listRules,updateRule,ruleVersions,ensureRules} from '../platform/operations/rules.mjs';
 import {enqueueRun,getRun,listAutomations,listRunFindings,listRuns,nativeSync,processRun,publicAutomation,retryRun,saveAutomation} from '../platform/operations/scheduler.mjs';
 import {OPERATIONS_RETENTION} from '../platform/operations/maintenance.mjs';
+import {adviserCatalog,readAdviser,drillAdviser} from '../platform/operations/adviser.mjs';
+import {previewObservations,commitObservations,observationImports,observationTemplate} from '../platform/operations/observations.mjs';
 const MAX_BYTES=2*1024*1024;
 async function bodyOf(request){if((request.headers.get('content-type')||'').split(';')[0].trim().toLowerCase()!=='application/json')throw err('UNSUPPORTED_MEDIA_TYPE','Send application/json.',415);if(Number(request.headers.get('content-length')||0)>MAX_BYTES)throw err('PAYLOAD_TOO_LARGE','Operating requests must be at most 2 MiB.',413);const reader=request.body?.getReader();if(!reader)throw err('INVALID_JSON','A JSON object is required.',400);let size=0;const parts=[];try{while(true){const {value,done}=await reader.read();if(done)break;size+=value.byteLength;if(size>MAX_BYTES){await reader.cancel();throw err('PAYLOAD_TOO_LARGE','Operating requests must be at most 2 MiB.',413);}parts.push(value);}}finally{reader.releaseLock();}const bytes=new Uint8Array(size);let offset=0;for(const p of parts){bytes.set(p,offset);offset+=p.byteLength;}try{const parsed=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));if(!parsed||typeof parsed!=='object'||Array.isArray(parsed))throw Error();return parsed;}catch{throw err('INVALID_JSON','Use a valid JSON object.',400);}}
 function method(allow){return workspaceJson({error:{code:'METHOD_NOT_ALLOWED',message:'This method is not supported.'}},405,{allow});}
@@ -23,6 +25,17 @@ export async function handleOperationsApi(request,env,principal,path=new URL(req
  try{
   const parts=relative.split('/').filter(Boolean).map(decodeURIComponent);
   requirePermission(principal);assertWorkspaceOrigin(request);if(!db)throw err('DATABASE_UNAVAILABLE','Operating storage is unavailable.',503);const throttle=await rateLimit(env,`operations:${methodName==='GET'?'read':'write'}:${principal.id}`,{limit:methodName==='GET'?240:120,windowSeconds:60});if(!throttle.ok)return workspaceJson({error:{code:'RATE_LIMITED',message:'Too many requests. Wait before retrying.'}},429);
+  if(parts[0]==='adviser'){
+   const route=parts[1]||'',timeZone=workspaceTimeZone(env);if(parts.length>2)throw err('NOT_FOUND','This adviser route does not exist.',404);
+   if(!route){if(methodName!=='GET')return method('GET');return workspaceJson({data:await readAdviser(db,query,principal,{timeZone})});}
+   if(route==='catalog'){if(methodName!=='GET')return method('GET');return workspaceJson({data:adviserCatalog()});}
+   if(route==='drill'){if(methodName!=='GET')return method('GET');return workspaceJson({data:await drillAdviser(db,query,principal,{timeZone})});}
+   if(route==='export.csv'){if(methodName!=='GET')return method('GET');manager(principal);const result=await drillAdviser(db,query,principal,{timeZone,exportAll:true});return new Response(workspaceCsv(result.rows,result.columns.map(column=>column.key)),{headers:{'content-type':'text/csv; charset=utf-8','content-disposition':'attachment; filename="adviser-records.csv"','cache-control':'no-store, private'}});}
+   if(route==='template.csv'){if(methodName!=='GET')return method('GET');return new Response(observationTemplate(),{headers:{'content-type':'text/csv; charset=utf-8','content-disposition':'attachment; filename="aggregate-metrics-template.csv"','cache-control':'no-store, private'}});}
+   if(route==='preview'||route==='commit'){if(methodName!=='POST')return method('POST');manager(principal);const input=await bodyOf(request);return workspaceJson({data:route==='preview'?await previewObservations(db,input,principal):await commitObservations(db,input,principal)});}
+   if(route==='imports'){if(methodName!=='GET')return method('GET');manager(principal);return workspaceJson(await observationImports(db,query));}
+   throw err('NOT_FOUND','This adviser route does not exist.',404);
+  }
   if(parts[0]==='meta'&&parts.length===1){if(methodName!=='GET')return method('GET');return workspaceJson({data:{entities:Object.keys(IMPORT_SCHEMAS),importSchemas:IMPORT_SCHEMAS,ruleTemplates:RULE_TEMPLATES,currencies:CURRENCIES,permissions:{...permissionsFor(principal),manage:['owner','manager'].includes(principal.role)},limits:{csvRows:500,csvBytes:1024*1024,commitRowsPerStep:100,ruleCandidatesPerStep:100},retention:OPERATIONS_RETENTION,native_source_id:'native-website'}});}
   if(parts[0]==='sources'){
    if(parts.length===1){if(methodName==='GET'){const data=await listSources(db);return workspaceJson({data,meta:{page:1,limit:50,total:data.length}});}if(methodName==='POST')return workspaceJson({data:await createSource(db,await bodyOf(request),principal)},201);return method('GET, POST');}

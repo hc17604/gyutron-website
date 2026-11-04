@@ -1,10 +1,10 @@
 # GYUTRON Operations — 私有备份与隔离恢复
 
-更新：2026-11-03。对应源码 `2026.11.04.10`、迁移0001–0010、`src/api/backup.mjs` 格式4。实现、隔离实测与生产发布分开记录；本文件不宣称新版生产验收已通过。
+更新：2026-11-04。对应源码 `2026.11.04.12`、迁移0001–0011、`src/api/backup.mjs` 格式5。实现、隔离实测与生产发布分开记录；生产验收见 HANDOFF 当前发布记录。
 
 ## 1. 内容、一致性与兼容
 
-格式4保存43张持久业务表：
+格式5保存45张持久业务表：
 
 ```text
 leads, rfqs, support_requests, download_requests,
@@ -19,14 +19,15 @@ ops_automations, ops_automation_runs, ops_rule_findings,
 intel_model_settings, intel_model_usage, intel_conversations,
 intel_messages, intel_runs, intel_memory, intel_documents,
 intel_license_events, intel_instance_state,
-crm_contacts, workspace_views, workspace_notification_receipts
+crm_contacts, workspace_views, workspace_notification_receipts,
+ops_analytics_imports, ops_analytics_observations
 ```
 
-存在 `d1_migrations` 时保存真实迁移记录，共44张数据表。manifest含格式、backup_id、UTC时间、实际表清单/行数、迁移记录、schema SHA及baseline `operations-workspace-0010`；baseline不是远程迁移执行证明。
+存在 `d1_migrations` 时保存真实迁移记录，共46张数据表。manifest含格式、backup_id、UTC时间、实际表清单/行数、迁移记录、schema SHA及baseline `operations-workspace-0011`；baseline不是远程迁移执行证明。
 
 `admin_sessions`、`admin_owner_sessions`、`admin_login_attempts`只保存空结构。恢复后必须重新登录。Worker secrets不在快照：包括 `ADMIN_PASSWORD`、`ADMIN_SECRET`、`IP_HASH_SALT`、`WORKSPACE_ENCRYPTION_KEY` 和仓库外签发私钥。D1中的用户hash、模型密文及许可记录仍是敏感数据。
 
-helper接受可信格式2（核心15表）、3（报价17表）、4（本版43表），不接受格式1。旧格式先恢复相容结构/版本，或前向迁移再启动新版；旧快照不代表新增经营/Agent数据已覆盖。
+helper接受可信格式2（核心15表）、3（报价17表）、4（43表）和5（45表），不接受格式1。旧格式先恢复相容结构/版本，或前向迁移再启动新版；旧快照不代表新增经营/Agent数据已覆盖。0011须先于格式5应用部署；旧格式4应用遇到新表会按完整性约束拒绝创建新备份，不能作为0011后的完整备份回退方案。
 
 schema、计数、数据和自增序列在同一D1 `db.batch` 事务读取。未知业务表、缺结构、读取不完整或超限明确失败，不能静默漏表；新增持久表须更新清单和恢复检查，不扩大公共Data API白名单。[D1 batch官方说明](https://developers.cloudflare.com/d1/worker-api/d1-database/)
 
@@ -100,6 +101,6 @@ npx wrangler d1 execute DB --local --persist-to .wrangler/admin-recovery-isolate
 
 旧2026.11.03.2曾实测格式3生产R2下载/隔离恢复，只证明当时0006范围，不证明新增表/master secret/新版生产验收。0007–0010已真实remote应用，应用发布与生产检查仍以当前发布记录为准。
 
-生产恢复安排维护/停止写入窗口，保留当前恢复点，先恢复新目标并验应用/迁移/secret相容后切换。禁止自动DROP或覆盖上线后新数据。代码回退须兼容0010/格式4，旧 `.2` 遇新表会拒绝完整快照，不是本版完整回退目标。Worker回退不回滚D1/R2。[Worker版本说明](https://developers.cloudflare.com/workers/versions-and-deployments/)
+生产恢复安排维护/停止写入窗口，保留当前恢复点，先恢复新目标并验应用/迁移/secret相容后切换。禁止自动DROP或覆盖上线后新数据。代码回退须兼容0011/格式5，旧 `.2` 遇新表会拒绝完整快照，不是本版完整回退目标。Worker回退不回滚D1/R2。[Worker版本说明](https://developers.cloudflare.com/workers/versions-and-deployments/)
 
 演练记录至少包含backup_id/可信SHA、目标、应用/迁移/secret版本、计数/全文hash、integrity/外键、空session/staging清除、登录/权限/读写、起止时间和限制。远程恢复、告警接收、RPO/RTO须实际演练，不因步骤存在而宣称通过。

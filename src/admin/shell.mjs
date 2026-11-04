@@ -15,6 +15,10 @@ import { OPERATIONS_CLIENT } from './operations-client.mjs';
 import { INTELLIGENCE_CLIENT } from './intelligence-client.mjs';
 import { CRM_EXPERIENCE_CLIENT, CRM_EXPERIENCE_STYLES } from './crm-experience-client.mjs';
 import { NOTIFICATIONS_CLIENT, NOTIFICATIONS_STYLES } from './notifications-client.mjs';
+import { ANALYTICS_CLIENT } from './analytics-client.mjs';
+import { ANALYTICS_VIEWS_CLIENT } from './analytics-views.mjs';
+import { ANALYTICS_STYLES } from './analytics-styles.mjs';
+import { ANALYTICS_CHARTS_CLIENT, ANALYTICS_CHART_STYLES } from './analytics-chart-adapter.mjs';
 
 const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const json = (value) => JSON.stringify(value).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
@@ -33,12 +37,16 @@ export function getAdminAsset(path) {
     '/admin/assets/notifications.css': [NOTIFICATIONS_STYLES, 'text/css; charset=utf-8'],
     '/admin/assets/workbench.js': [WORKBENCH_CLIENT, 'text/javascript; charset=utf-8'],
     '/admin/assets/operations.js': [OPERATIONS_CLIENT, 'text/javascript; charset=utf-8'],
+    '/admin/assets/analytics.js': [ANALYTICS_CLIENT, 'text/javascript; charset=utf-8'],
+    '/admin/assets/analytics-views.js': [ANALYTICS_VIEWS_CLIENT, 'text/javascript; charset=utf-8'],
+    '/admin/assets/analytics-charts.js': [ANALYTICS_CHARTS_CLIENT, 'text/javascript; charset=utf-8'],
+    '/admin/assets/analytics.css': [ANALYTICS_STYLES+ANALYTICS_CHART_STYLES, 'text/css; charset=utf-8'],
     '/admin/assets/intelligence.js': [INTELLIGENCE_CLIENT, 'text/javascript; charset=utf-8'],
     '/admin/assets/local-source-sync.mjs': [LOCAL_SOURCE_SYNC_SCRIPT, 'text/javascript; charset=utf-8'],
     '/admin/assets/crm-experience.js': [CRM_EXPERIENCE_CLIENT, 'text/javascript; charset=utf-8'],
   };
   if (!assets[path]) return null;
-  const body=assets[path][1].startsWith('text/css')&&path!=='/admin/assets/design-system.css'?'@layer legacy{'+assets[path][0]+'}':assets[path][0];
+  const body=assets[path][1].startsWith('text/css')&&!['/admin/assets/design-system.css','/admin/assets/analytics.css'].includes(path)?'@layer legacy{'+assets[path][0]+'}':assets[path][0];
   return new Response(body, { headers: { 'content-type': assets[path][1], 'cache-control': 'no-cache', 'x-content-type-options': 'nosniff', ...(path==='/admin/assets/local-source-sync.mjs'?{'content-disposition':'attachment; filename=local-source-sync.mjs'}:{}) } });
 }
 

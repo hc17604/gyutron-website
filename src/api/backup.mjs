@@ -11,7 +11,7 @@ const CORE_BACKUP_TABLES = Object.freeze([
   'crm_audit', 'crm_intake_links', 'admin_users',
 ]);
 const QUOTES_BACKUP_TABLES = Object.freeze([...CORE_BACKUP_TABLES, 'ops_quotes', 'ops_quote_items']);
-export const EXTENDED_BACKUP_TABLES = Object.freeze([
+const V4_EXTENDED_BACKUP_TABLES = Object.freeze([
   'ops_data_sources','ops_sync_runs','ops_import_batches','ops_import_rows',
   'ops_commerce_customers','ops_commerce_orders','ops_commerce_order_items','ops_commerce_payments',
   'ops_reports','ops_rules','ops_rule_versions','ops_automations','ops_automation_runs','ops_rule_findings',
@@ -19,9 +19,12 @@ export const EXTENDED_BACKUP_TABLES = Object.freeze([
   'intel_memory','intel_documents','intel_license_events','intel_instance_state',
   'crm_contacts','workspace_views','workspace_notification_receipts',
 ]);
-export const BACKUP_TABLES = Object.freeze([...QUOTES_BACKUP_TABLES, ...EXTENDED_BACKUP_TABLES]);
+export const ANALYTICS_BACKUP_TABLES = Object.freeze(['ops_analytics_imports','ops_analytics_observations']);
+export const EXTENDED_BACKUP_TABLES = Object.freeze([...V4_EXTENDED_BACKUP_TABLES,...ANALYTICS_BACKUP_TABLES]);
+const V4_BACKUP_TABLES = Object.freeze([...QUOTES_BACKUP_TABLES,...V4_EXTENDED_BACKUP_TABLES]);
+export const BACKUP_TABLES = Object.freeze([...V4_BACKUP_TABLES,...ANALYTICS_BACKUP_TABLES]);
 export const EXCLUDED_BACKUP_TABLES = Object.freeze(['admin_sessions', 'admin_owner_sessions', 'admin_login_attempts']);
-export const BACKUP_SCHEMA_VERSION = 4;
+export const BACKUP_SCHEMA_VERSION = 5;
 export const MAX_BACKUP_ROWS = 25000;
 export const MAX_BACKUP_BYTES = 8 * 1024 * 1024;
 const MAX_DATA_BYTES = MAX_BACKUP_BYTES - 256 * 1024;
@@ -89,7 +92,7 @@ export async function createBackupSnapshot(db, { exportedAt = new Date().toISOSt
   const sequences = names.has('sqlite_sequence') ? (result[sequenceIndex].results || []).filter(row => tableNames.includes(row.name)) : [];
   const snapshot = {
     manifest: {
-      schema_version: BACKUP_SCHEMA_VERSION, application_schema_baseline: 'operations-workspace-0010',
+      schema_version: BACKUP_SCHEMA_VERSION, application_schema_baseline: 'operations-workspace-0011',
       backup_id: backupId, exported_at: exportedAt, date: exportedAt.slice(0, 10), timezone: 'UTC',
       table_names: tableNames, excluded_tables: [...EXCLUDED_BACKUP_TABLES], counts,
       migration_tracking_table: names.has('d1_migrations') ? 'd1_migrations' : null,
@@ -199,7 +202,7 @@ function textParts(value){const parts=[];for(let start=0;start<value.length;){le
 /** Offline recovery helper. Output is for a NEW isolated DB, never an HTTP route. */
 export async function backupToSql(snapshot) {
   const manifest = snapshot?.manifest;
-  const formatTables = manifest?.schema_version === 2 ? CORE_BACKUP_TABLES : manifest?.schema_version === 3 ? QUOTES_BACKUP_TABLES : manifest?.schema_version === BACKUP_SCHEMA_VERSION ? BACKUP_TABLES : null;
+  const formatTables = manifest?.schema_version === 2 ? CORE_BACKUP_TABLES : manifest?.schema_version === 3 ? QUOTES_BACKUP_TABLES : manifest?.schema_version === 4 ? V4_BACKUP_TABLES : manifest?.schema_version === BACKUP_SCHEMA_VERSION ? BACKUP_TABLES : null;
   if (!formatTables || !Array.isArray(snapshot.schema) || !snapshot.tables || typeof snapshot.tables !== 'object') throw fail('RESTORE_UNSUPPORTED_FORMAT');
   const restorePermitted = new Set([...formatTables, ...EXCLUDED_BACKUP_TABLES, ...optionalTables]);
   if (await sha256Hex(JSON.stringify(snapshot.schema)) !== manifest.schema_sha256) throw fail('RESTORE_SCHEMA_CHECKSUM');
