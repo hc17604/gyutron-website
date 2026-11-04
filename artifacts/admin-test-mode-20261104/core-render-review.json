@@ -1,0 +1,361 @@
+{
+  "at": "2026-11-04T01:53:41.626Z",
+  "source_commit": "e1c86078ac53373e0ba8f376ecde3a55209f8eb7",
+  "suite": "independent-demo-core-render-review",
+  "adapter_source_sha256": "52041ce64e79db6aa2ec4dd52f8ab069377d2d5fd661a022a2272d3f1868faec",
+  "emitted_core_sha256": "7b978a06fe994c6f1a0ed2fb945151238bc05f51e348a45f829c971631d447a6",
+  "browser_used": false,
+  "headless_browser_used": false,
+  "production_accessed": false,
+  "network_attempts": [],
+  "results": [
+    {
+      "language": "en",
+      "view": "overview",
+      "passed": true,
+      "html_bytes": 7836,
+      "html_sha256": "b1aa7f06ac8a45600002f2339bc2ca48b192f88991a4c3cefb0de21516c555cf",
+      "metrics": [
+        "48",
+        "48",
+        "54",
+        "3",
+        "16"
+      ],
+      "counts": {
+        "customers": 48,
+        "open_opportunities": 48,
+        "open_tasks": 54,
+        "overdue_tasks": 3,
+        "unread_intake": 16
+      },
+      "stage_counts": [
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "upcoming_rows": 5,
+      "recent_activity_rows": 6,
+      "currency_groups": [
+        "USD",
+        "EUR",
+        "CNY",
+        "JPY"
+      ],
+      "supplemental_reports_automations_nonempty": true
+    },
+    {
+      "language": "en",
+      "view": "customers-table",
+      "passed": true,
+      "html_bytes": 18045,
+      "html_sha256": "7a9e66627d3f68797399f698b3aba4f8f4e9252163028f253f85264e5d72a30a",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 48,
+      "pages": 2,
+      "first_id": "DEMO-CUS-048",
+      "first_title": "Trident Production Labs"
+    },
+    {
+      "language": "en",
+      "view": "pipeline-board",
+      "passed": true,
+      "html_bytes": 10490,
+      "html_sha256": "9c24beda7098857d85685adbe62895a26d69ef5da1c709e7323b65d01f0faf5e",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 72,
+      "pages": 3,
+      "first_id": "DEMO-OPP-060",
+      "first_title": "Summit · Precision measurement cell"
+    },
+    {
+      "language": "en",
+      "view": "pipeline-table",
+      "passed": true,
+      "html_bytes": 18609,
+      "html_sha256": "e026124067fe59e2c355f81e11c5332a067916620220aa02a386ea7c26c11927",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 72,
+      "pages": 3,
+      "first_id": "DEMO-OPP-060",
+      "first_title": "Summit · Precision measurement cell"
+    },
+    {
+      "language": "en",
+      "view": "tasks-table",
+      "passed": true,
+      "html_bytes": 23866,
+      "html_sha256": "2343b31511df5d72d977dbb64f0634a43a8a1da5dc327579d5f436039716d5e0",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 64,
+      "pages": 3,
+      "first_id": "DEMO-TSK-020",
+      "first_title": "Schedule engineering workshop · Coral"
+    },
+    {
+      "language": "en",
+      "view": "activity-table",
+      "passed": true,
+      "html_bytes": 16594,
+      "html_sha256": "9cb2978b614ccd9866bf38fee64138fac81496fcb78df135b8913ca8525367f4",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 36,
+      "pages": 2,
+      "first_id": "DEMO-ACT-0",
+      "first_title": "Application feasibility review · Atlas"
+    },
+    {
+      "language": "en",
+      "view": "inbox-leads",
+      "passed": true,
+      "html_bytes": 12533,
+      "html_sha256": "2fe79900ecd268ffc84f855e5168ddcf85a84eebb92e672cc281a13c8b068a3f",
+      "packet_rows": 18,
+      "rendered_rows": 18,
+      "total_records": 18,
+      "first_id": "DEMO-LEADS-0"
+    },
+    {
+      "language": "en",
+      "view": "inbox-rfqs",
+      "passed": true,
+      "html_bytes": 12546,
+      "html_sha256": "aac9283a861ee152f12688e3f1b4be6c7637809297a4b513feba3f5c16be60c5",
+      "packet_rows": 18,
+      "rendered_rows": 18,
+      "total_records": 18,
+      "first_id": "DEMO-RFQS-0"
+    },
+    {
+      "language": "en",
+      "view": "inbox-support",
+      "passed": true,
+      "html_bytes": 12715,
+      "html_sha256": "9156a9f6b95d0264d86a8612b18dbffa866d4c700d51dc790d2c93bf16d9cb5f",
+      "packet_rows": 18,
+      "rendered_rows": 18,
+      "total_records": 18,
+      "first_id": "DEMO-SUPPORT-0"
+    },
+    {
+      "language": "en",
+      "view": "inbox-downloads",
+      "passed": true,
+      "html_bytes": 12935,
+      "html_sha256": "602fc7bc1d09ee28e4889def94b1399cbedcd45216356748f4e3f66d9e8035f8",
+      "packet_rows": 18,
+      "rendered_rows": 18,
+      "total_records": 18,
+      "first_id": "DEMO-DOWNLOADS-0"
+    },
+    {
+      "language": "en",
+      "view": "audit",
+      "passed": true,
+      "html_bytes": 8045,
+      "html_sha256": "4b8ecc18e5db2e01cb933d00461e15622753a78648650c8bf79f5226befda1c7",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 48,
+      "first_action": "backup.created",
+      "first_entity": "DEMO-CUS-048"
+    },
+    {
+      "language": "en",
+      "view": "dynamic-import-isolation",
+      "passed": true,
+      "imports": [
+        "/admin/assets/demo.js",
+        "/admin/assets/crm-experience.js"
+      ],
+      "network_attempts": 0
+    },
+    {
+      "language": "zh",
+      "view": "overview",
+      "passed": true,
+      "html_bytes": 7915,
+      "html_sha256": "48c82997c6055c1cb4bf96bf248228729992ec400ea41c7825676517b1c5f328",
+      "metrics": [
+        "48",
+        "48",
+        "54",
+        "3",
+        "16"
+      ],
+      "counts": {
+        "customers": 48,
+        "open_opportunities": 48,
+        "open_tasks": 54,
+        "overdue_tasks": 3,
+        "unread_intake": 16
+      },
+      "stage_counts": [
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "upcoming_rows": 5,
+      "recent_activity_rows": 6,
+      "currency_groups": [
+        "USD",
+        "EUR",
+        "CNY",
+        "JPY"
+      ],
+      "supplemental_reports_automations_nonempty": true
+    },
+    {
+      "language": "zh",
+      "view": "customers-table",
+      "passed": true,
+      "html_bytes": 18248,
+      "html_sha256": "76be4409c27b6e084c1558963532786fe53973cb079224cec985ed6f12bf159e",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 48,
+      "pages": 2,
+      "first_id": "DEMO-CUS-048",
+      "first_title": "Trident Production Labs"
+    },
+    {
+      "language": "zh",
+      "view": "pipeline-board",
+      "passed": true,
+      "html_bytes": 10673,
+      "html_sha256": "7fae1c23c68615c9231b816aec781163987e11c49f29285b34c3f6b18a650a73",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 72,
+      "pages": 3,
+      "first_id": "DEMO-OPP-060",
+      "first_title": "Summit · Precision measurement cell"
+    },
+    {
+      "language": "zh",
+      "view": "pipeline-table",
+      "passed": true,
+      "html_bytes": 18881,
+      "html_sha256": "5bdde3d7e49e1c1bb528799df088942a82526182467f4cf2786145a548a44fde",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 72,
+      "pages": 3,
+      "first_id": "DEMO-OPP-060",
+      "first_title": "Summit · Precision measurement cell"
+    },
+    {
+      "language": "zh",
+      "view": "tasks-table",
+      "passed": true,
+      "html_bytes": 24106,
+      "html_sha256": "0806180506bfddab0377d9df7a583656a85f58db08c653843bd00ed37d205269",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 64,
+      "pages": 3,
+      "first_id": "DEMO-TSK-020",
+      "first_title": "Schedule engineering workshop · Coral"
+    },
+    {
+      "language": "zh",
+      "view": "activity-table",
+      "passed": true,
+      "html_bytes": 16761,
+      "html_sha256": "dce6e89d8f78f8040aece7ce80872f8a9febc6927c402d6995f78d8fa102d3bf",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 36,
+      "pages": 2,
+      "first_id": "DEMO-ACT-0",
+      "first_title": "Application feasibility review · Atlas"
+    },
+    {
+      "language": "zh",
+      "view": "inbox-leads",
+      "passed": true,
+      "html_bytes": 12677,
+      "html_sha256": "f3a66ca612167a6369be8e1e747f9152f159b3b316a85dbd6ea55ef18a77a4ae",
+      "packet_rows": 18,
+      "rendered_rows": 18,
+      "total_records": 18,
+      "first_id": "DEMO-LEADS-0"
+    },
+    {
+      "language": "zh",
+      "view": "inbox-rfqs",
+      "passed": true,
+      "html_bytes": 12706,
+      "html_sha256": "3d6eb342adb5f93cf3158906c9c1e65b3dda96c7c524d3a29d0009b3ef80c81b",
+      "packet_rows": 18,
+      "rendered_rows": 18,
+      "total_records": 18,
+      "first_id": "DEMO-RFQS-0"
+    },
+    {
+      "language": "zh",
+      "view": "inbox-support",
+      "passed": true,
+      "html_bytes": 12859,
+      "html_sha256": "fa8d93d94f6b8ed4eb453d95b18f97d7daa141ddd399f1be07ebbb8e5ab203cf",
+      "packet_rows": 18,
+      "rendered_rows": 18,
+      "total_records": 18,
+      "first_id": "DEMO-SUPPORT-0"
+    },
+    {
+      "language": "zh",
+      "view": "inbox-downloads",
+      "passed": true,
+      "html_bytes": 13060,
+      "html_sha256": "75b62dd17b044a390ccbd2165d7e73462f8f4623adcaae17b8c90dab159921c7",
+      "packet_rows": 18,
+      "rendered_rows": 18,
+      "total_records": 18,
+      "first_id": "DEMO-DOWNLOADS-0"
+    },
+    {
+      "language": "zh",
+      "view": "audit",
+      "passed": true,
+      "html_bytes": 8231,
+      "html_sha256": "113016ae98814843ca5d611d9dfa1f7b7fc8b9022e883cde3170b7e1b0c9231d",
+      "packet_rows": 25,
+      "rendered_rows": 25,
+      "total_records": 48,
+      "first_action": "backup.created",
+      "first_entity": "DEMO-CUS-048"
+    },
+    {
+      "language": "zh",
+      "view": "dynamic-import-isolation",
+      "passed": true,
+      "imports": [
+        "/admin/assets/demo.js",
+        "/admin/assets/crm-experience.js"
+      ],
+      "network_attempts": 0
+    }
+  ],
+  "failures": [],
+  "limits": [
+    "Node VM execution of actual emitted render functions and frozen in-memory adapter; no pixel, layout, accessibility or live production proof.",
+    "CRM decoration is a no-op synthetic module so the core view markup is isolated; selection/column decoration was covered by the separate source suite.",
+    "DOM stub records rendered HTML rather than implementing browser HTML parsing; all assertions inspect produced row markup and real packet fields."
+  ],
+  "passed": 24,
+  "failed": 0,
+  "primary_view_variants_per_language": 11,
+  "frozen_runtime_modified": false
+}

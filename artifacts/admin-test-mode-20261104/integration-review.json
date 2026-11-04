@@ -33,5 +33,12 @@
   "public_only_preserved": 131,
   "existing_i18n_heuristic_report_only": true,
   "browser_control_performed": false,
-  "main_site_shop_binding_changes": false
+  "main_site_shop_binding_changes": false,
+  "independent_core_render_checks": 24,
+  "archive_independent_readonly_verification": {
+    "passed": true,
+    "source_files": 122,
+    "unexpected_source_differences": 0,
+    "zip_members": 125
+  }
 }

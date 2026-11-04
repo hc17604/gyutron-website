@@ -1,0 +1,82 @@
+{
+  "version": "2026.11.04.9",
+  "runtime_commit": "edd983f5594be73bd28ba8bb1ee926e0a1bdd5e1",
+  "source_package_commit": "e1c86078ac53373e0ba8f376ecde3a55209f8eb7",
+  "ci_runs": [
+    41756485991,
+    41756614107
+  ],
+  "ci_conclusions": [
+    "success",
+    "success"
+  ],
+  "verified_at_utc": "2026-11-04T01:55:12.954Z",
+  "client_timezone": "Asia/Singapore",
+  "showcase_url": "https://www.gyutron.com/admin?test=1",
+  "toggle_position": "Immediately right of search",
+  "default_mode": "Live; explicit query/session preference enables Test mode",
+  "record_counts": {
+    "customers": 48,
+    "opportunities": 72,
+    "tasks": 64,
+    "activities": 36,
+    "quotes": 17,
+    "orders": 240,
+    "reports": 8,
+    "rules": 13,
+    "automations": 4,
+    "documents": 18,
+    "memory": 12,
+    "team": 5
+  },
+  "mode_storage": "Mode preference only in sessionStorage; business records in memory; language preference shared deliberately",
+  "reset": "Sample edits reset on full document reload",
+  "production_checks": {
+    "passed": 12,
+    "failed": 0,
+    "dynamic_assets_exact": 15,
+    "existing_backup_reused": true
+  },
+  "demo_checks": {
+    "independent_behavior": 32,
+    "core_render": 24,
+    "modules": 22,
+    "live_esm_vm_executed": true,
+    "live_shell_samples": 4,
+    "network_and_storage_attempts": []
+  },
+  "regression_suites": 20,
+  "portable_suites": 19,
+  "maintenance_gate": [
+    "AGENTS.md",
+    "npm run check:admin-demo",
+    ".github/workflows/verify.yml",
+    "docs/admin-demo-mode.md"
+  ],
+  "package": {
+    "source_commit": "e1c86078ac53373e0ba8f376ecde3a55209f8eb7",
+    "directory": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104014911-e1c86078ac53",
+    "zip": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104014911-e1c86078ac53.zip",
+    "sha256": "13590f2672dfef123613b5938ecbbacbc1f0f87d94604857b01169e3912561c5",
+    "source_manifest": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104014911-e1c86078ac53.source-manifest.json",
+    "checksums": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104014911-e1c86078ac53.SHA256SUMS.txt",
+    "provisioned_resources": false,
+    "deployed": false,
+    "zip_members": 125,
+    "version": "2026.11.04.9",
+    "zip_bytes": 1242929,
+    "fresh_install_lifecycle_enabled": true,
+    "portable_suites_passed": 19,
+    "wrangler_dummy_build_passed": true,
+    "zip_hash_and_crc_verified": true,
+    "independent_readonly_archive_verification_passed": true
+  },
+  "limitations": [
+    "No new browser/native/headless control or visual pixel verification after user stop",
+    "DOM/VM render checks do not certify accessibility or motion",
+    "Future optional fields and new action branches still require deliberate fixture/scenario updates"
+  ],
+  "production_business_records_created": false,
+  "external_models_called": false,
+  "external_messages_sent": false
+}

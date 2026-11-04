@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Test mode .9 IN PROGRESS (2026-11-04 SGT):** user requests a switch immediately right of search
+- **Test mode .9 LIVE AND VERIFIED (2026-11-04 SGT):** user requests a switch immediately right of search
   and a rich, coherent simulated dataset covering every admin module for customer demonstrations.
   Root owns immutable per-document transport selection, mode switch guards/full reload, isolated
   export/print entry points, asset integration, maintenance contract and deployment. backend_core owns
@@ -44,11 +44,28 @@
   `check:admin-demo` runs in CI,full regression and19-suite portable artifact verification. The package
   includes docs/admin-demo-mode.md. Astro build/verify:all and deploy:check passed (0 brand changes,
   131 public-only files retained); existing brand i18n heuristics are unrelated report-only findings.
-  Evidence: artifacts/admin-test-mode-20261104/. Next: commit/push, await .9, exact15-asset production
-  verification plus authenticated demo shell and actual served demo ESM isolation checks, then package.
+  Evidence: artifacts/admin-test-mode-20261104/. Independent core-view review adds24/24 checks:
+  11 actual core variants in EN/zh plus import isolation, populated row/ID/money/count agreement,
+  no network/storage/browser. This is VM markup validation, not pixel/accessibility certification.
   Runtime source isedd983f. Initial archive verification correctly rejected a stale portable npm-test
   command (18 rather than the new19 suites); template test command is corrected to include the demo
   gate. No dependency/runtime/UI changes for this correction; fresh packaging must pass before delivery.
+  Final source/package ref `e1c86078ac53373e0ba8f376ecde3a55209f8eb7` passed CI41756614107;
+  runtime edd983f also passed CI41756485991. Production `2026.11.04.9` confirmed09:48:58SGT and12/12
+  checks passed09:55:12SGT: all15 dynamic assets match the committed Wrangler build. The actual served
+  demo ESM was then executed under a network/storage-denying VM:22-module navigation matches,
+  4 EN/zh on/off shell samples, local create/export/print, unknown-route rejection and0 side effects.
+  Demo asset SHA256 `0067bb87c6e99663924e614f8832901911adb9c0c0b95ec5ee2b48bf6c15717b`.
+  Existing44-table backup reverified without new snapshot; no production test business rows, external
+  messages/models, binding/schema/credential changes. Authenticated showcase URL `/admin?test=1`.
+  The final independent distribution is
+  `D:\AI PRODUT\GYUTRON web\outputs\admin-rebuild-20261103\gyutron-operations-20261104014911-e1c86078ac53.zip`
+  (1242929B,125 members,SHA256
+  `13590f2672dfef123613b5938ecbbacbc1f0f87d94604857b01169e3912561c5`). Fresh lifecycle-enabled
+  installation,19 portable suites,Wrangler build,CRC/member hashes and independent122-source mapping
+  audit passed. No additional customer deployment provisioned. Task complete; future admin changes
+  must update demo behavior and pass check:admin-demo. Rollback, if requested, is a scoped forward
+  revert of .9 runtime; .8 source300edb8 is the prior release. Browser stop/320px cleanup remains.
 
 - **Logo-only sidebar .8 LIVE AND VERIFIED (2026-11-04 SGT):** current user supersedes the workspace-switch
   design: replace its mark/name/subtitle/chevron and duplicate menu with only the canonical official

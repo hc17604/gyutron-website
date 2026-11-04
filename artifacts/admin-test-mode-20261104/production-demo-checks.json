@@ -1,0 +1,61 @@
+{
+  "at": "2026-11-04T01:55:13.019Z",
+  "version": "2026.11.04.9",
+  "source_commit": "e1c86078ac53373e0ba8f376ecde3a55209f8eb7",
+  "shell_samples": [
+    {
+      "lang": "en",
+      "test_query": "1",
+      "switch_after_search": true,
+      "accessible_switch_markup": true,
+      "nav_count": 22
+    },
+    {
+      "lang": "en",
+      "test_query": "0",
+      "switch_after_search": true,
+      "accessible_switch_markup": true,
+      "nav_count": 22
+    },
+    {
+      "lang": "zh",
+      "test_query": "1",
+      "switch_after_search": true,
+      "accessible_switch_markup": true,
+      "nav_count": 22
+    },
+    {
+      "lang": "zh",
+      "test_query": "0",
+      "switch_after_search": true,
+      "accessible_switch_markup": true,
+      "nav_count": 22
+    }
+  ],
+  "browser_control_performed": false,
+  "new_browser_visual_pass": false,
+  "real_business_records_created": false,
+  "external_models_called": false,
+  "external_messages_sent": false,
+  "demo_asset_sha256": "0067bb87c6e99663924e614f8832901911adb9c0c0b95ec5ee2b48bf6c15717b",
+  "record_counts": {
+    "customers": 48,
+    "opportunities": 72,
+    "tasks": 64,
+    "activities": 36,
+    "quotes": 17,
+    "orders": 240,
+    "reports": 8,
+    "rules": 13,
+    "automations": 4,
+    "documents": 18,
+    "memory": 12,
+    "team": 5
+  },
+  "actual_served_esm_executed": true,
+  "navigation_modules_covered": 22,
+  "network_and_storage_attempts": [],
+  "local_create_export_print_checks": true,
+  "passed": true,
+  "logout_status": 303
+}
