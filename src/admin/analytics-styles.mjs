@@ -107,4 +107,36 @@ export const ANALYTICS_STYLES = String.raw`
 
 
 
+/* One report surface, with boundaries reserved for controls and data relationships. */
+.analytics-content .page-title-block{grid-template-columns:24px minmax(0,1fr);column-gap:10px}
+.analytics-content .page-title-block>.page-title-icon{width:24px;height:24px;border:0;background:transparent;color:#515866}
+.analytics-content .page-title-icon>.ui-icon{width:22px;height:22px;stroke-width:1.8}
+.analytics-content .page-heading h1{font-size:24px;line-height:32px;font-weight:600}
+.analytics-content>.page-heading{margin-bottom:18px}
+.analytics-filters-compact{border:0;background:#fff;margin-bottom:0;padding:16px 20px 0}
+.analytics-filter-main{padding:0;gap:10px;flex-wrap:wrap}
+.analytics-applied-scope{border:0;padding:9px 0 14px;gap:3px 12px;color:var(--muted)}
+.analytics-applied-scope .analytics-scope-label{color:#68717d;font-weight:500}
+.analytics-coverage-line:not([hidden]),.analytics-coverage-compact{background:#fff;margin-bottom:0;padding:0 20px 12px}
+.analytics-kpis{border:0;margin-bottom:0;padding:0 20px;background:#fff}
+.analytics-kpis>.analytics-kpi{padding:16px 18px;border-color:#eff0f3}
+.analytics-kpi[data-chart-active=true]{box-shadow:none;background:#f6f7f9}
+.analytics-kpi-selector[aria-pressed=true]{color:var(--ink);font-weight:600}
+.analytics-kpi-label,.analytics-kpi-selector{font-size:12px;line-height:18px}
+.analytics-kpi-value{font-size:26px;line-height:34px;font-weight:600;margin:6px 0}
+.analytics-main-chart-panel{border:0;margin-bottom:20px}
+.analytics-main-chart-panel>.analytics-panel-body{padding:18px 20px 12px}
+.analytics-main-chart-panel .analytics-chart-data{border-color:#eff0f3}
+.analytics-main-chart-panel .analytics-chart-data>summary{padding:11px 20px;color:var(--muted)}
+@media(max-width:767px){
+ .analytics-content .page-heading h1{font-size:22px;line-height:30px}
+ .analytics-filters-compact{padding:14px 16px 0}
+ .analytics-filter-main{padding:0;gap:10px}
+ .analytics-applied-scope{padding:9px 0 12px}
+ .analytics-coverage-line:not([hidden]),.analytics-coverage-compact{padding:0 16px 12px}
+ .analytics-kpis{padding:0 16px}
+ .analytics-kpis>.analytics-kpi{padding:14px 12px}
+ .analytics-main-chart-panel>.analytics-panel-body{padding:14px 16px 12px}
+ .analytics-main-chart-panel .analytics-chart-data>summary{padding:11px 16px}
+}
 `;

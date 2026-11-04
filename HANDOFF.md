@@ -16,6 +16,29 @@
 
 ## Fast takeover snapshot
 
+- **Analytics edge hierarchy .24 — locally verified, release pending:** user rejects repeated borders, framed heading glyph,
+  purple KPI top rule and chart control chrome. Baseline2ccb8f9 equals origin/main, tracked tree clean.
+  Root captured current Alibaba Data Adviser live overview/period screens and GYUTRON Test overview;
+  source reviewers mapped analytics CSS cascade and ECharts6 slider styling. Root owns analytics-only
+  heading/filter/KPI/main chart surface styles, flat chart toolbar/slider chrome, version and docs.
+  Preserve dark primary navigation/default-open Administration, all square edges, EN/ZH, Test isolation,
+  metric/date/currency semantics, keyboard/legend/zoom/drill/Apply/exact-table actions and APIs.
+  Filters/KPIs/main chart now share a continuous white report surface, without repeated outer lines;
+  KPI selection uses neutral fill/weight600 instead of purple top shadow. Native control boundaries,
+  explicit applied scope, focus outlines, original pressed state and all buttons remain. Toolbar buttons
+  are flat; slider styles explicitly override ECharts blue move handle/brush with subdued gray-purple.
+  Two source reviewers identified/fixed small-text contrast and constrained-width wrapping. Comparison
+  at measured1536x673 matches live Alibaba reference viewport. Actual local1260x800 Trade: filter
+  scroll/client857/857 with wrap, no root overflow. Actual390x844 ZH/320x844 EN:0 radii,44px controls,
+  no root overflow; static date panel shows Not applied while scope stays10-11..10-30, then Apply dates
+  changes scope to10-15..10-30. Metric Paid orders/keyboard ArrowRight/Zoom5:24/Apply dates0:19/exact
+  table verified in browser. Native mouse handle dragging was not used as proof;53 emitted action
+  cases cover zoom/brush/range semantics. Navigation/chart53, analytics polish26, Demo41, icons12,
+  complete compiled startup7 and Astro build/verify:all/agent/deploy/diff gates pass; baseline i18n
+  heuristic report unchanged. Source changes are presentation/options only, no API/public/Shop data.
+  Evidence: outputs/admin-edge-polish-20261104 (audit-notes.md, before/ref/after/tool/phone captures).
+  Rollback: revert24 scoped release commit. Next: push, watch CI, verify final live assets and overview.
+
 - **Compact Inbox badge/contrast .23 LIVE VERIFIED (92ef5ce; CI41825666371 success; production14/14):** user flags the detached white5px unread indicator as
   a collapsed Inbox bug and asks for a darker purple sidebar with clearer icons/menu. Root owns
   compact-only badge display:none, scoped #140d22 palette/brighter icons/text500/stroke1.8, build marker/docs.

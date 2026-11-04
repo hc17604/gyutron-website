@@ -1,6 +1,6 @@
 # Workspace UI detail and maintenance map
 
-Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.23`; release evidence and ongoing work are in `HANDOFF.md`.
+Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.24`; release evidence and ongoing work are in `HANDOFF.md`.
 
 ## Verified product reference
 
@@ -14,6 +14,8 @@ The authenticated [Alibaba seller portal](https://i.alibaba.com) was inspected d
 | Primary navigation tone/default | GYUTRON user-directed refinement: near-black purple base #140d22 with brighter text/icons and coordinated hover/selection tones; Administration starts expanded while native manual collapse remains available | `saas-styles.mjs`, `shell.mjs` |
 | Compact rail overflow | Authored correction: compact scrolling remains available while its scrollbar cannot squeeze glyphs; compact counts stay in accessible link names without a detached visual badge, and expanded links show numeric counts. Original compact logo grows32→36px | `saas-styles.mjs` |
 | Analysis filter hierarchy | Alibaba Data Overview, Shop Analysis and Trade Analysis: compact scope bar before indicators and chart; GYUTRON uses native date/advanced disclosures and an explicit applied-scope summary | `analytics-client.mjs`, `analytics-styles.mjs` |
+| Report surface and edge hierarchy | Alibaba Data Adviser overview/period view, inspected live on2026-11-04: a single white report area with compact controls and restrained internal divisions. GYUTRON removes repeated filter/KPI/main-chart outlines, heading-icon frame and decorative purple KPI top rule; selected fill/label weight, control/focus boundaries and square geometry remain | `analytics-styles.mjs` |
+| Chart tool finish | Authored refinement informed by the same Data Adviser report: flat individually focusable tools and a subdued neutral-purple slider replace stacked button frames and default blue slider chrome; all zoom/keyboard/drill/Apply actions and exact data remain | `analytics-chart-adapter.mjs` |
 | Selectable indicators | Alibaba: choose a business indicator and inspect its series in the same workspace; GYUTRON keeps exact drill/export scope while changing the chart | `analytics-client.mjs` |
 | Currency families | Authored adaptation: one business measure groups separate ISO values, without exchange, cross-currency totals or numeric ranking between currencies | `analytics-client.mjs` |
 | Partial coverage | Authored correction: reported dates and unavailable comparisons stay explicit even when the missing-metric list is empty | `analytics-client.mjs` |
