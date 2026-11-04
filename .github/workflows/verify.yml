@@ -129,6 +129,9 @@ jobs:
         run: |
           node scripts/check-admin-frontend.mjs
           node scripts/check-admin-routes.mjs
+      - name: Verify isolated Test mode and module coverage
+        working-directory: ${{ github.workspace }}
+        run: npm run check:admin-demo
       - name: Verify Shop baseline
         working-directory: ${{ github.workspace }}
         run: npm run shop:verify

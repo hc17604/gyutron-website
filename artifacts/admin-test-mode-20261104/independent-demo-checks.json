@@ -1,0 +1,10 @@
+{
+  "suite": "admin-demo-contract-isolation",
+  "passed": 32,
+  "failed": 0,
+  "emitted_esm_vm": true,
+  "network_attempts": [],
+  "production_accessed": false,
+  "browser_used": false,
+  "failures": []
+}

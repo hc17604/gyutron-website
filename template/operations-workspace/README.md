@@ -1,6 +1,6 @@
 # GYUTRON Operations — independent instance starter
 
-Source application **2026.11.03.8**, migrations **0001–0010**, backup **format 4**.
+Source application **2026.11.04.9**, migrations **0001–0010**, backup **format 4**.
 The manifest and release evidence identify the delivered commit and actual checks.
 This README does not claim the new production release or a second customer
 instance has passed acceptance.
@@ -237,3 +237,10 @@ white labeling.
 
 References: `docs/admin-commercial-deployment.md`, `docs/admin-backup-recovery.md`,
 `docs/admin-technology-notices.md`.
+
+
+## Test mode for customer demonstrations
+
+Use the square **Test mode** switch immediately after workspace search, or open `/admin?test=1` after signing in. All22 modules have connected synthetic records. The active DEMO indicator and local exports identify sample content. Mode changes check unsaved work and pending operations, then reload the workspace; sample changes reset on a document reload. Switching off reads the original live workspace again.
+
+Test mode uses an in-memory adapter, never live business requests, external models or production backups. CSV/JSON and quotation print views are generated locally. Every future admin module/API/action change must update its demo fixture and scenario. Run `npm run check:admin-demo`; see `docs/admin-demo-mode.md` for the isolation and coverage contract.

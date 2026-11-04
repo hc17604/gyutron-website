@@ -88,6 +88,8 @@ export const EXTENSION_CORE = {
 };
 
 export const WORKBENCH_COPY = {
+  demo: ['Demo', '演示'],
+  simulated: ['Simulated', '模拟'],
   "analytics": [
     "Business analytics",
     "经营分析"

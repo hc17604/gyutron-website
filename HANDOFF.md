@@ -16,6 +16,37 @@
 
 ## Fast takeover snapshot
 
+- **Test mode .9 IN PROGRESS (2026-11-04 SGT):** user requests a switch immediately right of search
+  and a rich, coherent simulated dataset covering every admin module for customer demonstrations.
+  Root owns immutable per-document transport selection, mode switch guards/full reload, isolated
+  export/print entry points, asset integration, maintenance contract and deployment. backend_core owns
+  src/admin/demo-client.mjs in-memory dataset/adapter. admin_experience owns square responsive switch
+  shell/CSS. research_quality owns independent coverage/isolation tests and demo maintenance docs.
+  Tracked baseline is80a66da; old untracked QA assets are preserved. Demo must never seed production,
+  call external models, send messages, activate real licenses, or fall back to live APIs. A visible
+  Test mode/DEMO cue, EN/zh UI and the .8 original-logo neutral square frame remain. Mode switch checks
+  pending writes/unsaved work, clears data-source record params and reloads the document, destroying
+  cached controllers/timers. Production query/session preference selects mode before bootstrap fetch.
+  Canonical maintenance requirement is now in AGENTS.md; future admin changes must update Test mode
+  and run its module-coverage gate. Browser control remains stopped; no CUA/headless fallback.
+  Source is now frozen and passes20/20 regression suites,69 emitted frontend checks and32 independent
+  demo tests. The tests execute actual ESM/controllers/core client under network/storage-denying VM
+  stubs, cover22 navigation modules,14 lazy pages in EN/zh, data relations/enums/CAS/imports/quotes/chat,
+  downloads and active-write/dirty reload guards. No new browser visual pass; viewport320 budget306px
+  is source arithmetic only. Adapter SHA256
+  `52041ce64e79db6aa2ec4dd52f8ab069377d2d5fd661a022a2272d3f1868faec`.
+  Dataset includes48 customers,72 opportunities,64 tasks,72 enquiries,17 quotes/revisions,240 orders
+  with linked payments/items,18 documents,12 memories,8 reports,13 rules and4 automations. System,
+  license/model usage,backup history,team,audit and notifications are populated synthetic scenarios.
+  Model/security/backup presentation explicitly names local simulation. Demo column prefs remain
+  memory-only; mailto/tel,live exports/print/backup/collectors/logout are isolated. Default is off;
+  authenticated `/admin?test=1` opens the presentation, and document reload resets all sample edits.
+  `check:admin-demo` runs in CI,full regression and19-suite portable artifact verification. The package
+  includes docs/admin-demo-mode.md. Astro build/verify:all and deploy:check passed (0 brand changes,
+  131 public-only files retained); existing brand i18n heuristics are unrelated report-only findings.
+  Evidence: artifacts/admin-test-mode-20261104/. Next: commit/push, await .9, exact15-asset production
+  verification plus authenticated demo shell and actual served demo ESM isolation checks, then package.
+
 - **Logo-only sidebar .8 LIVE AND VERIFIED (2026-11-04 SGT):** current user supersedes the workspace-switch
   design: replace its mark/name/subtitle/chevron and duplicate menu with only the canonical official
   full PNG logo. Module background must match the official navigation's opaque #FFFFFF; all square

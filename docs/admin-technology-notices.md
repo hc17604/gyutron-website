@@ -31,3 +31,9 @@ license is not a blanket permission to redistribute that CRM under a different p
 this implementation avoids importing those codebases. Source/customer licensing of this application's
 own code and use of GYUTRON trademarks are determined by the project owner, separately from runtime
 dependencies. No new public source-code license is silently applied to the existing repository.
+
+
+The Test mode dataset and in-memory request adapter are authored in this repository. Their customer,
+commerce, license, model, backup and system records are explicitly synthetic demonstration content.
+The adapter has no network or persistent-storage dependency; the maintenance/coverage contract is
+included in `admin-demo-mode.md`. Original live records are never seeded or replaced by enabling it.

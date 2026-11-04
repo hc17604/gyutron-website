@@ -1,0 +1,37 @@
+{
+  "at": "2026-11-04T01:46:31.063Z",
+  "reviewers": {
+    "backend_core": {
+      "adapter_frozen_sha256": "52041ce64e79db6aa2ec4dd52f8ab069377d2d5fd661a022a2272d3f1868faec",
+      "scope": "In-memory linked fixtures and simulated actions; no network or storage"
+    },
+    "research_quality": {
+      "independent_tests_passed": 32,
+      "modules_covered": 22,
+      "actual_lazy_controller_render_languages": [
+        "en",
+        "zh"
+      ],
+      "lazy_pages_rendered": 14,
+      "real_main_client_vm": true,
+      "network_attempts": []
+    },
+    "admin_experience": {
+      "initial_toggle_checks": 15,
+      "integration_checks": 12,
+      "css_viewport_arithmetic": {
+        "width": 320,
+        "budget": 306
+      },
+      "new_browser_visual_pass": false,
+      "large_quote_total_wrap_hardening_applied_by_root": true
+    }
+  },
+  "suites_passed": 20,
+  "astro_build_and_verify_all_passed": true,
+  "deploy_sync_changed": 0,
+  "public_only_preserved": 131,
+  "existing_i18n_heuristic_report_only": true,
+  "browser_control_performed": false,
+  "main_site_shop_binding_changes": false
+}

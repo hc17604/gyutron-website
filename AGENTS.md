@@ -48,6 +48,10 @@ instructions.
   another button-purple literal.
 - Preserve the hard-edged industrial system (`border-radius: 0`), responsive behavior, indexed URLs,
   accessibility, and `prefers-reduced-motion` support.
+- Admin modules and Test mode are one maintenance contract. Whenever an admin page, field, API shape,
+  action, export or navigation item changes, update its synthetic fixtures/adapter and the relevant demo
+  scenario in the same change. Run `npm run check:admin-demo`; every navigation module must remain covered.
+  Demo requests and downloads must stay local and fail closed, with no fallback to live business APIs.
 - Treat the Header DOM as high risk: mobile navigation depends on its structure. Run the header gate
   after any navigation change.
 - Never guess Cloudflare binding IDs, account values, credentials, or secrets. Keep secrets out of Git.
