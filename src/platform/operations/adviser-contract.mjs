@@ -52,7 +52,7 @@ export const ADVISER_METRICS=Object.freeze([
  metric('paid_order_value','Paid order value before refunds','已付订单金额（退款前）','minor','sum',false,'Imported paid-order total counted once, before refunds; never accounting net revenue.'),
  metric('aov','Average paid order value','平均已付订单金额','minor','weighted',false,'Paid order value / paid orders, rounded half up to currency minor unit.'),
  metric('inquiries','Enquiries','询盘','count','sum'),metric('open_inquiries','Open enquiries','未处理询盘','count','sum'),metric('overdue_inquiries','Enquiries older than 24h','超过24小时待处理询盘','count','snapshot'),
- metric('payments','Payment records','付款记录','count','sum'),metric('payment_net','Imported payment balance','导入付款净流入','minor','sum',false,'Successful imported payments minus imported refunds; separate from order value.'),
+ metric('payments','Payment records','付款记录','count','sum'),metric('payment_net','Net imported payments','导入付款净流入','minor','sum',false,'Successful imported payments minus imported refunds; separate from order value.'),
  metric('product_views','Product view events','产品浏览事件','count','sum'),metric('cart_additions','Cart addition events','加购事件','count','sum'),metric('quote_requests','Quote request events','报价请求事件','count','sum'),
  metric('visitors','Unique visitors','独立访客','count','period_exact',true,'Only a provider observation covering the exact selected period; daily UV must not be summed.'),
  metric('sessions','Sessions','会话','count','sum',true),metric('page_views','Page views','页面浏览','count','sum',true),metric('impressions','Impressions','曝光','count','sum',true),metric('clicks','Clicks','点击','count','sum',true),

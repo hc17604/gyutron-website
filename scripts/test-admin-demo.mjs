@@ -4,6 +4,11 @@ import vm from 'node:vm';
 import {spawnSync} from 'node:child_process';
 import {randomUUID} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {readFileSync} from 'node:fs';
+import {DatabaseSync} from 'node:sqlite';
+import {ensureRules,updateRule} from '../src/platform/operations/rules.mjs';
+import {saveAutomation,enqueueRun} from '../src/platform/operations/scheduler.mjs';
+import {createQuote,archiveQuote,issueQuote} from '../src/platform/quotes/repository.mjs';
 import {readWorkspaceTestMode,createWorkspaceTransport,switchWorkspaceTestMode} from '../src/admin/test-mode.mjs';
 import {STAGES,CURRENCIES,CUSTOMER_STATUSES,TASK_STATUSES,TASK_PRIORITIES,ACTIVITY_TYPES} from '../src/platform/crm/schema.mjs';
 import {STATUS_VALUES} from '../src/platform/schemas.mjs';
@@ -42,6 +47,13 @@ async function rejects(workspace,path,method,body,status){await assert.rejects((
 const quoteInput=(customer,overrides={})=>({customer_id:id(customer),title:'Independent synthetic proposal',currency:'USD',seller_name:'Synthetic seller',recipient_company:customer.name,
   items:[{sku:'QA-SCOPE',description:'Synthetic inspection scope',unit:'pcs',quantity:3,unit_price_minor:1999}],discount_minor:100,tax_minor:500,shipping_minor:175,
   terms:'Fictional test terms. No external delivery or payment.',notes:'Printed synthetic note',...overrides});
+
+function liveDemoParityFixture(){
+  const sqlite=new DatabaseSync(':memory:');
+  for(const name of ['0001_init','0002_order_intents','0003_admin_workspace','0004_admin_identity','0005_crm_relation_guards','0006_operations_quotes','0007_operations'])sqlite.exec(readFileSync(new URL('../migrations/'+name+'.sql',import.meta.url),'utf8'));
+  const db={prepare(sql){return{sql,values:[],bind(...values){this.values=values;return this;},async first(){return sqlite.prepare(sql).get(...this.values)||null;},async all(){return{success:true,results:sqlite.prepare(sql).all(...this.values)};},async run(){return{success:true,meta:{changes:Number(sqlite.prepare(sql).run(...this.values).changes)}};}};},async batch(statements){sqlite.exec('BEGIN');try{const results=statements.map(statement=>/^\s*(SELECT|PRAGMA)\b/i.test(statement.sql)?{success:true,results:sqlite.prepare(statement.sql).all(...statement.values)}:{success:true,meta:{changes:Number(sqlite.prepare(statement.sql).run(...statement.values).changes)}});sqlite.exec('COMMIT');return results;}catch(error){sqlite.exec('ROLLBACK');throw error;}}};
+  return{db,sqlite,owner:{id:'owner',name:'Synthetic owner',role:'owner'},close:()=>sqlite.close()};
+}
 
 const MODULE_REQUESTS={
   overview:['dashboard'],analytics:['operations/meta','operations/sources?limit=100','operations/analytics'],
@@ -400,9 +412,9 @@ await test('actual CRM column helpers neither read nor overwrite live column pre
   const {CRM_EXPERIENCE_CLIENT}=await import('../src/admin/crm-experience-client.mjs');
   const stored=new Map([['gyutron.crm.columns.owner.customers','["country"]']]),access=[];
   const state={testMode:true,principal:{id:'owner'}},context=vm.createContext({state,specs:{customers:{fields:['name','country','status']}},demoColumns:new Map(),localStorage:{getItem:key=>{access.push(['read',key]);return stored.get(key)||null;},setItem:(key,value)=>{access.push(['write',key]);stored.set(key,value);}}});
-  for(const name of ['columnKey','storeColumns','readColumns']){const line=CRM_EXPERIENCE_CLIENT.split('\n').find(row=>row.includes('function '+name+'('));assert.ok(line,'Retain a reviewable column storage contract.');vm.runInContext(line,context);}
+  for(const name of ['columnKey','normalizeColumns','storeColumns','readColumns']){const line=CRM_EXPERIENCE_CLIENT.split('\n').find(row=>row.includes('function '+name+'('));assert.ok(line,'Retain a reviewable column storage contract.');vm.runInContext(line,context);}
   assert.deepEqual(Array.from(context.readColumns('customers')),['name','country','status']);context.storeColumns('customers',['name','status']);assert.deepEqual(Array.from(context.readColumns('customers')),['name','status']);assert.deepEqual(access,[]);assert.equal(stored.get('gyutron.crm.columns.owner.customers'),'["country"]');
-  state.testMode=false;assert.deepEqual(Array.from(context.readColumns('customers')),['country']);state.testMode=true;assert.deepEqual(Array.from(context.readColumns('customers')),['name','status']);assert.equal(access.length,1);
+  state.testMode=false;assert.deepEqual(Array.from(context.readColumns('customers')),['name','country']);state.testMode=true;assert.deepEqual(Array.from(context.readColumns('customers')),['name','status']);assert.equal(access.length,1);
 });
 
 await test('actual emitted main client selects demo before business requests and capture guards block live bypasses',async()=>{
@@ -436,6 +448,46 @@ await test('actual emitted main client selects demo before business requests and
     assert.deepEqual(attempts,[]);
   }
 });
+
+await test('single-rule automations and policy rules retain the same frozen rule scope as the live SQLite scheduler',async()=>{
+  const h=liveDemoParityFixture(),w=fresh();
+  try{
+    await ensureRules(h.db);
+    const input={name:'Single-rule scope fixture',kind:'rules',rule_id:'data_hygiene',enabled:false,interval_minutes:60,config:{}},live=await saveAutomation(h.db,input,h.owner),demo=await oneResult(send(w,'operations/automations','POST',input)),liveRun=await enqueueRun(h.db,{automation:live},h.owner),demoPacket=await oneResult(send(w,'operations/automations/'+id(demo)+'/run','POST',{request_id:'rule-scope-fixture'})),demoRun=demoPacket.run||demoPacket;
+    assert.deepEqual(liveRun.snapshot.rules.map(rule=>rule.id),['data_hygiene']);assert.deepEqual(plain(demoRun.snapshot.rules.map(rule=>rule.id)),['data_hygiene']);assert.equal(demoRun.snapshot.requested_rule_id,'data_hygiene');assert.ok((demoPacket.findings||[]).every(finding=>finding.rule_id==='data_hygiene'));
+    const replay=await oneResult(send(w,'operations/automations/'+id(demo)+'/run','POST',{request_id:'rule-scope-fixture'}));assert.equal(id(replay.run||replay),id(demoRun));
+    const policyInput={...input,name:'Priority policy fixture',rule_id:'priority_countries'},livePolicy=await saveAutomation(h.db,policyInput,h.owner),demoPolicy=await oneResult(send(w,'operations/automations','POST',policyInput)),livePolicyRun=await enqueueRun(h.db,{automation:livePolicy},h.owner),demoPolicyPacket=await oneResult(send(w,'operations/automations/'+id(demoPolicy)+'/run','POST',{})),demoPolicyRun=demoPolicyPacket.run||demoPolicyPacket;
+    assert.ok(livePolicyRun.snapshot.rules.length>1);assert.deepEqual(plain(demoPolicyRun.snapshot.rules.map(rule=>rule.id).sort()),livePolicyRun.snapshot.rules.map(rule=>rule.id).sort());assert.equal(demoPolicyRun.snapshot.requested_rule_id,'priority_countries');
+    await updateRule(h.db,'data_hygiene',{version:1,enabled:false},h.owner);const demoRule=await one(w,'operations/rules/data_hygiene');await send(w,'operations/rules/data_hygiene','PATCH',{version:demoRule.version,enabled:false});
+    await assert.rejects(()=>enqueueRun(h.db,{automation:live},h.owner),error=>error.status===409&&error.code==='RULE_PAUSED');await assert.rejects(()=>send(w,'operations/automations/'+id(demo)+'/run','POST',{}),error=>error.status===409&&error.code==='RULE_PAUSED');
+    assert.deepEqual(plain(demoRun.snapshot.rules.map(rule=>rule.id)),['data_hygiene'],'Later rule edits cannot change an existing run snapshot.');
+  }finally{h.close();}
+});
+
+await test('health derives next-run time from enabled schedules and becomes empty when all automations are paused',async()=>{
+  const h=liveDemoParityFixture(),w=fresh();
+  try{
+    const input={name:'Health cadence fixture',kind:'native_sync',enabled:true,interval_minutes:120,config:{source_id:'native-website'}},live=await saveAutomation(h.db,input,h.owner),demo=await oneResult(send(w,'operations/automations','POST',input));
+    const enabled=(await list(w,'operations/automations?limit=100')).data.filter(row=>row.enabled&&row.next_run_at),expected=enabled.map(row=>row.next_run_at).sort()[0];assert.equal((await one(w,'system')).operations.next_scheduled_at,expected);assert.equal(h.sqlite.prepare('SELECT MIN(next_run_at) at FROM ops_automations WHERE enabled=1').get().at,live.next_run_at);
+    await saveAutomation(h.db,{version:live.version,enabled:false},h.owner,live.id);for(const row of (await list(w,'operations/automations?limit=100')).data)if(row.enabled)await send(w,'operations/automations/'+id(row),'PATCH',{version:row.version,enabled:false});
+    assert.equal((await list(w,'operations/automations?limit=100')).data.filter(row=>row.enabled).length,0);assert.equal(h.sqlite.prepare('SELECT MIN(next_run_at) at FROM ops_automations WHERE enabled=1').get().at,null);assert.equal((await one(w,'system')).operations.next_scheduled_at,null);
+    const paused=await one(w,'operations/automations/'+id(demo)),resumed=await oneResult(send(w,'operations/automations/'+id(demo),'PATCH',{version:paused.version,enabled:true}));assert.equal((await one(w,'system')).operations.next_scheduled_at,resumed.next_run_at);
+  }finally{h.close();}
+});
+
+await test('an archived draft rejects issue without changing amounts or version, then issues normally after restore like live SQLite',async()=>{
+  const h=liveDemoParityFixture(),w=fresh();
+  try{
+    const at=new Date(now()).toISOString();h.sqlite.prepare('INSERT INTO crm_customers(public_id,name,owner_id,created_at,updated_at) VALUES(?,?,?,?,?)').run('CUS-ARCHIVED-QUOTE','Synthetic recipient','owner',at,at);
+    const input=quoteInput({public_id:'CUS-ARCHIVED-QUOTE',name:'Synthetic recipient'}),live=await createQuote(h.db,{},input,h.owner),liveArchived=await archiveQuote(h.db,live.public_id,{version:live.version},h.owner),customer=await oneResult(send(w,'customers','POST',{name:'Synthetic recipient'})),demo=await oneResult(send(w,'quotes','POST',{...input,customer_id:id(customer)})),demoArchived=await oneResult(send(w,'quotes/'+id(demo),'DELETE',{version:demo.version}));
+    const auditBefore=h.sqlite.prepare('SELECT COUNT(*) n FROM crm_audit').get().n;await assert.rejects(()=>issueQuote(h.db,liveArchived.public_id,{version:liveArchived.version},h.owner),error=>error.status===409&&error.code==='ARCHIVED_RECORD');await assert.rejects(()=>send(w,'quotes/'+id(demo)+'/issue','POST',{version:demoArchived.version}),error=>error.status===409&&error.code==='ARCHIVED_RECORD');
+    const unchanged=await one(w,'quotes/'+id(demo));assert.equal(unchanged.status,'draft');assert.equal(unchanged.version,demoArchived.version);assert.equal(unchanged.total_minor,liveArchived.total_minor);assert.equal(h.sqlite.prepare('SELECT COUNT(*) n FROM crm_audit').get().n,auditBefore);
+    const liveRestored=await archiveQuote(h.db,liveArchived.public_id,{version:liveArchived.version},h.owner,{restore:true}),liveIssued=(await issueQuote(h.db,liveRestored.public_id,{version:liveRestored.version},h.owner)).data,demoRestored=await oneResult(send(w,'quotes/'+id(demo)+'/restore','POST',{version:unchanged.version})),demoIssued=await oneResult(send(w,'quotes/'+id(demo)+'/issue','POST',{version:demoRestored.version}));
+    assert.equal(liveIssued.status,'issued');assert.equal(demoIssued.status,'issued');assert.equal(demoIssued.archived_at,null);assert.equal(demoIssued.total_minor,liveIssued.total_minor);assert.equal(demoIssued.snapshot.total_minor,liveIssued.total_minor);
+  }finally{h.close();}
+});
+
+async function oneResult(promise){return(await promise).data;}
 
 await test('all completed test operations still caused no network or storage access',()=>assert.deepEqual(attempts,[]));
 

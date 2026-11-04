@@ -1,6 +1,6 @@
 # GYUTRON Operations — independent instance starter
 
-Source application **2026.11.04.16**, migrations **0001–0011**, backup **format 5**.
+Target source application **2026.11.04.18**, migrations **0001–0011**, backup **format 5**.
 The manifest and release evidence identify the delivered commit and actual checks.
 This README does not claim the new production release or a second customer
 instance has passed acceptance.
@@ -26,7 +26,18 @@ self-service provisioning, subscription billing or a complete accounting ERP.
 
 Use Node **24** (`.node-version`: 24.16.0), the committed lock file and pinned
 Wrangler **4.93.1**. Verify the outer ZIP checksum and the exact files/provenance
-in `SOURCE-MANIFEST.json` and `FILE-SHA256SUMS.txt`.
+in `SOURCE-MANIFEST.json` and `FILE-SHA256SUMS.txt`. From a fresh extraction,
+verify the delivered directory and its original ZIP before adding configuration
+or installed dependencies (replace the ZIP path with the actual delivered file):
+
+```powershell
+node scripts/verify-distribution.mjs --dir . --archive "../DELIVERED-PACKAGE.zip"
+```
+
+Keep the original ZIP as pristine release evidence. After configuration or
+installation, the working directory intentionally contains additional local
+files; strict whole-directory verification applies to a fresh extraction.
+Run the following commands in the installation working copy:
 
 ```powershell
 npm ci
@@ -34,10 +45,15 @@ npm run check
 npm test
 ```
 
-The actual test command covers business/auth/quotations/backup/exact aggregation,
-workspace contacts/views, operations, intelligence and controller cross-reviews,
-notifications, bulk UI, license issuer and frontend checks. Inspect `package.json`
-for its exact list. Intentional failure tests must still report final success.
+`npm test` runs all **27 portable suites**, including the exact shipped versions
+of `test-admin-polish.mjs`, `test-admin-chart-interactions.mjs`, and
+`test-admin-analytics-polish.mjs`. It also covers business/auth/quotations/backup,
+exact aggregation, workspace contacts/views, operations, intelligence and
+controller cross-reviews, notifications, bulk UI, license issuer, frontend,
+Data Adviser, isolated Test mode and actual Wrangler-compiled startup.
+Inspect `package.json` for the exact command; individual assertion counts belong
+to the generated test evidence and can increase without changing this suite list.
+Intentional failure tests must still report final success.
 Synthetic/provider protocol tests do not prove a real external LLM call succeeded.
 
 No production resource IDs, credentials, customer data, dumps, issuer private

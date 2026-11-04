@@ -1006,4 +1006,50 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
  .table-action-group>button.text-link{display:inline-flex;align-items:center;gap:5px;padding:8px 3px}
  body[data-workspace-tab=agent] .wb-chat-form>details>summary{min-height:44px;line-height:20px;padding:12px 0;box-sizing:border-box}
 }
+/* Record lists retain their column and record context while the data body scrolls. */
+.record-list-scroll{position:relative;isolation:isolate;max-height:min(620px,65dvh);outline-offset:-2px}
+.record-list-scroll th{position:sticky;top:0;z-index:4;background:#fafbfc;box-shadow:0 1px 0 var(--line)}
+.record-list-scroll .cell-primary{position:sticky;left:0;z-index:2;width:260px;min-width:220px;max-width:300px;background:#fff;box-shadow:1px 0 0 var(--line)}
+.record-list-scroll .cell-primary .record-link{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-width:0;max-width:100%;overflow-wrap:anywhere;text-align:left}
+.record-list-scroll th.record-list-identity{left:0;z-index:6;box-shadow:1px 1px 0 var(--line)}
+.record-list-scroll .cell-actions{position:sticky;right:0;z-index:2;background:#fff;box-shadow:-1px 0 0 var(--line)}
+.record-list-scroll th:last-child:has(.sr-only){right:0;z-index:5;box-shadow:-1px 1px 0 var(--line)}
+.record-list-scroll .crm-selection-cell{width:44px;min-width:44px!important;padding:0!important;background:#fff}
+.record-list-scroll th.crm-selection-cell{background:#fafbfc}
+.crm-select-target{display:grid;place-items:center;width:44px;min-height:44px;margin:0;cursor:pointer}
+.crm-select-target input{margin:0}
+.crm-column-required{font-size:11px;color:var(--muted);margin-left:4px}
+.crm-viewbar .crm-viewtabs{flex:1 1 300px;min-width:0;max-width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;overscroll-behavior-x:contain}
+.crm-viewbar .crm-viewtabs>span{display:flex;flex:none;flex-wrap:nowrap;gap:5px}
+.crm-viewbar .crm-viewtabs button{flex:none;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.crm-viewbar .crm-list-actions{flex:none}
+.record-list-scroll tbody tr:hover>td{background:#fafbfe}
+.record-list-scroll tbody tr:has([data-crm-select]:checked)>td{background:#f1f3f7}
+@media(min-width:768px){
+ .record-list-scroll .crm-selection-cell{position:sticky;left:0;z-index:3}
+ .record-list-scroll th.crm-selection-cell{z-index:7}
+ .record-list-scroll .crm-selection-cell+.cell-primary,.record-list-scroll .crm-selection-cell+th.record-list-identity{left:44px}
+}
+@media(min-width:1101px) and (min-height:600px){
+ body:has(#workspace-page>.data-panel>.record-list-scroll) .workspace-content{display:flex;flex-direction:column;height:calc(100dvh - 16px);min-height:0}
+ body:has(#workspace-page>.data-panel>.record-list-scroll) .topbar,body:has(#workspace-page>.data-panel>.record-list-scroll) .workspace-footer{flex:none}
+ body:has(#workspace-page>.data-panel>.record-list-scroll) #workspace-main{display:flex;flex-direction:column;flex:1;min-height:0;overflow:auto}
+ body:has(#workspace-page>.data-panel>.record-list-scroll) #workspace-page{display:flex;flex-direction:column;flex:1;min-height:0}
+ body:has(#workspace-page>.data-panel>.record-list-scroll) #workspace-page>:not(.data-panel){flex:none}
+ body:has(#workspace-page>.data-panel>.record-list-scroll) #workspace-page>.data-panel{display:flex;flex-direction:column;flex:1;min-height:156px}
+ body:has(#workspace-page>.data-panel>.record-list-scroll) #workspace-page>.data-panel>.record-list-scroll{flex:1;min-height:100px;max-height:none;overscroll-behavior:contain}
+ body:has(#workspace-page>.data-panel>.record-list-scroll) .table-footer{flex:none}
+}
+@media(max-width:767px){
+ .crm-viewbar .crm-viewtabs{flex-basis:100%}
+ .crm-viewbar .crm-viewtabs button{max-width:180px}
+ .crm-columns{gap:6px}
+ .crm-columns label{display:flex;align-items:center;gap:8px;min-height:44px}
+ .crm-columns label input{flex:none;margin:0}
+ .record-list-scroll .cell-primary{width:160px;min-width:160px;max-width:160px}
+ .record-list-scroll .crm-selection-cell{position:static}
+ .record-list-scroll th.crm-selection-cell{position:sticky;top:0;z-index:4}
+ .record-list-scroll .cell-primary,.record-list-scroll th.record-list-identity{left:0}
+}
+@media(max-width:380px){.record-list-scroll .cell-primary{width:140px;min-width:140px;max-width:140px}}
 `;

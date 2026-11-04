@@ -1,6 +1,6 @@
 # Workspace UI detail and maintenance map
 
-Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.17`; release evidence and ongoing work are in `HANDOFF.md`.
+Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.18`; release evidence and ongoing work are in `HANDOFF.md`.
 
 ## Verified product reference
 
@@ -24,6 +24,12 @@ The authenticated [Alibaba seller portal](https://i.alibaba.com) was inspected d
 | Sales stage numbers | Authored correction: complete filtered totals alongside loaded rows, one batched read | `platform/crm/repository.mjs`, `client.mjs` |
 | Record scanability | Authored refinement: action semantics, activity ordering, actual message excerpts and tabular quote amounts | `client.mjs`, `crm-experience-client.mjs`, `quotes-client.mjs` |
 | Assistant workspace | Authored responsive layout: reachable composer, optional local starters, correct conversation identity and visible model target | `intelligence-client.mjs`, `saas-styles.mjs` |
+| First-screen analysis | Alibaba-informed scope → indicator → chart hierarchy; the chart selector moves to the page heading and positive source metadata stays accessible without a duplicate visible panel title. Partial coverage remains visible; desktop Canvas retains 320px height | `analytics-client.mjs`, `analytics-styles.mjs` |
+| Table context | Authored refinement: bounded data scrolling, fixed headers and identity/action columns, a keyboard-focusable named region, and a low-height page-scroll fallback that keeps pagination reachable | `client.mjs`, `quotes-client.mjs`, `saas-styles.mjs` |
+| Selection and columns | Authored correction: native 44px checkbox labels, identity columns always retained through old views and column configurations, and one-line scrolling saved-view tabs with full accessible names | `crm-experience-client.mjs`, `saas-styles.mjs` |
+| Long record names | Authored refinement: two-line visual clamp with full DOM text, escaped title and unchanged record details | `client.mjs`, `quotes-client.mjs`, `saas-styles.mjs` |
+| Square chart controls | Authored industrial styling: explicit straight-segment slider/grip paths replace ECharts' rounded defaults; chart data symbols retain their statistical meaning | `analytics-chart-adapter.mjs` |
+| View recovery | Authored correction: a missing saved view offers Reset view; ordinary record404 and authentication failures retain their original behavior | `client.mjs` |
 
 The actual analysis pages inspected were [Data Overview](https://data.alibaba.com/), [Shop Analysis](https://data.alibaba.com/traffic/overview) and [Trade Analysis](https://data.alibaba.com/transaction/analysis). Their account screenshots stay outside Git and the distributable package. Only layout and interaction observations are used.
 

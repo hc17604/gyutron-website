@@ -77,5 +77,34 @@ export const ANALYTICS_STYLES = String.raw`
 @media(max-width:767px){.analytics-currency-list{position:static;width:100%;max-width:100%;max-height:min(420px,calc(100dvh - 180px));margin-top:7px;box-shadow:none}}
 @media(pointer:coarse){.analytics-filter-detail>summary,.analytics-filter-apply,.analytics-kpi-selector,.analytics-currency-actions .button{min-height:44px}}
 
+/* Batch 18: retain the plot at full height and remove duplicated desktop chrome. */
+.analytics-main-chart-panel{position:relative}
+.analytics-main-chart-panel>.analytics-primary-chart-heading,.analytics-coverage-metadata{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.analytics-heading-chart-picker{min-width:0;max-width:100%}
+.analytics-heading-chart-picker select{max-width:280px}
+@media(min-width:768px){
+ .analytics-content{position:relative;padding-top:20px}
+ .analytics-content>.page-heading{margin-bottom:12px}
+ .analytics-filter-main{padding-top:8px;padding-bottom:8px}
+ .analytics-filter-main>.form-field{position:relative;gap:0}
+ .analytics-filter-main>.form-field>label,.analytics-heading-chart-picker>span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+ .analytics-heading-chart-picker{position:relative;width:auto}
+ .analytics-filters-compact{margin-bottom:8px}
+ .analytics-applied-scope{padding-top:5px;padding-bottom:5px}
+ .analytics-kpis{margin-bottom:10px}
+ .analytics-kpi{padding-top:10px;padding-bottom:10px}
+ .analytics-main-chart-panel>.analytics-panel-body{padding-top:6px;padding-bottom:10px}
+}
+@media(max-width:767px){
+ .analytics-heading-chart-picker{width:100%;flex-basis:100%}
+ .analytics-heading-chart-picker select{max-width:100%;width:100%;min-height:44px}
+}
+@media(max-width:767px){
+ .analytics-workspace button:not(.record-link),.analytics-workspace select,.analytics-workspace summary{min-height:44px!important;box-sizing:border-box}
+ .analytics-workspace button:not(.record-link){min-width:44px}
+ .analytics-chart-data>summary,.analytics-review-boundary>summary,.analytics-coverage-compact>summary{display:flex;align-items:center}
+}
+
+
 
 `;

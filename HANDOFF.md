@@ -16,7 +16,37 @@
 
 ## Fast takeover snapshot
 
-- **Analysis and interaction batch .17 LOCAL VERIFIED; rollout pending:** directly inspected
+- **Professional list and first-screen batch .18 - source validated, rollout pending:** bounded named/focusable record
+  regions keep headers and identity/action columns visible. Desktop low-height main scrolling and a
+  minimum data panel retain pagination even with several long saved views and a selection toolbar.
+  Native44px row labels replace small checkbox-only targets. The identity column is always retained
+  across legacy local preferences, Test mode, saved views and column submissions; its disabled control
+  explains why. Long names clamp to2 visual lines while full text and escaped titles remain available.
+  Saved views use a single scrolling strip. A missing view_id now offers Reset view, without changing
+  ordinary404/auth behavior. Scoped New quotation retains customer/opportunity links. Actual Test UI
+  creates a new customer, primary contact and Proposal$12,500.50, then saves/issues a quotation with
+  exact$10,185.65 total and no Edit draft action after issue. This is local synthetic validation only.
+  Analysis selector moves to heading; repeated primary title/positive coverage are accessible metadata,
+  warnings remain visible, desktop Canvas stays320px. Six KPI families plus date axis/slider fit the
+  actual1536x673 first screen. Actual consecutive ArrowDown changes keep the replacement selector
+  focused without scrolling; the next Tab reaches the named export. Pointer/route/stale loads do not
+  receive a focus intent. All16 EN and16 ZH desktop views have no root overflow, encoding error
+  or DOM rounded controls;320px ZH all16 have no root overflow. Open mobile Date/Advanced Apply and
+  exact-table summaries are44px; column-option labels also gain44px height. Slider/grip paths explicitly
+  use straight closed segments, beyond CSS radius scans. payment_net reads Net imported payments,
+  with the original key/formula/exact per-currency values preserved. Demo corrects Singapore midnight
+  filtering/overdue counts, active linked-contact search/projection, source-local customer/repeat identity,
+  CSV customer_id alias, automation rule scope/paused guard, schedule-derived health time and archived
+  quotation issue rejection. SQLite comparisons remain in existing suites. Portable27/source28 gates
+  are aligned; the extra source gate is the pre-existing platform test. No schema, bindings, credentials,
+  public site, Shop or production business record changed. Do not stop until the active goal records
+  >=14400 seconds (the short pause does not count) and UTC>=09:43:44.
+  Source28/28 passes, including Demo38, polish38, chart52, analysis26 and full compiled startup7.
+  Astro build/verify:all passes (baseline143 report-only i18n suspects); agent/deploy gates and Worker
+  dry run pass. Initial icon-suite assertion required the new escaped title attribute; its identifier,
+  title priority, escaping and handlers remain asserted. No tests were skipped or removed.
+
+- **Analysis and interaction batch .17 LIVE VERIFIED (5335ffc; CI41794321163; production14/14):** directly inspected
   logged-in Alibaba Data Overview, Shop Analysis and Trade Analysis (layout/interaction only). The
   GYUTRON analysis scope bar now uses native date/advanced disclosures, explicit applied scope and
   visible unapplied drafts. Six logical indicators replace duplicated monetary cards; every currency
@@ -47,7 +77,9 @@
   All27 suites pass, including independent polish32/32, chart51/51, analysis20/20 and complete compiled
   startup7/7. Astro build/verify passes (baseline143 report-only i18n suspects), agent/deploy gates pass,
   public/Shop diffs0. Independent offline visual review finds no newP1; the remaining first-screen
-  trend-height refinement continues after this release. Exact deployed-byte verification pending.
+  trend-height refinement continues after this release. All19 deployed assets match the compiled
+  committed source; downloaded live workspace.js startup7/7 passes. Actual live1920x841 Trade has6
+  families and2real Canvas charts, loaded Inter, no root overflow and a complete primary date axis.
   Runtime owner split remains root/shared+charts, frontend/analytics, backend/Demo+three narrow copy
   fixes, quality/independent actual emitted+SQLite tests. No schema, bindings, credentials, Shop or
   production business records changed. Do not stop this task before09:43:44 UTC.

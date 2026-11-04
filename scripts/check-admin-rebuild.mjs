@@ -3,16 +3,36 @@ import {spawn} from 'node:child_process';
 import {readFile,mkdir,writeFile,readdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
+// The source gate retains the website platform check in addition to all portable suites.
 const suites=[
-  'smoke-platform.mjs','smoke-admin-api.mjs','smoke-admin-auth.mjs',
-  'smoke-admin-quotes.mjs','smoke-admin-aggregation.mjs','smoke-admin-backup.mjs',
-  'test-workspace-experience.mjs','test-operations-core.mjs','test-intelligence.mjs',
-  'test-intelligence-cross-review.mjs','test-intelligence-crm-controller.mjs',
-  'test-operations-intelligence-review.mjs','test-notifications.mjs',
-  'test-operations-bulk-ui.mjs','test-operations-license-issuer.mjs',
+  'smoke-platform.mjs',
+  'smoke-admin-api.mjs',
+  'smoke-admin-auth.mjs',
+  'smoke-admin-quotes.mjs',
+  'smoke-admin-backup.mjs',
+  'smoke-admin-aggregation.mjs',
+  'test-workspace-experience.mjs',
+  'test-operations-core.mjs',
+  'test-intelligence.mjs',
+  'test-intelligence-cross-review.mjs',
+  'test-intelligence-crm-controller.mjs',
+  'test-operations-intelligence-review.mjs',
+  'test-notifications.mjs',
+  'test-operations-bulk-ui.mjs',
+  'test-operations-license-issuer.mjs',
+  'check-admin-frontend.mjs',
+  'check-admin-routes.mjs',
   'test-operations-run-ui.mjs',
   'test-operations-run-review.mjs',
-  'check-admin-frontend.mjs','check-admin-routes.mjs','test-admin-demo.mjs','test-admin-icons.mjs','test-admin-startup.mjs',
+  'test-admin-demo.mjs',
+  'test-admin-icons.mjs',
+  'test-admin-adviser.mjs',
+  'test-admin-chart-interactions.mjs',
+  'test-adviser-demo.mjs',
+  'test-admin-startup.mjs',
+  'test-operations-report-filters.mjs',
+  'test-admin-polish.mjs',
+  'test-admin-analytics-polish.mjs',
 ];
 const results=[],pending=[...suites];
 async function run(file){const started=Date.now();return await new Promise(resolve=>{
