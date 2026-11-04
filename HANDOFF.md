@@ -46,6 +46,9 @@
   131 public-only files retained); existing brand i18n heuristics are unrelated report-only findings.
   Evidence: artifacts/admin-test-mode-20261104/. Next: commit/push, await .9, exact15-asset production
   verification plus authenticated demo shell and actual served demo ESM isolation checks, then package.
+  Runtime source isedd983f. Initial archive verification correctly rejected a stale portable npm-test
+  command (18 rather than the new19 suites); template test command is corrected to include the demo
+  gate. No dependency/runtime/UI changes for this correction; fresh packaging must pass before delivery.
 
 - **Logo-only sidebar .8 LIVE AND VERIFIED (2026-11-04 SGT):** current user supersedes the workspace-switch
   design: replace its mark/name/subtitle/chevron and duplicate menu with only the canonical official
