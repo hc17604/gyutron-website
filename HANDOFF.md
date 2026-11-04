@@ -16,7 +16,19 @@
 
 ## Fast takeover snapshot
 
-- **Navigation defaults/tone .22 — locally verified, release pending:** Administration now renders
+- **Compact Inbox badge/contrast .23 — locally verified, release pending:** user flags the detached white5px unread indicator as
+  a collapsed Inbox bug and asks for a darker purple sidebar with clearer icons/menu. Root owns
+  compact-only badge display:none, scoped #140d22 palette/brighter icons/text500/stroke1.8, build marker/docs.
+  Full count remains in link aria-label and expanded numeric badge; no transport/data/controller
+  change. Preserve22 purple sidebar/default-open Administration and21 complete glyph/36px logo.
+  Actual local1536x673: compact count display:none/width0 while aria-label remains 收件箱 · 16;
+  expanded count16 renders23.975px wide; links rgb(238,233,246)/weight500, icons rgb(222,213,237)/
+  stroke1.8, sidebar rgb(20,13,34). Actual390x844 drawer retains visible16 and default-open management,
+  no root overflow. Independent review: text15.87:1/icons13.37:1/title10.02:1/selected13.41:1.
+  Navigation53, Demo41, icons12, Astro build/verify:all, agent/deploy/diff gates pass. No JS/data/API
+  behavior changes. Rollback: revert23 scoped commit. Next: push, watch CI and verify live assets/UI.
+
+- **Navigation defaults/tone .22 LIVE VERIFIED (fbef6f4; CI41824730398 success; production14/14):** Administration now renders
   with native details/open; its manual toggle and accepted-route reveal logic remain unchanged.
   Primary sidebar uses deep purple-gray #211a2e plus matching hover/selected/preview/icon/footer/
   scrollbar tones; signout hover now uses a dark surface so its white icon stays visible. White
@@ -29,7 +41,10 @@
   manual Enter closes and locale change preserves it. Reload390x844 ZH: drawer group starts open,
   #211a2e background,0 sidebar radii/no overflow. Test mode shares this same shell/CSS.
   No public/Shop/schema/bindings/business API changes. Rollback: revert the scoped22 release commit.
-  Next: push candidate, watch CI, compare all deployed assets to committed source and inspect live UI.
+  All19 deployed admin assets match committed source; actual live1920x911 Test/ZH initial group open,
+  sidebar rgb(33,26,46), compact mark36px/no overflow, expanded group exposes all8 management links.
+  Screenshot: outputs/admin-navigation-tone-20261104/live22-navigation.jpg; production-checks.json
+  records14/14. Own8801 preview stopped; viewport reset. Next:23 removes detached compact unread dot.
 
 - **Collapsed navigation fix .21 LIVE VERIFIED (0ca0683; CI41823092119 success; production14/14):** fixed native scrollbar
   squeezing the 60px icon rail when the administration group remains open; compact rows have zero
