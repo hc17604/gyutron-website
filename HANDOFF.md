@@ -16,6 +16,21 @@
 
 ## Fast takeover snapshot
 
+- **Navigation defaults/tone .22 — locally verified, release pending:** Administration now renders
+  with native details/open; its manual toggle and accepted-route reveal logic remain unchanged.
+  Primary sidebar uses deep purple-gray #211a2e plus matching hover/selected/preview/icon/footer/
+  scrollbar tones; signout hover now uses a dark surface so its white icon stays visible. White
+  secondary menus/content, automatic60px rail,36px mark, square surfaces and EN/ZH remain intact.
+  Root owns shell/CSS/version/docs; collapsed_nav_review added initial-open/manual-close coverage
+  to the existing actual-emitted suite, now53/53. Independent theme review passes (default text
+  contrast10.51:1/icons9.49:1/selected11.06:1/title5.81:1). Demo41/41 and compiled startup7/7 pass;
+  Astro build/verify:all and agent/deploy/diff gates pass. Baseline i18n heuristic report unchanged.
+  Actual local1536x729 EN: initial group open,8 management links,60px rail/36px mark/no root overflow;
+  manual Enter closes and locale change preserves it. Reload390x844 ZH: drawer group starts open,
+  #211a2e background,0 sidebar radii/no overflow. Test mode shares this same shell/CSS.
+  No public/Shop/schema/bindings/business API changes. Rollback: revert the scoped22 release commit.
+  Next: push candidate, watch CI, compare all deployed assets to committed source and inspect live UI.
+
 - **Collapsed navigation fix .21 LIVE VERIFIED (0ca0683; CI41823092119 success; production14/14):** fixed native scrollbar
   squeezing the 60px icon rail when the administration group remains open; compact rows have zero
   horizontal padding and centered glyphs. Unread counts become a 5px square indicator only when

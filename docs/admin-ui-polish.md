@@ -1,6 +1,6 @@
 # Workspace UI detail and maintenance map
 
-Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.21`; release evidence and ongoing work are in `HANDOFF.md`.
+Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.22`; release evidence and ongoing work are in `HANDOFF.md`.
 
 ## Verified product reference
 
@@ -11,6 +11,7 @@ The authenticated [Alibaba seller portal](https://i.alibaba.com) was inspected d
 | Primary/secondary navigation | Alibaba: persistent current column, separate hover preview, combined pointer region; our authored60/240/208px variant | `src/admin/layout-client.mjs`, `navigation-menus.mjs` |
 | Hover vs current selection | Alibaba: preview never navigates or replaces current selection;10ms switching/200ms dismissal | `layout-client.mjs` |
 | Navigation density | Alibaba: consistent icon/row rhythm, text hierarchy, thin independent scrolling; GYUTRON keeps square selected surfaces and licensed Lucide icons | `saas-styles.mjs`, `analytics-styles.mjs`, `icons.mjs` |
+| Primary navigation tone/default | GYUTRON user-directed refinement: deep purple-gray base #211a2e with coordinated hover/selection/icon tones; Administration starts expanded while native manual collapse remains available | `saas-styles.mjs`, `shell.mjs` |
 | Compact rail overflow | Authored correction: compact scrolling remains available while its scrollbar cannot squeeze glyphs; square unread indicators keep full counts accessible and restore numeric counts when expanded. Original compact logo grows32→36px | `saas-styles.mjs` |
 | Analysis filter hierarchy | Alibaba Data Overview, Shop Analysis and Trade Analysis: compact scope bar before indicators and chart; GYUTRON uses native date/advanced disclosures and an explicit applied-scope summary | `analytics-client.mjs`, `analytics-styles.mjs` |
 | Selectable indicators | Alibaba: choose a business indicator and inspect its series in the same workspace; GYUTRON keeps exact drill/export scope while changing the chart | `analytics-client.mjs` |
