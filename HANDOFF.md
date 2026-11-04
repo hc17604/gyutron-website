@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Alibaba-informed workspace UI .11 RELEASE CANDIDATE (2026-11-04 SGT):** the user explicitly
+- **Alibaba-informed workspace UI .11 LIVE AND VERIFIED (2026-11-04 SGT):** the user explicitly
   reauthorizes inspection of their open Alibaba seller backend and requests implementation and direct
   deployment. This supersedes the earlier browser stop for this task. Root exclusively owns browser
   inspection/integration/release; admin_experience owns shell/CSS/layout, backend_core owns trusted
@@ -44,12 +44,20 @@
   overview plus768 zh Settings show real reflow and44px actions. Final768 analytics is single-column with a703px plot; Agent320 composer/options also checked.
   Evidence: artifacts/admin-alibaba-benchmark-20261104/ and local
   D:/AI PRODUT/GYUTRON web/outputs/admin-alibaba-benchmark-20261104/verified-screenshots.json.
-  Deploy: pending explicit-path source commit, CI, Cloudflare rollout and exact live asset/startup proof.
+  Deploy: runtime source1b30168bfe7aa73e621e592f9f97782e85174dc7 passed CI41765311388.
+  Cloudflare .11 is live; production12/12, all15 dynamic and4 original brand assets equal committed
+  bytes. Exact downloaded main SHA256 ccb992f12d287794c812afcad1c36b16204227c442dbb9617715cca263f358e8
+  passed complete startup7/7 with committed compiled dependencies; __name references0. Real production
+  browser Overview/Analytics render in EN/Test mode at actual1440x900 (browser zoom was preserved;
+  actual CSS viewport measured), no body overflow/nonzero radii/console errors; override reset to
+  original1920x841. Live deliverable tab is kept open. Source ZIP1268768B/129members SHA256
+  e10a8e11358454715a541331062ac752e837b8b64352c2c56c7a886ed17af21f passed fresh install,21 portable
+  suites,Wrangler build,archive CRC/file checks. See release-proof.json/live-startup-checks.json.
   Limits: representative visual/interaction checks are not an exhaustive enterprise acceptance test;
   Alibaba inventory distinguishes visited/visible/partial/unavailable pages. Isolated local preview8800
   uses only dummy resource IDs and local synthetic state, not production bindings.
   Rollback: restore known-good .10 runtime source750e6a6af957175a5dcdc5fb7fac00f8f65eb3da; never .9.
-  Next: publish .11, verify production and committed portable package.
+  Next: none; preserve the icon/demo/compiled-startup contracts on later UI changes.
 
 - **Loading incident .10 FIXED LIVE (2026-11-04 SGT):** user reports the .9 workspace never leaves
   Loading. Actual production workspace.js is HTTP200, but Wrangler keep-names inserted4 references

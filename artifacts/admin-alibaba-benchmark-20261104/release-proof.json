@@ -1,0 +1,57 @@
+{
+  "at": "2026-11-04T03:12:55.543Z",
+  "runtime_source_ref": "1b30168bfe7aa73e621e592f9f97782e85174dc7",
+  "release": "2026.11.04.11",
+  "ci": {
+    "run": 41765311388,
+    "conclusion": "success"
+  },
+  "production_checks": {
+    "passed": 12,
+    "failed": 0,
+    "admin_assets": 15,
+    "mismatches": [],
+    "original_brand_assets": 4
+  },
+  "actual_live_main": {
+    "sha256": "ccb992f12d287794c812afcad1c36b16204227c442dbb9617715cca263f358e8",
+    "equals_compiled_committed_source": true,
+    "private_helper_references": 0,
+    "startup_checks": 7
+  },
+  "browser": {
+    "actual_source": "production",
+    "test_mode": true,
+    "default_language": "en",
+    "nav_modules": 22,
+    "validated_css_viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "viewport_reset_css": {
+      "width": 1920,
+      "height": 841
+    },
+    "overflow": false,
+    "nonzero_radii": 0,
+    "console_errors": [],
+    "screenshots": [
+      "live-overview-1440.png",
+      "live-analytics-1440.png",
+      "live-overview.png"
+    ],
+    "output_directory": "D:/AI PRODUT/GYUTRON web/outputs/admin-alibaba-benchmark-20261104",
+    "deliverable": "https://www.gyutron.com/admin?test=1&lang=en#overview"
+  },
+  "package": {
+    "source_ref": "1b30168bfe7aa73e621e592f9f97782e85174dc7",
+    "filename": "gyutron-operations-20261104030917-1b30168bfe7a.zip",
+    "bytes": 1268768,
+    "members": 129,
+    "sha256": "e10a8e11358454715a541331062ac752e837b8b64352c2c56c7a886ed17af21f",
+    "fresh_install": true,
+    "portable_suites": 21,
+    "wrangler_build": true
+  },
+  "production_business_records_created": false
+}

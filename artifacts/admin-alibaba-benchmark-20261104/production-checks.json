@@ -1,0 +1,161 @@
+{
+  "at": "2026-11-04T03:11:07.778Z",
+  "source_commit": "1b30168bfe7aa73e621e592f9f97782e85174dc7",
+  "origin": "https://www.gyutron.com",
+  "checks": [
+    {
+      "name": "unauthenticated business APIs deny access",
+      "ok": true
+    },
+    {
+      "name": "English-default bilingual password-only sign-in and legacy language fallback",
+      "ok": true
+    },
+    {
+      "name": "owner sign-in and new release header",
+      "ok": true
+    },
+    {
+      "name": "every deployed admin asset equals the compiled committed source",
+      "ok": true
+    },
+    {
+      "name": "canonical brand assets and licensed self-hosted font equal committed bytes",
+      "ok": true
+    },
+    {
+      "name": "workspace chrome exposes only English and Chinese and normalizes old links",
+      "ok": true
+    },
+    {
+      "name": "new capabilities and all persistent modules respond",
+      "ok": true
+    },
+    {
+      "name": "active storage probes, final migration and encrypted-model readiness",
+      "ok": true
+    },
+    {
+      "name": "CSRF and cross-origin writes fail before changing data",
+      "ok": true
+    },
+    {
+      "name": "format-four backup verifies and exports a complete recovery file",
+      "ok": true
+    },
+    {
+      "name": "legacy orders and all brand storefront routes remain available",
+      "ok": true
+    },
+    {
+      "name": "logout immediately rejects session replay",
+      "ok": true
+    }
+  ],
+  "observations": {
+    "version": "2026.11.04.11",
+    "expected_from_compiled_committed_source": true,
+    "expected_source_ref": "1b30168bfe7aa73e621e592f9f97782e85174dc7",
+    "expected_bundle_sha256": "6cd2386175a0b4833bca6b497ea0caa6f76a1bda8194b1cf2a6237c6d5a5ee6e",
+    "compiled_asset_provenance": {
+      "expected_from_compiled_committed_source": true,
+      "ref": "1b30168bfe7aa73e621e592f9f97782e85174dc7",
+      "wrangler": "4.93.1",
+      "source_tree": "287780a47981dac4c0bda035235d5cd59c8061e2",
+      "source_files_verified": 114,
+      "source_bytes_from_git_blobs": true,
+      "archive_eol_changes_corrected": 109,
+      "source_archive_sha256": "6d406cbe270025fa6feef352fd153b799d1cd1f786487bc15117961f9d21149b",
+      "bundle_sha256": "6cd2386175a0b4833bca6b497ea0caa6f76a1bda8194b1cf2a6237c6d5a5ee6e",
+      "config_sha256": "c0317c54be4d01be3ee269a053baa0e1f640a53c07784a94015efd05234bea50",
+      "asset_count": 15,
+      "scratch": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\.wrangler\\production-asset-verification\\6a671429-ac08-4cbf-80e0-c500ca0474eb",
+      "static_asset_scope": "Committed brand assets only; dynamic Worker source is complete. Static production assets are checked separately.",
+      "provisioned_resources": false,
+      "deployed": false
+    },
+    "asset_hashes": {
+      "/admin/assets/design-system.css": "5fe796926778478a5992a2b06393277e3419381b10d6b24692f918fc74c101e2",
+      "/admin/assets/layout.js": "9da38bf37f2e9b8f42b6f2a7ea64f301a38eb05caae027804755381c26f8d821",
+      "/admin/assets/workspace.css": "69fda45902480c6e9243e2d3d0d4b73dc9cacbe790f932b4af1ad05ed2988514",
+      "/admin/assets/workspace.js": "ccb992f12d287794c812afcad1c36b16204227c442dbb9617715cca263f358e8",
+      "/admin/assets/demo.js": "631d5a0cc85d512c739f63acf198863c09474ad8921d4f127edc492dbeccdbcb",
+      "/admin/assets/quotes.js": "fa231df1ee04951de106229039772c7e3c7af562cce4167e652fa1ef3460be7e",
+      "/admin/assets/quotes.css": "f38dd81869651998170d684c1574c469a9baa439024a9e2e1b5bd8f9cf2806be",
+      "/admin/assets/locales.js": "4c0395bd74588f5d83f9d9aba6ff81aa69b2f6b3fe466d722d8823614288e26a",
+      "/admin/assets/notifications.js": "e4b93854fed2854dd402aee4992bf0ceecf16e386f2ae070c039a0d98b659873",
+      "/admin/assets/notifications.css": "546b4b0562228925a95911cda80ff29a34086ad0037a7d7458832df9042849ba",
+      "/admin/assets/workbench.js": "763251cea0314f056db79adf10f78c1cc843f09270ff8be63461a200ef719733",
+      "/admin/assets/operations.js": "3abb8898bb79159d1fb36ac3a6f90649b088991232dc6716b234fd9885d112bd",
+      "/admin/assets/intelligence.js": "bc480bbf18b27d99600197d3dfb7e5d41ef1ecbbfe23aa065158559a42fe0ce1",
+      "/admin/assets/local-source-sync.mjs": "93c5f9ea1a987226224fde4fd8cd85fdf90a323316f630bee464a56f9c54551e",
+      "/admin/assets/crm-experience.js": "8d557a1b08b3d14fa1a6632d3100c9073617437a0bf1d91530b0eef4cb79e1b6"
+    },
+    "expected_asset_hashes": {
+      "/admin/assets/design-system.css": "5fe796926778478a5992a2b06393277e3419381b10d6b24692f918fc74c101e2",
+      "/admin/assets/layout.js": "9da38bf37f2e9b8f42b6f2a7ea64f301a38eb05caae027804755381c26f8d821",
+      "/admin/assets/workspace.css": "69fda45902480c6e9243e2d3d0d4b73dc9cacbe790f932b4af1ad05ed2988514",
+      "/admin/assets/workspace.js": "ccb992f12d287794c812afcad1c36b16204227c442dbb9617715cca263f358e8",
+      "/admin/assets/demo.js": "631d5a0cc85d512c739f63acf198863c09474ad8921d4f127edc492dbeccdbcb",
+      "/admin/assets/quotes.js": "fa231df1ee04951de106229039772c7e3c7af562cce4167e652fa1ef3460be7e",
+      "/admin/assets/quotes.css": "f38dd81869651998170d684c1574c469a9baa439024a9e2e1b5bd8f9cf2806be",
+      "/admin/assets/locales.js": "4c0395bd74588f5d83f9d9aba6ff81aa69b2f6b3fe466d722d8823614288e26a",
+      "/admin/assets/notifications.js": "e4b93854fed2854dd402aee4992bf0ceecf16e386f2ae070c039a0d98b659873",
+      "/admin/assets/notifications.css": "546b4b0562228925a95911cda80ff29a34086ad0037a7d7458832df9042849ba",
+      "/admin/assets/workbench.js": "763251cea0314f056db79adf10f78c1cc843f09270ff8be63461a200ef719733",
+      "/admin/assets/operations.js": "3abb8898bb79159d1fb36ac3a6f90649b088991232dc6716b234fd9885d112bd",
+      "/admin/assets/intelligence.js": "bc480bbf18b27d99600197d3dfb7e5d41ef1ecbbfe23aa065158559a42fe0ce1",
+      "/admin/assets/local-source-sync.mjs": "93c5f9ea1a987226224fde4fd8cd85fdf90a323316f630bee464a56f9c54551e",
+      "/admin/assets/crm-experience.js": "8d557a1b08b3d14fa1a6632d3100c9073617437a0bf1d91530b0eef4cb79e1b6"
+    },
+    "asset_mismatches": [],
+    "brand_asset_hashes": {
+      "/gyutron-logo-purple.png": "15478e8ed4dc3ae6da14fc3b547a357ac9c4985f2598ae55d447462749ae386f",
+      "/workspace-assets/gyutron-mark.png": "72769f551f4a5c022e42260881fe7b54e2d5c7816ded5281eb1790975b58ebb1",
+      "/workspace-assets/fonts/inter-latin.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+      "/workspace-assets/fonts/OFL.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+    },
+    "probes": {
+      "checked_at": "2026-11-04T03:10:58.553Z",
+      "mode": "read",
+      "database": {
+        "status": "ok",
+        "latency_ms": 43
+      },
+      "privateFiles": {
+        "status": "ok",
+        "latency_ms": 161
+      },
+      "requestThrottle": {
+        "status": "ok",
+        "latency_ms": 120
+      }
+    },
+    "intelligence_status_fields": [
+      "engine",
+      "model_configured",
+      "model_target",
+      "encryption_available",
+      "external_transmission_requires_consent",
+      "permissions",
+      "context_sources",
+      "supported_documents",
+      "tools",
+      "external_actions_available"
+    ],
+    "migration": "0010_workspace_notifications.sql",
+    "backup": {
+      "verified": true,
+      "sha256": "420b5414e1bc79f80548a328577301b0b98f6c7fb08662889cfb7a0f83040c6c",
+      "format": 4,
+      "tables": 44,
+      "reused": true,
+      "created_new": false
+    }
+  },
+  "passed": 12,
+  "failed": 0,
+  "synthetic_production_business_records_created": false,
+  "external_messages_sent": false,
+  "external_models_called": false
+}
