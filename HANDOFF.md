@@ -44,9 +44,12 @@
   button. Hover and keyboard Tab focus expand, leaving collapses; selecting a route returns focus
   to main without scrolling. Touch never triggers hover. The72px content/secondary offset stays fixed
   through232px overlay expansion. Same row/footer heights and no-wrap labels prevent targets moving
-  during animation. Actual local browser confirmed72px content offset and unchanged first3 row tops,
+  during animation; the nav container uses identical gap/padding in both states. Actual local browser confirmed72px content offset and unchanged first3 row tops,
   nav height494px/footer98.8px across both states; 22 nodes retained. Independent emitted regression
-  now39/39, including pointer/focus/touch/route/media, management details preservation and zero business calls. Mobile retains only
+  now40/40, including pointer/focus/touch/route/media, management details preservation, accepted-route
+  dirty-guard cancellation and zero business calls.
+  Navigation chrome follows the accepted body.workspaceTab so cancelled dirty-state navigation cannot
+  temporarily change the analytics frame; requested hashes are a startup fallback only. Mobile retains only
   its existing drawer opener. Final mandatory Astro build/verify:all, agent/deploy gates, Test mode35/35
   and whole compiled startup7/7 pass; public byte diff0. Next: commit/push this UI-only revision,
   verify production .14 bytes and automatic states, then regenerate the tested standalone package.

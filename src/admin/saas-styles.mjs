@@ -842,7 +842,7 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
  .sidebar .sidebar-identity{height:44px;min-height:44px;padding:0}
  .sidebar .sidebar-identity .identity-avatar{display:none}
  .sidebar .signout-button{min-width:40px;min-height:40px;padding:9px}
- .app-layout[data-primary-compact=true] .workspace-nav{padding:0 10px 12px;gap:2px}
+ .sidebar .workspace-nav{padding:0 10px 12px;gap:2px}
  .app-layout[data-primary-compact=true] .nav-section>a,.app-layout[data-primary-compact=true] .nav-group-items>a{position:relative;justify-content:flex-start;width:100%;min-height:44px;padding:11px 14px;gap:0}
  .app-layout[data-primary-compact=true] .nav-link-label,.app-layout[data-primary-compact=true] .nav-group-title>[data-i18n],.app-layout[data-primary-compact=true] .sidebar-footer>a>[data-i18n],.app-layout[data-primary-compact=true] .sidebar-identity>div{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
  .app-layout[data-primary-compact=true] .nav-section-label{visibility:hidden}

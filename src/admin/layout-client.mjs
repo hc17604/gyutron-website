@@ -27,7 +27,7 @@ export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify(Object
  document.addEventListener('pointerdown',event=>{if(commandDialog?.open&&!commandDialog.contains(event.target)&&!commandTrigger?.contains(event.target))closeCommand();});
  document.addEventListener('focusin',event=>{if(commandDialog?.open&&!commandDialog.contains(event.target)&&!commandTrigger?.contains(event.target))closeCommand();});
  function syncNavigation(){
-  const tab=location.hash.slice(1).split('?')[0]||'overview';syncRail(tab);
+  const tab=document.body?.dataset.workspaceTab||location.hash.slice(1).split('?')[0]||'overview';syncRail(tab);
   const active=Array.from(sidebar?.querySelectorAll('[data-nav]')||[]).find(link=>link.dataset.nav===tab);
   const group=active?.closest('details.nav-group');if(group&&tab!==lastNavigationTab)group.open=true;lastNavigationTab=tab;
   if(page){const params=new URLSearchParams(location.hash.split('?')[1]||'');page.dataset.viewKind=tab==='agent'?'chat':tab==='pipeline'?'board':['overview','analytics'].includes(tab)?'overview':params.has('id')?'detail':['settings','models','security','backup','health','license'].includes(tab)?'settings':'list';}
