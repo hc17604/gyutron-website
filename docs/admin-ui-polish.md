@@ -1,6 +1,6 @@
 # Workspace UI detail and maintenance map
 
-Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.25`; release evidence and ongoing work are in `HANDOFF.md`.
+Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.26`; release evidence and ongoing work are in `HANDOFF.md`.
 
 ## Verified product reference
 
@@ -8,6 +8,15 @@ The authenticated [Alibaba seller portal](https://i.alibaba.com) was inspected d
 
 | Detail | Reference and resulting behavior | Source |
 |---|---|---|
+| Content-first shared surfaces | Alibaba homepage, Data Adviser and Customer Touch inspected live2026-11-04: related content lives on a continuous white surface with restrained separators. GYUTRON removes duplicate list/panel/filter/column frames, decorative KPI tiles and record-property vertical grids while retaining native field boundaries, exact table context, errors, selected states and focus | `saas-styles.mjs` |
+| Overview action density | Alibaba homepage places metrics, task state and next actions together. GYUTRON removes repeated introductions/View all labels, links real stage bars to matching opportunities and reuses authorized/versioned task completion directly from the overview. Counts refresh from the existing response; no synthetic Live data | `client.mjs`, `scripts/test-admin-polish.mjs` |
+| Filtered opportunity board | Authored correction found during actual stage drilldown: one selected stage fills the workspace with responsive record cards; all-stage horizontal columns remain available. Currencies and loaded/matching counts keep their original meaning | `saas-styles.mjs` |
+| Quote state exploration | Authored adaptation: clicking a real quote status filters that state; clicking again clears only status while keeping the remaining scope. Archived/unknown states and detail snapshots remain static; keyboard labels and mobile targets are explicit | `quotes-client.mjs`, `scripts/test-admin-quote-status-filter.mjs` |
+| Report and automation identity | Authored simplification: report title is its direct detail link, automation name is its existing authorized edit action; duplicate Details/Edit controls are removed while original run/pause and read-only behavior remain. Long report-filter mechanics move into native disclosure | `operations-client.mjs`, `scripts/test-admin-operations-content.mjs` |
+| Optional setup instructions | Authored simplification: Memory collector commands/downloads are available on demand; external-model/password boundaries remain visible. Backup recovery limits remain visible below history without another titled panel | `intelligence-client.mjs`, `scripts/test-admin-intelligence-content.mjs` |
+| Knowledge identity and list hierarchy | Authored simplification: Memory/Knowledge titles open their existing details instead of repeating Details in every row. Edit/Restore and read permissions remain; primary view tabs use underlines and redundant root list headings are hidden without hiding actions | `intelligence-client.mjs`, `saas-styles.mjs` |
+| Navigation and single-page context | Authored correction found in stage drilldown: an approved cross-module navigation returns to the top after the current load, without overriding a new control's focus. Same-module filters/refresh and rejected/stale loads keep their position. A single first page retains exact record counts without disabled pagination controls; later pages retain return navigation | `client.mjs`, `scripts/test-admin-polish.mjs` |
+| Mobile filter integrity | Authored correction found in actual320/390px QA: pipeline tools wrap into complete rows and Board/Table use quiet tabs; every filter form containing selects keeps a full-width search field, including quotations. Short Chinese status actions retain at least44x44px targets | `saas-styles.mjs` |
 | Primary/secondary navigation | Alibaba: persistent current column, separate hover preview, combined pointer region; our authored60/240/208px variant | `src/admin/layout-client.mjs`, `navigation-menus.mjs` |
 | Hover vs current selection | Alibaba: preview never navigates or replaces current selection;10ms switching/200ms dismissal | `layout-client.mjs` |
 | Navigation density | Alibaba: consistent icon/row rhythm, text hierarchy, thin independent scrolling; GYUTRON keeps square selected surfaces and licensed Lucide icons | `saas-styles.mjs`, `analytics-styles.mjs`, `icons.mjs` |

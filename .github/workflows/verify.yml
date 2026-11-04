@@ -146,6 +146,9 @@ jobs:
           node scripts/test-operations-report-filters.mjs
           node scripts/test-admin-polish.mjs
           node scripts/test-admin-analytics-polish.mjs
+          node scripts/test-admin-quote-status-filter.mjs
+          node scripts/test-admin-operations-content.mjs
+          node scripts/test-admin-intelligence-content.mjs
       - name: Verify complete compiled workspace startup
         working-directory: ${{ github.workspace }}
         run: npm run check:admin-startup

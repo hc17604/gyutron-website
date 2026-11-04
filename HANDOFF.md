@@ -16,7 +16,37 @@
 
 ## Fast takeover snapshot
 
-- **Shared workspace chrome .25 — LOCAL VERIFIED, RELEASING:** user requests a consistent finish
+- **IN PROGRESS — content-first workspace .26:** user defines the problem as excess frames/words
+  and too little core content/interaction, requesting a full hour of implementation and verification.
+  Started2026-11-04 14:02:56UTC; do not finish before15:02:56UTC. Baselinecf05c44 equals origin/main;
+  tracked tree was clean. Root owns sharedCSS/version/docs/CI and actual browser QA, worker owns
+  client Overview and polish tests, two other agents own quote-status/operations content actions and
+  their independent test scripts. Scope: continuous white list surfaces, fewer decorative frames,
+  leaner descriptions, real stage/task/quote/report/automation actions through existing controllers.
+  Preserve all old features, square geometry, dark purple navigation, defaultEN/ZH, Test isolation,
+  actual data scope/currency semantics and APIs. Brand/Shop/backend bindings/data/schema out of scope.
+  Fresh liveAlibaba homepage/Data Adviser/Customer Touch captures and live25 GYUTRON before captures
+  are in outputs/admin-core-content-20261104. Implementation: shared borderless white surfaces,
+  unframed KPI glyphs, scoped quiet record actions; real stage/task/quote/report/automation/knowledge
+  name actions. Overview repeated intros removed, optional report/collector instructions disclosed;
+  password/model boundaries and backup recovery limits stay visible. Memory tabs use underlines;
+  repeated root list headings and row Details actions are removed. Cross-module approved/current
+  loads reset scroll/focus without stealing new input focus; same-module filters/refresh stay put.
+  Single-page controls are omitted while accurate record ranges and later-page return remain.
+  Single-stage board fills available width; phone tools keep whole search fields and44px controls.
+  Source/visual reviewers found and root fixed ambiguous bare Complete ticks (now explicit action),
+  clipped card focus outline, short Chinese status width and a quote form selector compressing search.
+  Actual local110 module states cover EN/ZH desktop1536, EN1024, EN320 and ZH390: no root overflow,
+  radius, heading-action overflow, current-page errors or new-target size failures. Actual keyboard
+  stage drill8/8 reaches top/main focus; task completion54→53/overdue3→2 refreshes returned data;
+  quote status preserves USD and toggles clear; report title opens exact stored scope; automation name
+  opens native_sync120m; second knowledge name opens the matching document. Local non-Test read mode
+  collector disclosure/download target/command and visible boundaries verified, then Test restored.
+  Source suites reports19/polish55/analytics26/quote5/operations4/intelligence7/Demo41/icons12/chart53
+  and compiled startup7 pass (229 cases). New3 suites are included in npm/CI maintenance contract.
+  Next: final build/gates and source release26, live asset/interaction verification, continue hour review.
+
+- **Shared workspace chrome .25 — LIVE VERIFIED:** user requests a consistent finish
   across page headings/actions and topbar, then removal of the entire GYUTRON / module breadcrumb.
   Baseline9bad355 equals origin/main. Shared24px/600 titles use unframed glyphs; secondary page
   actions are quiet while primary/danger actions remain distinct. Analytics heading overrides removed.
@@ -35,7 +65,10 @@
   chart interactions53, polish48; compiled startup7 all pass. Astro build/verify:all, agent/deploy/diff
   gates pass; baseline main-site i18n heuristic report unchanged. Evidence:
   outputs/admin-shared-chrome-20261104, final-88-module-states.json and screenshots05–08.
-  Next: push source, observe CI/Cloudflare release, verify live25 assets and actual header, append proof.
+  Sourcecf05c44 is LIVE VERIFIED: CI41843502495 success; production14/14, all19 compiled assets
+  match committed Wrangler output; downloaded live workspace startup7/7. Actual live25 Overview/
+  Customers screenshots show breadcrumb removed and right utilities retained. Remaining work is the
+  newer .26 content-first task above; .25 rollback is revertcf05c44.
 
 - **Analytics edge hierarchy .24 LIVE VERIFIED (92589a7; CI41831454444 success; production14/14):** user rejects repeated borders, framed heading glyph,
   purple KPI top rule and chart control chrome. Baseline2ccb8f9 equals origin/main, tracked tree clean.
