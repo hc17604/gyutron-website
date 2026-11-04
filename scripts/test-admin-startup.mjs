@@ -17,7 +17,9 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const scratchRoot=path.join(root,'.wrangler','admin-startup-check');mkdirSync(scratchRoot,{recursive:true});
 const scratch=mkdtempSync(path.join(scratchRoot,'run-'));
 const hash=value=>createHash('sha256').update(value).digest('hex');
-const args=process.argv.slice(2),compiledIndex=args.indexOf('--compiled-worker');
+const args=process.argv.slice(2),compiledIndex=args.indexOf('--compiled-worker'),workspaceIndex=args.indexOf('--workspace-file');
+if(workspaceIndex>=0)assert.ok(args[workspaceIndex+1]&&!args[workspaceIndex+1].startsWith('--'),'--workspace-file requires a local JavaScript file.');
+const workspaceFile=workspaceIndex>=0?path.resolve(args[workspaceIndex+1]):null;
 let bundle=compiledIndex>=0?path.resolve(args[compiledIndex+1]):null;
 let compiledByThisRun=false;
 if(!bundle){
@@ -47,7 +49,11 @@ async function asset(specifier){
   }
   return assets.get(specifier);
 }
-const actual=await asset('/admin/assets/workspace.js');writeFileSync(path.join(scratch,'workspace.actual.mjs'),actual);
+const compiledWorkspace=await asset('/admin/assets/workspace.js');
+// A separately downloaded, hash-verified production main client may be executed
+// with the compiled bundle's dependency assets. This never changes module loading.
+const actual=workspaceFile?readFileSync(workspaceFile,'utf8'):compiledWorkspace;
+writeFileSync(path.join(scratch,'workspace.actual.mjs'),actual);
 const failures=[],results=[],unhandled=[];
 const onUnhandled=error=>unhandled.push(error);
 process.on('unhandledRejection',onUnhandled);
@@ -123,7 +129,7 @@ if(existsSync(oldFixture)){
 }
 await new Promise(resolve=>setImmediate(resolve));process.removeListener('unhandledRejection',onUnhandled);
 if(unhandled.length)failures.push({name:'no background unhandled rejections',errors:unhandled.map(error=>({name:error.name,message:error.message}))});
-const report={suite:'admin-compiled-full-startup',at:new Date().toISOString(),passed:results.length,failed:failures.length,wrangler:'4.93.1',compiled_by_this_run:compiledByThisRun,compiled_worker:bundle,bundle_sha256:hash(bytes),compiled_workspace_sha256:hash(actual),actual_initializer_executed:true,missing_helper_shim_injected:false,browser_used:false,production_business_api_used:false,provisioned:false,deployed:false,results,failures,limitations:['DOM stub verifies startup control flow, populated first view and actual mode-reload handler, not pixels/accessibility.','Live-mode API replies are an isolated read-only in-memory fixture; demo mode must perform zero business fetches.']};
+const report={suite:'admin-compiled-full-startup',at:new Date().toISOString(),passed:results.length,failed:failures.length,wrangler:'4.93.1',compiled_by_this_run:compiledByThisRun,compiled_worker:bundle,bundle_sha256:hash(bytes),compiled_workspace_sha256:hash(compiledWorkspace),workspace_source:workspaceFile?'provided_file':'compiled_worker',workspace_file:workspaceFile,executed_workspace_sha256:hash(actual),dynamic_module_source:'compiled_worker',actual_initializer_executed:true,missing_helper_shim_injected:false,browser_used:false,production_business_api_used:false,provisioned:false,deployed:false,results,failures,limitations:['DOM stub verifies startup control flow, populated first view and actual mode-reload handler, not pixels/accessibility.','Live-mode API replies are an isolated read-only in-memory fixture; demo mode must perform zero business fetches.','A workspace file override is a supplied local artifact; independent release hashes must establish its production provenance.']};
 writeFileSync(path.join(scratch,'startup-results.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({...report,results:results.map(({name,passed,demo,language,metric_values,requests,error})=>({name,passed,demo,language,metric_values,requests,error})),report:path.join(scratch,'startup-results.json')},null,2));
 if(failures.length)process.exitCode=1;

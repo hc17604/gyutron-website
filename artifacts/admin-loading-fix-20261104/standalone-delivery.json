@@ -1,0 +1,17 @@
+{
+  "source_commit": "750e6a6af957175a5dcdc5fb7fac00f8f65eb3da",
+  "directory": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104021914-750e6a6af957",
+  "zip": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104021914-750e6a6af957.zip",
+  "sha256": "db3062d48d7b3c194fd2dcba162003961dfb8eac11055a16673bb9ee390a2b47",
+  "source_manifest": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104021914-750e6a6af957.source-manifest.json",
+  "checksums": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104021914-750e6a6af957.SHA256SUMS.txt",
+  "provisioned_resources": false,
+  "deployed": false,
+  "zip_members": 128,
+  "version": "2026.11.04.10",
+  "zip_bytes": 1250544,
+  "fresh_install_lifecycle_enabled": true,
+  "portable_suites_passed": 20,
+  "wrangler_dummy_build_passed": true,
+  "zip_hash_and_crc_verified": true
+}

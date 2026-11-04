@@ -1,0 +1,56 @@
+{
+  "version": "2026.11.04.10",
+  "runtime_commit": "750e6a6af957175a5dcdc5fb7fac00f8f65eb3da",
+  "ci_run": 41759939348,
+  "ci_conclusion": "success",
+  "verified_at": "2026-11-04T02:22:11.003Z",
+  "cause": "Runtime Function.toString captured private Wrangler __name helper; ReferenceError before initializeWorkspace",
+  "fix": "Generate self-contained browser helper source before bundling; verify generated source and full compiled-client startup",
+  "live_workspace_sha256": "c17ff674b73792a3f327dd25998e5bc04f401fbfcf5caa24a77d2e68eda21d8d",
+  "live_private_helper_references": 0,
+  "production_checks": {
+    "passed": 12,
+    "failed": 0,
+    "dynamic_assets_exact": 15
+  },
+  "live_full_startup": {
+    "passed": 7,
+    "failed": 0,
+    "languages": [
+      "en",
+      "zh"
+    ],
+    "modes": [
+      "live",
+      "demo"
+    ],
+    "initializer_executed": true,
+    "switch_reload_executed": true,
+    "source": "Actual HTTP-downloaded production main script; dynamic modules byte-matched to real committed build",
+    "live_mode_business_replies": "Read-only VM fixtures, separately checked real service APIs",
+    "shim_injected": false
+  },
+  "source_suites": 21,
+  "existing_demo_contract_tests": 32,
+  "package": {
+    "source_commit": "750e6a6af957175a5dcdc5fb7fac00f8f65eb3da",
+    "directory": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104021914-750e6a6af957",
+    "zip": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104021914-750e6a6af957.zip",
+    "sha256": "db3062d48d7b3c194fd2dcba162003961dfb8eac11055a16673bb9ee390a2b47",
+    "source_manifest": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104021914-750e6a6af957.source-manifest.json",
+    "checksums": "D:\\AI PRODUT\\GYUTRON web\\outputs\\admin-rebuild-20261103\\gyutron-operations-20261104021914-750e6a6af957.SHA256SUMS.txt",
+    "provisioned_resources": false,
+    "deployed": false,
+    "zip_members": 128,
+    "version": "2026.11.04.10",
+    "zip_bytes": 1250544,
+    "fresh_install_lifecycle_enabled": true,
+    "portable_suites_passed": 20,
+    "wrangler_dummy_build_passed": true,
+    "zip_hash_and_crc_verified": true
+  },
+  "browser_control_performed": false,
+  "new_pixel_visual_verification": false,
+  "production_business_test_records_created": false,
+  "data_bindings_schema_credentials_changed": false
+}

@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Loading incident .10 IN PROGRESS (2026-11-04 SGT):** user reports the .9 workspace never leaves
+- **Loading incident .10 FIXED LIVE (2026-11-04 SGT):** user reports the .9 workspace never leaves
   Loading. Actual production workspace.js is HTTP200, but Wrangler keep-names inserted4 references
   to its private `__name` helper into createWorkspaceTransport.toString(). That string is shipped
   without the helper, so constructing transport throws ReferenceError before initializeWorkspace.
@@ -35,8 +35,25 @@
   define a fake __name shim. Source frontend69/demo32, Astro build/verify:all and diff checks pass.
   Root regenerates browser helpers with scripts/generate-admin-test-mode.mjs; frontend verifies the
   generated file matches canonical source. Complete startup gate is in CI,source regression and20-suite
-  portable verification. Next: push .10, compare live15 assets and execute the exact live full client,
-  not only its demo adapter. Evidence: artifacts/admin-loading-fix-20261104/.
+  portable verification. Final production proof below covers all15 assets and the exact live full
+  client initialization. Evidence: artifacts/admin-loading-fix-20261104/.
+  Runtime source `750e6a6af957175a5dcdc5fb7fac00f8f65eb3da` passed CI41759939348; .10 was confirmed
+  online10:20:01SGT. Production12/12 passed and all15 assets match the committed Wrangler build.
+  The exact HTTP-downloaded main client was then executed through complete startup:7/7 passed,
+  EN/zh × live/demo, populated first view, actual mode switch/reload, negative controls and saved .9
+  failure reproduction. Executed and compiled workspace SHA256 both
+  `c17ff674b73792a3f327dd25998e5bc04f401fbfcf5caa24a77d2e68eda21d8d`; __name references0.
+  Live startup uses read-only VM business replies; the separate production API checks verify real
+  service contracts. No new browser/pixel validation is claimed; user Computer Use stop remains.
+  The .10 standalone ZIP1250544B/128members is
+  `D:\AI PRODUT\GYUTRON web\outputs\admin-rebuild-20261103\gyutron-operations-20261104021914-750e6a6af957.zip`,
+  SHA256 `db3062d48d7b3c194fd2dcba162003961dfb8eac11055a16673bb9ee390a2b47`.
+  Fresh lifecycle-enabled install,20 portable suites (including whole compiled startup),Wrangler build,
+  CRC and per-file checks passed. New optional --workspace-file diagnostic is recorded in the proof
+  commit; it does not change runtime or packaged default startup tests. No data/bindings/schema/
+  password changes or production business test rows. User must refresh to load .10. Complete; future
+  startup changes must retain full compiled startup gate. A requested rollback must target known-good
+  .8 source300edb8, never the broken .9. Prior .9 package is superseded by the .10 ZIP above.
 
 - **Test mode .9 HISTORICAL CHECKS, startup failure superseded above:** user requests a switch immediately right of search
   and a rich, coherent simulated dataset covering every admin module for customer demonstrations.
