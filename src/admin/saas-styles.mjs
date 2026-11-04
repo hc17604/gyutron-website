@@ -852,8 +852,8 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
  .app-layout[data-primary-compact=true] .sidebar{width:60px;box-shadow:none}
  .sidebar .workspace-brand{flex:none;width:calc(100% - 16px);height:48px;min-height:48px;max-height:48px;margin:4px 8px;padding:8px 12px;justify-content:center;background:#fff;visibility:visible;overflow:hidden}
  .sidebar .workspace-brand .workspace-brand-full{display:block;width:184px;max-width:100%;height:auto;flex:none}
- .sidebar .workspace-brand .workspace-brand-mark{display:none;width:32px;max-width:32px;height:auto;flex:none}
- .app-layout[data-primary-compact=true] .workspace-brand{width:44px;padding:8px 6px;visibility:visible}
+ .sidebar .workspace-brand .workspace-brand-mark{display:none;width:36px;max-width:36px;height:auto;flex:none}
+ .app-layout[data-primary-compact=true] .workspace-brand{width:44px;padding:6px 4px;visibility:visible}
  .app-layout[data-primary-compact=true] .workspace-brand .workspace-brand-full{display:none}
  .app-layout[data-primary-compact=true] .workspace-brand .workspace-brand-mark{display:block}
  .sidebar .workspace-nav{flex:1 1 auto;min-height:0;padding:8px;gap:2px;overflow-x:hidden;overflow-y:auto;scrollbar-width:thin;scrollbar-color:transparent transparent;overscroll-behavior:contain}
@@ -888,8 +888,12 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
  .sidebar .signout-button{display:inline-flex;align-items:center;justify-content:center;width:44px;min-width:44px;height:36px;min-height:36px;padding:6px 10px}
  .sidebar .signout-button>.ui-icon{width:20px;height:20px;stroke-width:1.7}
  .app-layout[data-primary-compact=true] .nav-link-label,.app-layout[data-primary-compact=true] .nav-group-title>[data-i18n],.app-layout[data-primary-compact=true] .sidebar-footer>a>[data-i18n],.app-layout[data-primary-compact=true] .sidebar-identity>div{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
- .app-layout[data-primary-compact=true] .nav-section>a,.app-layout[data-primary-compact=true] .nav-group-items>a,.app-layout[data-primary-compact=true] .nav-group-title{gap:0}
- .app-layout[data-primary-compact=true] .nav-count{position:absolute;right:0;top:0;padding:0 2px;min-width:12px;font-size:9px;line-height:13px;background:#4e5769;color:#fff}
+ /* A native scrollbar must not squeeze the icon rail when the management group overflows. */
+ .app-layout[data-primary-compact=true] .workspace-nav{scrollbar-width:none}
+ .app-layout[data-primary-compact=true] .workspace-nav::-webkit-scrollbar{display:none;width:0}
+ .app-layout[data-primary-compact=true] .nav-section>a,.app-layout[data-primary-compact=true] .nav-group-items>a,.app-layout[data-primary-compact=true] .nav-group-title{gap:0;padding:6px 0;justify-content:center;min-width:0}
+ /* Full counts stay in the DOM/accessible link name and return as numbers on expansion. */
+ .app-layout[data-primary-compact=true] .nav-count{position:absolute;right:2px;top:2px;width:5px;height:5px;padding:0;min-width:5px;overflow:hidden;font-size:0;line-height:0;background:var(--button-purple-light);color:transparent}
  .app-layout[data-primary-compact=true] .nav-group-arrow{display:none}
  .sidebar .workspace-nav::-webkit-scrollbar{width:3px;background:transparent}
  .sidebar .workspace-nav::-webkit-scrollbar-track{background:transparent}

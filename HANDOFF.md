@@ -16,6 +16,20 @@
 
 ## Fast takeover snapshot
 
+- **Collapsed navigation fix .21 — locally verified, release pending:** fixed native scrollbar
+  squeezing the 60px icon rail when the administration group remains open; compact rows have zero
+  horizontal padding and centered glyphs. Unread counts become a 5px square indicator only when
+  compact, keeping the full accessible count and expanded numeric badge. Compact mark32->36px
+  (+12.5%); full logo remains184px. No navigation handlers, APIs or business data changed.
+  Live20 reproduction: row30.5px clipped the SVG at x38.5. Local21 at measured1536x600 with admin
+  open/scrollHeight905: row43.2px, SVG20px fully contained; native wheel reaches scrollTop447.6;
+  keyboard Tab expands, Escape collapses, expanded count16 remains11px and logo184px.
+  Measured1025x673 retains60px compact rail;1024x673/390x844 use the original drawer/full logo,
+  with no body overflow. EN/ZH and zero sidebar radii verified. Independent source review passed.
+  Astro build/verify:all, agent/deploy gates, emitted chart/navigation52, demo41, icon12, startup7
+  and independent polish46 all pass. Evidence/logs: outputs/admin-collapse-fix-20261104 and
+  .wrangler/rail21-*. Next: push candidate, verify CI/live21/production assets and real browser.
+
 - **Phone toolbar batch .20 LIVE VERIFIED (154a6ff; CI41807245161; production14/14):** Advanced/Columns have44px phone glyph controls
   with full translated accessible names, visual-only hidden labels and escaped titles. Save view keeps
   its text. Search retains desktop wording and has a44px phone glyph. Native select labels, options,
