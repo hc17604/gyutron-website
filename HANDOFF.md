@@ -16,9 +16,9 @@
 
 ## Fast takeover snapshot
 
-- **IN PROGRESS — content-first workspace .26/.27 final pass:** user defines the problem as excess frames/words
+- **Content-first workspace .26/.27 — LIVE VERIFIED:** user defines the problem as excess frames/words
   and too little core content/interaction, requesting a full hour of implementation and verification.
-  Started2026-11-04 14:02:56UTC; do not finish before15:02:56UTC. Baselinecf05c44 equals origin/main;
+  Work started2026-11-04 14:02:56UTC; the full-hour review completed after15:03:11UTC. Baselinecf05c44 equaled origin/main;
   tracked tree was clean. Root owns sharedCSS/version/docs/CI and actual browser QA, worker owns
   client Overview and polish tests, two other agents own quote-status/operations content actions and
   their independent test scripts. Scope: continuous white list surfaces, fewer decorative frames,
@@ -66,9 +66,19 @@
   confirmed. Round-two25-state affected-module patrol passes with mobile/desktop field visibility.
   .27 source309afef deployed, header/CSS stable. CI41852550674 stopped at one old icon-suite assertion
   requiring title and identifier HTML adjacency; the added mobile customer intentionally sits between.
-  The assertion is being scoped to their shared identity cell and ordering while retaining escaped
-  title, exact identifier/handler and trusted plus icon checks. This is a test-contract update only.
-  Next: confirm corrected icon suite/CI, production and final hour acceptance.
+  The assertion was corrected in849b2ed to check their shared identity cell and ordering while retaining
+  escaped title, exact identifier/handler and trusted plus icon checks; independent review and12/12
+  confirm the semantic contract remains. CI41853150485 SUCCESS. production27-checks.json records14/14
+  and all19 live assets match the compiled committed849b2ed source. Downloaded live-workspace27.js
+  startup7/7 passes (SHA2564abc291eedf366d23230ea89e678682ea0ea076087989aa04ea2a5b3a3e9f3cc).
+  Final live desktop1901px has hidden breadcrumb, zero outer panel borders, explicit Complete actions
+  and no root overflow;29-live27-overview.jpg is the accepted screenshot. Live mobile DOM at measured
+  CSS390x844 confirms customer regrouping, full44px status target and44px sticky scroll padding;
+  local23/24/27 images document the matching responsive pixels/focus. Two live mobile screenshot
+  attempts timed out, so no live mobile screenshot is claimed. Default viewport restored and final
+  deliverable tab is live Test/EN Overview. Own verified8801 Wrangler process tree stopped; no listener
+  remains. Existing unrelated untracked artifacts were preserved. Rollback product changes: revert
+  309afef thena162f4e;849b2ed is test-only. Next: none; one-hour implementation/verification is complete.
 
 - **Shared workspace chrome .25 — LIVE VERIFIED:** user requests a consistent finish
   across page headings/actions and topbar, then removal of the entire GYUTRON / module breadcrumb.
