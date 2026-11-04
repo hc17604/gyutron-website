@@ -16,7 +16,23 @@
 
 ## Fast takeover snapshot
 
-- **Workflow detail batch .19 - source validated, rollout pending:** phone task completion is a separate44px icon
+- **Phone toolbar batch .20 - source validated, rollout pending:** Advanced/Columns have44px phone glyph controls
+  with full translated accessible names, visual-only hidden labels and escaped titles. Save view keeps
+  its text. Search retains desktop wording and has a44px phone glyph. Native select labels, options,
+  values, form submission and change handlers stay intact; selected-option titles are escaped. Only
+  phone layout changes; a search-only Audit form is one row. Actual320x844 EN Tasks: viewbar158.8->108.8,
+  filters152.8->114.8, tableTop595.4->507.4, complete visible rows2->3. Actual Audit form94->44 with
+  input/submit sharingy242.8. Actual320/390 EN/ZH controls44px/no root overflow; desktop1536 glyph
+  is hidden and text remains.767/768 observations retain tablet density; do not relabel them as phone
+  pixel proof. Actual glyphs open correct Advanced/Columns dialogs; Title is locked/disabled as before;
+  Search submits q=Schedule. Independent emitted toolbar regression46/46 preserves45 prior cases,
+  trusted SVG/span child targeting, full names, real FormData/search params and0network/writes.
+  Backend independent comparison confirms all click/submit/change and column storage handlers are
+  byte-identical; Live/Test storage branches unchanged. No public/Shop/schema/bindings/credentials.
+  Source28/28 and Worker dry run pass, including polish46, Demo41, chart52, analysis26 and complete
+  compiled startup7. All previous behavior cases remain in their existing portable27 suite paths.
+
+- **Workflow detail batch .19 LIVE VERIFIED (d1f5dd2; CI41805389963; production14/14):** phone task completion is a separate44px icon
   action with full localized accessible name, leaving room for the two-line title; desktop wording
   stays visible. Actual320/390/768 results have no root overflow. At320 the name column is160px and
   title78px;390 is215/133px after scrollbars. Row selection does not complete a task; completion yields
@@ -41,6 +57,12 @@
   Source28/28 passes, including Demo41, polish45, chart52, analysis26 and complete compiled startup7;
   Worker dry run and agent/deploy gates pass. Public/Shop source diffs remain0. Existing Astro gates
   passed in18; this batch changes no brand build input and CI independently repeats the full build.
+  All19 live assets match committed compilation. Downloaded workspace19.js has the same core SHA
+  e9b4822cb6a540b2045fa8d323595f774214cd6e35826944bcdc6da9ce055b53; full startup7/7 passes with
+  actual19 dynamic modules. Worker bundle SHA7f8389bc138ee912f193881efe5abb3fb0ee187a45062968e2f0ebbd248a7be2.
+  Actual live Search is a nonmodal480px square panel atx1397/y64, not fullscreen; real inspection
+  query results scroll internally and Escape returns focus to Search workspace. No new business rows,
+  external models/messages, schema, bindings or credential changes.
 
 - **Professional list and first-screen batch .18 LIVE VERIFIED (d9d71d7; CI41801423667; production14/14):** bounded named/focusable record
   regions keep headers and identity/action columns visible. Desktop low-height main scrolling and a

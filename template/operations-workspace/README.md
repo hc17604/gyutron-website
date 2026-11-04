@@ -1,6 +1,6 @@
 # GYUTRON Operations — independent instance starter
 
-Target source application **2026.11.04.19**, migrations **0001–0011**, backup **format 5**.
+Target source application **2026.11.04.20**, migrations **0001–0011**, backup **format 5**.
 The manifest and release evidence identify the delivered commit and actual checks.
 This README does not claim the new production release or a second customer
 instance has passed acceptance.

@@ -1064,4 +1064,18 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
  body[data-workspace-tab=tasks] .record-list-scroll .task-completion-action{flex:0 0 44px;width:44px;min-width:44px;max-width:44px;height:44px;min-height:44px;padding:12px;gap:0}
  body[data-workspace-tab=tasks] .record-list-scroll .task-completion-action .ui-icon{width:18px;height:18px}
 }
+.filter-submit>.ui-icon{display:none}
+@media(max-width:767px){
+ .crm-viewbar .crm-list-actions{gap:6px}
+ .crm-viewbar [data-crm-advanced],.crm-viewbar [data-crm-columns],.filter-toolbar .filter-submit{position:relative;flex:0 0 44px;width:44px;min-width:44px;max-width:44px;height:44px;min-height:44px;padding:12px;gap:0}
+ .crm-viewbar .crm-toolbar-label,.filter-submit-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+ .crm-viewbar [data-crm-save-view]{min-height:44px;white-space:nowrap}
+ .filter-toolbar .filter-group{gap:6px}
+ .filter-toolbar .filter-group>.search-field{flex:1 1 100%;width:100%;min-width:0;max-width:none}
+ .filter-toolbar .filter-group:not(:has([data-filter]))>.search-field{flex:1 1 0;width:auto}
+ .filter-toolbar .filter-group>.search-field input{height:44px;min-height:44px}
+ .filter-toolbar .filter-group>label:not(.search-field){flex:1 1 0;min-width:0}
+ .filter-toolbar .filter-select{width:100%;min-width:0;max-width:none;height:44px;min-height:44px;padding:8px 25px 8px 8px}
+ .filter-toolbar .filter-submit>.ui-icon{display:block;width:18px;height:18px}
+}
 `;
