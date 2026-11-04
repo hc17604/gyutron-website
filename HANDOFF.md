@@ -16,6 +16,39 @@
 
 ## Fast takeover snapshot
 
+- **Continuous UI polish started 2026-11-04 05:43:44 UTC; owner requests >=4 hours:** minimum finish
+  09:43:44 UTC / 17:43:44 SGT. Active goal includes the other22 modules after navigation; do not
+  stop at this navigation release or a report. Root-only browser, disjoint code owners and independent
+  checks continue; evidence/worklog stays outside Git in outputs/admin-secondary-nav-20261104.
+
+- **Navigation .15 LOCAL VERIFIED; rollout pending:** supersedes the owner-rejected .14 single-rail
+  hover behavior. Direct authenticated Alibaba inspection plus read-only public menu reference
+  confirmed independent current and hover selections, expanded primary+temporary secondary as one
+  region, 10ms hover switching/200ms dismissal. Proprietary code/assets were not copied. GYUTRON
+  keeps60px rail and current analysis column in place, and opens240px primary+208px secondary preview
+  together; entering secondary keeps both open, leaving either towards content dismisses the pair,
+  choosing a link closes then uses the existing route/dirty guards. Tab focus/Escape, pointer/touch
+  and mobile boundaries are covered. No manual collapse control. Primary original22 nodes retained;
+  navigation-menus.mjs is authored bilingual metadata with55 existing read links; all16 analytics
+  entries reuse the shared catalogue. Single-page modules do not open redundant white panels.
+  Current selection stays separate from hovered selection and extra date/source/page scope does not
+  erase its highlight. Hidden module links stay out of previews. Primary row36/2gap,20px icons/1.7
+  stroke, compact official mark / expanded original full logo, thin hover/focus scrollbar, no ghost
+  group headings, square current/hover states; all mobile targets remain44px. Current white analysis
+  nav also uses36px rows. EN default/ZH only and shared Test mode unchanged. API/schema/bindings/auth,
+  Shop/public brand routes and customer business data untouched.
+  Independent actual-emitted cases49/49, Test mode35/35, icons12/12 and compiled startup7/7 pass.
+  Actual local: primary-to-preview remains open; keyboard previews Customers4 while current Analytics
+  URL/aria-current stay unchanged; selecting Active customers routes correctly and returns main
+  focus; fixed current-secondary and content left60px. Captured all22 desktop and all22 real390px
+  mobile pages: no root horizontal overflow, desktop visible corners0; mobile drawerEscape closes
+  and returns focus, desktop preview absent on mobile. Temporary viewport overrides reset.
+  Current batch owners: root shell/layout/metadata integration/release; backend_core navigation data
+  + independent source probe; admin_experience CSS + screenshot review; research_quality permanent
+  behavior checks. Next: final mandatory build/gates, release .15 and verify deployed bytes/actual UI,
+  regenerate package, then continue screenshot-backed cross-module detail implementation until the
+  requested minimum time. Rollback this UI batch via revert; no data migration is involved.
+
 - **Secondary navigation .13 LIVE VERIFIED; .14 automatic-rail correction locally verified (2026-11-04):** Alibaba screenshots
   supplied by the owner are the selected visual target. Replaced the inline directory with a white224px
   full-height secondary panel flush to graphite primary navigation and content; title18px, groups12px,

@@ -1,6 +1,6 @@
 # Data Adviser implementation and reference map
 
-Data implementation release: `2026.11.04.12`; navigation revision: `2026.11.04.14`. Release verification is recorded separately in `HANDOFF.md`.
+Data implementation release: `2026.11.04.12`; navigation revision: `2026.11.04.15`. Release verification is recorded separately in `HANDOFF.md`.
 The authenticated Alibaba Data Adviser was inspected directly on 2026-11-04. Screenshots are
 private local reference evidence under `outputs/admin-data-adviser-20261104/references` outside Git.
 Its account data and proprietary assets are not included in this implementation.
@@ -55,3 +55,5 @@ available content width, including when both desktop menus are expanded. Automat
 in-memory; the shared UI behaves the same in live and Test mode without business requests or storage.
 
 Desktop primary navigation expands automatically on pointer entry or keyboard Tab focus and collapses on leave or route selection. The 72px rail reservation remains fixed while the 232px panel overlays it; mobile keeps its drawer. No manual collapse button is required.
+
+Navigation .15 replaces the single expanding rail with the verified Alibaba interaction: current secondary navigation stays fixed, while an expanded primary and a contextual secondary preview form a temporary shared region. Hover does not navigate or replace current selection. Both pointer and keyboard users can enter the preview; leaving dismisses it after200ms and selection uses normal existing hash routes. Authored metadata reuses all16 analysis views; all22 original primary anchors remain. GYUTRON uses60/240/208px dimensions,36px mouse rows,44px coarse-pointer targets and square surfaces.

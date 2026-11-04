@@ -1,24 +1,57 @@
 import { ADMIN_ICON_HTML } from './icons.mjs';
+import { WORKSPACE_NAVIGATION_MENUS } from './navigation-menus.mjs';
 /** Navigation chrome and read-only presentation; mutations stay in their controllers. */
-export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify(Object.fromEntries(['overview','analytics','customers','pipeline','quotes','tasks','inbox','activity','sources','reports','automations','rules','agent','memory','models','users','security','backup','license','health','audit','settings'].map(name=>[name,ADMIN_ICON_HTML[name]])))+';\n'+String.raw`
+export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify(Object.fromEntries(['overview','analytics','customers','pipeline','quotes','tasks','inbox','activity','sources','reports','automations','rules','agent','memory','models','users','security','backup','license','health','audit','settings'].map(name=>[name,ADMIN_ICON_HTML[name]])))+';\nconst WORKSPACE_NAVIGATION_MENUS='+JSON.stringify(WORKSPACE_NAVIGATION_MENUS)+';\n'+String.raw`
 (()=>{
  const sidebar=document.getElementById('workspace-sidebar'),page=document.getElementById('workspace-page');
- const frame=document.querySelector('.app-layout'),desktop=matchMedia('(min-width:1025px)');let railPointer=false,railKeyboard=false,keyboardInput=false,lastNavigationTab=null;
- function syncRail(tab){
-  if(!frame)return;const compact=desktop.matches&&!(railPointer||railKeyboard);
-  frame.dataset.secondaryNavigation=String(tab==='analytics');frame.dataset.primaryCompact=String(compact);
-  for(const link of sidebar?.querySelectorAll('[data-nav]')||[]){const label=link.querySelector('.nav-link-label')?.textContent?.trim();if(label){link.title=label;const count=link.querySelector('.nav-count');link.setAttribute('aria-label',label+(count&&!count.hidden&&count.textContent.trim()?' · '+count.textContent.trim():''));}}
-  const summary=sidebar?.querySelector('.nav-group-title');if(summary)summary.title=summary.querySelector('[data-i18n]')?.textContent?.trim()||'';
+ const frame=document.querySelector('.app-layout'),preview=document.getElementById('navigation-preview'),desktop=matchMedia('(min-width:1025px)');
+ let railOpen=false,railPointer=false,railKeyboard=false,keyboardInput=false,lastNavigationTab=null,previewKey=null,previewSignature='',railOpener=null,enterTimer=null,closeTimer=null;
+ const navEscape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const acceptedTab=()=>document.body?.dataset.workspaceTab||location.hash.slice(1).split('?')[0]||'overview';
+ const inNavigation=node=>Boolean(node&&(sidebar?.contains(node)||preview?.contains(node)));
+ const primaryLink=key=>Array.from(sidebar?.querySelectorAll('[data-nav]')||[]).find(link=>link.dataset.nav===key);
+ function navigationMenu(key){
+  if(key==='management')return{title:{en:'Administration',zh:'系统管理'},groups:[{en:'Workspace settings',zh:'工作区设置',items:Array.from(sidebar?.querySelectorAll('.nav-group-items [data-nav]')||[]).filter(link=>!link.hidden).map(link=>({href:link.getAttribute('href'),en:link.querySelector('.nav-link-label')?.textContent||link.dataset.nav,zh:link.querySelector('.nav-link-label')?.textContent||link.dataset.nav}))}]};
+  const link=primaryLink(key);return link&&!link.hidden?WORKSPACE_NAVIGATION_MENUS[key]:null;
  }
- // Desktop follows pointer and keyboard focus; the content keeps its 72px rail offset.
- sidebar?.addEventListener('pointerenter',event=>{if(!desktop.matches||event.pointerType==='touch')return;railPointer=true;syncNavigation();});
- sidebar?.addEventListener('pointerleave',()=>{railPointer=false;syncNavigation();});
- document.addEventListener('keydown',event=>{if(event.key==='Tab')keyboardInput=true;});
- document.addEventListener('pointerdown',event=>{keyboardInput=false;railKeyboard=false;if(!sidebar?.contains(event.target))railPointer=false;syncNavigation();});
- sidebar?.addEventListener('focusin',()=>{if(keyboardInput){railKeyboard=true;syncNavigation();}});
- sidebar?.addEventListener('focusout',event=>{if(!sidebar.contains(event.relatedTarget)){railKeyboard=false;syncNavigation();}});
- sidebar?.addEventListener('click',event=>{if(!desktop.matches||!event.target.closest('[data-nav],.workspace-brand'))return;railPointer=false;railKeyboard=false;document.getElementById('workspace-main')?.focus({preventScroll:true});syncNavigation();});
- desktop.addEventListener('change',()=>{railPointer=false;railKeyboard=false;syncNavigation();});
+ function renderNavigationPreview(){
+  if(!preview)return;const key=previewKey||acceptedTab(),menu=navigationMenu(key),lang=document.getElementById('workspace-language')?.value==='zh'?'zh':'en';
+  if(!desktop.matches||!railOpen||!menu||menu.groups.reduce((count,group)=>count+group.items.length,0)<2){preview.hidden=true;return;}
+  const title=menu.title?.[lang]||primaryLink(key)?.querySelector('.nav-link-label')?.textContent||key;
+  const signature=key+'|'+lang+'|'+acceptedTab()+'|'+location.hash+'|'+JSON.stringify(menu.groups);
+  preview.hidden=false;preview.dataset.module=key;preview.setAttribute('aria-label',title);
+  if(signature===previewSignature)return;previewSignature=signature;
+  const activeHash=acceptedTab()===key&&location.hash.slice(1).split('?')[0]===key?location.hash:'',scope=new URLSearchParams(activeHash.split('?')[1]||'');
+  if(key==='analytics'&&!scope.has('view'))scope.set('view','overview');if(key==='inbox'&&!scope.has('resource'))scope.set('resource','leads');
+  let selectedHref=null,selectedWeight=-1;if(activeHash)for(const group of menu.groups)for(const item of group.items){const params=new URLSearchParams(item.href.split('?')[1]||'');if(Array.from(params).every(([name,value])=>scope.get(name)===value)&&params.size>=selectedWeight){selectedHref=item.href;selectedWeight=params.size;}}
+  preview.innerHTML='<header class="navigation-preview-heading"><h2 id="navigation-preview-title">'+navEscape(title)+'</h2></header><nav class="navigation-preview-scroll" aria-label="'+navEscape(title)+'">'+menu.groups.map(group=>'<section class="navigation-preview-group">'+(group[lang]?'<h3>'+navEscape(group[lang])+'</h3>':'')+group.items.map(item=>{const label=item[lang]||item.en,selected=item.href===selectedHref;return'<a class="navigation-preview-link" href="'+navEscape(item.href)+'" title="'+navEscape(label)+'"'+(selected?' aria-current="page"':'')+'>'+navEscape(label)+'</a>';}).join('')+'</section>').join('')+'</nav>';
+ }
+ function syncRail(tab){
+  if(!frame)return;const compact=desktop.matches&&!railOpen;
+  frame.dataset.secondaryNavigation=String(tab==='analytics');frame.dataset.primaryCompact=String(compact);
+  for(const link of sidebar?.querySelectorAll('[data-nav]')||[]){const label=link.querySelector('.nav-link-label')?.textContent?.trim();if(label){link.title=label;const count=link.querySelector('.nav-count');link.setAttribute('aria-label',label+(count&&!count.hidden&&count.textContent.trim()?' · '+count.textContent.trim():''));}const expanded=desktop.matches&&railOpen&&previewKey===link.dataset.nav,menu=navigationMenu(link.dataset.nav),hasChildren=Boolean(menu&&menu.groups.reduce((count,group)=>count+group.items.length,0)>1);link.dataset.navPreview=String(expanded);link.dataset.navHasChildren=String(hasChildren);if(hasChildren&&desktop.matches){link.setAttribute('aria-controls','navigation-preview');link.setAttribute('aria-expanded',String(expanded));}else{link.removeAttribute('aria-controls');link.removeAttribute('aria-expanded');}}
+  const summary=sidebar?.querySelector('.nav-group-title');if(summary){summary.title=summary.querySelector('[data-i18n]')?.textContent?.trim()||'';summary.dataset.navPreview=String(railOpen&&previewKey==='management');summary.dataset.currentGroup=String(Boolean(primaryLink(tab)?.closest('.nav-group')));}
+  renderNavigationPreview();
+ }
+ function clearNavigationTimers(){clearTimeout(enterTimer);clearTimeout(closeTimer);enterTimer=null;closeTimer=null;}
+ function closeNavigation(returnFocus=false){const opener=railOpener;clearNavigationTimers();railOpen=false;railPointer=false;railKeyboard=false;keyboardInput=false;previewKey=null;previewSignature='';syncNavigation();if(returnFocus&&opener?.isConnected)opener.focus({preventScroll:true});}
+ function openNavigation(key,opener){if(!desktop.matches)return;clearTimeout(enterTimer);enterTimer=null;clearTimeout(closeTimer);closeTimer=null;const menu=navigationMenu(key);if(!menu)return;railOpen=true;previewKey=key;if(opener)railOpener=opener;syncNavigation();}
+ function queueNavigationClose(){clearTimeout(enterTimer);enterTimer=null;clearTimeout(closeTimer);if(railKeyboard)return;closeTimer=setTimeout(()=>{if(!railPointer&&!railKeyboard)closeNavigation();},200);}
+ function previewTarget(target){const link=target?.closest?.('[data-nav]');if(link&&sidebar.contains(link))return{key:link.dataset.nav,node:link};const summary=target?.closest?.('.nav-group-title');return summary&&sidebar.contains(summary)?{key:'management',node:summary}:null;}
+ // The expanded primary and its temporary secondary are one pointer/focus region.
+ sidebar?.addEventListener('pointerenter',event=>{if(!desktop.matches||event.pointerType==='touch')return;railPointer=true;clearTimeout(closeTimer);const target=previewTarget(event.target);openNavigation(target?.key||previewKey||acceptedTab(),target?.node||primaryLink(acceptedTab()));});
+ sidebar?.addEventListener('pointerover',event=>{if(!desktop.matches||event.pointerType==='touch')return;const target=previewTarget(event.target);if(!target)return;clearTimeout(enterTimer);enterTimer=null;if(target.key===previewKey)return;enterTimer=setTimeout(()=>{enterTimer=null;if(railPointer)openNavigation(target.key,target.node);},10);});
+ sidebar?.addEventListener('pointerleave',event=>{if(inNavigation(event.relatedTarget))return;railPointer=false;queueNavigationClose();});
+ preview?.addEventListener('pointerenter',event=>{if(!desktop.matches||event.pointerType==='touch')return;railPointer=true;clearNavigationTimers();});
+ preview?.addEventListener('pointerleave',event=>{if(inNavigation(event.relatedTarget))return;railPointer=false;queueNavigationClose();});
+ document.addEventListener('keydown',event=>{if(event.key==='Tab')keyboardInput=true;if(event.key==='Escape'&&railOpen&&inNavigation(event.target)){event.preventDefault();event.stopPropagation();closeNavigation(true);}});
+ document.addEventListener('pointerdown',event=>{keyboardInput=false;railKeyboard=false;if(!inNavigation(event.target))closeNavigation();});
+ function focusNavigation(event){if(!desktop.matches||!keyboardInput)return;railKeyboard=true;clearTimeout(closeTimer);if(sidebar?.contains(event.target)){const target=previewTarget(event.target);openNavigation(target?.key||previewKey||acceptedTab(),target?.node||primaryLink(acceptedTab()));}}
+ function blurNavigation(event){if(inNavigation(event.relatedTarget))return;railKeyboard=false;if(!railPointer)queueNavigationClose();}
+ sidebar?.addEventListener('focusin',focusNavigation);preview?.addEventListener('focusin',focusNavigation);sidebar?.addEventListener('focusout',blurNavigation);preview?.addEventListener('focusout',blurNavigation);
+ function selectNavigation(event){if(!desktop.matches||!event.target.closest('[data-nav],.workspace-brand,.navigation-preview-link'))return;closeNavigation();document.getElementById('workspace-main')?.focus({preventScroll:true});}
+ sidebar?.addEventListener('click',selectNavigation);preview?.addEventListener('click',selectNavigation);
+ desktop.addEventListener('change',()=>{closeNavigation();});addEventListener('blur',()=>closeNavigation());
  const commandDialog=document.getElementById('command-dialog'),commandTrigger=document.getElementById('command-trigger');
  function closeCommand(returnFocus=false){if(!commandDialog?.open)return;const opener=commandDialog._workspaceOpener;commandDialog.close();if(returnFocus)(opener?.isConnected?opener:commandTrigger)?.focus();}
  // Keep the compact search panel non-modal; outside interactions remain available.
@@ -27,7 +60,7 @@ export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify(Object
  document.addEventListener('pointerdown',event=>{if(commandDialog?.open&&!commandDialog.contains(event.target)&&!commandTrigger?.contains(event.target))closeCommand();});
  document.addEventListener('focusin',event=>{if(commandDialog?.open&&!commandDialog.contains(event.target)&&!commandTrigger?.contains(event.target))closeCommand();});
  function syncNavigation(){
-  const tab=document.body?.dataset.workspaceTab||location.hash.slice(1).split('?')[0]||'overview';syncRail(tab);
+  const tab=acceptedTab();syncRail(tab);
   const active=Array.from(sidebar?.querySelectorAll('[data-nav]')||[]).find(link=>link.dataset.nav===tab);
   const group=active?.closest('details.nav-group');if(group&&tab!==lastNavigationTab)group.open=true;lastNavigationTab=tab;
   if(page){const params=new URLSearchParams(location.hash.split('?')[1]||'');page.dataset.viewKind=tab==='agent'?'chat':tab==='pipeline'?'board':['overview','analytics'].includes(tab)?'overview':params.has('id')?'detail':['settings','models','security','backup','health','license'].includes(tab)?'settings':'list';}
@@ -61,10 +94,10 @@ export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify(Object
   // Restore focus only when the browser has lost it; never take it from another dialog/input.
   if(recordDialog.open&&body.dataset.recordSection==='related'&&document.activeElement===document.body&&!Array.from(document.querySelectorAll('dialog[open]')).some(other=>other!==recordDialog))selectRecordTab(body,'related',true);
  }
- addEventListener('hashchange',()=>{railPointer=false;railKeyboard=false;syncNavigation();});syncNavigation();
+ addEventListener('hashchange',()=>{closeNavigation();});syncNavigation();
  if(sidebar)new MutationObserver(syncNavigation).observe(sidebar,{attributes:true,childList:true,subtree:true,attributeFilter:['aria-current']});
  if(page)new MutationObserver(decoratePresentation).observe(page,{childList:true,subtree:true});decoratePresentation();
  if(recordDialog)new MutationObserver(decorateRecordTabs).observe(recordDialog,{childList:true,subtree:true});
- document.getElementById('workspace-language')?.addEventListener('change',decorateRecordTabs);
+ document.getElementById('workspace-language')?.addEventListener('change',()=>{syncNavigation();decorateRecordTabs();});
 })();
 `;
