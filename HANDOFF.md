@@ -64,7 +64,11 @@
   Source suites now reports19/polish62/analytics26/quote14/operations4/intelligence7/Demo41/icons12/
   chart53/startup7 pass (245 cases), with independent polish62/quote14 and the original failing case
   confirmed. Round-two25-state affected-module patrol passes with mobile/desktop field visibility.
-  Next: build/gates/release27, production and final hour acceptance.
+  .27 source309afef deployed, header/CSS stable. CI41852550674 stopped at one old icon-suite assertion
+  requiring title and identifier HTML adjacency; the added mobile customer intentionally sits between.
+  The assertion is being scoped to their shared identity cell and ordering while retaining escaped
+  title, exact identifier/handler and trusted plus icon checks. This is a test-contract update only.
+  Next: confirm corrected icon suite/CI, production and final hour acceptance.
 
 - **Shared workspace chrome .25 — LIVE VERIFIED:** user requests a consistent finish
   across page headings/actions and topbar, then removal of the entire GYUTRON / module breadcrumb.
