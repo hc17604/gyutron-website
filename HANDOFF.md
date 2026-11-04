@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Expressive operations workspace .28 — IMPLEMENTED / RELEASE PENDING (2026-11-05):** new
+- **Expressive operations workspace .28 — LIVE VERIFIED / CI EXTERNAL QUEUE (2026-11-05):** new
   Alibaba homepage/RFQ reference is implemented as three metric groups and five counted business
   worklists (RFQs default, enquiries, opportunities, tasks, quotations), with specific record titles,
   contact/message excerpts, actual recorded country/quantity, created/deadline/timeline and original
@@ -47,10 +47,27 @@
   widths320/390/1024/1440. Last phone-only adjustment keeps quantity/unit together and balances
   metadata columns. Independent final screenshot/source review found no release blocker. Quotations
   count stays “—” until its lazy request completes, then shows the authoritative total.
-  Next: explicit-path commit/push main, watch CI, verify live .28 and all runtime/country asset bytes,
-  execute downloaded live client startup and inspect actual production Test UI. Production writes,
-  messages and external models have not been used for demonstration. Rollback: revert this release's
-  explicit source/static paths as a new commit; preserve D1/R2/KV and all existing business data.
+  Source a44694d723f6879c04a72fe4c397e767ad86dc4b is pushed/deployed. Live .28+newCSS stayed ready
+  for three polls; production-checks.json passed14/14 with19 runtime assets and17 licensed static
+  assets equal to the Wrangler build/committed bytes of that full source reference. Downloaded actual
+  production workspace SHA2560e5fff105fed08c1631814b31fe3aac7fabcf65f880e07c45ef8e2a271dd7f4c
+  passed real compiled startup7/7. Actual production Test UI is screenshot13; four flags loaded,
+  four RFQs rendered, no root overflow/visible corner radius, temporary viewport reset and deliverable
+  browser tab retained. Independent post-deploy review of screenshot13, live hashes and startup log
+  passed with no new blocker. Production demonstrations created no synthetic business records or external
+  messages/model calls. Own8801 preview process tree was identity-checked and stopped.
+  Committed-source ZIP: outputs/admin-rebuild-20261103/gyutron-operations-20261104161505-a44694d723f6.zip
+  (2393534B; SHA256b93d7f261d99a5567918805b8aa2ae8d7cf43b9e96b0b8b006b3521a8dd0ed30),
+  with matching .source-manifest.json and .SHA256SUMS.txt. All404 members, licenses and checksums
+  verified, clean-install portable27/27 plus compiled template routes/dummy dry-run passed.
+  EXTERNAL CHECK PENDING: GitHub verify41865238435 remains queued at2026-11-04T16:20Z with no
+  runner assigned; do not call it passed. GitHub's official status reports an Actions/Pages incident
+  from16:05UTC (https://www.githubstatus.com/). Cloudflare deployment and local/independent/live
+  checks above are complete. A documentation-only handoff commit may supersede that queued run;
+  inspect the latest verify run for origin/main when the service recovers. No product-code fix is
+  indicated by the queue. Next safe action: verify latest GitHub CI outcome after recovery and keep
+  admin/Test maintenance in sync. Rollback: revert this release's explicit source/static paths as a
+  new commit; preserve D1/R2/KV and all existing business data.
 
 - **Content-first workspace .26/.27 — LIVE VERIFIED:** user defines the problem as excess frames/words
   and too little core content/interaction, requesting a full hour of implementation and verification.
