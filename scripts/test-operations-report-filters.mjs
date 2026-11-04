@@ -44,7 +44,7 @@ await test('HTTP report filters preserve viewer reads and explicit errors',async
 const moduleUrl=source=>'data:text/javascript;base64,'+Buffer.from(source).toString('base64');
 const {createDemoWorkspace,formatDemoReportMoney}=await import(moduleUrl(DEMO_CLIENT));
 const demo=createDemoWorkspace({now:()=>Date.parse('2026-11-04T08:00:00.000Z')});
-const source=(await demo.api('operations/sources')).data.find(r=>r.kind==='csv_generic');
+const source=(await demo.api('operations/sources',{method:'POST',body:{name:'Isolated report-filter fixture',kind:'csv_generic'}})).data;
 const scoped=[];
 for(const input of [{type:'daily',from:'2026-10-01',to:'2026-10-31',source_id:source.id,currency:'USD'},{type:'weekly',from:'2026-11-01',to:'2026-11-07',source_id:source.id,currency:'EUR'},{type:'daily',from:'2026-10-01',to:'2026-10-31',currency:'USD'}])scoped.push((await demo.api('operations/reports',{method:'POST',body:input})).data);
 await test('Test-mode reports expose immutable saved filters and exact scope parity',async()=>{const r=await demo.api('operations/reports?source_id='+source.id+'&currency=USD&from=2026-10-31&to=2026-10-31');assert.deepEqual(ids(r),[scoped[0].id]);assert.equal(r.meta.date_basis,'saved_coverage_overlap');assert.equal(r.data[0].filters.from,'2026-10-01');const saved=r.data[0].content_markdown;r.data[0].filters.from='1900-01-01';assert.equal((await demo.api('operations/reports/'+scoped[0].id)).data.filters.from,'2026-10-01');assert.equal((await demo.api('operations/reports/'+scoped[0].id)).data.content_markdown,saved);});

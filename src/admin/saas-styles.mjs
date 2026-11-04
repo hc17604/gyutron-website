@@ -72,7 +72,7 @@ svg{width:18px;height:18px}
 .signout-button{width:28px;height:28px;padding:4px;font-size:17px;color:var(--muted);border-radius:0}
 .signout-button:hover{background:#e9ebf1;color:var(--ink)}
 .workspace-content{grid-column:2;min-width:0;margin:8px 8px 8px 0;min-height:calc(100dvh - 16px);background:var(--surface);border:1px solid var(--line);border-radius:0;overflow:clip}
-.topbar{height:56px;min-height:56px;padding:0 28px;gap:16px;border-bottom:1px solid var(--line);background:rgb(255 255 255 / .97);border-radius:0;box-shadow:none}
+.topbar{height:56px;min-height:56px;padding:0 28px;gap:16px;border-bottom:1px solid var(--line);background:#fff;border-radius:0;box-shadow:none}
 .breadcrumbs{gap:10px;font-size:13px;line-height:20px;min-width:0;color:var(--muted)}
 .breadcrumbs strong{font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .breadcrumbs>span:first-child{color:var(--muted)}
@@ -235,10 +235,17 @@ td>.button+.button{margin-left:6px}
 .kanban-empty{padding:18px 10px;border:1px dashed #dce0e8;border-radius:0;font-size:12px;line-height:20px;color:var(--subtle)}
 
 /* Record and command dialogs */
+html{scrollbar-gutter:stable}
+html:has(.record-dialog[open],.crm-tool-dialog[open],.confirmation-dialog[open],.workspace-notification-dialog[open]){overflow:hidden}
 dialog{color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:0;box-shadow:var(--shadow-dialog)}
 dialog::backdrop{background:rgb(23 29 44 / .32);backdrop-filter:blur(2px)}
 dialog[open]{animation:workspace-dialog-enter var(--motion-fast) var(--ease)}
 .record-dialog{width:660px;max-width:calc(100vw - 40px);max-height:calc(100dvh - 64px);padding:0}
+.record-dialog:not(.record-workspace-dialog){overflow:hidden}
+.record-dialog:not(.record-workspace-dialog) #dialog-content{display:flex;flex-direction:column;min-height:0;max-height:inherit;overflow:hidden}
+.record-dialog:not(.record-workspace-dialog) #dialog-content>form{display:flex;flex:1 1 auto;flex-direction:column;min-height:0;max-height:inherit;overflow:hidden}
+.record-dialog:not(.record-workspace-dialog) .dialog-heading,.record-dialog:not(.record-workspace-dialog) .dialog-footer{flex:none;position:static}
+.record-dialog:not(.record-workspace-dialog) .dialog-body{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
 .record-workspace-dialog{width:min(1040px,calc(100vw - 48px));max-width:calc(100vw - 48px)}
 .dialog-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding:22px 24px 18px;border-bottom:1px solid var(--line);background:#fff}
 .dialog-heading h2{font-size:20px;line-height:28px;font-weight:600;letter-spacing:-.025em;overflow-wrap:anywhere}
@@ -459,12 +466,19 @@ dialog[open]{animation:workspace-dialog-enter var(--motion-fast) var(--ease)}
 .workspace-notification-trigger svg{width:17px;height:17px}
 .workspace-notification-count{position:absolute;right:-3px;top:-3px;min-width:15px;height:15px;line-height:15px;padding:0 4px;border:1px solid #fff;border-radius:0;background:var(--button-purple-deep);color:#fff;font-size:9px;font-weight:600;font-variant-numeric:tabular-nums}
 .workspace-notification-dialog{position:fixed;inset:67px 20px auto auto;margin:0;width:440px;max-width:calc(100vw - 32px);max-height:calc(100dvh - 95px);padding:0;border:1px solid var(--line);border-radius:0;background:#fff;box-shadow:var(--shadow-popover);overflow:auto}
+.workspace-notification-dialog[open]{display:flex;flex-direction:column;overflow:hidden}
+.workspace-notification-header,.workspace-notification-toolbar{flex:none}
+.workspace-notification-scroll{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+.workspace-notification-meta button{display:inline-flex;align-items:center;gap:5px;min-height:28px}
+@media(pointer:coarse),(max-width:767px){.workspace-notification-toolbar .button,.workspace-notification-meta button{min-height:44px}}
 .workspace-notification-header{padding:18px 20px;border-bottom:1px solid var(--line)}
 .workspace-notification-header h2{font-size:16px;line-height:24px}
 .workspace-notification-toolbar{padding:10px 20px;border-bottom:1px solid var(--line);background:#fcfcfd;font-size:12px;line-height:20px}
 .workspace-notification-toolbar .button{min-height:28px;font-size:12px;padding:3px 8px}
 .workspace-notification-item{padding:15px 20px;border-bottom:1px solid var(--line);background:#fff}
-.workspace-notification-item.is-unread{background:#faf8fe}
+.workspace-notification-item.is-unread{background:#fafbfc}
+.workspace-notification-kind{display:flex;align-items:center;gap:7px}
+.workspace-notification-kind .ui-icon{width:14px;height:14px;vertical-align:middle}
 .workspace-notification-kind{font-size:10px;line-height:17px;letter-spacing:.02em;color:#756489;font-weight:500}
 .workspace-notification-link{font-size:13px;line-height:21px;font-weight:500;color:#414957;border-radius:0}
 .workspace-notification-link:hover{color:var(--button-purple-deep)}
@@ -984,5 +998,12 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
  .task-completion-action{min-width:36px;min-height:36px;margin-right:7px}.intake-message-preview{min-width:180px;max-width:300px}
 }
 @media(max-width:767px){.settings-identity-compact .wb-properties{padding:16px;gap:14px}.admin-event-code{max-width:240px;overflow-wrap:anywhere}.knowledge-source-label{max-width:180px}}
-@media(pointer:coarse){.task-completion-action{min-width:44px;min-height:44px}.agent-starter{min-height:44px}}
+@media(pointer:coarse),(max-width:767px){.task-completion-action{min-width:44px;min-height:44px}}
+@media(pointer:coarse){.agent-starter{min-height:44px}}
+@media(pointer:coarse),(max-width:767px){
+ .pagination>button{min-width:44px;min-height:44px;width:44px;height:44px;padding:10px}
+ .intake-tabs>button,.wb-toolbar>.button,.table-action-group>button.text-link{min-height:44px}
+ .table-action-group>button.text-link{display:inline-flex;align-items:center;gap:5px;padding:8px 3px}
+ body[data-workspace-tab=agent] .wb-chat-form>details>summary{min-height:44px;line-height:20px;padding:12px 0;box-sizing:border-box}
+}
 `;

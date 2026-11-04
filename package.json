@@ -21,7 +21,7 @@
     "shop:build": "python tools/build_shop.py",
     "shop:verify": "npm run shop:check && node scripts/smoke-content-icons.mjs --scope shop && node scripts/smoke-shop.mjs",
     "check:admin-demo": "node scripts/test-admin-demo.mjs",
-    "check:admin-polish": "node scripts/test-operations-report-filters.mjs && node scripts/test-admin-polish.mjs",
+    "check:admin-polish": "node scripts/test-operations-report-filters.mjs && node scripts/test-admin-polish.mjs && node scripts/test-admin-analytics-polish.mjs",
     "check:admin-startup": "node scripts/test-admin-startup.mjs",
     "build:admin-charts": "node scripts/build-admin-charts.mjs",
     "check:admin-charts": "node scripts/build-admin-charts.mjs --check",

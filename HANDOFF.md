@@ -16,7 +16,43 @@
 
 ## Fast takeover snapshot
 
-- **Professional detail batch .16 LOCAL VERIFIED; rollout pending:** Reports now actually filters
+- **Analysis and interaction batch .17 LOCAL VERIFIED; rollout pending:** directly inspected
+  logged-in Alibaba Data Overview, Shop Analysis and Trade Analysis (layout/interaction only). The
+  GYUTRON analysis scope bar now uses native date/advanced disclosures, explicit applied scope and
+  visible unapplied drafts. Six logical indicators replace duplicated monetary cards; every currency
+  stays separate, exact, available to chart/drill/export, and follows stable ISO order. Indicator
+  selection drives the existing chart and named export without changing the global currency scope.
+  The picker sits in the chart header. Partial reported dates and unavailable comparisons are visible.
+  One exact full-period UV observation uses a compact snapshot, never an inferred daily curve;
+  categorical zoom no longer exposes a false Apply-dates action. Smart recommendation explanations
+  collapse while browser-only/no-publishing status remains visible. Controlled device/category labels
+  translate without altering raw dimension keys. Currency lists have their own anchored scroller;
+  actual673/600/400px views keep lists inside the viewport. A native600px click also verifies upward
+  placement; keyboard can scroll to USD without moving the page, then Escape returns to the summary.
+  Demo keeps aligned full-period peer observations, exact weighted rates and source/currency/date
+  report scopes; report defaults now follow Singapore daily/weekly/30-day semantics and preserve
+  explicit exclude_tests=false. Overview/Map country detail uses the same commerce/native domain as
+  the live contract. Rule responses use business wording while raw configs and citations remain intact.
+  Editor errors preserve field help and link the current validation message; delayed option failures
+  cannot reopen a dismissed form or overwrite its replacement. Modal forms and notifications scroll
+  internally with fixed actions and restored background scrolling. Notification shown/total counts,
+  category glyphs and refresh reading position are corrected. License/model status copy and actionable
+  import parent/currency/concurrency errors are localized without hiding the original technical code.
+  All21 non-analysis modules at actual390px retain zero corners, no root overflow/encoding errors;
+  all visible buttons/summary controls excluding inline record links now have >=44px target height.
+  Agent still shows all3 starters; Ask bottom788 at844px; New conversation is a secondary action.
+  The topbar is now opaque, avoiding scrolled-KPI ghosting. Actual analysis interactions verified exact
+  peer4110/3630 full-period drill, chart keyboard tooltip, indicator selection, discarded closed date
+  drafts and invalid-date recovery retaining the25-order scope before applying a corrected17-order scope.
+  All27 suites pass, including independent polish32/32, chart51/51, analysis20/20 and complete compiled
+  startup7/7. Astro build/verify passes (baseline143 report-only i18n suspects), agent/deploy gates pass,
+  public/Shop diffs0. Independent offline visual review finds no newP1; the remaining first-screen
+  trend-height refinement continues after this release. Exact deployed-byte verification pending.
+  Runtime owner split remains root/shared+charts, frontend/analytics, backend/Demo+three narrow copy
+  fixes, quality/independent actual emitted+SQLite tests. No schema, bindings, credentials, Shop or
+  production business records changed. Do not stop this task before09:43:44 UTC.
+
+- **Professional detail batch .16 LIVE VERIFIED (93f023f; CI41787956655; production14/14):** Reports now actually filters
   saved immutable reports by overlapping coverage and exact source/currency scope, including matching
   pagination counts, invalid/legacy coverage handling and strict input checks. UI distinguishes saved
   scope, supplies generation currency, and validates reversed dates inline without navigation/API or
@@ -47,7 +83,9 @@
   created no production business records and did not call an external model.
   Final gates pass:20 preserved suites, report19/19, independent polish27/27, navigation49/49,
   Demo35/35 and compiled startup7/7. Astro build/verify:all (baseline143 report-only suspects),
-  agent/deploy gates and whitespace pass; public/Shop byte diffs0. Next: release .16 and verify exact deployed assets, then continue analysis
+  agent/deploy gates and whitespace pass; public/Shop byte diffs0. All19 deployed admin assets equal
+  the compiled committed source; read-only live D1 pipeline totals and report filter validation pass.
+  Downloaded deployed workspace.js startup7/7 passes. Next: continue analysis
   views, record editors and EN/ZH responsive/error detail work until >=09:43:44 UTC. Revert this batch
   to roll back; D1/R2/KV/Shop/credential bindings and live business data have not been replaced.
 

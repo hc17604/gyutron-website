@@ -1,6 +1,6 @@
 # Workspace UI detail and maintenance map
 
-Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.16`; release evidence and ongoing work are in `HANDOFF.md`.
+Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.17`; release evidence and ongoing work are in `HANDOFF.md`.
 
 ## Verified product reference
 
@@ -11,10 +11,21 @@ The authenticated [Alibaba seller portal](https://i.alibaba.com) was inspected d
 | Primary/secondary navigation | Alibaba: persistent current column, separate hover preview, combined pointer region; our authored60/240/208px variant | `src/admin/layout-client.mjs`, `navigation-menus.mjs` |
 | Hover vs current selection | Alibaba: preview never navigates or replaces current selection;10ms switching/200ms dismissal | `layout-client.mjs` |
 | Navigation density | Alibaba: consistent icon/row rhythm, text hierarchy, thin independent scrolling; GYUTRON keeps square selected surfaces and licensed Lucide icons | `saas-styles.mjs`, `analytics-styles.mjs`, `icons.mjs` |
+| Analysis filter hierarchy | Alibaba Data Overview, Shop Analysis and Trade Analysis: compact scope bar before indicators and chart; GYUTRON uses native date/advanced disclosures and an explicit applied-scope summary | `analytics-client.mjs`, `analytics-styles.mjs` |
+| Selectable indicators | Alibaba: choose a business indicator and inspect its series in the same workspace; GYUTRON keeps exact drill/export scope while changing the chart | `analytics-client.mjs` |
+| Currency families | Authored adaptation: one business measure groups separate ISO values, without exchange, cross-currency totals or numeric ranking between currencies | `analytics-client.mjs` |
+| Partial coverage | Authored correction: reported dates and unavailable comparisons stay explicit even when the missing-metric list is empty | `analytics-client.mjs` |
+| Period snapshots | Authored correction: one full-period unique observation is a compact exact snapshot, not an inferred daily curve | `analytics-chart-adapter.mjs` |
+| Chart range actions | Authored correction: categorical charts retain visual zoom and drill; only actual date axes offer Apply chart dates | `analytics-chart-adapter.mjs` |
+| Record editor scrolling | Authored refinement: header and actions stay visible while the form body scrolls; modal background scroll locks and restores | `saas-styles.mjs` |
+| Editor recovery | Authored correction: dismissed/replaced forms cannot be reopened by delayed option errors; error descriptions preserve field help | `client.mjs` |
+| Notification reading | Authored refinement: category glyphs, fixed header/actions, one scroller, preserved refresh position and exact shown/total counts | `notifications-client.mjs`, `saas-styles.mjs` |
 | Saved report filters | Authored correction: coverage overlap and exact saved scope, inline invalid-range recovery | `operations-client.mjs`, `platform/operations/reports.mjs` |
 | Sales stage numbers | Authored correction: complete filtered totals alongside loaded rows, one batched read | `platform/crm/repository.mjs`, `client.mjs` |
 | Record scanability | Authored refinement: action semantics, activity ordering, actual message excerpts and tabular quote amounts | `client.mjs`, `crm-experience-client.mjs`, `quotes-client.mjs` |
 | Assistant workspace | Authored responsive layout: reachable composer, optional local starters, correct conversation identity and visible model target | `intelligence-client.mjs`, `saas-styles.mjs` |
+
+The actual analysis pages inspected were [Data Overview](https://data.alibaba.com/), [Shop Analysis](https://data.alibaba.com/traffic/overview) and [Trade Analysis](https://data.alibaba.com/transaction/analysis). Their account screenshots stay outside Git and the distributable package. Only layout and interaction observations are used.
 
 The other refinements are described as authored behavior, not attributed to products that were not directly inspected. Inter, Lucide and self-hosted Apache ECharts remain the open-source presentation foundation; notices are in `admin-technology-notices.md`.
 
