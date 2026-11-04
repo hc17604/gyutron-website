@@ -1,4 +1,4 @@
-import {audit,err,known,nowIso,one,pagination,parseJson,rows,text,uuid} from './common.mjs';
+import {audit,err,known,nowIso,one,pagination,parseJson,rows,text,uuid,day,source,CURRENCIES} from './common.mjs';
 import {operationFilters,readOperationsAnalytics,shiftDay} from './analytics.mjs';
 import {workspaceDate} from '../crm/time.mjs';
 import {ruleSnapshot} from './rules.mjs';
@@ -14,5 +14,29 @@ export async function generateReport(db,input,p,{timeZone='Asia/Singapore',runId
  const id=uuid('REP'),at=nowIso();await db.batch([db.prepare('INSERT OR IGNORE INTO ops_reports(id,type,title,language,filters_json,summary_json,content_markdown,rules_snapshot_json,created_by,created_at,run_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)').bind(id,type,title,language,JSON.stringify(summary.filters),JSON.stringify(summary),lines.join('\n'),JSON.stringify(snapshot.map(r=>({id:r.id,name:r.name,version:r.version,config:r.config}))),p.id,at,runId),db.prepare('INSERT INTO crm_audit(public_id,actor_id,actor_name,actor_role,action,entity_type,entity_id,summary,metadata_json,created_at) SELECT ?,?,?,?,?,?,?,?,?,? WHERE changes()=1').bind(uuid('AUD'),p.id,p.name||p.id,p.role,'generated','operating_report',id,'Generated deterministic operating report',JSON.stringify({type,from:start,to:end}),at)]);
  return publicReport(await one(db,'SELECT * FROM ops_reports WHERE '+(runId?'run_id':'id')+'=?',[runId||id]));
 }
-export async function listReports(db,o={}){const {page,limit,offset}=pagination(o),where=o.type?' WHERE type=?':'',args=o.type?[o.type]:[];return {data:(await rows(db,'SELECT * FROM ops_reports'+where+' ORDER BY created_at DESC LIMIT ? OFFSET ?',[...args,limit,offset])).map(publicReport),meta:{page,limit,total:(await one(db,'SELECT COUNT(*) n FROM ops_reports'+where,args)).n}};}
+export async function listReports(db,o={}){
+ known(o,['page','limit','type','from','to','source_id','currency']);
+ const {page,limit,offset}=pagination(o),from=o.from?day(o.from):'',to=o.to?day(o.to):'',type=o.type||'',sourceId=text(o.source_id||'',100),currency=o.currency||'';
+ if(from&&to&&from>to)throw err('INVALID_RANGE','Select an ordered report coverage period.');
+ if(type&&!['daily','weekly','opportunities'].includes(type))throw err('INVALID_REPORT','Choose a supported report type.');
+ if(currency&&!CURRENCIES.includes(currency))throw err('INVALID_CURRENCY','Select a supported currency.');
+ if(sourceId)await source(db,sourceId);
+ const where=[],args=[],json="CASE WHEN json_valid(filters_json) THEN filters_json ELSE '{}' END",saved=key=>`json_extract(${json},'$.${key}')`,start=saved('from'),end=saved('to');
+ if(type){where.push('type=?');args.push(type);}
+ if(sourceId){where.push(saved('source_id')+'=?');args.push(sourceId);}
+ if(currency){where.push(saved('currency')+'=?');args.push(currency);}
+ if(from||to){
+  // A report's creation timestamp cannot substitute for a missing saved business period.
+  for(const value of [start,end])where.push(`typeof(${value})='text' AND length(${value})=10 AND date(${value},'+0 days')=${value}`);
+  where.push(start+'<='+end);
+  if(to){where.push(start+'<=?');args.push(to);}
+  if(from){where.push(end+'>=?');args.push(from);}
+ }
+ const suffix=where.length?' WHERE '+where.join(' AND '):'';
+ const result=await db.batch([
+  db.prepare('SELECT * FROM ops_reports'+suffix+' ORDER BY created_at DESC,id DESC LIMIT ? OFFSET ?').bind(...args,limit,offset),
+  db.prepare('SELECT COUNT(*) n FROM ops_reports'+suffix).bind(...args),
+ ]),total=Number(result[1].results?.[0]?.n||0);
+ return{data:(result[0].results||[]).map(publicReport),meta:{page,limit,total,pages:Math.ceil(total/limit),filters:{from,to,type,source_id:sourceId,currency},date_basis:'saved_coverage_overlap',source_currency_basis:'exact_saved_generation_scope'}};
+}
 export async function getReport(db,id){const r=await one(db,'SELECT * FROM ops_reports WHERE id=?',[id]);if(!r)throw err('NOT_FOUND','Report not found.',404);return publicReport(r);}

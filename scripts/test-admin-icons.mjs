@@ -13,7 +13,7 @@ async function test(name,run){try{await run();passed++;}catch(error){failures.pu
 const navigation=['overview','analytics','customers','pipeline','quotes','tasks','inbox','activity','sources','reports','automations','rules','agent','memory','models','users','security','backup','license','health','audit','settings'];
 await test('all navigation and licensed actions have the same safe accessible SVG contract',()=>{
  assert.equal(ADMIN_ICON_REVISION,'aa0b77386c07630e5f1a9f877fd3ba4b2a4a1558');
- assert.equal(Object.keys(ADMIN_ICONS).length,61);assert.equal(Object.keys(ADMIN_ICON_SOURCES).length,39);
+ assert.equal(Object.keys(ADMIN_ICONS).length,63);assert.equal(Object.keys(ADMIN_ICON_SOURCES).length,43);
  for(const name of navigation)assert.ok(Object.hasOwn(ADMIN_ICON_HTML,name),name);
  for(const [name,html]of Object.entries(ADMIN_ICON_HTML)){
   assert.equal(renderAdminIcon(name),html);assert.match(html,/^<svg class="ui-icon"/);

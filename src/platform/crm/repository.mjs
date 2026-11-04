@@ -82,13 +82,21 @@ export async function listWorkspaceRecords(db, resource, options = {}, principal
   requirePermission(principal, resource === 'audit' ? 'audit' : 'read');
   const spec = resourceSpec(resource), { page, limit } = pageOptions(options);
   const { whereSql, binds } = buildFilters(resource, options);
-  const totalRow = await db.prepare(`SELECT COUNT(*) AS total FROM ${spec.table} r${whereSql}`).bind(...binds).first();
+  const countStatement = db.prepare(`SELECT COUNT(*) AS total FROM ${spec.table} r${whereSql}`).bind(...binds);
   const sort=options.sort||'id',direction=(options.dir||'desc').toLowerCase();
   if (!['id',...spec.columns].includes(sort) || !['asc','desc'].includes(direction)) throw new WorkspaceError(422,'INVALID_SORT','Select a supported column and sort order.');
   const contactColumns=resource==='customers'&&options.with_contacts==='true'?",(SELECT name FROM crm_contacts contact WHERE contact.customer_id=r.public_id AND contact.archived_at IS NULL ORDER BY is_primary DESC,id LIMIT 1) primary_contact_name,(SELECT email FROM crm_contacts contact WHERE contact.customer_id=r.public_id AND contact.archived_at IS NULL ORDER BY is_primary DESC,id LIMIT 1) primary_contact_email,(SELECT COUNT(*) FROM crm_contacts contact WHERE contact.customer_id=r.public_id AND contact.archived_at IS NULL) contacts_count":'';
-  const result = await db.prepare(`SELECT ${selectColumns(spec)}${extraColumns(resource)}${contactColumns} FROM ${spec.table} r${joinsFor(resource)}${whereSql} ORDER BY r.${sort} ${direction}${sort==='id'?'':', r.id DESC'} LIMIT ? OFFSET ?`).bind(...binds, limit, (page - 1) * limit).all();
+  const pageStatement = db.prepare(`SELECT ${selectColumns(spec)}${extraColumns(resource)}${contactColumns} FROM ${spec.table} r${joinsFor(resource)}${whereSql} ORDER BY r.${sort} ${direction}${sort==='id'?'':', r.id DESC'} LIMIT ? OFFSET ?`).bind(...binds, limit, (page - 1) * limit);
+  let totalRow,result,stageCounts;
+  if(resource==='opportunities'){
+    // Counts and cards share one filtered snapshot, independent of the loaded page.
+    const groupedStatement=db.prepare(`SELECT r.stage,COUNT(*) AS count FROM ${spec.table} r${whereSql} GROUP BY r.stage`).bind(...binds);
+    const packet=await db.batch([countStatement,pageStatement,groupedStatement]);
+    totalRow=packet[0].results?.[0];result=packet[1];stageCounts=Object.fromEntries(STAGES.map(stage=>[stage,0]));
+    for(const row of packet[2].results||[])if(Object.hasOwn(stageCounts,row.stage))stageCounts[row.stage]=Number(row.count);
+  }else{totalRow=await countStatement.first();result=await pageStatement.all();}
   const total = Number(totalRow?.total || 0);
-  return { data: result.results || [], meta: { total, page, limit, pages: Math.ceil(total / limit) } };
+  return { data: result.results || [], meta: { total, page, limit, pages: Math.ceil(total / limit),...(stageCounts?{stage_counts:stageCounts}:{}) } };
 }
 
 export async function getWorkspaceRecord(db, resource, id, principal) {

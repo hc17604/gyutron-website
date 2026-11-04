@@ -16,12 +16,47 @@
 
 ## Fast takeover snapshot
 
+- **Professional detail batch .16 LOCAL VERIFIED; rollout pending:** Reports now actually filters
+  saved immutable reports by overlapping coverage and exact source/currency scope, including matching
+  pagination counts, invalid/legacy coverage handling and strict input checks. UI distinguishes saved
+  scope, supplies generation currency, and validates reversed dates inline without navigation/API or
+  losing fields/list; direct invalid422 links offer the existing Clear filters recovery action.
+  Opportunities list adds meta.stage_counts for the same complete filters as rows/count, with all6
+  STAGES zero-filled; count/page/group run in one D1 batch. Kanban distinguishes loaded/global totals
+  and truthfully falls back to page-only if absent/bad. No new schema or write capability. Demo adapts
+  these exact contracts before pagination, keeps money exact, shows format5/migration0011 as simulated,
+  and renders report money as currency/decimal without exchange or floating-point conversion.
+  CRM: explicit Complete/Reopen actions distinct from batch selection; internal detail chevrons;
+  actual inbox excerpts safely escaped/truncated; Activity defaults to occurred_at/desc; preferences
+  precede compact identity; Users shows real last sign-in. Table/header density, source sync semantics,
+  human schedule intervals, quote numeric alignment and accurate security/health labels are refined.
+  Agent: desktop composer fits the workspace; mobile uses real conversation selector instead of a
+  tall history block;3 optional starter buttons only fill/focus. New returned conversation IDs sync
+  immediately into picker/history without extra GETs; rejected navigation retains the accepted picker.
+  A verified model-settings-change defect was fixed: visible provider/host/model now refresh before
+  re-confirmation; original versions/key/role/ack boundaries are intact. Context scrolls separately
+  while Ask remains reachable; sample targets explicitly state no external model calls.
+  Root owns shared CSS/intelligence/pipeline repository/icons/CI/rollout; admin_experience owns core
+  CRM UI; backend_core owns Reports/Operations/Demo and independent source probes; research_quality
+  owns independent real SQLite + actual emitted UI gates. New tests join CI and portable suite lists.
+  Local actual UI: scoped report creation and filter returns exactly its saved APAC/USD report; reversed
+  dates preserve8 rows/URL/fields then correct to1 match; bad query resets via Clear filters. Desktop
+  Agent Ask bottom563 at viewport673; expanded context Ask591 while consent/target remain scrollable.
+  At390x844 all3 starters visible and Ask764; cancelled A-to-B keeps A and its draft. Desktop seven
+  core pages retain no horizontal overflow; Settings team header moved689->542px. Demo-only UI actions
+  created no production business records and did not call an external model.
+  Final gates pass:20 preserved suites, report19/19, independent polish27/27, navigation49/49,
+  Demo35/35 and compiled startup7/7. Astro build/verify:all (baseline143 report-only suspects),
+  agent/deploy gates and whitespace pass; public/Shop byte diffs0. Next: release .16 and verify exact deployed assets, then continue analysis
+  views, record editors and EN/ZH responsive/error detail work until >=09:43:44 UTC. Revert this batch
+  to roll back; D1/R2/KV/Shop/credential bindings and live business data have not been replaced.
+
 - **Continuous UI polish started 2026-11-04 05:43:44 UTC; owner requests >=4 hours:** minimum finish
   09:43:44 UTC / 17:43:44 SGT. Active goal includes the other22 modules after navigation; do not
   stop at this navigation release or a report. Root-only browser, disjoint code owners and independent
   checks continue; evidence/worklog stays outside Git in outputs/admin-secondary-nav-20261104.
 
-- **Navigation .15 LOCAL VERIFIED; rollout pending:** supersedes the owner-rejected .14 single-rail
+- **Navigation .15 LIVE VERIFIED (ed67cc6; CI41782616492; production12/12):** supersedes the owner-rejected .14 single-rail
   hover behavior. Direct authenticated Alibaba inspection plus read-only public menu reference
   confirmed independent current and hover selections, expanded primary+temporary secondary as one
   region, 10ms hover switching/200ms dismissal. Proprietary code/assets were not copied. GYUTRON

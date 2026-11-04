@@ -140,6 +140,11 @@ jobs:
       - name: Verify shared SVG icons and exact chart presentation
         working-directory: ${{ github.workspace }}
         run: node scripts/test-admin-icons.mjs
+      - name: Verify report scopes and professional workspace interactions
+        working-directory: ${{ github.workspace }}
+        run: |
+          node scripts/test-operations-report-filters.mjs
+          node scripts/test-admin-polish.mjs
       - name: Verify complete compiled workspace startup
         working-directory: ${{ github.workspace }}
         run: npm run check:admin-startup

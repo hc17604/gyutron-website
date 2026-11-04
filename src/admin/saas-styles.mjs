@@ -911,4 +911,78 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
 @media(max-width:1024px){.sidebar .workspace-nav{scrollbar-width:auto}.sidebar .workspace-nav::-webkit-scrollbar{width:5px}.sidebar .workspace-nav::-webkit-scrollbar-track{background:#171b24}.sidebar .workspace-nav::-webkit-scrollbar-thumb{background:#535e70;border:0;border-radius:0}}
 @media(pointer:coarse){.sidebar .nav-section>a,.sidebar .nav-group-items>a,.sidebar .nav-group-title,.sidebar .sidebar-footer>a,.sidebar .signout-button{min-height:44px}}
 @media(pointer:coarse) and (min-width:1025px){.sidebar .nav-section>a,.sidebar .nav-group-items>a,.sidebar .nav-group-title{height:44px;max-height:44px}.sidebar .sidebar-footer>a,.sidebar .sidebar-identity,.sidebar .signout-button{height:44px;min-height:44px;max-height:44px}.navigation-preview a{height:44px;min-height:44px}}
+
+/* Workspace detail pass: clear actions, denser records, and an always-reachable composer. */
+.task-completion-action{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:auto;height:28px;min-width:76px;border:1px solid transparent;background:transparent;color:#697689;vertical-align:middle;margin-right:8px;padding:4px 7px}.task-completion-label{font-size:11px;line-height:18px;white-space:nowrap}
+.task-completion-action .ui-icon{width:16px;height:16px;stroke-width:1.8}
+.task-completion-action:hover,.task-completion-action:focus-visible{background:var(--button-purple-light);border-color:var(--button-purple-deep);color:var(--button-purple-deep)}
+.task-completion-action:disabled{cursor:wait;opacity:.55}
+.crm-batch-select{accent-color:var(--button-purple-deep)}
+.pipeline-scope-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid var(--line);border-bottom:0;background:#fff;font-size:12px;line-height:18px}
+.pipeline-scope-summary strong{font-weight:550}.pipeline-scope-summary span{color:var(--muted)}
+.kanban-count{color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:0;font-weight:500}
+.activity-type-label,.filter-order-hint{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.activity-type-label .ui-icon{width:16px;height:16px;stroke-width:1.7;color:#758092}
+.activity-date{font-variant-numeric:tabular-nums;white-space:nowrap}
+.filter-order-hint{font-size:11px;line-height:18px;color:var(--muted);margin-left:auto}.filter-order-hint .ui-icon{width:13px;height:13px}
+.intake-message-preview{display:flex;flex-direction:column;gap:3px;max-width:420px;min-width:220px;margin-top:5px;line-height:17px;white-space:normal;overflow:visible}
+.intake-message-preview .intake-subject{font-weight:500;font-size:12px;color:#485365;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.intake-message-preview>span{font-size:12px;color:var(--muted);white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow-wrap:anywhere}
+.quote-list-table th:nth-child(5),.quote-list-table td:nth-child(5){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.quote-list-table td:nth-child(4){font:12px/20px var(--font-mono);color:#566274;letter-spacing:.02em}
+.admin-event-label{display:block;font-weight:500}.admin-event-code{display:block;margin-top:4px;font:11px/16px var(--font-mono);color:var(--muted)}
+.knowledge-source-label{display:inline-block;max-width:280px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;vertical-align:middle;color:var(--muted)}
+.ops-filter-error{flex:0 0 100%;width:100%;padding:10px 12px;border-left:2px solid var(--danger);background:#fff7f8;color:var(--danger);font-size:12px;line-height:18px}.ops-filter-error[hidden]{display:none}
+.agent-conversation-picker{display:none}
+.agent-starters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:22px;text-align:left;max-width:780px;width:100%}
+.agent-starter{display:flex;align-items:center;gap:10px;min-height:56px;padding:12px;border:1px solid var(--line);background:#fff;font-size:12px;line-height:18px;color:#4a5567;text-align:left}
+.agent-starter>span{flex:1}.agent-starter>.ui-icon{width:17px;height:17px;stroke-width:1.7;flex:none}.agent-starter>.ui-icon:last-child{width:14px;height:14px;color:#8a94a3}
+.agent-starter:hover,.agent-starter:focus-visible{border-color:#b9c1ce;background:#f8f9fb;color:var(--ink)}
+@media(min-width:1025px){
+ #workspace-main{padding-top:28px}.page-heading{margin-bottom:20px}
+ #workspace-page[data-view-kind=list]>.page-heading .page-description,#workspace-page[data-view-kind=board]>.page-heading .page-description{display:none}
+ #workspace-page[data-view-kind=list]>.page-heading,#workspace-page[data-view-kind=board]>.page-heading{align-items:center;margin-bottom:18px}
+ .crm-viewbar{min-height:40px;padding-top:2px;padding-bottom:2px}.crm-viewtabs button{min-height:36px}
+ #workspace-page[data-view-kind=list]>.filter-toolbar,#workspace-page[data-view-kind=board]>.filter-toolbar{padding-top:10px;padding-bottom:10px}
+ .data-panel td{padding-top:11px;padding-bottom:11px}.cell-sub{margin-top:2px;line-height:17px}
+ body[data-workspace-tab=agent] .workspace-content{height:calc(100dvh - 16px);min-height:0}
+ body[data-workspace-tab=agent] #workspace-main{display:flex;flex-direction:column;min-height:0;overflow:hidden;padding-top:24px;padding-bottom:20px}
+ body[data-workspace-tab=agent] #workspace-page{display:flex;flex:1;flex-direction:column;min-height:0}
+ body[data-workspace-tab=agent] .page-heading{flex:none;margin-bottom:20px}
+ body[data-workspace-tab=agent] .workspace-footer{flex:none}
+ body[data-workspace-tab=agent] .wb-chat{flex:1;min-height:0;align-items:stretch}
+ body[data-workspace-tab=agent] .wb-chat>section.data-panel{display:flex;flex-direction:column;min-height:0;margin:0;overflow:hidden}
+ body[data-workspace-tab=agent] .wb-chat .panel-heading{flex:none}
+ body[data-workspace-tab=agent] .wb-chat .wb-list{flex:1;min-height:0;max-height:none;overflow-y:auto}
+ body[data-workspace-tab=agent] .wb-chat-main{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+ body[data-workspace-tab=agent] .wb-chat-messages{flex:1;min-height:100px;max-height:none;overflow-y:auto;padding:24px}
+ body[data-workspace-tab=agent] .wb-chat-messages>.empty-state{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:100%;padding:16px 20px;text-align:left}
+ body[data-workspace-tab=agent] .wb-chat-form{display:flex;flex-direction:column;gap:8px;flex:none;max-height:65%;overflow:hidden;padding:14px 18px}
+ body[data-workspace-tab=agent] .wb-chat-form textarea{min-height:72px;max-height:160px;padding:11px 12px}
+ body[data-workspace-tab=agent] .wb-chat-controls{flex:none;gap:10px;margin-top:2px;flex-wrap:wrap}
+ body[data-workspace-tab=agent] .wb-chat-controls>div{display:flex;flex-wrap:wrap;gap:8px 14px}
+ body[data-workspace-tab=agent] .wb-chat-controls .button{margin-left:auto;min-height:36px}
+ body[data-workspace-tab=agent] .wb-chat-form>details{flex:0 1 auto;min-height:18px;max-height:180px;overflow-y:auto;margin-top:0}body[data-workspace-tab=agent] .wb-chat-form>details>summary{position:sticky;top:0;z-index:1;background:#fafbfc}
+ body[data-workspace-tab=agent] .wb-chat-form [data-form-error]:empty{display:none}
+ body:is([data-workspace-tab=security],[data-workspace-tab=health],[data-workspace-tab=backup],[data-workspace-tab=license]) .wb-properties{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 26px;padding:20px 22px}
+ .model-connection-form .wb-properties{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 24px;padding:20px 0}
+ .settings-preferences-primary,.settings-identity-compact{grid-template-columns:220px minmax(0,1fr);gap:24px;padding:18px 0;margin-bottom:18px}
+ .settings-preferences-primary .settings-properties{display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;padding:0}
+ .settings-preferences-primary .form-field{width:240px;flex:none}.settings-preferences-primary .section-note{flex:1;min-width:200px;margin-top:26px}
+ .settings-identity-compact .settings-properties{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding:0}
+ .settings-identity-compact .property{padding-bottom:0}.settings-identity-compact .settings-description p{font-size:12px;line-height:18px}
+}
+@media(max-width:1024px){
+ .pipeline-scope-summary{align-items:flex-start;flex-direction:column;gap:4px}.filter-order-hint{margin-left:0}
+ .agent-conversation-picker{display:block;width:100%;font-size:12px;color:var(--muted)}.agent-conversation-picker>span{display:block;margin-bottom:6px}.agent-conversation-picker select{min-height:44px}
+ body[data-workspace-tab=agent] .wb-chat>section.data-panel{display:none}
+ body[data-workspace-tab=agent] .wb-chat-messages{height:220px;min-height:160px;max-height:35dvh;padding:18px}
+ body[data-workspace-tab=agent] .wb-chat-messages>.empty-state{min-height:0;padding:8px 4px;text-align:left}body[data-workspace-tab=agent] .wb-chat-messages>.empty-state>h2{font-size:16px;line-height:22px}body[data-workspace-tab=agent] .wb-chat-messages>.empty-state>p{display:none}
+ body[data-workspace-tab=agent] .wb-chat-form{padding:16px}
+ body[data-workspace-tab=agent] .wb-chat-form textarea{min-height:72px}
+ .agent-starters{grid-template-columns:1fr;margin-top:10px;gap:6px}.agent-starter{min-height:44px;padding:10px 12px}
+ .task-completion-action{min-width:36px;min-height:36px;margin-right:7px}.intake-message-preview{min-width:180px;max-width:300px}
+}
+@media(max-width:767px){.settings-identity-compact .wb-properties{padding:16px;gap:14px}.admin-event-code{max-width:240px;overflow-wrap:anywhere}.knowledge-source-label{max-width:180px}}
+@media(pointer:coarse){.task-completion-action{min-width:44px;min-height:44px}.agent-starter{min-height:44px}}
 `;

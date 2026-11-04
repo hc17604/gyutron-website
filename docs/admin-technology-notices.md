@@ -13,7 +13,7 @@ The same files live under `astro/public/` so normal brand builds preserve these 
 Navigation and action icons use the official Lucide SVG paths pinned to revision
 `aa0b77386c07630e5f1a9f877fd3ba4b2a4a1558` of https://github.com/lucide-icons/lucide.
 The full upstream copyright/license text is embedded in `src/admin/icons.mjs`, including the
-Lucide ISC notice and Feather-derived MIT notice. The 39 added action icons record their upstream
+Lucide ISC notice and Feather-derived MIT notice. The 41 action icons plus two semantic navigation aliases record their upstream
 filenames and original SVG SHA-256 values in `ADMIN_ICON_SOURCES`. Application aliases are
 `archive-restore` → `archive-arrow-up.svg`, `trash-2` → `trash.svg`, `filter` → `funnel.svg`, and
 `circle-help` → `circle-question-mark.svg`. Geometry remains the pinned upstream data; the workspace
