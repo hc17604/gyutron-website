@@ -1171,6 +1171,8 @@ body[data-workspace-tab=memory] .wb-viewbar>button.button{border-color:transpare
 .quote-status-filter[aria-pressed=true]{font-weight:650}
 .quote-status-filter:focus-visible{outline:2px solid var(--button-purple-deep);outline-offset:2px}
 .operations-record-name{font:inherit;font-weight:550;text-align:left;text-decoration:none}
+.quote-mobile-customer,.quote-mobile-currency{display:none}
+.record-list-scroll:has(>.quote-list-table){scroll-padding-block-start:44px;scroll-padding-inline-start:260px}
 .operations-context-help{padding:12px 18px;font-size:12px;line-height:20px;color:var(--muted)}
 .operations-context-help>summary{width:fit-content;max-width:100%;min-height:32px;cursor:pointer;color:#59616f;font-weight:500;list-style-position:inside}
 .operations-context-help[open]>summary{margin-bottom:8px}
@@ -1178,6 +1180,14 @@ body[data-workspace-tab=memory] .wb-viewbar>button.button{border-color:transpare
 .knowledge-collector-setup>summary{width:fit-content;max-width:100%;min-height:36px;cursor:pointer;font-size:13px;font-weight:550;color:#59616f;align-content:center;list-style-position:inside}
 .backup-recovery-note{padding:0 4px;font-size:12px;line-height:20px;color:var(--muted)}
 @media(max-width:767px){
+ .crm-viewbar .crm-viewtabs{scrollbar-width:none}
+ .crm-viewbar .crm-viewtabs::-webkit-scrollbar{display:none}
+ .quote-list-table .quote-customer-column,.quote-list-table .quote-currency-column{display:none}
+ .quote-list-table .cell-primary,.quote-list-table th.record-list-identity{width:140px;min-width:140px;max-width:140px}
+ .record-list-scroll:has(>.quote-list-table){scroll-padding-inline-start:140px}
+ .quote-list-table th,.quote-list-table td{padding-left:8px;padding-right:8px}
+ .quote-list-table .quote-mobile-customer{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-top:3px;white-space:normal;overflow-wrap:anywhere;font-size:12px;line-height:18px;font-weight:400;color:#59616f}
+ .quote-list-table .quote-mobile-currency{display:block;font-size:10px;line-height:16px;font-weight:500;color:#68717d}
  body[data-workspace-tab=pipeline] .filter-toolbar>.filter-group{flex:1 1 100%;width:100%}
  body[data-workspace-tab=pipeline] .filter-toolbar>.view-toggle{align-self:flex-start;margin-left:0}
  .filter-toolbar .view-toggle button{min-height:44px;min-width:64px;font-size:12px}

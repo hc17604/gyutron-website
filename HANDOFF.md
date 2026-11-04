@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **IN PROGRESS — content-first workspace .26:** user defines the problem as excess frames/words
+- **IN PROGRESS — content-first workspace .26/.27 final pass:** user defines the problem as excess frames/words
   and too little core content/interaction, requesting a full hour of implementation and verification.
   Started2026-11-04 14:02:56UTC; do not finish before15:02:56UTC. Baselinecf05c44 equals origin/main;
   tracked tree was clean. Root owns sharedCSS/version/docs/CI and actual browser QA, worker owns
@@ -44,7 +44,27 @@
   collector disclosure/download target/command and visible boundaries verified, then Test restored.
   Source suites reports19/polish55/analytics26/quote5/operations4/intelligence7/Demo41/icons12/chart53
   and compiled startup7 pass (229 cases). New3 suites are included in npm/CI maintenance contract.
-  Next: final build/gates and source release26, live asset/interaction verification, continue hour review.
+  .26 sourcea162f4e is LIVE VERIFIED: CI41848125830 success, production26-checks.json14/14 and
+  all19 assets match committed Wrangler output. Actual live Overview screenshot21 matches before
+  width1901; independent visual comparison confirms core records appear sooner and repeated frames
+  are reduced. Live Analytics Paid orders→Next point→Zoom→Apply chart dates changes applied scope
+  to10-11..10-30 and exact accessible table has20 rows. Local Test customer→new linked USD12400
+  opportunity→4x3100 quote→save→issue retains exact total/links and fixed revision, no real records.
+  Phase2 baselinea162f4e: .27 adds guarded task responses/focus, keyboard quote-filter focus/scroll,
+  mobile quote customer/currency regrouping and quiet but still scrollable saved-view tabs. Actual
+  ZH390 defaults show title/customer/status/full exact amount; EN320 shows full status with no root
+  overflow. Filter/clear returns focus to DEMO-QT-REV-002; hidden tab scrollbar still permits11.6px
+  native keyboard reveal. Independent reviewer caught same-page new input loss in the first task
+  refresh guard; it is fixed and the originally failing independent case now passes. A new connected
+  focus inside the page prevents destructive task refresh; only a valid matching/advanced authoritative
+  record can update the original action, without guessing counters. Task late responses do not refresh
+  a new module/form/load. Quote keyboard intent is one-shot/cancelable; nearest reveal respects sticky
+  header/identity column after reordering. Actual last-record clear initially placed its focus1349px
+  below viewport; fixed desktop scroll703.6 gives645.5..675.5, and ZH390 gives682..726 within229..736.
+  Source suites now reports19/polish62/analytics26/quote14/operations4/intelligence7/Demo41/icons12/
+  chart53/startup7 pass (245 cases), with independent polish62/quote14 and the original failing case
+  confirmed. Round-two25-state affected-module patrol passes with mobile/desktop field visibility.
+  Next: build/gates/release27, production and final hour acceptance.
 
 - **Shared workspace chrome .25 — LIVE VERIFIED:** user requests a consistent finish
   across page headings/actions and topbar, then removal of the entire GYUTRON / module breadcrumb.

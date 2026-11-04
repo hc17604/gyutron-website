@@ -16,7 +16,7 @@ import {
 import { timingSafeEqual } from '../platform/security/hash.mjs';
 import { normalizeWorkspaceLanguage } from '../admin/locale-policy.mjs';
 
-const BUILD = '2026.11.04.26';
+const BUILD = '2026.11.04.27';
 const LOGIN_COOKIE = 'gy_workspace_login';
 const READ = new Set(['GET', 'HEAD']);
 const SECURITY_HEADERS = {
