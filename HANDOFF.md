@@ -16,6 +16,32 @@
 
 ## Fast takeover snapshot
 
+- **Secondary navigation .13 LOCAL VERIFIED; rollout pending (2026-11-04):** Alibaba screenshots
+  supplied by the owner are the selected visual target. Replaced the inline directory with a white224px
+  full-height secondary panel flush to graphite primary navigation and content; title18px, groups12px,
+  text-only14px/42px rows, neutral selected row, full-title truncation, no rounded surfaces. Groups match
+  Store7 / Data analysis5 / Data AI1 / Campaigns1 / Resources2 (EN/default+zh). Primary defaults to72px
+  icon rail in analytics on desktop and expands to232px via footer control; same22 original anchors,
+  permissions/current states/counts preserved, no copied nodes/storage/business calls. Official full
+  logo remains in the expanded header on white. Sidebar/secondary independently scroll; same-view
+  reload preserves submenu scroll/focus via stable aside/link/select nodes. Main loader preserves
+  analytics wrapper; menus reveal active items only within their own scroll. At<=1100 retain native
+  grouped16-option selector; primary mobile drawer retains inert/Escape/focus-return behavior.
+  Actual content-width container queries prevent amounts breaking when both desktop menus expand;
+  extreme values stay complete with local horizontal access. 180ms rail motion respects reduced motion.
+  Root owns shell/layout/main styles/loader/release; admin_experience owns analytics views/client/CSS;
+  research_quality owns independent behavior regression; backend_core independently inspected reference
+  and local screenshots. No API/schema/binding/auth/Shop/main-brand route edits. Historical artifacts
+  untouched; evidence outside Git outputs/admin-secondary-nav-20261104. Node emitted interactions36/36,
+  old Test mode35/35, full real compiled startup7/7 pass; original42 adviser and37 adviser-demo contracts
+  retained. Browser1440 expanded/rail,1280x600 tail links+focus,390zh/320en all16 views no page overflow,
+  no nonzero corners/errors. Native mouse confirmed submenu scroll independent of page; programmatic
+  locator auto-scroll can also move document and is not evidence of application scroll behavior.
+  Mobile native keyboard changes view, drawerEscape returns focus to opener. Mandatory Astro
+  build/verify:all pass (baseline report-only143suspects), root deploy:check byte diff0; Shop diff0.
+  Next: commit explicit reviewed source, push, observe CI/Cloudflare and verify .13 deployed bytes,
+  real client startup and final screenshots, then regenerate the tested standalone package.
+
 - **Data Adviser .12 LIVE AND VERIFIED (2026-11-04 SGT):**
   Fresh root-only Alibaba inspection covered all13 business entries and concrete Data Map27-indicator
   selection/board-table, Shop KPI/product tabs, Market sorting and Flow Trend popup interactions.

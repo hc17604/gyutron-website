@@ -1,6 +1,6 @@
 # Data Adviser implementation and reference map
 
-Source release: `2026.11.04.12`. Release verification is recorded separately in `HANDOFF.md`.
+Data implementation release: `2026.11.04.12`; navigation revision: `2026.11.04.13`. Release verification is recorded separately in `HANDOFF.md`.
 The authenticated Alibaba Data Adviser was inspected directly on 2026-11-04. Screenshots are
 private local reference evidence under `outputs/admin-data-adviser-20261104/references` outside Git.
 Its account data and proprietary assets are not included in this implementation.
@@ -45,3 +45,11 @@ No public-site tracking, host routing, payment, binding or credential changes ar
 Test mode is an in-memory implementation of the same catalog, filters, charts, records, CSV import
 and export contracts. New fields/actions/views must be updated there and independently validated in
 the same change. Network, persistent storage and fallback to live business endpoints are prohibited.
+
+The .13 navigation follows the supplied Alibaba expanded/rail references: graphite primary rail,
+224px independent white secondary panel, Store / Data analysis / Data AI / Campaigns / Resources,
+14px text-only links, neutral square selected rows, stable navigation nodes and independent scrolling.
+The main rail expands/restores the same 22 routes; responsive analysis selection keeps all 16 views.
+Below 1101px the existing native grouped selector avoids nested mobile drawers. KPI columns follow
+available content width, including when both desktop menus are expanded. Navigation preferences are
+in-memory; the shared UI behaves the same in live and Test mode without business requests or storage.

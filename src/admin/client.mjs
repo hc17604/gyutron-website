@@ -192,7 +192,7 @@ export const ADMIN_CLIENT = String.raw`(function workspaceClient() {
   function exportButton(resource) { if(!can('export'))return ''; const params=new URLSearchParams(state.params);params.delete('page');params.delete('limit');params.delete('record');params.delete('record_type');params.set('resource',resource); return state.testMode?'<button class="button" type="button" data-demo-action="export" data-demo-path="export?'+attr(params.toString())+'">'+icon('download')+' '+esc(t('export'))+'</button>':'<a class="button" href="/admin/api/export?'+attr(params.toString())+'">'+icon('download')+' '+esc(t('export'))+'</a>'; }
   async function loadPage() {
     const id=++state.loadId; if(state.controller)state.controller.abort();state.controller=new AbortController();
-    page.setAttribute('aria-busy','true'); page.innerHTML=heading(t('nav.'+state.tab),t('description.'+state.tab))+'<div class="loading-state"><span class="loading-bar" aria-label="'+attr(t('loading'))+'"></span></div>';
+    page.setAttribute('aria-busy','true'); if(state.tab!=='analytics'||!page.querySelector('.analytics-workspace'))page.innerHTML=heading(t('nav.'+state.tab),t('description.'+state.tab))+'<div class="loading-state"><span class="loading-bar" aria-label="'+attr(t('loading'))+'"></span></div>';
     try {
       if(state.tab==='overview'){const result=await api('dashboard',{signal:state.controller.signal});if(id!==state.loadId)return;state.pageData=unwrap(result);renderOverview(state.pageData);}
       else if(state.tab==='settings'){await loadSettings(id);}
