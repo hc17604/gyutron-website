@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Collapsed navigation fix .21 — locally verified, release pending:** fixed native scrollbar
+- **Collapsed navigation fix .21 LIVE VERIFIED (0ca0683; CI41823092119 success; production14/14):** fixed native scrollbar
   squeezing the 60px icon rail when the administration group remains open; compact rows have zero
   horizontal padding and centered glyphs. Unread counts become a 5px square indicator only when
   compact, keeping the full accessible count and expanded numeric badge. Compact mark32->36px
@@ -27,8 +27,13 @@
   Measured1025x673 retains60px compact rail;1024x673/390x844 use the original drawer/full logo,
   with no body overflow. EN/ZH and zero sidebar radii verified. Independent source review passed.
   Astro build/verify:all, agent/deploy gates, emitted chart/navigation52, demo41, icon12, startup7
-  and independent polish46 all pass. Evidence/logs: outputs/admin-collapse-fix-20261104 and
-  .wrangler/rail21-*. Next: push candidate, verify CI/live21/production assets and real browser.
+  and independent polish46 all pass. Two independent source reviews passed. Live21 at measured
+  1920x841 confirms43px row contains20px SVG,36px mark,5px unread indicator, administration open
+  and nav905/699px; real pointer exit closes the expanded menu/preview and restores the compact rail.
+  All19 deployed admin assets match the committed Wrangler build; downloaded live JS startup7/7.
+  Screenshot: outputs/admin-collapse-fix-20261104/live21-verified.jpg; production-checks.json records
+  14/14 with no synthetic business records created. Logs: .wrangler/rail21-*. Own8801 preview stopped;
+  viewport reset. Published tab remains in Test mode for inspection. Scope complete; no pending work.
 
 - **Phone toolbar batch .20 LIVE VERIFIED (154a6ff; CI41807245161; production14/14):** Advanced/Columns have44px phone glyph controls
   with full translated accessible names, visual-only hidden labels and escaped titles. Save view keeps
