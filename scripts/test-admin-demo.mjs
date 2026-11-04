@@ -8,7 +8,9 @@ import {readFileSync} from 'node:fs';
 import {DatabaseSync} from 'node:sqlite';
 import {ensureRules,updateRule} from '../src/platform/operations/rules.mjs';
 import {saveAutomation,enqueueRun} from '../src/platform/operations/scheduler.mjs';
-import {createQuote,archiveQuote,issueQuote} from '../src/platform/quotes/repository.mjs';
+import {createQuote,archiveQuote,issueQuote,updateQuote,getQuote,quoteSnapshot} from '../src/platform/quotes/repository.mjs';
+import {handleWorkspaceExperience} from '../src/api/workspace-experience.mjs';
+import {previewImport,commitImport} from '../src/platform/operations/imports.mjs';
 import {readWorkspaceTestMode,createWorkspaceTransport,switchWorkspaceTestMode} from '../src/admin/test-mode.mjs';
 import {STAGES,CURRENCIES,CUSTOMER_STATUSES,TASK_STATUSES,TASK_PRIORITIES,ACTIVITY_TYPES} from '../src/platform/crm/schema.mjs';
 import {STATUS_VALUES} from '../src/platform/schemas.mjs';
@@ -50,7 +52,7 @@ const quoteInput=(customer,overrides={})=>({customer_id:id(customer),title:'Inde
 
 function liveDemoParityFixture(){
   const sqlite=new DatabaseSync(':memory:');
-  for(const name of ['0001_init','0002_order_intents','0003_admin_workspace','0004_admin_identity','0005_crm_relation_guards','0006_operations_quotes','0007_operations'])sqlite.exec(readFileSync(new URL('../migrations/'+name+'.sql',import.meta.url),'utf8'));
+  for(const name of ['0001_init','0002_order_intents','0003_admin_workspace','0004_admin_identity','0005_crm_relation_guards','0006_operations_quotes','0007_operations','0009_workspace_experience'])sqlite.exec(readFileSync(new URL('../migrations/'+name+'.sql',import.meta.url),'utf8'));
   const db={prepare(sql){return{sql,values:[],bind(...values){this.values=values;return this;},async first(){return sqlite.prepare(sql).get(...this.values)||null;},async all(){return{success:true,results:sqlite.prepare(sql).all(...this.values)};},async run(){return{success:true,meta:{changes:Number(sqlite.prepare(sql).run(...this.values).changes)}};}};},async batch(statements){sqlite.exec('BEGIN');try{const results=statements.map(statement=>/^\s*(SELECT|PRAGMA)\b/i.test(statement.sql)?{success:true,results:sqlite.prepare(statement.sql).all(...statement.values)}:{success:true,meta:{changes:Number(sqlite.prepare(statement.sql).run(...statement.values).changes)}});sqlite.exec('COMMIT');return results;}catch(error){sqlite.exec('ROLLBACK');throw error;}}};
   return{db,sqlite,owner:{id:'owner',name:'Synthetic owner',role:'owner'},close:()=>sqlite.close()};
 }
@@ -488,6 +490,66 @@ await test('an archived draft rejects issue without changing amounts or version,
 });
 
 async function oneResult(promise){return(await promise).data;}
+
+async function liveContact(h,path,method='GET',body){
+  const url=new URL('https://synthetic.example/admin/api/workspace/contacts'+path),response=await handleWorkspaceExperience(new Request(url,{method,headers:{origin:url.origin,'content-type':'application/json'},...(body?{body:JSON.stringify(body)}:{})}),{DB:h.db},h.owner,url),packet=await response.json();assert.ok(response.ok,JSON.stringify(packet));return packet.data;
+}
+
+await test('new quotations use the active primary contact without mixing in legacy email or phone, and preserve explicit recipient fields',async()=>{
+  const h=liveDemoParityFixture(),w=fresh();
+  try{
+    const at=new Date(now()).toISOString(),legacy={name:'Contact default fixture',contact_name:'Former Buyer',email:'former@synthetic.example',phone:'former-phone'};
+    h.sqlite.prepare('INSERT INTO crm_customers(public_id,name,contact_name,email,phone,owner_id,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?)').run('CUS-CONTACT-DEFAULT',legacy.name,legacy.contact_name,legacy.email,legacy.phone,'owner',at,at);
+    const customer=await oneResult(send(w,'customers','POST',legacy));
+    for(const target of ['live','demo']){
+      const customer_id=target==='live'?'CUS-CONTACT-DEFAULT':id(customer),contact={customer_id,name:'Former Buyer',email:legacy.email,phone:legacy.phone,is_primary:true};
+      const former=target==='live'?await liveContact(h,'','POST',contact):await oneResult(send(w,'workspace/contacts','POST',contact));
+      const current={customer_id,name:'Current Purchasing Lead',email:'',phone:'',is_primary:true};
+      if(target==='live'){await liveContact(h,'','POST',current);const latest=await liveContact(h,'/'+id(former));await liveContact(h,'/'+id(former),'DELETE',{version:latest.version});}
+      else{await send(w,'workspace/contacts','POST',current);const latest=await one(w,'workspace/contacts/'+id(former));await send(w,'workspace/contacts/'+id(former),'DELETE',{version:latest.version});}
+    }
+    const input=quoteInput({public_id:'CUS-CONTACT-DEFAULT',name:legacy.name}),live=await createQuote(h.db,{},input,h.owner),demo=await oneResult(send(w,'quotes','POST',{...input,customer_id:id(customer)}));
+    for(const row of [live,demo]){assert.equal(row.recipient_name,'Current Purchasing Lead');assert.equal(row.recipient_email,'');assert.equal(row.recipient_phone,'');assert.equal(row.recipient_company,legacy.name);}
+    const selectedLive=(await liveContact(h,'?customer_id=CUS-CONTACT-DEFAULT&limit=1'))[0],selectedDemo=(await list(w,'workspace/contacts?customer_id='+id(customer)+'&limit=1')).data[0];assert.equal(selectedLive.name,'Current Purchasing Lead');assert.equal(selectedDemo.name,selectedLive.name);
+    const explicit={...input,recipient_name:'Explicit Recipient',recipient_email:'explicit@synthetic.example',recipient_phone:'',recipient_company:'Explicit Company'},explicitLive=await createQuote(h.db,{},explicit,h.owner),explicitDemo=await oneResult(send(w,'quotes','POST',{...explicit,customer_id:id(customer)}));
+    for(const row of [explicitLive,explicitDemo])for(const key of ['recipient_company','recipient_name','recipient_email','recipient_phone'])assert.equal(row[key],explicit[key]);
+    const renamed={version:selectedLive.version,name:'Later CRM Contact',email:'later@synthetic.example',phone:'later-phone'};await liveContact(h,'/'+id(selectedLive),'PATCH',renamed);await send(w,'workspace/contacts/'+id(selectedDemo),'PATCH',{...renamed,version:selectedDemo.version});
+    const updatedLive=await updateQuote(h.db,live.public_id,{version:live.version,title:'Edited existing draft'},h.owner),updatedDemo=await oneResult(send(w,'quotes/'+id(demo),'PATCH',{version:demo.version,title:'Edited existing draft'}));
+    for(const row of [updatedLive,updatedDemo]){assert.equal(row.recipient_name,'Current Purchasing Lead');assert.equal(row.recipient_email,'');assert.equal(row.recipient_phone,'');}
+    const issuedLive=(await issueQuote(h.db,live.public_id,{version:updatedLive.version},h.owner)).data,issuedDemo=await oneResult(send(w,'quotes/'+id(demo)+'/issue','POST',{version:updatedDemo.version}));
+    assert.equal((await quoteSnapshot(h.db,issuedLive.public_id,h.owner)).document.recipient_name,'Current Purchasing Lead');assert.equal(issuedDemo.snapshot.recipient_name,'Current Purchasing Lead');assert.equal((await getQuote(h.db,issuedLive.public_id,h.owner)).recipient_email,'');
+  }finally{h.close();}
+});
+
+await test('contact ordering matches live and legacy defaults are used only after every active contact is archived',async()=>{
+  const h=liveDemoParityFixture(),w=fresh();
+  try{
+    const at=new Date(now()).toISOString(),legacy={name:'Fallback fixture',contact_name:'Legacy Buyer',email:'legacy@synthetic.example',phone:'legacy-phone'};h.sqlite.prepare('INSERT INTO crm_customers(public_id,name,contact_name,email,phone,owner_id,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?)').run('CUS-CONTACT-FALLBACK',legacy.name,legacy.contact_name,legacy.email,legacy.phone,'owner',at,at);const customer=await oneResult(send(w,'customers','POST',legacy));
+    for(const name of ['Zulu Active','Alpha Active']){await liveContact(h,'','POST',{customer_id:'CUS-CONTACT-FALLBACK',name,email:'',phone:'',is_primary:false});await send(w,'workspace/contacts','POST',{customer_id:id(customer),name,email:'',phone:'',is_primary:false});}
+    const input=quoteInput({public_id:'CUS-CONTACT-FALLBACK',name:legacy.name}),live=await createQuote(h.db,{},input,h.owner),demo=await oneResult(send(w,'quotes','POST',{...input,customer_id:id(customer)}));assert.equal(live.recipient_name,'Alpha Active');assert.equal(demo.recipient_name,live.recipient_name);
+    for(const row of await liveContact(h,'?customer_id=CUS-CONTACT-FALLBACK'))await liveContact(h,'/'+id(row),'DELETE',{version:row.version});for(const row of (await list(w,'workspace/contacts?customer_id='+id(customer))).data)await send(w,'workspace/contacts/'+id(row),'DELETE',{version:row.version});
+    const fallbackLive=await createQuote(h.db,{},input,h.owner),fallbackDemo=await oneResult(send(w,'quotes','POST',{...input,customer_id:id(customer)}));for(const row of [fallbackLive,fallbackDemo]){assert.equal(row.recipient_name,legacy.contact_name);assert.equal(row.recipient_email,legacy.email);assert.equal(row.recipient_phone,legacy.phone);}
+    const before=h.sqlite.prepare('SELECT COUNT(*) n FROM ops_quotes').get().n,failedDb={...h.db,prepare(sql){if(sql.includes('FROM crm_contacts'))throw Error('Synthetic contact lookup unavailable');return h.db.prepare(sql);}};await assert.rejects(()=>createQuote(failedDb,{},input,h.owner),/Synthetic contact lookup unavailable/);assert.equal(h.sqlite.prepare('SELECT COUNT(*) n FROM ops_quotes').get().n,before,'A failed lookup cannot save legacy recipient details.');
+  }finally{h.close();}
+});
+
+await test('CSV customer dates and customer/order emails validate and normalize like live SQLite before import',async()=>{
+  const h=liveDemoParityFixture(),w=fresh();
+  try{
+    const at=new Date(now()).toISOString(),source='SRC-NORMALIZE-PARITY';h.sqlite.prepare("INSERT INTO ops_data_sources(id,name,kind,created_at,updated_at) VALUES(?,?,'csv_generic',?,?)").run(source,'Normalization fixture',at,at);const demoSource=await oneResult(send(w,'operations/sources','POST',{name:'Normalization fixture',kind:'csv_generic'}));
+    async function previews(entity,csv){const input={source_id:source,entity,format:'generic',csv};return[await previewImport(h.db,input,h.owner),await oneResult(send(w,'operations/imports/preview','POST',{...input,source_id:id(demoSource)}))];}
+    const invalid='customer_id,name,email,source_created_at\nBAD-DATE,First,first@synthetic.example,not-a-date\nBAD-EMAIL,Second,invalid-email,2026-11-04';
+    for(const packet of await previews('customers',invalid)){assert.equal(packet.batch.valid_rows,0);assert.equal(packet.batch.invalid_rows,2);assert.match(packet.errors[0].message,/date|timezone/i);assert.match(packet.errors[1].message,/email/i);}
+    assert.equal(h.sqlite.prepare('SELECT COUNT(*) n FROM ops_commerce_customers WHERE source_id=?').get(source).n,0);assert.equal((await list(w,'operations/records?entity=customers&source_id='+id(demoSource))).meta.total,0);
+    for(const packet of await previews('customers','customer_id,email,source_created_at\nTOO-LONG,'+'a'.repeat(185)+'@synthetic.example,2026-11-04\nINVALID-DAY,day@synthetic.example,2026-02-30')){assert.equal(packet.batch.valid_rows,0);assert.equal(packet.batch.invalid_rows,2);}
+    const corrected='customer_id,name,email,source_created_at\nBAD-DATE,First, FIRST@SYNTHETIC.EXAMPLE ,2026-11-04 08:30:00 +0800\nBAD-EMAIL,Second, SECOND@SYNTHETIC.EXAMPLE ,2026-11-04';
+    const [live,demo]=await previews('customers',corrected);for(const packet of [live,demo]){assert.equal(packet.batch.valid_rows,2);assert.equal(packet.batch.invalid_rows,0);assert.equal(packet.sample[0].email,'first@synthetic.example');assert.equal(packet.sample[0].source_created_at,'2026-11-04T00:30:00.000Z');assert.equal(packet.sample[1].source_created_at,'2026-11-04T00:00:00.000Z');}
+    const imported=await commitImport(h.db,live.batch.id,{version:live.batch.version},h.owner),demoImported=await oneResult(send(w,'operations/imports/'+id(demo.batch)+'/commit','POST',{version:demo.batch.version}));assert.equal(imported.imported_rows,2);assert.equal(demoImported.imported_rows,2);const liveCustomer=h.sqlite.prepare('SELECT email,source_created_at FROM ops_commerce_customers WHERE source_id=? AND external_id=?').get(source,'BAD-DATE'),demoCustomer=(await list(w,'operations/records?entity=customers&source_id='+id(demoSource))).data.find(row=>row.external_id==='BAD-DATE');assert.equal(demoCustomer.email,liveCustomer.email);assert.equal(demoCustomer.source_created_at,liveCustomer.source_created_at);
+    const orders='external_id,currency,total,source_created_at,email\nINVALID-ORDER,USD,1,2026-11-04,invalid-email\nVALID-ORDER,USD,1,2026-11-04, BUYER@SYNTHETIC.EXAMPLE ';
+    for(const packet of await previews('orders',orders)){assert.equal(packet.batch.valid_rows,1);assert.equal(packet.batch.invalid_rows,1);assert.equal(packet.sample[1].customer_email,'buyer@synthetic.example');}
+    for(const [entity,csv] of [['order_items','external_id,order_external_id,quantity,currency,unit_price,source_created_at\nITEM,ORDER,1,USD,1,not-a-date'],['payments','external_id,order_external_id,currency,amount,source_created_at\nPAYMENT,ORDER,USD,1,not-a-date']])for(const packet of await previews(entity,csv)){assert.equal(packet.batch.valid_rows,0);assert.equal(packet.batch.invalid_rows,1);}
+  }finally{h.close();}
+});
 
 await test('all completed test operations still caused no network or storage access',()=>assert.deepEqual(attempts,[]));
 

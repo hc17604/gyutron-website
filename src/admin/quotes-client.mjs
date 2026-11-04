@@ -76,6 +76,7 @@ export function createQuotesController(deps) {
 
   function setBusy(busy,busyLabel) {model.busy=busy;page.querySelectorAll('[data-quote-editor] input,[data-quote-editor] select,[data-quote-editor] textarea,[data-quote-editor] button,.quote-editor-actions button').forEach((el)=>{if(busy){el.dataset.quoteWasDisabled=String(el.disabled);el.disabled=true;}else if(el.dataset.quoteWasDisabled!==undefined){el.disabled=el.dataset.quoteWasDisabled==='true';delete el.dataset.quoteWasDisabled;}});const button=page.querySelector('[data-quote-save]');if(button)button.textContent=q(busy?(busyLabel || 'saving'):'saveDraft');}
   async function loadCustomers(selected) {const result=await api('customers?limit=100');const rows=result.data || [];if(selected&&!rows.some((row)=>row.public_id===selected)){rows.push((await api('customers/'+encodeURIComponent(selected))).data);}return rows;}
+  async function loadRecipientCustomer(customerId,signal) {const [customerResult,contactsResult]=await Promise.all([api('customers/'+encodeURIComponent(customerId),{signal}),api('workspace/contacts?customer_id='+encodeURIComponent(customerId)+'&limit=1',{signal})]);const customer=customerResult.data,contact=contactsResult.data[0];return {...customer,contact_name:contact?contact.name:customer.contact_name,email:contact?contact.email:customer.email,phone:contact?contact.phone:customer.phone};}
   async function loadOpportunities(customerId,selected) {const result=await api('opportunities?limit=100'+(customerId?'&customer_id='+encodeURIComponent(customerId):''));const rows=result.data || [];if(selected&&!rows.some((row)=>row.public_id===selected)){rows.push((await api('opportunities/'+encodeURIComponent(selected))).data);}return rows;}
   async function loadPage(params,signal) {
     clearTimeout(calculateTimer);const context=++model.loadId;model.calcId++;model.dirty=false;model.busy=false;model.currentHash=location.hash;model.record=null;model.editing=false;
@@ -83,9 +84,9 @@ export function createQuotesController(deps) {
       if(!can('write'))throw new Error(q('noPermission'));
       const customerId=params.get('customer_id') || '';const opportunityId=params.get('opportunity_id') || '';
       const quote={title:q('defaultTitle'),currency:'USD',customer_id:customerId,opportunity_id:opportunityId,seller_name:state.workspaceName || 'GYUTRON',items:[],discount_minor:0,tax_minor:0,shipping_minor:0,status:'draft'};
-      const [customers,opportunities]=await Promise.all([loadCustomers(customerId),loadOpportunities(customerId,opportunityId)]);
+      const [customers,opportunities,recipient]=await Promise.all([loadCustomers(customerId),loadOpportunities(customerId,opportunityId),customerId?loadRecipientCustomer(customerId,signal):null]);
       if(context!==model.loadId||state.tab!=='quotes')return;model.customers=customers;model.opportunities=opportunities;
-      const customer=model.customers.find((row)=>row.public_id===customerId);if(customer)Object.assign(quote,{recipient_company:customer.name,recipient_name:customer.contact_name,recipient_email:customer.email,recipient_phone:customer.phone});
+      if(recipient)Object.assign(quote,{recipient_company:recipient.name,recipient_name:recipient.contact_name,recipient_email:recipient.email,recipient_phone:recipient.phone});
       const opportunity=model.opportunities.find((row)=>row.public_id===opportunityId);if(opportunity){quote.title=opportunity.title;quote.currency=opportunity.currency || 'USD';}
       renderEditor(quote);return;
     }
@@ -152,20 +153,23 @@ export function createQuotesController(deps) {
   async function removeLine(index) {if(model.busy)return;captureRows();if(model.rawItems.length<=1)return toast(q('minimumLines'),true);if(!await confirmAction(q('removeLineConfirm'),q('removeLine')))return;model.rawItems.splice(index,1);page.querySelector('[data-quote-lines]').innerHTML=lineRows(model.rawItems);markDirty(true);showCalculated(null);scheduleCalculation();}
   let relationTimer;let relationSequence=0;
   async function remoteSearch(input) {const sequence=++relationSequence;const resource=input.dataset.quoteRelation;const select=input.parentElement.querySelector('select');const context=model.loadId;const customerAtSearch=page.querySelector('[name=customer_id]')?.value||'';const query=new URLSearchParams({q:input.value,limit:'30'});if(resource==='opportunities'){const customer=page.querySelector('[name=customer_id]')?.value;if(customer)query.set('customer_id',customer);}try{const result=await api(resource+'?'+query);if(sequence!==relationSequence||context!==model.loadId||!input.isConnected||select.disabled||(resource==='opportunities'&&(page.querySelector('[name=customer_id]')?.value||'')!==customerAtSearch))return;const selected=select.value;const title=select.selectedOptions[0]?.textContent||selected;const options=[['',q(resource==='customers'?'selectCustomer':'noOpportunity')]].concat((result.data || []).map((row)=>[row.public_id,row.name || row.title]));if(selected&&!options.some(([id])=>id===selected))options.push([selected,title]);select.innerHTML=options.map(([id,text])=>'<option value="'+attr(id)+'"'+(id===selected?' selected':'')+'>'+esc(text)+'</option>').join('');}catch(error){if(context===model.loadId&&input.isConnected&&!model.busy)toast(error.message,true);}}
+  let customerSequence=0;
   async function customerChanged(select) {
-    const previous=model.selectedCustomer || model.record?.customer_id || '';const next=select.value;
-    if(previous&&previous!==next&&!await confirmAction(q('changeCustomer'),q('customer'))){select.value=previous;return;}
-    const context=model.loadId;const opportunity=page.querySelector('[name=opportunity_id]');const previousOpportunity=opportunity?.value || '';
+    const previous=model.selectedCustomer || model.record?.customer_id || '';const next=select.value;const context=model.loadId;
+    if(model.busy){select.value=previous;return;}const sequence=++customerSequence;
+    if(previous&&previous!==next){const accepted=await confirmAction(q('changeCustomer'),q('customer'));if(context!==model.loadId||sequence!==customerSequence||state.tab!=='quotes'||!select.isConnected||select.value!==next)return;if(!accepted){select.value=previous;return;}}
+    if(context!==model.loadId||state.tab!=='quotes'||!select.isConnected)return;
+    const opportunity=page.querySelector('[name=opportunity_id]');const previousOpportunity=opportunity?.value || '';
     const fillRecipient=(customer)=>{for(const [key,value] of Object.entries({recipient_company:customer?.name,recipient_name:customer?.contact_name,recipient_email:customer?.email,recipient_phone:customer?.phone,billing_address:'',shipping_address:''})){const input=page.querySelector('[name='+key+']');if(input)input.value=value || '';}};
     if(!next){model.selectedCustomer='';if(opportunity)opportunity.value='';fillRecipient(null);markDirty(false);return;}
     setBusy(true,'loadingCustomer');
-    try{const [customer,opportunities]=await Promise.all([api('customers/'+encodeURIComponent(next)).then((result)=>result.data),loadOpportunities(next)]);
-      if(context!==model.loadId||!select.isConnected||select.value!==next)return;
+    try{const [customer,opportunities]=await Promise.all([loadRecipientCustomer(next),loadOpportunities(next)]);
+      if(context!==model.loadId||sequence!==customerSequence||state.tab!=='quotes'||!select.isConnected||select.value!==next)return;
       model.selectedCustomer=next;model.opportunities=opportunities;fillRecipient(customer);
       const target=page.querySelector('[name=opportunity_id]');if(target)target.closest('.form-field').outerHTML=relation('opportunity','opportunity_id','',model.opportunities,'opportunities','noOpportunity',false);
       setBusy(false);markDirty(false);
-    }catch(error){if(context!==model.loadId||!select.isConnected)return;select.value=previous;model.selectedCustomer=previous;if(opportunity?.isConnected)opportunity.value=previousOpportunity;setBusy(false);editorError(error);}
-    finally{if(context===model.loadId&&model.busy)setBusy(false);}
+    }catch(error){if(context!==model.loadId||sequence!==customerSequence||state.tab!=='quotes'||!select.isConnected)return;select.value=previous;model.selectedCustomer=previous;if(opportunity?.isConnected)opportunity.value=previousOpportunity;setBusy(false);editorError(error);}
+    finally{if(context===model.loadId&&sequence===customerSequence&&model.busy)setBusy(false);}
   }
 
   function normalizeCurrencyInput(value,currency){const text=String(value).trim();return moneyDigits(currency)===0&&/^\d+\.0+$/.test(text)?text.slice(0,text.indexOf('.')):value;}

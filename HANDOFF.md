@@ -16,7 +16,33 @@
 
 ## Fast takeover snapshot
 
-- **Professional list and first-screen batch .18 - source validated, rollout pending:** bounded named/focusable record
+- **Workflow detail batch .19 - source validated, rollout pending:** phone task completion is a separate44px icon
+  action with full localized accessible name, leaving room for the two-line title; desktop wording
+  stays visible. Actual320/390/768 results have no root overflow. At320 the name column is160px and
+  title78px;390 is215/133px after scrollbars. Row selection does not complete a task; completion yields
+  Reopen/pressedtrue without opening record details. New/explicitly changed quote recipients prefer
+  the active contact in the contacts endpoint order; its blank channels stay blank. Server/Demo only
+  derive omitted new fields; explicit recipients, existing drafts and issued snapshots remain unchanged.
+  Contact lookup failures do not silently use stale legacy values. Actual Test UI changes Trident's
+  primary to Jordan, then a new scoped quote uses Jordan's current channels; clearing the primary's
+  channels yields empty fields rather than the former person's values. Channel DOM reads are protected,
+  so populated values are visually checked and exact behavior also has emitted/SQLite regressions.
+  Demo CSV validates/normalizes dates and emails with the real contract. Preview unions every sample,
+  folds canonical exact money, retains zero/unknown fields/escaped original values, and places row first,
+  validation/error last. Chinese errors retain localized messages and supply specific email/length help.
+  Actual mixed invalid-date/email preview yields2 failed+1 valid; mixed invalid-amount/zero/1000.25
+  retains all9 expected columns with a single amount. Cancelling the language discard prompt keeps CSV.
+  Synthetic customer/order import -> analysis -> saved report is verified: APAC/USD/Nov4 orders2->4,
+  paid1->3, paid value11565.00->32565.50, AOV10855.17, independent payments stay2/net11565.00;
+  the generated report has the same source/date/currency and32565.50 value. No production writes.
+  Independent polish45 uses actual SQLite quote and import DTOs, all prior38 cases retained; Demo41
+  retains the original38 plus contact/default and CSV parity. Quote smoke fixture adds the existing0009
+  contact migration only. No schema, credentials, bindings or public/Shop routing changed.
+  Source28/28 passes, including Demo41, polish45, chart52, analysis26 and complete compiled startup7;
+  Worker dry run and agent/deploy gates pass. Public/Shop source diffs remain0. Existing Astro gates
+  passed in18; this batch changes no brand build input and CI independently repeats the full build.
+
+- **Professional list and first-screen batch .18 LIVE VERIFIED (d9d71d7; CI41801423667; production14/14):** bounded named/focusable record
   regions keep headers and identity/action columns visible. Desktop low-height main scrolling and a
   minimum data panel retain pagination even with several long saved views and a selection toolbar.
   Native44px row labels replace small checkbox-only targets. The identity column is always retained
@@ -45,6 +71,14 @@
   Astro build/verify:all passes (baseline143 report-only i18n suspects); agent/deploy gates and Worker
   dry run pass. Initial icon-suite assertion required the new escaped title attribute; its identifier,
   title priority, escaping and handlers remain asserted. No tests were skipped or removed.
+  All19 live admin assets exactly match compiled committed source. Downloaded live workspace18.js
+  SHAe9b4822cb6a540b2045fa8d323595f774214cd6e35826944bcdc6da9ce055b53 startup7/7 passes.
+  The actual portable install/test/build/ZIP verifier passes:151 members,1,720,322bytes,
+  ZIP SHA8522f3aca237453a37a09ae46f6dd7e07e8c5784a7f26c441aa30394e93e87f3,
+  gyutron-operations-20261104084136-d9d71d7ca757 (outside Git). It contains no private/runtime data,
+  production resource IDs or bundled installed dependencies. This is not a second customer deployment.
+  Follow-up19 is limited to narrow-phone task readability and active-contact defaults for new or
+  explicitly changed quote recipients; already saved/issued quotation content must stay unchanged.
 
 - **Analysis and interaction batch .17 LIVE VERIFIED (5335ffc; CI41794321163; production14/14):** directly inspected
   logged-in Alibaba Data Overview, Shop Analysis and Trade Analysis (layout/interaction only). The

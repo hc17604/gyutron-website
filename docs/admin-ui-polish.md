@@ -1,6 +1,6 @@
 # Workspace UI detail and maintenance map
 
-Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.18`; release evidence and ongoing work are in `HANDOFF.md`.
+Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.19`; release evidence and ongoing work are in `HANDOFF.md`.
 
 ## Verified product reference
 
@@ -30,6 +30,9 @@ The authenticated [Alibaba seller portal](https://i.alibaba.com) was inspected d
 | Long record names | Authored refinement: two-line visual clamp with full DOM text, escaped title and unchanged record details | `client.mjs`, `quotes-client.mjs`, `saas-styles.mjs` |
 | Square chart controls | Authored industrial styling: explicit straight-segment slider/grip paths replace ECharts' rounded defaults; chart data symbols retain their statistical meaning | `analytics-chart-adapter.mjs` |
 | View recovery | Authored correction: a missing saved view offers Reset view; ordinary record404 and authentication failures retain their original behavior | `client.mjs` |
+| Phone task rows | Authored refinement: separate44px selection and completion controls, full accessible action names, more width for two-line task titles, and visible desktop Complete/Reopen wording | `saas-styles.mjs` |
+| Current quote recipient | Authored correction: new/explicitly changed recipients use the active primary contact, retain deliberate blank channels and preserve existing drafts/issued snapshots | `quotes-client.mjs`, `platform/quotes/repository.mjs`, `demo-client.mjs` |
+| Import preview integrity | Authored correction: later valid rows retain all fields after an invalid first row; canonical exact money appears once, zero stays visible, and row/validation/error columns have stable positions | `operations-client.mjs` |
 
 The actual analysis pages inspected were [Data Overview](https://data.alibaba.com/), [Shop Analysis](https://data.alibaba.com/traffic/overview) and [Trade Analysis](https://data.alibaba.com/transaction/analysis). Their account screenshots stay outside Git and the distributable package. Only layout and interaction observations are used.
 

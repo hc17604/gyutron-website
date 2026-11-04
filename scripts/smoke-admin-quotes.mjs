@@ -8,7 +8,7 @@ import { sha256Hex } from '../src/platform/security/hash.mjs';
 import { renderQuoteReferenceCss } from '../src/platform/quotes/document.mjs';
 
 const sqlite=new DatabaseSync(':memory:');sqlite.exec('PRAGMA foreign_keys=ON');
-for(const migration of ['0001_init.sql','0002_order_intents.sql','0003_admin_workspace.sql','0004_admin_identity.sql','0005_crm_relation_guards.sql','0006_operations_quotes.sql'])sqlite.exec(readFileSync(new URL('../migrations/'+migration,import.meta.url),'utf8'));
+for(const migration of ['0001_init.sql','0002_order_intents.sql','0003_admin_workspace.sql','0004_admin_identity.sql','0005_crm_relation_guards.sql','0006_operations_quotes.sql','0009_workspace_experience.sql'])sqlite.exec(readFileSync(new URL('../migrations/'+migration,import.meta.url),'utf8'));
 let beforeBatch=null,batchTail=Promise.resolve();
 const db={prepare(sql){return{sql,values:[],bind(...values){this.values=values;return this;},async first(){return sqlite.prepare(sql).get(...this.values)||null;},async all(){return{success:true,results:sqlite.prepare(sql).all(...this.values),meta:{changes:0}};},async run(){return{success:true,meta:{changes:Number(sqlite.prepare(sql).run(...this.values).changes)}};}};},batch(statements){
   const work=async()=>{if(beforeBatch){const hook=beforeBatch;beforeBatch=null;hook();}sqlite.exec('BEGIN IMMEDIATE');try{const results=[];for(const statement of statements)results.push(/^\s*SELECT\b/i.test(statement.sql)?await statement.all():await statement.run());sqlite.exec('COMMIT');return results;}catch(error){sqlite.exec('ROLLBACK');throw error;}};

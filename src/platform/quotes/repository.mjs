@@ -90,7 +90,8 @@ function createRow(header, items, env, principal, { familyId, revision = 1, revi
 }
 export async function createQuote(db, env, input, principal) {
   requirePermission(principal,'write'); const header = validateQuoteInput(input); const customer = await relationships(db,header);
-  const defaults = { seller_name:String(env.ADMIN_WORKSPACE_NAME || env.DATA_SOURCE_NAME || 'GYUTRON').slice(0,200),recipient_company:customer.name,recipient_name:customer.contact_name || '',recipient_email:customer.email || '',recipient_phone:customer.phone || '' };
+  const contact = ['recipient_name','recipient_email','recipient_phone'].some(field => !Object.hasOwn(header,field)) ? await db.prepare('SELECT name,email,phone FROM crm_contacts WHERE customer_id=? AND archived_at IS NULL ORDER BY is_primary DESC,name,public_id LIMIT 1').bind(customer.public_id).first() : null;
+  const defaults = { seller_name:String(env.ADMIN_WORKSPACE_NAME || env.DATA_SOURCE_NAME || 'GYUTRON').slice(0,200),recipient_company:customer.name,recipient_name:(contact ? contact.name : customer.contact_name) || '',recipient_email:(contact ? contact.email : customer.email) || '',recipient_phone:(contact ? contact.phone : customer.phone) || '' };
   for (const field of textDefaults) if (!(field in header)) header[field] = defaults[field] || '';
   if (!Object.hasOwn(header,'opportunity_id')) header.opportunity_id = null;
   await assignOwner(db,header,principal);

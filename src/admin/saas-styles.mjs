@@ -1052,4 +1052,16 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
  .record-list-scroll .cell-primary,.record-list-scroll th.record-list-identity{left:0}
 }
 @media(max-width:380px){.record-list-scroll .cell-primary{width:140px;min-width:140px;max-width:140px}}
+/* Phone task identity stays readable beside a distinct completion action. */
+@media(max-width:1024px){
+ body[data-workspace-tab=tasks] .record-list-scroll .status-inline{gap:6px;min-width:0;flex-wrap:nowrap}
+ body[data-workspace-tab=tasks] .record-list-scroll .task-completion-action{min-height:44px;margin-right:0}
+ body[data-workspace-tab=tasks] .record-list-scroll .table-task-title{flex:1;min-width:0}
+}
+@media(max-width:767px){
+ body[data-workspace-tab=tasks] .record-list-scroll .cell-primary,body[data-workspace-tab=tasks] .record-list-scroll th.record-list-identity{width:clamp(160px,calc(100vw - 160px),220px);min-width:clamp(160px,calc(100vw - 160px),220px);max-width:clamp(160px,calc(100vw - 160px),220px)}
+ body[data-workspace-tab=tasks] .record-list-scroll .task-completion-label{display:none}
+ body[data-workspace-tab=tasks] .record-list-scroll .task-completion-action{flex:0 0 44px;width:44px;min-width:44px;max-width:44px;height:44px;min-height:44px;padding:12px;gap:0}
+ body[data-workspace-tab=tasks] .record-list-scroll .task-completion-action .ui-icon{width:18px;height:18px}
+}
 `;
