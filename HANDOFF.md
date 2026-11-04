@@ -16,12 +16,12 @@
 
 ## Fast takeover snapshot
 
-- **Secondary navigation .13 LOCAL VERIFIED; rollout pending (2026-11-04):** Alibaba screenshots
+- **Secondary navigation .13 LIVE VERIFIED; .14 automatic-rail correction locally verified (2026-11-04):** Alibaba screenshots
   supplied by the owner are the selected visual target. Replaced the inline directory with a white224px
   full-height secondary panel flush to graphite primary navigation and content; title18px, groups12px,
   text-only14px/42px rows, neutral selected row, full-title truncation, no rounded surfaces. Groups match
   Store7 / Data analysis5 / Data AI1 / Campaigns1 / Resources2 (EN/default+zh). Primary defaults to72px
-  icon rail in analytics on desktop and expands to232px via footer control; same22 original anchors,
+  icon rail across desktop routes; pointer-enter expands232px overlay, pointer-leave collapses (.14); same22 original anchors,
   permissions/current states/counts preserved, no copied nodes/storage/business calls. Official full
   logo remains in the expanded header on white. Sidebar/secondary independently scroll; same-view
   reload preserves submenu scroll/focus via stable aside/link/select nodes. Main loader preserves
@@ -39,8 +39,18 @@
   locator auto-scroll can also move document and is not evidence of application scroll behavior.
   Mobile native keyboard changes view, drawerEscape returns focus to opener. Mandatory Astro
   build/verify:all pass (baseline report-only143suspects), root deploy:check byte diff0; Shop diff0.
-  Next: commit explicit reviewed source, push, observe CI/Cloudflare and verify .13 deployed bytes,
-  real client startup and final screenshots, then regenerate the tested standalone package.
+  .13 commit367ab1d passed CI41778346603 and production12/12 including all19 compiled asset bytes.
+  .14 follows the owner clarification: automatic Alibaba-style rail, with no manual collapse
+  button. Hover and keyboard Tab focus expand, leaving collapses; selecting a route returns focus
+  to main without scrolling. Touch never triggers hover. The72px content/secondary offset stays fixed
+  through232px overlay expansion. Same row/footer heights and no-wrap labels prevent targets moving
+  during animation. Actual local browser confirmed72px content offset and unchanged first3 row tops,
+  nav height494px/footer98.8px across both states; 22 nodes retained. Independent emitted regression
+  now39/39, including pointer/focus/touch/route/media, management details preservation and zero business calls. Mobile retains only
+  its existing drawer opener. Final mandatory Astro build/verify:all, agent/deploy gates, Test mode35/35
+  and whole compiled startup7/7 pass; public byte diff0. Next: commit/push this UI-only revision,
+  verify production .14 bytes and automatic states, then regenerate the tested standalone package.
+  Rollback: revert this .14 UI commit; no data migration or binding change is involved.
 
 - **Data Adviser .12 LIVE AND VERIFIED (2026-11-04 SGT):**
   Fresh root-only Alibaba inspection covered all13 business entries and concrete Data Map27-indicator

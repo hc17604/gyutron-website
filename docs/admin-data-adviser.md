@@ -1,6 +1,6 @@
 # Data Adviser implementation and reference map
 
-Data implementation release: `2026.11.04.12`; navigation revision: `2026.11.04.13`. Release verification is recorded separately in `HANDOFF.md`.
+Data implementation release: `2026.11.04.12`; navigation revision: `2026.11.04.14`. Release verification is recorded separately in `HANDOFF.md`.
 The authenticated Alibaba Data Adviser was inspected directly on 2026-11-04. Screenshots are
 private local reference evidence under `outputs/admin-data-adviser-20261104/references` outside Git.
 Its account data and proprietary assets are not included in this implementation.
@@ -51,5 +51,7 @@ The .13 navigation follows the supplied Alibaba expanded/rail references: graphi
 14px text-only links, neutral square selected rows, stable navigation nodes and independent scrolling.
 The main rail expands/restores the same 22 routes; responsive analysis selection keeps all 16 views.
 Below 1101px the existing native grouped selector avoids nested mobile drawers. KPI columns follow
-available content width, including when both desktop menus are expanded. Navigation preferences are
+available content width, including when both desktop menus are expanded. Automatic pointer/focus state is
 in-memory; the shared UI behaves the same in live and Test mode without business requests or storage.
+
+Desktop primary navigation expands automatically on pointer entry or keyboard Tab focus and collapses on leave or route selection. The 72px rail reservation remains fixed while the 232px panel overlays it; mobile keeps its drawer. No manual collapse button is required.

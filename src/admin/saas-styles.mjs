@@ -828,27 +828,30 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
 .sidebar .sidebar-identity #sidebar-role{color:#9da8b8}
 .sidebar .identity-avatar{background:#303846;color:#e3e8f0}
 .sidebar :focus-visible{outline-color:var(--button-purple-light)}
-.sidebar-collapse{display:flex;align-items:center;gap:10px;width:100%;min-height:40px;padding:8px 6px;border:0;border-bottom:1px solid #303744;background:transparent;color:#aab5c6;font-size:12px;text-align:left}
-.sidebar-collapse:hover{color:#fff;background:#262d39}
-.sidebar-collapse .ui-icon{width:17px;height:17px;flex:none}
 @media(min-width:1025px){
- .app-layout[data-primary-compact=true]{--side-width:72px}
- .app-layout[data-primary-compact=true] .workspace-brand{display:none}
- .app-layout[data-primary-compact=true] .workspace-nav{padding:16px 10px 12px;gap:0}
- .app-layout[data-primary-compact=true] .nav-section{padding-top:8px;padding-bottom:0;margin-top:8px;border-top:1px solid #303744;border-bottom:0}
- .app-layout[data-primary-compact=true] .nav-section:first-child{padding-top:0;margin-top:0;border-top:0}
- .app-layout[data-primary-compact=true] .nav-section>a,.app-layout[data-primary-compact=true] .nav-group-items>a{position:relative;justify-content:center;width:100%;min-height:44px;padding:11px 0;gap:0}
- .app-layout[data-primary-compact=true] .nav-link-label,.app-layout[data-primary-compact=true] .nav-section-label,.app-layout[data-primary-compact=true] .nav-group-title>[data-i18n],.app-layout[data-primary-compact=true] .sidebar-collapse-label,.app-layout[data-primary-compact=true] .sidebar-footer>a>[data-i18n],.app-layout[data-primary-compact=true] .sidebar-identity>div{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
- .app-layout[data-primary-compact=true] .nav-icon .ui-icon{width:21px;height:21px}
+ .app-layout{--side-width:72px}
+ .app-layout .sidebar{width:232px;box-shadow:8px 0 24px rgb(18 25 38 / .14)}
+ .app-layout[data-primary-compact=true] .sidebar{width:72px;box-shadow:none}
+ .app-layout[data-primary-compact=true] .workspace-brand{visibility:hidden}
+ .sidebar .nav-section>a,.sidebar .nav-group-items>a{min-height:44px;padding:11px 14px}
+ .sidebar .nav-icon .ui-icon{width:21px;height:21px}
+ .sidebar .nav-link-label,.sidebar .nav-section-label,.sidebar .nav-group-title>[data-i18n]{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+ .sidebar .nav-group-title{min-height:44px;padding:10px 14px}
+ .sidebar .sidebar-footer{padding:6px 10px 8px}
+ .sidebar .sidebar-footer>a{height:40px;min-height:40px;padding:9px 12px}
+ .sidebar .sidebar-identity{height:44px;min-height:44px;padding:0}
+ .sidebar .sidebar-identity .identity-avatar{display:none}
+ .sidebar .signout-button{min-width:40px;min-height:40px;padding:9px}
+ .app-layout[data-primary-compact=true] .workspace-nav{padding:0 10px 12px;gap:2px}
+ .app-layout[data-primary-compact=true] .nav-section>a,.app-layout[data-primary-compact=true] .nav-group-items>a{position:relative;justify-content:flex-start;width:100%;min-height:44px;padding:11px 14px;gap:0}
+ .app-layout[data-primary-compact=true] .nav-link-label,.app-layout[data-primary-compact=true] .nav-group-title>[data-i18n],.app-layout[data-primary-compact=true] .sidebar-footer>a>[data-i18n],.app-layout[data-primary-compact=true] .sidebar-identity>div{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+ .app-layout[data-primary-compact=true] .nav-section-label{visibility:hidden}
  .app-layout[data-primary-compact=true] .nav-count{position:absolute;right:0;top:1px;padding:0 3px;min-width:14px;font-size:9px;line-height:14px;background:#4e5769;color:#fff}
- .app-layout[data-primary-compact=true] .nav-group{margin-top:10px;padding-top:8px;border-top:1px solid #303744}
  .app-layout[data-primary-compact=true] .nav-group-title{position:relative;justify-content:center;min-height:44px;padding:10px 0}
  .app-layout[data-primary-compact=true] .nav-group-icon{display:inline-flex}
  .app-layout[data-primary-compact=true] .nav-group-icon .ui-icon{width:21px;height:21px}
  .app-layout[data-primary-compact=true] .nav-group-arrow{display:none}
- .app-layout[data-primary-compact=true] .sidebar-footer{padding:5px 10px 8px}
- .app-layout[data-primary-compact=true] .sidebar-collapse,.app-layout[data-primary-compact=true] .sidebar-footer>a{justify-content:center;min-height:40px;padding:9px 0}
- .app-layout[data-primary-compact=true] .sidebar-collapse .ui-icon{transform:rotate(180deg)}
+ .app-layout[data-primary-compact=true] .sidebar-footer>a{justify-content:center;min-height:40px;padding:9px 0}
  .app-layout[data-primary-compact=true] .sidebar-identity{justify-content:center;padding:0;gap:0}
  .app-layout[data-primary-compact=true] .sidebar-identity .identity-avatar{display:none}
  .app-layout[data-primary-compact=true] .signout-button{min-width:40px;min-height:40px;padding:9px}
@@ -856,8 +859,8 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
 .app-layout[data-secondary-navigation=true] .workspace-content{margin:0;border:0}
 .app-layout[data-secondary-navigation=true] #workspace-main{padding:0;max-width:none;margin:0;width:100%}
 @media(min-width:1101px){.app-layout[data-secondary-navigation=true] .workspace-footer{padding-left:256px}}
-@media(max-width:1024px){.sidebar-collapse{display:none}.sidebar .nav-section>a,.sidebar .nav-group-items>a{min-height:44px}}
-@media(prefers-reduced-motion:no-preference) and (min-width:1025px){.app-layout{transition:grid-template-columns 180ms var(--ease)}.sidebar{transition:width 180ms var(--ease)}.sidebar-collapse{transition:color 160ms,background-color 160ms}}
+@media(max-width:1024px){.sidebar .nav-section>a,.sidebar .nav-group-items>a{min-height:44px}}
+@media(prefers-reduced-motion:no-preference) and (min-width:1025px){.sidebar{transition:width 180ms var(--ease),box-shadow 180ms var(--ease)}}
 .sidebar .workspace-nav{scrollbar-width:auto}.sidebar .workspace-nav::-webkit-scrollbar{width:5px}.sidebar .workspace-nav::-webkit-scrollbar-track{background:#171b24}.sidebar .workspace-nav::-webkit-scrollbar-thumb{background:#535e70;border:0;border-radius:0}
-@media(pointer:coarse){.sidebar .nav-section>a,.sidebar .nav-group-items>a,.sidebar-collapse,.sidebar .sidebar-footer>a,.sidebar .signout-button{min-height:44px}}
+@media(pointer:coarse){.sidebar .nav-section>a,.sidebar .nav-group-items>a,.sidebar .sidebar-footer>a,.sidebar .signout-button{min-height:44px}}
 `;

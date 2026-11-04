@@ -3,15 +3,22 @@ import { ADMIN_ICON_HTML } from './icons.mjs';
 export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify(Object.fromEntries(['overview','analytics','customers','pipeline','quotes','tasks','inbox','activity','sources','reports','automations','rules','agent','memory','models','users','security','backup','license','health','audit','settings'].map(name=>[name,ADMIN_ICON_HTML[name]])))+';\n'+String.raw`
 (()=>{
  const sidebar=document.getElementById('workspace-sidebar'),page=document.getElementById('workspace-page');
- const frame=document.querySelector('.app-layout'),railToggle=document.getElementById('primary-nav-toggle'),desktop=matchMedia('(min-width:1025px)');let railPreference=null;
+ const frame=document.querySelector('.app-layout'),desktop=matchMedia('(min-width:1025px)');let railPointer=false,railKeyboard=false,keyboardInput=false,lastNavigationTab=null;
  function syncRail(tab){
-  if(!frame)return;const compact=desktop.matches&&(railPreference===null?tab==='analytics':railPreference),zh=document.getElementById('workspace-language')?.value==='zh',label=compact?(zh?'展开导航':'Expand navigation'):(zh?'折叠导航':'Collapse navigation');
+  if(!frame)return;const compact=desktop.matches&&!(railPointer||railKeyboard);
   frame.dataset.secondaryNavigation=String(tab==='analytics');frame.dataset.primaryCompact=String(compact);
-  if(railToggle){railToggle.setAttribute('aria-expanded',String(!compact));railToggle.setAttribute('aria-label',label);railToggle.title=label;const span=railToggle.querySelector('.sidebar-collapse-label');if(span&&span.textContent!==label)span.textContent=label;}
   for(const link of sidebar?.querySelectorAll('[data-nav]')||[]){const label=link.querySelector('.nav-link-label')?.textContent?.trim();if(label){link.title=label;const count=link.querySelector('.nav-count');link.setAttribute('aria-label',label+(count&&!count.hidden&&count.textContent.trim()?' · '+count.textContent.trim():''));}}
   const summary=sidebar?.querySelector('.nav-group-title');if(summary)summary.title=summary.querySelector('[data-i18n]')?.textContent?.trim()||'';
  }
- railToggle?.addEventListener('click',()=>{railPreference=frame?.dataset.primaryCompact!=='true';syncNavigation();});desktop.addEventListener('change',syncNavigation);
+ // Desktop follows pointer and keyboard focus; the content keeps its 72px rail offset.
+ sidebar?.addEventListener('pointerenter',event=>{if(!desktop.matches||event.pointerType==='touch')return;railPointer=true;syncNavigation();});
+ sidebar?.addEventListener('pointerleave',()=>{railPointer=false;syncNavigation();});
+ document.addEventListener('keydown',event=>{if(event.key==='Tab')keyboardInput=true;});
+ document.addEventListener('pointerdown',event=>{keyboardInput=false;railKeyboard=false;if(!sidebar?.contains(event.target))railPointer=false;syncNavigation();});
+ sidebar?.addEventListener('focusin',()=>{if(keyboardInput){railKeyboard=true;syncNavigation();}});
+ sidebar?.addEventListener('focusout',event=>{if(!sidebar.contains(event.relatedTarget)){railKeyboard=false;syncNavigation();}});
+ sidebar?.addEventListener('click',event=>{if(!desktop.matches||!event.target.closest('[data-nav],.workspace-brand'))return;railPointer=false;railKeyboard=false;document.getElementById('workspace-main')?.focus({preventScroll:true});syncNavigation();});
+ desktop.addEventListener('change',()=>{railPointer=false;railKeyboard=false;syncNavigation();});
  const commandDialog=document.getElementById('command-dialog'),commandTrigger=document.getElementById('command-trigger');
  function closeCommand(returnFocus=false){if(!commandDialog?.open)return;const opener=commandDialog._workspaceOpener;commandDialog.close();if(returnFocus)(opener?.isConnected?opener:commandTrigger)?.focus();}
  // Keep the compact search panel non-modal; outside interactions remain available.
@@ -22,7 +29,7 @@ export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify(Object
  function syncNavigation(){
   const tab=location.hash.slice(1).split('?')[0]||'overview';syncRail(tab);
   const active=Array.from(sidebar?.querySelectorAll('[data-nav]')||[]).find(link=>link.dataset.nav===tab);
-  const group=active?.closest('details.nav-group');if(group)group.open=true;
+  const group=active?.closest('details.nav-group');if(group&&tab!==lastNavigationTab)group.open=true;lastNavigationTab=tab;
   if(page){const params=new URLSearchParams(location.hash.split('?')[1]||'');page.dataset.viewKind=tab==='agent'?'chat':tab==='pipeline'?'board':['overview','analytics'].includes(tab)?'overview':params.has('id')?'detail':['settings','models','security','backup','health','license'].includes(tab)?'settings':'list';}
  }
  function decoratePresentation(){
@@ -54,7 +61,7 @@ export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify(Object
   // Restore focus only when the browser has lost it; never take it from another dialog/input.
   if(recordDialog.open&&body.dataset.recordSection==='related'&&document.activeElement===document.body&&!Array.from(document.querySelectorAll('dialog[open]')).some(other=>other!==recordDialog))selectRecordTab(body,'related',true);
  }
- addEventListener('hashchange',syncNavigation);syncNavigation();
+ addEventListener('hashchange',()=>{railPointer=false;railKeyboard=false;syncNavigation();});syncNavigation();
  if(sidebar)new MutationObserver(syncNavigation).observe(sidebar,{attributes:true,childList:true,subtree:true,attributeFilter:['aria-current']});
  if(page)new MutationObserver(decoratePresentation).observe(page,{childList:true,subtree:true});decoratePresentation();
  if(recordDialog)new MutationObserver(decorateRecordTabs).observe(recordDialog,{childList:true,subtree:true});
