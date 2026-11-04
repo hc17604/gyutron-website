@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Analytics edge hierarchy .24 — locally verified, release pending:** user rejects repeated borders, framed heading glyph,
+- **Analytics edge hierarchy .24 LIVE VERIFIED (92589a7; CI41831454444 success; production14/14):** user rejects repeated borders, framed heading glyph,
   purple KPI top rule and chart control chrome. Baseline2ccb8f9 equals origin/main, tracked tree clean.
   Root captured current Alibaba Data Adviser live overview/period screens and GYUTRON Test overview;
   source reviewers mapped analytics CSS cascade and ECharts6 slider styling. Root owns analytics-only
@@ -37,7 +37,14 @@
   complete compiled startup7 and Astro build/verify:all/agent/deploy/diff gates pass; baseline i18n
   heuristic report unchanged. Source changes are presentation/options only, no API/public/Shop data.
   Evidence: outputs/admin-edge-polish-20261104 (audit-notes.md, before/ref/after/tool/phone captures).
-  Rollback: revert24 scoped release commit. Next: push, watch CI, verify final live assets and overview.
+  Live measured1920x841 matches before-capture viewport: heading/filter/KPI/main-chart borders0,
+  active shadow none,13 chart actions present, applied scope intact and no root overflow. Screenshot:
+  outputs/admin-edge-polish-20261104/08-live24-overview.jpg. Independent reviewer compared current
+  Ali/before/live images together: repeated frames/top rule removed, active metric identifiable, text/
+  currency aligned and chart tools remain clear; no definite visual regression. All19 live admin
+  assets match committed Wrangler build; production-checks.json records14/14 with no synthetic
+  business records created. Own8801 preview stopped, viewport reset; deliverable tab is Test/EN overview.
+  Rollback: revert92589a7. Next: none; requested detail pass complete.
 
 - **Compact Inbox badge/contrast .23 LIVE VERIFIED (92ef5ce; CI41825666371 success; production14/14):** user flags the detached white5px unread indicator as
   a collapsed Inbox bug and asks for a darker purple sidebar with clearer icons/menu. Root owns
