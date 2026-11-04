@@ -16,7 +16,29 @@
 
 ## Fast takeover snapshot
 
-- **Test mode .9 LIVE AND VERIFIED (2026-11-04 SGT):** user requests a switch immediately right of search
+- **Loading incident .10 IN PROGRESS (2026-11-04 SGT):** user reports the .9 workspace never leaves
+  Loading. Actual production workspace.js is HTTP200, but Wrangler keep-names inserted4 references
+  to its private `__name` helper into createWorkspaceTransport.toString(). That string is shipped
+  without the helper, so constructing transport throws ReferenceError before initializeWorkspace.
+  The .9 hashes/API/data tests below passed but did not execute the compiled whole-client startup;
+  they were insufficient evidence for the claimed working release. Root owns fix/integration/release,
+  research_quality owns new real-Wrangler full-startup regression, backend independently reproduced
+  the actual served failure. No user data or demo dataset was changed by this failure.
+  Fix: browser source is generated before bundling from canonical test-mode.mjs into a committed
+  plain string; do not use runtime Function.toString for these helpers or inject a fake build helper.
+  scripts/generate-admin-test-mode.mjs --check prevents stale generated source. Test mode/data/visual
+  controls remain. Require complete compiled IIFE initialization in both modes/languages before push,
+  plus final live compiled-client startup execution. Browser control remains stopped; NodeVM only.
+  Fix now passes21/21 source suites, including real Wrangler full-client startup in EN/zh × live/demo
+  (4 positive first-view/toggle cases),2 permanent negative fixtures and the saved actual .9 failure
+  (7 local checks; CI/portable run6 without that optional diagnostic). Tests never strip initializer or
+  define a fake __name shim. Source frontend69/demo32, Astro build/verify:all and diff checks pass.
+  Root regenerates browser helpers with scripts/generate-admin-test-mode.mjs; frontend verifies the
+  generated file matches canonical source. Complete startup gate is in CI,source regression and20-suite
+  portable verification. Next: push .10, compare live15 assets and execute the exact live full client,
+  not only its demo adapter. Evidence: artifacts/admin-loading-fix-20261104/.
+
+- **Test mode .9 HISTORICAL CHECKS, startup failure superseded above:** user requests a switch immediately right of search
   and a rich, coherent simulated dataset covering every admin module for customer demonstrations.
   Root owns immutable per-document transport selection, mode switch guards/full reload, isolated
   export/print entry points, asset integration, maintenance contract and deployment. backend_core owns

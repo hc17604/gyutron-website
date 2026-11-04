@@ -1,0 +1,199 @@
+{
+  "suite": "admin-compiled-full-startup",
+  "at": "2026-11-04T02:17:07.912Z",
+  "passed": 7,
+  "failed": 0,
+  "wrangler": "4.93.1",
+  "compiled_by_this_run": true,
+  "compiled_worker": "D:\\AI PRODUT\\GYUTRON web\\website\\gyutron-website-repo\\.wrangler\\admin-startup-check\\run-0RrVn5\\bundle\\worker.js",
+  "bundle_sha256": "1bc9ed92efa9702cae59b4efc5a3c9d17c5d097f9fa85359c8950021d7bf4311",
+  "compiled_workspace_sha256": "c17ff674b73792a3f327dd25998e5bc04f401fbfcf5caa24a77d2e68eda21d8d",
+  "actual_initializer_executed": true,
+  "missing_helper_shim_injected": false,
+  "browser_used": false,
+  "production_business_api_used": false,
+  "provisioned": false,
+  "deployed": false,
+  "results": [
+    {
+      "name": "compiled complete startup en mode 0",
+      "passed": true,
+      "demo": false,
+      "language": "en",
+      "ready": true,
+      "requests": [
+        {
+          "path": "/admin/api/bootstrap",
+          "method": "GET"
+        },
+        {
+          "path": "/admin/api/assignees",
+          "method": "GET"
+        },
+        {
+          "path": "/admin/api/dashboard",
+          "method": "GET"
+        },
+        {
+          "path": "/admin/api/operations/reports?limit=3",
+          "method": "GET"
+        },
+        {
+          "path": "/admin/api/operations/runs?limit=5",
+          "method": "GET"
+        },
+        {
+          "path": "/admin/api/workspace/notifications?limit=50&lang=en",
+          "method": "GET"
+        }
+      ],
+      "imports": [
+        "/admin/assets/locales.js",
+        "/admin/assets/notifications.js"
+      ],
+      "errors": [],
+      "synchronous_error": null,
+      "aria_busy": "false",
+      "metric_values": [
+        "48",
+        "48",
+        "54",
+        "3",
+        "16"
+      ],
+      "html_bytes": 7826,
+      "helper_injected": false,
+      "reload_target": "/admin?test=1&lang=en#overview",
+      "persisted_preference": "1"
+    },
+    {
+      "name": "compiled complete startup en mode 1",
+      "passed": true,
+      "demo": true,
+      "language": "en",
+      "ready": true,
+      "requests": [],
+      "imports": [
+        "/admin/assets/locales.js",
+        "/admin/assets/demo.js",
+        "/admin/assets/notifications.js"
+      ],
+      "errors": [],
+      "synchronous_error": null,
+      "aria_busy": "false",
+      "metric_values": [
+        "48",
+        "48",
+        "54",
+        "3",
+        "16"
+      ],
+      "html_bytes": 7834,
+      "helper_injected": false,
+      "reload_target": "/admin?test=0&lang=en#overview",
+      "persisted_preference": "0"
+    },
+    {
+      "name": "compiled complete startup zh mode 0",
+      "passed": true,
+      "demo": false,
+      "language": "zh",
+      "ready": true,
+      "requests": [
+        {
+          "path": "/admin/api/bootstrap",
+          "method": "GET"
+        },
+        {
+          "path": "/admin/api/assignees",
+          "method": "GET"
+        },
+        {
+          "path": "/admin/api/dashboard",
+          "method": "GET"
+        },
+        {
+          "path": "/admin/api/operations/reports?limit=3",
+          "method": "GET"
+        },
+        {
+          "path": "/admin/api/operations/runs?limit=5",
+          "method": "GET"
+        },
+        {
+          "path": "/admin/api/workspace/notifications?limit=50&lang=zh",
+          "method": "GET"
+        }
+      ],
+      "imports": [
+        "/admin/assets/locales.js",
+        "/admin/assets/notifications.js"
+      ],
+      "errors": [],
+      "synchronous_error": null,
+      "aria_busy": "false",
+      "metric_values": [
+        "48",
+        "48",
+        "54",
+        "3",
+        "16"
+      ],
+      "html_bytes": 7900,
+      "helper_injected": false,
+      "reload_target": "/admin?test=1&lang=zh#overview",
+      "persisted_preference": "1"
+    },
+    {
+      "name": "compiled complete startup zh mode 1",
+      "passed": true,
+      "demo": true,
+      "language": "zh",
+      "ready": true,
+      "requests": [],
+      "imports": [
+        "/admin/assets/locales.js",
+        "/admin/assets/demo.js",
+        "/admin/assets/notifications.js"
+      ],
+      "errors": [],
+      "synchronous_error": null,
+      "aria_busy": "false",
+      "metric_values": [
+        "48",
+        "48",
+        "54",
+        "3",
+        "16"
+      ],
+      "html_bytes": 7910,
+      "helper_injected": false,
+      "reload_target": "/admin?test=0&lang=zh#overview",
+      "persisted_preference": "0"
+    },
+    {
+      "name": "negative control missing helper",
+      "passed": true,
+      "error": "__gyutronMissingStartupHelperRegression is not defined"
+    },
+    {
+      "name": "negative control initializer omitted",
+      "passed": true,
+      "error": "Did not leave loading state"
+    },
+    {
+      "name": "saved actual broken production .9 reproduces startup failure",
+      "passed": true,
+      "error": {
+        "name": "ReferenceError",
+        "message": "__name is not defined",
+        "stack": "compiled-workspace-startup.js:23\n  const abort = /* @__PURE__ */ __name(() => Object.assign(new Error(\"Workspace context changed.\"), { name: \"AbortError\" }), \"abort\");\n                                ^\n\nReferenceError: __name is not defined\n    at createWorkspaceTransport (compiled-workspace-startup.js:23:33)\n    at workspaceClient (compiled-workspace-startup.js:97:28)\n    at compiled-workspace-startup.js:513:3\n    at Script.runInContext (node:vm:149:12)\n    at startup (file:///D:/AI%20PRODUT/GYUTRON%20web/website/gyutron-website-repo/scripts/test-admin-startup.mjs:87:172)\n    at async file:///D:/AI%20PRODUT/GYUTRON%20web/website/gyutron-website-repo/scripts/test-admin-startup.mjs:122:17"
+      }
+    }
+  ],
+  "failures": [],
+  "limitations": [
+    "DOM stub verifies startup control flow, populated first view and actual mode-reload handler, not pixels/accessibility.",
+    "Live-mode API replies are an isolated read-only in-memory fixture; demo mode must perform zero business fetches."
+  ]
+}

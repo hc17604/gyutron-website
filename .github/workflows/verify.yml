@@ -132,6 +132,9 @@ jobs:
       - name: Verify isolated Test mode and module coverage
         working-directory: ${{ github.workspace }}
         run: npm run check:admin-demo
+      - name: Verify complete compiled workspace startup
+        working-directory: ${{ github.workspace }}
+        run: npm run check:admin-startup
       - name: Verify Shop baseline
         working-directory: ${{ github.workspace }}
         run: npm run shop:verify

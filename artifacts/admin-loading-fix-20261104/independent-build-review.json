@@ -1,0 +1,53 @@
+{
+  "at": "2026-11-04T02:17:57.037Z",
+  "scope": "Independent real Wrangler bundle public-asset extraction and actual compiled transport execution; no browser shim",
+  "checks": [
+    {
+      "worker": ".wrangler/loading-fix-build/worker.js",
+      "bundle_sha256": "1bc9ed92efa9702cae59b4efc5a3c9d17c5d097f9fa85359c8950021d7bf4311",
+      "workspace_sha256": "c17ff674b73792a3f327dd25998e5bc04f401fbfcf5caa24a77d2e68eda21d8d",
+      "workspace_bytes": 137950,
+      "helper_name_references": 0,
+      "worker_fetch_invoked_in_process": true,
+      "live_callback_calls": 2,
+      "demo_callback_calls": 2,
+      "live_post_write_tracking": [
+        1,
+        -1
+      ],
+      "unknown_demo_no_fallback": true,
+      "aborted_no_callback": true,
+      "blocked_no_callback": true,
+      "default_callbacks_execute": true,
+      "passed": true
+    },
+    {
+      "worker": ".wrangler/admin-startup-check/run-NHrdah/bundle/worker.js",
+      "bundle_sha256": "1bc9ed92efa9702cae59b4efc5a3c9d17c5d097f9fa85359c8950021d7bf4311",
+      "workspace_sha256": "c17ff674b73792a3f327dd25998e5bc04f401fbfcf5caa24a77d2e68eda21d8d",
+      "workspace_bytes": 137950,
+      "helper_name_references": 0,
+      "worker_fetch_invoked_in_process": true,
+      "live_callback_calls": 2,
+      "demo_callback_calls": 2,
+      "live_post_write_tracking": [
+        1,
+        -1
+      ],
+      "unknown_demo_no_fallback": true,
+      "aborted_no_callback": true,
+      "blocked_no_callback": true,
+      "default_callbacks_execute": true,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "network_requests": 0,
+  "production_business_requests": 0,
+  "source_edits": false,
+  "deployment": false,
+  "browser_native_or_headless": false,
+  "limitations": [
+    "Transport execution is checked directly; full IIFE/DOM startup is separately covered by the quality agent fixture."
+  ]
+}

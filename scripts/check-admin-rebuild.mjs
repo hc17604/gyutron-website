@@ -12,7 +12,7 @@ const suites=[
   'test-operations-bulk-ui.mjs','test-operations-license-issuer.mjs',
   'test-operations-run-ui.mjs',
   'test-operations-run-review.mjs',
-  'check-admin-frontend.mjs','check-admin-routes.mjs','test-admin-demo.mjs',
+  'check-admin-frontend.mjs','check-admin-routes.mjs','test-admin-demo.mjs','test-admin-startup.mjs',
 ];
 const results=[],pending=[...suites];
 async function run(file){const started=Date.now();return await new Promise(resolve=>{

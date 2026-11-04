@@ -18,6 +18,7 @@ import { renderAdminLogin, getAdminAsset } from '../src/admin/shell.mjs';
 import { WORKSPACE_LANGUAGES,WORKSPACE_LANGUAGE_STORAGE_KEY,normalizeWorkspaceLanguage,selectWorkspaceLanguage } from '../src/admin/locale-policy.mjs';
 
 const outputDir=new URL('../artifacts/admin-rebuild-20261103/',import.meta.url);await fs.mkdir(outputDir,{recursive:true});
+const generatedCheck=spawnSync(process.execPath,[fileURLToPath(new URL('./generate-admin-test-mode.mjs',import.meta.url)),'--check'],{encoding:'utf8'});assert.equal(generatedCheck.status,0,generatedCheck.stderr||'Test mode generated browser source is stale.');
 const results=[];
 const check=(name,run)=>{run();results.push({name,ok:true});};
 for(const [name,source] of Object.entries({workbench:WORKBENCH_CLIENT,operations:OPERATIONS_CLIENT,intelligence:INTELLIGENCE_CLIENT,core:ADMIN_CLIENT,crm:CRM_EXPERIENCE_CLIENT,notifications:NOTIFICATIONS_CLIENT,quotes:QUOTES_CLIENT,locales:ADMIN_LOCALE_CLIENT,layout:LAYOUT_CLIENT})){

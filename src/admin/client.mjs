@@ -1,14 +1,12 @@
 import { normalizeWorkspaceLanguage, selectWorkspaceLanguage } from './locale-policy.mjs';
-import { readWorkspaceTestMode, createWorkspaceTransport, switchWorkspaceTestMode } from './test-mode.mjs';
+import { TEST_MODE_CLIENT_SOURCE } from './test-mode-client-source.mjs';
 
 export const ADMIN_CLIENT = String.raw`(function workspaceClient() {
   'use strict';
   const boot = JSON.parse(document.getElementById('workspace-bootstrap').textContent);
   const normalizeWorkspaceLanguage = ${normalizeWorkspaceLanguage.toString()};
   const selectWorkspaceLanguage = ${selectWorkspaceLanguage.toString()};
-  const readWorkspaceTestMode = ${readWorkspaceTestMode.toString()};
-  const createWorkspaceTransport = ${createWorkspaceTransport.toString()};
-  const switchWorkspaceTestMode = ${switchWorkspaceTestMode.toString()};
+  ${TEST_MODE_CLIENT_SOURCE}
   const page = document.getElementById('workspace-page');
   const dialog = document.getElementById('record-dialog');
   const dialogContent = document.getElementById('dialog-content');

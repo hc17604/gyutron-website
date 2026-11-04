@@ -52,6 +52,9 @@ instructions.
   action, export or navigation item changes, update its synthetic fixtures/adapter and the relevant demo
   scenario in the same change. Run `npm run check:admin-demo`; every navigation module must remain covered.
   Demo requests and downloads must stay local and fail closed, with no fallback to live business APIs.
+- Any admin startup/helper/bundling change must pass `npm run check:admin-startup`: execute the complete
+  Wrangler-compiled client through bootstrap and first view in EN/zh and both data modes. Source-only
+  syntax checks, asset hashes and a demo adapter test do not prove the delivered client starts.
 - Treat the Header DOM as high risk: mobile navigation depends on its structure. Run the header gate
   after any navigation change.
 - Never guess Cloudflare binding IDs, account values, credentials, or secrets. Keep secrets out of Git.

@@ -8,13 +8,14 @@
   "scripts": {
     "check": "node scripts/verify-instance.mjs",
     "pretest": "node -e \"require('node:fs').mkdirSync('.wrangler',{recursive:true})\"",
-    "test": "node scripts/smoke-admin-api.mjs && node scripts/smoke-admin-auth.mjs && node scripts/smoke-admin-quotes.mjs && node scripts/smoke-admin-backup.mjs && node scripts/smoke-admin-aggregation.mjs && node scripts/test-workspace-experience.mjs && node scripts/test-operations-core.mjs && node scripts/test-intelligence.mjs && node scripts/test-intelligence-cross-review.mjs && node scripts/test-intelligence-crm-controller.mjs && node scripts/test-operations-intelligence-review.mjs && node scripts/test-notifications.mjs && node scripts/test-operations-bulk-ui.mjs && node scripts/test-operations-license-issuer.mjs && node scripts/check-admin-frontend.mjs && node scripts/check-admin-routes.mjs && node scripts/test-operations-run-ui.mjs && node scripts/test-operations-run-review.mjs && node scripts/test-admin-demo.mjs",
+    "test": "node scripts/smoke-admin-api.mjs && node scripts/smoke-admin-auth.mjs && node scripts/smoke-admin-quotes.mjs && node scripts/smoke-admin-backup.mjs && node scripts/smoke-admin-aggregation.mjs && node scripts/test-workspace-experience.mjs && node scripts/test-operations-core.mjs && node scripts/test-intelligence.mjs && node scripts/test-intelligence-cross-review.mjs && node scripts/test-intelligence-crm-controller.mjs && node scripts/test-operations-intelligence-review.mjs && node scripts/test-notifications.mjs && node scripts/test-operations-bulk-ui.mjs && node scripts/test-operations-license-issuer.mjs && node scripts/check-admin-frontend.mjs && node scripts/check-admin-routes.mjs && node scripts/test-operations-run-ui.mjs && node scripts/test-operations-run-review.mjs && node scripts/test-admin-demo.mjs && node scripts/test-admin-startup.mjs",
     "build": "wrangler deploy --config wrangler.toml --dry-run --outdir .wrangler/build",
     "dev": "wrangler dev --config wrangler.toml --local --persist-to .wrangler/state",
     "migrate:local": "wrangler d1 migrations apply DB --config wrangler.toml --local --persist-to .wrangler/state",
     "migrate:remote": "wrangler d1 migrations apply DB --config wrangler.toml --remote",
     "deploy": "wrangler deploy --config wrangler.toml",
-    "check:admin-demo": "node scripts/test-admin-demo.mjs"
+    "check:admin-demo": "node scripts/test-admin-demo.mjs",
+    "check:admin-startup": "node scripts/test-admin-startup.mjs"
   },
   "devDependencies": {
     "wrangler": "4.93.1"
