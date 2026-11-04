@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Compact Inbox badge/contrast .23 — locally verified, release pending:** user flags the detached white5px unread indicator as
+- **Compact Inbox badge/contrast .23 LIVE VERIFIED (92ef5ce; CI41825666371 success; production14/14):** user flags the detached white5px unread indicator as
   a collapsed Inbox bug and asks for a darker purple sidebar with clearer icons/menu. Root owns
   compact-only badge display:none, scoped #140d22 palette/brighter icons/text500/stroke1.8, build marker/docs.
   Full count remains in link aria-label and expanded numeric badge; no transport/data/controller
@@ -26,7 +26,14 @@
   stroke1.8, sidebar rgb(20,13,34). Actual390x844 drawer retains visible16 and default-open management,
   no root overflow. Independent review: text15.87:1/icons13.37:1/title10.02:1/selected13.41:1.
   Navigation53, Demo41, icons12, Astro build/verify:all, agent/deploy/diff gates pass. No JS/data/API
-  behavior changes. Rollback: revert23 scoped commit. Next: push, watch CI and verify live assets/UI.
+  behavior changes. Live at measured1920x841 confirms compact count display:none/width0 with
+  accessible 收件箱 · 16, sidebar rgb(20,13,34), icon rgb(222,213,237)/stroke1.8, management open;
+  expanded DOM still renders numeric16/23.976px and weight500. Clean compact screenshot:
+  outputs/admin-navigation-contrast-20261104/live23-compact.jpg. Initial release check encountered
+  a22/23 rollout overlap (old header/CSS then unset test CSRF); retained as rollout-pending-checks.json.
+  Fresh-session recheck is14/14 and all19 deployed assets match committed source; no business records
+  created. production-checks.json is the final report. Own8801 preview stopped, viewport reset.
+  Rollback: revert92ef5ce. Next: none; scope complete.
 
 - **Navigation defaults/tone .22 LIVE VERIFIED (fbef6f4; CI41824730398 success; production14/14):** Administration now renders
   with native details/open; its manual toggle and accepted-route reveal logic remain unchanged.
