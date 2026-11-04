@@ -54,6 +54,46 @@ const MODULE_REQUESTS={
   health:['system'],audit:['audit?limit=25'],settings:['system','team'],
 };
 
+await test('overview links retain exact open-pipeline and overdue scopes without turning totals into invented metrics',async()=>{
+  const w=fresh(),summary=await one(w,'dashboard');
+  const open=await list(w,'opportunities?closed=false&limit=100');
+  const overdue=await list(w,'tasks?overdue=true&limit=100');
+  const allTasks=await list(w,'tasks?limit=100');
+  assert.equal(open.meta.total,summary.counts.open_opportunities);
+  assert.ok(open.data.every(row=>!['won','lost'].includes(row.stage)));
+  assert.equal(overdue.meta.total,summary.counts.overdue_tasks);
+  assert.ok(overdue.data.every(row=>row.status!=='done'&&row.due_date<'2026-11-04'));
+  assert.equal(allTasks.data.filter(row=>row.status!=='done').length,summary.counts.open_tasks);
+  const inbox=await Promise.all(['leads','rfqs','support','downloads'].map(resource=>list(w,'intake?resource='+resource+'&status=new&limit=100')));
+  assert.equal(inbox.reduce((sum,result)=>sum+result.meta.total,0),summary.counts.unread_intake);
+});
+
+await test('synthetic daily automation times match the displayed Singapore schedule through pause and resume',async()=>{
+  const w=fresh(),packet=await list(w,'operations/automations?limit=100');
+  const row=packet.data.find(record=>record.config?.daily_at==='08:00');assert.ok(row);
+  assert.equal(row.next_run_at,'2026-11-05T00:00:00.000Z');
+  assert.equal(row.last_run_at,'2026-11-04T00:00:00.000Z');
+  const paused=await send(w,'operations/automations/'+id(row),'PATCH',{version:row.version,enabled:false});
+  assert.equal(paused.data.next_run_at,null);
+  const resumed=await send(w,'operations/automations/'+id(row),'PATCH',{version:paused.data.version,enabled:true});
+  assert.equal(resumed.data.next_run_at,'2026-11-05T00:00:00.000Z');
+  const changed=await send(w,'operations/automations/'+id(row),'PATCH',{version:resumed.data.version,config:{...row.config,daily_at:'09:45'}});
+  assert.equal(changed.data.next_run_at,'2026-11-05T01:45:00.000Z');
+});
+
+await test('demonstration charts use varied underlying orders and reconcile to their filtered totals',async()=>{
+  const w=fresh(),data=await one(w,'operations/analytics');
+  assert.ok(new Set(data.series.map(day=>day.orders)).size>3,'The demonstration must contain actual day-to-day variation.');
+  assert.equal(data.series.reduce((sum,day)=>sum+day.orders,0),data.counts.orders);
+  const scoped=await one(w,'operations/analytics?currency=USD');
+  assert.equal(scoped.series.reduce((sum,day)=>sum+day.orders,0),scoped.counts.orders);
+  assert.ok(scoped.revenue_by_currency.every(row=>row.currency==='USD'));
+  const pipeline=(await one(w,'dashboard')).pipeline;
+  const stageCounts=STAGES.map(stage=>pipeline.filter(row=>row.stage===stage).reduce((sum,row)=>sum+row.count,0));
+  assert.ok(new Set(stageCounts).size>3,'Funnel proportions must reflect the varied synthetic records.');
+  assert.equal(stageCounts.reduce((sum,count)=>sum+count,0),(await list(w,'opportunities?limit=100')).meta.total);
+});
+
 await test('explicit test URL wins over stored mode, invalid inputs never enable testing implicitly',()=>{
   assert.equal(readWorkspaceTestMode('https://ops.example.test/admin?test=1',()=> '0'),true);
   assert.equal(readWorkspaceTestMode('https://ops.example.test/admin?test=0',()=> '1'),false);
@@ -131,6 +171,10 @@ await test('seeded customer/opportunity/task/activity relations resolve to actua
   const w=fresh(),customers=(await list(w,'customers?limit=100')).data,opportunities=(await list(w,'opportunities?limit=100')).data;
   assert.ok(customers.length>=40);assert.ok(opportunities.length>=60);
   const customerIds=new Set(customers.map(id)),opportunityIds=new Set(opportunities.map(id));
+  const auditTargets={customers:customerIds,opportunities:opportunityIds,quotation:new Set((await list(w,'quotes?limit=100')).data.map(id)),
+    'intake.leads':new Set((await list(w,'intake?resource=leads&limit=100')).data.map(id)),authentication:new Set(['owner']),
+    backup:new Set((await list(w,'system/backups')).data.map(row=>row.filename))};
+  for(const entry of (await list(w,'audit?limit=100')).data)assert.ok(auditTargets[entry.entity_type]?.has(entry.entity_id),'Audit entry must identify an existing entity of its stated type.');
   for(const row of customers)assert.ok(CUSTOMER_STATUSES.includes(row.status));
   for(const row of opportunities){assert.ok(customerIds.has(row.customer_id),'Dangling opportunity customer');assert.ok(Number.isSafeInteger(row.amount_minor));assert.ok(STAGES.includes(row.stage));assert.ok(CURRENCIES.includes(row.currency));}
   const tasks=(await list(w,'tasks?limit=100')).data,activities=(await list(w,'activities?limit=100')).data;

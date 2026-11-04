@@ -132,6 +132,9 @@ jobs:
       - name: Verify isolated Test mode and module coverage
         working-directory: ${{ github.workspace }}
         run: npm run check:admin-demo
+      - name: Verify shared SVG icons and exact chart presentation
+        working-directory: ${{ github.workspace }}
+        run: node scripts/test-admin-icons.mjs
       - name: Verify complete compiled workspace startup
         working-directory: ${{ github.workspace }}
         run: npm run check:admin-startup

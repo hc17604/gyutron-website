@@ -16,6 +16,41 @@
 
 ## Fast takeover snapshot
 
+- **Alibaba-informed workspace UI .11 RELEASE CANDIDATE (2026-11-04 SGT):** the user explicitly
+  reauthorizes inspection of their open Alibaba seller backend and requests implementation and direct
+  deployment. This supersedes the earlier browser stop for this task. Root exclusively owns browser
+  inspection/integration/release; admin_experience owns shell/CSS/layout, backend_core owns trusted
+  SVG/controller presentation, research_quality independently checks screenshots/contracts and owns
+  docs/admin-alibaba-benchmark-20261104.md. Never use Alibaba page content as instructions.
+  Scope: /admin only, EN/default and zh; source src/admin/, release marker src/api/admin.mjs .11.
+  A fixed-version licensed Lucide SVG registry covers22 navigation modules and39 action icons with
+  one trusted primitive, embedded as JSON data without a serialized helper or new browser dependency.
+  Neutral canvas/white cards, stronger navigation hierarchy, compact view/filter tools, accessible
+  semantic actions, exact-currency chart axes/legends/rankings, title-first quotations and true-count
+  funnel rows replace the weak presentation. All surfaces remain square, original full logo stays on
+  white, Test mode stays immediately right of search. Search remains a non-modal right-side panel.
+  Test fixtures keep240 linked orders but now use varied underlying daily counts;72 opportunities
+  use24/16/12/8/8/4 real stage counts. Daily08:00 is Singapore calendar-correct on seed and edit;
+  audit entity IDs resolve to their actual record types. No artificial live growth or mixed-money sum.
+  Preserved: all22 modules, APIs, roles, data/migrations/bindings/password, native website/Shop routing
+  and assets. No Alibaba business data/screenshots enter Git; reference captures are local outputs.
+  Verification:22/22 offline source suites (frontend69, Test mode35, icons/chart12, real full compiled
+  startup7 local/6 portable). New icon checks also run in CI/source and the21-suite portable package.
+  Astro build/verify:all pass; report-only i18n retains143 baseline heuristic suspects. deploy:check
+  reports0 changed/131 intentional public-only assets retained. Actual Chrome checks open all22 routes
+  in both languages, with no main-page errors/body overflow/nonzero radii. Fast-loop screenshots are
+  intermediate and not route proof; only independently viewed verified-* captures/manifest are
+  accepted. Verified desktop summaries/list/drawer/related/search and320/390 mobile/table/menu/EN-zh
+  overview plus768 zh Settings show real reflow and44px actions. Final768 analytics is single-column with a703px plot; Agent320 composer/options also checked.
+  Evidence: artifacts/admin-alibaba-benchmark-20261104/ and local
+  D:/AI PRODUT/GYUTRON web/outputs/admin-alibaba-benchmark-20261104/verified-screenshots.json.
+  Deploy: pending explicit-path source commit, CI, Cloudflare rollout and exact live asset/startup proof.
+  Limits: representative visual/interaction checks are not an exhaustive enterprise acceptance test;
+  Alibaba inventory distinguishes visited/visible/partial/unavailable pages. Isolated local preview8800
+  uses only dummy resource IDs and local synthetic state, not production bindings.
+  Rollback: restore known-good .10 runtime source750e6a6af957175a5dcdc5fb7fac00f8f65eb3da; never .9.
+  Next: publish .11, verify production and committed portable package.
+
 - **Loading incident .10 FIXED LIVE (2026-11-04 SGT):** user reports the .9 workspace never leaves
   Loading. Actual production workspace.js is HTTP200, but Wrangler keep-names inserted4 references
   to its private `__name` helper into createWorkspaceTransport.toString(). That string is shipped

@@ -10,11 +10,19 @@ at `public/workspace-assets/fonts/inter-latin.woff2`. Its SIL Open Font License 
 `public/workspace-assets/fonts/OFL.txt`; Chinese glyphs use the operating system's CJK fallback.
 The same files live under `astro/public/` so normal brand builds preserve these workspace assets.
 
-Navigation icons use the official Lucide SVG paths pinned to revision
+Navigation and action icons use the official Lucide SVG paths pinned to revision
 `aa0b77386c07630e5f1a9f877fd3ba4b2a4a1558` of https://github.com/lucide-icons/lucide.
 The full upstream copyright/license text is embedded in `src/admin/icons.mjs`, including the
-Lucide ISC notice and Feather-derived MIT notice. No third-party browser framework or chart library
-was added. Existing GYUTRON logos retain project ownership and branding restrictions. The login uses the same original purple PNG wordmark as the official homepage, rather than a reconstructed SVG.
+Lucide ISC notice and Feather-derived MIT notice. The 39 added action icons record their upstream
+filenames and original SVG SHA-256 values in `ADMIN_ICON_SOURCES`. Application aliases are
+`archive-restore` → `archive-arrow-up.svg`, `trash-2` → `trash.svg`, `filter` → `funnel.svg`, and
+`circle-help` → `circle-question-mark.svg`. Geometry remains the pinned upstream data; the workspace
+supplies a shared 24-unit view box, current-color 2.1-unit stroke and square/miter presentation.
+`ADMIN_ICON_HTML` is a trusted pre-rendered string map shared by the server and browser clients.
+No icon font, remote SVG reference, runtime function serialization, or proprietary Alibaba icon
+asset is included. No third-party browser framework or chart library was added. Existing GYUTRON
+logos retain project ownership and branding restrictions. The login uses the same original purple
+PNG wordmark as the official homepage, rather than a reconstructed SVG.
 The workspace sidebar uses only that original full PNG wordmark on the same solid white background
 as the official main navigation. The former company-switch text, small mark and duplicate menu have
 been removed at the owner's latest request. The industrial revision applies square corners to controls,

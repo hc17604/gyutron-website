@@ -1,0 +1,255 @@
+{
+  "at": "2026-11-04T03:05:33.216Z",
+  "passed": 22,
+  "failed": 0,
+  "suites": [
+    {
+      "file": "smoke-platform.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 157,
+      "output": "\n  smoke: 34 passed, 0 failed\n  ✓ all platform smoke tests passed\n\n"
+    },
+    {
+      "file": "smoke-admin-api.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 280,
+      "output": "admin workspace operation failed Error\nadmin workspace operation failed Error\nlegacy operational view failed Error\n{\n  \"passed\": 41,\n  \"failed\": 0,\n  \"checks\": 41,\n  \"storage\": \"real SQLite in memory\",\n  \"productionWrites\": false\n}\n"
+    },
+    {
+      "file": "smoke-admin-auth.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 2338,
+      "output": "workspace request failed Error\nworkspace request failed Error\nworkspace request failed Error\nbackup skipped: missing storage binding\n{\n  \"passed\": 29,\n  \"failed\": 0,\n  \"checks\": 29,\n  \"storage\": \"real SQLite in memory\",\n  \"productionWrites\": false\n}\n"
+    },
+    {
+      "file": "smoke-admin-quotes.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 177,
+      "output": "quotation operation failed Error\n{\n  \"passed\": 26,\n  \"failed\": 0,\n  \"checks\": 26,\n  \"storage\": \"real SQLite in memory\",\n  \"productionWrites\": false\n}\n"
+    },
+    {
+      "file": "smoke-admin-aggregation.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 267,
+      "output": "{\n  \"passed\": 5,\n  \"failed\": 0,\n  \"checks\": 5,\n  \"fixtureOpportunities\": 18030,\n  \"storage\": \"real SQLite in memory\",\n  \"productionWrites\": false\n}\n"
+    },
+    {
+      "file": "smoke-admin-backup.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 2142,
+      "output": "backup failed BACKUP_R2_WRITE_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup failed BACKUP_R2_VERIFY_FAILED\nbackup retention failed Error\nbackup retention failed Error\nbackup skipped: missing storage binding\n{\n  \"passed\": 20,\n  \"failed\": 0,\n  \"checks\": 20,\n  \"storage\": \"real SQLite; R2 failure behavior tested with an in-memory mock\",\n  \"productionWrites\": false\n}\n"
+    },
+    {
+      "file": "test-workspace-experience.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 134,
+      "output": "PASS contacts persist and customer details include real contacts\nPASS only one primary contact; prior primary version increments\nPASS stale primary update does not clear the current primary\nPASS contact cross-customer move is rejected; history stays\nPASS contact archive and restore are versioned and do not reassign primary\nPASS RBAC and origin protect contact writes\nPASS private view persists server side and is private to its creator\nPASS team views are readable but only managed by permitted users\nPASS view CAS and malformed config rejection\nPASS bulk reports individual conflicts without claiming all succeeded\nPASS real record search returns matching contact and customer, not unrelated rows\nPASS sort and amount/date filters use allowlisted SQL\nPASS contact changes produce before/after audit records\nPASS primary contacts appear and are searchable in the real customer list\nPASS created date filters respect the workspace business timezone\n{\"passed\":15,\"failed\":0}\n"
+    },
+    {
+      "file": "test-operations-core.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 493,
+      "output": "PASS role and origin defenses precede business writes\nPASS CSV parser preserves multiline/quoted/UTF8 values and rejects malformed data\nPASS amount conversion is exact, currency-specific and bounded\nPASS business day boundaries use workspace timezone and DST\nPASS sources and native sync describe original tables without copying\nPASS preview validates, maps, deduplicates and persists no commerce rows\nPASS commit upserts valid rows and is idempotent with a stale repeated completion\nPASS failed row CSV is downloadable only to managers and spreadsheet-safe\nPASS upsert identity includes source and preserves one canonical order per external ID\nPASS customer import has real rows and item foreign-parent/currency failures stay explicit\nPASS payment import supports unmatched reconciliation without counting revenue twice\nPASS source/date/currency drilldown totals match metric filters\nPASS Shopify export maps Id/Name and repeated line headers correctly\nPASS Shopify derived identities survive row reordering and reject ambiguous duplicate SKUs\nPASS database guards reject interleaved currency mismatch independently of prevalidation\nPASS native site source is queried live and internal synthetic/spam data is excluded\nPASS reports are factual, persisted, multilingual and immutable\nPASS rule edits create immutable version history and enforce optimistic concurrency\nPASS rule runs create real deduplicated CRM tasks and bounded resumable runs\nPASS no-longer-matching enquiries resolve generated tasks without deleting evidence\nPASS a previously resolved condition reopens the same task without duplicating it\nPASS mid-step lease expiration keeps the old checkpoint and safely replays without skipped tasks\nPASS manual and scheduled automation runs are backed by unique durable claims\nPASS active leases block duplicate processing and expired leases resume safely\nPASS exact currency aggregation exceeds JS safe integer without losing a minor unit\nPASS body streams, malformed dates and invalid JSON fail closed\nPASS all thirteen rules expose real task or policy execution\nPASS report current findings respect source/currency and unsupported language is 422\nPASS imports commit at most 100 rows, resume accurately and discard remains explicit in history\nPASS lost import ownership cannot create completion audit or skip pending rows\noperations run failed Error\nPASS transient execution failures retry from the same run rather than duplicating success\nPASS priority country/category policies alter real existing task priorities and can be independently disabled\nPASS support and gated/manual download review retain independent enablement and thresholds\nPASS versioned internal-test policy affects metrics, reports and rule tasks without deleting raw enquiries\nPASS bad scheduled rule configuration pauses that schedule without blocking a healthy schedule\nPASS bounded retention preserves canonical records, batch summaries and referenced provenance\nPASS calendar daily triggers retain wall-clock time across DST gaps and overlaps\nPASS daily automations persist the calendar and enqueue the next local occurrence without interval drift\nPASS trend buckets use the same business date as filtered metric totals\nPASS 100-row import stays below the Free Worker D1 invocation budget\nPASS 100-candidate rule page uses batched reads/writes with lease-safe replay\nPASS one cron advances a multi-step run while preserving a bounded D1 query budget\nPASS partial refund keeps original paid order value separate from 100 paid minus 30 refund movement\nPASS long Unicode and literal percent/underscore searches bypass D1 LIKE length limits without truncation\nPASS mixed report backlog plus two due rule schedules remains under the conservative cron budget\nPASS report automation strictly validates exclusion booleans and executes the frozen true or false filter\nPASS new report languages are bilingual and legacy reports stay readable while old schedules resume in English\n{\n  \"passed\": 47,\n  \"total\": 47,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "test-intelligence.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 293,
+      "output": "intelligence operation failed Error\n{\n  \"suite\": \"intelligence\",\n  \"passed\": 54,\n  \"failed\": 0,\n  \"provider_calls_are_protocol_test_doubles\": true,\n  \"real_external_model_tested\": false,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "test-intelligence-cross-review.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 130,
+      "output": "bulk record outcome unconfirmed Error\n{\n  \"suite\": \"independent-cross-review\",\n  \"passed\": 5,\n  \"failed\": 0,\n  \"findings\": []\n}\n"
+    },
+    {
+      "file": "test-intelligence-crm-controller.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 80,
+      "output": "PASS select or checkbox change marks the actual form dirty\nPASS declining navigation preserves dirty form and open dialog\nPASS busy operation blocks navigation without discard confirmation\nPASS confirmed discard closes the actual tool\nPASS business amounts convert to exact minor strings with explicit currency\nPASS stale record decoration cannot remove the current customer panel or start another request\nPASS a delayed contact restore cannot redraw another customer after navigation\nPASS a contact restore finishing after close cannot redraw the closed record\nPASS a current contact restore still refreshes its own related panel\nPASS a stale restore failure cannot show another record an unrelated error\n{\"suite\":\"crm-controller-branches\",\"passed\":10,\"failed\":0,\"visual_browser_tested\":false}\n"
+    },
+    {
+      "file": "test-operations-intelligence-review.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 105,
+      "output": "{\"passed\":true,\"cross_provider_reuse_rejected\":true,\"rejected_write_atomic\":true,\"same_provider_model_change_retains_key\":true,\"new_provider_requires_new_key\":true,\"external_calls\":0}\n"
+    },
+    {
+      "file": "test-notifications.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 174,
+      "output": "workspace notifications failed Error\n{\n  \"suite\": \"workspace-notifications\",\n  \"passed\": 21,\n  \"failed\": 0,\n  \"real_sqlite\": true,\n  \"controller_dom_contract\": true,\n  \"visual_browser_tested\": false,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "test-operations-bulk-ui.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 101,
+      "output": "{\n  \"suite\": \"independent-crm-bulk-ui\",\n  \"passed\": 4,\n  \"failed\": 0,\n  \"shipped_controller_executed\": true,\n  \"visual_browser_tested\": false,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "test-operations-license-issuer.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 93,
+      "output": "{\n  \"suite\": \"offline-instance-license-issuer\",\n  \"passed\": 6,\n  \"failed\": 0,\n  \"synthetic_fixtures_only\": true,\n  \"external_calls\": 0,\n  \"production_state_changed\": false,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "test-operations-run-ui.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 119,
+      "output": "{\n  \"suite\": \"operations-automatic-checkpoint-ui\",\n  \"passed\": 26,\n  \"failed\": 0,\n  \"shipped_controller_executed\": true,\n  \"production_writes\": false,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "test-operations-run-review.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 184,
+      "output": "{\n  \"suite\": \"independent-checkpoint-driver-review\",\n  \"passed\": 15,\n  \"failed\": 0,\n  \"shipped_helper_executed\": true,\n  \"synthetic_real_sqlite\": true,\n  \"maximum_module_d1_binding_calls\": 17,\n  \"browser_visual_tested\": false,\n  \"production_accessed\": false,\n  \"external_model_called\": false,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "check-admin-frontend.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 704,
+      "output": "{\"checks\":69,\"passed\":69}\n"
+    },
+    {
+      "file": "check-admin-routes.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 87,
+      "output": "{\"checks\":5,\"passed\":5}\n"
+    },
+    {
+      "file": "test-admin-demo.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 567,
+      "output": "{\n  \"suite\": \"admin-demo-contract-isolation\",\n  \"passed\": 35,\n  \"failed\": 0,\n  \"emitted_esm_vm\": true,\n  \"network_attempts\": [],\n  \"production_accessed\": false,\n  \"browser_used\": false,\n  \"failures\": []\n}\n(node:52608) ExperimentalWarning: VM Modules is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+    },
+    {
+      "file": "test-admin-icons.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 108,
+      "output": "{\n  \"suite\": \"admin-trusted-icons-and-chart-contract\",\n  \"passed\": 12,\n  \"failed\": 0,\n  \"network_requests\": 0,\n  \"browser_used\": false,\n  \"production_writes\": false,\n  \"failures\": []\n}\n"
+    },
+    {
+      "file": "test-admin-startup.mjs",
+      "ok": true,
+      "exit_code": 0,
+      "duration_ms": 5708,
+      "output": "(node:29540) ExperimentalWarning: VM Modules is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n{\n  \"suite\": \"admin-compiled-full-startup\",\n  \"at\": \"2026-11-04T03:05:33.158Z\",\n  \"passed\": 7,\n  \"failed\": 0,\n  \"wrangler\": \"4.93.1\",\n  \"compiled_by_this_run\": true,\n  \"compiled_worker\": \"D:\\\\AI PRODUT\\\\GYUTRON web\\\\website\\\\gyutron-website-repo\\\\.wrangler\\\\admin-startup-check\\\\run-kKYpFa\\\\bundle\\\\worker.js\",\n  \"bundle_sha256\": \"1cb127bfbb86009289924286f5440e9a7dce26b2e0193f553287c099316ef8c7\",\n  \"compiled_workspace_sha256\": \"ccb992f12d287794c812afcad1c36b16204227c442dbb9617715cca263f358e8\",\n  \"workspace_source\": \"compiled_worker\",\n  \"workspace_file\": null,\n  \"executed_workspace_sha256\": \"ccb992f12d287794c812afcad1c36b16204227c442dbb9617715cca263f358e8\",\n  \"dynamic_module_source\": \"compiled_worker\",\n  \"actual_initializer_executed\": true,\n  \"missing_helper_shim_injected\": false,\n  \"browser_used\": false,\n  \"production_business_api_used\": false,\n  \"provisioned\": false,\n  \"deployed\": false,\n  \"results\": [\n    {\n      \"name\": \"compiled complete startup en mode 0\",\n      \"passed\": true,\n      \"demo\": false,\n      \"language\": \"en\",\n      \"metric_values\": [\n        \"48\",\n        \"60\",\n        \"54\",\n        \"3\",\n        \"16\"\n      ],\n      \"requests\": [\n        {\n          \"path\": \"/admin/api/bootstrap\",\n          \"method\": \"GET\"\n        },\n        {\n          \"path\": \"/admin/api/assignees\",\n          \"method\": \"GET\"\n        },\n        {\n          \"path\": \"/admin/api/dashboard\",\n          \"method\": \"GET\"\n        },\n        {\n          \"path\": \"/admin/api/operations/reports?limit=3\",\n          \"method\": \"GET\"\n        },\n        {\n          \"path\": \"/admin/api/operations/runs?limit=5\",\n          \"method\": \"GET\"\n        },\n        {\n          \"path\": \"/admin/api/workspace/notifications?limit=50&lang=en\",\n          \"method\": \"GET\"\n        }\n      ]\n    },\n    {\n      \"name\": \"compiled complete startup en mode 1\",\n      \"passed\": true,\n      \"demo\": true,\n      \"language\": \"en\",\n      \"metric_values\": [\n        \"48\",\n        \"60\",\n        \"54\",\n        \"3\",\n        \"16\"\n      ],\n      \"requests\": []\n    },\n    {\n      \"name\": \"compiled complete startup zh mode 0\",\n      \"passed\": true,\n      \"demo\": false,\n      \"language\": \"zh\",\n      \"metric_values\": [\n        \"48\",\n        \"60\",\n        \"54\",\n        \"3\",\n        \"16\"\n      ],\n      \"requests\": [\n        {\n          \"path\": \"/admin/api/bootstrap\",\n          \"method\": \"GET\"\n        },\n        {\n          \"path\": \"/admin/api/assignees\",\n          \"method\": \"GET\"\n        },\n        {\n          \"path\": \"/admin/api/dashboard\",\n          \"method\": \"GET\"\n        },\n        {\n          \"path\": \"/admin/api/operations/reports?limit=3\",\n          \"method\": \"GET\"\n        },\n        {\n          \"path\": \"/admin/api/operations/runs?limit=5\",\n          \"method\": \"GET\"\n        },\n        {\n          \"path\": \"/admin/api/workspace/notifications?limit=50&lang=zh\",\n          \"method\": \"GET\"\n        }\n      ]\n    },\n    {\n      \"name\": \"compiled complete startup zh mode 1\",\n      \"passed\": true,\n      \"demo\": true,\n      \"language\": \"zh\",\n      \"metric_values\": [\n        \"48\",\n        \"60\",\n        \"54\",\n        \"3\",\n        \"16\"\n      ],\n      \"requests\": []\n    },\n    {\n      \"name\": \"negative control missing helper\",\n      \"passed\": true,\n      \"error\": \"__gyutronMissingStartupHelperRegression is not defined\"\n    },\n    {\n      \"name\": \"negative control initializer omitted\",\n      \"passed\": true,\n      \"error\": \"Did not leave loading state\"\n    },\n    {\n      \"name\": \"saved actual broken production .9 reproduces startup failure\",\n      \"passed\": true,\n      \"error\": {\n        \"name\": \"ReferenceError\",\n        \"message\": \"__name is not defined\",\n        \"stack\": \"compiled-workspace-startup.js:23\\n  const abort = /* @__PURE__ */ __name(() => Object.assign(new Error(\\\"Workspace context changed.\\\"), { name: \\\"AbortError\\\" }), \\\"abort\\\");\\n                                ^\\n\\nReferenceError: __name is not defined\\n    at createWorkspaceTransport (compiled-workspace-startup.js:23:33)\\n    at workspaceClient (compiled-workspace-startup.js:97:28)\\n    at compiled-workspace-startup.js:513:3\\n    at Script.runInContext (node:vm:149:12)\\n    at startup (file:///D:/AI%20PRODUT/GYUTRON%20web/website/gyutron-website-repo/scripts/test-admin-startup.mjs:93:172)\\n    at async file:///D:/AI%20PRODUT/GYUTRON%20web/website/gyutron-website-repo/scripts/test-admin-startup.mjs:128:17\"\n      }\n    }\n  ],\n  \"failures\": [],\n  \"limitations\": [\n    \"DOM stub verifies startup control flow, populated first view and actual mode-reload handler, not pixels/accessibility.\",\n    \"Live-mode API replies are an isolated read-only in-memory fixture; demo mode must perform zero business fetches.\",\n    \"A workspace file override is a supplied local artifact; independent release hashes must establish its production provenance.\"\n  ],\n  \"report\": \"D:\\\\AI PRODUT\\\\GYUTRON web\\\\website\\\\gyutron-website-repo\\\\.wrangler\\\\admin-startup-check\\\\run-kKYpFa\\\\startup-results.json\"\n}\n"
+    }
+  ],
+  "source_hashes": {
+    "src/admin/client.mjs": "24d7201d61d506c27c72c65884d52f797ae9a151210b0e8293f43f607aa89d88",
+    "src/admin/core-extra-locales.mjs": "faf5c1c6f10931af379f948b9f4197698008dd03bf4c6899f2baa67217e4520c",
+    "src/admin/crm-experience-client.mjs": "90d622392dbd8ee5aba52f5df39be51506afb2d375fabc2de2bde19196d44d07",
+    "src/admin/demo-client.mjs": "79833c0ef053db9abaa1f3d2e2b9c5850580f238c61dced5ec35206eb22c9330",
+    "src/admin/extension-errors.mjs": "66cd99c12135a0f3882b831904933268eebc095778a820e74de44ae2fd794d88",
+    "src/admin/extension-locales.mjs": "e36a00f373581319b6590d3360c37157857cf0faa78131d6dca983320e718fc1",
+    "src/admin/icons.mjs": "7b5d8d60002ff378d284e736991f7205d74c882b088a29a21a5123ad334f40d1",
+    "src/admin/intelligence-client.mjs": "8e70c53cbee44b7e5e9c8a47af5c3d7cda7e2d614cd6ea58e20de8c6ee6000f0",
+    "src/admin/layout-client.mjs": "60792118adeec04e21157756f03d1a3128bc5005d509b0d4661e1376c42b5a27",
+    "src/admin/locale-assets.mjs": "87118624bccfa02fa57b880b6a08ee2d3e5fd213ef1ced671afe3eefc5f6ca75",
+    "src/admin/locale-policy.mjs": "0360d604d57a582a6e6c841290d005c5a5df08943f165c5105ff7510b09f155b",
+    "src/admin/notifications-client.mjs": "43ce716c3b8505ccca2ae231466754b15730ebaa5a0d88471718d783030ab538",
+    "src/admin/operations-client.mjs": "30c755400b0f8a315cd4ccddd2af8e9339269c905633ff93346fd2ca3551cffb",
+    "src/admin/quote-extra-locales.mjs": "055d7023d9018b444c9345455528f34d2281c6cc85f601505a970df5130d1d41",
+    "src/admin/quotes-client.mjs": "c5c372d35b75b3ddd1a908570590ce066c08c46c4a82a7ce9456693f4a80982d",
+    "src/admin/quotes-styles.mjs": "6a28b8692b0c65e2ad7de8fd51dddebe0727108265ff97dabcfebc44a1fb5e49",
+    "src/admin/saas-styles.mjs": "3cd09bf24ecaaab078a9c598933f7c776468488f01ceb3498f7ef20d06929494",
+    "src/admin/shell.mjs": "672631d707fab95af11ceefc1ca06b81e98c0492a74f51b38fcfcdfcd28614b3",
+    "src/admin/styles.mjs": "73d10df65857b43fad7690f4f1ba8f6fe6e40d930f16f8a06d4848d156368da2",
+    "src/admin/test-mode-client-source.mjs": "f4ecd4a5bba1011119c5e998be29546f1e40c845f4573d8e704a17d1c12cd51f",
+    "src/admin/test-mode.mjs": "8f713418dded2cffe94370f6cceb95881a98da1830299ea2465efad92d615bef",
+    "src/admin/workbench-ui.mjs": "89ad85d45ae35f96d9d1a2035a74a47847c7ffcdc08a279c080125340d0b42de",
+    "src/api/admin-api.mjs": "cadbce3bb969286e1446f722d80020d9b8259daf2a637d3272a71d0d530db481",
+    "src/api/admin-legacy.mjs": "2cd38f559799f06b8a5a7b9d0dc212f9e3f5ebc1bed2158e8b91c4c3d0a06169",
+    "src/api/admin-quotes.mjs": "229586463192283c60008a883ef96c5e0a319ac5a28a120aa004e4025b0d0e52",
+    "src/api/admin-system.mjs": "b01be3ceaf7797d448afa05b397a86762c044d247957b1c3089b8149d72bdbf8",
+    "src/api/admin-team.mjs": "b15e24ad05573ae49a272667f314a4102b2c9ce34532a8c124bd0b36fde05412",
+    "src/api/admin.mjs": "f5a998cf8033927ad0ab28ff0ed87d23622df5575ab3db2b87de4f05fbb1688a",
+    "src/api/backup.mjs": "a43a82bc83f8427646d8cd273d0d316015b508dc51b17a1a2abdd33c13acafd5",
+    "src/api/data.mjs": "c456d1f45304b146e54979358d5fbc81cc5b1333a137d5b04d8ca457adc89f06",
+    "src/api/downloads.mjs": "4e7987159a41cd39c5537b6bcb67497fd5cdd4d40daef95297e091ed53a314a8",
+    "src/api/forms.mjs": "0b54b8b2f7c28e5c3b108ca7432d2abd201ca89065b4b20b48a770c016d24406",
+    "src/api/intelligence-api.mjs": "9e2177a9e9232025ecfde20afbc42f4658c140d18d21766c5d888ee6ab3046b1",
+    "src/api/operations-api.mjs": "d0618c49465f2f9d05973e8d7e176cdd789085d04dc238063476f5401c81922d",
+    "src/api/order-intents.mjs": "4b486ede89a6bdfd0a8803649ae02807d5aa43c2e7ee58dfe38d091a8ffc60b4",
+    "src/api/products.mjs": "8b3da6eee5d61a5e9d38d0adf8b97d5e13d18c8c02b5f736ea953c61a9cbcf06",
+    "src/api/shop-events.mjs": "1be761576f8759376a5c14fda4f4767a1d81d1f5527ef120ff140495281f744a",
+    "src/api/workspace-experience.mjs": "93638234edd5e019eb28c998ae893101e84389b2dcc2a989c2b10fe7034bcabe",
+    "src/api/workspace-notifications.mjs": "c54ca487a2e0a81d1e5665be46bafe8478a71a0b68066375322198329e0be0d9",
+    "src/contact-handler.mjs": "9f819ed172b2f79e4bdb133397b15bc385e1b2c875e76a3c67948e9cb5eb1b43",
+    "src/platform/config.mjs": "568ba15016e6087424acd18d5e9a1a0604c3abbeb409ecca2259d486785c30a0",
+    "src/platform/crm/repository.mjs": "39ba8a4efbc9c83d17f13a432249e618ee9c2d466128b6eca8fb97eacfdc3adf",
+    "src/platform/crm/schema.mjs": "7746f05dd3f93182ca7c92db166348e036c1e8ac3fbbbcdae4fa8b096d33bec0",
+    "src/platform/crm/time.mjs": "447486e8f3ce26b6e0fb13578a8878b6e82a9deea711773cde4c737da9570db9",
+    "src/platform/csv.mjs": "f8dac01a8cd089a17c104d4a9550c6292c30b896648375671a4b666fca463967",
+    "src/platform/db/client.mjs": "0544122127bb8269e96433ac8ebd1923d54843fe7f562a20d50ff953ac8f127d",
+    "src/platform/db/events.mjs": "8b5985dfcebadb95412536f6d0b67420a4f344cfec73ee8b18881ab31017f8a5",
+    "src/platform/db/repository.mjs": "33e9b59fea606c202c3adbc8f378d6193d22df51933ca979cca07cb9d22a18a7",
+    "src/platform/db/submit.mjs": "c36f1a2825835560d0ed404f150da92198f131df94461935abf88e0ae0ed78ea",
+    "src/platform/ids.mjs": "c7a83026a0ffe8fb5ca5be73f0d70f0776c67364c4537c88c7612909f092d6fb",
+    "src/platform/intelligence/agent.mjs": "32be7bfcb3b15a9a603ad9dc6ac9d8392ee3bd2d6b0b143af8058b7ec2872b69",
+    "src/platform/intelligence/common.mjs": "8e3302d25bf05600c7cc69ba990cb74a7f4174d901171b737723c493f6aa89a4",
+    "src/platform/intelligence/context.mjs": "ae1a7d29ce35309c8e71f94b87bb243d5602449bd9a97aabacf163dc5b3991bf",
+    "src/platform/intelligence/knowledge.mjs": "cb711d47cebfa0a826bbaa135497f5b330cde5a3f7dc80e082a243aa212345cd",
+    "src/platform/intelligence/license.mjs": "5315f437c3c28f53836b891208ef48b7e37276ba4cc05241411a11243569d380",
+    "src/platform/intelligence/models.mjs": "7a0487a764a0b532d923f137dbef44d33dd1ad2636142205f8b1a1908cc65964",
+    "src/platform/intelligence/presentation.mjs": "048afece2977231ca825fdfaaedf6e2d1bfaa75f0efe72cef26da9d6f72c6b8b",
+    "src/platform/operations/analytics.mjs": "512920cd7bb752e0bfb2dc726dc89809d91423438b881476c59217ce8a62b269",
+    "src/platform/operations/calendar.mjs": "3595777d6c78151739b7ffb39374755340e7a2db3932164ae160e5ac0893e38e",
+    "src/platform/operations/common.mjs": "3d44826ee17444a30cac2d04b172ac0dfd536c6e8599c06684310b6131610591",
+    "src/platform/operations/exclusions.mjs": "70eb30ae9b4d020bea54cf1727ec615092a196782f412489f098f21dd283b33a",
+    "src/platform/operations/imports.mjs": "ba4567eb64c15fd3a7f2c978fb531d166b0fd3fcff97e03d699f416d4fbeff04",
+    "src/platform/operations/maintenance.mjs": "2dd2be944e8e0fd061abb2598ca4031bca7890c0f8dc4a9e5606e8716fcf1e47",
+    "src/platform/operations/reports.mjs": "e50c1d1ce94518a65d889595b82275c44d5b5dbf49c902a9464c0598d81ada1e",
+    "src/platform/operations/rules.mjs": "b24333be004fe2eb5efc199e5d69570d502c3ac143b8a7c47e00c826e93eb1ec",
+    "src/platform/operations/scheduler.mjs": "07518aac760db0374606f64adebf7a98e2bc3163e9709c71765c9a4b9476864f",
+    "src/platform/quotes/document.mjs": "3f6e5826b74183e7c65447e8cdef4e2aeb8528882c6547e03f5f19e32772f42e",
+    "src/platform/quotes/repository.mjs": "9793d5e9f84b39d99347e1e8cfb795d076024b253472b4b9266bcbfba7a97047",
+    "src/platform/quotes/schema.mjs": "3675197823bb8e8736c0b0a155d1498666b6d82a6446ea70c60e7b0e369e9204",
+    "src/platform/request.mjs": "aad5bca3c1881ca7501af7c1e2d4481c3919e0b563b7572e42886bc3a7a0ed89",
+    "src/platform/response.mjs": "86ae0e2737e0b5028011f0cb6e3ce31c05890707677fd01de4e52a1ee4797220",
+    "src/platform/schemas.mjs": "e43a2d173636c2f9c1e36330707c2a49c8feac18c5bfab831fa1af3566a7ee69",
+    "src/platform/security/admin-auth.mjs": "9f8571ec96e42918029d8001981f372e4414aba40e38cb3d6d587f48e11f8c3e",
+    "src/platform/security/auth.mjs": "063ebeb3963ddf3fd7c24666d96d79250efd64d02ad4c34488de5bc1ef0f2bb6",
+    "src/platform/security/hash.mjs": "10289a6cd0d1b3b0635782d9f10f449296e5e18d38614719f199183683b003b9",
+    "src/platform/security/ratelimit.mjs": "97ad8f019f8a6621f098c185c762835b141fe8744b70d0efd63be2137f2ab7c0",
+    "src/platform/security/turnstile.mjs": "887579717fe2e24e583495b6329dc07e3c54404da740ba32d5e13076fa3b392c",
+    "src/platform/security/workspace-auth.mjs": "b0b7bee453e08fecd759d9833e2cc66518f3a0b5a32cae5a2a4bb865a98748fe",
+    "src/platform/validate.mjs": "9c3c5dc085e524ae19b8af624ceb17edd34247a6a3d36f713bc9bdafc8d00b7f",
+    "src/platform/workspace/local-source-tool.mjs": "38639257148319edd084ebbec73a535f7d3883d30e5f0644c1206009418f167f",
+    "src/worker.mjs": "0bd1f59a7dac8e2a697a2c50171324575a5257ebb89acf502d4c5f44680f9d7b",
+    "migrations/0001_init.sql": "aa9ce15172dfbb9221035636ae0e3f6c52360d41ef5232550d214e01645fcd03",
+    "migrations/0002_order_intents.sql": "5136a595b1505ddcf1081a26ecc8a42795e461cfd0f4bf6fc24021b640e270ed",
+    "migrations/0003_admin_workspace.sql": "ab85cf522766f9c0420564a65f40499b20bbe8b6c9b5bd205fa063601c94e2f8",
+    "migrations/0004_admin_identity.sql": "53e10f6830235841679207ec60436a320d4531f89886e9e03e337704ccfe15e6",
+    "migrations/0005_crm_relation_guards.sql": "701e790476b7b58b4dbf1dcd805c9e53e40b1dc8bd4e806efc38e2abc03e8369",
+    "migrations/0006_operations_quotes.sql": "2470786811f35e2bb91ef6f317a60bcb0d9b92f1186ef1371f7668b58d34ea86",
+    "migrations/0007_operations.sql": "3cc5f4451e1e320a248f6fe2aaa63e34546618528b5a88412c54c7287adc13bd",
+    "migrations/0008_intelligence.sql": "3faf9422dc6d266061453ad89f27ac2c25f3aaddfec30937c428f8e71f05e640",
+    "migrations/0009_workspace_experience.sql": "9710ae94b7798f3a7d2bcaf5d06b708ecbfbb58231fe8d29494fabd9493ebe99",
+    "migrations/0010_workspace_notifications.sql": "8dd1f194e1e9d261ecc0d27c324bf3f40222b8c113ea27ae9365a85e88538351"
+  },
+  "production_writes": false
+}

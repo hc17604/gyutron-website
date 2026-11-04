@@ -4,26 +4,27 @@ export const WORKBENCH_CLIENT = `const COPY=${JSON.stringify(WORKBENCH_COPY).rep
 let fieldSequence=0;
 export function createWorkbench(deps){
   const {state,esc}=deps;const languages=['en','zh'];
+  const icon=typeof deps.icon==='function'?deps.icon:()=>'';
   const l=(key)=>COPY[key]?.[Math.max(0,languages.indexOf(state.lang))]||key;
   const text=(en,zh)=>[en,zh][Math.max(0,languages.indexOf(state.lang))];
   const locale=()=>({en:'en-GB',zh:'zh-CN'}[state.lang]||'en-GB');
   const num=(value)=>new Intl.NumberFormat(locale()).format(typeof value==='bigint'?value:Number(value||0));
-  const button=(label,action,primary=false,disabled=false)=>'<button type="button" class="button'+(primary?' button-primary':'')+'" '+action+(disabled?' disabled':'')+'>'+esc(label)+'</button>';
+  const button=(label,action,primary=false,disabled=false,iconName='')=>'<button type="button" class="button'+(primary?' button-primary':'')+'" '+action+(disabled?' disabled':'')+'>'+(iconName?icon(iconName):'')+'<span class="button-label">'+esc(label)+'</span></button>';
   const badge=(value)=>'<span class="badge badge-'+esc(String(value||'').replace(/[^a-z_]/g,''))+'">'+esc(COPY[value]?l(value):value||'—')+'</span>';
-  const panel=(title,body,actions='')=>'<section class="data-panel wb-panel"><div class="panel-heading"><h2>'+esc(title)+'</h2><div class="heading-actions">'+actions+'</div></div>'+body+'</section>';
-  const empty=(title=l('empty'),description=l('emptyHelp'),action='')=>'<div class="empty-state wb-empty"><div class="empty-mark" aria-hidden="true">↗</div><h2>'+esc(title)+'</h2><p>'+esc(description)+'</p>'+action+'</div>';
+  const panel=(title,body,actions='',iconName=state.tab)=>'<section class="data-panel wb-panel"><div class="panel-heading"><h2><span class="panel-title-icon" aria-hidden="true">'+icon(iconName)+'</span><span>'+esc(title)+'</span></h2><div class="heading-actions">'+actions+'</div></div>'+body+'</section>';
+  const empty=(title=l('empty'),description=l('emptyHelp'),action='')=>'<div class="empty-state wb-empty"><div class="empty-mark" aria-hidden="true">'+icon(state.tab||'file-text')+'</div><h2>'+esc(title)+'</h2><p>'+esc(description)+'</p>'+action+'</div>';
   function field(label,name,value='',options={}){const id='wb-'+name+'-'+(++fieldSequence);const attrs=' id="'+esc(id)+'" name="'+esc(name)+'"'+(options.required?' required':'')+(options.maxLength?' maxlength="'+options.maxLength+'"':'')+(options.disabled?' disabled':'');let control;
     if(options.select)control='<select'+attrs+'>'+options.select.map(([id,title])=>'<option value="'+esc(id)+'"'+(String(value)===String(id)?' selected':'')+'>'+esc(title)+'</option>').join('')+'</select>';
     else if(options.textarea)control='<textarea'+attrs+' rows="'+(options.rows||4)+'">'+esc(value)+'</textarea>';
     else control='<input'+attrs+' type="'+(options.type||'text')+'" value="'+esc(value)+'"'+(options.min!==undefined?' min="'+options.min+'"':'')+(options.max!==undefined?' max="'+options.max+'"':'')+(options.step?' step="'+options.step+'"':'')+' autocomplete="'+(options.autocomplete||'off')+'">';
     return '<div class="form-field'+(options.wide?' form-field-wide':'')+'"><label for="'+esc(id)+'">'+esc(label)+(options.required?' <span class="required" aria-hidden="true">*</span>':'')+'</label>'+control+(options.help?'<small class="form-help">'+esc(options.help)+'</small>':'')+'</div>';
   }
-  function table(columns,rows,render,emptyText){if(!rows.length)return empty(emptyText||l('empty'));return '<div class="table-wrap"><table><thead><tr>'+columns.map(c=>'<th scope="col">'+esc(c)+'</th>').join('')+'</tr></thead><tbody>'+rows.map((row,index)=>'<tr>'+render(row,index).map(cell=>'<td>'+cell+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';}
+  function table(columns,rows,render,emptyText){if(!rows.length)return empty(emptyText||l('empty'));return '<div class="table-wrap"><table><thead><tr>'+columns.map(c=>'<th scope="col">'+esc(c)+'</th>').join('')+'</tr></thead><tbody>'+rows.map((row,index)=>'<tr>'+render(row,index).map(cell=>'<td>'+((String(cell).match(/<button\b/g)||[]).length>1||/<button\b/.test(cell)&&/<a\b/.test(cell)?'<div class="table-action-group">'+cell+'</div>':cell)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';}
   const pairs=(entries)=>'<dl class="wb-properties">'+entries.map(([label,value])=>'<div><dt>'+esc(label)+'</dt><dd>'+esc(value??'—')+'</dd></div>').join('')+'</dl>';
   const message=(error)=>'<div class="error-banner" role="alert">'+esc(error?.message||error)+'</div>';
   function reportText(value){return String(value||'').split(/\r?\n/).map(line=>{if(line.startsWith('### '))return '<h3>'+esc(line.slice(4))+'</h3>';if(line.startsWith('## '))return '<h2>'+esc(line.slice(3))+'</h2>';if(line.startsWith('# '))return '<h1>'+esc(line.slice(2))+'</h1>';if(line.startsWith('- '))return '<p class="wb-report-bullet">'+esc(line.slice(2))+'</p>';return line.trim()?'<p>'+esc(line)+'</p>':'';}).join('');}
-  const routeLink=(route,title)=>'<a class="text-link" href="'+esc(route.startsWith('#')?route:'#'+route)+'">'+esc(title)+' ↗</a>';
-  return {l,text,num,button,badge,panel,empty,field,table,pairs,message,reportText,routeLink,locale};
+  const routeLink=(route,title)=>'<a class="text-link" href="'+esc(route.startsWith('#')?route:'#'+route)+'"><span>'+esc(title)+'</span>'+icon('arrow-up-right')+'</a>';
+  return {l,text,num,button,badge,panel,empty,field,table,pairs,message,reportText,routeLink,locale,icon};
 }
 `;
 

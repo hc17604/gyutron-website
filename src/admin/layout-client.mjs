@@ -1,6 +1,6 @@
-import { ADMIN_ICONS } from './icons.mjs';
+import { ADMIN_ICON_HTML } from './icons.mjs';
 /** Navigation chrome and read-only presentation; mutations stay in their controllers. */
-export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify({tasks:ADMIN_ICONS.tasks,activity:ADMIN_ICONS.activity})+';\n'+String.raw`
+export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify(Object.fromEntries(['overview','analytics','customers','pipeline','quotes','tasks','inbox','activity','sources','reports','automations','rules','agent','memory','models','users','security','backup','license','health','audit','settings'].map(name=>[name,ADMIN_ICON_HTML[name]])))+';\n'+String.raw`
 (()=>{
  const sidebar=document.getElementById('workspace-sidebar'),page=document.getElementById('workspace-page');
  const commandDialog=document.getElementById('command-dialog'),commandTrigger=document.getElementById('command-trigger');
@@ -17,7 +17,9 @@ export const LAYOUT_CLIENT='const WORKSPACE_LAYOUT_ICONS='+JSON.stringify({tasks
   if(page){const params=new URLSearchParams(location.hash.split('?')[1]||'');page.dataset.viewKind=tab==='agent'?'chat':tab==='pipeline'?'board':['overview','analytics'].includes(tab)?'overview':params.has('id')?'detail':['settings','models','security','backup','health','license'].includes(tab)?'settings':'list';}
  }
  function decoratePresentation(){
-  for(const mark of document.querySelectorAll('.activity-mark:empty')){const kind=mark.parentElement.querySelector('[data-record="tasks"]')?'tasks':'activity';mark.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+WORKSPACE_LAYOUT_ICONS[kind]+'</svg>';}
+  const requested=location.hash.slice(1).split('?')[0]||'overview',module=Object.hasOwn(WORKSPACE_LAYOUT_ICONS,requested)?requested:'overview';
+  for(const heading of page?.querySelectorAll('.page-heading')||[]){const title=heading.querySelector('h1'),identity=title?.parentElement;if(!title||identity===heading)continue;identity.classList.add('page-title-block');let mark=identity.querySelector('.page-title-icon');if(!mark){mark=document.createElement('span');mark.className='page-title-icon';mark.setAttribute('aria-hidden','true');title.before(mark);}if(mark.dataset.module!==module){mark.dataset.module=module;mark.innerHTML=WORKSPACE_LAYOUT_ICONS[module]||WORKSPACE_LAYOUT_ICONS.overview;}}
+  for(const mark of document.querySelectorAll('.activity-mark:empty')){const kind=mark.parentElement.querySelector('[data-record="tasks"]')?'tasks':'activity';mark.innerHTML=WORKSPACE_LAYOUT_ICONS[kind];}
   const stages=Array.from(page?.querySelectorAll('.stage-summary>div')||[]),max=Math.max(1,...stages.map(stage=>Number(stage.querySelector('.stage-count')?.textContent)||0));
   for(const stage of stages){const bar=stage.querySelector('.stage-bar');if(!bar)continue;const count=Number(stage.querySelector('.stage-count')?.textContent)||0,label=stage.querySelector('.stage-label')?.textContent||'',signature=count+'|'+max+'|'+label;if(bar.dataset.presentation===signature)continue;bar.dataset.presentation=signature;bar.setAttribute('role','img');bar.setAttribute('aria-label',label+': '+count);bar.innerHTML='<svg class="stage-bar-chart" viewBox="0 0 100 4" preserveAspectRatio="none" aria-hidden="true"><rect class="stage-track" width="100" height="4"/><rect class="stage-fill" width="'+Math.max(0,Math.min(100,count/max*100)).toFixed(2)+'" height="4"/></svg>';}
  }
