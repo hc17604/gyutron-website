@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Data Adviser .12 IMPLEMENTED; production migration verified; application rollout pending (2026-11-04 SGT):**
+- **Data Adviser .12 LIVE AND VERIFIED (2026-11-04 SGT):**
   Fresh root-only Alibaba inspection covered all13 business entries and concrete Data Map27-indicator
   selection/board-table, Shop KPI/product tabs, Market sorting and Flow Trend popup interactions.
   AI Showcase is SmartWindow product review, not LLM visibility; its agreement was not accepted.
@@ -52,9 +52,24 @@
   Shop/brand routes/tracking/payment/bindings/credentials have no source changes. No production demo
   business records created or external models/messages used. Reference/evidence/private recovery live
   under outputs/admin-data-adviser-20261104 outside Git. Details: docs/admin-data-adviser.md.
-  Next: freeze independent final profile/export tests, commit explicit files, push, observe CI/Cloudflare,
-  compare19 deployed admin assets +3vendor assets to compiled committed source, run real startup from
-  deployed bytes, verify format5 R2 recovery and build/install/check fresh portable distribution.
+  Release source6a0bc1b571f1e1f2e77e99af9d04a49dac08aa6d pushed; GitHub CI41772240144 success,
+  Cloudflare build97373284-fbe7-410b-ab8d-372b5807bb40 Ready1m13s/version12e0a31f; live header .12.
+  Production checker12/12: all19 compiled committed admin assets match, SDK hash
+  322355fbef0c45d7b6bacdf3136ba368ed26c173a5eb8582c4f7d84486e614f3 plus2notices match,
+  all16 adviser APIs respond, brand/Shop routes preserved. Downloaded live workspace.js completes
+  whole-client startup7/7 (six positive cases plus known-bad historical fixture rejection).
+  Fresh format5 private R2 backup verified/read back,46tables, SHA256
+  554c806988a331837be992851d70852f316ccb5bd3f8546b02403ee685b029f8.
+  Recovered that exact snapshot to fresh isolated local D1: every cell/table matched, integrity ok,
+  foreign keys0, restored active sessions0, staging tables0; real recovered Worker login and reports/
+  automations/runs APIs pass. No production restore/overwrite or external model call. Recovery checker
+  now derives expected release from packaged source rather than hardcoding obsolete .10.
+  Fresh source-only portable install/check/all24suites/dry-run/archive validation passed; final package
+  regenerated from the final evidence commit so its recovery operator check includes that repair.
+  Live browser has16 subnav entries,2real Canvas series and working exact readout (2907/2587), no
+  chart errors. Final screenshot: outputs/admin-data-adviser-20261104/production-data-adviser-final.png.
+  Fast-loop unreviewed captures are not pixel evidence. Rollback: retain compatible0011/format5 source
+  and backup tooling; old .11 cannot create a complete format5 backup. Next: none for this release.
 
 - **Alibaba-informed workspace UI .11 LIVE AND VERIFIED (2026-11-04 SGT):** the user explicitly
   reauthorizes inspection of their open Alibaba seller backend and requests implementation and direct

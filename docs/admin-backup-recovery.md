@@ -99,6 +99,8 @@ npx wrangler d1 execute DB --local --persist-to .wrangler/admin-recovery-isolate
 
 本版格式4已实际隔离D1恢复：Wrangler导入exit0，44张数据表计数一致，200KiB全文和另7份资料逐字一致，integrity ok、外键错误0、staging表0。源码测试还覆盖写入/回读失败、marker/retention、超限、旧格式、空session与冻结约束；R2替身不是远程R2，隔离D1不是生产恢复。最新报告以发布证据为准。
 
+2026-11-04版本 .12 已实测格式5生产R2回读/下载及全新隔离本地D1恢复：46表全部单元格一致，integrity ok、外键0、恢复活动会话0、staging0；恢复后真实Worker登录和报告/自动化/运行API通过。生产库没有被恢复或覆盖。源文件与可信SHA在当前HANDOFF，私有快照不进Git。
+
 旧2026.11.03.2曾实测格式3生产R2下载/隔离恢复，只证明当时0006范围，不证明新增表/master secret/新版生产验收。0007–0010已真实remote应用，应用发布与生产检查仍以当前发布记录为准。
 
 生产恢复安排维护/停止写入窗口，保留当前恢复点，先恢复新目标并验应用/迁移/secret相容后切换。禁止自动DROP或覆盖上线后新数据。代码回退须兼容0011/格式5，旧 `.2` 遇新表会拒绝完整快照，不是本版完整回退目标。Worker回退不回滚D1/R2。[Worker版本说明](https://developers.cloudflare.com/workers/versions-and-deployments/)
