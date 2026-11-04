@@ -16,7 +16,7 @@
 
 ## Fast takeover snapshot
 
-- **Phone toolbar batch .20 - source validated, rollout pending:** Advanced/Columns have44px phone glyph controls
+- **Phone toolbar batch .20 LIVE VERIFIED (154a6ff; CI41807245161; production14/14):** Advanced/Columns have44px phone glyph controls
   with full translated accessible names, visual-only hidden labels and escaped titles. Save view keeps
   its text. Search retains desktop wording and has a44px phone glyph. Native select labels, options,
   values, form submission and change handlers stay intact; selected-option titles are escaped. Only
@@ -31,6 +31,15 @@
   byte-identical; Live/Test storage branches unchanged. No public/Shop/schema/bindings/credentials.
   Source28/28 and Worker dry run pass, including polish46, Demo41, chart52, analysis26 and complete
   compiled startup7. All previous behavior cases remain in their existing portable27 suite paths.
+  All19 live assets exactly match the committed source compilation; downloaded live workspace20.js
+  SHAeeb462b25345437bc8b766e8b4545590c4c92b92d86fdfba8baefb0f1de100e5 completes startup7/7
+  with matching20 dynamic modules, no helper shims. Worker bundle SHA6cfc1addf3b7fae14c2398409ddaeb75567a93fc9be3b5b78a006660844a537b.
+  Independent final closure audit finds148 mapped source files, portable27/source28 aligned, both0009
+  contacts and0011 analysis migrations present, private/runtime paths and production-resource IDs absent.
+  The initially tiny after screenshot was rejected and replaced. Its final live photo has an observed
+  CSS400x1055 viewport/JPEG476x1319 device pixels;320 density numbers remain separate DOM evidence.
+  Independent visual review confirms no visible button/title/selection/action overlap in that image.
+  Final deliverable package and checksum are recorded outside Git in the active detail worklog.
 
 - **Workflow detail batch .19 LIVE VERIFIED (d1f5dd2; CI41805389963; production14/14):** phone task completion is a separate44px icon
   action with full localized accessible name, leaving room for the two-line title; desktop wording
