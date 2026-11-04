@@ -54,3 +54,5 @@ The Test mode dataset and in-memory request adapter are authored in this reposit
 commerce, license, model, backup and system records are explicitly synthetic demonstration content.
 The adapter has no network or persistent-storage dependency; the maintenance/coverage contract is
 included in `admin-demo-mode.md`. Original live records are never seeded or replaced by enabling it.
+
+Country presentation uses249 rectangular ISO country flags from [flag-icons7.6.0](https://github.com/lipis/flag-icons), MIT licensed. The official npm tarball is checked against its SHA-512 registry integrity before vendoring. `public/workspace-assets/flags/LICENSE.txt` preserves the complete license; `manifest.json` records upstream version, source, integrity and individual SHA-256 hashes. `scripts/vendor-admin-country-flags.mjs` reproducibly selects only ISO assets and rejects active/external SVG content. There is no flag CDN, inferred country, or stored-data normalization.

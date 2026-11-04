@@ -5,6 +5,7 @@ import { createHash,randomUUID } from 'node:crypto';
 import { inflateRawSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import {COUNTRY_NAMES} from '../src/admin/country-data.mjs';
 
 const TOOL_ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const PORTABLE_SUITES=['smoke-admin-api.mjs','smoke-admin-auth.mjs','smoke-admin-quotes.mjs','smoke-admin-backup.mjs','smoke-admin-aggregation.mjs','test-workspace-experience.mjs','test-operations-core.mjs','test-intelligence.mjs','test-intelligence-cross-review.mjs','test-intelligence-crm-controller.mjs','test-operations-intelligence-review.mjs','test-notifications.mjs','test-operations-bulk-ui.mjs','test-operations-license-issuer.mjs','check-admin-frontend.mjs','check-admin-routes.mjs','test-operations-run-ui.mjs','test-operations-run-review.mjs','test-admin-demo.mjs','test-admin-icons.mjs','test-admin-adviser.mjs','test-admin-chart-interactions.mjs','test-adviser-demo.mjs','test-admin-startup.mjs','test-operations-report-filters.mjs','test-admin-polish.mjs','test-admin-analytics-polish.mjs'];
@@ -74,6 +75,15 @@ async function main(){
  const expected=new Map(),lower=new Set();for(const item of manifest.files){safe(item.path);if(lower.has(item.path.toLowerCase()))throw Error('Case-insensitive duplicate artifact path.');lower.add(item.path.toLowerCase());const bytes=await readFile(path.join(root,...item.path.split('/')));if(bytes.length!==item.bytes||sha(bytes)!==item.sha256)throw Error('Source integrity failed: '+item.path);expected.set(item.path,item.sha256);}
  for(const name of ['SOURCE-MANIFEST.json','FILE-SHA256SUMS.txt'])expected.set(name,sha(await readFile(path.join(root,name))));
  const files=await walk(root);if(files.length!==expected.size||files.some(file=>!expected.has(file)))throw Error('Artifact contains unexpected files, local state or installed dependencies.');
+ const flagNames=Object.keys(COUNTRY_NAMES).map(code=>code.toLowerCase()+'.svg').sort();
+ if(flagNames.length!==249)throw Error('The accepted ISO country set must contain 249 records.');
+ const flagRoot='public/workspace-assets/flags/',flagAssets=[...flagNames,'LICENSE.txt','manifest.json'].map(name=>flagRoot+name).sort();
+ const packagedFlags=files.filter(file=>file.startsWith(flagRoot)).sort();
+ if(JSON.stringify(packagedFlags)!==JSON.stringify(flagAssets))throw Error('Country assets must include exactly 249 ISO flags, LICENSE.txt and manifest.json.');
+ const flagManifest=JSON.parse(await readFile(path.join(root,flagRoot,'manifest.json'),'utf8'));
+ if(flagManifest.package!=='flag-icons'||flagManifest.version!=='7.6.0'||flagManifest.license!=='MIT'||JSON.stringify(Object.keys(flagManifest.flags||{}).sort())!==JSON.stringify(flagNames))throw Error('The packaged country manifest differs from the accepted flag-icons ISO set.');
+ for(const name of flagNames)if(flagManifest.flags[name]!==expected.get(flagRoot+name))throw Error('Country flag checksum differs from its upstream manifest: '+name);
+ if(!(await readFile(path.join(root,flagRoot,'LICENSE.txt'),'utf8')).includes('MIT License'))throw Error('The upstream MIT flag license must be included.');
  for(const file of files)if(/(?:^|\/)(?:\.git|\.wrangler|node_modules|private-recovery|backups)(?:\/|$)|(?:^|\/)\.dev\.vars|(?:^|\/)\.env(?:\.|$)|\.log$|\.pem$|\.key$|wrangler\.toml$/i.test(file))throw Error('Forbidden private/runtime material in artifact: '+file);
  for(const entry of ['src/api/forms.mjs','src/api/data.mjs','src/contact-handler.mjs','src/api/order-intents.mjs','public/index.html'])if(expected.has(entry))throw Error('Brand/Shop/public data source escaped into Operations distribution: '+entry);
  const checksums=(await readFile(path.join(root,'FILE-SHA256SUMS.txt'),'utf8')).trim().split('\n');
@@ -111,7 +121,7 @@ async function main(){
    await execute(process.execPath,[wrangler,'deploy','--dry-run','--config',localConfig,'--outdir',path.join(local,'bundle')],scratch,childEnv,{label:'Wrangler dry-run (local dummy bindings)'});
   }
  }
- console.log(JSON.stringify({ok:true,source_commit:manifest.source_commit,preview_only:Boolean(manifest.preview_only),files:expected.size,archive,scratch,source_directory_unchanged:true,provisioned_resources:false,deployed:false},null,2));
+ console.log(JSON.stringify({ok:true,source_commit:manifest.source_commit,preview_only:Boolean(manifest.preview_only),files:expected.size,countryFlagsVerified:flagNames.length,countryAssetsVerified:flagAssets.length,archive,scratch,source_directory_unchanged:true,provisioned_resources:false,deployed:false},null,2));
 }
 const entry=process.argv[1]?path.resolve(process.argv[1]):null,self=fileURLToPath(import.meta.url);
 if(entry&&(process.platform==='win32'?entry.toLowerCase()===self.toLowerCase():entry===self))main().catch(error=>{console.error('Operations distribution verification failed: '+error.message);process.exitCode=1;});

@@ -1,6 +1,6 @@
 # Workspace UI detail and maintenance map
 
-Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.27`; release evidence and ongoing work are in `HANDOFF.md`.
+Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.28`; release evidence and ongoing work are in `HANDOFF.md`.
 
 ## Verified product reference
 
@@ -8,6 +8,10 @@ The authenticated [Alibaba seller portal](https://i.alibaba.com) was inspected d
 
 | Detail | Reference and resulting behavior | Source |
 |---|---|---|
+| Expressive metric hierarchy | User-supplied Alibaba homepage/RFQ screenshot: neutral metric category tabs and six unboxed values. GYUTRON switches real Business, Pipeline and Website requests scopes; desktop actions share the toolbar so customer content stays near the top. Exact counters replace invented performance arrows | `client.mjs`, `saas-styles.mjs` |
+| Business workbench and rich inbox | Same screenshot: counted worklist tabs, specific demand title, contact/message excerpt, actual country/quantity, time and one clear action. GYUTRON authors five query-backed lists (RFQs, enquiries, opportunities, tasks, quotations), preserves existing record actions and keeps independent late-response guards. Inbox shares the record hierarchy for all four intake resources | `client.mjs`, `demo-client.mjs`, `scripts/test-admin-polish.mjs` |
+| Country identity | Same screenshot: rectangular country flags beside a readable country name. MIT flag-icons7.6.0 supplies249 self-hosted ISO flags; EN/ZH names are presentation-only. Unknown values remain escaped text and raw country drill keys remain distinct; names/currencies/IP never infer country | `country-presentation.mjs`, `country-data.mjs`, `analytics-client.mjs` |
+| Semantic color and type | Same screenshot: emphasis comes from the content. GYUTRON uses Inter numbers32/39, workbench headings18/27, titles15/23 and muted metadata12/19; blue for new/information, green for completed/active, amber for pending, red for overdue/errors. Status text remains visible; purple stays reserved for brand actions | `saas-styles.mjs` |
 | Content-first shared surfaces | Alibaba homepage, Data Adviser and Customer Touch inspected live2026-11-04: related content lives on a continuous white surface with restrained separators. GYUTRON removes duplicate list/panel/filter/column frames, decorative KPI tiles and record-property vertical grids while retaining native field boundaries, exact table context, errors, selected states and focus | `saas-styles.mjs` |
 | Overview action density | Alibaba homepage places metrics, task state and next actions together. GYUTRON removes repeated introductions/View all labels, links real stage bars to matching opportunities and reuses authorized/versioned task completion directly from the overview. Counts refresh from the existing response; no synthetic Live data | `client.mjs`, `scripts/test-admin-polish.mjs` |
 | Filtered opportunity board | Authored correction found during actual stage drilldown: one selected stage fills the workspace with responsive record cards; all-stage horizontal columns remain available. Currencies and loaded/matching counts keep their original meaning | `saas-styles.mjs` |

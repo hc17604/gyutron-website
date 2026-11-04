@@ -95,10 +95,10 @@ async function startup(source,{demo,language,timeoutMs=4000,switchMode=true}={})
   while(!thrown&&Date.now()<deadline){
     await new Promise(resolve=>setImmediate(resolve));
     if(unhandled.length>unhandledStart){thrown=unhandled[unhandledStart];break;}
-    ready=node('workspace-page').getAttribute('aria-busy')==='false'&&node('workspace-page').innerHTML.includes('class="metric-grid"')&&!node('workspace-page').innerHTML.includes('Loading your workspace');
+    ready=node('workspace-page').getAttribute('aria-busy')==='false'&&/class="[^"]*\boverview-metric-grid\b[^"]*"/.test(node('workspace-page').innerHTML)&&node('overview-workbench-panel').getAttribute('aria-busy')==='false'&&/data-record-kind="rfqs"/.test(node('overview-workbench-panel').innerHTML);
     if(ready)break;
   }
-  const summary={demo,language,ready,requests,imports,errors,synchronous_error:thrown?{name:thrown.name,message:thrown.message,stack:String(thrown.stack).slice(0,900)}:null,aria_busy:node('workspace-page').getAttribute('aria-busy'),metric_values:[...node('workspace-page').innerHTML.matchAll(/class="metric-value">([^<]*)</g)].map(m=>m[1]),html_bytes:Buffer.byteLength(node('workspace-page').innerHTML),helper_injected:false};
+  const summary={demo,language,ready,requests,imports,errors,synchronous_error:thrown?{name:thrown.name,message:thrown.message,stack:String(thrown.stack).slice(0,900)}:null,aria_busy:node('workspace-page').getAttribute('aria-busy'),metric_values:[...node('workspace-page').innerHTML.matchAll(/class="metric-value">([^<]*)</g)].map(m=>m[1]),html_bytes:Buffer.byteLength(node('workspace-page').innerHTML),workbench_records:(node('overview-workbench-panel').innerHTML.match(/data-record-kind="rfqs"/g)||[]).length,helper_injected:false};
   if(ready&&switchMode){
     const button=node('workspace-test-mode'),event={target:{closest:selector=>selector==='#workspace-test-mode'?button:null},preventDefault(){},stopImmediatePropagation(){this.stopped=true;}};
     for(const listener of listeners.filter(item=>item.type==='click'&&item.capture===true)){listener.handler(event);if(event.stopped)break;}
@@ -111,7 +111,7 @@ async function startup(source,{demo,language,timeoutMs=4000,switchMode=true}={})
 for(const language of ['en','zh'])for(const demo of [false,true]){
   let observation;
   try{
-    observation=await startup(actual,{demo,language});assert.equal(observation.synchronous_error,null);assert.equal(observation.ready,true,'Complete initialization did not reach the populated overview.');assert.equal(observation.metric_values.length,5);assert.ok(observation.metric_values.every(value=>value&&value!=='—'));assert.deepEqual(observation.errors,[]);
+    observation=await startup(actual,{demo,language});assert.equal(observation.synchronous_error,null);assert.equal(observation.ready,true,'Complete initialization did not reach the populated overview.');assert.equal(observation.metric_values.length,6);assert.ok(observation.workbench_records>0,'The initial RFQ worklist must finish loading.');assert.ok(observation.metric_values.every(value=>value&&value!=='—'));assert.deepEqual(observation.errors,[]);
     if(demo){assert.equal(observation.requests.length,0);assert.ok(observation.imports.includes('/admin/assets/demo.js'));}else assert.ok(observation.requests.some(r=>r.path==='/admin/api/bootstrap'));
     const target=new URL(observation.reload_target,'https://startup.example.test');assert.equal(target.searchParams.get('test'),demo?'0':'1');assert.equal(target.hash,'#overview');assert.equal(observation.persisted_preference,demo?'0':'1');
     results.push({name:'compiled complete startup '+language+' mode '+Number(demo),passed:true,...observation});

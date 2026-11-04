@@ -1,7 +1,7 @@
 # GYUTRON gyutron.com — Engineering Handoff (single source of truth)
 
 > Consolidated handoff for the agent/engineer taking over. `AGENTS.md` is now the concise active rule set;
-> this file owns current state and decision history. Last updated 2026-11-04. Obtain the current live
+> this file owns current state and decision history. Last updated 2026-11-05. Obtain the current live
 > HEAD with `git fetch origin` and `git rev-parse origin/main`.
 > Talk to the user in **Chinese**; keep code / i18n keys / brand names verbatim.
 > 🏗️ **2026-06-06:** an **additive engineering foundation** was added — repo-root **`docs/`** + `astro/src/{config,types,data}` + `astro/src/lib/{api,forms,crm,cms,agent,logger}` (mock/placeholder) + `astro/.env.example`. See **§5b** and `docs/`.
@@ -15,6 +15,42 @@
 ---
 
 ## Fast takeover snapshot
+
+- **Expressive operations workspace .28 — IMPLEMENTED / RELEASE PENDING (2026-11-05):** new
+  Alibaba homepage/RFQ reference is implemented as three metric groups and five counted business
+  worklists (RFQs default, enquiries, opportunities, tasks, quotations), with specific record titles,
+  contact/message excerpts, actual recorded country/quantity, created/deadline/timeline and original
+  detail/edit/task actions. Inbox shares the rich rows for all four resources. Customer/Analytics
+  country cells use local flags and readable EN/ZH names; semantic status colors retain their labels.
+  Desktop shows six unboxed metrics and four complete RFQs at1440x900. Source BUILD2026.11.04.28.
+  Primary files: src/admin/client.mjs, demo-client.mjs, saas-styles.mjs, analytics-client.mjs and new
+  country-presentation.mjs/country-data.mjs. Exact foreign currency scopes, all original modules,
+  read/write permissions, .27 race/focus guards, square geometry, deep purple navigation, defaultEN/ZH
+  and Test isolation remain. Test fixtures now use proper RFQ schema fields, quantities and varied
+  recent times; support never fabricates a customer country. Unknown/missing counters are not zero.
+  MIT flag-icons7.6.0:249 ISO flags, local LICENSE and per-file manifest. Two independent agents
+  verified official npm SHA512, every SVG and license byte against upstream. Country presentation
+  never rewrites stored/filter/drill keys or infers geography from names/currency/IP. Independent
+  instance template precisely allowlists/packages these251 assets; unrelated public/Shop paths stay
+  closed. New vendor/test scripts and documentation record the source and maintenance contract.
+  Local verification: polish71/71, Demo41/41, Analytics28/28, charts53/53, icons12/12, country249
+  integrity checks and real Wrangler-compiled startup7/7 (including the saved broken .9 negative
+  fixture available locally). Startup now waits for the actual initial RFQ panel as well as six KPIs;
+  old exact-class and stale parent-HTML assumptions were corrected without weakening negative controls.
+  Independent clean-install distribution:27/27 portable suites, compiled asset GET/HEAD/POST checks,
+  dummy-binding dry-run; missing flag/license, extra flag and tampered-hash negative controls4/4.
+  Astro build132 pages and verify:all passed hard checks; unchanged report-only i18n baseline remains
+  88 scanned/42 flagged/143 heuristic suspects. Root agent/deploy gates passed; no Shop/brand/schema/
+  bindings/secrets changed. Browser evidence under outputs/admin-expressive-ui-20261104:08 desktopEN,
+  07 customerZH1024,10 recordEN320,11 recordZH390. Keyboard task completion54→53 with next-task
+  focus verified; all flags load, no root horizontal overflow and zero visible CSS radii at tested
+  widths320/390/1024/1440. Last phone-only adjustment keeps quantity/unit together and balances
+  metadata columns. Independent final screenshot/source review found no release blocker. Quotations
+  count stays “—” until its lazy request completes, then shows the authoritative total.
+  Next: explicit-path commit/push main, watch CI, verify live .28 and all runtime/country asset bytes,
+  execute downloaded live client startup and inspect actual production Test UI. Production writes,
+  messages and external models have not been used for demonstration. Rollback: revert this release's
+  explicit source/static paths as a new commit; preserve D1/R2/KV and all existing business data.
 
 - **Content-first workspace .26/.27 — LIVE VERIFIED:** user defines the problem as excess frames/words
   and too little core content/interaction, requesting a full hour of implementation and verification.

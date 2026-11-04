@@ -139,7 +139,9 @@ jobs:
         run: npm run check:admin-demo
       - name: Verify shared SVG icons and exact chart presentation
         working-directory: ${{ github.workspace }}
-        run: node scripts/test-admin-icons.mjs
+        run: |
+          node scripts/test-admin-country-presentation.mjs
+          node scripts/test-admin-icons.mjs
       - name: Verify report scopes and professional workspace interactions
         working-directory: ${{ github.workspace }}
         run: |

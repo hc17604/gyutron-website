@@ -1,6 +1,6 @@
 # GYUTRON Operations — independent instance starter
 
-Target source application **2026.11.04.27**, migrations **0001–0011**, backup **format 5**.
+Target source application **2026.11.04.28**, migrations **0001–0011**, backup **format 5**.
 The manifest and release evidence identify the delivered commit and actual checks.
 This README does not claim the new production release or a second customer
 instance has passed acceptance.
@@ -17,7 +17,7 @@ settings fall back to English. Historical German/Japanese reports, conversations
 quotation print records remain readable; user content is not automatically translated.
 
 `/` redirects to protected `/admin`; `/health` returns only `{ "status": "ok" }`.
-Only necessary brand/font assets and the pinned ECharts runtime and license notices are allowlisted. No public website forms, public Data
+Only necessary brand/font assets, the pinned ECharts runtime and its notices, and 249 exact ISO country flags with their MIT license/manifest are allowlisted. No public website forms, public Data
 API, Shop host mapping, checkout or payment flow are exposed. Each customer needs
 separate Worker/D1/private R2/KV resources. This is not shared database tenancy,
 self-service provisioning, subscription billing or a complete accounting ERP.

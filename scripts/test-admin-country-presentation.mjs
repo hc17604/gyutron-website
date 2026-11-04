@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {COUNTRY_CLIENT_SOURCE} from '../src/admin/country-presentation.mjs';
+import {COUNTRY_NAMES} from '../src/admin/country-data.mjs';
+const manifest=JSON.parse(await readFile(new URL('../public/workspace-assets/flags/manifest.json',import.meta.url),'utf8'));
+assert.equal(manifest.version,'7.6.0');assert.equal(manifest.license,'MIT');assert.equal(Object.keys(COUNTRY_NAMES).length,249);assert.deepEqual(Object.keys(manifest.flags).sort(),Object.keys(COUNTRY_NAMES).map(code=>code.toLowerCase()+'.svg').sort());
+for(const [file,hash] of Object.entries(manifest.flags)){const bytes=await readFile(new URL('../public/workspace-assets/flags/'+file,import.meta.url));assert.equal(createHash('sha256').update(bytes).digest('hex'),hash,file);assert.ok(!/<(?:script|image|foreignObject)\b|\son\w+\s*=|(?:href|xlink:href)\s*=\s*["'](?!#)/i.test(bytes.toString()),file);}
+for(const lang of ['en','zh']){const scope=vm.createContext({state:{lang},Intl});new vm.Script(COUNTRY_CLIENT_SOURCE+';globalThis.render=countryLabel;').runInContext(scope);for(const value of ['Germany','DE','德国'])assert.match(scope.render(value),/data-country-code="DE"/);for(const value of ['United States','USA','US','美国'])assert.match(scope.render(value),/flags\/us.svg/);assert.match(scope.render('UK'),/flags\/gb.svg/);assert.match(scope.render('Vietnam'),/flags\/vn.svg/);for(const value of ['USD','CNY','London','France / Germany','<img src=x onerror=alert(1)>','+1 222 333 4444']){const html=scope.render(value);assert.ok(!html.includes('country-flag'));assert.ok(!html.includes('<img'));}assert.ok(scope.render('<script>bad</script>').includes('&lt;script&gt;'));assert.ok(!scope.render('__missing__').includes('<img'));assert.ok(!scope.render(null).includes('<img'));assert.match(scope.render('France'),/alt="" aria-hidden="true"/);}
+for(const intl of [{},{DisplayNames:class {constructor(){throw Error('Unsupported locale data');}}}]){const scope=vm.createContext({state:{lang:'zh'},Intl:intl});new vm.Script(COUNTRY_CLIENT_SOURCE+';globalThis.render=countryLabel;').runInContext(scope);assert.match(scope.render('United States'),/flags\/us.svg/);assert.match(scope.render('DE'),/flags\/de.svg/);assert.ok(!scope.render('未知国家').includes('country-flag'));}
+console.log(JSON.stringify({suite:'country-presentation',passed:true,flags_verified:249,locales:['en','zh'],network_requests:0,production_writes:false,licensed_svg_integrity:true}));

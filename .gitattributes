@@ -2,3 +2,6 @@
 astro/public/workspace-assets/vendor/* -text
 public/workspace-assets/vendor/* -text
 src/admin/charts-runtime-url.mjs text eol=lf
+
+# Country SVGs and their upstream MIT license/manifest retain verified byte hashes.
+public/workspace-assets/flags/* -text
