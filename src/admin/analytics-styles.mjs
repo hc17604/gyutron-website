@@ -108,10 +108,6 @@ export const ANALYTICS_STYLES = String.raw`
 
 
 /* One report surface, with boundaries reserved for controls and data relationships. */
-.analytics-content .page-title-block{grid-template-columns:24px minmax(0,1fr);column-gap:10px}
-.analytics-content .page-title-block>.page-title-icon{width:24px;height:24px;border:0;background:transparent;color:#515866}
-.analytics-content .page-title-icon>.ui-icon{width:22px;height:22px;stroke-width:1.8}
-.analytics-content .page-heading h1{font-size:24px;line-height:32px;font-weight:600}
 .analytics-content>.page-heading{margin-bottom:18px}
 .analytics-filters-compact{border:0;background:#fff;margin-bottom:0;padding:16px 20px 0}
 .analytics-filter-main{padding:0;gap:10px;flex-wrap:wrap}
@@ -129,7 +125,6 @@ export const ANALYTICS_STYLES = String.raw`
 .analytics-main-chart-panel .analytics-chart-data{border-color:#eff0f3}
 .analytics-main-chart-panel .analytics-chart-data>summary{padding:11px 20px;color:var(--muted)}
 @media(max-width:767px){
- .analytics-content .page-heading h1{font-size:22px;line-height:30px}
  .analytics-filters-compact{padding:14px 16px 0}
  .analytics-filter-main{padding:0;gap:10px}
  .analytics-applied-scope{padding:9px 0 12px}

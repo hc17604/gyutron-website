@@ -16,6 +16,27 @@
 
 ## Fast takeover snapshot
 
+- **Shared workspace chrome .25 — LOCAL VERIFIED, RELEASING:** user requests a consistent finish
+  across page headings/actions and topbar, then removal of the entire GYUTRON / module breadcrumb.
+  Baseline9bad355 equals origin/main. Shared24px/600 titles use unframed glyphs; secondary page
+  actions are quiet while primary/danger actions remain distinct. Analytics heading overrides removed.
+  Search, Test and notification utilities lose nested frames; notification counts remain inside their
+  trigger. Breadcrumb block is hidden while its internal current-page node remains for routing/i18n;
+  right utilities use auto inline-start margin. Phone language width68px retains 中文, padding8px
+  keeps320px utilities within bounds. Preserve56px bar/navigation offsets, dark purple sidebar,
+  square geometry, EN/ZH, existing data/API/events and Test isolation. QA also found typed module
+  queries missing navigation matches: localized names/module keys now coexist with original record
+  results; loading/error/stale-response guards and original GET are retained. Two source reviewers
+  checked heading scope and topbar contracts; one fixed small-text contrast finding is resolved.
+  Actual22 modules x EN/ZH desktop plus EN320/ZH390 =88 states pass bounds/heading/target checks.
+  Final320px padding check:305px client/scroll widths equal, utilities right296.8px, controls44px.
+  Real UI verified Ctrl+K/Escape/focus return, typed quotes/报价 jump, notification12→0, Test off/on,
+  new/existing quote actions without saving records. Source suites Demo41, notifications21, icons12,
+  chart interactions53, polish48; compiled startup7 all pass. Astro build/verify:all, agent/deploy/diff
+  gates pass; baseline main-site i18n heuristic report unchanged. Evidence:
+  outputs/admin-shared-chrome-20261104, final-88-module-states.json and screenshots05–08.
+  Next: push source, observe CI/Cloudflare release, verify live25 assets and actual header, append proof.
+
 - **Analytics edge hierarchy .24 LIVE VERIFIED (92589a7; CI41831454444 success; production14/14):** user rejects repeated borders, framed heading glyph,
   purple KPI top rule and chart control chrome. Baseline2ccb8f9 equals origin/main, tracked tree clean.
   Root captured current Alibaba Data Adviser live overview/period screens and GYUTRON Test overview;

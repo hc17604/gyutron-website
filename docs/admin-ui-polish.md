@@ -1,6 +1,6 @@
 # Workspace UI detail and maintenance map
 
-Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.24`; release evidence and ongoing work are in `HANDOFF.md`.
+Scope: GYUTRON Operations workspace `/admin`, English by default and Chinese only. All surfaces keep square edges and original GYUTRON identity. The source application is `2026.11.04.25`; release evidence and ongoing work are in `HANDOFF.md`.
 
 ## Verified product reference
 
@@ -11,6 +11,10 @@ The authenticated [Alibaba seller portal](https://i.alibaba.com) was inspected d
 | Primary/secondary navigation | Alibaba: persistent current column, separate hover preview, combined pointer region; our authored60/240/208px variant | `src/admin/layout-client.mjs`, `navigation-menus.mjs` |
 | Hover vs current selection | Alibaba: preview never navigates or replaces current selection;10ms switching/200ms dismissal | `layout-client.mjs` |
 | Navigation density | Alibaba: consistent icon/row rhythm, text hierarchy, thin independent scrolling; GYUTRON keeps square selected surfaces and licensed Lucide icons | `saas-styles.mjs`, `analytics-styles.mjs`, `icons.mjs` |
+| Shared workspace identity/actions | Shared correction across all menu modules: unframed heading icon,24px/600 title, quiet secondary page actions and a clear primary action. Quote nested page actions share the system; body/dialog controls remain purpose-specific. Analytics title overrides removed | `saas-styles.mjs` |
+| Topbar hierarchy | Alibaba global header, inspected live2026-11-04: quiet utilities without nested frames. GYUTRON retains its discoverable search field, native language select and own Test switch, while removing search keycap/Test badge frames and placing notification counts inside the trigger.56px navigation geometry and all events/aria remain unchanged | `saas-styles.mjs` |
+| Topbar breadcrumb removal | User-directed removal of the redundant GYUTRON / module block across all pages. It is hidden in the shell while its internal current-page node remains available to the existing localization/router code; utilities stay aligned to the right | `shell.mjs`, `saas-styles.mjs` |
+| Workspace search correctness | Authored correction found during chrome QA: non-empty queries also match localized module names and module keys; quick navigation coexists with original business-record results, loading/errors and stale-response protection | `client.mjs`, `scripts/test-admin-polish.mjs` |
 | Primary navigation tone/default | GYUTRON user-directed refinement: near-black purple base #140d22 with brighter text/icons and coordinated hover/selection tones; Administration starts expanded while native manual collapse remains available | `saas-styles.mjs`, `shell.mjs` |
 | Compact rail overflow | Authored correction: compact scrolling remains available while its scrollbar cannot squeeze glyphs; compact counts stay in accessible link names without a detached visual badge, and expanded links show numeric counts. Original compact logo grows32→36px | `saas-styles.mjs` |
 | Analysis filter hierarchy | Alibaba Data Overview, Shop Analysis and Trade Analysis: compact scope bar before indicators and chart; GYUTRON uses native date/advanced disclosures and an explicit applied-scope summary | `analytics-client.mjs`, `analytics-styles.mjs` |

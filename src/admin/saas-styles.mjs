@@ -587,11 +587,11 @@ dialog[open]{animation:workspace-dialog-enter var(--motion-fast) var(--ease)}
 .search-trigger>.ui-icon{width:17px;height:17px;color:#526176}
 .language-label select{font-weight:500}
 #workspace-main{padding:28px 32px 32px;background:var(--canvas)}
-.page-heading{align-items:center;gap:20px;margin-bottom:22px}
-.page-heading h1{font-size:26px;line-height:34px;font-weight:650;letter-spacing:-.025em;overflow-wrap:anywhere}
-.page-title-block{display:grid;grid-template-columns:34px minmax(0,1fr);column-gap:12px;align-items:center;min-width:0}
-.page-title-block>.page-title-icon{grid-column:1;grid-row:1;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid #dbe1e9;background:#fff;color:#3f4d61}
-.page-title-icon>.ui-icon{width:22px;height:22px;stroke-width:2.1}
+.page-heading{align-items:center;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.page-heading h1{font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.025em;overflow-wrap:anywhere}
+.page-title-block{display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:10px;align-items:center;min-width:0}
+.page-title-block>.page-title-icon{grid-column:1;grid-row:1;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border:0;background:transparent;color:#515866}
+.page-title-icon>.ui-icon{width:22px;height:22px;stroke-width:1.8}
 .page-title-block>h1{grid-column:2;grid-row:1;min-width:0}
 .page-title-block>.page-description{grid-column:2;grid-row:2;margin-top:4px}
 .page-title-block>.eyebrow{display:none}
@@ -1082,5 +1082,59 @@ tbody tr:has(input[type=checkbox]:checked) td{background:#f5f2fb}
  .filter-toolbar .filter-group>label:not(.search-field){flex:1 1 0;min-width:0}
  .filter-toolbar .filter-select{width:100%;min-width:0;max-width:none;height:44px;min-height:44px;padding:8px 25px 8px 8px}
  .filter-toolbar .filter-submit>.ui-icon{display:block;width:18px;height:18px}
+}
+/* Shared page identity and topbar: one hierarchy across every workspace module. */
+.page-heading>.page-title-block{min-width:0;max-width:100%}
+.page-heading>.heading-actions{min-width:0;max-width:100%;gap:8px;row-gap:6px}
+.page-heading>.heading-actions .button{min-height:36px;font-weight:500;box-shadow:none}
+.page-heading>.heading-actions .button:not(.button-primary):not(.button-danger){border-color:transparent;background:transparent;color:#59616e}
+.page-heading>.heading-actions .button:not(.button-primary):not(.button-danger):hover:not(:disabled){border-color:transparent;background:#e9ecf1;color:var(--ink)}
+.page-heading>.heading-actions .button-primary{font-weight:550}
+.page-heading>.heading-actions .button-primary:hover:not(:disabled){box-shadow:none;filter:brightness(.94)}
+.page-heading>.heading-actions>.text-link{display:inline-flex;align-items:center;min-height:36px;padding:6px 8px;color:var(--muted);font-size:12px}
+.page-heading>.heading-actions>.text-link:hover{background:#e9ecf1;color:var(--ink)}
+.topbar{border-bottom-color:#eceef2}
+.topbar-actions{gap:10px;margin-inline-start:auto}
+.topbar .search-trigger{min-width:224px;min-height:34px;border-color:transparent;background:#f6f7f9;padding:6px 10px;color:#68717d}
+.topbar .search-trigger:hover{border-color:transparent;background:#edf0f4;color:var(--ink)}
+.topbar .search-trigger>.ui-icon{width:16px;height:16px;color:inherit}
+.topbar .search-trigger kbd{padding:0;border:0;background:transparent;box-shadow:none;font-size:10px;line-height:16px;color:#626b78}
+.topbar .workspace-test-switch{min-height:34px;border-color:transparent;background:transparent;padding:6px 8px;font-size:12px;gap:7px}
+.topbar .workspace-test-switch:hover{border-color:transparent;background:#f3f4f7;color:var(--ink)}
+.topbar .workspace-test-switch[aria-checked=true],.workspace-body[data-test-mode=true] .topbar .workspace-test-switch{border-color:transparent;background:var(--button-purple-light);color:var(--button-purple-deep)}
+.topbar #workspace-mode-indicator{display:none}
+.topbar .workspace-notification-trigger{width:auto;min-width:44px;height:34px;min-height:34px;padding:6px 8px;gap:6px;border-color:transparent;background:transparent;color:#697180}
+.topbar .workspace-notification-trigger:hover{background:#f3f4f7;color:var(--ink)}
+.topbar .workspace-notification-trigger[aria-expanded=true]{background:var(--button-purple-light);color:var(--button-purple-deep)}
+.topbar .workspace-notification-trigger>.ui-icon{width:18px;height:18px;color:inherit;stroke-width:1.8}
+.topbar .workspace-notification-count{position:static;inset:auto;min-width:0;min-height:0;padding:0;border:0;background:transparent;color:var(--button-purple-deep);font-size:11px;font-weight:600;line-height:16px;white-space:nowrap}
+.topbar .workspace-notification-trigger.has-error{color:var(--warning)}
+.topbar .language-label select{min-height:34px;border-color:transparent;background-color:transparent;box-shadow:none;color:#697180}
+.topbar .language-label select:hover{border-color:transparent;background-color:#f3f4f7;color:var(--ink)}
+@media(min-width:768px){.page-heading>.page-title-block{flex:1 1 220px}}
+@media(max-width:1024px){
+ .page-heading h1{font-size:24px;line-height:32px}
+ .topbar .search-trigger{width:44px;min-width:44px;height:44px;min-height:44px;padding:12px}
+ .topbar .workspace-test-switch,.topbar .workspace-notification-trigger,.topbar .language-label select{min-height:44px;height:44px}
+ .topbar-actions{gap:6px}
+}
+@media(max-width:767px){
+ .page-heading h1{font-size:22px;line-height:30px}
+ .page-heading>.page-title-block{width:100%;grid-template-columns:24px minmax(0,1fr);text-align:left}
+ .page-title-block>.page-title-icon{width:24px;height:24px}
+ .page-heading>.heading-actions{width:100%;align-self:stretch}
+ .page-heading>.heading-actions .button,.page-heading>.heading-actions>.text-link{min-height:44px}
+ .topbar{padding-inline:8px;gap:8px}
+ .topbar-actions{gap:4px}
+ .topbar .workspace-test-switch{width:44px;min-width:44px;height:44px;padding:3px 2px;gap:2px}
+ .topbar .workspace-test-switch .test-mode-glyph{display:inline-block}
+ .topbar .workspace-test-switch .test-mode-compact{font-size:9px;line-height:12px}
+ .topbar .workspace-notification-trigger{padding:6px;gap:4px}
+ .topbar .workspace-notification-count{font-size:10px}
+ .topbar .language-label select{width:68px;padding-inline:6px 18px}
+}
+@media(pointer:coarse){
+ .page-heading>.heading-actions .button,.page-heading>.heading-actions>.text-link,.topbar .search-trigger,.topbar .workspace-test-switch,.topbar .workspace-notification-trigger,.topbar .language-label select{min-height:44px}
+ .topbar .workspace-notification-trigger{height:44px}
 }
 `;
